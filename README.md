@@ -125,7 +125,7 @@ To run the first C# program in Visual Studio Code (VSCode), follow these steps:
 
 Congratulations! You've successfully run your first C# program in Visual Studio Code. You can now start exploring and writing C# code in your VSCode environment.
 
-### 1.4 Statements
+#### Statements
 
 - A statement (a line of code) performs a specific task. Each Statement ends with a semicolon.
 - In case of multiple statements top to bottom is the apporach of executing statements.
@@ -140,14 +140,9 @@ public class Program{
 }
 ```
 
-### 1.5 Practice
+#### Assignment 1: Print your bio
 
-```c#
-Console.Write("Hey!");
-Console.Write("Happy to see you here!");
-```
-
-### 1.6 comments
+### 1.4 comments
 
 - what is comment and why do you need comment?
       - to explain your code
@@ -155,7 +150,7 @@ Console.Write("Happy to see you here!");
 - single line comment -> `// this is a single line comment`
 - multi-line comments -> `/*   */`
 
-### 1.7 Variables
+### 1.5 Variables and data types
 
 - variable declaration and initialization
 - data type
@@ -170,18 +165,371 @@ Console.Write("Happy to see you here!");
 
 - we can change the value of variable anywhere in the program
 
-### 1.8 variable naming conventions
+#### variable naming conventions
 
-### 1.9 Assignment 2: declare product data types and print variables
+#### Assignment 2: declare product data types and print variables
 
-### 1.10 Constant variables and multiple variables
+#### Constant variables and multiple variables
 
 - constant variables: const string universityName = "Leading University";
 - string concatenation: "anisul" + "islam"
 - multiple variables: int x,y,z; x=y=z=50;
 
-### 1.11 Type Casting - Implicit, Explicit
+#### Type Casting - Implicit, Explicit
 
 - Implicit (automatically - converting a smaller type to a larger type size): char -> int -> long -> float -> double
 - Explicit (manually - converting a larger type to a smaller size type): double -> float -> long -> int -> char
 - Type Conversion Methods: It is also possible to convert data types explicitly by using built-in methods, such as Convert.ToBoolean, Convert.ToDouble, Convert.ToString, Convert.ToInt32 (int) and Convert.ToInt64 (long)
+
+### 1.6 User Input
+
+- Console.ReadLine(), Convert.ToString(), Convert.ToBoolean(), Convert.ToInt32(), Convert.ToInt64() and Convert.ToChar(), Convert.ToDouble()
+
+```c#
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    string? studentName;
+    int studentAge;
+
+    Console.Write("Enter your name: ");
+    studentName = Console.ReadLine();
+
+    Console.Write("Enter your age: ");
+    studentAge = Convert.ToInt32(Console.ReadLine());
+
+    Console.WriteLine("Name: " + studentName);
+    Console.WriteLine("Age: " + studentAge + " years old");
+  }
+}
+```
+
+#### Assignment 3: take student input for gpa and isRegistered
+
+### 1.7 Math operatoions & Precedence
+
+### 1.8 Formatting output
+
+```c sharp
+    int number1 = 10;
+    int number2 = 3;
+    int result;
+    double pi = 3.1416;
+
+    result = number1 + number2;
+    // Console.WriteLine($"{number1} + {number2} = {result}");
+    Console.WriteLine("{0} + {1} = {2}", number1, number2, result);
+
+   Console.WriteLine($"pi = {pi}");
+   Console.WriteLine($"pi = {pi.F2}");
+
+```
+
+### 1.9 Operators
+
+C# supports various operators that allow you to perform operations on variables and values. Here's a list of some common operators in C#:
+
+#### Arithmetic Operators
+
+1. **Addition (`+`):**
+
+   ```csharp
+   int result = a + b;
+   ```
+
+2. **Subtraction (`-`):**
+
+   ```csharp
+   int result = a - b;
+   ```
+
+3. **Multiplication (`*`):**
+
+   ```csharp
+   int result = a * b;
+   ```
+
+4. **Division (`/`):**
+
+   ```csharp
+   int result = a / b;
+   ```
+
+5. **Modulus (`%`):**
+
+   ```csharp
+   int result = a % b;
+   ```
+
+- some arithmetic operators programs
+
+```csharp
+// basic calculator
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int number1 = 10;
+    int number2 = 3;
+    int result;
+
+    result = number1 + number2;
+    // Console.WriteLine($"{number1} + {number2} = {result}");
+    Console.WriteLine("{0} + {1} = {2}", number1, number2, result);
+
+    result = number1 - number2;
+    Console.WriteLine($"{number1} - {number2} = {result}");
+
+    result = number1 * number2;
+    Console.WriteLine($"{number1} * {number2} = {result}");
+
+
+    double div = (double)number1 / number2;
+    Console.WriteLine($"{number1} / {number2} = {div.ToString("F2")}");
+
+
+    result = number1 % number2;
+    Console.WriteLine($"{number1} % {number2} = {result}");
+
+  }
+}
+
+// area of triagle
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    // triangle area = 0.5 * base * height
+    double baseLength, height, triangleArea;
+
+    Console.WriteLine("Triangle Area Calculator");
+
+    Console.Write("Base = ");
+    baseLength = Convert.ToDouble(Console.ReadLine());
+
+    Console.Write("Height = ");
+    height = Convert.ToDouble(Console.ReadLine());
+
+    triangleArea = 0.5 * baseLength * height;
+    Console.WriteLine($"Triangle Area = {triangleArea.ToString("F2")}");
+  }
+}
+
+
+// temperature conversion (celsius to fahrenheit conversion)
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    double fahrenheit, celsius;
+
+    Console.Write("fahrenheit = ");
+    fahrenheit = Convert.ToDouble(Console.ReadLine());
+
+    celsius = (fahrenheit - 32) / 1.8;
+    Console.WriteLine($"celsius = {celsius:F2} degrees");
+
+  }
+}
+
+```
+
+##### Assignment 4:sum and average of 3 numbers
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int number1, number2, number3, sum;
+    double average;
+
+    Console.Write("number1 = ");
+    number1 = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("number2 = ");
+    number2 = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("number3 = ");
+    number3 = Convert.ToInt32(Console.ReadLine());
+
+    sum = number1 + number2 + number3;
+    Console.WriteLine($"sum = {sum}");
+
+    average = (double)sum / 3;
+    Console.WriteLine($"average = {average.ToString("F2")}");
+
+  }
+}
+
+```
+
+##### Assignment 5: area of circle
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    // circle area = 3.1416 * radius * radius
+    double radius, circleArea;
+
+    Console.WriteLine("Circle Area Calculator");
+
+    Console.Write("radius = ");
+    radius = Convert.ToDouble(Console.ReadLine());
+
+    circleArea = Math.PI * radius * radius;
+    Console.WriteLine($"Circle Area = {circleArea.ToString("F2")}");
+  }
+}
+```
+
+##### Assignment 6: temperature converter (fahrenheit to celsius conversion)
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    double fahrenheit, celsius;
+
+    Console.Write("celsius = ");
+    celsius = Convert.ToDouble(Console.ReadLine());
+
+    fahrenheit = (1.8 * celsius) + 32;
+    Console.WriteLine($"fahrenheit = {fahrenheit:F2} degrees");
+
+  }
+}
+
+
+```
+
+#### Relational Operators
+
+1. **Equal to (`==`):**
+
+   ```csharp
+   if (a == b)
+   ```
+
+2. **Not equal to (`!=`):**
+
+   ```csharp
+   if (a != b)
+   ```
+
+3. **Greater than (`>`):**
+
+   ```csharp
+   if (a > b)
+   ```
+
+4. **Less than (`<`):**
+
+   ```csharp
+   if (a < b)
+   ```
+
+5. **Greater than or equal to (`>=`):**
+
+   ```csharp
+   if (a >= b)
+   ```
+
+6. **Less than or equal to (`<=`):**
+
+   ```csharp
+   if (a <= b)
+   ```
+
+#### Logical Operators
+
+1. **Logical AND (`&&`):**
+
+   ```csharp
+   if (condition1 && condition2)
+   ```
+
+2. **Logical OR (`||`):**
+
+   ```csharp
+   if (condition1 || condition2)
+   ```
+
+3. **Logical NOT (`!`):**
+
+   ```csharp
+   if (!condition)
+   ```
+
+#### Assignment Operators
+
+1. **Assignment (`=`):**
+
+   ```csharp
+   int a = 10;
+   ```
+
+2. **Add and assign (`+=`):**
+
+   ```csharp
+   a += 5;  // equivalent to a = a + 5;
+   ```
+
+3. **Subtract and assign (`-=`):**
+
+   ```csharp
+   a -= 5;  // equivalent to a = a - 5;
+   ```
+
+4. **Multiply and assign (`*=`):**
+
+   ```csharp
+   a *= 2;  // equivalent to a = a * 2;
+   ```
+
+5. **Divide and assign (`/=`):**
+
+   ```csharp
+   a /= 2;  // equivalent to a = a / 2;
+   ```
+
+6. **Modulus and assign (`%=`):**
+
+   ```csharp
+   a %= 3;  // equivalent to a = a % 3;
+   ```
+
+#### Increment and Decrement Operators
+
+1. **Increment (`++`):**
+
+   ```csharp
+   a++;
+   ```
+
+2. **Decrement (`--`):**
+
+   ```csharp
+   a--;
+   ```
+
+#### Conditional Operator (Ternary Operator)
+
+```csharp
+int result = (a > b) ? a : b;
+```
+
+This is a concise way to express an `if-else` statement.
+
+These are some of the basic operators in C#. Understanding how to use these operators is fundamental to writing effective C# code.
