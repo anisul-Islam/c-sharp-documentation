@@ -142,13 +142,26 @@ public class Program{
 
 #### Assignment 1: Print your bio
 
-### 1.4 comments
+### 1.4 comments and escape sequences
 
 - what is comment and why do you need comment?
       - to explain your code
       - to avoid running some part of your code for debugging
 - single line comment -> `// this is a single line comment`
 - multi-line comments -> `/*   */`
+- escape sequences: \n, \t, \r, \\, \", \'
+
+```csharp
+   string fullName = "Aniul\nIslam\nRubel";
+   Console.WriteLine(fullName);
+```
+
+- verbatim string: it allows linebreaks in strings. use @ symbol before double quotes.
+
+```csharp
+Console.WriteLine(@"Hello!
+Welcome to the verbatim string");
+```
 
 ### 1.5 Variables and data types
 
@@ -183,7 +196,8 @@ public class Program{
 
 ### 1.6 User Input
 
-- Console.ReadLine(), Convert.ToString(), Convert.ToBoolean(), Convert.ToInt32(), Convert.ToInt64() and Convert.ToChar(), Convert.ToDouble()
+- Console.ReadLine(), Convert.ToString(), Convert.ToBoolean(), Convert.ToInt16(),Convert.ToInt32(), Convert.ToInt64() and Convert.ToChar(), Convert.ToDouble()
+- Error: not possible to convert a textual string like "welcome" to an int.
 
 ```c#
 using System;
@@ -210,7 +224,9 @@ class Test
 
 ### 1.7 Math operatoions & Precedence
 
-### 1.8 Formatting output
+### 1.8 Formatting output - String concatenation & interpolation
+
+- we can use variable inside a string by using string interpolation!
 
 ```c sharp
     int number1 = 10;
@@ -227,11 +243,11 @@ class Test
 
 ```
 
-### 1.9 Operators
+## 2 Operators
 
 C# supports various operators that allow you to perform operations on variables and values. Here's a list of some common operators in C#:
 
-#### Arithmetic Operators
+### Arithmetic Operators
 
 1. **Addition (`+`):**
 
@@ -339,7 +355,7 @@ class Test
 
 ```
 
-##### Assignment 4:sum and average of 3 numbers
+#### Assignment 4:sum and average of 3 numbers
 
 ```csharp
 using System;
@@ -410,69 +426,9 @@ class Test
 
   }
 }
-
-
 ```
 
-#### Relational Operators
-
-1. **Equal to (`==`):**
-
-   ```csharp
-   if (a == b)
-   ```
-
-2. **Not equal to (`!=`):**
-
-   ```csharp
-   if (a != b)
-   ```
-
-3. **Greater than (`>`):**
-
-   ```csharp
-   if (a > b)
-   ```
-
-4. **Less than (`<`):**
-
-   ```csharp
-   if (a < b)
-   ```
-
-5. **Greater than or equal to (`>=`):**
-
-   ```csharp
-   if (a >= b)
-   ```
-
-6. **Less than or equal to (`<=`):**
-
-   ```csharp
-   if (a <= b)
-   ```
-
-#### Logical Operators
-
-1. **Logical AND (`&&`):**
-
-   ```csharp
-   if (condition1 && condition2)
-   ```
-
-2. **Logical OR (`||`):**
-
-   ```csharp
-   if (condition1 || condition2)
-   ```
-
-3. **Logical NOT (`!`):**
-
-   ```csharp
-   if (!condition)
-   ```
-
-#### Assignment Operators
+### Assignment Operators
 
 1. **Assignment (`=`):**
 
@@ -510,7 +466,153 @@ class Test
    a %= 3;  // equivalent to a = a % 3;
    ```
 
-#### Increment and Decrement Operators
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int number = 20;
+
+    number += 5; // number = number + 5
+    Console.WriteLine($"{number}");
+
+    number -= 5; // number = number - 5
+    Console.WriteLine($"{number}");
+
+    number *= 5; // number = number * 5
+    Console.WriteLine($"{number}");
+
+    number /= 5; // number = number / 5
+    Console.WriteLine($"{number}");
+
+    number %= 5; // number = number % 5
+    Console.WriteLine($"{number}");
+
+  }
+}
+
+```
+
+### Relational Operators
+
+1. **Equal to (`==`):**
+
+   ```csharp
+   if (a == b)
+   ```
+
+2. **Not equal to (`!=`):**
+
+   ```csharp
+   if (a != b)
+   ```
+
+3. **Greater than (`>`):**
+
+   ```csharp
+   if (a > b)
+   ```
+
+4. **Less than (`<`):**
+
+   ```csharp
+   if (a < b)
+   ```
+
+5. **Greater than or equal to (`>=`):**
+
+   ```csharp
+   if (a >= b)
+   ```
+
+6. **Less than or equal to (`<=`):**
+
+   ```csharp
+   if (a <= b)
+   ```
+
+### Logical Operators
+
+1. **Logical AND (`&&`):**
+
+   ```csharp
+   if (condition1 && condition2)
+   ```
+
+2. **Logical OR (`||`):**
+
+   ```csharp
+   if (condition1 || condition2)
+   ```
+
+3. **Logical NOT (`!`):**
+
+   ```csharp
+   if (!condition)
+   ```
+
+### Bitwise Operators
+
+In C#, bitwise operators perform operations at the bit level. These operators work with individual bits of integer types (`int`, `long`, `short`, `byte`, etc.). Here are the bitwise operators in C#:
+
+1. **Bitwise AND (`&`):**
+   - **Description:** Sets each bit to 1 if both bits are 1.
+   - **Example:**
+
+     ```csharp
+     int result = 5 & 3;  // Binary: 101 & 011 = 001
+     Console.WriteLine(result);  // Output: 1
+     ```
+
+2. **Bitwise OR (`|`):**
+   - **Description:** Sets each bit to 1 if at least one of the corresponding bits is 1.
+   - **Example:**
+
+     ```csharp
+     int result = 5 | 3;  // Binary: 101 | 011 = 111
+     Console.WriteLine(result);  // Output: 7
+     ```
+
+3. **Bitwise XOR (`^`):**
+   - **Description:** Sets each bit to 1 if only one of the corresponding bits is 1.
+   - **Example:**
+
+     ```csharp
+     int result = 5 ^ 3;  // Binary: 101 ^ 011 = 110
+     Console.WriteLine(result);  // Output: 6
+     ```
+
+4. **Bitwise NOT (`~`):**
+   - **Description:** Inverts each bit.
+   - **Example:**
+
+     ```csharp
+     int result = ~5;  // Binary: ~0101 = 1010
+     Console.WriteLine(result);  // Output: -6
+     ```
+
+5. **Left Shift (`<<`):**
+   - **Description:** Shifts the bits of a number to the left by a specified number of positions.
+   - **Example:**
+
+     ```csharp
+     int result = 5 << 2;  // Binary: 101 << 2 = 10100
+     Console.WriteLine(result);  // Output: 20
+     ```
+
+6. **Right Shift (`>>`):**
+   - **Description:** Shifts the bits of a number to the right by a specified number of positions.
+   - **Example:**
+
+     ```csharp
+     int result = 5 >> 1;  // Binary: 101 >> 1 = 10
+     Console.WriteLine(result);  // Output: 2
+     ```
+
+Bitwise operators are commonly used in scenarios where individual bits represent flags or options, and you need to perform operations at a lower level than regular arithmetic operators.
+
+### Increment and Decrement Operators
 
 1. **Increment (`++`):**
 
@@ -524,7 +626,7 @@ class Test
    a--;
    ```
 
-#### Conditional Operator (Ternary Operator)
+### Conditional Operator (Ternary Operator)
 
 ```csharp
 int result = (a > b) ? a : b;
@@ -533,3 +635,609 @@ int result = (a > b) ? a : b;
 This is a concise way to express an `if-else` statement.
 
 These are some of the basic operators in C#. Understanding how to use these operators is fundamental to writing effective C# code.
+
+## 3. Control Statement
+
+### 3.1 Conditional control statement
+
+Control statements in C# are used to control the flow of execution in a program. They allow you to make decisions, loop through code, and execute different blocks of code based on certain conditions. Here are some of the main control statements in C#:
+
+1. **if Statement:**
+   - The `if` statement is used for conditional branching. It executes a block of code if a specified condition is true.
+
+     ```csharp
+     if (condition)
+     {
+         // Code to be executed if the condition is true
+     }
+     ```
+
+   - nested if
+
+2. **else Statement:**
+   - The `else` statement is used with `if` to execute a block of code if the `if` condition is false.
+
+     ```csharp
+     if (condition)
+     {
+         // Code to be executed if the condition is true
+     }
+     else
+     {
+         // Code to be executed if the condition is false
+     }
+     ```
+
+3. **else if Statement:**
+   - The `else if` statement is used to specify a new condition to test if the previous `if` or `else if` conditions are false.
+
+     ```csharp
+     if (condition1)
+     {
+         // Code to be executed if condition1 is true
+     }
+     else if (condition2)
+     {
+         // Code to be executed if condition2 is true
+     }
+     else
+     {
+         // Code to be executed if all conditions are false
+     }
+     ```
+
+4. **switch Statement:**
+   - The `switch` statement is used to select one of many code blocks to be executed.
+
+     ```csharp
+     switch (variable)
+     {
+         case value1:
+             // Code to be executed if variable equals value1
+             break;
+         case value2:
+             // Code to be executed if variable equals value2
+             break;
+         // ... other cases ...
+         default:
+             // Code to be executed if none of the cases match
+             break;
+     }
+     ```
+
+#### program 1 positive, negative or zero
+
+```csharp
+   // program 1. positive, negative or zero
+   using System;
+   class Test
+   {
+   public static void Main(string[] args)
+   {
+      int number = 0;
+      if (number > 0)
+      {
+         Console.WriteLine("Positive Number");
+      }
+      else if (number < 0)
+      {
+         Console.WriteLine("Negative Number");
+      }
+      else
+      {
+         Console.WriteLine("Zero");
+      }
+   }
+   }
+```
+
+#### program 2: digit spelling program
+
+```csharp
+// program 2: digit spelling program
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    // digit - 0-9
+    // digit spelling program
+
+    Console.Write("Enter any digit between 0 and 9: ");
+    int digit = Convert.ToInt32(Console.ReadLine());
+
+    if (digit == 0)
+    {
+      Console.WriteLine("Zero");
+    }
+    else if (digit == 1)
+    {
+      Console.WriteLine("One");
+    }
+    else if (digit == 2)
+    {
+      Console.WriteLine("Two");
+    }
+    else if (digit == 3)
+    {
+      Console.WriteLine("Three");
+    }
+    else if (digit == 4)
+    {
+      Console.WriteLine("Four");
+    }
+    else if (digit == 5)
+    {
+      Console.WriteLine("Five");
+    }
+    else if (digit == 6)
+    {
+      Console.WriteLine("Six");
+    }
+    else if (digit == 7)
+    {
+      Console.WriteLine("Seven");
+    }
+    else if (digit == 8)
+    {
+      Console.WriteLine("Eight");
+    }
+    else if (digit == 9)
+    {
+      Console.WriteLine("Nine");
+    }
+    else
+    {
+      Console.WriteLine("Not a valid digit.");
+    }
+  }
+}
+```
+
+#### Assignment 7: Even/Odd numbers
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int number;
+    Console.Write("Enter a number: ");
+    number = Convert.ToInt32(Console.ReadLine());
+
+    if (number % 2 == 0)
+    {
+      Console.WriteLine($"{number} is Even");
+    }
+    else
+    {
+      Console.WriteLine($"{number} is Odd");
+    }
+  }
+}
+
+
+```
+
+#### program 4: large number between 2 numbers
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int number1, number2;
+
+    Console.Write("number1: ");
+    number1 = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("number2: ");
+    number2 = Convert.ToInt32(Console.ReadLine());
+
+    if (number1 > number2)
+    {
+      Console.WriteLine($"{number1} is large number");
+    }
+    else if (number2 > number1)
+    {
+      Console.WriteLine($"{number2} is large number");
+    }
+    else
+    {
+      Console.WriteLine($"numbers are equal");
+    }
+  }
+}
+
+
+```
+
+#### Assignment 8: Small number between 2 numbers
+
+#### program 5: large number between 3 numbers
+
+```csharp
+using System;
+
+class Program {
+    static void Main() {
+        Console.Write("Enter three numbers separated by spaces: ");
+        string[] input = Console.ReadLine().Split(' ');
+
+        int num1 = int.Parse(input[0]);
+        int num2 = int.Parse(input[1]);
+        int num3 = int.Parse(input[2]);
+
+        if (num1 >= num2 && num1 >= num3) {
+            Console.WriteLine($"{num1} is the largest.");
+        } else if (num2 >= num1 && num2 >= num3) {
+            Console.WriteLine($"{num2} is the largest.");
+        } else {
+            Console.WriteLine($"{num3} is the largest.");
+        }
+    }
+}
+```
+
+#### program 5: leap year or not
+
+```csharp
+using System;
+
+class Program {
+    static void Main() {
+        Console.Write("Enter a year: ");
+        int year = int.Parse(Console.ReadLine());
+
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            Console.WriteLine($"{year} is a leap year.");
+        } else {
+            Console.WriteLine($"{year} is not a leap year.");
+        }
+    }
+}
+```
+
+#### program 6: Capital or small letter
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    char letter;
+
+    Console.Write("Enter any letter: ");
+    letter = Convert.ToChar(Console.ReadLine());
+
+    if (letter >= 'A' && letter <= 'Z')
+    {
+      Console.WriteLine($"{letter} is a capital letter");
+    }
+    else
+    {
+      Console.WriteLine($"{letter} is a small letter");
+    }
+  }
+}
+
+```
+
+#### program 7: Vowel or consonant
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    char letter;
+
+    Console.Write("Enter any letter: ");
+    letter = Convert.ToChar(Console.ReadLine()); // A
+
+    letter = char.ToLower(letter);
+
+    if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u')
+    {
+      Console.WriteLine($"{letter} is a Vowel");
+    }
+    else
+    {
+      Console.WriteLine($"{letter} is a consonant");
+    }
+  }
+}
+
+
+```
+
+#### Assignment 9: Grade Calculator
+
+```csharp
+
+**Objective:** Create a simple program that calculates and displays the letter grade based on the percentage score entered by the user.
+
+**Instructions:**
+
+1. **Input:**
+   - Prompt the user to enter their percentage score.
+   - Validate the input to ensure it is a number between 0 and 100.
+
+2. **Grade Calculation:**
+   - Use if-else statements to determine the letter grade based on the following grading scale:
+     - A: 90-100
+     - B: 80-89
+     - C: 70-79
+     - D: 60-69
+     - F: 0-59
+
+3. **Output:**
+   - Display the calculated letter grade to the user.
+
+**Example Output:**
+Enter your percentage score: 85
+Your grade is: B
+
+
+**Grading:**
+- Correct calculation of letter grade: 70%
+- Input validation: 20%
+- Code structure, comments, and readability: 10%
+
+**Additional Challenges:**
+1. Allow the user to input their scores for multiple subjects and calculate the overall GPA.
+2. Implement a switch statement instead of if-else for grade calculation.
+3. Handle edge cases, such as negative scores or scores above 100, gracefully.
+
+This assignment allows students to practice if-else statements, input validation, and basic program structure. They can also extend the functionality to make it more complex based on their skill level.
+```
+
+```csharp
+// assignment solution
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter your percentage score: ");
+        double percentage;
+
+        if (double.TryParse(Console.ReadLine(), out percentage) && percentage >= 0 && percentage <= 100)
+        {
+            char grade;
+
+            if (percentage >= 90)
+            {
+                grade = 'A';
+            }
+            else if (percentage >= 80)
+            {
+                grade = 'B';
+            }
+            else if (percentage >= 70)
+            {
+                grade = 'C';
+            }
+            else if (percentage >= 60)
+            {
+                grade = 'D';
+            }
+            else
+            {
+                grade = 'F';
+            }
+
+            Console.WriteLine($"Your grade is: {grade}");
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Please enter a valid percentage between 0 and 100.");
+        }
+    }
+}
+
+// solution with switch
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter your percentage score: ");
+        double percentage;
+
+        if (double.TryParse(Console.ReadLine(), out percentage) && percentage >= 0 && percentage <= 100)
+        {
+            char grade;
+
+            switch ((int)percentage / 10)
+            {
+                case 10:
+                case 9:
+                    grade = 'A';
+                    break;
+                case 8:
+                    grade = 'B';
+                    break;
+                case 7:
+                    grade = 'C';
+                    break;
+                case 6:
+                    grade = 'D';
+                    break;
+                default:
+                    grade = 'F';
+                    break;
+            }
+
+            Console.WriteLine($"Your grade is: {grade}");
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Please enter a valid percentage between 0 and 100.");
+        }
+    }
+}
+
+
+```
+
+#### switch digit spelling program
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Input digit
+        Console.Write("Enter a digit (0-9): ");
+        int digit = Convert.ToInt32(Console.ReadLine());
+
+        // Convert digit to word
+        string digitWord = ConvertDigitToWord(digit);
+
+        // Output the result
+        Console.WriteLine($"The word representation of {digit} is: {digitWord}");
+    }
+
+    // Function to convert a digit to its English word representation
+    static string ConvertDigitToWord(int digit)
+    {
+        switch (digit)
+        {
+            case 0:
+                return "Zero";
+            case 1:
+                return "One";
+            case 2:
+                return "Two";
+            case 3:
+                return "Three";
+            case 4:
+                return "Four";
+            case 5:
+                return "Five";
+            case 6:
+                return "Six";
+            case 7:
+                return "Seven";
+            case 8:
+                return "Eight";
+            case 9:
+                return "Nine";
+            default:
+                return "Invalid Digit";
+        }
+    }
+}
+
+```
+
+#### switch vowel/consonant program
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Input digit
+        Console.Write("Enter a digit (0-9): ");
+        int digit = Convert.ToInt32(Console.ReadLine());
+
+        // Convert digit to word
+        string digitWord = ConvertDigitToWord(digit);
+
+        // Output the result
+        Console.WriteLine($"The word representation of {digit} is: {digitWord}");
+    }
+
+    // Function to convert a digit to its English word representation
+    static string ConvertDigitToWord(int digit)
+    {
+        switch (digit)
+        {
+            case 0:
+                return "Zero";
+            case 1:
+                return "One";
+            case 2:
+                return "Two";
+            case 3:
+                return "Three";
+            case 4:
+                return "Four";
+            case 5:
+                return "Five";
+            case 6:
+                return "Six";
+            case 7:
+                return "Seven";
+            case 8:
+                return "Eight";
+            case 9:
+                return "Nine";
+            default:
+                return "Invalid Digit";
+        }
+    }
+}
+
+
+```
+
+### 3.2 Loop control statement
+
+1. **while Loop:**
+   - The `while` loop is used to repeatedly execute a block of code as long as the specified condition is true.
+
+     ```csharp
+     while (condition)
+     {
+         // Code to be executed while the condition is true
+     }
+     ```
+
+2. **do-while Loop:**
+   - The `do-while` loop is similar to the `while` loop, but it ensures that the block of code is executed at least once.
+
+     ```csharp
+     do
+     {
+         // Code to be executed
+     } while (condition);
+     ```
+
+3. **for Loop:**
+   - The `for` loop is used to repeatedly execute a block of code a specific number of times.
+
+     ```csharp
+     for (initialization; condition; update)
+     {
+         // Code to be executed in each iteration
+     }
+     ```
+
+4. **foreach Loop:**
+   - The `foreach` loop is used to iterate over elements in a collection (e.g., arrays, lists).
+
+     ```csharp
+     foreach (var item in collection)
+     {
+         // Code to be executed for each item in the collection
+     }
+     ```
+
+These control statements provide flexibility and help in creating more dynamic and responsive programs in C#.
+
+## 4. Methods
+
+- Math method
