@@ -1,8 +1,32 @@
 # C# Documentation
 
-## 1. Introduction
+## Table of Contents
 
-### 1.1 Intro to C# language
+1. [Basic C#]
+   - [1. Intro to C#](#basic-1-introduction)
+      - [Intro to C# language](#11-intro-to-c-sharp-language)  
+      - [Setting up the environment](#12-setting-up-the-environment)  
+      - [First C# Program](#13-first-c-sharp-program)  
+      - [Comments and escape sequences](#14-comments-and-escape-sequences)  
+      - [Variables and data types](#15-variables-and-data-types)  
+      - [User Input](#16-user-input)  
+      - [Math operatoions & Precedence](#17-math-operatoions--precedence)  
+      - [Formatting output](#18-formatting-output---string-concatenation--interpolation)  
+   - [2. Operators](#basic-2-operators)  
+   - [3. Control Statement](#basic-3-control-statement)  
+      - [Conditional Control Statement](#31-conditional-control-statement)  
+      - [Loop Control Statement](#32-loop-control-statement)  
+   - [4. Methods](#basic-4-methods--function)  
+
+
+2. [2. Intermediate C]()
+   - []()
+3. [3. Advanced C](#basic-c)
+   - []()
+
+## Basic 1. Introduction
+
+### 1.1 Intro to C-sharp language
 
 **Programming language**: A language that Humans use to communicate with machines. Without computer programs, we wouldn't have smartphones, websites, or even exploration in outer space.
 
@@ -45,7 +69,7 @@ C# continues to evolve with new features and improvements, and it remains a popu
 - install VSCode editior
 - install c# extension
 
-### 1.3 First C# Program
+### 1.3 First C-sharp Program
 
 - output: a message on screen/terminal. `Console.WriteLine("Welcome to C#!");`
 
@@ -64,7 +88,7 @@ C# continues to evolve with new features and improvements, and it remains a popu
 
 #### break down basic structure
 
-- Namespaces / Class: helps to separate code. `usng System;` allows you to use Console.WriteLine method and other methods. Namespaces are optional. Instead of System.Console.WriteLine use Console.WriteLine method by use System. Use . operator to access the class or namespace members.
+- Namespaces / Class: helps to separate code. `using System;` allows you to use Console.WriteLine method and other methods. Namespaces are optional. Instead of System.Console.WriteLine use Console.WriteLine method by use System. Use . operator to access the class or namespace members.
 
 - In C#, creating a class is mandatory for the program’s execution. Main method is the entry point or starting point of the program.
 
@@ -142,6 +166,18 @@ public class Program{
 
 #### Assignment 1: Print your bio
 
+```csharp
+class Test
+{
+  public static void Main(string[] args)
+  {
+    Console.WriteLine("Name: Anisul Islam");
+    Console.WriteLine("Age: 32");
+    Console.WriteLine("Profession: Software developer");
+  }
+}
+```
+
 ### 1.4 comments and escape sequences
 
 - what is comment and why do you need comment?
@@ -180,7 +216,14 @@ Welcome to the verbatim string");
 
 #### variable naming conventions
 
+- descriptive
+- meaningful
+- camelCase
+- avoid single letter naming (exception for loops)
+
 #### Assignment 2: declare product data types and print variables
+
+![assignment-2](images/assignment-2.png)
 
 #### Constant variables and multiple variables
 
@@ -193,6 +236,7 @@ Welcome to the verbatim string");
 - Implicit (automatically - converting a smaller type to a larger type size): char -> int -> long -> float -> double
 - Explicit (manually - converting a larger type to a smaller size type): double -> float -> long -> int -> char
 - Type Conversion Methods: It is also possible to convert data types explicitly by using built-in methods, such as Convert.ToBoolean, Convert.ToDouble, Convert.ToString, Convert.ToInt32 (int) and Convert.ToInt64 (long)
+- `System.Console.WriteLine($"{number2.GetType()}");`
 
 ### 1.6 User Input
 
@@ -207,6 +251,7 @@ class Test
   {
     string? studentName;
     int studentAge;
+    double salary;
 
     Console.Write("Enter your name: ");
     studentName = Console.ReadLine();
@@ -214,8 +259,13 @@ class Test
     Console.Write("Enter your age: ");
     studentAge = Convert.ToInt32(Console.ReadLine());
 
+    Console.Write("Enter your monthly salary: ");
+    salary = Convert.ToDouble(Console.ReadLine());
+
+
     Console.WriteLine("Name: " + studentName);
     Console.WriteLine("Age: " + studentAge + " years old");
+    Console.WriteLine($"Welcome {name}. You are {age}. Your salary is ${salary:F2}");
   }
 }
 ```
@@ -239,11 +289,11 @@ class Test
     Console.WriteLine("{0} + {1} = {2}", number1, number2, result);
 
    Console.WriteLine($"pi = {pi}");
-   Console.WriteLine($"pi = {pi.F2}");
+   Console.WriteLine($"pi = {pi:F2}");
 
 ```
 
-## 2 Operators
+## Basic 2. Operators
 
 C# supports various operators that allow you to perform operations on variables and values. Here's a list of some common operators in C#:
 
@@ -305,6 +355,7 @@ class Test
 
     double div = (double)number1 / number2;
     Console.WriteLine($"{number1} / {number2} = {div.ToString("F2")}");
+    Console.WriteLine($"{number1} / {number2} = {div:F2}");
 
 
     result = number1 % number2;
@@ -355,7 +406,7 @@ class Test
 
 ```
 
-#### Assignment 4:sum and average of 3 numbers
+#### Assignment 4: sum and average of 3 numbers
 
 ```csharp
 using System;
@@ -630,13 +681,27 @@ Bitwise operators are commonly used in scenarios where individual bits represent
 
 ```csharp
 int result = (a > b) ? a : b;
+
+// even/odd program
+class Test
+{
+  public static void Main(string[] args)
+  {
+    Console.Write("Enter a number: ");
+    int number = Convert.ToInt32(Console.ReadLine());
+
+    string result = number % 2 == 0 ? "Even" : "Odd";
+    Console.WriteLine($"{number} is an {result} number");
+    Console.Read();
+  }
+}
 ```
 
 This is a concise way to express an `if-else` statement.
 
 These are some of the basic operators in C#. Understanding how to use these operators is fundamental to writing effective C# code.
 
-## 3. Control Statement
+## Basic 3. Control Statement
 
 ### 3.1 Conditional control statement
 
@@ -687,7 +752,7 @@ Control statements in C# are used to control the flow of execution in a program.
      ```
 
 4. **switch Statement:**
-   - The `switch` statement is used to select one of many code blocks to be executed.
+   - 4 keywords to remember: switch, case, break and default. The `switch` statement is used to select one of many code blocks to be executed.
 
      ```csharp
      switch (variable)
@@ -820,7 +885,7 @@ class Test
 
 ```
 
-#### program 4: large number between 2 numbers
+#### program 3: large number between 2 numbers
 
 ```csharp
 using System;
@@ -856,7 +921,7 @@ class Test
 
 #### Assignment 8: Small number between 2 numbers
 
-#### program 5: large number between 3 numbers
+#### program 4: large number between 3 numbers
 
 ```csharp
 using System;
@@ -1087,110 +1152,224 @@ class Program
 
 ```
 
-#### switch digit spelling program
+#### Program 8: switch digit spelling program
 
 ```csharp
 using System;
-
-class Program
+class Test
 {
-    static void Main()
+  public static void Main(string[] args)
+  {
+    // switch, break, case, default
+
+    int digit;
+    Console.Write("Enter a digit: ");
+    digit = Convert.ToInt32(Console.ReadLine());
+
+    switch (digit)
     {
-        // Input digit
-        Console.Write("Enter a digit (0-9): ");
-        int digit = Convert.ToInt32(Console.ReadLine());
-
-        // Convert digit to word
-        string digitWord = ConvertDigitToWord(digit);
-
-        // Output the result
-        Console.WriteLine($"The word representation of {digit} is: {digitWord}");
+      case 0:
+        Console.WriteLine("Zero");
+        break;
+      case 1:
+        Console.WriteLine("One");
+        break;
+      case 2:
+        Console.WriteLine("Two");
+        break;
+      case 3:
+        Console.WriteLine("Three");
+        break;
+      case 4:
+        Console.WriteLine("Four");
+        break;
+      case 5:
+        Console.WriteLine("Five");
+        break;
+      case 6:
+        Console.WriteLine("Six");
+        break;
+      case 7:
+        Console.WriteLine("Seven");
+        break;
+      case 8:
+        Console.WriteLine("Eight");
+        break;
+      case 9:
+        Console.WriteLine("Nine");
+        break;
+      default:
+        Console.WriteLine("Not a digit");
+        break;
     }
 
-    // Function to convert a digit to its English word representation
-    static string ConvertDigitToWord(int digit)
-    {
-        switch (digit)
-        {
-            case 0:
-                return "Zero";
-            case 1:
-                return "One";
-            case 2:
-                return "Two";
-            case 3:
-                return "Three";
-            case 4:
-                return "Four";
-            case 5:
-                return "Five";
-            case 6:
-                return "Six";
-            case 7:
-                return "Seven";
-            case 8:
-                return "Eight";
-            case 9:
-                return "Nine";
-            default:
-                return "Invalid Digit";
-        }
-    }
+  }
 }
 
 ```
 
-#### switch vowel/consonant program
+#### Program 9: switch vowel/consonant program
 
 ```csharp
 using System;
-
-class Program
+class Test
 {
-    static void Main()
+  public static void Main(string[] args)
+  {
+    char input;
+    Console.Write("Enter a single character: ");
+    input = Convert.ToChar(Console.ReadLine());
+
+    switch (Char.ToLower(input))
     {
-        // Input digit
-        Console.Write("Enter a digit (0-9): ");
-        int digit = Convert.ToInt32(Console.ReadLine());
-
-        // Convert digit to word
-        string digitWord = ConvertDigitToWord(digit);
-
-        // Output the result
-        Console.WriteLine($"The word representation of {digit} is: {digitWord}");
-    }
-
-    // Function to convert a digit to its English word representation
-    static string ConvertDigitToWord(int digit)
-    {
-        switch (digit)
+      case 'a':
+      case 'e':
+      case 'i':
+      case 'o':
+      case 'u':
+        Console.WriteLine($"{input} is a Vowel");
+        break;
+      default:
+        if (Char.IsLetter(input))
         {
-            case 0:
-                return "Zero";
-            case 1:
-                return "One";
-            case 2:
-                return "Two";
-            case 3:
-                return "Three";
-            case 4:
-                return "Four";
-            case 5:
-                return "Five";
-            case 6:
-                return "Six";
-            case 7:
-                return "Seven";
-            case 8:
-                return "Eight";
-            case 9:
-                return "Nine";
-            default:
-                return "Invalid Digit";
+          Console.WriteLine($"{input} is a Consonant");
         }
+        else
+        {
+          Console.WriteLine($"{input} is not a letter");
+        }
+        break;
     }
+
+  }
 }
 
+
+```
+
+#### Assignment 10: Weekdays/Weekend Program
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    Console.Write("Enter a day of the week : ");
+    string day = Console.ReadLine();
+    
+    switch (day.ToLower())
+    {
+      case "monday":
+      case "tuesday":
+      case "wednesday":
+      case "thursday":
+      case "friday":
+        Console.WriteLine("Weekday");
+        break;
+      case "saturday":
+      case "sunday":
+        Console.WriteLine("Weekend");
+        break;
+      default:
+        Console.WriteLine("Invalid day entered");
+        break;
+    }
+
+  }
+}
+
+```
+
+#### project 1: small temperature converter project using switch
+
+```csharp
+// switch: temperature converter
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    Console.WriteLine("Temperature Converter Started");
+    Console.WriteLine("Choose 1. Fahrenheit to Celsisus");
+    Console.WriteLine("Choose 2. Celsisus to Fahrenheit");
+
+    int choice = Convert.ToInt32(Console.ReadLine());
+
+    switch (choice)
+    {
+      case 1:
+        Console.Write("Enter Fahrenheit temperature: ");
+        double fahrenheit = Convert.ToDouble(Console.ReadLine());
+        double celsisus = (fahrenheit - 32) / 1.8;
+        Console.Write($"Temperature in Celsisus : {celsisus:F2} ");
+        break;
+      case 2:
+        Console.Write("Enter Celsisus temperature: ");
+        double cels = Convert.ToDouble(Console.ReadLine());
+        double fahr = cels * 1.8 + 32;
+        Console.Write($"Temperature in Fahrenheit : {fahr:F2} ");
+        break;
+      default:
+        Console.WriteLine("Invalid Choice");
+        break;
+    }
+
+
+  }
+}
+```
+
+#### project 2: small calculator project using switch
+
+```c
+// switch: basic calculator
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int number1, number2;
+    char operation;
+
+    Console.Write("Enter an operation (+,-,*,/) : ");
+    operation = Convert.ToChar(Console.ReadLine());
+
+    Console.Write("Enter number1: ");
+    number1 = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("Enter number2: ");
+    number2 = Convert.ToInt32(Console.ReadLine());
+
+    switch (operation)
+    {
+      case '+':
+        Console.WriteLine($"{number1} + {number2} = {number1 + number2}");
+        break;
+      case '-':
+        Console.WriteLine($"{number1} - {number2} = {number1 - number2}");
+        break;
+      case '*':
+        Console.WriteLine($"{number1} * {number2} = {number1 * number2}");
+        break;
+      case '/':
+        if (number2 != 0)
+        {
+          Console.WriteLine($"{number1} / {number2} = {number1 / number2}");
+        }
+        else
+        {
+          Console.WriteLine("Can not divide by zero");
+
+        }
+        break;
+      default:
+        Console.WriteLine("Invalid operation");
+        break;
+    }
+
+  }
+}
 
 ```
 
@@ -1238,6 +1417,511 @@ class Program
 
 These control statements provide flexibility and help in creating more dynamic and responsive programs in C#.
 
-## 4. Methods
+#### Program 10: print from 1 to 100
 
-- Math method
+#### Program 11: series
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    Console.Write("Enter the start number: ");
+    int start = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("Enter the last number: ");
+    int end = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("Enter the difference number: ");
+    int diff = Convert.ToInt32(Console.ReadLine());
+
+    for (int count = start; count <= end; count = count + diff)
+    {
+      Console.Write($"{count} ");
+    }
+
+  }
+}
+
+// 1 2 3 4 ... 100
+// 1 3 5 7 ... 99
+// 2 4 6 8 ... 100
+// 2 5 8 11 ... 
+
+```
+
+#### Program 12: sum of even/odd numbers
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int sum = 0;
+    for (int i = 1; i <= 10; i++)
+    {
+      if (i % 2 != 0)
+      {
+        sum = sum + i;
+      }
+    }
+    Console.WriteLine($"Sum of odd numbers = {sum}");
+  }
+}
+// 2+4+6+8+10=30
+```
+
+#### Program 13: Factorial
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    Console.Write("Enter a number : ");
+    int number = Convert.ToInt32(Console.ReadLine());
+    int fact = 1;
+    for (int i = number; i >= 1; i--)
+    {
+      fact = fact * i;
+    }
+    Console.WriteLine($"Factorial({number}) = {fact}");
+  }
+}
+// 5 = 5*4*3*2*1 = 120
+// 4 = 4*3*2*1= 24
+// 3 = 3*2*1 = 6
+// 2 = 2*1 = 2
+```
+
+#### break and continue keyword
+
+#### Nested loop
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    for (int i = 1; i <= 3; i++)
+    {
+      for (int j = 1; j <= 5; j++)
+      {
+        Console.WriteLine($"i={i}, j={j} : Bangladesh");
+      }
+    }
+  }
+}
+// outer loop i=1 1<=3
+// inner loop j=1 1<=5 Bangladesh
+// inner loop j=2 2<=5 Bangladesh
+// inner loop j=3 3<=5 Bangladesh
+// inner loop j=4 4<=5 Bangladesh
+// inner loop j=5 5<=5 Bangladesh
+// inner loop j=6 6<=5 
+
+// outer loop i=2 2<=3
+// inner loop j=1 1<=5 Bangladesh
+// inner loop j=2 2<=5 Bangladesh
+// inner loop j=3 3<=5 Bangladesh
+// inner loop j=4 4<=5 Bangladesh
+// inner loop j=5 5<=5 Bangladesh
+// inner loop j=6 6<=5 
+
+// outer loop i=3 3<=3
+// inner loop j=1 1<=5 Bangladesh
+// inner loop j=2 2<=5 Bangladesh
+// inner loop j=3 3<=5 Bangladesh
+// inner loop j=4 4<=5 Bangladesh
+// inner loop j=5 5<=5 Bangladesh
+// inner loop j=6 6<=5 
+
+// outer loop i=4 4<=3
+
+```
+
+#### project 3: Multiplication table
+
+```csharp
+using System;
+class Test
+{
+  public static void Main(string[] args)
+  {
+    Console.Write("Enter start number: ");
+    int startNumber = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("Enter end number: ");
+    int endNumber = Convert.ToInt32(Console.ReadLine());
+
+    for (int i = startNumber; i <= endNumber; i++)
+    {
+      for (int j = 1; j <= 10; j++)
+      {
+        Console.WriteLine($"{i} X {j} = {i * j}");
+      }
+      Console.WriteLine("--------------------");
+    }
+
+  }
+}
+
+// start number = 2
+// end number = 8
+
+// number = 5
+// number X i = number*i
+// 5 X 1 = 5  
+// 5 X 2 = 10
+// ....
+// 5 X 10 = 50
+```
+
+## Basic 4. Methods / function
+
+- use capital letter for Method Name
+- what to learn?
+      - how to define a function
+      - how to call a function
+      - how to pass parameters to a function
+      - how to return from a function
+
+- Method: A method is a block of code created inside a class that performs a specific task or operation. It is a fundamental building block in any programming language and is defined within a class or a struct. Methods are used to encapsulate logic, promote code reusability, and organize code into manageable units.
+
+```csharp
+// AccessModifier ReturnType MethodName(ParameterType parameter1, ParameterType parameter2, ...)
+// {
+//     // Method body
+//     // Code to perform the task
+//     // Optionally, return a value of ReturnType
+// }
+
+public class MyClass
+{
+    // Example method without parameters and return type
+    public void SimpleMethod()
+    {
+        // Method body
+        Console.WriteLine("Hello from SimpleMethod!");
+    }
+
+    // Example method with parameters and return type
+    public int Add(int a, int b)
+    {
+        // Method body
+        int sum = a + b;
+        return sum;
+    }
+}
+```
+
+### Assignment 11: create a calculator using function
+
+Certainly! Here's a simple project idea for practicing methods in C#: a basic calculator application.
+
+**Calculator Project:**
+
+**Requirements:**
+
+1. Create a C# console application.
+2. Define a `Calculator` class that contains methods for basic arithmetic operations (addition, subtraction, multiplication, division).
+3. Implement a menu-driven interface that allows the user to choose an operation and input operands.
+4. Perform the selected operation and display the result.
+
+**Code Example:**
+
+```csharp
+using System;
+
+class Calculator
+{
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    public int Subtract(int a, int b)
+    {
+        return a - b;
+    }
+
+    public int Multiply(int a, int b)
+    {
+        return a * b;
+    }
+
+    public double Divide(int a, int b)
+    {
+        if (b != 0)
+        {
+            return (double)a / b;
+        }
+        else
+        {
+            Console.WriteLine("Error: Cannot divide by zero.");
+            return double.NaN;
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Calculator calculator = new Calculator();
+
+        while (true)
+        {
+            Console.WriteLine("Simple Calculator");
+            Console.WriteLine("1. Add");
+            Console.WriteLine("2. Subtract");
+            Console.WriteLine("3. Multiply");
+            Console.WriteLine("4. Divide");
+            Console.WriteLine("5. Exit");
+
+            Console.Write("Choose an operation (1-5): ");
+            string choice = Console.ReadLine();
+
+            if (int.TryParse(choice, out int operation) && operation >= 1 && operation <= 5)
+            {
+                if (operation == 5)
+                {
+                    Console.WriteLine("Exiting the calculator. Goodbye!");
+                    break;
+                }
+
+                Console.Write("Enter the first operand: ");
+                int operand1 = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter the second operand: ");
+                int operand2 = int.Parse(Console.ReadLine());
+
+                int result = 0;
+
+                switch (operation)
+                {
+                    case 1:
+                        result = calculator.Add(operand1, operand2);
+                        break;
+                    case 2:
+                        result = calculator.Subtract(operand1, operand2);
+                        break;
+                    case 3:
+                        result = calculator.Multiply(operand1, operand2);
+                        break;
+                    case 4:
+                        double divisionResult = calculator.Divide(operand1, operand2);
+                        if (!double.IsNaN(divisionResult))
+                        {
+                            Console.WriteLine($"Result: {divisionResult}");
+                        }
+                        continue; // Skip displaying the result for division until the end
+                }
+
+                Console.WriteLine($"Result: {result}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
+```
+
+This simple calculator project allows students to practice creating a class with methods to perform different operations, handle user input, and implement a menu-driven interface.
+
+### Assignment 12: create an area calculator - triangle, rectangle
+
+### Project 4 - Converter Project
+
+Certainly! Here's a simple C# console application for a converter that converts between units. In this example, let's create a basic length converter:
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("Unit Converter");
+            Console.WriteLine("1. Convert Inches to Centimeters");
+            Console.WriteLine("2. Convert Centimeters to Inches");
+            Console.WriteLine("3. Exit");
+
+            Console.Write("Choose an operation (1-3): ");
+            string choice = Console.ReadLine();
+
+            if (int.TryParse(choice, out int operation) && operation >= 1 && operation <= 3)
+            {
+                if (operation == 3)
+                {
+                    Console.WriteLine("Exiting the unit converter. Goodbye!");
+                    break;
+                }
+
+                switch (operation)
+                {
+                    case 1:
+                        Console.Write("Enter length in inches: ");
+                        if (double.TryParse(Console.ReadLine(), out double inches))
+                        {
+                            double centimeters = InchesToCentimeters(inches);
+                            Console.WriteLine($"{inches} inches is equal to {centimeters} centimeters.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input for inches.");
+                        }
+                        break;
+                    case 2:
+                        Console.Write("Enter length in centimeters: ");
+                        if (double.TryParse(Console.ReadLine(), out double centimeters))
+                        {
+                            double inches = CentimetersToInches(centimeters);
+                            Console.WriteLine($"{centimeters} centimeters is equal to {inches} inches.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input for centimeters.");
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice. Please enter a number between 1 and 3.");
+            }
+
+            Console.WriteLine();
+        }
+    }
+
+    private static double InchesToCentimeters(double inches)
+    {
+        return inches * 2.54;
+    }
+
+    private static double CentimetersToInches(double centimeters)
+    {
+        return centimeters / 2.54;
+    }
+}
+```
+
+This simple converter allows users to convert lengths between inches and centimeters. Users can choose the desired conversion, enter the length, and get the converted result. Feel free to expand and modify the converter to include other units or functionalities based on your needs.
+
+## Intermediate 1. OOP
+
+### Classes and Objects
+
+- class: A template from individual object is created. A class is a custom data type or blueprint. It defines the data and behavior for a type. We can have variables and methods in a class.
+
+- object: An object is a instance of a class.
+
+- by default all class member is private. we can use dot operator to assign value to a class member.
+
+```csharp
+class Student{
+  public string name;
+  public int age;
+  public static DisplayInfo(){
+    Console.WriteLine();
+  }
+}
+class Test{
+  public static void Main(string[] args){
+    Student s1 = new Student();
+    s1.name="Anisul";
+  }
+}
+
+```
+
+### Encapsulation
+
+- encapsulation is the idea of "surrounding" an entity, not just to keep what's inside together, but also to protect it. hiding from outside using private.
+- benefits of encapsulation
+  - You can control access or modification of the data.
+  - You can make the code more flexible and easy to change with new requirements.
+  - Change one part of code without affecting other parts of code.
+- Access modifiers: public, private, protected, internal, protected internal. The public access modifier makes the member accessible from the outside of the class. The private access modifier makes members accessible only from within the class and hides them from the outside.
+
+```csharp
+class Student
+{
+  private string fullName;
+  private int age;
+
+  public void SetFullName(string fName)
+  {
+    fullName = fName;
+  }
+
+  public string GetFullName()
+  {
+    return fullName;
+  }
+  public void SetAge(int age)
+  {
+    this.age = age;
+  }
+
+  public int GetAge()
+  {
+    return age;
+  }
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+    Student s1 = new Student();
+    s1.SetFullName("Anisul Islam");
+    s1.SetAge(33);
+    Console.WriteLine(s1.GetFullName());
+    Console.WriteLine(s1.GetAge());
+  }
+}
+```
+
+### Constructor
+
+- a special public method that has no return type and called automatically when the object is created.
+
+### Properties
+
+- encapsulate members and give access them with Property a public member that will have accessor (get and set accessors)
+
+```csharp
+class Student
+{
+  private string name; // field
+  public string Name // property
+  {
+    set { name = value; }
+    get { return name; }
+  }
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+    Student s1 = new Student();
+    s1.Name = "Anisul Islam";
+    Console.WriteLine(s1.Name);
+  }
+}
+```
+
+## Intermediate 2. aaa
