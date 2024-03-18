@@ -6,7 +6,7 @@
    - [1. Intro to C#](#basic-1-introduction)
       - [Intro to C# language](#11-intro-to-c-sharp-language)  
       - [Setting up the environment](#12-setting-up-the-environment)  
-      - [First C# Program](#13-first-c-sharp-program)  
+      - [First C# Program](#13-create-first-console-application)  
       - [Comments and escape sequences](#14-comments-and-escape-sequences)  
       - [Variables and data types](#15-variables-and-data-types)  
       - [User Input](#16-user-input)  
@@ -19,8 +19,10 @@
    - [4. Methods](#basic-4-methods--function)  
 
 
-2. [2. Intermediate C]()
-   - []()
+2. [Intermediate C]()
+   - [Intermediate 1. OOP](#intermediate-1-oop)
+      - [Class and Object](#classes-and-objects)
+   - [Intermediate 1. OOP](#intermediate-1-oop)
 3. [3. Advanced C](#basic-c)
    - []()
 
@@ -28,14 +30,11 @@
 
 ### 1.1 Intro to C-sharp language
 
-**Programming language**: A language that Humans use to communicate with machines. Without computer programs, we wouldn't have smartphones, websites, or even exploration in outer space.
+#### 1.1.1 Programming language
 
-- Summary
-  - C# is a powerful OOP language developed by Micorsoft.
-  - General Purpose: We can create mobile, web,desktop and game application.
-  - we can built application on the Microsoft .NET platform.
-  - Cross Platform Independent: Micorsoft .NET Core made sure C# is not more only for windows but for linux and MacOS well.
-  - typed safe / statically typed language
+A language that Humans use to communicate with machines. Without computer programs, we wouldn't have smartphones, websites, or even exploration in outer space. Low-level, mid-level and high level language.
+
+#### 1.1.2 What is C#? Why C#?
 
 C# (pronounced "C sharp") is a modern, object-oriented programming language developed by Microsoft. It is designed for building a variety of applications on the Microsoft .NET platform. C# is widely used for developing desktop applications, web applications, mobile apps, cloud-based services, and game development.
 
@@ -47,7 +46,7 @@ Key features and aspects of C# include:
 
 3. **Type-Safe:** C# is statically typed, which means that the type of a variable must be declared before it can be used. This helps catch type-related errors at compile time.
 
-4. **Syntax:** C# syntax is influenced by languages like C, C++, and Java. If you are familiar with these languages, you'll find many similarities in C# syntax.
+4. **Syntax:** C# syntax is influenced by languages like C, C++, and Java. If you are familiar with these languages, you'll find many similarities in C# syntax. C++ and Visual Basics = C#
 
 5. **Rich Standard Library:** C# comes with a comprehensive standard library, part of the .NET Framework or .NET Core, which provides functionality for tasks such as file I/O, networking, database access, and more.
 
@@ -61,15 +60,93 @@ Key features and aspects of C# include:
 
 10. **Game Development:** C# is a primary language for game development using the Unity game engine. Unity enables developers to create games for various platforms, including desktop, mobile, and consoles.
 
-C# continues to evolve with new features and improvements, and it remains a popular choice for developers building a wide range of applications in different domains.
+- Summary
+  - C# is a powerful OOP language developed by Micorsoft.
+  - General Purpose: We can create Console Application, windows form application, mobile application, web application, desktop and game application (2D/3D).
+  - we can built application on the Microsoft .NET platform.
+  - Cross Platform Independent: Micorsoft .NET Core made sure C# is not more only for windows but for linux and MacOS well.
+  - typed safe / statically typed language
+
+#### 1.1.3 [.NET Framework & .NET Core](https://www.javatpoint.com/vb-net-dot-net-framework-introduction)
+
+[!dot net framework](images/NET.png)
+
+- The .NET Framework is not only a language, but it is also a software and language neutral platform.
+- 2 main components: CLR (Common Language Runtime) take care of execution our app or running apps; .NET Framework class Library provides reusable code
+- NET Framework is a mature framework primarily used for Windows-based applications, while .NET Core is a modern, cross-platform framework optimized for cloud-native and containerized applications. With the release of .NET 5 (and later .NET 6), Microsoft unified the .NET platform, merging .NET Core and .NET Framework into a single, unified platform called .NET. This unified platform provides a consistent development experience across different platforms and environments.
 
 ### 1.2 Setting up the environment
 
-- mac: install .NET Core using homebrew. `brew install --cask dotnet-sdk` and check the version `dotnet --version`
-- install VSCode editior
-- install c# extension
+- step 1: install .NET Core; for mac using homebrew. `brew install --cask dotnet-sdk` and check the version `dotnet --version` `dotnet --help` for any command use `dotnet command --help`
 
-### 1.3 First C-sharp Program
+- step 2: install IDE: Visual Studio is the popular one.
+
+Visual Studio Code (VS Code) and Visual Studio (VS) are both popular Integrated Development Environments (IDEs) used for software development, but they have some key differences:
+
+  1. **VS Code (Visual Studio Code)**:
+    - VS Code is a lightweight, open-source code editor developed by Microsoft.
+    - It provides extensive support for various programming languages through extensions.
+    - VS Code is highly customizable and has a vast ecosystem of extensions for additional features and functionalities.
+    - VS Code is suitable for a wide range of development tasks, including web development, cloud development, and scripting.
+
+  2. **Visual Studio (VS)**:
+    - Visual Studio is a full-featured Integrated Development Environment (IDE) developed by Microsoft.
+    - All the tools are already installed for development purpose. It provides comprehensive tools and features for various types of software development, including desktop applications, web applications, mobile applications, and cloud services.
+    - Visual Studio includes powerful debugging tools, code analysis, and testing capabilities.
+    - Visual Studio has built-in support for multiple programming languages and platforms, including C#, C++, .NET, and more.  
+    - It offers extensive project and solution management features, making it suitable for large-scale enterprise development.
+
+- step 3: install c# extension
+- step 4: important commands: run `dotnet new list`
+Here are some important .NET CLI (Command Line Interface) commands used in .NET development:
+
+1. **dotnet new**: Creates a new project or file based on the specified template.
+   - Example: `dotnet new console` creates a new console application.
+
+2. **dotnet restore**: Restores the dependencies and tools of a project.
+   - Example: `dotnet restore` restores the NuGet packages for a project.
+
+3. **dotnet build**: Builds the project and its dependencies.
+   - Example: `dotnet build` compiles the project into executable output.
+
+4. **dotnet run**: Builds and runs the project.
+   - Example: `dotnet run` compiles and executes the project's entry point.
+
+5. **dotnet test**: Executes the tests in the project.
+   - Example: `dotnet test` runs the unit tests in the project.
+
+6. **dotnet publish**: Publishes the application for deployment.
+   - Example: `dotnet publish -c Release -o ./publish` publishes the application to the specified output directory in Release mode.
+
+7. **dotnet clean**: Cleans the output directory and intermediate build files.
+   - Example: `dotnet clean` removes the build artifacts from the project directory.
+
+8. **dotnet add reference**: Adds a project-to-project (P2P) reference to the project file.
+   - Example: `dotnet add reference ../path/to/project.csproj` adds a reference to another project.
+
+9. **dotnet ef**: Entity Framework Core command-line tools for database migrations and scaffolding.
+   - Example: `dotnet ef migrations add InitialCreate` creates a new migration for the database.
+
+10. **dotnet tool install**: Installs the specified .NET Core CLI tool.
+    - Example: `dotnet tool install --global dotnet-ef` installs the Entity Framework Core CLI tool globally.
+
+### 1.3 Create First Console Application
+
+- run `dotnet new list` and explain all the templates
+- then create a basic console application with `dotnet new console` or `dotnet new console -o FirstConsoleApp`
+- discuss folder structure:
+  - .csproj (configuraion of the project = kind of same as package.json; later on if we add any package it will keep the information of the packages that we install)
+  - entry point is the .cs file
+    - run the project: dotnet run (run once)
+    - watch the output: dotnet watch (run after every changes you made)
+    - test the project: dotnet test
+    - add package to the project: dotnet add packageName
+    - add library from [nuget.org](https://www.nuget.org/) - search http
+  - When you build a .NET project, the compiler generates intermediate language (IL) code, which is then translated into native machine code by the Just-In-Time (JIT) compiler when the application runs. **The compiled binary files,** along with any necessary resource files, configuration files, and dependencies, are stored in the bin directory.
+  - create a .gitignore file `bin/ obj/` push the code and get again after cloning by `dotnet run`
+- **.NET Framework code execution process** ![alt text](image.png)
+  - .dll is the byte code or intermediate language
+  - you wont see the binary code as the JIT (Just In Time) do not expose cause durinf the running process it will keep the binary code in the memory. JIT can create the binary code based the OS and it made the platform independent.
 
 - output: a message on screen/terminal. `Console.WriteLine("Welcome to C#!");`
 
@@ -82,11 +159,12 @@ C# continues to evolve with new features and improvements, and it remains a popu
       {
           Console.Write("Welcome to the Code Playground");
           Console.WriteLine("Welcome to the Code Playground");
+          Console.ReadKey();
       }
   }
   ```
 
-#### break down basic structure
+- break down basic structure
 
 - Namespaces / Class: helps to separate code. `using System;` allows you to use Console.WriteLine method and other methods. Namespaces are optional. Instead of System.Console.WriteLine use Console.WriteLine method by use System. Use . operator to access the class or namespace members.
 
@@ -178,6 +256,41 @@ class Test
 }
 ```
 
+#### Naming conventions in Micorsoft ecosystem
+
+Sure, here's a breakdown of which naming convention is commonly used for what purpose in the Microsoft ecosystem:
+
+1. **PascalCase**:
+   - Class names: Used for naming classes and types. Example: `CustomerService`, `HttpRequest`.
+   - Method names: Used for naming methods and functions. Example: `CalculateTotal`, `SendEmail`.
+   - Property names: Used for naming properties of classes and objects. Example: `FirstName`, `TotalAmount`.
+
+2. **camelCase**:
+   - Variable names: Used for naming variables, parameters, and local variables. Example: `totalAmount`, `numberOfItems`.
+   - Method parameter names: Used for naming parameters of methods and functions. Example: `firstName`, `orderId`.
+   - undesrcore followed by camelCase for private instance.
+
+3. **snake_case**:
+   - File names: Used for naming files in some cases, particularly in web development. Example: `index.html`, `user_profile.css`.
+   - Database identifiers: Used for naming database tables, columns, and stored procedures in some cases. Example: `user_profile`, `order_details`.
+
+4. **Hungarian notation**:
+   - Less commonly used in modern development but may still be found in legacy codebases. Example: `strFirstName` for a string variable holding a first name, `intAge` for an integer variable holding an age.
+
+5. **Abbreviations**:
+   - Used for common terms and concepts, especially in APIs and libraries. Example: `IO` for Input/Output, `HTTP` for Hypertext Transfer Protocol.
+
+6. **Acronyms**:
+   - Used for abbreviations and initialisms. Example: `HTML` for Hypertext Markup Language, `JSON` for JavaScript Object Notation.
+
+7. **Namespaces and Assemblies**:
+   - Namespaces and assemblies generally follow PascalCase and may include a reverse domain name. Example: `System.Collections`, `Microsoft.AspNetCore.Mvc`.
+
+8. **Constants**:
+   - Constants are typically named using PascalCase with all uppercase letters. Example: `MAX_VALUE`, `DEFAULT_TIMEOUT`.
+
+These conventions help maintain consistency and readability across codebases, making it easier for developers to understand and maintain the code. However, it's essential to follow the specific naming guidelines of the project or organization you're working on.
+
 ### 1.4 comments and escape sequences
 
 - what is comment and why do you need comment?
@@ -202,17 +315,241 @@ Welcome to the verbatim string");
 ### 1.5 Variables and data types
 
 - variable declaration and initialization
-- data type
-      - string; example of string: "this is a string"
-         - `string name; name="Anisul Islam";`
-      - char; char bloodGroup = 'A'
-      - int; int age = 32
-      - double; double age = 95.4
-      - float height = 1.82f;
-      - decimal weight = 92.8m;
-      - bool isRegistered = true;
 
-- we can change the value of variable anywhere in the program
+#### Data type
+
+![alt text](image-1.png)
+
+- 2 main type: Built-in: Value Types, Reference Type, User Defined
+- example
+  - string; example of string: "this is a string" `string name; name="Anisul Islam";`
+  - char; char bloodGroup = 'A'
+  - int; int age = 32
+  - double; double age = 95.4
+  - float height = 1.82f;
+  - decimal weight = 92.8m;
+  - bool isRegistered = true;
+  - DateTime (8 bytes) - value range from 0:00:00 on 1/1/2001 to 23:59:59 on 12/31/9999
+
+C# provides several built-in data types, which can be categorized into the following groups:
+
+1. **Value Types**:
+   - **Integral Types**: Represent whole numbers without a fractional component.
+     - `sbyte`: 8-bit signed integer (-128 to 127)
+     - `byte`: 8-bit unsigned integer (0 to 255)
+     - `short`: 16-bit signed integer (-32,768 to 32,767)
+     - `ushort`: 16-bit unsigned integer (0 to 65,535)
+     - `int`: 32-bit signed integer (-2,147,483,648 to 2,147,483,647)
+     - `uint`: 32-bit unsigned integer (0 to 4,294,967,295)
+     - `long`: 64-bit signed integer (-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807)
+     - `ulong`: 64-bit unsigned integer (0 to 18,446,744,073,709,551,615)
+   - **Floating-Point Types**: Represent numbers with fractional parts.
+     - `float`: 32-bit single-precision floating-point type
+     - `double`: 64-bit double-precision floating-point type
+     - `decimal`: 128-bit decimal type for financial and monetary calculations
+   - **Other Value Types**:
+     - `char`: 16-bit Unicode character
+     - `bool`: Represents Boolean values (true or false)
+     - struct : for small amount of data instead of class
+     - enum
+     - tuple : for stroing different realted data types in a single object
+     - Nullable
+
+2. **Reference Types**:
+   - **Class**: Defines a reference type.
+   - **Interface**: Defines a contract for classes to implement.
+   - **Delegate**: Defines a reference to a method.
+   - **Array**: Represents a collection of elements.
+   - **String**: Represents a sequence of characters.
+   - **Object**: The base class for all other types.
+
+3. **Pointer Types** (Unsafe Code):
+   - Allow direct memory manipulation and are rarely used in typical C# programming.
+
+4. **DateTime**
+   - DateTime (8 bytes) - value range from 0:00:00 on 1/1/2001 to 23:59:59 on 12/31/9999
+
+C# also allows user-defined data types through the use of structures (`struct`) and enumerations (`enum`).
+
+Here's an example demonstrating the declaration of variables with different data types:
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Integral Types
+        sbyte sb = -100;
+        byte b = 200;
+        short sh = -30000;
+        ushort ush = 60000;
+        int i = -2000000000;
+        uint ui = 4000000000;
+        long l = -9000000000000000000;
+        ulong ul = 18000000000000000000;
+
+        // Floating-Point Types
+        float f = 3.14f;
+        double d = 3.14159265359;
+        decimal dec = 123.45m;
+
+        // Other Value Types
+        char ch = 'A';
+        bool flag = true;
+
+        // Reference Types
+        string str = "Hello, world!";
+        object obj = 123;
+
+        Console.WriteLine("Variables declared with different data types:");
+        Console.WriteLine($"sbyte: {sb}");
+        Console.WriteLine($"byte: {b}");
+        Console.WriteLine($"short: {sh}");
+        Console.WriteLine($"ushort: {ush}");
+        Console.WriteLine($"int: {i}");
+        Console.WriteLine($"uint: {ui}");
+        Console.WriteLine($"long: {l}");
+        Console.WriteLine($"ulong: {ul}");
+        Console.WriteLine($"float: {f}");
+        Console.WriteLine($"double: {d}");
+        Console.WriteLine($"decimal: {dec}");
+        Console.WriteLine($"char: {ch}");
+        Console.WriteLine($"bool: {flag}");
+        Console.WriteLine($"string: {str}");
+        Console.WriteLine($"object: {obj}");
+    }
+}
+```
+
+- **structure type**
+
+for simple data structure such as storing colors, pints, coordinates. similar to classes but they have differences in many aspectes.
+
+In C#, a structure (struct) is a value type data type that allows you to encapsulate related data members and behaviors. Similar to classes, structures can have fields, properties, methods, and constructors. However, there are some key differences between classes and structures:
+
+1. **Memory Allocation**:
+   - Objects of classes are allocated memory on the heap, while instances of structures are allocated memory on the stack.
+   - This difference in memory allocation can lead to performance benefits for structures, especially for small, frequently used data types.
+
+2. **Inheritance**:
+   - Structures cannot inherit from other structures or classes.
+   - They cannot serve as base types for other structures or classes.
+
+3. **Default Constructor**:
+   - Structures always have an implicit default parameterless constructor, which initializes all fields to their default values.
+
+4. **Copy Semantics**:
+   - When you pass a structure to a method or assign it to another variable, the entire structure is copied. This contrasts with classes, where only a reference to the object is copied.
+
+5. **Boxing and Unboxing**:
+   - Structures are value types, and they do not require boxing and unboxing when used in certain contexts. This can improve performance in scenarios where boxing and unboxing are frequent.
+
+Here's a basic example of a structure in C#:
+
+```csharp
+using System;
+
+public struct Point
+{
+    // Fields
+    public int X;
+    public int Y;
+
+    // Constructor
+    public Point(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+
+    // Method
+    public void Display()
+    {
+        Console.WriteLine($"Point coordinates: ({X}, {Y})");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Creating an instance of the Point structure
+        Point point = new Point(10, 20);
+
+        // Accessing fields and calling method
+        Console.WriteLine($"X coordinate: {point.X}");
+        Console.WriteLine($"Y coordinate: {point.Y}");
+        point.Display();
+    }
+}
+```
+
+In this example, `Point` is a structure that represents a point in 2D space. It has two fields `X` and `Y`, a constructor to initialize these fields, and a method `Display()` to print the coordinates of the point.
+
+- **tuple type**
+
+A tuple in C# is a data structure that allows you to store a fixed-size collection of heterogeneous elements (i.e., elements of different data types) in a single object. Tuples provide a convenient way to group together related data without the need to define a custom class or structure explicitly.
+
+Here's a basic example of how to use tuples in C#:
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Creating a tuple
+        var person = Tuple.Create("John", 30, true);
+
+        // Accessing tuple elements
+        Console.WriteLine($"Name: {person.Item1}");
+        Console.WriteLine($"Age: {person.Item2}");
+        Console.WriteLine($"IsEmployed: {person.Item3}");
+
+        // Updating tuple elements (not allowed, tuples are immutable)
+        // person.Item1 = "Alice"; // This will result in a compile-time error
+
+        // Deconstructing a tuple
+        (string name, int age, bool isEmployed) = person;
+        Console.WriteLine($"Name: {name}, Age: {age}, IsEmployed: {isEmployed}");
+    }
+}
+```
+
+In this example:
+
+- We create a tuple `person` containing three elements: a string representing the person's name, an integer representing their age, and a boolean indicating whether they are employed.
+- We access tuple elements using the `Item1`, `Item2`, and `Item3` properties of the tuple object.
+- We demonstrate how to deconstruct a tuple into individual variables using the C# deconstruction syntax `(string name, int age, bool isEmployed) = person`.
+
+Starting from C# 7.0, you can also use named tuples, which provide more expressive code by giving names to the elements of the tuple. Here's how you can use named tuples:
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Creating a named tuple
+        var person = (Name: "John", Age: 30, IsEmployed: true);
+
+        // Accessing named tuple elements
+        Console.WriteLine($"Name: {person.Name}");
+        Console.WriteLine($"Age: {person.Age}");
+        Console.WriteLine($"IsEmployed: {person.IsEmployed}");
+
+        // Deconstructing a named tuple
+        (string name, int age, bool isEmployed) = person;
+        Console.WriteLine($"Name: {name}, Age: {age}, IsEmployed: {isEmployed}");
+    }
+}
+```
+
+In this example, we define a tuple with named elements `Name`, `Age`, and `IsEmployed`, making the code more readable and self-explanatory. We then access these named elements directly using their names.
 
 #### variable naming conventions
 
@@ -233,14 +570,29 @@ Welcome to the verbatim string");
 
 #### Type Casting - Implicit, Explicit
 
-- Implicit (automatically - converting a smaller type to a larger type size): char -> int -> long -> float -> double
-- Explicit (manually - converting a larger type to a smaller size type): double -> float -> long -> int -> char
-- Type Conversion Methods: It is also possible to convert data types explicitly by using built-in methods, such as Convert.ToBoolean, Convert.ToDouble, Convert.ToString, Convert.ToInt32 (int) and Convert.ToInt64 (long)
+- Implicit (automatically - converting a smaller type to a larger type size): byte -> short -> int -> long -> float -> double
+  - only supported for numeric values not for character or boolean
+  - no need to write additional codes normally
+- Explicit (manually - converting a larger type to a smaller size type): double -> float -> long -> int -> short -> byte
+  - we need to write additional codes to do explicit type casting. 2 ways : by using cast operator or Convert class
+  - all types can be converted to string using ToString()
+
+  ```c-sharp
+    double number = 50.5;
+    int number2 = (int) number; // cast operator
+    int number2 = Convert.ToInt32(number);
+    string s = number2.ToString();
+  ```
+
+- Type Conversion Methods: Use int.Parse() or Convert.ToInt32(). It is also possible to convert data types explicitly by using built-in methods, such as Convert.ToBoolean, Convert.ToDouble, Convert.ToString, Convert.ToInt32 (int) and Convert.ToInt64 (long)
 - `System.Console.WriteLine($"{number2.GetType()}");`
 
 ### 1.6 User Input
 
-- Console.ReadLine(), Convert.ToString(), Convert.ToBoolean(), Convert.ToInt16(),Convert.ToInt32(), Convert.ToInt64() and Convert.ToChar(), Convert.ToDouble()
+- Console.ReadLine() return a string,
+- Console.Read() - Keep in mind that Console.Read() only reads a single character, so if you enter a string, it will only read the first character of that string. It returns an integer representing the Unicode value of the character read.
+- For Data Type conversion
+  - Convert.ToString(), Convert.ToBoolean(), Convert.ToInt16(),Convert.ToInt32(), Convert.ToInt64() and Convert.ToChar(), Convert.ToDouble()
 - Error: not possible to convert a textual string like "welcome" to an int.
 
 ```c#
@@ -768,7 +1120,194 @@ Control statements in C# are used to control the flow of execution in a program.
              // Code to be executed if none of the cases match
              break;
      }
+
+     // multiple params
+     using System;
+
+      class Program
+      {
+          static void Main()
+          {
+              Console.WriteLine("Enter two numbers separated by a space:");
+              string input = Console.ReadLine();
+              string[] parts = input.Split();
+
+              if (parts.Length != 2)
+              {
+                  Console.WriteLine("Invalid input format. Please enter two numbers separated by a space.");
+                  return;
+              }
+
+              string firstParam = parts[0];
+              string secondParam = parts[1];
+
+              // Use tuple pattern matching with switch
+              switch ((firstParam, secondParam))
+              {
+                  case ("1", "a"):
+                      Console.WriteLine("First param is '1' and second param is 'a'.");
+                      break;
+                  case ("2", "b"):
+                      Console.WriteLine("First param is '2' and second param is 'b'.");
+                      break;
+                  default:
+                      Console.WriteLine("No matching case found.");
+                      break;
+              }
+          }
+      }
+
      ```
+
+- shorthand way
+
+  ```csharp
+      int number = 30;
+
+    switch (number)
+    {
+      case 100:
+        Console.WriteLine("Number is 100");
+        break;
+      case < 100:
+        Console.WriteLine("Number is less than 100");
+        break;
+      default:
+        Console.WriteLine("default");
+        break;
+    }
+
+    string result = number switch
+    {
+      > 100 => "Number is greater than 100",
+      < 100 => "Number is less than than 100",
+      _ => "Number is 100",
+    };
+    Console.WriteLine(result);
+  ```
+
+- switch can also help us to check data types
+
+  ```csharp
+    object number = 30;
+
+    switch (number)
+    {
+      case int:
+        Console.WriteLine("input is int");
+        break;
+      case string:
+        Console.WriteLine("input is string");
+        break;
+      default:
+        Console.WriteLine("default");
+        break;
+    }
+  ```
+
+- checking the data type in switch
+
+```csharp
+ object number = 30;
+
+    switch (number)
+    {
+      case int inputInt: // if you need additional manipulation with the value rename it
+        inputInt++;
+        Console.WriteLine("input is int");
+        break;
+      case string inputString:
+        Console.WriteLine(inputString.Length);
+        Console.WriteLine("input is string");
+        break;
+      default:
+        Console.WriteLine("default");
+        break;
+    }
+```
+
+- switch and method
+
+  ```csharp
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine("Calculator");
+
+            Console.Write("Enter the first number: ");
+            double num1 = GetValidNumber();
+
+            Console.Write("Enter the second number: ");
+            double num2 = GetValidNumber();
+
+            Console.Write("Enter the operation (+, -, *, /): ");
+            char operation = GetValidOperation();
+
+            switch ((operation, num1, num2))
+            {
+                case ('+', var a, var b):
+                    Console.WriteLine($"{a} + {b} = {a + b}");
+                    break;
+                case ('-', var a, var b):
+                    Console.WriteLine($"{a} - {b} = {a - b}");
+                    break;
+                case ('*', var a, var b):
+                    Console.WriteLine($"{a} * {b} = {a * b}");
+                    break;
+                case ('/', var a, var b) when b != 0:
+                    Console.WriteLine($"{a} / {b} = {a / b}");
+                    break;
+                case (_, _, _) when num2 == 0:
+                    Console.WriteLine("Cannot divide by zero.");
+                    break;
+                default:
+                    Console.WriteLine("Invalid operation.");
+                    break;
+            }
+        }
+
+        static int GetValidNumber()
+        {
+          int number;
+          // int.TryParse(Console.ReadLine(), out number)
+          // The second parameter is an out parameter, which means it will be assigned the parsed int value if the parsing succeeds.
+          while (!int.TryParse(Console.ReadLine(), out number))
+          {
+            Console.Write("Invalid input. Please enter a valid number: ");
+          }
+          return number;
+        }
+
+        static double GetValidNumber()
+        {
+            double number;
+            while (!double.TryParse(Console.ReadLine(), out number))
+            {
+                Console.Write("Invalid input. Please enter a valid number: ");
+            }
+            return number;
+        }
+
+        static char GetValidOperation()
+        {
+            char operation;
+            while (!char.TryParse(Console.ReadLine(), out operation) || !IsValidOperation(operation))
+            {
+                Console.Write("Invalid input. Please enter a valid operation (+, -, *, /): ");
+            }
+            return operation;
+        }
+
+        static bool IsValidOperation(char operation)
+        {
+            return operation == '+' || operation == '-' || operation == '*' || operation == '/';
+        }
+    }
+
+  ```
 
 #### program 1 positive, negative or zero
 
@@ -1846,8 +2385,9 @@ class Test{
 
 ```
 
-### Encapsulation
+### OOP 1: Encapsulation
 
+- Encapsulate -> group (members in a class) and protect (access modifiers for the class members).
 - encapsulation is the idea of "surrounding" an entity, not just to keep what's inside together, but also to protect it. hiding from outside using private.
 - benefits of encapsulation
   - You can control access or modification of the data.
@@ -1922,6 +2462,187 @@ class Test
     Console.WriteLine(s1.Name);
   }
 }
+
+class Student
+{
+  private string name; // field
+  public string Name // property
+  {
+    set;
+    get;
+  }
+}
+
+
+// shorthand if we are not doing anything with the field
+class Test
+{
+  public static void Main(string[] args)
+  {
+    Student s1 = new Student();
+    s1.Name = "Anisul Islam";
+    Console.WriteLine(s1.Name);
+  }
+}
 ```
 
+### Array
+
+```csharp
+// for vs foreach
+class Test
+{
+  public static void Main(string[] args)
+  {
+    string[] names = new string[3];
+    names[0] = "Anisul";
+    names[1] = "Nusrat";
+    names[2] = "Alex";
+
+    string[] names = new string[3] { "Anisul", "Nusrat", "Alex" };
+
+    string[] names = { "Anisul", "Nusrat", "Alex", "Sathi", "Bob" };
+
+    for (int index = 0; index < names.Length; index++)
+    {
+      Console.WriteLine(names[index]);
+    }
+
+    foreach (string name in names)
+    {
+      Console.WriteLine(name);
+    }
+  }
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+    string[] names = { "Anisul", "Nusrat", "Alex", "Sathi", "Bob" };
+
+    foreach (string name in names)
+    {
+      Console.WriteLine(name);
+    }
+  }
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int[] numbers = { -10, 20, -30, 40, 50 };
+    int sum = 0;
+    foreach (int number in numbers)
+    {
+      sum = sum + number;
+    }
+    Console.WriteLine(sum);
+  }
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int[] numbers = { -10, 20, -30, 40, 50, 0 };
+    foreach (int number in numbers)
+    {
+      if (number > 0)
+      {
+        Console.WriteLine(number);
+      }
+    }
+  }
+}
+```
+
+### OOP 2: Inheritance
+
+### Exception Handling
+
+Exception handling in C# allows you to manage runtime errors gracefully by catching and handling exceptional conditions that might occur during program execution. This prevents your program from crashing and provides a mechanism to respond to errors in a controlled manner. Here's an overview of exception handling in C#:
+
+1. **Try-Catch Block**: The basic structure for handling exceptions is the `try-catch` block. Code that might raise an exception is enclosed within the `try` block, and any potential exceptions are caught and handled in the `catch` block.
+
+   ```csharp
+   try
+   {
+       // Code that might throw an exception
+   }
+   catch (ExceptionType ex)
+   {
+       // Handle the exception
+   }
+   ```
+
+2. **Exception Types**: You can catch specific types of exceptions by specifying the exception type in the `catch` block. This allows you to handle different types of exceptions differently.
+
+   ```csharp
+   try
+   {
+       // Code that might throw an exception
+   }
+   catch (DivideByZeroException ex)
+   {
+       // Handle divide by zero exception
+   }
+   catch (ArgumentException ex)
+   {
+       // Handle argument exception
+   }
+   catch (Exception ex) // Catch-all for other exceptions
+   {
+       // Handle other exceptions
+   }
+   ```
+
+3. **Finally Block**: You can optionally include a `finally` block after the `catch` block. Code in the `finally` block is executed whether an exception occurs or not. This block is commonly used for cleanup tasks such as closing resources.
+
+   ```csharp
+   try
+   {
+       // Code that might throw an exception
+   }
+   catch (Exception ex)
+   {
+       // Handle the exception
+   }
+   finally
+   {
+       // Cleanup code
+   }
+   ```
+
+4. **Throwing Exceptions**: You can explicitly throw exceptions using the `throw` keyword. This is useful for indicating errors or exceptional conditions within your code.
+
+   ```csharp
+   if (condition)
+   {
+       throw new Exception("An error occurred.");
+   }
+   ```
+
+5. **Custom Exceptions**: You can define your own exception types by creating classes that derive from `Exception`. This allows you to create custom exception types tailored to your application's needs.
+
+   ```csharp
+   public class CustomException : Exception
+   {
+       public CustomException(string message) : base(message)
+       {
+       }
+   }
+   ```
+
+6. **Exception Handling Best Practices**:
+   - Catch specific exceptions rather than using a generic `catch (Exception ex)` block.
+   - Provide meaningful error messages or log information when handling exceptions.
+   - Use exception handling judiciously and avoid catching exceptions that you cannot handle properly.
+
+Exception handling is a fundamental aspect of robust software development in C#, helping you write more reliable and resilient applications.
+
 ## Intermediate 2. aaa
+
+## .NET 
+
