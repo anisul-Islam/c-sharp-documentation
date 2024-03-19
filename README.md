@@ -615,6 +615,23 @@ class Program
 - camelCase
 - avoid single letter naming (exception for loops)
 
+#### var vs int
+
+In the provided code example, `var` is used instead of `int` for the loop variable because the loop variable is inferred from the type of the collection being iterated over. In this case, `Enumerable.Range(0, numbers.Length)` returns an `IEnumerable<int>`, so the loop variable will be of type `int`.
+
+Using `var` allows the compiler to determine the type of the loop variable automatically based on the context, which can make the code cleaner and more concise. It's especially useful when dealing with complex types or when the type name is long and repetitive.
+
+Here's the same code with `int` explicitly specified:
+
+```csharp
+foreach (int index in Enumerable.Range(0, numbers.Length))
+{
+    Console.WriteLine($"Index: {index}, Value: {numbers[index]}");
+}
+```
+
+Both versions of the code will work identically, but using `var` can sometimes make the code more readable and maintainable.
+
 #### Assignment 2: declare product data types and print variables
 
 ![assignment-2](images/assignment-2.png)
@@ -2011,6 +2028,29 @@ class Test
      }
      ```
 
+     In C#, the `foreach` loop does not directly provide access to the index of the elements being iterated over. However, you can achieve this by using the `IEnumerable<T>.Select()` extension method along with the `Enumerable.Range()` method to generate indices. Here's how you can do it:
+
+      ```csharp
+      using System;
+      using System.Linq;
+
+      class Program
+      {
+          static void Main()
+          {
+              int[] numbers = { 1, 2, 3, 4, 5 };
+
+              // Using Select with Range to get indices
+              foreach (var index in Enumerable.Range(0, numbers.Length))
+              {
+                  Console.WriteLine($"Index: {index}, Value: {numbers[index]}");
+              }
+          }
+      }
+      ```
+
+      In this example, `Enumerable.Range(0, numbers.Length)` generates a sequence of numbers from 0 to `numbers.Length - 1`, which represents the indices of the array. Then, we use `Select` to iterate over these indices, and within the loop, we access both the index and the corresponding element from the array.
+
 These control statements provide flexibility and help in creating more dynamic and responsive programs in C#.
 
 #### Program 10: print from 1 to 100
@@ -3094,6 +3134,7 @@ class Program
 ```
 
 This code creates a basic Tic-Tac-Toe game where two players (X and O) take turns placing their marks on a 3x3 grid. The game checks for wins and draws after each move and displays the current state of the board.
+
 
 ### OOP 2: Inheritance
 
