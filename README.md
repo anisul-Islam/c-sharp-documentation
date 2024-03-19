@@ -69,11 +69,17 @@ Key features and aspects of C# include:
 
 #### 1.1.3 [.NET Framework & .NET Core](https://www.javatpoint.com/vb-net-dot-net-framework-introduction)
 
+![alt text](image-3.png)
 [!dot net framework](images/NET.png)
+![alt text](image-2.png)
 
 - The .NET Framework is not only a language, but it is also a software and language neutral platform.
 - 2 main components: CLR (Common Language Runtime) take care of execution our app or running apps; .NET Framework class Library provides reusable code
 - NET Framework is a mature framework primarily used for Windows-based applications, while .NET Core is a modern, cross-platform framework optimized for cloud-native and containerized applications. With the release of .NET 5 (and later .NET 6), Microsoft unified the .NET platform, merging .NET Core and .NET Framework into a single, unified platform called .NET. This unified platform provides a consistent development experience across different platforms and environments.
+
+- .NET Ecosystem = Language (c#, f#, VB) + Runtime (CLR/ CORE CLR), Librariers (BCL Functions Base Class Libraries: System is an example)
+  - CLR = JVM
+  - Nuget package manager = npm
 
 ### 1.2 Setting up the environment
 
@@ -96,7 +102,36 @@ Visual Studio Code (VS Code) and Visual Studio (VS) are both popular Integrated 
     - Visual Studio has built-in support for multiple programming languages and platforms, including C#, C++, .NET, and more.  
     - It offers extensive project and solution management features, making it suitable for large-scale enterprise development.
 
-- step 3: install c# extension
+- step 3: some useful for .NET and c# extension
+
+  When working with C# and .NET in Visual Studio Code on macOS, you'll want to install some extensions to enhance your development experience. Here are some essential extensions:
+
+    1. **C# for Visual Studio Code**: This official extension provides support for C# syntax highlighting, debugging, and IntelliSense. It's essential for C# development in Visual Studio Code.
+      - [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+
+    2. **.NET Core Test Explorer**: If you're writing unit tests with .NET Core, this extension allows you to run and debug your tests directly within Visual Studio Code.
+      - [.NET Core Test Explorer](https://marketplace.visualstudio.com/items?itemName=formulahendry.dotnet-test-explorer)
+
+    3. **NuGet Package Manager**: This extension allows you to manage NuGet packages directly within Visual Studio Code, making it easier to install, update, and remove packages.
+      - [NuGet Package Manager](https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager)
+
+    4. **C# XML Documentation Comments**: This extension provides IntelliSense for XML documentation comments in C#, helping you write better-documented code.
+      - [C# XML Documentation Comments](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment)
+
+    5. **C# Extensions**: This extension provides additional C# code snippets and tools to improve your productivity.
+      - [C# Extensions](https://marketplace.visualstudio.com/items?itemName=jchannon.csharpextensions)
+
+    6. **C# FixFormat**: This extension automatically formats your C# code according to configurable rules, ensuring consistent code style.
+      - [C# FixFormat](https://marketplace.visualstudio.com/items?itemName=Leopotam.csharpfixformat)
+
+    7. **Debugger for Unity**: If you're developing Unity games using C#, this extension allows you to debug Unity applications directly from Visual Studio Code.
+      - [Debugger for Unity](https://marketplace.visualstudio.com/items?itemName=Unity.unity-debug)
+
+    8. **Unity Code Snippets**: Another useful extension for Unity development, providing code snippets for common Unity-related tasks.
+      - [Unity Code Snippets](https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets)
+
+    To install these extensions, you can open Visual Studio Code, navigate to the Extensions view by clicking on the square icon on the sidebar or by pressing `Cmd + Shift + X`, and search for each extension by name. Then, click on the extension and select "Install". Alternatively, you can install them from the links provided above.
+
 - step 4: important commands: run `dotnet new list`
 Here are some important .NET CLI (Command Line Interface) commands used in .NET development:
 
@@ -550,6 +585,28 @@ class Program
 ```
 
 In this example, we define a tuple with named elements `Name`, `Age`, and `IsEmployed`, making the code more readable and self-explanatory. We then access these named elements directly using their names.
+
+#### checking data type of a variable
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int intValue = 10;
+        double doubleValue = 10.5;
+        string stringValue = "Hello";
+
+        // Checking data types
+        Console.WriteLine("Data type of intValue: " + intValue.GetType());
+        Console.WriteLine("Data type of doubleValue: " + doubleValue.GetType());
+        Console.WriteLine("Data type of stringValue: " + stringValue.GetType());
+    }
+}
+
+```
 
 #### variable naming conventions
 
@@ -2558,9 +2615,495 @@ class Test
 }
 ```
 
+- 2D Array
+
+A 2D array in C# is an array of arrays, meaning it's an array where each element is also an array. This creates a grid-like structure, where elements are accessed using two indices: one for the row and one for the column.
+
+A few real-life examples of 2D arrays:
+
+1. **Image Representation**: Images can be represented as 2D arrays of pixels. Each element of the array stores information about the color of the corresponding pixel.
+
+2. **Game Boards**: In games like Chess, Checkers, or Tic-Tac-Toe, the game board can be represented using a 2D array. Each element of the array represents a square on the board, and the value of the element indicates the state of that square (empty, occupied by a player's piece, etc.).
+
+3. **Spreadsheet Data**: Spreadsheets, like Excel, organize data into rows and columns. Each cell in a spreadsheet can be thought of as an element in a 2D array.
+
+4. **Maps**: Maps in computer graphics or geographical applications are often represented using 2D arrays. Each element of the array corresponds to a location on the map, and the value of the element represents attributes such as elevation, terrain type, or population density.
+
+5. **Matrix Operations**: Matrices in mathematics are commonly represented using 2D arrays. They are used in various applications, including computer graphics, physics simulations, and solving systems of linear equations.
+
+6. **Seating Arrangements**: In venues like theaters, stadiums, or classrooms, seating arrangements can be represented using a 2D array. Each element represents a seat, and the value indicates whether the seat is occupied or available.
+
+These are just a few examples of how 2D arrays are used in real-life scenarios. They are versatile data structures that find applications in many fields of computer science and beyond.
+
+Here's how you can declare, initialize, and work with 2D arrays in C#:
+
+**Declaration and Initialization:**
+
+```csharp
+// example 1: declare,initialize, print a simple 2D Array
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    int[,] matrix = new int[2, 3];
+    matrix[0, 0] = 1;
+    matrix[0, 1] = 2;
+    matrix[0, 2] = 3;
+
+    matrix[1, 0] = 4;
+    matrix[1, 1] = 5;
+    matrix[1, 2] = 6;
+
+    Console.Write($"{matrix[0, 0]} ");
+    Console.Write($"{matrix[0, 1]} ");
+    Console.Write($"{matrix[0, 2]} ");
+
+    Console.WriteLine();
+    Console.Write($"{matrix[1, 0]} ");
+    Console.Write($"{matrix[1, 1]} ");
+    Console.Write($"{matrix[1, 2]} ");
+
+    Console.ReadKey();
+
+  }
+
+}
+
+// example 2: declare and initailze a simple 2D Array
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
+
+    Console.Write($"{matrix[0, 0]} ");
+    Console.Write($"{matrix[0, 1]} ");
+    Console.Write($"{matrix[0, 2]} ");
+
+    Console.WriteLine();
+    Console.Write($"{matrix[1, 0]} ");
+    Console.Write($"{matrix[1, 1]} ");
+    Console.Write($"{matrix[1, 2]} ");
+
+    Console.ReadKey();
+
+  }
+
+}
+
+// example 3: Iterating Over the Array with loop
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
+
+    for (int row = 0; row < matrix.GetLength(0); row++)
+    {
+      for (int col = 0; col < matrix.GetLength(1); col++)
+      {
+        Console.Write($"{matrix[row, col]} ");
+      }
+      Console.WriteLine();
+    }
+    Console.ReadKey();
+  }
+}
+
+
+**Initializing a Jagged Array (Array of Arrays):**
+
+Alternatively, you can use a jagged array, which is an array of arrays. It provides more flexibility as each row can have a different length.
+
+```csharp
+// 1st version:
+/*
+1 2
+3 4 5
+6 
+8 9 10 11
+*/
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    int[][] jaggedArray = new int[4][];
+
+    jaggedArray[0] = new int[] { 1, 2 };
+    jaggedArray[1] = new int[] { 3, 4, 5 };
+    jaggedArray[2] = new int[] { 6 };
+    jaggedArray[3] = new int[] { 8, 9, 10, 11 };
+
+    for (int row = 0; row < jaggedArray.Length; row++)
+    {
+      for (int col = 0; col < jaggedArray[row].Length; col++)
+      {
+        Console.Write($"{jaggedArray[row][col]} ");
+      }
+      Console.WriteLine();
+
+    }
+
+
+    Console.ReadKey();
+  }
+}
+
+// 2nd version: 
+/*
+1 2
+3 4 5
+6 
+8 9 10 11
+*/
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    int[][] jaggedArray = new int[][]
+    {
+      new int[] { 1, 2 },
+      new int[] { 3, 4, 5 },
+      new int[] { 6 },
+      new int[] { 8, 9, 10, 11 }
+    };
+
+    for (int row = 0; row < jaggedArray.Length; row++)
+    {
+      for (int col = 0; col < jaggedArray[row].Length; col++)
+      {
+        Console.Write($"{jaggedArray[row][col]} ");
+      }
+      Console.WriteLine();
+
+    }
+
+
+    Console.ReadKey();
+  }
+}
+
+// 3rd version
+/*
+1 2
+3 4 5
+6 
+8 9 10 11
+*/
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    int[][] jaggedArray = new int[][]
+    {
+      new int[] { 1, 2 },
+      new int[] { 3, 4, 5 },
+      new int[] { 6 },
+      new int[] { 8, 9, 10, 11 }
+    };
+
+    foreach (var row in jaggedArray)
+    {
+      foreach (var item in row)
+      {
+        Console.Write($"{item} ");
+      }
+      Console.WriteLine();
+
+    }
+
+
+    Console.ReadKey();
+  }
+}
+
+// 4th version
+/*
+1 2
+3 4 5
+6 
+8 9 10 11
+*/
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    int[][] jaggedArray =
+    {
+      new [] { 1, 2 },
+      new [] { 3, 4, 5 },
+      new [] { 6 },
+      new [] { 8, 9, 10, 11 }
+    };
+
+    foreach (var row in jaggedArray)
+    {
+      foreach (var item in row)
+      {
+        Console.Write($"{item} ");
+      }
+      Console.WriteLine();
+
+    }
+
+
+    Console.ReadKey();
+  }
+}
+
+// 5th version
+
+public class MyClass
+{
+    public static void Main(string[] args)
+    {
+        int[][] jaggedArray = new int[4][];
+
+        jaggedArray[0] = new int[] { 1 };
+        jaggedArray[1] = new int[] { 2, 3 };
+        jaggedArray[2] = new int[] { 4, 5, 6 };
+        jaggedArray[3] = new int[] { 7, 8 };
+
+        for (int row = 0; row < jaggedArray.Length; row++)
+        {
+            for (int col = 0; col < jaggedArray[row].Length; col++)
+            {
+                Console.Write($"{jaggedArray[row][col]} ");
+            }
+            Console.WriteLine();
+        }
+        Console.ReadKey();
+    }
+}
+```
+
+**Usage Considerations:**
+
+- Use a 2D array when you need a fixed-size grid with consistent row and column counts.
+- Use a jagged array when you need flexibility in row lengths or when the array elements represent different sizes of data.
+
+That's a basic overview of 2D arrays in C#. They are versatile data structures commonly used for storing and manipulating grid-based data in various applications.
+
+#### User Input for Array
+
+Certainly! Here's the modified code with exception handling added:
+
+```csharp
+using System;
+
+public class MyClass
+{
+    public static void Main(string[] args)
+    {
+        try
+        {
+            // Get user input for the size of the 1D array
+            Console.Write("Enter the size of the 1D array: ");
+            int size1D = int.Parse(Console.ReadLine());
+
+            // Create and initialize the 1D array based on user input
+            int[] array1D = new int[size1D];
+            Console.WriteLine("Enter elements for the 1D array:");
+            for (int i = 0; i < size1D; i++)
+            {
+                Console.Write($"Enter element {i + 1}: ");
+                array1D[i] = int.Parse(Console.ReadLine());
+            }
+
+            // Get user input for the size of the 2D array (number of rows)
+            Console.Write("\nEnter the number of rows for the 2D array: ");
+            int rows = int.Parse(Console.ReadLine());
+
+            // Create and initialize the 2D array based on user input
+            int[][] array2D = new int[rows][];
+            Console.WriteLine("Enter elements for the 2D array:");
+            for (int i = 0; i < rows; i++)
+            {
+                Console.Write($"Enter the number of elements for row {i + 1}: ");
+                int cols = int.Parse(Console.ReadLine());
+                array2D[i] = new int[cols];
+                Console.WriteLine($"Enter elements for row {i + 1}:");
+                for (int j = 0; j < cols; j++)
+                {
+                    Console.Write($"Enter element {j + 1}: ");
+                    array2D[i][j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            // Display the 1D array
+            Console.WriteLine("\n1D Array:");
+            foreach (int num in array1D)
+            {
+                Console.Write(num + " ");
+            }
+
+            // Display the 2D array
+            Console.WriteLine("\n\n2D Array:");
+            foreach (int[] row in array2D)
+            {
+                foreach (int num in row)
+                {
+                    Console.Write(num + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Invalid input! Please enter a valid integer.");
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("The input is too large or too small.");
+        }
+        catch (OutOfMemoryException)
+        {
+            Console.WriteLine("Out of memory. Unable to create arrays with such large dimensions.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+        finally
+        {
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+This code now includes exception handling for various scenarios, such as when the user enters invalid input (e.g., non-integer values), when the input is too large or too small, or when there's not enough memory to create the arrays. The `finally` block ensures that the program waits for a key press before exiting, regardless of whether an exception occurred or not.
+
+#### Tic-Tac-Toe game
+
+Sure, here's a basic console application in C# that uses a 2D array to represent a Tic-Tac-Toe game:
+
+```csharp
+using System;
+
+class TicTacToe
+{
+    // 2D array to represent the game board
+    private char[,] board;
+
+    // Constructor to initialize the game board
+    public TicTacToe()
+    {
+        board = new char[3, 3];
+        InitializeBoard();
+    }
+
+    // Method to initialize the game board with empty cells
+    private void InitializeBoard()
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                board[row, col] = '-';
+            }
+        }
+    }
+
+    // Method to display the current state of the game board
+    private void DisplayBoard()
+    {
+        Console.WriteLine("  0 1 2");
+        for (int row = 0; row < 3; row++)
+        {
+            Console.Write(row + " ");
+            for (int col = 0; col < 3; col++)
+            {
+                Console.Write(board[row, col] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    // Method to check if a player has won
+    private bool CheckWin(char player)
+    {
+        // Check rows and columns
+        for (int i = 0; i < 3; i++)
+        {
+            if ((board[i, 0] == player && board[i, 1] == player && board[i, 2] == player) ||
+                (board[0, i] == player && board[1, i] == player && board[2, i] == player))
+            {
+                return true;
+            }
+        }
+
+        // Check diagonals
+        if ((board[0, 0] == player && board[1, 1] == player && board[2, 2] == player) ||
+            (board[0, 2] == player && board[1, 1] == player && board[2, 0] == player))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    // Method to play the game
+    public void PlayGame()
+    {
+        char currentPlayer = 'X';
+        int moves = 0;
+
+        Console.WriteLine("Welcome to Tic-Tac-Toe!");
+        DisplayBoard();
+
+        while (moves < 9)
+        {
+            Console.WriteLine($"Player {currentPlayer}'s turn");
+            Console.Write("Enter row and column (e.g., '0 1'): ");
+            string[] input = Console.ReadLine().Split(' ');
+            int row = int.Parse(input[0]);
+            int col = int.Parse(input[1]);
+
+            if (row < 0 || row >= 3 || col < 0 || col >= 3 || board[row, col] != '-')
+            {
+                Console.WriteLine("Invalid move. Try again.");
+                continue;
+            }
+
+            board[row, col] = currentPlayer;
+            DisplayBoard();
+
+            if (CheckWin(currentPlayer))
+            {
+                Console.WriteLine($"Player {currentPlayer} wins!");
+                return;
+            }
+
+            currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+            moves++;
+        }
+
+        Console.WriteLine("It's a draw!");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        TicTacToe game = new TicTacToe();
+        game.PlayGame();
+    }
+}
+```
+
+This code creates a basic Tic-Tac-Toe game where two players (X and O) take turns placing their marks on a 3x3 grid. The game checks for wins and draws after each move and displays the current state of the board.
+
 ### OOP 2: Inheritance
 
 ### Exception Handling
+
+```csharp
+  Console.Write("Enter a number: ");
+    int num = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine(num);
+```
 
 Exception handling in C# allows you to manage runtime errors gracefully by catching and handling exceptional conditions that might occur during program execution. This prevents your program from crashing and provides a mechanism to respond to errors in a controlled manner. Here's an overview of exception handling in C#:
 
@@ -2574,6 +3117,7 @@ Exception handling in C# allows you to manage runtime errors gracefully by catch
    catch (ExceptionType ex)
    {
        // Handle the exception
+       // ex.Message
    }
    ```
 
