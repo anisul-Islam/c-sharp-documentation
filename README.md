@@ -1494,6 +1494,111 @@ Control statements in C# are used to control the flow of execution in a program.
     }
   ```
 
+- swicth and type pattern: ype pattern switching was introduced in C# 9.0. Here are some examples
+
+```csharp
+public static string GetTypeWithoutPattern(object obj)
+{
+    switch (obj)
+    {
+        case int:
+            return "Integer";
+        case string:
+            return "String";
+        case double:
+            return "Double";
+        default:
+            return "Unknown Type";
+    }
+}
+
+static void Main(string[] args)
+{
+    object value = "Hello";
+    Console.WriteLine(GetTypeWithoutPattern(value)); // Output: String
+}
+
+public static string GetTypeWithTypePattern(object obj)
+{
+    return obj switch
+    {
+        int => "Integer",
+        string => "String",
+        double => "Double",
+        _ => "Unknown Type"
+    };
+}
+
+static void Main(string[] args)
+{
+    object value = 10;
+    Console.WriteLine(GetTypeWithTypePattern(value)); // Output: Integer
+}
+
+
+```
+
+Certainly! Let's consider a more realistic example of using switch statements with and without type patterns:
+
+1. **Without Type Pattern (Traditional Approach)**:
+
+Suppose we have a method that processes different types of vehicles:
+
+```csharp
+public static string ProcessVehicleWithoutPattern(object vehicle)
+{
+    switch (vehicle)
+    {
+        case Car:
+            return "Driving a car";
+        case Bicycle:
+            return "Riding a bicycle";
+        case Truck:
+            return "Driving a truck";
+        default:
+            return "Unknown vehicle type";
+    }
+}
+
+// Define vehicle types
+public class Car { }
+public class Bicycle { }
+public class Truck { }
+
+static void Main(string[] args)
+{
+    object myVehicle = new Car();
+    Console.WriteLine(ProcessVehicleWithoutPattern(myVehicle)); // Output: Driving a car
+}
+```
+
+2. **With Type Pattern (Using Modern Approach)**:
+
+Now, let's rewrite the same functionality using type patterns:
+
+```csharp
+public static string ProcessVehicleWithTypePattern(object vehicle)
+{
+    return vehicle switch
+    {
+        Car => "Driving a car",
+        Bicycle => "Riding a bicycle",
+        Truck => "Driving a truck",
+        _ => "Unknown vehicle type"
+    };
+}
+
+// Define vehicle types (same as above)
+
+static void Main(string[] args)
+{
+    object myVehicle = new Bicycle();
+    Console.WriteLine(ProcessVehicleWithTypePattern(myVehicle)); // Output: Riding a bicycle
+}
+```
+
+In this example, the switch expression with type patterns provides a cleaner and more readable way to handle different vehicle types compared to the traditional approach without type patterns.
+
 - checking the data type in switch
 
 ```csharp
