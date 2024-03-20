@@ -2670,6 +2670,33 @@ class Program
 
 This simple converter allows users to convert lengths between inches and centimeters. Users can choose the desired conversion, enter the length, and get the converted result. Feel free to expand and modify the converter to include other units or functionalities based on your needs.
 
+#### lambda expression in C
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Lambda expression to add two numbers
+        Func<int, int, int> add = (x, y) => x + y;
+
+        // Using the lambda expression to add numbers
+        Console.WriteLine("5 + 3 = " + add(5, 3));  // Output: 8
+        Console.WriteLine("10 + 7 = " + add(10, 7)); // Output: 17
+    }
+}
+```
+
+In this example:
+
+- We define a lambda expression `(x, y) => x + y` which takes two integers `x` and `y` as input parameters and returns their sum.
+- We use the lambda expression through a delegate `Func<int, int, int> add`, where the first two `int`s specify the input parameter types, and the third `int` specifies the return type.
+- We then call the `add` function with different pairs of numbers to compute their sum and print the results.
+
+Lambda expressions provide a concise and expressive way to define inline functions, making the code more readable and efficient, especially when working with delegates, LINQ, and functional programming constructs in C#.
+
 ## Intermediate 1. OOP
 
 ### Classes and Objects
