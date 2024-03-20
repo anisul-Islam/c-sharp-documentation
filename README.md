@@ -2697,6 +2697,55 @@ In this example:
 
 Lambda expressions provide a concise and expressive way to define inline functions, making the code more readable and efficient, especially when working with delegates, LINQ, and functional programming constructs in C#.
 
+
+- Here are a few more examples of lambda expressions in C#:
+
+    1. **Basic Example**:
+
+    ```csharp
+    Func<int, int> square = x => x * x;
+    Console.WriteLine(square(5)); // Output: 25
+    ```
+
+    2. **Using with LINQ**:
+
+    ```csharp
+    List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+    var evenNumbers = numbers.Where(x => x % 2 == 0);
+    foreach (var num in evenNumbers)
+    {
+        Console.WriteLine(num); // Output: 2, 4
+    }
+    ```
+
+    3. **Using with Sorting**:
+
+    ```csharp
+    List<string> names = new List<string> { "Alice", "Bob", "Charlie", "David" };
+    names.Sort((x, y) => x.CompareTo(y));
+    foreach (var name in names)
+    {
+        Console.WriteLine(name); // Output: Alice, Bob, Charlie, David (in alphabetical order)
+    }
+    ```
+
+    4. **Using with Delegates**:
+
+    ```csharp
+    Action<string> greet = name => Console.WriteLine($"Hello, {name}!");
+    greet("John"); // Output: Hello, John!
+    ```
+
+    5. **Using with Predicate**:
+
+    ```csharp
+    Predicate<int> isPositive = x => x > 0;
+    Console.WriteLine(isPositive(5)); // Output: True
+    Console.WriteLine(isPositive(-5)); // Output: False
+    ```
+
+    These examples demonstrate different scenarios where lambda expressions can be used, such as defining simple functions, filtering data with LINQ, sorting collections, working with delegates, and creating predicates for conditional operations.
+
 ## Intermediate 1. OOP
 
 ### Classes and Objects
