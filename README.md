@@ -634,7 +634,7 @@ In summary, `dynamic` is used for late binding and dynamic behavior at runtime, 
 
 - record and a delegate:
 
-    1. **Record**:
+    1. **Record**: (use record / struct / class based on your need)
       Records are a feature introduced in C# 9.0 that provide a concise syntax for creating immutable data types. Records are primarily used for modeling data and are especially useful for DTOs (Data Transfer Objects), entities, and other types where immutability and equality are important.
 
     ```csharp
@@ -706,6 +706,100 @@ In summary, `dynamic` is used for late binding and dynamic behavior at runtime, 
     - We demonstrate a multicast delegate by adding another method to the delegate invocation list using `+=`. When the delegate is invoked, both methods are called in the order they were added.
 
     These examples showcase the usage of records for immutable data types and delegates for method references and event handling in C#.
+
+#### Class vs Struct vs Record
+
+Key Differences:
+
+- Classes are reference types with full support for inheritance and customization, while structs and records are value types with limited or no inheritance capabilities.
+- Structs are primarily used for small, single-value data types and are passed by value, while records provide a concise syntax for defining immutable data types with value semantics.
+- Records automatically generate boilerplate code for immutability and value equality, reducing developer overhead and potential sources of errors.
+In summary, choose the appropriate type (class, struct, or record) based on the specific requirements of your application, considering factors such as mutability, inheritance, memory usage, and performance.
+
+Sure, let's create an example to demonstrate the differences between classes, structs, and records.
+
+**Example**:
+
+Suppose we want to define a data type to represent a 2D point with X and Y coordinates. We'll create implementations using a class, a struct, and a record to showcase their differences.
+
+1. **Class Implementation**:
+
+   ```csharp
+   public class PointClass
+   {
+       public int X { get; set; }
+       public int Y { get; set; }
+
+       public PointClass(int x, int y)
+       {
+           X = x;
+           Y = y;
+       }
+   }
+   ```
+
+2. **Struct Implementation**:
+
+   ```csharp
+   public struct PointStruct
+   {
+       public int X { get; }
+       public int Y { get; }
+
+       public PointStruct(int x, int y)
+       {
+           X = x;
+           Y = y;
+       }
+   }
+   ```
+
+3. **Record Implementation**:
+
+   ```csharp
+   public record PointRecord(int X, int Y);
+   ```
+
+Now, let's demonstrate the differences by creating instances of each type and modifying them:
+
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Creating instances
+        var classPoint = new PointClass(10, 20);
+        var structPoint = new PointStruct(30, 40);
+        var recordPoint = new PointRecord(50, 60);
+
+        // Modifying values
+        classPoint.X = 100; // Allowed because classes are mutable
+        // structPoint.X = 200; // Error: Cannot modify readonly members in structs
+        // recordPoint.X = 300; // Error: Records are immutable
+
+        // Displaying values
+        Console.WriteLine($"Class Point: ({classPoint.X}, {classPoint.Y})");
+        Console.WriteLine($"Struct Point: ({structPoint.X}, {structPoint.Y})");
+        Console.WriteLine($"Record Point: ({recordPoint.X}, {recordPoint.Y})");
+    }
+}
+```
+
+**Output**:
+
+```
+Class Point: (100, 20)
+Struct Point: (30, 40)
+Record Point: (50, 60)
+```
+
+**Explanation**:
+
+- We can modify the `X` and `Y` properties of the `PointClass` instance because classes are mutable.
+- In the `PointStruct` instance, we cannot modify the `X` and `Y` properties directly because structs are immutable. Attempting to do so will result in a compilation error.
+- Similarly, the `PointRecord` instance is also immutable, so we cannot modify its properties directly. Any attempt to do so will result in a compilation error.
+
+This example illustrates the differences in mutability between classes, structs, and records in C#. Classes are mutable, structs are usually immutable (except for methods that explicitly modify them), and records are immutable by default.
 
 #### checking data type of a variable
 
