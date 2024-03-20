@@ -460,179 +460,248 @@ class Program
 
 - **structure type**
 
-for simple data structure such as storing colors, pints, coordinates. similar to classes but they have differences in many aspectes.
+    for simple data structure such as storing colors, pints, coordinates. similar to classes but they have differences in many aspectes.
 
-In C#, a structure (struct) is a value type data type that allows you to encapsulate related data members and behaviors. Similar to classes, structures can have fields, properties, methods, and constructors. However, there are some key differences between classes and structures:
+    In C#, a structure (struct) is a value type data type that allows you to encapsulate related data members and behaviors. Similar to classes, structures can have fields, properties, methods, and constructors. However, there are some key differences between classes and structures:
 
-1. **Memory Allocation**:
-   - Objects of classes are allocated memory on the heap, while instances of structures are allocated memory on the stack.
-   - This difference in memory allocation can lead to performance benefits for structures, especially for small, frequently used data types.
+    1. **Memory Allocation**:
+      - Objects of classes are allocated memory on the heap, while instances of structures are allocated memory on the stack.
+      - This difference in memory allocation can lead to performance benefits for structures, especially for small, frequently used data types.
 
-2. **Inheritance**:
-   - Structures cannot inherit from other structures or classes.
-   - They cannot serve as base types for other structures or classes.
+    2. **Inheritance**:
+      - Structures cannot inherit from other structures or classes.
+      - They cannot serve as base types for other structures or classes.
 
-3. **Default Constructor**:
-   - Structures always have an implicit default parameterless constructor, which initializes all fields to their default values.
+    3. **Default Constructor**:
+      - Structures always have an implicit default parameterless constructor, which initializes all fields to their default values.
 
-4. **Copy Semantics**:
-   - When you pass a structure to a method or assign it to another variable, the entire structure is copied. This contrasts with classes, where only a reference to the object is copied.
+    4. **Copy Semantics**:
+      - When you pass a structure to a method or assign it to another variable, the entire structure is copied. This contrasts with classes, where only a reference to the object is copied.
 
-5. **Boxing and Unboxing**:
-   - Structures are value types, and they do not require boxing and unboxing when used in certain contexts. This can improve performance in scenarios where boxing and unboxing are frequent.
+    5. **Boxing and Unboxing**:
+      - Structures are value types, and they do not require boxing and unboxing when used in certain contexts. This can improve performance in scenarios where boxing and unboxing are frequent.
 
-Here's a basic example of a structure in C#:
+    Here's a basic example of a structure in C#:
 
-```csharp
-using System;
+    ```csharp
+    using System;
 
-public struct Point
-{
-    // Fields
-    public int X;
-    public int Y;
-
-    // Constructor
-    public Point(int x, int y)
+    public struct Point
     {
-        X = x;
-        Y = y;
+        // Fields
+        public int X;
+        public int Y;
+
+        // Constructor
+        public Point(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        // Method
+        public void Display()
+        {
+            Console.WriteLine($"Point coordinates: ({X}, {Y})");
+        }
     }
 
-    // Method
-    public void Display()
+    class Program
     {
-        Console.WriteLine($"Point coordinates: ({X}, {Y})");
-    }
-}
+        static void Main()
+        {
+            // Creating an instance of the Point structure
+            Point point = new Point(10, 20);
 
-class Program
-{
-    static void Main()
+            // Accessing fields and calling method
+            Console.WriteLine($"X coordinate: {point.X}");
+            Console.WriteLine($"Y coordinate: {point.Y}");
+            point.Display();
+        }
+    }
+    ```
+
+    In this example, `Point` is a structure that represents a point in 2D space. It has two fields `X` and `Y`, a constructor to initialize these fields, and a method `Display()` to print the coordinates of the point.
+
+- enum type
+
+  - In C#, an enumeration (enum) is a distinct type consisting of a set of named constants called the enumerator list.
+  - Enums are used to define a group of named integral constants.
+  - Enums are commonly used in scenarios where you have a fixed set of related values that represent different states or options, such as days of the week, months, status codes, etc.
+  - They help make code more readable and maintainable by giving meaningful names to constant values. 
+  
+  Here's how you define and use enums in C#:
+
+    ```csharp
+    // Syntax
+    enum TypeName
     {
-        // Creating an instance of the Point structure
-        Point point = new Point(10, 20);
-
-        // Accessing fields and calling method
-        Console.WriteLine($"X coordinate: {point.X}");
-        Console.WriteLine($"Y coordinate: {point.Y}");
-        point.Display();
+        Constant1,
+        Constant2,
+        // Add more constants as needed
     }
-}
-```
+    ```
 
-In this example, `Point` is a structure that represents a point in 2D space. It has two fields `X` and `Y`, a constructor to initialize these fields, and a method `Display()` to print the coordinates of the point.
+    ```csharp
+    // Example
+    using System;
+
+    public class Program
+    {
+        // Define an enum for days of the week
+        enum Days
+        {
+            Sunday,
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday
+        }
+
+        public static void Main(string[] args)
+        {
+            // Assign a value from the enum
+            Days today = Days.Friday;
+
+            // Output the value of today
+            Console.WriteLine("Today is: " + today);
+            
+            // Convert enum value to int
+            int dayNumber = (int)today;
+            Console.WriteLine("Day number: " + dayNumber);
+            
+            // Convert int to enum value
+            Days anotherDay = (Days)2;
+            Console.WriteLine("Another day is: " + anotherDay);
+        }
+    }
+    ```
+
+    ```text
+    // Output
+    Today is: Friday
+    Day number: 5
+    Another day is: Tuesday
+    ```
+
+  - Enums provide a way to define a set of named integral constants that can be assigned to variables.
+  - In the example, we define an enum `Days` with constants for each day of the week.
+  - We assign the `Friday` constant to a variable `today`, and then output its value.
+  - Enums are strongly typed, and you can convert between enum values and their underlying integral types (usually `int`).
+  - You can also convert integral values to enum values using type casting.
 
 - **tuple type**
 
-A tuple in C# is a data structure that allows you to store a fixed-size collection of heterogeneous elements (i.e., elements of different data types) in a single object. Tuples provide a convenient way to group together related data without the need to define a custom class or structure explicitly.
+  A tuple in C# is a data structure that allows you to store a fixed-size collection of heterogeneous elements (i.e., elements of different data types) in a single object. Tuples provide a convenient way to group together related data without the need to define a custom class or structure explicitly.
 
-Here's a basic example of how to use tuples in C#:
+  Here's a basic example of how to use tuples in C#:
 
-```csharp
-using System;
+  ```csharp
+  using System;
 
-class Program
-{
-    static void Main()
-    {
-        // Creating a tuple
-        var person = Tuple.Create("John", 30, true);
+  class Program
+  {
+      static void Main()
+      {
+          // Creating a tuple
+          var person = Tuple.Create("John", 30, true);
 
-        // Accessing tuple elements
-        Console.WriteLine($"Name: {person.Item1}");
-        Console.WriteLine($"Age: {person.Item2}");
-        Console.WriteLine($"IsEmployed: {person.Item3}");
+          // Accessing tuple elements
+          Console.WriteLine($"Name: {person.Item1}");
+          Console.WriteLine($"Age: {person.Item2}");
+          Console.WriteLine($"IsEmployed: {person.Item3}");
 
-        // Updating tuple elements (not allowed, tuples are immutable)
-        // person.Item1 = "Alice"; // This will result in a compile-time error
+          // Updating tuple elements (not allowed, tuples are immutable)
+          // person.Item1 = "Alice"; // This will result in a compile-time error
 
-        // Deconstructing a tuple
-        (string name, int age, bool isEmployed) = person;
-        Console.WriteLine($"Name: {name}, Age: {age}, IsEmployed: {isEmployed}");
-    }
-}
-```
+          // Deconstructing a tuple
+          (string name, int age, bool isEmployed) = person;
+          Console.WriteLine($"Name: {name}, Age: {age}, IsEmployed: {isEmployed}");
+      }
+  }
+  ```
 
-In this example:
+  In this example:
 
-- We create a tuple `person` containing three elements: a string representing the person's name, an integer representing their age, and a boolean indicating whether they are employed.
-- We access tuple elements using the `Item1`, `Item2`, and `Item3` properties of the tuple object.
-- We demonstrate how to deconstruct a tuple into individual variables using the C# deconstruction syntax `(string name, int age, bool isEmployed) = person`.
+  - We create a tuple `person` containing three elements: a string representing the person's name, an integer representing their age, and a boolean indicating whether they are employed.
+  - We access tuple elements using the `Item1`, `Item2`, and `Item3` properties of the tuple object.
+  - We demonstrate how to deconstruct a tuple into individual variables using the C# deconstruction syntax `(string name, int age, bool isEmployed) = person`.
 
-Starting from C# 7.0, you can also use named tuples, which provide more expressive code by giving names to the elements of the tuple. Here's how you can use named tuples:
+  Starting from C# 7.0, you can also use named tuples, which provide more expressive code by giving names to the elements of the tuple. Here's how you can use named tuples:
 
-```csharp
-using System;
+  ```csharp
+  using System;
 
-class Program
-{
-    static void Main()
-    {
-        // Creating a named tuple
-        var person = (Name: "John", Age: 30, IsEmployed: true);
+  class Program
+  {
+      static void Main()
+      {
+          // Creating a named tuple
+          var person = (Name: "John", Age: 30, IsEmployed: true);
 
-        // Accessing named tuple elements
-        Console.WriteLine($"Name: {person.Name}");
-        Console.WriteLine($"Age: {person.Age}");
-        Console.WriteLine($"IsEmployed: {person.IsEmployed}");
+          // Accessing named tuple elements
+          Console.WriteLine($"Name: {person.Name}");
+          Console.WriteLine($"Age: {person.Age}");
+          Console.WriteLine($"IsEmployed: {person.IsEmployed}");
 
-        // Deconstructing a named tuple
-        (string name, int age, bool isEmployed) = person;
-        Console.WriteLine($"Name: {name}, Age: {age}, IsEmployed: {isEmployed}");
-    }
-}
-```
+          // Deconstructing a named tuple
+          (string name, int age, bool isEmployed) = person;
+          Console.WriteLine($"Name: {name}, Age: {age}, IsEmployed: {isEmployed}");
+      }
+  }
+  ```
 
-In this example, we define a tuple with named elements `Name`, `Age`, and `IsEmployed`, making the code more readable and self-explanatory. We then access these named elements directly using their names.
+  In this example, we define a tuple with named elements `Name`, `Age`, and `IsEmployed`, making the code more readable and self-explanatory. We then access these named elements directly using their names.
 
 - dynamic and object type
-In C#, both `dynamic` and `object` are used to handle situations where the type of an object is not known at compile time. However, they have different behaviors and use cases:
+    In C#, both `dynamic` and `object` are used to handle situations where the type of an object is not known at compile time. However, they have different behaviors and use cases:
 
-1. **`dynamic`**:
-   - The `dynamic` keyword is used to declare a type that can hold any type of value at runtime.
-   - It defers type checking until runtime rather than compile time.
-   - It allows you to perform operations on objects without explicit type casting.
-   - It provides late binding, meaning method calls and property accesses are resolved at runtime.
-   - Example:
+    1. **`dynamic`**:
+      - The `dynamic` keyword is used to declare a type that can hold any type of value at runtime.
+      - It defers type checking until runtime rather than compile time.
+      - It allows you to perform operations on objects without explicit type casting.
+      - It provides late binding, meaning method calls and property accesses are resolved at runtime.
+      - Example:
 
-     ```csharp
-      using System;
+        ```csharp
+          using System;
 
-      class Program
-      {
-          static void Main(string[] args)
+          class Program
           {
-              // Example using object type
-              object obj = 10;
-              Console.WriteLine($"Object value: {obj}"); // Output: Object value: 10
+              static void Main(string[] args)
+              {
+                  // Example using object type
+                  object obj = 10;
+                  Console.WriteLine($"Object value: {obj}"); // Output: Object value: 10
 
-              int intValue = (int)obj; // Explicit casting
-              Console.WriteLine($"Int value: {intValue}"); // Output: Int value: 10
+                  int intValue = (int)obj; // Explicit casting
+                  Console.WriteLine($"Int value: {intValue}"); // Output: Int value: 10
 
-              // Example using dynamic type
-              dynamic dynamicVariable = 10;
-              Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: 10
+                  // Example using dynamic type
+                  dynamic dynamicVariable = 10;
+                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: 10
 
-              dynamicVariable = "Hello";
-              Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: Hello
+                  dynamicVariable = "Hello";
+                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: Hello
 
-              dynamicVariable = DateTime.Now;
-              Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: [current datetime]
+                  dynamicVariable = DateTime.Now;
+                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: [current datetime]
+              }
           }
-      }
 
-     ```
+        ```
 
-2. **`object`**:
-   - The `object` type is a reference type that represents the base type of all other types in C#.
-   - It can hold any type of value but requires explicit casting to access its members or convert it to another type.
-   - It is a compile-time construct and doesn't provide late binding like `dynamic`.
-   - It is typically used when you need to work with values of different types in a homogeneous collection or when the specific type is not known at compile time.
+    2. **`object`**:
+      - The `object` type is a reference type that represents the base type of all other types in C#.
+      - It can hold any type of value but requires explicit casting to access its members or convert it to another type.
+      - It is a compile-time construct and doesn't provide late binding like `dynamic`.
+      - It is typically used when you need to work with values of different types in a homogeneous collection or when the specific type is not known at compile time.
   
-In summary, `dynamic` is used for late binding and dynamic behavior at runtime, while `object` is used for static typing and type safety at compile time. Choose between them based on your specific requirements and whether you need dynamic or static typing in your code.
+    In summary, `dynamic` is used for late binding and dynamic behavior at runtime, while `object` is used for static typing and type safety at compile time. Choose between them based on your specific requirements and whether you need dynamic or static typing in your code.
 
-- record and a delegate:
+- record and a delegate type:
 
     1. **Record**: (use record / struct / class based on your need)
       Records are a feature introduced in C# 9.0 that provide a concise syntax for creating immutable data types. Records are primarily used for modeling data and are especially useful for DTOs (Data Transfer Objects), entities, and other types where immutability and equality are important.
@@ -662,50 +731,50 @@ In summary, `dynamic` is used for late binding and dynamic behavior at runtime, 
   - Records automatically generate a constructor, properties, `Equals()` method, `GetHashCode()` method, and `ToString()` method based on their members.
   - We create an instance of the `Person` record and access its properties.
 
-2. **Delegate**:
-   Delegates are used to define references to methods. They are similar to function pointers in C++ or function types in other languages. Delegates are especially useful for implementing events, callbacks, and LINQ queries.
+    2. **Delegate**:
+      Delegates are used to define references to methods. They are similar to function pointers in C++ or function types in other languages. Delegates are especially useful for implementing events, callbacks, and LINQ queries.
 
-    ```csharp
-    using System;
+        ```csharp
+        using System;
 
-    // Example of a delegate
-    public delegate void MyDelegate(string message);
+        // Example of a delegate
+        public delegate void MyDelegate(string message);
 
-    class Program
-    {
-        static void Main()
+        class Program
         {
-            // Creating an instance of the delegate
-            MyDelegate myDelegate = DisplayMessage;
+            static void Main()
+            {
+                // Creating an instance of the delegate
+                MyDelegate myDelegate = DisplayMessage;
 
-            // Invoking the delegate
-            myDelegate("Hello, delegates!");
+                // Invoking the delegate
+                myDelegate("Hello, delegates!");
 
-            // Multicast delegate
-            myDelegate += DisplayAnotherMessage;
-            myDelegate("Hello again!");
+                // Multicast delegate
+                myDelegate += DisplayAnotherMessage;
+                myDelegate("Hello again!");
+            }
+
+            static void DisplayMessage(string message)
+            {
+                Console.WriteLine($"Message: {message}");
+            }
+
+            static void DisplayAnotherMessage(string message)
+            {
+                Console.WriteLine($"Another message: {message}");
+            }
         }
+        ```
 
-        static void DisplayMessage(string message)
-        {
-            Console.WriteLine($"Message: {message}");
-        }
+        In the above example:
 
-        static void DisplayAnotherMessage(string message)
-        {
-            Console.WriteLine($"Another message: {message}");
-        }
-    }
-    ```
+        - We define a delegate `MyDelegate` that points to methods accepting a `string` parameter and returning `void`.
+        - We create an instance of the delegate and assign it to a method `DisplayMessage`.
+        - We invoke the delegate, which in turn invokes the `DisplayMessage` method.
+        - We demonstrate a multicast delegate by adding another method to the delegate invocation list using `+=`. When the delegate is invoked, both methods are called in the order they were added.
 
-    In the above example:
-
-    - We define a delegate `MyDelegate` that points to methods accepting a `string` parameter and returning `void`.
-    - We create an instance of the delegate and assign it to a method `DisplayMessage`.
-    - We invoke the delegate, which in turn invokes the `DisplayMessage` method.
-    - We demonstrate a multicast delegate by adding another method to the delegate invocation list using `+=`. When the delegate is invoked, both methods are called in the order they were added.
-
-    These examples showcase the usage of records for immutable data types and delegates for method references and event handling in C#.
+        These examples showcase the usage of records for immutable data types and delegates for method references and event handling in C#.
 
 #### Class vs Struct vs Record
 
