@@ -586,6 +586,127 @@ class Program
 
 In this example, we define a tuple with named elements `Name`, `Age`, and `IsEmployed`, making the code more readable and self-explanatory. We then access these named elements directly using their names.
 
+- dynamic and object type
+In C#, both `dynamic` and `object` are used to handle situations where the type of an object is not known at compile time. However, they have different behaviors and use cases:
+
+1. **`dynamic`**:
+   - The `dynamic` keyword is used to declare a type that can hold any type of value at runtime.
+   - It defers type checking until runtime rather than compile time.
+   - It allows you to perform operations on objects without explicit type casting.
+   - It provides late binding, meaning method calls and property accesses are resolved at runtime.
+   - Example:
+
+     ```csharp
+      using System;
+
+      class Program
+      {
+          static void Main(string[] args)
+          {
+              // Example using object type
+              object obj = 10;
+              Console.WriteLine($"Object value: {obj}"); // Output: Object value: 10
+
+              int intValue = (int)obj; // Explicit casting
+              Console.WriteLine($"Int value: {intValue}"); // Output: Int value: 10
+
+              // Example using dynamic type
+              dynamic dynamicVariable = 10;
+              Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: 10
+
+              dynamicVariable = "Hello";
+              Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: Hello
+
+              dynamicVariable = DateTime.Now;
+              Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: [current datetime]
+          }
+      }
+
+     ```
+
+2. **`object`**:
+   - The `object` type is a reference type that represents the base type of all other types in C#.
+   - It can hold any type of value but requires explicit casting to access its members or convert it to another type.
+   - It is a compile-time construct and doesn't provide late binding like `dynamic`.
+   - It is typically used when you need to work with values of different types in a homogeneous collection or when the specific type is not known at compile time.
+  
+In summary, `dynamic` is used for late binding and dynamic behavior at runtime, while `object` is used for static typing and type safety at compile time. Choose between them based on your specific requirements and whether you need dynamic or static typing in your code.
+
+- record and a delegate:
+
+    1. **Record**:
+      Records are a feature introduced in C# 9.0 that provide a concise syntax for creating immutable data types. Records are primarily used for modeling data and are especially useful for DTOs (Data Transfer Objects), entities, and other types where immutability and equality are important.
+
+    ```csharp
+    using System;
+
+    // Example of a record
+    public record Person(string FirstName, string LastName, int Age);
+
+    class Program
+    {
+        static void Main()
+        {
+            // Creating an instance of the record
+            var person = new Person("John", "Doe", 30);
+
+            // Accessing properties
+            Console.WriteLine($"Name: {person.FirstName} {person.LastName}, Age: {person.Age}");
+        }
+    }
+    ```
+
+    In the above example:
+
+  - We define a `Person` record with properties `FirstName`, `LastName`, and `Age`.
+  - Records automatically generate a constructor, properties, `Equals()` method, `GetHashCode()` method, and `ToString()` method based on their members.
+  - We create an instance of the `Person` record and access its properties.
+
+2. **Delegate**:
+   Delegates are used to define references to methods. They are similar to function pointers in C++ or function types in other languages. Delegates are especially useful for implementing events, callbacks, and LINQ queries.
+
+    ```csharp
+    using System;
+
+    // Example of a delegate
+    public delegate void MyDelegate(string message);
+
+    class Program
+    {
+        static void Main()
+        {
+            // Creating an instance of the delegate
+            MyDelegate myDelegate = DisplayMessage;
+
+            // Invoking the delegate
+            myDelegate("Hello, delegates!");
+
+            // Multicast delegate
+            myDelegate += DisplayAnotherMessage;
+            myDelegate("Hello again!");
+        }
+
+        static void DisplayMessage(string message)
+        {
+            Console.WriteLine($"Message: {message}");
+        }
+
+        static void DisplayAnotherMessage(string message)
+        {
+            Console.WriteLine($"Another message: {message}");
+        }
+    }
+    ```
+
+    In the above example:
+
+    - We define a delegate `MyDelegate` that points to methods accepting a `string` parameter and returning `void`.
+    - We create an instance of the delegate and assign it to a method `DisplayMessage`.
+    - We invoke the delegate, which in turn invokes the `DisplayMessage` method.
+    - We demonstrate a multicast delegate by adding another method to the delegate invocation list using `+=`. When the delegate is invoked, both methods are called in the order they were added.
+
+    These examples showcase the usage of records for immutable data types and delegates for method references and event handling in C#.
+
 #### checking data type of a variable
 
 ```csharp
@@ -2922,7 +3043,37 @@ public class MyClass
 - Use a 2D array when you need a fixed-size grid with consistent row and column counts.
 - Use a jagged array when you need flexibility in row lengths or when the array elements represent different sizes of data.
 
-That's a basic overview of 2D arrays in C#. They are versatile data structures commonly used for storing and manipulating grid-based data in various applications.
+- A challenage collected from Sololearn
+
+```csharp
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            int day1Winner = Convert.ToInt32(Console.ReadLine());
+            int day2Winner = Convert.ToInt32(Console.ReadLine());
+            int day3Winner = Convert.ToInt32(Console.ReadLine());
+
+
+            string[][] olympiad = new string[][]
+            {
+                //day 1 - 5 participants
+                new string[] { "Jill Yan", "Bridgette Ramona", "Sree Sanda", "Jareth Charlene", "Carl Soner" },
+                //day 2 - 7 participants
+                new string[] { "Anna Hel", "Mariette Vedrana", "Fran Mayur", "Drake Hilmar", "Nikolay Brooks", "Eliana Vlatko", "Villem Mario" },
+                //day 3 - 4 participants
+                new string[] { "Hieremias Zavia", "Ziya Ollie", "Christoffel Casper", "Kristian Dana", }
+
+            };
+            //your code goes here                 
+            Console.WriteLine(olympiad[0][day1Winner-1]);
+            Console.WriteLine(olympiad[1][day2Winner-1]);
+            Console.WriteLine(olympiad[2][day3Winner-1]);               
+           
+            
+        }
+    }
+```
 
 #### User Input for Array
 
