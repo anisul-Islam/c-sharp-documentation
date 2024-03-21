@@ -528,7 +528,7 @@ class Program
   - In C#, an enumeration (enum) is a distinct type consisting of a set of named constants called the enumerator list.
   - Enums are used to define a group of named integral constants.
   - Enums are commonly used in scenarios where you have a fixed set of related values that represent different states or options, such as days of the week, months, status codes, etc.
-  - They help make code more readable and maintainable by giving meaningful names to constant values. 
+  - They help make code more readable and maintainable by giving meaningful names to constant values.
   
   Here's how you define and use enums in C#:
 
@@ -3509,6 +3509,84 @@ public class MyClass
 
 This code now includes exception handling for various scenarios, such as when the user enters invalid input (e.g., non-integer values), when the input is too large or too small, or when there's not enough memory to create the arrays. The `finally` block ensures that the program waits for a key press before exiting, regardless of whether an exception occurred or not.
 
+#### Array Properties and Methods
+
+- array.Length and array.Rank Properties: the Length and Rank properties return the number of elements and the number of dimensions of the array. we can use dot operator to access Properties.
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Initializing an array
+        int[] numbers = { 5, 3, 8, 4, 2 };
+
+        // Length property: returns the number of elements in the array
+        Console.WriteLine($"Length of the array: {numbers.Length}");
+
+        // rank property: returns the dimensions the array
+        Console.WriteLine($"Length of the array: {numbers.Rank}");
+
+        Console.WriteLine(arr.Max());
+        Console.WriteLine(arr.Min());
+        Console.WriteLine(arr.Sum());
+
+        // Indexer: accessing elements by index
+        Console.WriteLine($"Element at index 2: {numbers[2]}");
+
+        // Iterating through the array using a for loop
+        Console.Write("Array elements: ");
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            Console.Write(numbers[i] + " ");
+        }
+        Console.WriteLine();
+
+        // Array.Sort method: sorts the elements of the array
+        Array.Sort(numbers);
+        Console.Write("Sorted array: ");
+        PrintArray(numbers);
+
+        // Array.Reverse method: reverses the order of the elements in the array
+        Array.Reverse(numbers);
+        Console.Write("Reversed array: ");
+        PrintArray(numbers);
+
+        // Array.IndexOf method: returns the index of the specified value in the array
+        int index = Array.IndexOf(numbers, 8);
+        Console.WriteLine($"Index of value 8: {index}");
+
+        // Array.Exists method: checks if the specified predicate is true for any element in the array
+        bool exists = Array.Exists(numbers, x => x == 6);
+        Console.WriteLine($"Does array contain value 6? {exists}");
+
+        // Array.Copy method: copies a range of elements from one array to another
+        int[] copy = new int[numbers.Length];
+        Array.Copy(numbers, copy, numbers.Length);
+        Console.Write("Copied array: ");
+        PrintArray(copy);
+
+        // Array.Clear method: sets a range of elements in the array to the specified value
+        Array.Clear(numbers, 0, numbers.Length); // Clearing the original array
+        Console.WriteLine("Original array after clearing:");
+        PrintArray(numbers);
+    }
+
+    // Helper method to print array elements
+    static void PrintArray(int[] arr)
+    {
+        foreach (var num in arr)
+        {
+            Console.Write(num + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+```
+
 #### Tic-Tac-Toe game
 
 Sure, here's a basic console application in C# that uses a 2D array to represent a Tic-Tac-Toe game:
@@ -3724,5 +3802,24 @@ Exception handling is a fundamental aspect of robust software development in C#,
 
 ## Intermediate 2. aaa
 
-## .NET 
+## new: Random Number Generator
 
+```csharp
+using System.Globalization;
+
+public delegate void MyDelegate(string message);
+public class MyClass
+{
+
+  public static void Main(string[] args)
+  {
+    Random random = new Random();
+    int randomNumber = random.Next(1, 100);
+    Console.WriteLine($"{randomNumber}");
+  }
+
+}
+```
+
+
+## new: 
