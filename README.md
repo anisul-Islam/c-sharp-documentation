@@ -3711,7 +3711,7 @@ This code creates a basic Tic-Tac-Toe game where two players (X and O) take turn
 
 ### OOP 2: Inheritance
 
-### Exception Handling
+### new: Exception Handling
 
 ```csharp
   Console.Write("Enter a number: ");
@@ -3821,5 +3821,199 @@ public class MyClass
 }
 ```
 
+## new: String
 
-## new: 
+```csharp
+string a = "some text";
+Console.WriteLine(a.Length);
+//Outputs 9
+
+Console.WriteLine(a.IndexOf('t'));
+//Outputs 5
+
+ a = a.Insert(0, "This is ");
+Console.WriteLine(a);
+//Outputs "This is some text"
+
+a = a.Replace("This is", "I am");
+Console.WriteLine(a);
+//Outputs "I am some text"
+
+if(a.Contains("some"))
+  Console.WriteLine("found");
+//Outputs "found"
+
+a = a.Remove(4);
+Console.WriteLine(a);
+//Outputs "I am"
+
+a = a.Substring(2);
+Console.WriteLine(a);
+//Outputs "am"
+```
+
+## new: Array vs List
+
+In C#, both arrays and lists are used to store collections of elements, but they have some differences in terms of flexibility and functionality. Here's a comparison between arrays and lists:
+
+1. **Declaration and Initialization:**
+   - **Array:** Arrays are declared using square brackets `[]`. They have a fixed size that is specified at the time of declaration.
+
+     ```csharp
+     int[] numbers = new int[5]; // Declaration and initialization of an array with size 5
+     ```
+
+   - **List:** Lists are declared using the `List<T>` class from the `System.Collections.Generic` namespace. Lists can dynamically resize to accommodate the number of elements added to them.
+
+     ```csharp
+     List<int> numbersList = new List<int>(); // Declaration of a list
+     ```
+
+2. **Size:**
+   - **Array:** Arrays have a fixed size, which means you cannot change the size after initialization.
+   - **List:** Lists can dynamically grow or shrink in size as elements are added or removed. They automatically handle memory management and resizing internally.
+
+3. **Accessing Elements:**
+   - **Array:** Elements in an array are accessed using zero-based index notation.
+
+     ```csharp
+     int value = numbers[0]; // Accessing the first element of the array
+     ```
+
+   - **List:** Elements in a list are accessed using the `List<T>` indexer property in a similar manner.
+
+     ```csharp
+     int value = numbersList[0]; // Accessing the first element of the list
+     ```
+
+4. **Flexibility:**
+   - **Array:** Arrays have a fixed size and cannot change once initialized. You cannot easily add or remove elements from an array without creating a new array.
+   - **List:** Lists are more flexible as they can dynamically resize. You can add, remove, or modify elements in a list without needing to create a new list.
+
+5. **Performance:**
+   - **Array:** Arrays generally offer better performance for random access because they store elements in contiguous memory locations.
+   - **List:** Lists are implemented using arrays internally but provide additional functionality for dynamic resizing. They may have slightly lower performance for random access compared to arrays due to their dynamic resizing capability.
+
+6. **Additional Functionality:**
+   - **List:** Lists provide additional methods and properties for common operations such as adding, removing, sorting, searching, and more. These methods are not available directly with arrays and require manual implementation.
+
+In summary, arrays are suitable for situations where the size of the collection is fixed or known in advance, while lists are more suitable for scenarios where the size may change dynamically or where additional functionality like resizing and manipulation is required.
+
+## new: List Operations
+
+Here are examples of common list operations in C# using the `List<T>` class:
+
+1. **Initialization:**
+
+   ```csharp
+   List<int> numbers = new List<int>(); // Initialize an empty list
+   List<string> names = new List<string> { "Alice", "Bob", "Charlie" }; // Initialize a list with elements
+   ```
+
+2. **Adding Elements:**
+
+   ```csharp
+   numbers.Add(10); // Add a single element to the end of the list
+   numbers.AddRange(new int[] { 20, 30, 40 }); // Add multiple elements to the end of the list
+   ```
+
+3. **Accessing Elements:**
+
+   ```csharp
+   int firstNumber = numbers[0]; // Access the first element
+   ```
+
+4. **Inserting Elements:**
+
+   ```csharp
+   numbers.Insert(1, 15); // Insert an element at a specific index
+   ```
+
+5. **Removing Elements:**
+
+   ```csharp
+   numbers.Remove(20); // Remove the first occurrence of a specific element
+   numbers.RemoveAt(2); // Remove the element at a specific index
+   numbers.RemoveRange(1, 2); // Remove a range of elements starting from a specific index
+   numbers.Clear(); // Remove all elements from the list
+   ```
+
+6. **Checking Existence:**
+
+   ```csharp
+   bool containsBob = names.Contains("Bob"); // Check if a specific element exists in the list
+   ```
+
+7. **Sorting:**
+
+   ```csharp
+   numbers.Sort(); // Sort the elements of the list in ascending order
+   names.Sort(); // Sort the elements of the list in alphabetical order
+   ```
+
+8. **Counting Elements:**
+
+   ```csharp
+   int count = numbers.Count; // Get the number of elements in the list
+   ```
+
+9. **Iterating Over Elements:**
+
+   ```csharp
+   foreach (int number in numbers)
+   {
+       Console.WriteLine(number);
+   }
+   ```
+
+10. **Converting to Array:**
+
+    ```csharp
+    int[] numbersArray = numbers.ToArray(); // Convert the list to an array
+    ```
+
+These are just some of the common operations that can be performed with lists in C#. The `List<T>` class provides many more methods and properties for various list manipulations and operations.
+
+## new: params example
+
+The `params` keyword in C# allows you to specify a method parameter that takes a variable number of arguments of the specified type. Here's an example to demonstrate its usage:
+
+```csharp
+using System;
+
+public class Program
+{
+    // Method that takes a variable number of integers as arguments
+    public static int Sum(params int[] numbers)
+    {
+        int sum = 0;
+        foreach (int num in numbers)
+        {
+            sum += num;
+        }
+        return sum;
+    }
+
+    public static void Main(string[] args)
+    {
+        // Calling the Sum method with different number of arguments
+        int sum1 = Sum(1, 2, 3);           // Sum of 1, 2, and 3
+        int sum2 = Sum(10, 20, 30, 40);    // Sum of 10, 20, 30, and 40
+        int sum3 = Sum();                  // Sum of no numbers (0)
+
+        // Displaying the results
+        Console.WriteLine("Sum of 1, 2, and 3: " + sum1);
+        Console.WriteLine("Sum of 10, 20, 30, and 40: " + sum2);
+        Console.WriteLine("Sum of no numbers: " + sum3);
+    }
+}
+```
+
+In this example:
+
+- The `Sum` method is defined with the `params` keyword, allowing it to accept a variable number of integers.
+- Inside the method, the `numbers` parameter behaves like an array, even though you can pass arguments to it directly without explicitly creating an array.
+- You can call the `Sum` method with different numbers of arguments, and the method will calculate the sum of all provided integers.
+- If no arguments are provided, the sum will be zero.
+
+Using `params` allows for cleaner and more flexible method calls when the number of arguments can vary.
