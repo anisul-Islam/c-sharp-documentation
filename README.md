@@ -4519,67 +4519,128 @@ public class MyClass
 
 - constant member is by default static `public const int ONE = 1;`
 
-- Math class static members
+- static class: A static class can contain only static members. Some common used static classes: Math, Array, String, DateTime.
 
-    The `Math` class in C# provides a set of static properties and methods for mathematical operations. Here are some of the commonly used properties and static methods of the `Math` class:
+  - Math class
 
-    1. **Properties**:
-      - `E`: Represents the natural logarithmic base, e.
-      - `PI`: Represents the ratio of the circumference of a circle to its diameter, π (pi).
+      The `Math` class in C# provides a set of static properties and methods for mathematical operations. Here are some of the commonly used properties and static methods of the `Math` class:
 
-    2. **Static Methods**:
-      - `Abs`: Returns the absolute value of a specified number.
-      - `Ceiling`: Returns the smallest integral value that is greater than or equal to the specified double-precision floating-point number.
-      - `Floor`: Returns the largest integer less than or equal to the specified double-precision floating-point number.
-      - `Max`: Returns the larger of two specified numbers.
-      - `Min`: Returns the smaller of two specified numbers.
-      - `Pow`: Returns a specified number raised to the specified power.
-      - `Round`: Rounds a double-precision floating-point value to the nearest integer.
-      - `Sqrt`: Returns the square root of a specified number.
+      1. **Properties**:
+        - `E`: Represents the natural logarithmic base, e.
+        - `PI`: Represents the ratio of the circumference of a circle to its diameter, π (pi).
 
-    Here's a simple example demonstrating the usage of some properties and static methods of the `Math` class:
+      2. **Static Methods**:
+        - `Abs`: Returns the absolute value of a specified number.
+        - `Ceiling`: Returns the smallest integral value that is greater than or equal to the specified double-precision floating-point number.
+        - `Floor`: Returns the largest integer less than or equal to the specified double-precision floating-point number.
+        - `Max`: Returns the larger of two specified numbers.
+        - `Min`: Returns the smaller of two specified numbers.
+        - `Pow`: Returns a specified number raised to the specified power.
+        - `Round`: Rounds a double-precision floating-point value to the nearest integer.
+        - `Sqrt`: Returns the square root of a specified number.
+
+      Here's a simple example demonstrating the usage of some properties and static methods of the `Math` class:
+
+      ```csharp
+      using System;
+
+      class Program
+      {
+          static void Main()
+          {
+              // Properties
+              Console.WriteLine($"Value of e: {Math.E}");
+              Console.WriteLine($"Value of π (pi): {Math.PI}");
+
+              // Static methods
+              double number = -10.5;
+              Console.WriteLine($"Absolute value of {number}: {Math.Abs(number)}");
+              Console.WriteLine($"Ceiling of {number}: {Math.Ceiling(number)}");
+              Console.WriteLine($"Floor of {number}: {Math.Floor(number)}");
+              Console.WriteLine($"Square root of {Math.Abs(number)}: {Math.Sqrt(Math.Abs(number))}");
+              Console.WriteLine($"2 raised to the power of 3: {Math.Pow(2, 3)}");
+              Console.WriteLine($"Rounded value of {number}: {Math.Round(number)}");
+              Console.WriteLine($"Maximum of 10 and 20: {Math.Max(10, 20)}");
+              Console.WriteLine($"Minimum of 10 and 20: {Math.Min(10, 20)}");
+          }
+      }
+      ```
+
+      Output:
+
+      ```
+      Value of e: 2.718281828459045
+      Value of π (pi): 3.141592653589793
+      Absolute value of -10.5: 10.5
+      Ceiling of -10.5: -10
+      Floor of -10.5: -11
+      Square root of 10.5: 3.24037034920393
+      2 raised to the power of 3: 8
+      Rounded value of -10.5: -10
+      Maximum of 10 and 20: 20
+      Minimum of 10 and 20: 10
+      ```
+
+      These properties and methods of the `Math` class provide convenient ways to perform various mathematical operations in C#.
+
+  - Array static Class
+  - String static Class
+  - DateTime static Class
 
     ```csharp
-    using System;
+      using System;
 
-    class Program
-    {
-        static void Main()
-        {
-            // Properties
-            Console.WriteLine($"Value of e: {Math.E}");
-            Console.WriteLine($"Value of π (pi): {Math.PI}");
+      class Program
+      {
+          static void Main()
+          {
+              // Get the current date and time
+              DateTime now = DateTime.Now;
+              Console.WriteLine("Current Date and Time: " + now);
 
-            // Static methods
-            double number = -10.5;
-            Console.WriteLine($"Absolute value of {number}: {Math.Abs(number)}");
-            Console.WriteLine($"Ceiling of {number}: {Math.Ceiling(number)}");
-            Console.WriteLine($"Floor of {number}: {Math.Floor(number)}");
-            Console.WriteLine($"Square root of {Math.Abs(number)}: {Math.Sqrt(Math.Abs(number))}");
-            Console.WriteLine($"2 raised to the power of 3: {Math.Pow(2, 3)}");
-            Console.WriteLine($"Rounded value of {number}: {Math.Round(number)}");
-            Console.WriteLine($"Maximum of 10 and 20: {Math.Max(10, 20)}");
-            Console.WriteLine($"Minimum of 10 and 20: {Math.Min(10, 20)}");
-        }
-    }
+              // Get the current date
+              DateTime today = DateTime.Today;
+              Console.WriteLine("Current Date: " + today);
+
+              // Get the current time
+              DateTime currentTime = DateTime.Now.TimeOfDay;
+              Console.WriteLine("Current Time: " + currentTime);
+
+              // Get the day of the week
+              DayOfWeek dayOfWeek = DateTime.Today.DayOfWeek;
+              Console.WriteLine("Day of the Week: " + dayOfWeek);
+
+              // Parse a string to DateTime
+              string dateString = "2023-01-15";
+              DateTime parsedDate = DateTime.Parse(dateString);
+              Console.WriteLine("Parsed Date: " + parsedDate);
+
+              // Format DateTime to string
+              string formattedDate = now.ToString("dd/MM/yyyy HH:mm:ss");
+              Console.WriteLine("Formatted Date: " + formattedDate);
+
+              // Adding days to a DateTime
+              DateTime futureDate = now.AddDays(7);
+              Console.WriteLine("Date 7 days from now: " + futureDate);
+
+              // Subtracting days from a DateTime
+              DateTime pastDate = now.AddDays(-7);
+              Console.WriteLine("Date 7 days ago: " + pastDate);
+
+              // Comparing dates
+              DateTime date1 = new DateTime(2022, 12, 31);
+              DateTime date2 = new DateTime(2023, 1, 1);
+              int result = DateTime.Compare(date1, date2);
+              Console.WriteLine("Comparison Result: " + result);
+
+              // Check if a year is leap year
+              int year = 2024;
+              bool isLeapYear = DateTime.IsLeapYear(year);
+              Console.WriteLine("Is " + year + " a leap year? " + isLeapYear);
+          }
+      }
+
     ```
-
-    Output:
-
-    ```
-    Value of e: 2.718281828459045
-    Value of π (pi): 3.141592653589793
-    Absolute value of -10.5: 10.5
-    Ceiling of -10.5: -10
-    Floor of -10.5: -11
-    Square root of 10.5: 3.24037034920393
-    2 raised to the power of 3: 8
-    Rounded value of -10.5: -10
-    Maximum of 10 and 20: 20
-    Minimum of 10 and 20: 10
-    ```
-
-    These properties and methods of the `Math` class provide convenient ways to perform various mathematical operations in C#.
 
 #### new: this and readonly
 
@@ -4633,6 +4694,8 @@ In this example:
 - The constructor of `MyClass` initializes the `readonlyField` using the `this` keyword.
 - The `PrintFieldValue` method accesses the `readonlyField` using `this`.
 - Once initialized, the value of `readonlyField` cannot be changed due to the `readonly` modifier.
+
+#### new: shallow copy vs deep copy
 
 ### OOP 2: Inheritance
 
