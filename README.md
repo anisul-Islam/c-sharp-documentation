@@ -4851,6 +4851,183 @@ In this example:
 - We then retrieve and print the details of specific people using their IDs.
 - We demonstrate error handling by attempting to access a person with a non-existing ID, catching the `KeyNotFoundException`.
 
+##### Another real life example
+
+Let's consider a real-life scenario where we have a collection of `Product` objects representing items in an online store. We'll first implement some common methods for object collections without using an indexer, then we'll refactor the code to include an indexer.
+
+Without Indexer:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public double Price { get; set; }
+    public int StockQuantity { get; set; }
+}
+
+public class ProductCatalog
+{
+    private List<Product> products = new List<Product>();
+
+    public void AddProduct(Product product)
+    {
+        products.Add(product);
+    }
+
+    public void RemoveProduct(int id)
+    {
+        Product productToRemove = products.FirstOrDefault(p => p.Id == id);
+        if (productToRemove != null)
+        {
+            products.Remove(productToRemove);
+        }
+    }
+
+    public Product FindProductById(int id)
+    {
+        return products.FirstOrDefault(p => p.Id == id);
+    }
+
+    public List<Product> GetProductsInStock()
+    {
+        return products.Where(p => p.StockQuantity > 0).ToList();
+    }
+
+    public double GetTotalValueOfStock()
+    {
+        return products.Sum(p => p.Price * p.StockQuantity);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        ProductCatalog catalog = new ProductCatalog();
+
+        // Adding products
+        catalog.AddProduct(new Product { Id = 1, Name = "Laptop", Price = 1200, StockQuantity = 10 });
+        catalog.AddProduct(new Product { Id = 2, Name = "Smartphone", Price = 800, StockQuantity = 15 });
+        catalog.AddProduct(new Product { Id = 3, Name = "Tablet", Price = 500, StockQuantity = 5 });
+
+        // Removing a product
+        catalog.RemoveProduct(2);
+
+        // Finding a product
+        Product foundProduct = catalog.FindProductById(1);
+        if (foundProduct != null)
+        {
+            Console.WriteLine($"Found Product: {foundProduct.Name}, Price: ${foundProduct.Price}, Stock Quantity: {foundProduct.StockQuantity}");
+        }
+
+        // Getting products in stock
+        List<Product> productsInStock = catalog.GetProductsInStock();
+        Console.WriteLine("Products in Stock:");
+        foreach (var product in productsInStock)
+        {
+            Console.WriteLine($"Name: {product.Name}, Stock Quantity: {product.StockQuantity}");
+        }
+
+        // Calculating total value of stock
+        double totalValue = catalog.GetTotalValueOfStock();
+        Console.WriteLine($"Total Value of Stock: ${totalValue}");
+    }
+}
+```
+
+With Indexer:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public double Price { get; set; }
+    public int StockQuantity { get; set; }
+}
+
+public class ProductCatalog
+{
+    private List<Product> products = new List<Product>();
+
+    // Indexer to access products by Id
+    public Product this[int id]
+    {
+        get { return products.FirstOrDefault(p => p.Id == id); }
+    }
+
+    public void AddProduct(Product product)
+    {
+        products.Add(product);
+    }
+
+    public void RemoveProduct(int id)
+    {
+        Product productToRemove = products.FirstOrDefault(p => p.Id == id);
+        if (productToRemove != null)
+        {
+            products.Remove(productToRemove);
+        }
+    }
+
+    public List<Product> GetProductsInStock()
+    {
+        return products.Where(p => p.StockQuantity > 0).ToList();
+    }
+
+    public double GetTotalValueOfStock()
+    {
+        return products.Sum(p => p.Price * p.StockQuantity);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        ProductCatalog catalog = new ProductCatalog();
+
+        // Adding products
+        catalog.AddProduct(new Product { Id = 1, Name = "Laptop", Price = 1200, StockQuantity = 10 });
+        catalog.AddProduct(new Product { Id = 2, Name = "Smartphone", Price = 800, StockQuantity = 15 });
+        catalog.AddProduct(new Product { Id = 3, Name = "Tablet", Price = 500, StockQuantity = 5 });
+
+        // Removing a product
+        catalog.RemoveProduct(2);
+
+        // Finding a product using indexer
+        Product foundProduct = catalog[1];
+        if (foundProduct != null)
+        {
+            Console.WriteLine($"Found Product: {foundProduct.Name}, Price: ${foundProduct.Price}, Stock Quantity: {foundProduct.StockQuantity}");
+        }
+
+        // Getting products in stock
+        List<Product> productsInStock = catalog.GetProductsInStock();
+        Console.WriteLine("Products in Stock:");
+        foreach (var product in productsInStock)
+        {
+            Console.WriteLine($"Name: {product.Name}, Stock Quantity: {product.StockQuantity}");
+        }
+
+        // Calculating total value of stock
+        double totalValue = catalog.GetTotalValueOfStock();
+        Console.WriteLine($"Total Value of Stock: ${totalValue}");
+    }
+}
+```
+
+In both versions, we have a `ProductCatalog` class managing a collection of `Product` objects. The first version uses traditional methods to add, remove, and find products, while the second version introduces an indexer allowing direct access to products by their Id.
+
 ### OOP 2: Inheritance
 
 ## Intermediate 2. aaa
