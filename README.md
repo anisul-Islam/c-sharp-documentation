@@ -4468,6 +4468,119 @@ Here's a brief explanation of each part of the code:
 
 Finally, it prints out the counts for each category.
 
+### new: static member
+
+- we can declare Method, Variable / Fields, Properties as static. This makes those members belong to the class itself, instead of belonging to individual objects. No matter how many objects of the class are created, there is only one copy of the static member.
+
+```csharp
+// static variable example
+class Person
+{
+  public string name;
+  static public int count = 0;
+  public Person(string name)
+  {
+    this.name = name;
+    count++;
+  }
+}
+
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    var p1 = new Person("Anisul Islam");
+    var p2 = new Person("Anisul Islam");
+    Console.WriteLine($"{Person.count}"); // static members can be accessed directly using the class name without an object.
+
+    Console.ReadKey();
+  }
+
+}
+```
+
+- static method
+- static constructor
+- static Properties
+
+  ```csharp
+    CODE PLAYGROUND: C#
+
+    class SomeClass {
+      public static int X { get; set; }
+      public static int Y { get; set; }
+
+      static SomeClass() {
+        X = 10;
+        Y = 20;
+      }
+    }
+  ```
+  
+- constant member is by default static `public const int ONE = 1;`
+
+- Math class static members
+
+    The `Math` class in C# provides a set of static properties and methods for mathematical operations. Here are some of the commonly used properties and static methods of the `Math` class:
+
+    1. **Properties**:
+      - `E`: Represents the natural logarithmic base, e.
+      - `PI`: Represents the ratio of the circumference of a circle to its diameter, π (pi).
+
+    2. **Static Methods**:
+      - `Abs`: Returns the absolute value of a specified number.
+      - `Ceiling`: Returns the smallest integral value that is greater than or equal to the specified double-precision floating-point number.
+      - `Floor`: Returns the largest integer less than or equal to the specified double-precision floating-point number.
+      - `Max`: Returns the larger of two specified numbers.
+      - `Min`: Returns the smaller of two specified numbers.
+      - `Pow`: Returns a specified number raised to the specified power.
+      - `Round`: Rounds a double-precision floating-point value to the nearest integer.
+      - `Sqrt`: Returns the square root of a specified number.
+
+    Here's a simple example demonstrating the usage of some properties and static methods of the `Math` class:
+
+    ```csharp
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            // Properties
+            Console.WriteLine($"Value of e: {Math.E}");
+            Console.WriteLine($"Value of π (pi): {Math.PI}");
+
+            // Static methods
+            double number = -10.5;
+            Console.WriteLine($"Absolute value of {number}: {Math.Abs(number)}");
+            Console.WriteLine($"Ceiling of {number}: {Math.Ceiling(number)}");
+            Console.WriteLine($"Floor of {number}: {Math.Floor(number)}");
+            Console.WriteLine($"Square root of {Math.Abs(number)}: {Math.Sqrt(Math.Abs(number))}");
+            Console.WriteLine($"2 raised to the power of 3: {Math.Pow(2, 3)}");
+            Console.WriteLine($"Rounded value of {number}: {Math.Round(number)}");
+            Console.WriteLine($"Maximum of 10 and 20: {Math.Max(10, 20)}");
+            Console.WriteLine($"Minimum of 10 and 20: {Math.Min(10, 20)}");
+        }
+    }
+    ```
+
+    Output:
+
+    ```
+    Value of e: 2.718281828459045
+    Value of π (pi): 3.141592653589793
+    Absolute value of -10.5: 10.5
+    Ceiling of -10.5: -10
+    Floor of -10.5: -11
+    Square root of 10.5: 3.24037034920393
+    2 raised to the power of 3: 8
+    Rounded value of -10.5: -10
+    Maximum of 10 and 20: 20
+    Minimum of 10 and 20: 10
+    ```
+
+    These properties and methods of the `Math` class provide convenient ways to perform various mathematical operations in C#.
+
 ### OOP 2: Inheritance
 
 ## Intermediate 2. aaa
