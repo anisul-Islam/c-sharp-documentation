@@ -4516,7 +4516,7 @@ public class MyClass
       }
     }
   ```
-  
+
 - constant member is by default static `public const int ONE = 1;`
 
 - Math class static members
@@ -4580,6 +4580,59 @@ public class MyClass
     ```
 
     These properties and methods of the `Math` class provide convenient ways to perform various mathematical operations in C#.
+
+#### new: this and readonly
+
+In C#, `this` and `readonly` serve different purposes:
+
+1. **`this` Keyword**:
+   - `this` is a reference to the current instance of a class.
+   - It can be used to access instance members (fields, properties, methods) of the current object within its scope.
+   - It is often used to disambiguate between instance members and local variables or parameters with the same name.
+   - `this` can also be used to pass the current object as an argument to other methods or constructors.
+
+2. **`readonly` Keyword**:
+   - `readonly` is a modifier that can be applied to fields in C#.
+   - It indicates that the field can only be assigned a value once, either during initialization or in a constructor, and cannot be modified thereafter.
+   - `readonly` fields can be initialized at the time of declaration or within the constructor of the class.
+   - They provide a way to create immutable fields whose values cannot be changed after initialization.
+
+Here's an example demonstrating the use of `this` keyword and `readonly` fields in a class:
+
+```csharp
+using System;
+
+class MyClass
+{
+    private readonly int readonlyField; // readonly field
+
+    public MyClass(int value)
+    {
+        this.readonlyField = value; // assigning value using 'this'
+    }
+
+    public void PrintFieldValue()
+    {
+        Console.WriteLine($"Value of readonlyField: {this.readonlyField}"); // accessing readonly field using 'this'
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyClass obj = new MyClass(100);
+        obj.PrintFieldValue();
+    }
+}
+```
+
+In this example:
+
+- `readonlyField` is a readonly field of the `MyClass` class.
+- The constructor of `MyClass` initializes the `readonlyField` using the `this` keyword.
+- The `PrintFieldValue` method accesses the `readonlyField` using `this`.
+- Once initialized, the value of `readonlyField` cannot be changed due to the `readonly` modifier.
 
 ### OOP 2: Inheritance
 
