@@ -3396,6 +3396,8 @@ In the above example, the `MyClass` defines a destructor using the `~` operator 
   - Change one part of code without affecting other parts of code.
 - Access modifiers: 6 access modifiers are public, private, protected, internal, protected internal, private internal. The public access modifier makes the member accessible from the outside of the class. The private access modifier makes members accessible only from within the class and hides them from the outside.
 
+![alt text](image-5.png)
+
   ```csharp
   public class MyClass
   {
@@ -3515,6 +3517,98 @@ In the above example, the `MyClass` defines a destructor using the `~` operator 
         }
     }
   ```
+
+### how to create snippets
+
+```json
+{
+ "Write Line with Interpolation": {
+   "prefix": "writeLine",
+   "scope": "csharp",
+   "body": [
+     "Console.WriteLine($\"${1:Hello Anisul}\");"
+   ],
+   "description": "Writes a line to the console with string interpolation."
+ },
+
+ "Read Line": {
+   "prefix": "readLine",
+   "scope": "csharp",
+   "body": [
+     "string ${1:line} = Console.ReadLine();"
+   ],
+   "description": "Read a line from the console."
+ },
+
+ "Get Number Input": {
+   "prefix": "numberInput",
+   "scope": "csharp",
+   "body": [
+     "int ${1:num1} = Convert.ToInt32(Console.ReadLine());"
+   ],
+   "description": "Read a number from the console."
+ },
+
+ "Constructor Declaration": {
+        "prefix": "constructor",
+    "scope": "csharp",
+        "body": [
+            "public ${1:ClassName}(${2:parameters})",
+            "{",
+            "\t$3",
+            "}"
+        ],
+        "description": "Creates a constructor declaration."
+  },
+
+ "class with constructor": {
+   "prefix": "classwithconstrcutor",
+   "scope": "csharp",
+   "body": [
+     "public class ${1:ClassName}",
+     "{",
+     "\tpublic ${2:ClassName}()",
+     "\t{",
+     "\t\t$3",
+     "\t}",
+     "}"
+   ],
+   "description": "Creates a simple C# class named MyClass."
+ },
+
+ "Main Method" : {
+  "prefix" : "psvm",
+  "scope": "csharp",
+  "body": [
+   "public static void Main(string[] args)",
+   "{",
+   "\tConsole.WriteLine($\"${1:Hello Anisul}\");"
+   "}",
+  ],
+ },
+
+ "Property Declaration": {
+   "prefix": "property",
+   "scope": "csharp",
+   "body": [
+     "public ${1:string} ${2:PropertyName} { get; set; }"
+   ],
+   "description": "Creates a property declaration."
+ },
+
+ "Interface Declaration": {
+        "prefix": "interface",
+        "body": [
+            "public interface ${1:InterfaceName}",
+            "{",
+            "\t$2",
+            "}"
+        ],
+        "description": "Creates a basic interface structure."
+  }
+}
+
+```
 
 ### Exception Handling
 
