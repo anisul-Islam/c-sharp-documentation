@@ -4697,6 +4697,160 @@ In this example:
 
 #### new: shallow copy vs deep copy
 
+#### new: Indexer
+
+In C#, an indexer allows instances of a class or struct to be indexed just like arrays. It enables objects to be accessed using square bracket notation [], similar to how elements of an array are accessed. Indexers are typically used to provide a more natural and convenient way to access elements of a collection or container-like object.
+
+Here's a basic example to illustrate how an indexer works in C#:
+
+```csharp
+using System;
+
+public class MyCollection
+{
+    private string[] items;
+
+    // Constructor to initialize the collection
+    public MyCollection(int size)
+    {
+        items = new string[size];
+    }
+
+    // Indexer declaration
+    public string this[int index]
+    {
+        get
+        {
+            // Perform validation or additional logic if needed
+            return items[index];
+        }
+        set
+        {
+            // Perform validation or additional logic if needed
+            items[index] = value;
+        }
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create an instance of MyCollection with size 5
+        MyCollection collection = new MyCollection(5);
+
+        // Assign values using indexer
+        collection[0] = "First";
+        collection[1] = "Second";
+        collection[2] = "Third";
+
+        // Retrieve values using indexer and print them
+        Console.WriteLine(collection[0]); // Output: First
+        Console.WriteLine(collection[1]); // Output: Second
+        Console.WriteLine(collection[2]); // Output: Third
+    }
+}
+```
+
+In this example:
+
+- We define a class `MyCollection` that contains a private array `items` to store strings.
+- We define an indexer for the `MyCollection` class. This indexer allows us to access elements of the `items` array using square bracket notation. The `get` accessor retrieves the value at the specified index, and the `set` accessor assigns a value to the specified index.
+- In the `Main` method, we create an instance of `MyCollection` with a size of 5.
+- We assign values to the collection using the indexer (`collection[0] = "First";`).
+- We retrieve and print values from the collection using the indexer (`Console.WriteLine(collection[0]);`).
+
+##### more better example
+
+Sure, let's create a more realistic example using an indexer in a `PersonCollection` class to store and retrieve `Person` objects by their unique identifier (ID). Each `Person` object will have an ID, name, and age.
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+public class Person
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Person(int id, string name, int age)
+    {
+        ID = id;
+        Name = name;
+        Age = age;
+    }
+}
+
+public class PersonCollection
+{
+    private Dictionary<int, Person> people = new Dictionary<int, Person>();
+
+    // Indexer declaration
+    public Person this[int id]
+    {
+        get
+        {
+            // Check if the person with the specified ID exists
+            if (people.ContainsKey(id))
+                return people[id];
+            else
+                throw new KeyNotFoundException($"Person with ID {id} not found");
+        }
+        set
+        {
+            // Add or update the person with the specified ID
+            people[id] = value;
+        }
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        PersonCollection collection = new PersonCollection();
+
+        // Adding people to the collection
+        collection[1] = new Person(1, "Alice", 25);
+        collection[2] = new Person(2, "Bob", 30);
+        collection[3] = new Person(3, "Charlie", 40);
+
+        // Retrieving and printing person details
+        Console.WriteLine("Person with ID 1:");
+        PrintPersonDetails(collection[1]);
+
+        Console.WriteLine("Person with ID 2:");
+        PrintPersonDetails(collection[2]);
+
+        // Attempting to access a non-existing person
+        try
+        {
+            Console.WriteLine("Person with ID 5:");
+            PrintPersonDetails(collection[5]);
+        }
+        catch (KeyNotFoundException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    static void PrintPersonDetails(Person person)
+    {
+        Console.WriteLine($"ID: {person.ID}, Name: {person.Name}, Age: {person.Age}");
+    }
+}
+```
+
+In this example:
+
+- We have a `Person` class representing individuals with properties such as ID, Name, and Age.
+- We define a `PersonCollection` class that internally uses a `Dictionary<int, Person>` to store `Person` objects with their corresponding IDs as keys.
+- The `PersonCollection` class provides an indexer that allows accessing `Person` objects by their ID.
+- In the `Main` method, we add `Person` objects to the `PersonCollection` using the indexer.
+- We then retrieve and print the details of specific people using their IDs.
+- We demonstrate error handling by attempting to access a person with a non-existing ID, catching the `KeyNotFoundException`.
+
 ### OOP 2: Inheritance
 
 ## Intermediate 2. aaa
