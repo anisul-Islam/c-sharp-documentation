@@ -338,6 +338,7 @@ These conventions help maintain consistency and readability across codebases, ma
 ```csharp
    string fullName = "Aniul\nIslam\nRubel";
    Console.WriteLine(fullName);
+   Console.ReadKey();
 ```
 
 - verbatim string: it allows linebreaks in strings. use @ symbol before double quotes.
@@ -872,25 +873,61 @@ This example illustrates the differences in mutability between classes, structs,
 
 #### checking data type of a variable
 
-```csharp
-using System;
+In C#, you can check the data type of a variable or object using various methods. Here are some common ways:
 
-class Program
-{
-    static void Main()
+    1. **Using the `typeof` Operator**:
+      - The `typeof` operator returns a `Type` object representing the specified type.
+
+    ```csharp
+    int number = 10;
+    Type type = typeof(int);
+    Console.WriteLine(type); // Output: System.Int32
+    ```
+
+    2. **Using the `GetType` Method**:
+      - The `GetType` method returns the runtime type of an instance.
+
+    ```csharp
+    string text = "Hello";
+    Type type = text.GetType();
+    Console.WriteLine(type); // Output: System.String
+    ```
+
+    3. **Using the `is` Operator**:
+      - The `is` operator checks if an object is compatible with a given type and returns a Boolean result.
+
+    ```csharp
+    object obj = "Hello";
+    if (obj is string)
     {
-        int intValue = 10;
-        double doubleValue = 10.5;
-        string stringValue = "Hello";
-
-        // Checking data types
-        Console.WriteLine("Data type of intValue: " + intValue.GetType());
-        Console.WriteLine("Data type of doubleValue: " + doubleValue.GetType());
-        Console.WriteLine("Data type of stringValue: " + stringValue.GetType());
+        Console.WriteLine("Object is a string");
     }
-}
+    ```
 
-```
+    4. **Using the `as` Operator**:
+      - The `as` operator performs a safe type conversion or casting and returns `null` if the conversion fails.
+
+    ```csharp
+    object obj = "Hello";
+    string text = obj as string;
+    if (text != null)
+    {
+        Console.WriteLine("Object is successfully converted to string");
+    }
+    ```
+
+    5. **Using Pattern Matching (C# 7 and later)**:
+      - Pattern matching allows you to test the type of an object and extract values from it in a single step.
+
+    ```csharp
+    object obj = "Hello";
+    if (obj is string text)
+    {
+        Console.WriteLine($"Object is a string: {text}");
+    }
+    ```
+
+These are some common ways to check the data type in C#. The choice of method depends on the specific scenario and requirements of your program.
 
 #### variable naming conventions
 
@@ -928,22 +965,73 @@ Both versions of the code will work identically, but using `var` can sometimes m
 
 #### Type Casting - Implicit, Explicit
 
-- Implicit (automatically - converting a smaller type to a larger type size): byte -> short -> int -> long -> float -> double
-  - only supported for numeric values not for character or boolean
-  - no need to write additional codes normally
-- Explicit (manually - converting a larger type to a smaller size type): double -> float -> long -> int -> short -> byte
-  - we need to write additional codes to do explicit type casting. 2 ways : by using cast operator or Convert class
-  - all types can be converted to string using ToString()
+In C#, there are several ways to convert data types. Here are some commonly used methods:
 
-  ```c-sharp
-    double number = 50.5;
-    int number2 = (int) number; // cast operator
-    int number2 = Convert.ToInt32(number);
-    string s = number2.ToString();
-  ```
+1. **Implicit Conversion**: This happens automatically by the compiler when there is no risk of data loss. For example, converting an integer to a double.
 
-- Type Conversion Methods: Use int.Parse() or Convert.ToInt32(). It is also possible to convert data types explicitly by using built-in methods, such as Convert.ToBoolean, Convert.ToDouble, Convert.ToString, Convert.ToInt32 (int) and Convert.ToInt64 (long)
-- `System.Console.WriteLine($"{number2.GetType()}");`
+```csharp
+int numInt = 10;
+double numDouble = numInt; // Implicit conversion
+```
+
+2. **Explicit Conversion (Casting)**: This involves manually converting one type to another using type casting operators. Explicit conversion may result in data loss or exceptions if the data cannot be represented in the target type.
+
+```csharp
+double numDouble = 10.5;
+int numInt = (int)numDouble; // Explicit conversion
+```
+
+3. **Convert Class**: The `Convert` class provides methods to convert base data types to other base data types.
+
+```csharp
+int numInt = 10;
+string numString = Convert.ToString(numInt); // Convert int to string
+```
+
+4. **Parse Methods**: Each primitive data type has a `Parse` method to convert a string representation of that data type to the actual data type.
+
+```csharp
+string numString = "10";
+int numInt = int.Parse(numString); // Parse string to int
+```
+
+5. **TryParse Methods**: Similar to `Parse`, but does not throw an exception on failure. It returns a Boolean indicating success or failure, and the result is stored in an `out` parameter.
+
+```csharp
+string numString = "10";
+int numInt;
+if (int.TryParse(numString, out numInt))
+{
+    // Conversion successful
+}
+else
+{
+    // Conversion failed
+}
+```
+
+6. **User-Defined Conversions**: Custom conversion methods can be defined in classes using explicit or implicit operator overloading.
+
+```csharp
+public class MyClass
+{
+    public int Value { get; set; }
+
+    // Implicit conversion
+    public static implicit operator MyClass(int value)
+    {
+        return new MyClass { Value = value };
+    }
+
+    // Explicit conversion
+    public static explicit operator int(MyClass myClass)
+    {
+        return myClass.Value;
+    }
+}
+```
+
+These are some of the common methods used for data type conversion in C#. Each method has its own use cases and should be chosen based on the specific requirements of the program.
 
 ### 1.6 User Input
 
@@ -962,6 +1050,7 @@ class Test
     string? studentName;
     int studentAge;
     double salary;
+    char bloodGroup;
 
     Console.Write("Enter your name: ");
     studentName = Console.ReadLine();
@@ -972,8 +1061,12 @@ class Test
     Console.Write("Enter your monthly salary: ");
     salary = Convert.ToDouble(Console.ReadLine());
 
+    Console.Write("Enter your blood group: ");
+    bloodGroup = Convert.ToChar(Console.Read());
+
 
     Console.WriteLine("Name: " + studentName);
+    Console.WriteLine("Blood Group: " + bloodGroup);
     Console.WriteLine("Age: " + studentAge + " years old");
     Console.WriteLine($"Welcome {name}. You are {age}. Your salary is ${salary:F2}");
   }
@@ -1517,53 +1610,68 @@ Control statements in C# are used to control the flow of execution in a program.
 
      ```
 
-- shorthand way
+   - **shorthand switch**:
 
-  ```csharp
-      int number = 30;
+    In C#, starting from C# 8.0, you can use switch expressions as a shorthand method for simpler switch statements. Switch expressions allow you to perform pattern matching and return a value based on the matched pattern. Here's the syntax:
 
-    switch (number)
+    ```csharp
+    result = switch (variable)
     {
-      case 100:
-        Console.WriteLine("Number is 100");
-        break;
-      case < 100:
-        Console.WriteLine("Number is less than 100");
-        break;
-      default:
-        Console.WriteLine("default");
-        break;
-    }
-
-    string result = number switch
-    {
-      > 100 => "Number is greater than 100",
-      < 100 => "Number is less than than 100",
-      _ => "Number is 100",
+        pattern1 => expression1,
+        pattern2 => expression2,
+        ...
+        _ => defaultExpression // Optional default case
     };
-    Console.WriteLine(result);
-  ```
+    ```
 
-- switch can also help us to check data types
+    Let's see an example of a switch statement converted to a switch expression:
 
-  ```csharp
-    object number = 30;
+    ```csharp
+    // Switch statement
+    int num = 3;
+    string message;
 
-    switch (number)
+    switch (num)
     {
-      case int:
-        Console.WriteLine("input is int");
-        break;
-      case string:
-        Console.WriteLine("input is string");
-        break;
-      default:
-        Console.WriteLine("default");
-        break;
+        case 1:
+            message = "One";
+            break;
+        case 2:
+            message = "Two";
+            break;
+        default:
+            message = "Other";
+            break;
     }
-  ```
 
-- swicth and type pattern: ype pattern switching was introduced in C# 9.0. Here are some examples
+    Console.WriteLine(message); // Output: Other
+    ```
+
+    Converted to a switch expression:
+
+    ```csharp
+    // Switch expression
+    int num = 3;
+    string message = num switch
+    {
+        1 => "One",
+        2 => "Two",
+        _ => "Other" // Default case
+    };
+
+    Console.WriteLine(message); // Output: Other
+    ```
+
+    In the switch expression:
+
+    - The variable being evaluated (`num` in this case) is followed by the `switch` keyword.
+    - Each case is written using the `=>` operator instead of the `case` keyword.
+    - The `_` underscore pattern represents the default case, similar to the `default` keyword in switch statements.
+    - The result of the matched expression is assigned directly to the `message` variable.
+
+    Switch expressions provide a more concise and expressive way to handle simple switch statements. They are particularly useful when you want to assign a value based on different cases without the need for separate statements for each case.
+
+- swicth and type pattern: type pattern switching was introduced in C# 9.0. Here are some examples
 
 ```csharp
 public static string GetTypeWithoutPattern(object obj)
@@ -1668,25 +1776,70 @@ static void Main(string[] args)
 
 In this example, the switch expression with type patterns provides a cleaner and more readable way to handle different vehicle types compared to the traditional approach without type patterns.
 
-- checking the data type in switch
+- switch and condition together
 
 ```csharp
- object number = 30;
+// switch statement with condition without switch expression
+using System;
 
-    switch (number)
+class Program
+{
+    static void Main()
     {
-      case int inputInt: // if you need additional manipulation with the value rename it
-        inputInt++;
-        Console.WriteLine("input is int");
-        break;
-      case string inputString:
-        Console.WriteLine(inputString.Length);
-        Console.WriteLine("input is string");
-        break;
-      default:
-        Console.WriteLine("default");
-        break;
+        Console.WriteLine("Enter a number between 1 and 10:");
+        if (int.TryParse(Console.ReadLine(), out int number))
+        {
+            switch (number)
+            {
+                case int n when n % 2 == 0:
+                    Console.WriteLine("Even number.");
+                    break;
+                case int n when n % 2 != 0:
+                    Console.WriteLine("Odd number.");
+                    break;
+                default:
+                    Console.WriteLine("Number is out of range.");
+                    break;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Please enter a valid number.");
+        }
     }
+}
+
+
+// switch statement with condition with switch expression
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    Console.WriteLine("Enter a number between 1 to 10: ");
+
+    if (int.TryParse(Console.ReadLine(), out int number))
+    {
+      string result = number switch
+      {
+        int num when num >= 1 && num <= 10 => num % 2 == 0 ? "Even Number" : "Odd Number",
+        _ => "Number is out of Range"
+      };
+      Console.WriteLine($"{result}");
+    }
+    else
+    {
+      Console.WriteLine($"Invalid Input. Please enter a valid number");
+
+    }
+
+    Console.ReadKey();
+  }
+
+}
+
+
+
+
 ```
 
 - switch and method
@@ -2606,6 +2759,54 @@ class Test
 // 5 X 10 = 50
 ```
 
+### Input Validation
+
+```csharp
+public class MyClass
+{
+
+  public static int CalculateSquare(int num)
+  {
+    return num * num;
+  }
+  public static void Main(string[] args)
+  {
+    // User Input -> num:5 (between 1-10); square
+    // User Input - quit -> loop break
+    while (true)
+    {
+      Console.WriteLine($"Enter a number from 1 to 10 or write quit to exit the app");
+
+      string input = Console.ReadLine() ?? "";
+      input = input.ToLower().Trim();
+      if (input == "quit")
+      {
+        Console.WriteLine($"Thanks for using your app. Goodbye!!!");
+        break;
+      }
+
+      if (!int.TryParse(input, out int number))
+      {
+        Console.WriteLine($"Enter a valid input. Please give a number");
+        continue;
+      }
+
+      if (!(number >= 1 && number <= 10))
+      {
+        Console.WriteLine($"Not in a range of 1-10");
+        continue;
+      }
+
+      int square = CalculateSquare(number);
+      Console.WriteLine($"square of {number} = {square}");
+
+    }
+    Console.ReadKey();
+  }
+
+}
+```
+
 ## Basic 4. Methods / function
 
 - use capital letter for Method Name
@@ -2922,30 +3123,268 @@ Lambda expressions provide a concise and expressive way to define inline functio
 
 ## Intermediate 1. OOP
 
+![alt text](image-4.png)
+
 ### Classes and Objects
 
-- class: A template from individual object is created. A class is a custom data type or blueprint. It defines the data and behavior for a type. We can have variables and methods in a class.
+- class: A template from individual object is created. A class is a custom data type or blueprint. It defines the data and behavior for a type. We can have variables/field and methods in a class. we can use dot operator to assign value to a class member.
 
 - object: An object is a instance of a class.
 
-- by default all class member is private. we can use dot operator to assign value to a class member.
+- by default all class member is private.
+
+  ```csharp
+  // version 1
+  class Person{
+    public string name;
+    public int age;
+  }
+  class Test{
+    public static void Main(string[] args){
+      Person p1 = new Person();
+      p1.name="Anisul";
+
+      Person p2 = new Person{name = "Anisul"};
+
+      var s3 = new Person{name = "Anisul"}; // In this example, var s3 declares a variable s3 whose type is inferred to be Person based on the right-hand side of the assignment (new Person { name = "anisul islam" }). This syntax reduces redundancy by eliminating the need to explicitly specify the type of the variable (Person s3).
+    }
+  }
+
+  ```
+
+- introduce method
+
+  ```csharp
+  // version 2
+  class Person
+  {
+    public string name;
+    public int age;
+
+    public void DisplayInfo()
+    {
+      Console.WriteLine($"Name: {name}, Age: {age}");
+
+    }
+  }
+
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      var p1 = new Person();
+      p1.name = "Anisul Islam";
+      p1.age = 34;
+      p1.DisplayInfo();
+
+      Console.ReadKey();
+    }
+
+  }
+
+  // version 3
+  class Person
+
+  {
+    public string name;
+    public int age;
+
+    public void SetInfo(string name, int age)
+    {
+      this.name = name;
+      this.age = age;
+    }
+    public void DisplayInfo()
+    {
+      Console.WriteLine($"Name: {name}, Age: {age}");
+
+    }
+  }
+
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      var p1 = new Person();
+      p1.SetInfo("Anisul Islam", 34);
+      p1.DisplayInfo();
+
+      Console.ReadKey();
+    }
+
+  }
+  ```
+
+### Constructor
+
+- a special public method that has no return type and called automatically when the object is created.
 
 ```csharp
-class Student{
+// version 4
+class Person
+{
   public string name;
   public int age;
-  public static DisplayInfo(){
-    Console.WriteLine();
+
+  public Person(string name, int age)
+  {
+    this.name = name;
+    this.age = age;
   }
-}
-class Test{
-  public static void Main(string[] args){
-    Student s1 = new Student();
-    s1.name="Anisul";
+  public void DisplayInfo()
+  {
+    Console.WriteLine($"Name: {name}, Age: {age}");
+
   }
 }
 
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    var p1 = new Person("Anisul Islam", 34);
+    p1.DisplayInfo();
+
+    Console.ReadKey();
+  }
+
+}
 ```
+
+- types of constructor
+
+  ```csharp
+  Sure, here's a complete code example demonstrating each type of constructor in C#:
+
+  ```csharp
+  using System;
+
+  public class MyClass
+  {
+      // Default constructor
+      public MyClass()
+      {
+          Console.WriteLine("Default constructor called.");
+      }
+
+      // Parameterized constructor
+      public MyClass(string name, int age)
+      {
+          Name = name;
+          Age = age;
+          Console.WriteLine($"Parameterized constructor called with Name: {name}, Age: {age}.");
+      }
+
+      // Copy constructor
+      public MyClass(MyClass other)
+      {
+          Name = other.Name;
+          Age = other.Age;
+          Console.WriteLine($"Copy constructor called with Name: {Name}, Age: {Age}.");
+      }
+
+      // Static data member
+      public static int Count;
+
+      // Static constructor
+      static MyClass()
+      {
+          Count = 0;
+          Console.WriteLine("Static constructor called.");
+      }
+
+      // Private constructor
+      private MyClass(string message)
+      {
+          Console.WriteLine(message);
+      }
+
+      // Properties
+      public string Name { get; set; }
+      public int Age { get; set; }
+
+      // Method to display information
+      public void DisplayInfo()
+      {
+          Console.WriteLine($"Name: {Name}, Age: {Age}");
+      }
+  }
+
+  class Program
+  {
+      static void Main(string[] args)
+      {
+          // Default constructor
+          MyClass obj1 = new MyClass();
+
+          // Parameterized constructor
+          MyClass obj2 = new MyClass("John", 30);
+
+          // Copy constructor
+          MyClass obj3 = new MyClass(obj2);
+
+          // Static constructor
+          Console.WriteLine($"Count: {MyClass.Count}");
+
+          // Private constructor
+          // This line will cause a compile-time error because the constructor is private
+          // MyClass obj4 = new MyClass("Private constructor called.");
+
+          // Accessing properties and method
+          obj2.DisplayInfo();
+      }
+  }
+  ```
+
+This code demonstrates the use of each type of constructor in C#, including default, parameterized, copy, static, and private constructors. Additionally, it includes properties and methods to demonstrate their usage within the class.
+
+#### new: Destructor
+
+In C#, a destructor is a special method in a class that is invoked automatically when an object is about to be destroyed or garbage collected. It is defined using the tilde (~) followed by the class name and doesn't take any parameters. Unlike constructors, destructors cannot be overloaded or explicitly called.
+
+- why do we need destructor?
+  Destructors are useful for releasing unmanaged resources held by an object before it is destroyed. Unmanaged resources are resources such as file handles, network connections, database connections, etc., that are not automatically managed by the garbage collector. By implementing a destructor, you can ensure that these resources are properly released when the object is no longer needed.
+
+Here's an example of a destructor in C#:
+
+```csharp
+using System;
+
+class MyClass
+{
+    ~MyClass()
+    {
+        Console.WriteLine("Destructor called. Object is being destroyed.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Creating an object of MyClass
+        MyClass obj = new MyClass();
+
+        // The destructor will be called automatically when the object is about to be destroyed or garbage collected
+    }
+}
+```
+
+In the above example, the `MyClass` defines a destructor using the `~` operator followed by the class name. The destructor simply writes a message to the console indicating that it is being called.
+
+- Is it good practice?
+
+  While destructors can be useful for managing unmanaged resources, they come with certain limitations and considerations:
+
+  1. **Non-deterministic execution**: The exact time when a destructor is called is not guaranteed. It depends on the garbage collector's algorithm and may not happen immediately when the object goes out of scope. This can make it challenging to predict when resources will be released.
+
+  2. **Performance impact**: Destructors can introduce overhead due to the need for finalization, which can impact performance, especially in high-performance applications.
+
+  3. **IDisposable interface**: In many cases, it's recommended to implement the `IDisposable` interface along with a `Dispose` method for resource cleanup. This provides a more deterministic way to release resources and allows for explicit resource management.
+
+  4. **Finalization queue**: Objects with destructors are put into a finalization queue, which adds additional overhead to garbage collection.
+
+  Given these considerations, it's generally recommended to use the `IDisposable` interface and the `Dispose` pattern for resource cleanup in C#. Destructors should be used sparingly and only when dealing with unmanaged resources that cannot be managed by `Dispose`.
 
 ### OOP 1: Encapsulation
 
@@ -2955,98 +3394,216 @@ class Test{
   - You can control access or modification of the data.
   - You can make the code more flexible and easy to change with new requirements.
   - Change one part of code without affecting other parts of code.
-- Access modifiers: public, private, protected, internal, protected internal. The public access modifier makes the member accessible from the outside of the class. The private access modifier makes members accessible only from within the class and hides them from the outside.
+- Access modifiers: 6 access modifiers are public, private, protected, internal, protected internal, private internal. The public access modifier makes the member accessible from the outside of the class. The private access modifier makes members accessible only from within the class and hides them from the outside.
 
-```csharp
-class Student
-{
-  private string fullName;
-  private int age;
-
-  public void SetFullName(string fName)
+  ```csharp
+  public class MyClass
   {
-    fullName = fName;
+      public int PublicProperty { get; set; } // Accessible everywhere
+
+      private int PrivateField; // Accessible only within the class
+
+      protected int ProtectedField; // Accessible within the class and derived classes
+
+      internal int InternalField; // Accessible within the same assembly
+
+      protected internal int ProtectedInternalField; // Accessible within the same assembly or derived classes
+
+      private protected int PrivateProtectedField; // Accessible within the same assembly or derived classes in the same assembly
   }
 
-  public string GetFullName()
+  ```
+
+  ```csharp
+  // version 5
+  class Person
   {
-    return fullName;
-  }
-  public void SetAge(int age)
-  {
-    this.age = age;
+    private string name;
+    private int age;
+
+    public void SetName(string name)
+    {
+      this.name = name;
+    }
+    public void SetAge(int age)
+    {
+      this.age = age;
+    }
+    public string GetName()
+    {
+      return name;
+    }
+    public int GetAge()
+    {
+      return age;
+    }
   }
 
-  public int GetAge()
+  public class MyClass
   {
-    return age;
+    public static void Main(string[] args)
+    {
+      var p1 = new Person();
+      p1.SetName("Anisul Islam");
+      Console.WriteLine($"{p1.GetName()}");
+
+      Console.ReadKey();
+    }
+
   }
-}
-
-class Test
-{
-  public static void Main(string[] args)
-  {
-    Student s1 = new Student();
-    s1.SetFullName("Anisul Islam");
-    s1.SetAge(33);
-    Console.WriteLine(s1.GetFullName());
-    Console.WriteLine(s1.GetAge());
-  }
-}
-```
-
-### Constructor
-
-- a special public method that has no return type and called automatically when the object is created.
+  ```
 
 ### Properties
 
 - encapsulate members and give access them with Property a public member that will have accessor (get and set accessors)
 
+  ```csharp
+  // version 6
+  class Person
+  {
+    private string name; // field
+    public string Name // property
+    {
+      set { name = value; } // value is a special keyword here
+      get { return name; }
+    }
+
+    // if you do not set
+    public string Name 
+    {
+      set;
+      get;
+    }
+  }
+
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      var p1 = new Person();
+      p1.Name = "Anisul Islam";
+      Console.WriteLine($"{p1.Name}");
+
+      Console.ReadKey();
+    }
+
+  }
+
+
+  // version 7
+  public class Person
+
+    {
+        private string name; // field
+
+        public string Name // property
+        {
+            get { return name; }
+            set
+            {
+                // Condition to check if the provided name is not null or empty
+                if (!string.IsNullOrEmpty(value))
+                {
+                    name = value;
+                }
+                else
+                {
+                    // Handle the case when the provided name is null or empty
+                    Console.WriteLine("Name cannot be null or empty.");
+                }
+            }
+        }
+    }
+  ```
+
+### Exception Handling
+
 ```csharp
-class Student
-{
-  private string name; // field
-  public string Name // property
-  {
-    set { name = value; }
-    get { return name; }
-  }
-}
-
-class Test
-{
-  public static void Main(string[] args)
-  {
-    Student s1 = new Student();
-    s1.Name = "Anisul Islam";
-    Console.WriteLine(s1.Name);
-  }
-}
-
-class Student
-{
-  private string name; // field
-  public string Name // property
-  {
-    set;
-    get;
-  }
-}
-
-
-// shorthand if we are not doing anything with the field
-class Test
-{
-  public static void Main(string[] args)
-  {
-    Student s1 = new Student();
-    s1.Name = "Anisul Islam";
-    Console.WriteLine(s1.Name);
-  }
-}
+  Console.Write("Enter a number: ");
+    int num = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine(num);
 ```
+
+Exception handling in C# allows you to manage runtime errors gracefully by catching and handling exceptional conditions that might occur during program execution. This prevents your program from crashing and provides a mechanism to respond to errors in a controlled manner. Here's an overview of exception handling in C#:
+
+1. **Try-Catch Block**: The basic structure for handling exceptions is the `try-catch` block. Code that might raise an exception is enclosed within the `try` block, and any potential exceptions are caught and handled in the `catch` block.
+
+   ```csharp
+   try
+   {
+       // Code that might throw an exception
+   }
+   catch (ExceptionType ex)
+   {
+       // Handle the exception
+       // ex.Message
+   }
+   ```
+
+2. **Exception Types**: You can catch specific types of exceptions by specifying the exception type in the `catch` block. This allows you to handle different types of exceptions differently.
+
+   ```csharp
+   try
+   {
+       // Code that might throw an exception
+   }
+   catch (DivideByZeroException ex)
+   {
+       // Handle divide by zero exception
+   }
+   catch (ArgumentException ex)
+   {
+       // Handle argument exception
+   }
+   catch (Exception ex) // Catch-all for other exceptions
+   {
+       // Handle other exceptions
+   }
+   ```
+
+3. **Finally Block**: You can optionally include a `finally` block after the `catch` block. Code in the `finally` block is executed whether an exception occurs or not. This block is commonly used for cleanup tasks such as closing resources.
+
+   ```csharp
+   try
+   {
+       // Code that might throw an exception
+   }
+   catch (Exception ex)
+   {
+       // Handle the exception
+   }
+   finally
+   {
+       // Cleanup code
+   }
+   ```
+
+4. **Throwing Exceptions**: You can explicitly throw exceptions using the `throw` keyword. This is useful for indicating errors or exceptional conditions within your code.
+
+   ```csharp
+   if (condition)
+   {
+       throw new Exception("An error occurred.");
+   }
+   ```
+
+5. **Custom Exceptions**: You can define your own exception types by creating classes that derive from `Exception`. This allows you to create custom exception types tailored to your application's needs.
+
+   ```csharp
+   public class CustomException : Exception
+   {
+       public CustomException(string message) : base(message)
+       {
+       }
+   }
+   ```
+
+6. **Exception Handling Best Practices**:
+   - Catch specific exceptions rather than using a generic `catch (Exception ex)` block.
+   - Provide meaningful error messages or log information when handling exceptions.
+   - Use exception handling judiciously and avoid catching exceptions that you cannot handle properly.
+
+Exception handling is a fundamental aspect of robust software development in C#, helping you write more reliable and resilient applications.
 
 ### Array
 
@@ -3074,6 +3631,11 @@ class Test
     {
       Console.WriteLine(name);
     }
+
+    // printing an array as string
+    int[] numbers = {1,2,3,4,5};
+    string arrayString = string.Join(",", numbers);
+    Console.WriteLine($"{arrayString}");
   }
 }
 
@@ -3122,270 +3684,270 @@ class Test
 
 - 2D Array
 
-A 2D array in C# is an array of arrays, meaning it's an array where each element is also an array. This creates a grid-like structure, where elements are accessed using two indices: one for the row and one for the column.
+    A 2D array in C# is an array of arrays, meaning it's an array where each element is also an array. This creates a grid-like structure, where elements are accessed using two indices: one for the row and one for the column.
 
-A few real-life examples of 2D arrays:
+    A few real-life examples of 2D arrays:
 
-1. **Image Representation**: Images can be represented as 2D arrays of pixels. Each element of the array stores information about the color of the corresponding pixel.
+    1. **Image Representation**: Images can be represented as 2D arrays of pixels. Each element of the array stores information about the color of the corresponding pixel.
 
-2. **Game Boards**: In games like Chess, Checkers, or Tic-Tac-Toe, the game board can be represented using a 2D array. Each element of the array represents a square on the board, and the value of the element indicates the state of that square (empty, occupied by a player's piece, etc.).
+    2. **Game Boards**: In games like Chess, Checkers, or Tic-Tac-Toe, the game board can be represented using a 2D array. Each element of the array represents a square on the board, and the value of the element indicates the state of that square (empty, occupied by a player's piece, etc.).
 
-3. **Spreadsheet Data**: Spreadsheets, like Excel, organize data into rows and columns. Each cell in a spreadsheet can be thought of as an element in a 2D array.
+    3. **Spreadsheet Data**: Spreadsheets, like Excel, organize data into rows and columns. Each cell in a spreadsheet can be thought of as an element in a 2D array.
 
-4. **Maps**: Maps in computer graphics or geographical applications are often represented using 2D arrays. Each element of the array corresponds to a location on the map, and the value of the element represents attributes such as elevation, terrain type, or population density.
+    4. **Maps**: Maps in computer graphics or geographical applications are often represented using 2D arrays. Each element of the array corresponds to a location on the map, and the value of the element represents attributes such as elevation, terrain type, or population density.
 
-5. **Matrix Operations**: Matrices in mathematics are commonly represented using 2D arrays. They are used in various applications, including computer graphics, physics simulations, and solving systems of linear equations.
+    5. **Matrix Operations**: Matrices in mathematics are commonly represented using 2D arrays. They are used in various applications, including computer graphics, physics simulations, and solving systems of linear equations.
 
-6. **Seating Arrangements**: In venues like theaters, stadiums, or classrooms, seating arrangements can be represented using a 2D array. Each element represents a seat, and the value indicates whether the seat is occupied or available.
+    6. **Seating Arrangements**: In venues like theaters, stadiums, or classrooms, seating arrangements can be represented using a 2D array. Each element represents a seat, and the value indicates whether the seat is occupied or available.
 
-These are just a few examples of how 2D arrays are used in real-life scenarios. They are versatile data structures that find applications in many fields of computer science and beyond.
+    These are just a few examples of how 2D arrays are used in real-life scenarios. They are versatile data structures that find applications in many fields of computer science and beyond.
 
-Here's how you can declare, initialize, and work with 2D arrays in C#:
+    Here's how you can declare, initialize, and work with 2D arrays in C#:
 
-**Declaration and Initialization:**
+    **Declaration and Initialization:**
 
-```csharp
-// example 1: declare,initialize, print a simple 2D Array
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    int[,] matrix = new int[2, 3];
-    matrix[0, 0] = 1;
-    matrix[0, 1] = 2;
-    matrix[0, 2] = 3;
-
-    matrix[1, 0] = 4;
-    matrix[1, 1] = 5;
-    matrix[1, 2] = 6;
-
-    Console.Write($"{matrix[0, 0]} ");
-    Console.Write($"{matrix[0, 1]} ");
-    Console.Write($"{matrix[0, 2]} ");
-
-    Console.WriteLine();
-    Console.Write($"{matrix[1, 0]} ");
-    Console.Write($"{matrix[1, 1]} ");
-    Console.Write($"{matrix[1, 2]} ");
-
-    Console.ReadKey();
-
-  }
-
-}
-
-// example 2: declare and initailze a simple 2D Array
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
-
-    Console.Write($"{matrix[0, 0]} ");
-    Console.Write($"{matrix[0, 1]} ");
-    Console.Write($"{matrix[0, 2]} ");
-
-    Console.WriteLine();
-    Console.Write($"{matrix[1, 0]} ");
-    Console.Write($"{matrix[1, 1]} ");
-    Console.Write($"{matrix[1, 2]} ");
-
-    Console.ReadKey();
-
-  }
-
-}
-
-// example 3: Iterating Over the Array with loop
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
-
-    for (int row = 0; row < matrix.GetLength(0); row++)
+    ```csharp
+    // example 1: declare,initialize, print a simple 2D Array
+    public class MyClass
     {
-      for (int col = 0; col < matrix.GetLength(1); col++)
+      public static void Main(string[] args)
       {
-        Console.Write($"{matrix[row, col]} ");
+        int[,] matrix = new int[2, 3];
+        matrix[0, 0] = 1;
+        matrix[0, 1] = 2;
+        matrix[0, 2] = 3;
+
+        matrix[1, 0] = 4;
+        matrix[1, 1] = 5;
+        matrix[1, 2] = 6;
+
+        Console.Write($"{matrix[0, 0]} ");
+        Console.Write($"{matrix[0, 1]} ");
+        Console.Write($"{matrix[0, 2]} ");
+
+        Console.WriteLine();
+        Console.Write($"{matrix[1, 0]} ");
+        Console.Write($"{matrix[1, 1]} ");
+        Console.Write($"{matrix[1, 2]} ");
+
+        Console.ReadKey();
+
       }
-      Console.WriteLine();
-    }
-    Console.ReadKey();
-  }
-}
-
-
-**Initializing a Jagged Array (Array of Arrays):**
-
-Alternatively, you can use a jagged array, which is an array of arrays. It provides more flexibility as each row can have a different length.
-
-```csharp
-// 1st version:
-/*
-1 2
-3 4 5
-6 
-8 9 10 11
-*/
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    int[][] jaggedArray = new int[4][];
-
-    jaggedArray[0] = new int[] { 1, 2 };
-    jaggedArray[1] = new int[] { 3, 4, 5 };
-    jaggedArray[2] = new int[] { 6 };
-    jaggedArray[3] = new int[] { 8, 9, 10, 11 };
-
-    for (int row = 0; row < jaggedArray.Length; row++)
-    {
-      for (int col = 0; col < jaggedArray[row].Length; col++)
-      {
-        Console.Write($"{jaggedArray[row][col]} ");
-      }
-      Console.WriteLine();
 
     }
 
-
-    Console.ReadKey();
-  }
-}
-
-// 2nd version: 
-/*
-1 2
-3 4 5
-6 
-8 9 10 11
-*/
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    int[][] jaggedArray = new int[][]
+    // example 2: declare and initailze a simple 2D Array
+    public class MyClass
     {
-      new int[] { 1, 2 },
-      new int[] { 3, 4, 5 },
-      new int[] { 6 },
-      new int[] { 8, 9, 10, 11 }
-    };
-
-    for (int row = 0; row < jaggedArray.Length; row++)
-    {
-      for (int col = 0; col < jaggedArray[row].Length; col++)
+      public static void Main(string[] args)
       {
-        Console.Write($"{jaggedArray[row][col]} ");
+        int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
+
+        Console.Write($"{matrix[0, 0]} ");
+        Console.Write($"{matrix[0, 1]} ");
+        Console.Write($"{matrix[0, 2]} ");
+
+        Console.WriteLine();
+        Console.Write($"{matrix[1, 0]} ");
+        Console.Write($"{matrix[1, 1]} ");
+        Console.Write($"{matrix[1, 2]} ");
+
+        Console.ReadKey();
+
       }
-      Console.WriteLine();
 
     }
 
-
-    Console.ReadKey();
-  }
-}
-
-// 3rd version
-/*
-1 2
-3 4 5
-6 
-8 9 10 11
-*/
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    int[][] jaggedArray = new int[][]
+    // example 3: Iterating Over the Array with loop
+    public class MyClass
     {
-      new int[] { 1, 2 },
-      new int[] { 3, 4, 5 },
-      new int[] { 6 },
-      new int[] { 8, 9, 10, 11 }
-    };
-
-    foreach (var row in jaggedArray)
-    {
-      foreach (var item in row)
+      public static void Main(string[] args)
       {
-        Console.Write($"{item} ");
-      }
-      Console.WriteLine();
+        int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
 
-    }
-
-
-    Console.ReadKey();
-  }
-}
-
-// 4th version
-/*
-1 2
-3 4 5
-6 
-8 9 10 11
-*/
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    int[][] jaggedArray =
-    {
-      new [] { 1, 2 },
-      new [] { 3, 4, 5 },
-      new [] { 6 },
-      new [] { 8, 9, 10, 11 }
-    };
-
-    foreach (var row in jaggedArray)
-    {
-      foreach (var item in row)
-      {
-        Console.Write($"{item} ");
-      }
-      Console.WriteLine();
-
-    }
-
-
-    Console.ReadKey();
-  }
-}
-
-// 5th version
-
-public class MyClass
-{
-    public static void Main(string[] args)
-    {
-        int[][] jaggedArray = new int[4][];
-
-        jaggedArray[0] = new int[] { 1 };
-        jaggedArray[1] = new int[] { 2, 3 };
-        jaggedArray[2] = new int[] { 4, 5, 6 };
-        jaggedArray[3] = new int[] { 7, 8 };
-
-        for (int row = 0; row < jaggedArray.Length; row++)
+        for (int row = 0; row < matrix.GetLength(0); row++)
         {
-            for (int col = 0; col < jaggedArray[row].Length; col++)
-            {
-                Console.Write($"{jaggedArray[row][col]} ");
-            }
-            Console.WriteLine();
+          for (int col = 0; col < matrix.GetLength(1); col++)
+          {
+            Console.Write($"{matrix[row, col]} ");
+          }
+          Console.WriteLine();
         }
         Console.ReadKey();
+      }
     }
-}
-```
 
-**Usage Considerations:**
 
-- Use a 2D array when you need a fixed-size grid with consistent row and column counts.
-- Use a jagged array when you need flexibility in row lengths or when the array elements represent different sizes of data.
+  **Initializing a Jagged Array (Array of Arrays):**
+
+  Alternatively, you can use a jagged array, which is an array of arrays. It provides more flexibility as each row can have a different length.
+
+  ```csharp
+  // 1st version:
+  /*
+  1 2
+  3 4 5
+  6 
+  8 9 10 11
+  */
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      int[][] jaggedArray = new int[4][];
+
+      jaggedArray[0] = new int[] { 1, 2 };
+      jaggedArray[1] = new int[] { 3, 4, 5 };
+      jaggedArray[2] = new int[] { 6 };
+      jaggedArray[3] = new int[] { 8, 9, 10, 11 };
+
+      for (int row = 0; row < jaggedArray.Length; row++)
+      {
+        for (int col = 0; col < jaggedArray[row].Length; col++)
+        {
+          Console.Write($"{jaggedArray[row][col]} ");
+        }
+        Console.WriteLine();
+
+      }
+
+
+      Console.ReadKey();
+    }
+  }
+
+  // 2nd version: 
+  /*
+  1 2
+  3 4 5
+  6 
+  8 9 10 11
+  */
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      int[][] jaggedArray = new int[][]
+      {
+        new int[] { 1, 2 },
+        new int[] { 3, 4, 5 },
+        new int[] { 6 },
+        new int[] { 8, 9, 10, 11 }
+      };
+
+      for (int row = 0; row < jaggedArray.Length; row++)
+      {
+        for (int col = 0; col < jaggedArray[row].Length; col++)
+        {
+          Console.Write($"{jaggedArray[row][col]} ");
+        }
+        Console.WriteLine();
+
+      }
+
+
+      Console.ReadKey();
+    }
+  }
+
+  // 3rd version
+  /*
+  1 2
+  3 4 5
+  6 
+  8 9 10 11
+  */
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      int[][] jaggedArray = new int[][]
+      {
+        new int[] { 1, 2 },
+        new int[] { 3, 4, 5 },
+        new int[] { 6 },
+        new int[] { 8, 9, 10, 11 }
+      };
+
+      foreach (var row in jaggedArray)
+      {
+        foreach (var item in row)
+        {
+          Console.Write($"{item} ");
+        }
+        Console.WriteLine();
+
+      }
+
+
+      Console.ReadKey();
+    }
+  }
+
+  // 4th version
+  /*
+  1 2
+  3 4 5
+  6 
+  8 9 10 11
+  */
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      int[][] jaggedArray =
+      {
+        new [] { 1, 2 },
+        new [] { 3, 4, 5 },
+        new [] { 6 },
+        new [] { 8, 9, 10, 11 }
+      };
+
+      foreach (var row in jaggedArray)
+      {
+        foreach (var item in row)
+        {
+          Console.Write($"{item} ");
+        }
+        Console.WriteLine();
+
+      }
+
+
+      Console.ReadKey();
+    }
+  }
+
+  // 5th version
+
+  public class MyClass
+  {
+      public static void Main(string[] args)
+      {
+          int[][] jaggedArray = new int[4][];
+
+          jaggedArray[0] = new int[] { 1 };
+          jaggedArray[1] = new int[] { 2, 3 };
+          jaggedArray[2] = new int[] { 4, 5, 6 };
+          jaggedArray[3] = new int[] { 7, 8 };
+
+          for (int row = 0; row < jaggedArray.Length; row++)
+          {
+              for (int col = 0; col < jaggedArray[row].Length; col++)
+              {
+                  Console.Write($"{jaggedArray[row][col]} ");
+              }
+              Console.WriteLine();
+          }
+          Console.ReadKey();
+      }
+  }
+  ```
+
+  **Usage Considerations:**
+
+  - Use a 2D array when you need a fixed-size grid with consistent row and column counts.
+  - Use a jagged array when you need flexibility in row lengths or when the array elements represent different sizes of data.
 
 - A challenage collected from Sololearn
 
@@ -3708,97 +4270,205 @@ class Program
 
 This code creates a basic Tic-Tac-Toe game where two players (X and O) take turns placing their marks on a 3x3 grid. The game checks for wins and draws after each move and displays the current state of the board.
 
+### new: params example
 
-### OOP 2: Inheritance
-
-### new: Exception Handling
+The `params` keyword in C# allows you to specify a method parameter that takes a variable number of arguments of the specified type. Here's an example to demonstrate its usage:
 
 ```csharp
-  Console.Write("Enter a number: ");
-    int num = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine(num);
+using System;
+
+public class Program
+{
+    // Method that takes a variable number of integers as arguments
+    public static int Sum(params int[] numbers)
+    {
+        int sum = 0;
+        foreach (int num in numbers)
+        {
+            sum += num;
+        }
+        return sum;
+    }
+
+    public static void Main(string[] args)
+    {
+        // Calling the Sum method with different number of arguments
+        int sum1 = Sum(1, 2, 3);           // Sum of 1, 2, and 3
+        int sum2 = Sum(10, 20, 30, 40);    // Sum of 10, 20, 30, and 40
+        int sum3 = Sum();                  // Sum of no numbers (0)
+
+        // Displaying the results
+        Console.WriteLine("Sum of 1, 2, and 3: " + sum1);
+        Console.WriteLine("Sum of 10, 20, 30, and 40: " + sum2);
+        Console.WriteLine("Sum of no numbers: " + sum3);
+    }
+}
 ```
 
-Exception handling in C# allows you to manage runtime errors gracefully by catching and handling exceptional conditions that might occur during program execution. This prevents your program from crashing and provides a mechanism to respond to errors in a controlled manner. Here's an overview of exception handling in C#:
+In this example:
 
-1. **Try-Catch Block**: The basic structure for handling exceptions is the `try-catch` block. Code that might raise an exception is enclosed within the `try` block, and any potential exceptions are caught and handled in the `catch` block.
+- The `Sum` method is defined with the `params` keyword, allowing it to accept a variable number of integers.
+- Inside the method, the `numbers` parameter behaves like an array, even though you can pass arguments to it directly without explicitly creating an array.
+- You can call the `Sum` method with different numbers of arguments, and the method will calculate the sum of all provided integers.
+- If no arguments are provided, the sum will be zero.
 
-   ```csharp
-   try
-   {
-       // Code that might throw an exception
-   }
-   catch (ExceptionType ex)
-   {
-       // Handle the exception
-       // ex.Message
-   }
-   ```
+Using `params` allows for cleaner and more flexible method calls when the number of arguments can vary.
 
-2. **Exception Types**: You can catch specific types of exceptions by specifying the exception type in the `catch` block. This allows you to handle different types of exceptions differently.
+### String
 
-   ```csharp
-   try
-   {
-       // Code that might throw an exception
-   }
-   catch (DivideByZeroException ex)
-   {
-       // Handle divide by zero exception
-   }
-   catch (ArgumentException ex)
-   {
-       // Handle argument exception
-   }
-   catch (Exception ex) // Catch-all for other exceptions
-   {
-       // Handle other exceptions
-   }
-   ```
+  ```csharp
+  string a = "some text";
+  Console.WriteLine(a.Length);
+  //Outputs 9
 
-3. **Finally Block**: You can optionally include a `finally` block after the `catch` block. Code in the `finally` block is executed whether an exception occurs or not. This block is commonly used for cleanup tasks such as closing resources.
+  Console.WriteLine(a.IndexOf('t'));
+  //Outputs 5
 
-   ```csharp
-   try
-   {
-       // Code that might throw an exception
-   }
-   catch (Exception ex)
-   {
-       // Handle the exception
-   }
-   finally
-   {
-       // Cleanup code
-   }
-   ```
+  a = a.Insert(0, "This is ");
+  Console.WriteLine(a);
+  //Outputs "This is some text"
 
-4. **Throwing Exceptions**: You can explicitly throw exceptions using the `throw` keyword. This is useful for indicating errors or exceptional conditions within your code.
+  a = a.Replace("This is", "I am");
+  Console.WriteLine(a);
+  //Outputs "I am some text"
 
-   ```csharp
-   if (condition)
-   {
-       throw new Exception("An error occurred.");
-   }
-   ```
+  if(a.Contains("some"))
+    Console.WriteLine("found");
+  //Outputs "found"
 
-5. **Custom Exceptions**: You can define your own exception types by creating classes that derive from `Exception`. This allows you to create custom exception types tailored to your application's needs.
+  a = a.Remove(4);
+  Console.WriteLine(a);
+  //Outputs "I am"
 
-   ```csharp
-   public class CustomException : Exception
-   {
-       public CustomException(string message) : base(message)
-       {
-       }
-   }
-   ```
+  a = a.Substring(2);
+  Console.WriteLine(a);
+  //Outputs "am"
+  ```
 
-6. **Exception Handling Best Practices**:
-   - Catch specific exceptions rather than using a generic `catch (Exception ex)` block.
-   - Provide meaningful error messages or log information when handling exceptions.
-   - Use exception handling judiciously and avoid catching exceptions that you cannot handle properly.
+- password checking program
 
-Exception handling is a fundamental aspect of robust software development in C#, helping you write more reliable and resilient applications.
+```csharp
+namespace SoloLearn
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string password = Console.ReadLine();
+            char[] notAllowedSymbols = { '!', '#', '$', '%', '&', '(', ')', '*', ',', '+', '-' };
+
+            //your code goes here
+            foreach(var item in notAllowedSymbols){
+                if(password.Contains(item)){
+                    Console.WriteLine("Invalid");
+                    break;
+                }
+            }
+            
+        }
+    }
+}
+```
+
+- string method and properties
+
+  To reverse a string in C#, you can use the `Reverse` method from the `System.Linq` namespace along with `string.Concat` to concatenate the characters in reverse order. Here's how you can do it:
+
+  ```csharp
+  using System;
+  using System.Linq;
+
+  class Program
+  {
+      static void Main()
+      {
+          string str = "Hello, world!";
+          string reversedStr = new string(str.Reverse().ToArray());
+
+          Console.WriteLine("Original string: " + str);
+          Console.WriteLine("Reversed string: " + reversedStr);
+      }
+  }
+  ```
+
+  Output:
+
+  ```
+  Original string: Hello, world!
+  Reversed string: !dlrow ,olleH
+  ```
+
+  Some useful string methods in C# include:
+
+  1. `ToUpper()` and `ToLower()`: Convert a string to upper or lower case.
+  2. `Trim()`: Remove leading and trailing whitespace from a string.
+  3. `Substring(int startIndex)`: Extracts a substring from a string, starting at the specified index.
+  4. `Contains(string value)`: Checks if a string contains a specific substring.
+  5. `Replace(string oldValue, string newValue)`: Replaces all occurrences of a specified substring with another substring.
+  6. `Split(char[] separator)`: Splits a string into substrings based on the characters in an array.
+  7. `IndexOf(char value)`: Returns the zero-based index of the first occurrence of the specified character in the string.
+
+  These are just a few examples of the many methods available for working with strings in C#.
+
+- **string assignment**
+
+Below is a C# code that counts the number of vowels, consonants, digits, special characters, white spaces, and words in a given string:
+
+```csharp
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        string input = "Hello 123 World!";
+
+        // Count vowels, consonants, digits, special characters, white spaces, and words
+        int vowelCount = input.Count(c => "aeiouAEIOU".Contains(c));
+        int consonantCount = input.Count(c => char.IsLetter(c) && !"aeiouAEIOU".Contains(c));
+        int digitCount = input.Count(char.IsDigit);
+        int specialCharCount = input.Count(c => !char.IsLetterOrDigit(c) && !char.IsWhiteSpace(c));
+        int whiteSpaceCount = input.Count(char.IsWhiteSpace);
+        int wordCount = input.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries).Length;
+
+        // Output the counts
+        Console.WriteLine($"Number of vowels: {vowelCount}");
+        Console.WriteLine($"Number of consonants: {consonantCount}");
+        Console.WriteLine($"Number of digits: {digitCount}");
+        Console.WriteLine($"Number of special characters: {specialCharCount}");
+        Console.WriteLine($"Number of white spaces: {whiteSpaceCount}");
+        Console.WriteLine($"Number of words: {wordCount}");
+    }
+}
+```
+
+This code initializes a string `input` and then calculates the counts of vowels, consonants, digits, special characters, white spaces, and words using LINQ queries and string manipulation methods.
+
+Here's a brief explanation of each part of the code:
+
+1. **Count Vowels**:
+   - Uses `Count` method with a lambda expression to count characters that are vowels (both lowercase and uppercase).
+
+2. **Count Consonants**:
+   - Uses `Count` method with a lambda expression to count characters that are consonants (letters excluding vowels).
+
+3. **Count Digits**:
+   - Uses `Count` method with `char.IsDigit` predicate to count digits.
+
+4. **Count Special Characters**:
+   - Uses `Count` method with a lambda expression to count characters that are neither letters nor digits.
+
+5. **Count White Spaces**:
+   - Uses `Count` method with `char.IsWhiteSpace` predicate to count white space characters.
+
+6. **Count Words**:
+   - Splits the input string into words using `Split` method and then removes empty entries with `StringSplitOptions.RemoveEmptyEntries`.
+   - Uses `Length` property to count the number of words.
+
+Finally, it prints out the counts for each category.
+
+### OOP 2: Inheritance
 
 ## Intermediate 2. aaa
 
@@ -3819,37 +4489,6 @@ public class MyClass
   }
 
 }
-```
-
-## new: String
-
-```csharp
-string a = "some text";
-Console.WriteLine(a.Length);
-//Outputs 9
-
-Console.WriteLine(a.IndexOf('t'));
-//Outputs 5
-
- a = a.Insert(0, "This is ");
-Console.WriteLine(a);
-//Outputs "This is some text"
-
-a = a.Replace("This is", "I am");
-Console.WriteLine(a);
-//Outputs "I am some text"
-
-if(a.Contains("some"))
-  Console.WriteLine("found");
-//Outputs "found"
-
-a = a.Remove(4);
-Console.WriteLine(a);
-//Outputs "I am"
-
-a = a.Substring(2);
-Console.WriteLine(a);
-//Outputs "am"
 ```
 
 ## new: Array vs List
@@ -3973,47 +4612,3 @@ Here are examples of common list operations in C# using the `List<T>` class:
     ```
 
 These are just some of the common operations that can be performed with lists in C#. The `List<T>` class provides many more methods and properties for various list manipulations and operations.
-
-## new: params example
-
-The `params` keyword in C# allows you to specify a method parameter that takes a variable number of arguments of the specified type. Here's an example to demonstrate its usage:
-
-```csharp
-using System;
-
-public class Program
-{
-    // Method that takes a variable number of integers as arguments
-    public static int Sum(params int[] numbers)
-    {
-        int sum = 0;
-        foreach (int num in numbers)
-        {
-            sum += num;
-        }
-        return sum;
-    }
-
-    public static void Main(string[] args)
-    {
-        // Calling the Sum method with different number of arguments
-        int sum1 = Sum(1, 2, 3);           // Sum of 1, 2, and 3
-        int sum2 = Sum(10, 20, 30, 40);    // Sum of 10, 20, 30, and 40
-        int sum3 = Sum();                  // Sum of no numbers (0)
-
-        // Displaying the results
-        Console.WriteLine("Sum of 1, 2, and 3: " + sum1);
-        Console.WriteLine("Sum of 10, 20, 30, and 40: " + sum2);
-        Console.WriteLine("Sum of no numbers: " + sum3);
-    }
-}
-```
-
-In this example:
-
-- The `Sum` method is defined with the `params` keyword, allowing it to accept a variable number of integers.
-- Inside the method, the `numbers` parameter behaves like an array, even though you can pass arguments to it directly without explicitly creating an array.
-- You can call the `Sum` method with different numbers of arguments, and the method will calculate the sum of all provided integers.
-- If no arguments are provided, the sum will be zero.
-
-Using `params` allows for cleaner and more flexible method calls when the number of arguments can vary.
