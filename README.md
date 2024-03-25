@@ -4791,6 +4791,64 @@ In this example:
 
 #### new: shallow copy vs deep copy
 
+- Shallow copy vs deep copy is more relevant when dealing with complex data structure such as objects, arrays, lists etc
+- A shallow copy creates a new object and then insert references to the original object elements. so changes made in the shallow copy affect the original object. In contrast, a deep copy creates a completely new object with copies of the original object's elements. changes made in a deep copy do not affect the original one.
+
+```csharp
+
+public class Test
+{
+  public static void Main(string[] args)
+  {
+
+    // swallow copy example - share the same reference so changing in one place will change others & will affect the original
+    int[] originalArray = { 1, 2, 3, 4, 5 };
+    int[] swallowCopy = originalArray;
+
+    Console.WriteLine($"Original Array before modification: ");
+    PrintArray(originalArray);
+
+    Console.WriteLine($"Swallow Copy before modification: ");
+    PrintArray(swallowCopy);
+
+    swallowCopy[0] = 10;
+    Console.WriteLine($"Original Array after modification: ");
+    PrintArray(originalArray);
+
+    Console.WriteLine($"Swallow Copy after modification: ");
+    PrintArray(swallowCopy);
+
+    // deep copy example
+    int[] originalArray2 = { 1, 2, 3, 4, 5 };
+    int[] deepCopy = new int[originalArray.Length];
+    Array.Copy(originalArray2, deepCopy, originalArray2.Length);
+
+    Console.WriteLine($"Original Array2 before modification: ");
+    PrintArray(originalArray2);
+
+    Console.WriteLine($"deep Copy before modification: ");
+    PrintArray(deepCopy);
+
+    deepCopy[0] = 10;
+    Console.WriteLine($"Original Array2 after modification: ");
+    PrintArray(originalArray2);
+
+    Console.WriteLine($"deep Copy after modification: ");
+    PrintArray(swallowCopy);
+  }
+
+  public static void PrintArray(int[] numbers)
+  {
+    foreach (var item in numbers)
+    {
+      Console.Write($"{item} ");
+    }
+    Console.WriteLine();
+  }
+}
+
+```
+
 #### new: Indexer
 
 In C#, an indexer allows instances of a class or struct to be indexed just like arrays. It enables objects to be accessed using square bracket notation [], similar to how elements of an array are accessed. Indexers are typically used to provide a more natural and convenient way to access elements of a collection or container-like object. It can make the searching process much faster.
@@ -5475,3 +5533,7 @@ class Program
 ```
 
 In this example, `OrderByDescending` is used instead of `OrderBy` to sort the `names` list in descending order. The names are then printed in descending order, demonstrating the reverse ordering.
+
+## Collections
+
+- https://www.codecademy.com/learn/learn-c-sharp/modules/learn-csharp-lists-and-linq/cheatsheet 
