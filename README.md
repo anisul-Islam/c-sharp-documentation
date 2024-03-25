@@ -5926,6 +5926,169 @@ class Program
 
 In this example, `OrderByDescending` is used instead of `OrderBy` to sort the `names` list in descending order. The names are then printed in descending order, demonstrating the reverse ordering.
 
+## new: LINQ operations
+
+### 1. Filtering with `Where`
+
+The `Where` method is used to filter elements from a sequence based on a specified condition. In the example below, `numbers.Where(n => n % 2 == 0)` filters the `numbers` array to select only the even numbers. The lambda expression `n => n % 2 == 0` specifies the condition for filtering, where only elements that satisfy the condition (i.e., divisible by 2 with remainder 0) are included in the result.
+
+```csharp
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+        var evenNumbers = numbers.Where(n => n % 2 == 0);
+
+        foreach (var number in evenNumbers)
+        {
+            Console.WriteLine(number);
+        }
+    }
+}
+```
+
+### 2. Projection with `Select`
+
+The `Select` method is used to transform each element of a sequence into a new form. In the example below, `fruits.Select(fruit => fruit.ToUpper())` transforms each fruit in the `fruits` array to uppercase using the `ToUpper` method. The lambda expression `fruit => fruit.ToUpper()` defines the transformation to be applied to each element.
+
+```csharp
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string[] fruits = { "apple", "banana", "orange", "kiwi", "grape" };
+
+        var upperCaseFruits = fruits.Select(fruit => fruit.ToUpper());
+
+        foreach (var fruit in upperCaseFruits)
+        {
+            Console.WriteLine(fruit);
+        }
+    }
+}
+```
+
+### 3. Ordering with `OrderBy`
+
+The `OrderBy` method is used to sort the elements of a sequence in ascending order based on a specified key. In the example below, `fruits.OrderBy(fruit => fruit.Length)` sorts the `fruits` array based on the length of each fruit's name. The lambda expression `fruit => fruit.Length` specifies the key by which to perform the sorting, where fruits are sorted by their lengths in ascending order.
+
+```csharp
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string[] fruits = { "apple", "banana", "orange", "kiwi", "grape" };
+
+        var sortedFruits = fruits.OrderBy(fruit => fruit.Length);
+
+        foreach (var fruit in sortedFruits)
+        {
+            Console.WriteLine(fruit);
+        }
+    }
+}
+```
+
+### 4. Aggregation with `Sum`, `Count`, `Average`
+
+Aggregation in the context of LINQ refers to operations that compute a single value from a collection of elements. These operations summarize or combine multiple elements into a single result. Common aggregation operations include calculating the sum, count, average, minimum, and maximum values of the elements in a collection.
+
+Here are some common aggregation methods in LINQ:
+
+1. **Sum**: Computes the sum of all elements in a collection.
+2. **Count**: Counts the number of elements in a collection.
+3. **Average**: Computes the average of all elements in a collection.
+4. **Min**: Finds the minimum value in a collection.
+5. **Max**: Finds the maximum value in a collection.
+
+Aggregation operations are useful for deriving meaningful information from data sets. For example, you might use aggregation to calculate the total sales revenue, the average temperature, or the highest score in a list of scores.
+
+In LINQ, aggregation methods are typically called on sequences of elements, such as arrays, lists, or query results. They return a single value that represents the result of the aggregation operation applied to the elements in the sequence.
+
+- `Sum`: Calculates the sum of all elements in a sequence.
+- `Count`: Counts the number of elements in a sequence.
+- `Average`: Calculates the average of all elements in a sequence.
+
+In the example below, `numbers.Sum()`, `numbers.Count()`, and `numbers.Average()` calculate the sum, count, and average of the elements in the `numbers` array, respectively.
+
+```csharp
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] numbers = { 1, 2, 3, 4, 5 };
+
+        int sum = numbers.Sum();
+        int count = numbers.Count();
+        double average = numbers.Average();
+
+        Console.WriteLine($"Sum: {sum}");
+        Console.WriteLine($"Count: {count}");
+        Console.WriteLine($"Average: {average}");
+    }
+}
+```
+
+These LINQ operations provide a concise and expressive way to query and manipulate data in C#, enhancing readability and maintainability of the code.
+
+## new LINQ Expressions
+
+LINQ (Language Integrated Query) expressions provide a concise and readable syntax for querying and manipulating data in C#. Here's a simple example demonstrating LINQ expressions:
+
+Suppose we have a list of integers, and we want to filter out the even numbers, double each number, and then select only the numbers that are greater than 10.
+
+```csharp
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+        var result = from num in numbers
+                     where num % 2 == 0 // Filter out even numbers
+                     select num * 2;    // Double each number
+
+        // Output the result
+        foreach (var num in result)
+        {
+            if (num > 10)
+            {
+                Console.WriteLine(num);
+            }
+        }
+    }
+}
+```
+
+In this example:
+
+- We have a list of integers named `numbers`.
+- We use a LINQ query expression to:
+  - `from num in numbers`: Iterate over each number in the `numbers` list.
+  - `where num % 2 == 0`: Filter out even numbers.
+  - `select num * 2`: Double each number.
+- We then iterate over the result using a `foreach` loop and output numbers that are greater than 10.
+
+This example demonstrates the use of LINQ query expressions to perform filtering, projection, and selection operations in a concise and readable manner. LINQ expressions provide a powerful way to work with data in C#.
+
 ## Collections
 
 - https://www.codecademy.com/learn/learn-c-sharp/modules/learn-csharp-lists-and-linq/cheatsheet 
