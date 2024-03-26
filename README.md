@@ -4748,37 +4748,30 @@ In C#, `this` and `readonly` serve different purposes:
 
 2. **`readonly` Keyword**:
    - `readonly` is a modifier that can be applied to fields in C#.
-   - It indicates that the field can only be assigned a value once, either during initialization or in a constructor, and cannot be modified thereafter.
+   - **It indicates that the field can only be assigned a value once, either during initialization or in a constructor, and cannot be modified thereafter. 2 ways to assign value for a readonly field - decalartion + constructor**
    - `readonly` fields can be initialized at the time of declaration or within the constructor of the class.
    - They provide a way to create immutable fields whose values cannot be changed after initialization.
 
 Here's an example demonstrating the use of `this` keyword and `readonly` fields in a class:
 
 ```csharp
-using System;
-
-class MyClass
+public class Student
 {
-    private readonly int readonlyField; // readonly field
+  public readonly int age;
 
-    public MyClass(int value)
-    {
-        this.readonlyField = value; // assigning value using 'this'
-    }
-
-    public void PrintFieldValue()
-    {
-        Console.WriteLine($"Value of readonlyField: {this.readonlyField}"); // accessing readonly field using 'this'
-    }
+  public Student(int age)
+  {
+    this.age = age;
+  }
 }
-
-class Program
+public class MyClass
 {
-    static void Main()
-    {
-        MyClass obj = new MyClass(100);
-        obj.PrintFieldValue();
-    }
+  public static void Main(string[] args)
+  {
+    Student s1 = new Student(30);
+    Console.WriteLine($"{s1.age}");
+
+  }
 }
 ```
 
@@ -4789,7 +4782,9 @@ In this example:
 - The `PrintFieldValue` method accesses the `readonlyField` using `this`.
 - Once initialized, the value of `readonlyField` cannot be changed due to the `readonly` modifier.
 
-#### new: shallow copy vs deep copy
+## new: shallow copy vs deep copy
+
+[shallow copy and deep copy](image-6.png)
 
 - Shallow copy vs deep copy is more relevant when dealing with complex data structure such as objects, arrays, lists etc
 - A shallow copy creates a new object and then insert references to the original object elements. so changes made in the shallow copy affect the original object. In contrast, a deep copy creates a completely new object with copies of the original object's elements. changes made in a deep copy do not affect the original one.
@@ -5928,53 +5923,271 @@ In this example, `OrderByDescending` is used instead of `OrderBy` to sort the `n
 
 ## new: LINQ operations
 
-### 1. Filtering with `Where`
+### 1. Filtering with `Where` Operator
 
-The `Where` method is used to filter elements from a sequence based on a specified condition. In the example below, `numbers.Where(n => n % 2 == 0)` filters the `numbers` array to select only the even numbers. The lambda expression `n => n % 2 == 0` specifies the condition for filtering, where only elements that satisfy the condition (i.e., divisible by 2 with remainder 0) are included in the result.
+**The `Where` method is used to filter elements from a sequence based on a specified condition.** It returns a sequences of character or empty sequence which is iterable. In the example below, `numbers.Where(n => n % 2 == 0)` filters the `numbers` array to select only the even numbers. The lambda expression `n => n % 2 == 0` specifies the condition for filtering, where only elements that satisfy the condition (i.e., divisible by 2 with remainder 0) are included in the result.
 
-```csharp
-using System;
-using System.Linq;
+- Example 1: Filtering numbers with Where
 
-class Program
-{
-    static void Main(string[] args)
+  ```csharp
+  using System;
+  using System.Linq;
+
+  class Program
+  {
+      static void Main(string[] args)
+      {
+          int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+          var evenNumbers = numbers.Where(n => n % 2 == 0); // returns a sequences of character or empty sequence
+
+          // Check if there are any even numbers
+          if (evenNumbers.Any())
+          {
+              // Output the count of even numbers
+              Console.WriteLine("Count of even numbers: " + evenNumbers.Count());
+
+              // Output the elements in the evenNumbers sequence
+              Console.WriteLine("Even numbers:");
+              foreach (var num in evenNumbers)
+              {
+                  Console.WriteLine(num);
+              }
+          }
+          else
+          {
+              Console.WriteLine("No even numbers found.");
+          }
+      }
+  }
+  ```
+
+- Example 2: Filtering words by length
+
+  ```csharp
+  public class MyClass
+  {
+    public static void Main(string[] args)
     {
-        int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+      List<int> numbers = new List<int> { 1, 2, 3, 5, 7 };
+      List<string> words = new List<string> { "apple", "orange", "banana", "kiwi" };
+      var longWords = words.Where(word => word.Length > 4);
 
-        var evenNumbers = numbers.Where(n => n % 2 == 0);
+      Console.WriteLine($"Count of longWords: " + longWords.Count());
 
-        foreach (var number in evenNumbers)
+      if (longWords.Any())
+      {
+        Console.WriteLine($"Long words: ");
+        foreach (var item in longWords)
         {
-            Console.WriteLine(number);
+          Console.Write($"{item} ");
         }
+        Console.WriteLine();
+
+      }
+      else
+      {
+        Console.WriteLine($"No longWords found");
+      }
+
     }
-}
-```
+  }
 
-### 2. Projection with `Select`
+  // Filteration with Where
+  ```
 
-The `Select` method is used to transform each element of a sequence into a new form. In the example below, `fruits.Select(fruit => fruit.ToUpper())` transforms each fruit in the `fruits` array to uppercase using the `ToUpper` method. The lambda expression `fruit => fruit.ToUpper()` defines the transformation to be applied to each element.
+- Example 3: Filtering Objects with Where
 
-```csharp
-using System;
-using System.Linq;
+  ```csharp
+  class Student
+  {
+    public string? Name { get; set; }
+    public int Score { get; set; }
+  }
 
-class Program
-{
-    static void Main(string[] args)
+  public class MyClass
+  {
+    public static void Main(string[] args)
     {
-        string[] fruits = { "apple", "banana", "orange", "kiwi", "grape" };
 
-        var upperCaseFruits = fruits.Select(fruit => fruit.ToUpper());
+      List<Student> students = new List<Student>
+      {
+        new Student {Name = "Alice", Score = 75},
+        new Student {Name = "Bob", Score = 95},
+        new Student {Name = "Marley", Score = 80},
+        new Student {Name = "Anisul", Score = 90},
+        new Student {Name = "Alia", Score = 65},
+      };
+      var studentsWithScoreMoreThan80 = students.Where(student => student.Score > 80);
 
-        foreach (var fruit in upperCaseFruits)
+      Console.WriteLine($"Count of studentsWithScoreMoreThan80: " + studentsWithScoreMoreThan80.Count());
+
+      if (studentsWithScoreMoreThan80.Any())
+      {
+        Console.WriteLine($"studentsWithScoreMoreThan80: ");
+        foreach (var item in studentsWithScoreMoreThan80)
         {
-            Console.WriteLine(fruit);
+          Console.WriteLine($"{item.Name} {item.Score} ");
         }
+        Console.WriteLine();
+      }
+      else
+      {
+        Console.WriteLine($"No studentsWithScoreMoreThan80 found");
+      }
+
     }
-}
-```
+  }
+
+  // Filteration with Where
+  ```
+
+### 2. Projection with `Select` and `SelectMany` Operator
+
+**The `Select` method is used to transform each element of a sequence into a new form.** **SelectMany Operator flatten all collections into one**
+
+- example 1: Select and SelectMany Operator
+
+  ```csharp
+  using System;
+  using System.Linq;
+
+  class Program
+  {
+      static void Main(string[] args)
+      {
+          int[] numbers = { 1, 2, 3, 4, 5 };
+
+          // Use the Select operator to square each number
+          var squaredNumbers = numbers.Select(num => num * num);
+
+          // Output the squared numbers
+          foreach (var squaredNum in squaredNumbers)
+          {
+              Console.WriteLine(squaredNum);
+          }
+      }
+  }
+  ```
+
+  ```csharp
+  // SelectMany
+  public class MyClass
+
+  {
+    public static void Main(string[] args)
+    {
+
+      List<List<int>> nestedLists = new List<List<int>>
+      {
+        new List<int> {1,2,3},
+        new List<int> {4,5},
+        new List<int> {6,7,8},
+        new List<int> {9},
+      };
+
+      var flattedList = nestedLists.SelectMany(list => list);
+
+      foreach (var item in flattedList)
+      {
+        Console.Write($"{item} ");
+      }
+
+    }
+  }
+
+  // LINQ: Projection with Select and SelectMany Operator
+  ```
+
+- example 2: Selecting strings and converting to uppercase. In the example below, `fruits.Select(fruit => fruit.ToUpper())` transforms each fruit in the `fruits` array to uppercase using the `ToUpper` method. The lambda expression `fruit => fruit.ToUpper()` defines the transformation to be applied to each element.
+
+  ```csharp
+  using System;
+  using System.Linq;
+
+  class Program
+  {
+      static void Main(string[] args)
+      {
+          string[] fruits = { "apple", "banana", "orange", "kiwi", "grape" };
+
+          var upperCaseFruits = fruits.Select(fruit => fruit.ToUpper());
+
+          foreach (var fruit in upperCaseFruits)
+          {
+              Console.WriteLine(fruit);
+          }
+      }
+  }
+  ```
+
+- example 3: Selecting Properties from Objects
+
+  ```csharp
+  public class Person
+  {
+    public string? Name { get; set; }
+    public int Age { get; set; }
+
+  }
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+
+      List<Person> people = new List<Person>
+    {
+      new Person {Name = "Anisul", Age = 34},
+      new Person {Name = "Bob", Age = 33},
+      new Person {Name = "Nusrat Jahan", Age = 21},
+    };
+
+      var names = people.Select(person => person.Name);
+      foreach (var item in names)
+      {
+        Console.Write($"{item} ");
+
+      }
+    }
+  }
+
+  // LINQ: Projection with Select and SelectMany Operator
+  ```
+
+- example 4: Selecting Multiple Properties from Objects
+
+  ```csharp
+    public class Person
+
+    {
+      public string? Name { get; set; }
+      public int Age { get; set; }
+      public string? BloodGroup { get; set; }
+
+    }
+    public class MyClass
+    {
+      public static void Main(string[] args)
+      {
+
+        List<Person> people = new List<Person>
+      {
+        new Person {Name = "Anisul", Age = 34, BloodGroup = "A+"},
+        new Person {Name = "Bob", Age = 33, BloodGroup = "B+"},
+        new Person {Name = "Nusrat Jahan", Age = 21, BloodGroup = "B-"},
+      };
+
+        var names = people.Select(person => (person.Name, person.BloodGroup));
+        foreach (var item in names)
+        {
+          Console.WriteLine($"{item.Name} {item.BloodGroup} ");
+
+        }
+      }
+    }
+
+    // LINQ: Projection with Select and SelectMany Operator
+  ```
 
 ### 3. Ordering with `OrderBy`
 
@@ -6088,6 +6301,45 @@ In this example:
 - We then iterate over the result using a `foreach` loop and output numbers that are greater than 10.
 
 This example demonstrates the use of LINQ query expressions to perform filtering, projection, and selection operations in a concise and readable manner. LINQ expressions provide a powerful way to work with data in C#.
+
+- Another example
+here's another example using LINQ to filter a list of strings based on a condition and then project the result:
+
+```csharp
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<string> fruits = new List<string> { "apple", "banana", "orange", "kiwi", "grape" };
+
+        // LINQ query to filter fruits starting with 'a' and project the result to uppercase
+        var result = from fruit in fruits
+                     where fruit.StartsWith("a", StringComparison.OrdinalIgnoreCase) // Case-insensitive check for fruits starting with 'a'
+                     select fruit.ToUpper(); // Project to uppercase
+
+        // Output the result
+        foreach (var fruit in result)
+        {
+            Console.WriteLine(fruit);
+        }
+    }
+}
+```
+
+In this example:
+
+- We have a list of strings named `fruits`.
+- We use a LINQ query expression to:
+  - `from fruit in fruits`: Iterate over each fruit in the `fruits` list.
+  - `where fruit.StartsWith("a", StringComparison.OrdinalIgnoreCase)`: Filter fruits that start with 'a', case-insensitively.
+  - `select fruit.ToUpper()`: Project each filtered fruit to uppercase.
+- We then iterate over the result using a `foreach` loop and output the filtered and projected fruits.
+
+This example showcases how LINQ query expressions can be used for filtering and projection operations in a succinct and readable manner.
 
 ## Collections
 
