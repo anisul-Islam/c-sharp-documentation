@@ -6638,6 +6638,76 @@ Console.WriteLine(string.Join(", ", takenWhileNumbers));
 // Taken while numbers: 1, 2, 3, 4, 5
 ```
 
+- pagination example
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    // Other properties...
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Sample list of products
+        List<Product> products = GetSampleProducts();
+
+        // Pagination parameters
+        int pageSize = 5;
+        int pageNumber = 1; // Display first page
+
+        // Retrieve products for the specified page
+        var productsForPage = GetProductsForPage(products, pageNumber, pageSize);
+
+        // Display products for the page
+        Console.WriteLine($"Page {pageNumber}:");
+        foreach (var product in productsForPage)
+        {
+            Console.WriteLine($"{product.Id}: {product.Name} - ${product.Price}");
+        }
+    }
+
+    static List<Product> GetSampleProducts()
+    {
+        // Sample list of products
+        return new List<Product>
+        {
+            new Product { Id = 1, Name = "Laptop", Price = 999.99m },
+            new Product { Id = 2, Name = "Smartphone", Price = 599.99m },
+            new Product { Id = 3, Name = "Headphones", Price = 99.99m },
+            new Product { Id = 4, Name = "Tablet", Price = 299.99m },
+            new Product { Id = 5, Name = "Smartwatch", Price = 199.99m },
+            new Product { Id = 6, Name = "Camera", Price = 499.99m },
+            new Product { Id = 7, Name = "Printer", Price = 199.99m },
+            new Product { Id = 8, Name = "Monitor", Price = 299.99m },
+            new Product { Id = 9, Name = "Keyboard", Price = 49.99m },
+            new Product { Id = 10, Name = "Mouse", Price = 29.99m },
+            new Product { Id = 11, Name = "Speakers", Price = 79.99m },
+            // Add more products...
+        };
+    }
+
+    static IEnumerable<Product> GetProductsForPage(List<Product> products, int pageNumber, int pageSize)
+    {
+        // Calculate the number of items to skip
+        int itemsToSkip = (pageNumber - 1) * pageSize;
+
+        // Retrieve products for the specified page
+        return products.Skip(itemsToSkip).Take(pageSize);
+    }
+}
+
+```
+
+
 ## Asynchronous Programming
 
 - Asynchronous programming in C# allows you to execute tasks concurrently, enabling more efficient use of system resources and improving responsiveness in applications. Asynchronous programming is especially useful when dealing with I/O-bound operations such as reading from files, making network requests, or accessing databases, where waiting for the operation to complete would cause blocking.
