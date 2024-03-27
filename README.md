@@ -6610,6 +6610,34 @@ foreach (var item in result)
 
 In this example, if the `condition` is false, `Enumerable.Empty<int>()` provides an empty sequence, otherwise, `Enumerable.Range(1, 10)` generates a sequence of integers from 1 to 10. This is useful for handling scenarios where an empty sequence is expected as a result.
 
+### 7. Partitioning with `Skip`, `Take`, `SkipWhile`, `TakeWhile`
+
+```csharp
+var numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+var skippedNumbers = numbers.Skip(3); // Skip the first 3 elements
+var takenNumbers = numbers.Take(5); // Take the first 5 elements
+var skippedWhileNumbers = numbers.SkipWhile(num => num < 5); // Skip elements until the condition is false
+var takenWhileNumbers = numbers.TakeWhile(num => num < 6); // Take elements while the condition is true
+
+Console.WriteLine("Skipped numbers:");
+Console.WriteLine(string.Join(", ", skippedNumbers));
+
+Console.WriteLine("Taken numbers:");
+Console.WriteLine(string.Join(", ", takenNumbers));
+
+Console.WriteLine("Skipped while numbers:");
+Console.WriteLine(string.Join(", ", skippedWhileNumbers));
+
+Console.WriteLine("Taken while numbers:");
+Console.WriteLine(string.Join(", ", takenWhileNumbers));
+
+// Skipped numbers: 4, 5, 6, 7, 8, 9, 10
+// Taken numbers: 1, 2, 3, 4, 5
+// Skipped while numbers: 5, 6, 7, 8, 9, 10
+// Taken while numbers: 1, 2, 3, 4, 5
+```
+
 ## Asynchronous Programming
 
 - Asynchronous programming in C# allows you to execute tasks concurrently, enabling more efficient use of system resources and improving responsiveness in applications. Asynchronous programming is especially useful when dealing with I/O-bound operations such as reading from files, making network requests, or accessing databases, where waiting for the operation to complete would cause blocking.
@@ -6740,4 +6768,28 @@ class Program
   }
 
 }
+```
+
+- assignment last part
+
+```csharp
+ public Dictionary<string, List<Item>> GroupByDate()
+    {
+        DateTime currentDate = DateTime.Now;
+        DateTime threeMonthsAgo = currentDate.AddMonths(-3);
+
+        var newItems = items.Where(i => i.CreatedDate >= threeMonthsAgo)
+                            .GroupBy(i => "New Arrival")
+                            .ToDictionary(g => g.Key, g => g.ToList());
+
+        var oldItems = items.Where(i => i.CreatedDate < threeMonthsAgo)
+                            .GroupBy(i => "Old")
+                            .ToDictionary(g => g.Key, g => g.ToList());
+
+        return new Dictionary<string, List<Item>>()
+        {
+            { "New Arrival", newItems["New Arrival"] },
+            { "Old", oldItems["Old"] }
+        };
+    }
 ```
