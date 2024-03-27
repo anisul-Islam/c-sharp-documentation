@@ -6326,87 +6326,82 @@ In this example, the `Reverse` operator is used to reverse the sequence of `numb
 
 ### 4. Qunatifier with `All`, `Any`, `Contains`
 
-In LINQ, quantifiers are used to determine whether certain conditions are true for all elements, any element, or if a sequence contains a specific element. There are three main quantifier operators: `All`, `Any`, and `Contains`.
+In LINQ, quantifiers are used to determine whether certain conditions are true for all elements, any element, or if a sequence contains a specific element. There are three main quantifier operators: `All`, `Any`, and `Contains`. These quantifier operators and methods provide powerful tools for checking conditions on sequences in LINQ queries.
 
 #### 1. `All` Operator
 
 The `All` operator checks if all elements in a sequence satisfy a specified condition.
 
-**Example:**
-Suppose we have a list of numbers, and we want to check if all numbers are greater than 0.
+- Example: Suppose we have a list of numbers, and we want to check if all numbers are greater than 0.
 
-```csharp
-using System;
-using System.Linq;
+  ```csharp
+  using System;
+  using System.Linq;
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        int[] numbers = { 1, 2, 3, 4, 5 };
+  class Program
+  {
+      static void Main(string[] args)
+      {
+          int[] numbers = { 1, 2, 3, 4, 5 };
 
-        bool allGreaterThanZero = numbers.All(num => num > 0);
+          bool allGreaterThanZero = numbers.All(num => num > 0);
 
-        Console.WriteLine("All numbers greater than 0: " + allGreaterThanZero);
-    }
-}
-```
+          Console.WriteLine("All numbers greater than 0: " + allGreaterThanZero);
+      }
+  }
+  ```
 
-In this example, the `All` operator checks if all elements in the `numbers` array are greater than 0. Since this condition is true for all elements, the output will be `True`.
+  In this example, the `All` operator checks if all elements in the `numbers` array are greater than 0. Since this condition is true for all elements, the output will be `True`.
 
 #### 2. `Any` Operator
 
 The `Any` operator checks if any elements in a sequence satisfy a specified condition.
 
-**Example:**
-Suppose we have a list of numbers, and we want to check if any number is negative.
+- Example: Suppose we have a list of numbers, and we want to check if any number is negative.
 
-```csharp
-using System;
-using System.Linq;
+  ```csharp
+  using System;
+  using System.Linq;
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        int[] numbers = { 1, 2, -3, 4, 5 };
+  class Program
+  {
+      static void Main(string[] args)
+      {
+          int[] numbers = { 1, 2, -3, 4, 5 };
 
-        bool anyNegative = numbers.Any(num => num < 0);
+          bool anyNegative = numbers.Any(num => num < 0);
 
-        Console.WriteLine("Any negative number: " + anyNegative);
-    }
-}
-```
+          Console.WriteLine("Any negative number: " + anyNegative);
+      }
+  }
+  ```
 
-In this example, the `Any` operator checks if any element in the `numbers` array is less than 0. Since there is at least one negative number (-3), the output will be `True`.
+  In this example, the `Any` operator checks if any element in the `numbers` array is less than 0. Since there is at least one negative number (-3), the output will be `True`.
 
 #### 3. `Contains` Method
 
 The `Contains` method checks if a sequence contains a specific element.
 
-**Example:**
-Suppose we have a list of strings, and we want to check if it contains a specific string.
+- Example: Suppose we have a list of strings, and we want to check if it contains a specific string.
 
-```csharp
-using System;
-using System.Linq;
+  ```csharp
+  using System;
+  using System.Linq;
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        string[] fruits = { "apple", "banana", "orange", "kiwi" };
+  class Program
+  {
+      static void Main(string[] args)
+      {
+          string[] fruits = { "apple", "banana", "orange", "kiwi" };
 
-        bool containsBanana = fruits.Contains("banana");
+          bool containsBanana = fruits.Contains("banana");
 
-        Console.WriteLine("Contains 'banana': " + containsBanana);
-    }
-}
-```
+          Console.WriteLine("Contains 'banana': " + containsBanana);
+      }
+  }
+  ```
 
-In this example, the `Contains` method checks if the `fruits` array contains the string "banana". Since "banana" is present in the array, the output will be `True`.
-
-These quantifier operators and methods provide powerful tools for checking conditions on sequences in LINQ queries.
+  In this example, the `Contains` method checks if the `fruits` array contains the string "banana". Since "banana" is present in the array, the output will be `True`.
 
 #### A best example for all of them
 
@@ -6479,20 +6474,23 @@ class Program
 {
     static void Main(string[] args)
     {
-        int[] numbers = { 1, 2, 3, 4, 5 };
+      int[] numbers = { 1, 2, 3, 4, 5, 6 };
+      int sum = numbers.Sum();
+      int max = numbers.Max();
+      int min = numbers.Min();
+      int count = numbers.Count();
+      double average = numbers.Average();
 
-        int sum = numbers.Sum();
-        int count = numbers.Count();
-        double average = numbers.Average();
-
-        Console.WriteLine($"Sum: {sum}");
-        Console.WriteLine($"Count: {count}");
-        Console.WriteLine($"Average: {average}");
+      Console.WriteLine($"sum = {sum}");
+      Console.WriteLine($"Average = {average}");
+      Console.WriteLine($"Max = {max}");
+      Console.WriteLine($"Min = {min}");
+      Console.WriteLine($"count = {count}");
     }
 }
 ```
 
-### 6. Aggregation with `Range`, `Repeat`, `Empty`
+### 6. Generation with `Range`, `Repeat`, `Empty`
 
 `Range`, `Repeat`, and `Empty` are static methods provided by the `Enumerable` class in LINQ. They are used to create sequences of elements based on different criteria. Let's explain each of them:
 
@@ -6502,19 +6500,37 @@ The `Range` method generates a sequence of consecutive integers within a specifi
 
 - Syntax
 
-```csharp
-IEnumerable<int> Range(int start, int count)
-```
+  ```csharp
+  IEnumerable<int> Range(int start, int count)
+  ```
 
-- `start`: The starting value of the sequence.
-- `count`: The number of sequential integers to generate.
+  - `start`: The starting value of the sequence.
+  - `count`: The number of sequential integers to generate.
 
-- Example
+- Examples
 
-```csharp
-var numbers = Enumerable.Range(1, 5);
-// Generates: 1, 2, 3, 4, 5
-```
+  ```csharp
+  var numbers = Enumerable.Range(1, 5);
+  // Generates: 1, 2, 3, 4, 5
+  ```
+
+  Suppose you need to generate a sequence of dates representing the days of a particular month. You can use `Range` to generate a sequence of integers representing the days, and then map each integer to a corresponding date in the month.
+
+  ```csharp
+    var year = 2022;
+    var month = 3; // March
+    var daysInMonth = DateTime.DaysInMonth(year, month);
+
+    var datesOfMonth = Enumerable.Range(1, daysInMonth)
+        .Select(day => new DateTime(year, month, day));
+
+    foreach (var date in datesOfMonth)
+    {
+      Console.WriteLine(date.ToShortDateString());
+    }
+  ```
+
+  In this example, `Enumerable.Range(1, daysInMonth)` generates a sequence of integers representing the days of the month (from 1 to the number of days in the month), and then `Select` is used to map each integer to a `DateTime` object representing the corresponding date in the month.
 
 #### 2. Repeat
 
@@ -6536,6 +6552,22 @@ var repeatedValues = Enumerable.Repeat("Hello", 3);
 // Generates: "Hello", "Hello", "Hello"
 ```
 
+Suppose you need to create a list of default values for a specific field in a database. You can use `Repeat` to generate a sequence of default values.
+
+```csharp
+var defaultValue = "Unknown";
+var numberOfRecords = 10;
+
+var defaultValues = Enumerable.Repeat(defaultValue, numberOfRecords);
+
+foreach (var value in defaultValues)
+{
+    Console.WriteLine(value);
+}
+```
+
+In this example, `Enumerable.Repeat(defaultValue, numberOfRecords)` generates a sequence containing the default value repeated `numberOfRecords` times.
+
 #### 3. Empty
 
 The `Empty` method generates an empty sequence.
@@ -6553,48 +6585,6 @@ var emptySequence = Enumerable.Empty<int>();
 // Generates an empty sequence
 ```
 
-#### More examples
-
-- Range
-
-Suppose you need to generate a sequence of dates representing the days of a particular month. You can use `Range` to generate a sequence of integers representing the days, and then map each integer to a corresponding date in the month.
-
-```csharp
-var year = 2022;
-var month = 3; // March
-var daysInMonth = DateTime.DaysInMonth(year, month);
-
-var datesOfMonth = Enumerable.Range(1, daysInMonth)
-    .Select(day => new DateTime(year, month, day));
-
-foreach (var date in datesOfMonth)
-{
-    Console.WriteLine(date.ToShortDateString());
-}
-```
-
-In this example, `Enumerable.Range(1, daysInMonth)` generates a sequence of integers representing the days of the month (from 1 to the number of days in the month), and then `Select` is used to map each integer to a `DateTime` object representing the corresponding date in the month.
-
-- Repeat
-
-Suppose you need to create a list of default values for a specific field in a database. You can use `Repeat` to generate a sequence of default values.
-
-```csharp
-var defaultValue = "Unknown";
-var numberOfRecords = 10;
-
-var defaultValues = Enumerable.Repeat(defaultValue, numberOfRecords);
-
-foreach (var value in defaultValues)
-{
-    Console.WriteLine(value);
-}
-```
-
-In this example, `Enumerable.Repeat(defaultValue, numberOfRecords)` generates a sequence containing the default value repeated `numberOfRecords` times.
-
-- Empty
-
 Suppose you need to perform a LINQ operation that should return an empty sequence under certain conditions. You can use `Empty` to provide an empty sequence as a placeholder.
 
 ```csharp
@@ -6610,7 +6600,414 @@ foreach (var item in result)
 
 In this example, if the `condition` is false, `Enumerable.Empty<int>()` provides an empty sequence, otherwise, `Enumerable.Range(1, 10)` generates a sequence of integers from 1 to 10. This is useful for handling scenarios where an empty sequence is expected as a result.
 
-### 7. Partitioning with `Skip`, `Take`, `SkipWhile`, `TakeWhile`
+### 7. Set with `Distinct`, `Union`, `Intersection` and `Except`
+
+These set operations provide powerful tools for manipulating collections in LINQ queries, allowing you to easily filter, combine, and compare elements from different collections.
+
+#### 1. Distinct
+
+The `Distinct` method is used to return distinct elements from a collection, removing duplicates.
+
+**Example:**
+
+```csharp
+var numbers = new List<int> { 1, 2, 3, 1, 4, 2, 5 };
+var distinctNumbers = numbers.Distinct();
+
+Console.WriteLine("Distinct numbers:");
+foreach (var number in distinctNumbers)
+{
+    Console.WriteLine(number);
+}
+```
+
+**Output:**
+
+```
+Distinct numbers:
+1
+2
+3
+4
+5
+```
+
+#### 2. Union
+
+The `Union` method is used to combine two collections and return distinct elements from both collections.
+
+**Example:**
+
+```csharp
+var numbers1 = new List<int> { 1, 2, 3 };
+var numbers2 = new List<int> { 3, 4, 5 };
+var unionNumbers = numbers1.Union(numbers2);
+
+Console.WriteLine("Union of numbers:");
+foreach (var number in unionNumbers)
+{
+    Console.WriteLine(number);
+}
+```
+
+**Output:**
+
+```
+Union of numbers:
+1
+2
+3
+4
+5
+```
+
+#### 3. Intersect
+
+The `Intersect` method is used to return the common elements between two collections.
+
+**Example:**
+
+```csharp
+var numbers1 = new List<int> { 1, 2, 3, 4 };
+var numbers2 = new List<int> { 3, 4, 5, 6 };
+var commonNumbers = numbers1.Intersect(numbers2);
+
+Console.WriteLine("Common numbers:");
+foreach (var number in commonNumbers)
+{
+    Console.WriteLine(number);
+}
+```
+
+**Output:**
+
+```
+Common numbers:
+3
+4
+```
+
+#### 4. Except
+
+The `Except` method is used to return the elements from the first collection that are not present in the second collection.
+
+**Example:**
+
+```csharp
+var numbers1 = new List<int> { 1, 2, 3, 4 };
+var numbers2 = new List<int> { 3, 4, 5, 6 };
+var difference = numbers1.Except(numbers2);
+
+Console.WriteLine("Difference in numbers1:");
+foreach (var number in difference)
+{
+    Console.WriteLine(number);
+}
+```
+
+**Output:**
+
+```
+Difference in numbers1:
+1
+2
+```
+
+### 8. Element with `First`, `Last`, `ElementAt` and `Except`
+
+Certainly! These LINQ methods are used to retrieve elements from a collection based on specific criteria or positions:
+
+#### 1. First
+
+The `First` method returns the first element of a sequence that satisfies a specified condition. If no such element is found, it throws an exception.
+
+**Example:**
+
+```csharp
+var numbers = new List<int> { 1, 2, 3, 4, 5 };
+var firstEvenNumber = numbers.First(num => num % 2 == 0);
+
+Console.WriteLine("First even number: " + firstEvenNumber);
+```
+
+**Output:**
+
+```
+First even number: 2
+```
+
+#### 2. Last
+
+The `Last` method returns the last element of a sequence that satisfies a specified condition. If no such element is found, it throws an exception.
+
+**Example:**
+
+```csharp
+var numbers = new List<int> { 1, 2, 3, 4, 5 };
+var lastOddNumber = numbers.Last(num => num % 2 != 0);
+
+Console.WriteLine("Last odd number: " + lastOddNumber);
+```
+
+**Output:**
+
+```
+Last odd number: 5
+```
+
+#### 3. ElementAt
+
+The `ElementAt` method returns the element at a specified index in a sequence.
+
+**Example:**
+
+```csharp
+var numbers = new List<int> { 10, 20, 30, 40, 50 };
+var elementAtIndex2 = numbers.ElementAt(2);
+
+Console.WriteLine("Element at index 2: " + elementAtIndex2);
+```
+
+**Output:**
+
+```
+Element at index 2: 30
+```
+
+These methods are helpful when you need to retrieve specific elements from a collection based on certain conditions or positions. However, it's important to note that `First` and `Last` methods throw an exception if no element satisfies the condition, while `ElementAt` returns the default value for the element type if the index is out of range.
+
+### 9. Grouping with `GroupBy`
+
+The `GroupBy` method in LINQ is used to group elements of a sequence based on a key. It returns a collection of `IGrouping<TKey, TElement>` objects, where each `IGrouping` object represents a unique key and contains a sequence of elements that share the same key. This allows us to easily organize and analyze data based on common attributes or keys.
+
+- Syntax
+
+  ```csharp
+  IEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(
+      this IEnumerable<TSource> source,
+      Func<TSource, TKey> keySelector
+  );
+  ```
+
+  - `source`: The input sequence of elements.
+  - `keySelector`: A function that projects each element of the sequence into a new form used as the group key.
+
+- Example 1: Suppose we have a list of `Person` objects and we want to group them by their `Age`.
+
+  ```csharp
+  class Person
+  {
+      public string Name { get; set; }
+      public int Age { get; set; }
+  }
+
+  class Program
+  {
+      static void Main(string[] args)
+      {
+          List<Person> people = new List<Person>
+          {
+              new Person { Name = "Alice", Age = 25 },
+              new Person { Name = "Bob", Age = 30 },
+              new Person { Name = "Charlie", Age = 25 },
+              new Person { Name = "David", Age = 30 }
+          };
+
+          var groupedByAge = people.GroupBy(person => person.Age);
+
+          foreach (var group in groupedByAge)
+          {
+              Console.WriteLine($"People with age {group.Key}:");
+              foreach (var person in group)
+              {
+                  Console.WriteLine($"- {person.Name}");
+              }
+              Console.WriteLine();
+          }
+      }
+  }
+  
+  ```
+
+  - Output
+
+    ```
+    People with age 25:
+    - Alice
+    - Charlie
+
+    People with age 30:
+    - Bob
+    - David
+    ```
+
+  - In this example:
+
+    - We use the `GroupBy` method to group `Person` objects by their `Age`.
+    - The `keySelector` function (`person => person.Age`) projects each `Person` object to its `Age`.
+    - We iterate over the groups and print the age along with the names of people in each group.
+
+- Example 2: where we have a list of Product objects, and we want to group them by their Category.
+  
+  ```csharp
+    class Product
+
+    {
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public double Price { get; set; }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Product> products = new List<Product>
+            {
+                new Product { Name = "Laptop", Category = "Electronics", Price = 1200 },
+                new Product { Name = "Smartphone", Category = "Electronics", Price = 800 },
+                new Product { Name = "Headphones", Category = "Electronics", Price = 100 },
+                new Product { Name = "Shirt", Category = "Clothing", Price = 30 },
+                new Product { Name = "Jeans", Category = "Clothing", Price = 50 },
+                new Product { Name = "Sneakers", Category = "Footwear", Price = 80 }
+            };
+
+            var groupedByCategory = products.GroupBy(product => product.Category);
+
+            foreach (var group in groupedByCategory)
+            {
+                Console.WriteLine($"Products in category '{group.Key}':");
+                foreach (var product in group)
+                {
+                    Console.WriteLine($"- {product.Name} (${product.Price})");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+  ```
+
+### 10. joining with `Join` and `GroupJoin`
+
+`Join` and `GroupJoin` are two LINQ methods used for joining two sequences based on a common key. Let's explain each of them:
+
+#### Join
+
+The `Join` method combines two sequences based on matching keys from both sequences. It performs an inner join operation, meaning that it returns only the elements where there is a match between the keys in both sequences.
+
+- Syntax
+
+  ```csharp
+  IEnumerable<TResult> Join<TOuter, TInner, TKey, TResult>(
+      IEnumerable<TOuter> outer,
+      IEnumerable<TInner> inner,
+      Func<TOuter, TKey> outerKeySelector,
+      Func<TInner, TKey> innerKeySelector,
+      Func<TOuter, TInner, TResult> resultSelector
+  );
+  ```
+
+  - `outer`: The first sequence to join.
+  - `inner`: The second sequence to join.
+  - `outerKeySelector`: A function to extract the join key from each element of the first sequence.
+  - `innerKeySelector`: A function to extract the join key from each element of the second sequence.
+  - `resultSelector`: A function to create a result element from an outer element and its corresponding inner element.
+
+#### GroupJoin
+
+The `GroupJoin` method performs a group join operation between two sequences. It joins elements from the first sequence with groups from the second sequence based on a common key. Unlike `Join`, it preserves elements from the first sequence even if there are no matches in the second sequence.
+
+- Syntax
+
+  ```csharp
+  IEnumerable<TResult> GroupJoin<TOuter, TInner, TKey, TResult>(
+      IEnumerable<TOuter> outer,
+      IEnumerable<TInner> inner,
+      Func<TOuter, TKey> outerKeySelector,
+      Func<TInner, TKey> innerKeySelector,
+      Func<TOuter, IEnumerable<TInner>, TResult> resultSelector
+  );
+  ```
+
+  - `outer`: The first sequence to join.
+  - `inner`: The second sequence to join.
+  - `outerKeySelector`: A function to extract the join key from each element of the first sequence.
+  - `innerKeySelector`: A function to extract the join key from each element of the second sequence.
+  - `resultSelector`: A function to create a result element from an outer element and a sequence of corresponding inner elements.
+
+- Example
+
+  ```csharp
+    using System;
+
+    using System.Collections.Generic;
+    using System.Linq;
+
+    class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    class Course
+    {
+        public int StudentId { get; set; }
+        public string CourseName { get; set; }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Sample data
+            var students = new List<Student>
+            {
+                new Student { Id = 1, Name = "Alice" },
+                new Student { Id = 2, Name = "Bob" },
+                new Student { Id = 3, Name = "Charlie" }
+            };
+
+            var courses = new List<Course>
+            {
+                new Course { StudentId = 1, CourseName = "Math" },
+                new Course { StudentId = 1, CourseName = "Physics" },
+                new Course { StudentId = 2, CourseName = "History" },
+                new Course { StudentId = 3, CourseName = "Chemistry" },
+                new Course { StudentId = 3, CourseName = "Biology" }
+            };
+
+            // Join: Get courses for each student
+            var coursesByStudent = students
+                .Join(courses, // Join students with courses
+                    student => student.Id, // Select student ID as the join key
+                    course => course.StudentId, // Select student ID from courses as the join key
+                    (student, course) => new { student.Name, course.CourseName }); // Select result
+
+            Console.WriteLine("Courses by student (Join):");
+            foreach (var item in coursesByStudent)
+            {
+                Console.WriteLine($"Student: {item.Name}, Course: {item.CourseName}");
+            }
+
+            Console.WriteLine();
+
+            // GroupJoin: Get courses for each student (including students with no courses)
+            var coursesByStudentGrouped = students
+                .GroupJoin(courses, // GroupJoin students with courses
+                    student => student.Id, // Select student ID as the join key
+                    course => course.StudentId, // Select student ID from courses as the join key
+                    (student, courseGroup) => new { student.Name, Courses = courseGroup.Select(c => c.CourseName) }); // Select result
+
+            Console.WriteLine("Courses by student (GroupJoin):");
+            foreach (var item in coursesByStudentGrouped)
+            {
+                Console.WriteLine($"Student: {item.Name}, Courses: {string.Join(", ", item.Courses)}");
+            }
+        }
+    }
+  ```
+
+### 11. Partitioning with `Skip`, `Take`, `SkipWhile`, `TakeWhile`
 
 ```csharp
 var numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -6707,6 +7104,106 @@ class Program
 
 ```
 
+### 12. Conversion with `ToArray` and `AsQueryable`
+
+The `ToArray` and `AsQueryable` methods are both used in LINQ queries to convert sequences into different types. In summary, `ToArray` is used to immediately convert a sequence into an array, while `AsQueryable` is used to defer the execution of the query and work with `IQueryable<T>` interface, especially in scenarios involving LINQ to SQL or LINQ to Entities. Let's discuss each method and provide examples:
+
+1. **ToArray**:
+   - The `ToArray` method is used to convert a sequence into an array.
+   - It forces immediate execution of the query and returns an array containing all elements of the sequence.
+   - It is useful when you need to work with an array, which provides random access to elements.
+   - Once the array is created, it is not connected to the original sequence, so changes to the original sequence won't affect the array.
+   - Example:
+
+    ```csharp
+    using System;
+    using System.Linq;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = { 1, 2, 3, 4, 5 };
+            int[] array = numbers.ToArray();
+
+            foreach (int num in array)
+            {
+                Console.WriteLine(num);
+            }
+        }
+    }
+    ```
+
+2. **AsQueryable**:
+   - The `AsQueryable` method is used to convert a sequence into an `IQueryable<T>` interface.
+   - It doesn't execute the query immediately; instead, it allows deferred execution of the query.
+   - It is useful when you need to apply additional query operators that are only available in LINQ to SQL or LINQ to Entities.
+   - It is typically used when working with Entity Framework or other ORM frameworks.
+   - Example:
+
+    ```csharp
+    using System;
+    using System.Linq;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = { 1, 2, 3, 4, 5 };
+            IQueryable<int> queryable = numbers.AsQueryable();
+
+            var query = queryable.Where(n => n % 2 == 0);
+
+            foreach (int num in query)
+            {
+                Console.WriteLine(num);
+            }
+        }
+    }
+    ```
+
+### 13. Deferred vs Immediate Execution
+
+Deferred execution and immediate execution are two different execution strategies used in LINQ queries to process data. In summary, deferred execution delays the execution of a LINQ query until its result is enumerated, while immediate execution forces the execution of a query and materializes its result immediately. Both execution strategies have their use cases and advantages, depending on the scenario and requirements of your application. Let's understand each one:
+
+1. **Deferred Execution / Lazy Loading**:
+   - Deferred execution means that the execution of a LINQ query is delayed until the query result is actually enumerated or iterated over.
+   - When you define a LINQ query using query operators (such as `Where`, `Select`, `OrderBy`, etc.), the query is not executed immediately. Instead, it creates an expression tree representing the query.
+   - The query is executed only when you iterate over the query result, such as by using a `foreach` loop, calling `ToList`, `ToArray`, or any other method that triggers enumeration.
+   - Deferred execution allows for more flexibility and optimization because the query can be modified or extended before execution.
+   - It is the default behavior for LINQ queries in .NET.
+   - It is used for large data set or where you need to modify the query later on.
+   - Example:
+
+    ```csharp
+    var query = students.Where(s => s.Age > 18).OrderBy(s => s.LastName);
+    // Query is not executed yet
+
+    foreach (var student in query)
+    {
+        Console.WriteLine($"{student.FirstName} {student.LastName}");
+    }
+    // Query is executed when iterating over the result
+    ```
+
+2. **Immediate Execution / Eager Loading**:
+   - Immediate execution means that the execution of a LINQ query occurs immediately after it is defined, and the query result is materialized right away.
+   - Methods like `ToList`, `ToArray`, `First`, `Single`, `Count`, etc., trigger immediate execution because they need to return a concrete result.
+   - Immediate execution is useful when you need to materialize the query result for further processing or when you want to force execution and retrieve the data eagerly.
+   - Once executed, the result is stored in memory, and subsequent operations are performed on the materialized collection, not on the original data source.
+   - It is used for small data set or where you do not need to modify the query later on.
+   - Example:
+
+    ```csharp
+    var query = students.Where(s => s.Age > 18).OrderBy(s => s.LastName).ToList();
+    // Query is executed immediately and result is stored in a List
+
+    foreach (var student in query)
+    {
+        Console.WriteLine($"{student.FirstName} {student.LastName}");
+    }
+    // Iterating over the result stored in the List
+    ```
 
 ## Asynchronous Programming
 
