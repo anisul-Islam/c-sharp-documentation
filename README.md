@@ -7205,7 +7205,7 @@ Deferred execution and immediate execution are two different execution strategie
     // Iterating over the result stored in the List
     ```
 
-## Asynchronous Programming
+## new: Asynchronous Programming
 
 - Asynchronous programming in C# allows you to execute tasks concurrently, enabling more efficient use of system resources and improving responsiveness in applications. Asynchronous programming is especially useful when dealing with I/O-bound operations such as reading from files, making network requests, or accessing databases, where waiting for the operation to complete would cause blocking.
 
@@ -7360,3 +7360,313 @@ class Program
         };
     }
 ```
+
+## new: File I/0
+
+Working with files in C# involves various operations such as reading from and writing to files, creating, deleting, and manipulating files and directories. These are some of the basic file operations in C#. Depending on your requirements, you can perform more advanced file operations using additional classes and methods available in the `System.IO` namespace. Here's an overview of common file operations in C#:
+
+1. **Reading from a File**:
+   - Use the `StreamReader` class to read text from a file.
+   - Example:
+
+    ```csharp
+    using System;
+    using System.IO;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string filePath = "example.txt";
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+        }
+    }
+    ```
+
+2. **Writing to a File**:
+   - Use the `StreamWriter` class to write text to a file.
+   - Example:
+
+    ```csharp
+    using System.IO;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string filePath = "output.txt";
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                writer.WriteLine("Hello, world!");
+            }
+        }
+    }
+    ```
+
+3. **Checking if a File Exists**:
+   - Use the `File.Exists` method to check if a file exists.
+   - Example:
+
+    ```csharp
+    using System;
+    using System.IO;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string filePath = "example.txt";
+            if (File.Exists(filePath))
+            {
+                Console.WriteLine("File exists.");
+            }
+            else
+            {
+                Console.WriteLine("File does not exist.");
+            }
+        }
+    }
+    ```
+
+4. **Creating a File**:
+   - Use the `File.Create` method to create a new file.
+   - Example:
+
+    ```csharp
+    using System.IO;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string filePath = "newfile.txt";
+            File.Create(filePath).Close();
+        }
+    }
+    ```
+
+5. **Deleting a File**:
+   - Use the `File.Delete` method to delete a file.
+   - Example:
+
+    ```csharp
+    using System.IO;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string filePath = "fileToDelete.txt";
+            File.Delete(filePath);
+        }
+    }
+    ```
+
+6. **Working with Directories**:
+   - Use the `Directory` class to create, delete, move, and enumerate directories.
+   - Example:
+
+    ```csharp
+    using System.IO;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string directoryPath = "newDirectory";
+            Directory.CreateDirectory(directoryPath);
+        }
+    }
+    ```
+
+## new: A project for CRUD with Files
+
+Certainly! Here's a more comprehensive example of a simple Products CRUD (Create, Read, Update, Delete) application using files for data storage. In this example, we'll implement functionalities to add, view, update, and delete products from a file-based database:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+}
+
+class Program
+{
+    private const string filePath = "products.txt";
+
+    static void Main(string[] args)
+    {
+        while (true)
+        {
+            Console.WriteLine("1. Add Product");
+            Console.WriteLine("2. View Products");
+            Console.WriteLine("3. Update Product");
+            Console.WriteLine("4. Delete Product");
+            Console.WriteLine("5. Exit");
+
+            Console.Write("Enter your choice: ");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    AddProduct();
+                    break;
+                case 2:
+                    ViewProducts();
+                    break;
+                case 3:
+                    UpdateProduct();
+                    break;
+                case 4:
+                    DeleteProduct();
+                    break;
+                case 5:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice! Please try again.");
+                    break;
+            }
+        }
+    }
+
+    static void AddProduct()
+    {
+        Console.Write("Enter product name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Enter product price: ");
+        decimal price = Convert.ToDecimal(Console.ReadLine());
+
+        int id = GetNextProductId();
+
+        Product product = new Product { Id = id, Name = name, Price = price };
+        WriteToFile(product);
+
+        Console.WriteLine("Product added successfully!");
+    }
+
+    static void ViewProducts()
+    {
+        List<Product> products = ReadFromFile();
+        Console.WriteLine("ID\tName\t\tPrice");
+        foreach (var product in products)
+        {
+            Console.WriteLine($"{product.Id}\t{product.Name}\t\t{product.Price}");
+        }
+    }
+
+    static void UpdateProduct()
+    {
+        Console.Write("Enter product ID to update: ");
+        int id = Convert.ToInt32(Console.ReadLine());
+
+        List<Product> products = ReadFromFile();
+        Product productToUpdate = products.FirstOrDefault(p => p.Id == id);
+
+        if (productToUpdate != null)
+        {
+            Console.Write("Enter new product name: ");
+            productToUpdate.Name = Console.ReadLine();
+
+            Console.Write("Enter new product price: ");
+            productToUpdate.Price = Convert.ToDecimal(Console.ReadLine());
+
+            WriteAllToFile(products);
+            Console.WriteLine("Product updated successfully!");
+        }
+        else
+        {
+            Console.WriteLine("Product not found!");
+        }
+    }
+
+    static void DeleteProduct()
+    {
+        Console.Write("Enter product ID to delete: ");
+        int id = Convert.ToInt32(Console.ReadLine());
+
+        List<Product> products = ReadFromFile();
+        Product productToDelete = products.FirstOrDefault(p => p.Id == id);
+
+        if (productToDelete != null)
+        {
+            products.Remove(productToDelete);
+            WriteAllToFile(products);
+            Console.WriteLine("Product deleted successfully!");
+        }
+        else
+        {
+            Console.WriteLine("Product not found!");
+        }
+    }
+
+    static int GetNextProductId()
+    {
+        List<Product> products = ReadFromFile();
+        return products.Count > 0 ? products.Max(p => p.Id) + 1 : 1;
+    }
+
+    static List<Product> ReadFromFile()
+    {
+        List<Product> products = new List<Product>();
+        if (File.Exists(filePath))
+        {
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(',');
+                    products.Add(new Product { Id = Convert.ToInt32(parts[0]), Name = parts[1], Price = Convert.ToDecimal(parts[2]) });
+                }
+            }
+        }
+        return products;
+    }
+
+    static void WriteToFile(Product product)
+    {
+        using (StreamWriter writer = new StreamWriter(filePath, true))
+        {
+            writer.WriteLine($"{product.Id},{product.Name},{product.Price}");
+        }
+    }
+
+    static void WriteAllToFile(List<Product> products)
+    {
+        File.WriteAllText(filePath, string.Empty); // Clear file
+        using (StreamWriter writer = new StreamWriter(filePath, true))
+        {
+            foreach (var product in products)
+            {
+                writer.WriteLine($"{product.Id},{product.Name},{product.Price}");
+            }
+        }
+    }
+}
+```
+
+In this example:
+
+- We define a `Product` class to represent each product with properties like `Id`, `Name`, and `Price`.
+- We implement CRUD operations (`AddProduct`, `ViewProducts`, `UpdateProduct`, `DeleteProduct`) to manage products.
+- Products are stored in a text file (`products.txt`) in a comma-separated format (CSV).
+- We use file I/O operations to read from and write to the file.
+- Each product record in the file is represented as a comma-separated line with `Id`, `Name`, and `Price`.
+
+You can run this program to manage products through a simple command-line interface.
