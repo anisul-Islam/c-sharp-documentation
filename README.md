@@ -3121,6 +3121,23 @@ Lambda expressions provide a concise and expressive way to define inline functio
 
     These examples demonstrate different scenarios where lambda expressions can be used, such as defining simple functions, filtering data with LINQ, sorting collections, working with delegates, and creating predicates for conditional operations.
 
+#### Get a valid integer
+
+  ```csharp
+  public static int GetValidatedIntegerInput()
+  {
+      while (true)
+      {
+          Console.Write("Enter an integer: ");
+          if (int.TryParse(Console.ReadLine(), out int number))
+          {
+              return number;
+          }
+          Console.WriteLine("Invalid input! Please enter a valid integer.");
+      }
+  }
+  ```
+
 ## Intermediate 1. OOP
 
 ![alt text](image-4.png)
@@ -3699,6 +3716,57 @@ Exception handling in C# allows you to manage runtime errors gracefully by catch
 
 Exception handling is a fundamental aspect of robust software development in C#, helping you write more reliable and resilient applications.
 
+#### Example
+
+```csharp
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    Console.WriteLine($"Welcome to the calculator App");
+    try
+    {
+      int num1 = ReadIntegerInput("num1");
+      int num2 = ReadIntegerInput("num2");
+
+      if (num2 > 1000)
+      {
+        throw new ArgumentException("num2 can not be greater than 1000");
+      }
+
+      int result = num1 / num2;
+      Console.WriteLine($"Result: {result}");
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine($"An error occured: {e.Message}");
+    }
+    finally
+    {
+      Console.WriteLine($"Goodbye!!!");
+    }
+
+  }
+
+  static int ReadIntegerInput(string prompt)
+  {
+    while (true)
+    {
+
+      Console.Write($"Enter {prompt} = ");
+      string input = Console.ReadLine() ?? "";
+      if (!int.TryParse(input, out int result) || string.IsNullOrEmpty(input))
+      {
+        Console.WriteLine($"Invalid Input! Please enter a valid integer.");
+        continue;
+      }
+      return result;
+    }
+  }
+}
+
+```
+
 ### Array
 
 ```csharp
@@ -4080,86 +4148,79 @@ class Test
 Certainly! Here's the modified code with exception handling added:
 
 ```csharp
-using System;
-
-public class MyClass
+class MyClass
 {
-    public static void Main(string[] args)
+  public static void Main(string[] args)
+  {
+    try
     {
-        try
-        {
-            // Get user input for the size of the 1D array
-            Console.Write("Enter the size of the 1D array: ");
-            int size1D = int.Parse(Console.ReadLine());
+      Console.Write($"How many elements you want: ");
+      int size = ValidIntegerInput();
 
-            // Create and initialize the 1D array based on user input
-            int[] array1D = new int[size1D];
-            Console.WriteLine("Enter elements for the 1D array:");
-            for (int i = 0; i < size1D; i++)
-            {
-                Console.Write($"Enter element {i + 1}: ");
-                array1D[i] = int.Parse(Console.ReadLine());
-            }
 
-            // Get user input for the size of the 2D array (number of rows)
-            Console.Write("\nEnter the number of rows for the 2D array: ");
-            int rows = int.Parse(Console.ReadLine());
+      // creating the array
+      int[] numbers = new int[size];
 
-            // Create and initialize the 2D array based on user input
-            int[][] array2D = new int[rows][];
-            Console.WriteLine("Enter elements for the 2D array:");
-            for (int i = 0; i < rows; i++)
-            {
-                Console.Write($"Enter the number of elements for row {i + 1}: ");
-                int cols = int.Parse(Console.ReadLine());
-                array2D[i] = new int[cols];
-                Console.WriteLine($"Enter elements for row {i + 1}:");
-                for (int j = 0; j < cols; j++)
-                {
-                    Console.Write($"Enter element {j + 1}: ");
-                    array2D[i][j] = int.Parse(Console.ReadLine());
-                }
-            }
+      // array initialize
+      int sum = 0;
+      for (int i = 0; i < numbers.Length; i++)
+      {
+        Console.Write($"Enter element {i + 1}: ");
+        int number = ValidIntegerInput();
+        numbers[i] = number;
+        sum += numbers[i];
+      }
 
-            // Display the 1D array
-            Console.WriteLine("\n1D Array:");
-            foreach (int num in array1D)
-            {
-                Console.Write(num + " ");
-            }
+      // finding the max and minimum here
+      int max = numbers[0];
+      int min = numbers[0];
+      for (int i = 1; i < numbers.Length; i++)
+      {
+        if (max < numbers[i])
+        {
+          max = numbers[i];
+        }
+        if (min > numbers[i])
+        {
+          min = numbers[i];
+        }
+      }
 
-            // Display the 2D array
-            Console.WriteLine("\n\n2D Array:");
-            foreach (int[] row in array2D)
-            {
-                foreach (int num in row)
-                {
-                    Console.Write(num + " ");
-                }
-                Console.WriteLine();
-            }
-        }
-        catch (FormatException)
-        {
-            Console.WriteLine("Invalid input! Please enter a valid integer.");
-        }
-        catch (OverflowException)
-        {
-            Console.WriteLine("The input is too large or too small.");
-        }
-        catch (OutOfMemoryException)
-        {
-            Console.WriteLine("Out of memory. Unable to create arrays with such large dimensions.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred: {ex.Message}");
-        }
-        finally
-        {
-            Console.ReadKey();
-        }
+      double avg = (float)sum / numbers.Length;
+
+      // printing max, min 
+      Console.WriteLine($"Maximum element of the array : {max}");
+      Console.WriteLine($"Minimum element of the array : {min}");
+      Console.WriteLine($"Sum of the array : {sum}");
+      Console.WriteLine($"Average of the array : {avg:F2}");
+
     }
+
+    catch (OutOfMemoryException)
+    {
+      Console.WriteLine($"Out of memory. Unable to create arrays with such large dimensions");
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine($"An error occured: {ex.Message}");
+    }
+  }
+
+  public static int ValidIntegerInput()
+  {
+    while (true)
+    {
+      string input = Console.ReadLine() ?? "";
+      if (int.TryParse(input, out int number))
+      {
+        return number;
+      }
+      else
+      {
+        Console.WriteLine($"Invalid Input! Please enter a valid integer.");
+      }
+    }
+  }
 }
 ```
 
@@ -4411,32 +4472,65 @@ Using `params` allows for cleaner and more flexible method calls when the number
 ### String
 
   ```csharp
-  string a = "some text";
-  Console.WriteLine(a.Length);
-  //Outputs 9
 
-  Console.WriteLine(a.IndexOf('t'));
-  //Outputs 5
+  public class MyClass
+    {
+      public static void Main(string[] args)
+      {
+          string a = "some text";
+      Console.WriteLine(a.Length);
+      //Outputs 9
 
-  a = a.Insert(0, "This is ");
-  Console.WriteLine(a);
-  //Outputs "This is some text"
+      Console.WriteLine(a.IndexOf('t'));
+      //Outputs 5
+      
+        string text = "Hello everyone ! This is Anisul Islam";
+        Console.WriteLine($"length of string: {text.Length}");
+        Console.WriteLine($"O index from string: {text[0]}");
 
-  a = a.Replace("This is", "I am");
-  Console.WriteLine(a);
-  //Outputs "I am some text"
+        var words = text.Split(" ");
+        Console.WriteLine($"{string.Join(",", words)}");
 
-  if(a.Contains("some"))
-    Console.WriteLine("found");
-  //Outputs "found"
+        // foreach (var word in words)
+        // {
+        //   Console.WriteLine($"{word}");
+        // }
 
-  a = a.Remove(4);
-  Console.WriteLine(a);
-  //Outputs "I am"
+        // string removeText = text.Remove(4);
+        // Console.WriteLine($"removeText: {removeText}");
 
-  a = a.Substring(2);
-  Console.WriteLine(a);
-  //Outputs "am"
+        bool isEmpty = string.IsNullOrEmpty(text);
+        Console.WriteLine($"Is string empty or null? {isEmpty}");
+
+        // string insertedText = text.Insert(0, "Hi !");
+        // Console.WriteLine($"insertedText: {insertedText}");
+
+        string replacedText = text.Replace("Hello everyone", "Hi");
+        Console.WriteLine($"replacedText: {replacedText}");
+
+        bool isAnisulExist = text.Contains("Anisul");
+        Console.WriteLine($"isAnisulExist : {isAnisulExist}");
+
+        string reveresedString = new string(text.Reverse().ToArray());
+        Console.WriteLine($"ReveresedString: {reveresedString}");
+
+        string upper = text.ToUpper();
+        Console.WriteLine($"Upper string: {upper}");
+
+        string lower = text.ToLower();
+        Console.WriteLine($"Lower string: {lower}");
+
+        string trimmedString = text.Trim(); // TrimStart(), TrimEnd()
+        Console.WriteLine($"trimmedString: {trimmedString}");
+
+        string substring = text.Substring(6);
+        Console.WriteLine($"substring: {substring}");
+
+        string substring2 = text.Substring(6, 5);
+        Console.WriteLine($"substring2: {substring2}");
+      }
+    }
+
   ```
 
 - password checking program
@@ -7491,174 +7585,174 @@ Working with files in C# involves various operations such as reading from and wr
 Certainly! Here's a more comprehensive example of a simple Products CRUD (Create, Read, Update, Delete) application using files for data storage. In this example, we'll implement functionalities to add, view, update, and delete products from a file-based database:
 
 ```csharp
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+  using System;
+  using System.Collections.Generic;
+  using System.IO;
+  using System.Linq;
 
-class Product
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public decimal Price { get; set; }
-}
+  class Product
+  {
+      public int Id { get; set; }
+      public string Name { get; set; }
+      public decimal Price { get; set; }
+  }
 
-class Program
-{
-    private const string filePath = "products.txt";
+  class Program
+  {
+      private const string filePath = "products.txt";
 
-    static void Main(string[] args)
-    {
-        while (true)
-        {
-            Console.WriteLine("1. Add Product");
-            Console.WriteLine("2. View Products");
-            Console.WriteLine("3. Update Product");
-            Console.WriteLine("4. Delete Product");
-            Console.WriteLine("5. Exit");
+      static void Main(string[] args)
+      {
+          while (true)
+          {
+              Console.WriteLine("1. Add Product");
+              Console.WriteLine("2. View Products");
+              Console.WriteLine("3. Update Product");
+              Console.WriteLine("4. Delete Product");
+              Console.WriteLine("5. Exit");
 
-            Console.Write("Enter your choice: ");
-            int choice = Convert.ToInt32(Console.ReadLine());
+              Console.Write("Enter your choice: ");
+              int choice = Convert.ToInt32(Console.ReadLine());
 
-            switch (choice)
-            {
-                case 1:
-                    AddProduct();
-                    break;
-                case 2:
-                    ViewProducts();
-                    break;
-                case 3:
-                    UpdateProduct();
-                    break;
-                case 4:
-                    DeleteProduct();
-                    break;
-                case 5:
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice! Please try again.");
-                    break;
-            }
-        }
-    }
+              switch (choice)
+              {
+                  case 1:
+                      AddProduct();
+                      break;
+                  case 2:
+                      ViewProducts();
+                      break;
+                  case 3:
+                      UpdateProduct();
+                      break;
+                  case 4:
+                      DeleteProduct();
+                      break;
+                  case 5:
+                      Environment.Exit(0);
+                      break;
+                  default:
+                      Console.WriteLine("Invalid choice! Please try again.");
+                      break;
+              }
+          }
+      }
 
-    static void AddProduct()
-    {
-        Console.Write("Enter product name: ");
-        string name = Console.ReadLine();
+      static void AddProduct()
+      {
+          Console.Write("Enter product name: ");
+          string name = Console.ReadLine();
 
-        Console.Write("Enter product price: ");
-        decimal price = Convert.ToDecimal(Console.ReadLine());
+          Console.Write("Enter product price: ");
+          decimal price = Convert.ToDecimal(Console.ReadLine());
 
-        int id = GetNextProductId();
+          int id = GetNextProductId();
 
-        Product product = new Product { Id = id, Name = name, Price = price };
-        WriteToFile(product);
+          Product product = new Product { Id = id, Name = name, Price = price };
+          WriteToFile(product);
 
-        Console.WriteLine("Product added successfully!");
-    }
+          Console.WriteLine("Product added successfully!");
+      }
 
-    static void ViewProducts()
-    {
-        List<Product> products = ReadFromFile();
-        Console.WriteLine("ID\tName\t\tPrice");
-        foreach (var product in products)
-        {
-            Console.WriteLine($"{product.Id}\t{product.Name}\t\t{product.Price}");
-        }
-    }
+      static void ViewProducts()
+      {
+          List<Product> products = ReadFromFile();
+          Console.WriteLine("ID\tName\t\tPrice");
+          foreach (var product in products)
+          {
+              Console.WriteLine($"{product.Id}\t{product.Name}\t\t{product.Price}");
+          }
+      }
 
-    static void UpdateProduct()
-    {
-        Console.Write("Enter product ID to update: ");
-        int id = Convert.ToInt32(Console.ReadLine());
+      static void UpdateProduct()
+      {
+          Console.Write("Enter product ID to update: ");
+          int id = Convert.ToInt32(Console.ReadLine());
 
-        List<Product> products = ReadFromFile();
-        Product productToUpdate = products.FirstOrDefault(p => p.Id == id);
+          List<Product> products = ReadFromFile();
+          Product productToUpdate = products.FirstOrDefault(p => p.Id == id);
 
-        if (productToUpdate != null)
-        {
-            Console.Write("Enter new product name: ");
-            productToUpdate.Name = Console.ReadLine();
+          if (productToUpdate != null)
+          {
+              Console.Write("Enter new product name: ");
+              productToUpdate.Name = Console.ReadLine();
 
-            Console.Write("Enter new product price: ");
-            productToUpdate.Price = Convert.ToDecimal(Console.ReadLine());
+              Console.Write("Enter new product price: ");
+              productToUpdate.Price = Convert.ToDecimal(Console.ReadLine());
 
-            WriteAllToFile(products);
-            Console.WriteLine("Product updated successfully!");
-        }
-        else
-        {
-            Console.WriteLine("Product not found!");
-        }
-    }
+              WriteAllToFile(products);
+              Console.WriteLine("Product updated successfully!");
+          }
+          else
+          {
+              Console.WriteLine("Product not found!");
+          }
+      }
 
-    static void DeleteProduct()
-    {
-        Console.Write("Enter product ID to delete: ");
-        int id = Convert.ToInt32(Console.ReadLine());
+      static void DeleteProduct()
+      {
+          Console.Write("Enter product ID to delete: ");
+          int id = Convert.ToInt32(Console.ReadLine());
 
-        List<Product> products = ReadFromFile();
-        Product productToDelete = products.FirstOrDefault(p => p.Id == id);
+          List<Product> products = ReadFromFile();
+          Product productToDelete = products.FirstOrDefault(p => p.Id == id);
 
-        if (productToDelete != null)
-        {
-            products.Remove(productToDelete);
-            WriteAllToFile(products);
-            Console.WriteLine("Product deleted successfully!");
-        }
-        else
-        {
-            Console.WriteLine("Product not found!");
-        }
-    }
+          if (productToDelete != null)
+          {
+              products.Remove(productToDelete);
+              WriteAllToFile(products);
+              Console.WriteLine("Product deleted successfully!");
+          }
+          else
+          {
+              Console.WriteLine("Product not found!");
+          }
+      }
 
-    static int GetNextProductId()
-    {
-        List<Product> products = ReadFromFile();
-        return products.Count > 0 ? products.Max(p => p.Id) + 1 : 1;
-    }
+      static int GetNextProductId()
+      {
+          List<Product> products = ReadFromFile();
+          return products.Count > 0 ? products.Max(p => p.Id) + 1 : 1;
+      }
 
-    static List<Product> ReadFromFile()
-    {
-        List<Product> products = new List<Product>();
-        if (File.Exists(filePath))
-        {
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] parts = line.Split(',');
-                    products.Add(new Product { Id = Convert.ToInt32(parts[0]), Name = parts[1], Price = Convert.ToDecimal(parts[2]) });
-                }
-            }
-        }
-        return products;
-    }
+      static List<Product> ReadFromFile()
+      {
+          List<Product> products = new List<Product>();
+          if (File.Exists(filePath))
+          {
+              using (StreamReader reader = new StreamReader(filePath))
+              {
+                  string line;
+                  while ((line = reader.ReadLine()) != null)
+                  {
+                      string[] parts = line.Split(',');
+                      products.Add(new Product { Id = Convert.ToInt32(parts[0]), Name = parts[1], Price = Convert.ToDecimal(parts[2]) });
+                  }
+              }
+          }
+          return products;
+      }
 
-    static void WriteToFile(Product product)
-    {
-        using (StreamWriter writer = new StreamWriter(filePath, true))
-        {
-            writer.WriteLine($"{product.Id},{product.Name},{product.Price}");
-        }
-    }
+      static void WriteToFile(Product product)
+      {
+          using (StreamWriter writer = new StreamWriter(filePath, true))
+          {
+              writer.WriteLine($"{product.Id},{product.Name},{product.Price}");
+          }
+      }
 
-    static void WriteAllToFile(List<Product> products)
-    {
-        File.WriteAllText(filePath, string.Empty); // Clear file
-        using (StreamWriter writer = new StreamWriter(filePath, true))
-        {
-            foreach (var product in products)
-            {
-                writer.WriteLine($"{product.Id},{product.Name},{product.Price}");
-            }
-        }
-    }
-}
+      static void WriteAllToFile(List<Product> products)
+      {
+          File.WriteAllText(filePath, string.Empty); // Clear file
+          using (StreamWriter writer = new StreamWriter(filePath, true))
+          {
+              foreach (var product in products)
+              {
+                  writer.WriteLine($"{product.Id},{product.Name},{product.Price}");
+              }
+          }
+      }
+  }
 ```
 
 In this example:
@@ -7670,3 +7764,30 @@ In this example:
 - Each product record in the file is represented as a comma-separated line with `Id`, `Name`, and `Price`.
 
 You can run this program to manage products through a simple command-line interface.
+
+## new: Operator Overloading
+
+```csharp
+  class Box {
+    public int Height { get; set; }
+    public int Width { get; set; }
+    public Box(int h, int w) {
+      Height = h;
+      Width = w;
+    }
+    public static Box operator+(Box a, Box b) {
+      int h = a.Height + b.Height;
+      int w = a.Width + b.Width;
+      Box res = new Box(h, w);
+      return res;
+    }
+  }
+  static void Main(string[] args) {
+    Box b1 = new Box(14, 3);
+    Box b2 = new Box(5, 7);
+    Box b3 = b1 + b2;
+
+    Console.WriteLine(b3.Height); 
+    Console.WriteLine(b3.Width); 
+  }
+```
