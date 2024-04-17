@@ -4876,7 +4876,7 @@ In this example:
 - The `PrintFieldValue` method accesses the `readonlyField` using `this`.
 - Once initialized, the value of `readonlyField` cannot be changed due to the `readonly` modifier.
 
-## new: shallow copy vs deep copy
+### new: shallow copy vs deep copy
 
 [shallow copy and deep copy](image-6.png)
 
@@ -5270,6 +5270,85 @@ class Program
 In both versions, we have a `ProductCatalog` class managing a collection of `Product` objects. The first version uses traditional methods to add, remove, and find products, while the second version introduces an indexer allowing direct access to products by their Id.
 
 ### OOP 2: Inheritance
+
+- without inheritance
+
+```csharp
+public class SavingAccount
+{
+  private string _accountNumber;
+  private double _balance;
+
+  public SavingAccount(string accountNumber, double initialBalance)
+  {
+    this._accountNumber = accountNumber;
+    this._balance = initialBalance;
+  }
+  public double GetBalance()
+  {
+    return _balance;
+  }
+}
+public class CurrentAccount
+{
+  private string _accountNumber;
+  private double _balance;
+
+  public CurrentAccount(string accountNumber, double initialBalance)
+  {
+    this._accountNumber = accountNumber;
+    this._balance = initialBalance;
+  }
+  public double GetBalance()
+  {
+    return _balance;
+  }
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+
+    SavingAccount savingAccount = new SavingAccount("PA123", 5000);
+    CurrentAccount currentAccount = new CurrentAccount("CA123", 3000);
+
+    Console.WriteLine($"Saving Account Balance: " + savingAccount.GetBalance());
+    Console.WriteLine($"Current Account Balance: " + currentAccount.GetBalance());
+
+  }
+}
+```
+
+- with inheritance
+
+```csharp
+
+```
+
+### OOP 3: Abstraction
+
+```csharp
+
+```
+
+### OOP 4: Polymorphism
+
+```csharp
+
+```
+
+### OOP 5: Interface
+
+```csharp
+
+```
+
+### OOP 6: Why Interface?
+
+```csharp
+
+```
 
 ## Intermediate 2. aaa
 
@@ -7790,4 +7869,24 @@ You can run this program to manage products through a simple command-line interf
     Console.WriteLine(b3.Height); 
     Console.WriteLine(b3.Width); 
   }
+```
+
+## ref keyword
+
+```csharp
+class Test1
+{
+  public static void Main(string[] args)
+  {
+    int number = 10;
+    Console.WriteLine($"Before calling the method: {number}");
+    ModifyNumber(ref number);
+    Console.WriteLine($"After calling the method: {number}");
+  }
+
+  static void ModifyNumber(ref int num)
+  {
+    num += 5;
+  }
+}
 ```
