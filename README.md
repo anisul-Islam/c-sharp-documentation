@@ -5288,6 +5288,15 @@ public class SavingAccount
   {
     return _balance;
   }
+  public void Deposit(double amount)
+  {
+    _balance += amount;
+  }
+  public void CalculateInterest(double interestRate)
+  {
+    double interest = GetBalance() * (interestRate / 100);
+    Deposit(interest);
+  }
 }
 public class CurrentAccount
 {
@@ -5303,6 +5312,10 @@ public class CurrentAccount
   {
     return _balance;
   }
+  public void Deposit(double amount)
+  {
+    _balance += amount;
+  }
 }
 
 class Test
@@ -5312,6 +5325,10 @@ class Test
 
     SavingAccount savingAccount = new SavingAccount("PA123", 5000);
     CurrentAccount currentAccount = new CurrentAccount("CA123", 3000);
+
+    savingAccount.Deposit(1500);
+    currentAccount.Deposit(2500);
+    savingAccount.CalculateInterest(5);
 
     Console.WriteLine($"Saving Account Balance: " + savingAccount.GetBalance());
     Console.WriteLine($"Current Account Balance: " + currentAccount.GetBalance());
@@ -5323,32 +5340,486 @@ class Test
 - with inheritance
 
 ```csharp
+public class BankAccount
+{
+  private string _accountNumber;
+  private double _balance;
 
+  public BankAccount(string accountNumber, double initialBalance)
+  {
+    this._accountNumber = accountNumber;
+    this._balance = initialBalance;
+  }
+  public double GetBalance()
+  {
+    return _balance;
+  }
+  
+  public void Deposit(double amount)
+  {
+    _balance += amount;
+  }
+}
+public class SavingAccount : BankAccount
+{
+  public SavingAccount(string accountNumber, double initialBalance) : base(accountNumber, initialBalance)
+  { }
+   
+  public void CalculateInterest(double interestRate)
+  {
+    double interest = GetBalance() * (interestRate / 100);
+    Deposit(interest);
+  }
+}
+public class CurrentAccount : BankAccount
+{
+  public CurrentAccount(string accountNumber, double initialBalance) : base(accountNumber, initialBalance)
+  { }
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+
+    SavingAccount savingAccount = new SavingAccount("PA123", 5000);
+    CurrentAccount currentAccount = new CurrentAccount("CA123", 3000);
+    
+    savingAccount.Deposit(1500);
+    currentAccount.Deposit(2500);
+    savingAccount.CalculateInterest(5);
+
+
+    Console.WriteLine($"Saving Account Balance: " + savingAccount.GetBalance());
+    Console.WriteLine($"Current Account Balance: " + currentAccount.GetBalance());
+
+  }
+}
 ```
 
-### OOP 3: Abstraction
+### OOP 3: Polymorphism
 
 ```csharp
+public class BankAccount
+{
+  private string _accountNumber;
+  private double _balance;
 
+  public BankAccount(string accountNumber, double initialBalance)
+  {
+    this._accountNumber = accountNumber;
+    this._balance = initialBalance;
+  }
+  public double GetBalance()
+  {
+    return _balance;
+  }
+  public void Deposit(double amount)
+  {
+    _balance += amount;
+  }
+  public virtual void Withdraw(double amount)
+  {
+    if (_balance >= amount)
+    {
+      _balance -= amount;
+    }
+    else
+    {
+      Console.WriteLine("Insufficient funds.");
+    }
+  }
+}
+public class SavingAccount : BankAccount
+{
+  public SavingAccount(string accountNumber, double initialBalance) : base(accountNumber, initialBalance)
+  { }
+
+  public void CalculateInterest(double interestRate)
+  {
+    double interest = GetBalance() * (interestRate / 100);
+    Deposit(interest);
+  }
+
+  public override void Withdraw(double amount)
+  {
+    Console.WriteLine("Withdraw from saving account is not possible.");
+  }
+
+}
+public class CurrentAccount : BankAccount
+{
+  public CurrentAccount(string accountNumber, double initialBalance) : base(accountNumber, initialBalance)
+  { }
+  public override void Withdraw(double amount)
+  {
+    if (amount <= GetBalance() - 1000)
+    {
+      base.Withdraw(amount);
+    }
+    else
+    {
+      Console.WriteLine("Minimum balance not maintained.");
+    }
+  }
+}
 ```
 
-### OOP 4: Polymorphism
+### OOP 4: Abstracttion
 
 ```csharp
+public abstract class BankAccount
+{
+  private string _accountNumber;
+  private double _balance;
 
+  public BankAccount(string accountNumber, double initialBalance)
+  {
+    this._accountNumber = accountNumber;
+    this._balance = initialBalance;
+  }
+  public double GetBalance()
+  {
+    return _balance;
+  }
+  public double SetBalance()
+  {
+    return _balance;
+  }
+  public void Deposit(double amount)
+  {
+    _balance += amount;
+  }
+  public virtual void Withdraw(double amount)
+  {
+    if (_balance >= amount)
+    {
+      _balance -= amount;
+    }
+    else
+    {
+      Console.WriteLine("Insufficient funds.");
+    }
+  }
+
+  public abstract void Message();
+}
+public class SavingAccount : BankAccount
+{
+  public SavingAccount(string accountNumber, double initialBalance) : base(accountNumber, initialBalance)
+  { }
+
+  public void CalculateInterest(double interestRate)
+  {
+    double interest = GetBalance() * (interestRate / 100);
+    Deposit(interest);
+  }
+
+  public override void Withdraw(double amount)
+  {
+    Console.WriteLine("Withdraw from saving account is not possible.");
+  }
+  public override void Message()
+  {
+    Console.WriteLine("Welcome to Saving Account.");
+  }
+
+}
+public class CurrentAccount : BankAccount
+{
+  public CurrentAccount(string accountNumber, double initialBalance) : base(accountNumber, initialBalance)
+  { }
+  public override void Withdraw(double amount)
+  {
+    if (amount <= GetBalance() - 1000)
+    {
+      base.Withdraw(amount);
+    }
+    else
+    {
+      Console.WriteLine("Minimum balance not maintained.");
+    }
+  }
+
+  public override void Message()
+  {
+    Console.WriteLine("Welcome to Current Account.");
+  }
+}
 ```
 
 ### OOP 5: Interface
 
 ```csharp
+public interface IBanking
+{
+  double GetBalance();
+  void Message();
 
+  void Deposit(double amount);
+  void Withdraw(double amount);
+}
+public class BankAccount : IBanking
+{
+  private string _accountNumber;
+  private double _balance;
+
+  public BankAccount(string accountNumber, double initialBalance)
+  {
+    this._accountNumber = accountNumber;
+    this._balance = initialBalance;
+  }
+  public double GetBalance()
+  {
+    return _balance;
+  }
+  public double SetBalance()
+  {
+    return _balance;
+  }
+  public void Deposit(double amount)
+  {
+    _balance += amount;
+  }
+  public virtual void Withdraw(double amount)
+  {
+    if (_balance >= amount)
+    {
+      _balance -= amount;
+    }
+    else
+    {
+      Console.WriteLine("Insufficient funds.");
+    }
+  }
+  public virtual void Message()
+  {
+    Console.WriteLine("Welcome to Saving Account.");
+  }
+}
+public class SavingAccount : BankAccount
+{
+  public SavingAccount(string accountNumber, double initialBalance) : base(accountNumber, initialBalance)
+  { }
+
+  public void CalculateInterest(double interestRate)
+  {
+    double interest = GetBalance() * (interestRate / 100);
+    Deposit(interest);
+  }
+
+  public override void Withdraw(double amount)
+  {
+    Console.WriteLine("Withdraw from saving account is not possible.");
+  }
+  public override void Message()
+  {
+    Console.WriteLine("Welcome to Saving Account.");
+  }
+
+}
+public class CurrentAccount : BankAccount
+{
+  public CurrentAccount(string accountNumber, double initialBalance) : base(accountNumber, initialBalance)
+  { }
+  public override void Withdraw(double amount)
+  {
+    if (amount <= GetBalance() - 1000)
+    {
+      base.Withdraw(amount);
+    }
+    else
+    {
+      Console.WriteLine("Minimum balance not maintained.");
+    }
+  }
+
+  public override void Message()
+  {
+    Console.WriteLine("Welcome to Current Account.");
+  }
+}
 ```
 
 ### OOP 6: Why Interface?
 
+- supports multilevel inheritance
+
 ```csharp
 
 ```
+
+### OOP 7: Composition and dependency Injection
+
+Let's create separate examples for composition and dependency injection in C#.
+
+### Composition Example
+
+Composition involves creating a class that contains an instance of another class as one of its fields. Here's an example of composition without using dependency injection:
+
+```csharp
+using System;
+
+// Engine class representing the engine of a car
+public class Engine
+{
+    public void Start()
+    {
+        Console.WriteLine("Engine started.");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine("Engine stopped.");
+    }
+}
+
+// Car class representing a car that contains an engine
+public class Car
+{
+    private readonly Engine _engine;
+
+    // Constructor to initialize the engine
+    public Car()
+    {
+        _engine = new Engine();
+    }
+
+    // Method to start the car by starting its engine
+    public void StartCar()
+    {
+        _engine.Start();
+        Console.WriteLine("Car started.");
+    }
+
+    // Method to stop the car by stopping its engine
+    public void StopCar()
+    {
+        _engine.Stop();
+        Console.WriteLine("Car stopped.");
+    }
+}
+
+// Main program to demonstrate composition
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create an instance of Car
+        var car = new Car();
+
+        // Start the car
+        car.StartCar();
+
+        // Stop the car
+        car.StopCar();
+    }
+}
+```
+
+In this example:
+
+- The `Car` class contains an instance of the `Engine` class as a private field `_engine`.
+- The `Car` class creates and initializes an `Engine` instance in its constructor.
+- This is an example of composition, where the `Car` class is composed of an `Engine` instance.
+
+### Dependency Injection Example
+
+Dependency injection involves passing dependencies to a class from the outside, rather than creating them within the class itself. Here's an example of dependency injection:
+
+```csharp
+using System;
+
+// Engine class representing the engine of a car
+public class Engine
+{
+    public void Start()
+    {
+        Console.WriteLine("Engine started.");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine("Engine stopped.");
+    }
+}
+
+// Car class representing a car that depends on an engine
+public class Car
+{
+    private readonly Engine _engine;
+
+    // Constructor with dependency injection of Engine
+    public Car(Engine engine)
+    {
+        _engine = engine;
+    }
+
+    // Method to start the car by starting its engine
+    public void StartCar()
+    {
+        _engine.Start();
+        Console.WriteLine("Car started.");
+    }
+
+    // Method to stop the car by stopping its engine
+    public void StopCar()
+    {
+        _engine.Stop();
+        Console.WriteLine("Car stopped.");
+    }
+}
+
+// Main program to demonstrate dependency injection
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create an instance of Engine
+        var engine = new Engine();
+
+        // Create an instance of Car by injecting the Engine dependency
+        var car = new Car(engine);
+
+        // Start the car
+        car.StartCar();
+
+        // Stop the car
+        car.StopCar();
+    }
+}
+```
+
+In this example:
+
+- The `Car` class depends on an `Engine` instance, which is injected into its constructor.
+- The `Main` method creates an `Engine` instance and passes it to the `Car` constructor.
+- This is an example of dependency injection, where the `Car` class depends on an `Engine` instance that is injected from the outside.
+
+Composition offers several benefits in software development:
+
+1. **Code Reusability**: By composing objects together, you can reuse existing classes without inheritance. This promotes a more modular approach to building software, where individual components can be easily reused in different contexts.
+
+2. **Flexibility and Modifiability**: Composition allows you to change the behavior of a class by changing the objects it is composed of. This is more flexible than inheritance, as it allows for dynamic changes at runtime without modifying the class itself.
+
+3. **Encapsulation**: Composition promotes encapsulation by hiding the internal implementation details of composed objects. Clients only interact with the public interface of the composed class, reducing complexity and making the code easier to understand and maintain.
+
+4. **Reduced Coupling**: Classes composed together are loosely coupled, meaning they depend on each other's interfaces rather than their implementations. This reduces dependencies and makes the code more maintainable and easier to test.
+
+5. **Better Design for Has-A Relationships**: Composition is often a better choice than inheritance for modeling "has-a" relationships between objects. For example, a `Car` "has-a" `Engine`. Using composition to model such relationships leads to more intuitive and maintainable code.
+
+6. **Avoidance of Diamond Problem**: Inheritance hierarchies can lead to the Diamond Problem, where ambiguity arises due to multiple inheritance paths. Composition avoids this problem altogether, as objects are composed together rather than inherited.
+
+7. **Promotes Separation of Concerns**: Composition encourages breaking down complex systems into smaller, more manageable components. Each component has a single responsibility, promoting better organization and separation of concerns.
+
+Overall, composition offers a more flexible, modular, and maintainable approach to designing software compared to inheritance. It encourages better design practices and leads to code that is easier to understand, modify, and extend over time.
+
+Comparison: Composition vs Inheritance
+
+Flexibility: Composition offers greater flexibility than inheritance, as it allows for dynamic changes at runtime by modifying the objects that compose a class.
+Code Reusability: While both composition and inheritance promote code reusability, composition tends to offer more flexibility in terms of reusing objects in different contexts.
+Encapsulation: Composition often promotes encapsulation better than inheritance, as it allows the internal implementation details of composed objects to be hidden.
+Design Approach: Composition is often preferred over inheritance for modeling "has-a" relationships and building modular, loosely coupled systems. Inheritance is more suitable for modeling "is-a" relationships and creating class hierarchies with shared behaviors.
 
 ## Intermediate 2. aaa
 
