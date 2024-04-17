@@ -5653,7 +5653,7 @@ public class CurrentAccount : BankAccount
 
 Let's create separate examples for composition and dependency injection in C#.
 
-### Composition Example
+#### Composition Example
 
 Composition involves creating a class that contains an instance of another class as one of its fields. Here's an example of composition without using dependency injection:
 
@@ -5723,7 +5723,7 @@ In this example:
 - The `Car` class creates and initializes an `Engine` instance in its constructor.
 - This is an example of composition, where the `Car` class is composed of an `Engine` instance.
 
-### Dependency Injection Example
+#### Dependency Injection Example
 
 Dependency injection involves passing dependencies to a class from the outside, rather than creating them within the class itself. Here's an example of dependency injection:
 
@@ -5820,6 +5820,85 @@ Flexibility: Composition offers greater flexibility than inheritance, as it allo
 Code Reusability: While both composition and inheritance promote code reusability, composition tends to offer more flexibility in terms of reusing objects in different contexts.
 Encapsulation: Composition often promotes encapsulation better than inheritance, as it allows the internal implementation details of composed objects to be hidden.
 Design Approach: Composition is often preferred over inheritance for modeling "has-a" relationships and building modular, loosely coupled systems. Inheritance is more suitable for modeling "is-a" relationships and creating class hierarchies with shared behaviors.
+
+### OOP 8: Reflection
+
+Reflection in C# is a powerful feature that allows you to inspect and manipulate the metadata of types (classes, interfaces, structs, enums), members (fields, properties, methods, events), and assemblies at runtime. It provides the ability to dynamically query and interact with types, even if those types were not known at compile time. Reflection enables various advanced programming techniques, such as dependency injection, dynamic loading of assemblies, and creating extensible frameworks.
+
+Here's an overview of how reflection works and some common use cases:
+
+1. **Accessing Type Information:**
+   Reflection allows you to obtain information about types, such as their name, namespace, base type, implemented interfaces, constructors, methods, properties, fields, and attributes. You can use the `Type` class to represent types and retrieve their metadata dynamically.
+
+2. **Instantiating Objects Dynamically:**
+   Reflection enables you to create instances of types dynamically, even if the types are not known at compile time. You can use the `Activator.CreateInstance` method to instantiate objects based on their type information obtained through reflection.
+
+3. **Invoking Methods and Accessing Properties:**
+   Reflection provides mechanisms for invoking methods and accessing properties and fields dynamically at runtime. You can use the `MethodInfo` class to represent methods and the `PropertyInfo` class to represent properties, allowing you to invoke methods and get/set property values dynamically.
+
+4. **Dynamic Loading and Reloading of Assemblies:**
+   Reflection allows you to load assemblies dynamically at runtime using the `Assembly.Load` method. This feature enables scenarios such as plugins and extensible applications, where you can load assemblies containing additional functionality without recompiling the main application.
+
+5. **Attribute-Based Programming:**
+   Reflection enables attribute-based programming, where you can define custom attributes and apply them to types, members, or assemblies. You can then use reflection to query types and members for the presence of specific attributes and take appropriate actions based on their presence.
+
+6. **Serialization and Deserialization:**
+   Reflection is commonly used in serialization and deserialization frameworks to inspect the structure of objects and map them to/from their serialized representation (e.g., JSON, XML). By reflecting on the properties and fields of objects, these frameworks can automatically serialize/deserialize them without requiring explicit configuration.
+
+While reflection provides powerful capabilities, it should be used judiciously due to its performance overhead and potential for runtime errors if not handled correctly. Additionally, the use of reflection can make code harder to understand and maintain, so it's essential to weigh the benefits against the drawbacks in each specific scenario.
+
+Sure, here's a simple code example demonstrating the use of reflection in C#:
+
+```csharp
+using System;
+using System.Reflection;
+
+public class MyClass
+{
+    public int MyProperty { get; set; }
+    
+    public void MyMethod(string message)
+    {
+        Console.WriteLine($"MyMethod invoked with message: {message}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Get the type information of MyClass
+        Type myClassType = typeof(MyClass);
+
+        // Instantiate an object of MyClass dynamically
+        var myObject = Activator.CreateInstance(myClassType);
+
+        // Set the value of MyProperty using reflection
+        PropertyInfo propertyInfo = myClassType.GetProperty("MyProperty");
+        propertyInfo.SetValue(myObject, 42);
+
+        // Get the value of MyProperty using reflection
+        int propertyValue = (int)propertyInfo.GetValue(myObject);
+        Console.WriteLine($"MyProperty value: {propertyValue}");
+
+        // Invoke MyMethod dynamically with a parameter using reflection
+        MethodInfo methodInfo = myClassType.GetMethod("MyMethod");
+        object[] methodParams = { "Hello, Reflection!" };
+        methodInfo.Invoke(myObject, methodParams);
+    }
+}
+```
+
+In this example:
+
+1. We define a `MyClass` with a property `MyProperty` and a method `MyMethod`.
+2. In the `Main` method, we use reflection to:
+   - Get the `Type` object representing `MyClass`.
+   - Dynamically instantiate an object of `MyClass`.
+   - Get and set the value of the `MyProperty` property.
+   - Invoke the `MyMethod` method dynamically with a parameter.
+
+This example demonstrates how reflection allows us to inspect and manipulate the members of a type dynamically at runtime.
 
 ## Intermediate 2. aaa
 
