@@ -10241,47 +10241,48 @@ ORM, or Object-Relational Mapping, is a programming technique that enables devel
     dotnet add package Microsoft.EntityFrameworkCore.Design
 ```
 
-#### Create The User Table
+#### Step 0: Create The UserModel
+
+- The Model class is typically used for representing data transferred between different layers of your application, such as between your API controller and service layer. It's not directly tied to the database schema or entity configuration. Therefore, the changes you make to enforce uniqueness on the Email property in the User entity do not affect the UserModel class.
 
 ```csharp
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
-[Table("Users")]
-public class User
+namespace api.Models
 {
-    [Key, Required]
-    public Guid UserId { get; set; }
+    public class UserModel
+    {
+        [Required]
+        public Guid UserId { get; set; }
 
-    [Required]
-    public string Name { get; set; }
+        [Required]
+        public string Name { get; set; } = string.Empty;
 
-    [Required]
-    [EmailAddress]
-    public string Email { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
 
-    [Required]
-    public string Password { get; set; }
+        [Required]
+        public string Password { get; set; } = string.Empty;
 
-    public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
 
-    public string Image { get; set; }
+        public string Image { get; set; } = string.Empty;
 
-    public bool IsAdmin { get; set; }
+        public bool IsAdmin { get; set; } = false;
 
-    public bool IsBanned { get; set; }
+        public bool IsBanned { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // PostgreSQL expects timestamp with time zone to be in UTC format, b
 
-    [Required]
-    public DateTime CreatedAt { get; set; }
+    }
 }
 ```
 
-- Key attribute marks the UserId property as the primary key.
-- Required attribute ensures that Name, Email, Password, and CreatedAt properties are required.
-- EmailAddress attribute ensures that the Email property follows the email address format.
-
-#### Create The Category Table
+#### Step 0: Create The User Table
 
 ```csharp
 using System;
@@ -10291,30 +10292,39 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace api.EFCore
+namespace api.EntityFramework
 {
-    [Table("Category")]
-    public class Category
+    [Table("Users")]
+    public class User
     {
         [Key, Required]
-        public Guid CategoryId { get; set; }
+        public Guid UserId { get; set; }
 
         [Required]
-        [MaxLength(100)]
         public required string Name { get; set; }
-        public string Description { get; set; } = string.Empty;
 
         [Required]
-        public DateTime CreatedAt { get; set; }
+        [EmailAddress]
+        public required string Email { get; set; }
+
+        [Required]
+        public required string Password { get; set; }
+
+        public string Address { get; set; } = string.Empty;
+
+        public string Image { get; set; } = string.Empty;
+
+        public bool IsAdmin { get; set; } = false;
+
+        public bool IsBanned { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }
 ```
 
-#### Create The Product Table
-
-```csharp
-
-```
+- Key attribute marks the UserId property as the primary key.
+- Required attribute ensures that Name, Email, Password, and CreatedAt properties are required.
+- EmailAddress attribute ensures that the Email property follows the email address format.
 
 #### Step 1: Create the Database Context
 
@@ -10402,64 +10412,469 @@ To undo this action, use 'ef migrations remove'
 
 #### Step 5: check your pgadmin
 
-#### CategoryService
+#### 1. User API
+
+#### 1.1 Create The UserModel
+
+- The Model class is typically used for representing data transferred between different layers of your application, such as between your API controller and service layer. It's not directly tied to the database schema or entity configuration. Therefore, the changes you make to enforce uniqueness on the Email property in the User entity do not affect the UserModel class.
 
 ```csharp
-using api.EFCore;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-public class CategoryService
+namespace api.Models
 {
-
-
-    private AppDbContext _context;
-
-    public CategoryService(AppDbContext context)
+    public class UserModel
     {
-        _context = context;
+        [Required]
+        public Guid UserId { get; set; }
+
+        [Required]
+        public string Name { get; set; } = string.Empty;
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        public string Password { get; set; } = string.Empty;
+
+        public string Address { get; set; } = string.Empty;
+
+        public string Image { get; set; } = string.Empty;
+
+        public bool IsAdmin { get; set; } = false;
+
+        public bool IsBanned { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // PostgreSQL expects timestamp with time zone to be in UTC format, b
+
     }
-    public IEnumerable<CategoryModel> GetAllCategoryService()
-    {
-        List<CategoryModel> categories = new List<CategoryModel>();
-        var dataList = _context.Categories.ToList(); // get all the data from the products Table
-        dataList.ForEach(row => categories.Add(new CategoryModel()
-        {
-            CategoryId = row.CategoryId,
-            Name = row.Name,
-            Description = row.Description,
-        }));
-        return categories;
-    }
-    public void CreateCategoryService(CategoryModel newCategoryModel)
-    {
-        Console.WriteLine($"Hello1");
-
-        Category newCategory = new Category
-        {
-            CategoryId = Guid.NewGuid(),
-            Name = newCategoryModel.Name
-        };
-        Console.WriteLine($"{newCategory}");
-        Console.WriteLine($"Hello2");
-
-        _context.Categories.Add(newCategory);
-        Console.WriteLine($"Hello3");
-        _context.SaveChanges();
-        Console.WriteLine($"Hello4");
-    }
-
-
-
 }
 ```
 
-#### category controller
+#### 1.2 Create The User Table
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.EntityFramework
+{
+    [Table("Users")]
+    public class User
+    {
+        [Key, Required]
+        public Guid UserId { get; set; }
+
+        [Required]
+        public required string Name { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public required string Email { get; set; }
+
+        [Required]
+        public required string Password { get; set; }
+
+        public string Address { get; set; } = string.Empty;
+
+        public string Image { get; set; } = string.Empty;
+
+        public bool IsAdmin { get; set; } = false;
+
+        public bool IsBanned { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
+}
+```
+
+- Key attribute marks the UserId property as the primary key.
+- Required attribute ensures that Name, Email, Password, and CreatedAt properties are required.
+- EmailAddress attribute ensures that the Email property follows the email address format.
+
+#### 1.3 Create the context
 
 ```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using api.EFCore;
+using Microsoft.EntityFrameworkCore;
+
+namespace api.EntityFramework
+{
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions options) : base(options) { }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            // Create unique index for Email column
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+        }
+    }
+}
+```
+
+#### 1.4 UserService
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api.EntityFramework;
+using api.Models;
+
+namespace api.Services
+{
+    public class UserService
+    {
+        private AppDbContext _appDbContext;
+
+        public UserService(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
+        public IEnumerable<UserModel> GetAllUsers()
+        {
+            List<UserModel> users = new List<UserModel>();
+            var dataList = _appDbContext.Users.ToList(); // table with 4 rows
+            dataList.ForEach(row => users.Add(new UserModel
+            {
+                UserId = row.UserId,
+                Name = row.Name,
+                Email = row.Email,
+                Password = row.Password,
+                Address = row.Address,
+                CreatedAt = row.CreatedAt,
+            }));
+            return users;
+        }
+
+        public UserModel? GetUserById(Guid userId)
+        {
+            var user = _appDbContext.Users.FirstOrDefault(u => u.UserId == userId);
+            if (user != null)
+            {
+                return new UserModel
+                {
+                    UserId = user.UserId,
+                    Name = user.Name,
+                    Email = user.Email,
+                    Password = user.Password,
+                    Address = user.Address,
+                    CreatedAt = user.CreatedAt,
+                };
+            }
+            return null; // Return null if user with specified ID is not found
+        }
+
+        public void AddUser(UserModel newUser)
+        {
+            // first create the record 
+            User user = new User
+            {
+                UserId = Guid.NewGuid(),
+                Name = newUser.Name,
+                Email = newUser.Email,
+                Password = newUser.Password,
+                Address = newUser.Address,
+            };
+            // add the record to the context 
+            _appDbContext.Users.Add(user);
+            // save to the database
+            _appDbContext.SaveChanges();
+        }
+
+        public void UpdateUser(Guid userId, UserModel updateUser)
+        {
+            var user = _appDbContext.Users.FirstOrDefault(user => user.UserId == userId);
+
+            if (user != null)
+            {
+                user.Name = updateUser.Name;
+                user.Address = updateUser.Address;   // save to the database
+                _appDbContext.SaveChanges();
+            }
+        }
+        public void DeleteUser(Guid userId)
+        {
+            var user = _appDbContext.Users.FirstOrDefault(user => user.UserId == userId);
+
+            if (user != null)
+            {
+                _appDbContext.Users.Remove(user);
+                // save to the database
+                _appDbContext.SaveChanges();
+            }
+
+        }
+    }
+}
+```
+
+#### 1.5 User Controller
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api.EntityFramework;
+using api.Models;
+using api.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("/api/users")]
+    public class UserController : ControllerBase
+    {
+        private readonly UserService _userService;
+
+        public UserController(UserService userService)
+        {
+            _userService = userService;
+        }
+
+        [HttpGet]
+        public IActionResult GetUsers()
+        {
+            try
+            {
+                var users = _userService.GetAllUsers();
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet("{userId}")]
+        public IActionResult GetUserById(Guid userId)
+        {
+            try
+            {
+                var user = _userService.GetUserById(userId);
+                if (user != null)
+                {
+                    return Ok(user);
+                }
+                else
+                {
+                    return NotFound("User not found");
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult AddUser(UserModel newUser)
+        {
+            try
+            {
+                _userService.AddUser(newUser);
+                return Ok("User created successfully");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPut("{userId}")]
+        public IActionResult UpdateUser(Guid userId, UserModel updateUser)
+        {
+            try
+            {
+                _userService.UpdateUser(userId, updateUser);
+                return Ok("User updated successfully");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpDelete("{userId}")]
+        public IActionResult DeleteUser(Guid userId)
+        {
+            try
+            {
+                _userService.DeleteUser(userId);
+                return Ok("User deleted successfully");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+    }
+}
+
+```
+
+#### 2. Category API
+
+#### 2.1 Create The CategoryModel
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Models
+{
+    public class CategoryModel
+    {
+        [Required]
+        public Guid CategoryId { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
+}
+```
+
+#### 2.2 Create The Category Table
+
+```csharp
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace api.EntityFramework
+{
+  [Table("Categories")]
+  public class Category
+  {
+    [Key, Required]
+    public Guid CategoryId { get; set; }
+
+    [Required]
+    [MaxLength(100)]
+    public string Name { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+  }
+}
+```
+
+#### 2.3 Adjust the context
+
+```csharp
+
+```
+
+#### 2.4 Create The CategoryService
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api.EntityFramework;
+using api.Models;
+
+namespace api.Services
+{
+    public class CategoryService
+    {
+        private AppDbContext _appDbContext;
+
+        public CategoryService(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
+        public IEnumerable<CategoryModel> GetAllCategories()
+        {
+            List<CategoryModel> categories = new List<CategoryModel>();
+            var dataList = _appDbContext.Categories.ToList(); // table with 4 rows
+            dataList.ForEach(row => categories.Add(new CategoryModel
+            {
+                CategoryId = row.CategoryId,
+                Name = row.Name,
+                Description = row.Description,
+                CreatedAt = row.CreatedAt,
+            }));
+            return categories;
+        }
+        public void AddCategory(CategoryModel newCategory)
+        {
+            // first create the record 
+            Category category = new Category
+            {
+                CategoryId = Guid.NewGuid(),
+                Name = newCategory.Name,
+                Description = newCategory.Description,
+                // CreatedAt = DateTime.Now,
+            };
+            // add the record to the context 
+            _appDbContext.Categories.Add(category);
+            // save to the database
+            _appDbContext.SaveChanges();
+        }
+
+        public void UpdateCategory(Guid categoryId, CategoryModel updateCategory)
+        {
+            var category = _appDbContext.Categories.FirstOrDefault(category => category.CategoryId == categoryId);
+          
+            if (category != null)
+            {
+                category.Name = updateCategory.Name;
+                category.Description = updateCategory.Description;
+                // save to the database
+                _appDbContext.SaveChanges();
+            }
+        }
+        public void DeleteCategory(Guid categoryId)
+        {
+            var category = _appDbContext.Categories.FirstOrDefault(category => category.CategoryId == categoryId);
+            if (category != null)
+            {
+                // add the record to the context 
+                _appDbContext.Categories.Remove(category);
+                // save to the database
+                _appDbContext.SaveChanges();
+            }
+        }
+    }
+}
+```
+
+#### 2.5 Create The Category Controller
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api.EntityFramework;
+using api.Models;
+using api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -10469,27 +10884,397 @@ namespace api.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly CategoryService _categoryService;
-        public CategoryController(AppDbContext _context)
+        public CategoryController(AppDbContext appDbContext)
         {
-            _categoryService = new CategoryService(_context);
+            _categoryService = new CategoryService(appDbContext);
         }
 
         [HttpGet]
-        public IActionResult GetAllUsers()
+        public IActionResult GetUsers()
         {
-            var categories = _categoryService.GetAllCategoryService();
-            return Ok(categories);
+            try
+            {
+                var categories = _categoryService.GetAllCategories();
+                return Ok(categories);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
-
-
 
         [HttpPost]
-        public IActionResult CreateCategory(CategoryModel categoryModel)
+        public IActionResult AddCategory(CategoryModel newCategory)
         {
-            _categoryService.CreateCategoryService(categoryModel);
-            return Ok();
+            try
+            {
+                _categoryService.AddCategory(newCategory);
+                return Ok("Category is created successfully ");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Exception : {e.Message}");
+                return StatusCode(500, e.Message);
+            }
         }
+
+        [HttpPut("{categoryId}")]
+        public IActionResult UpdateCategory(Guid categoryId, CategoryModel updateCategory)
+        {
+            try
+            {
+                _categoryService.UpdateCategory(categoryId, updateCategory);
+                return Ok("Category is updated successfully ");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Exception : {e.Message}");
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpDelete("{categoryId}")]
+        public IActionResult DeleteCategory(Guid categoryId)
+        {
+            try
+            {
+                _categoryService.DeleteCategory(categoryId);
+                return Ok("Category is deleted successfully ");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Exception : {e.Message}");
+                return StatusCode(500, e.Message);
+            }
+        }
+
     }
+}
 ```
 
-### 4.13 Inserting 
+#### 3 Product API
+
+#### 3.1 Create The ProductModel
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Models
+{
+    public class ProductModel
+    {
+        public Guid ProductId { get; set; }
+
+        [Required(ErrorMessage = "Name is required")]
+        public required string Name { get; set; }
+
+        [Required(ErrorMessage = "Price is required")]
+        [Range(0, double.MaxValue, ErrorMessage = "Price must be a positive number")]
+        public double Price { get; set; }
+
+        public string Image { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Quantity is required")]
+        public int Quantity { get; set; }
+
+        [Required(ErrorMessage = "Sold quantity is required")]
+        public int Sold { get; set; } = 0;
+
+        [Required(ErrorMessage = "Shipping cost is required")]
+        [Range(0, double.MaxValue, ErrorMessage = "Shipping cost must be a positive number")]
+        public double Shipping { get; set; }
+
+        [Required(ErrorMessage = "CategoryId is required")]
+        public Guid CategoryId { get; set; }
+
+        public virtual CategoryModel? Category { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
+}
+```
+
+#### 3.2 Create The Product Table
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.EntityFramework
+{
+    [Table("Products")]
+    public class Product
+    {
+        [Key, Required]
+        public Guid ProductId { get; set; }
+
+        [Required(ErrorMessage = "Name is required")]
+        public required string Name { get; set; }
+
+        [Required(ErrorMessage = "Price is required")]
+        [Range(0, double.MaxValue, ErrorMessage = "Price must be a positive number")]
+        public double Price { get; set; }
+
+        public string Image { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Quantity is required")]
+        public int Quantity { get; set; }
+
+        [Required(ErrorMessage = "Sold quantity is required")]
+        public int Sold { get; set; } = 0;
+
+        [Required(ErrorMessage = "Shipping cost is required")]
+        [Range(0, double.MaxValue, ErrorMessage = "Shipping cost must be a positive number")]
+        public double Shipping { get; set; }
+
+        [Required(ErrorMessage = "CategoryId is required")]
+        public Guid CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public virtual Category? Category { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
+}
+```
+
+#### 3.3 Product Service
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using api.EntityFramework;
+using api.Models;
+
+namespace api.Services
+{
+    public class ProductService
+    {
+        private readonly AppDbContext _appDbContext;
+
+        public ProductService(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
+        public IEnumerable<ProductModel> GetAllProducts()
+        {
+            var products = _appDbContext.Products
+                .Select(product => new ProductModel
+                {
+                    ProductId = product.ProductId,
+                    Name = product.Name,
+                    Price = product.Price,
+                    Image = product.Image,
+                    Description = product.Description,
+                    Quantity = product.Quantity,
+                    Sold = product.Sold,
+                    Shipping = product.Shipping,
+                    CategoryId = product.CategoryId,
+                    Category = new CategoryModel
+                    {
+                        CategoryId = product.Category.CategoryId,
+                        Name = product.Category.Name,
+                        Description = product.Category.Description,
+                        CreatedAt = product.Category.CreatedAt
+                    },
+                    CreatedAt = product.CreatedAt
+                })
+                .ToList();
+
+            return products;
+        }
+
+        public ProductModel GetProductById(Guid productId)
+        {
+            var product = _appDbContext.Products
+                .Where(p => p.ProductId == productId)
+                .Select(p => new ProductModel
+                {
+                    ProductId = p.ProductId,
+                    Name = p.Name,
+                    Price = p.Price,
+                    Image = p.Image,
+                    Description = p.Description,
+                    Quantity = p.Quantity,
+                    Sold = p.Sold,
+                    Shipping = p.Shipping,
+                    CategoryId = p.CategoryId,
+                    Category = new CategoryModel
+                    {
+                        CategoryId = p.Category.CategoryId,
+                        Name = p.Category.Name,
+                        Description = p.Category.Description,
+                        CreatedAt = p.Category.CreatedAt
+                    },
+                    CreatedAt = p.CreatedAt
+                })
+                .FirstOrDefault();
+
+            return product;
+        }
+
+        public void AddProduct(ProductModel newProduct)
+        {
+            var product = new Product
+            {
+                ProductId = Guid.NewGuid(),
+                Name = newProduct.Name,
+                Price = newProduct.Price,
+                Image = newProduct.Image,
+                Description = newProduct.Description,
+                Quantity = newProduct.Quantity,
+                Sold = newProduct.Sold,
+                Shipping = newProduct.Shipping,
+                CategoryId = newProduct.CategoryId,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _appDbContext.Products.Add(product);
+            _appDbContext.SaveChanges();
+        }
+
+        public void UpdateProduct(Guid productId, ProductModel updatedProduct)
+        {
+            var product = _appDbContext.Products.FirstOrDefault(p => p.ProductId == productId);
+
+            if (product != null)
+            {
+                product.Name = updatedProduct.Name;
+                product.Price = updatedProduct.Price;
+                product.Image = updatedProduct.Image;
+                product.Description = updatedProduct.Description;
+                product.Quantity = updatedProduct.Quantity;
+                product.Sold = updatedProduct.Sold;
+                product.Shipping = updatedProduct.Shipping;
+                product.CategoryId = updatedProduct.CategoryId;
+
+                _appDbContext.SaveChanges();
+            }
+        }
+
+        public void DeleteProduct(Guid productId)
+        {
+            var product = _appDbContext.Products.FirstOrDefault(p => p.ProductId == productId);
+
+            if (product != null)
+            {
+                _appDbContext.Products.Remove(product);
+                _appDbContext.SaveChanges();
+            }
+        }
+    }
+}
+
+```
+
+#### 3.4 Product Controller
+
+```csharp
+using System;
+using System.Collections.Generic;
+using api.Models;
+using api.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("/api/products")]
+    public class ProductController : ControllerBase
+    {
+        private readonly ProductService _productService;
+
+        public ProductController(ProductService productService)
+        {
+            _productService = productService;
+        }
+
+        [HttpGet]
+        public IActionResult GetAllProducts()
+        {
+            try
+            {
+                var products = _productService.GetAllProducts();
+                return Ok(products);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet("{productId}")]
+        public IActionResult GetProductById(Guid productId)
+        {
+            try
+            {
+                var product = _productService.GetProductById(productId);
+                if (product != null)
+                {
+                    return Ok(product);
+                }
+                return NotFound("Product not found");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult AddProduct(ProductModel newProduct)
+        {
+            try
+            {
+                _productService.AddProduct(newProduct);
+                return Ok("Product added successfully");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPut("{productId}")]
+        public IActionResult UpdateProduct(Guid productId, ProductModel updatedProduct)
+        {
+            try
+            {
+                _productService.UpdateProduct(productId, updatedProduct);
+                return Ok("Product updated successfully");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpDelete("{productId}")]
+        public IActionResult DeleteProduct(Guid productId)
+        {
+            try
+            {
+                _productService.DeleteProduct(productId);
+                return Ok("Product deleted successfully");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+    }
+}
+
+```
