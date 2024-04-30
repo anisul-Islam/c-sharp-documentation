@@ -8918,51 +8918,6 @@ public record class UpdateProductDto
 
 ```
 
-### .NET Framework - Entity Framework core
-
-Entity Framework Core (EF Core) is an object-relational mapping (ORM) framework developed by Microsoft for .NET applications. It provides a set of tools and libraries for developers to interact with relational databases using .NET objects.
-
-ORM, or Object-Relational Mapping, is a programming technique that enables developers to work with relational databases using object-oriented programming languages like C#. ORM frameworks like Entity Framework Core allow developers to map database tables to .NET classes and properties, making it easier to query and manipulate data in the database without having to write SQL queries directly.
-
-- REST API (C# Objects) - Entity Framrwork CORE - DB (Table)
-
-- defining the data Model
-
-```csharp
-// create the Categories Table
-namespace EcommerceAPI;
-
-public class Categories
-{
-  public int Id { get; set; }
-  public required string Name { get; set; }
-  public required string Description { get; set; }
-
-}
-
-// create the Product Table
-namespace EcommerceAPI;
-
-public class Products
-{
-  public int Id { get; set; }
-  // public string? Name { get; set; } (can have null)
-
-  // public string? Name { get; set; } = string.Empty; (empty string)
-
-  public required string Name { get; set; }
-  public int Price { get; set; }
-
-  public int CategoryId { get; set; }
-  public Categories? Category { get; set; } // populate the Category for the product
-
-}
-```
-
-- add a package for entity framework
-  - `Npgsql.EntityFrameworkCore.PostgreSQL`
-  - `dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 9.0.0-preview.3`
-
 ## Intermediate 4 : REST web API - ecommerce
 
 ### 4.0 Explain REST API Mechanism
@@ -9084,9 +9039,11 @@ app.MapPost("/users", (User newUser) =>
 
 ```
 
+#### 4.1.7 Add VS Code extensions: Nuget Open Gallery
+
 ### 4.2 MVC Pattern
 
-#### 4.2.1 Create a Model
+#### 4.2.1 Create a Model (Make Sure to Use Model in the end of file/class Name)
 
 ```csharp
   public class User
@@ -9991,7 +9948,7 @@ namespace api.Helpers
 using System;
 using System.ComponentModel.DataAnnotations;
 
-public class Product
+public class ProductModel
 {
   public Guid ProductId { get; set; }
 
@@ -10269,3 +10226,270 @@ public async Task<IActionResult> GetProduct(string productId)
 ```
 
 ### 4.12 Adding Database
+
+#### [.NET Framework - Entity Framework core](https://learn.microsoft.com/en-us/ef/ef6/fundamentals/install)
+
+Entity Framework Core (EF Core) is an object-relational mapping (ORM) framework developed by Microsoft for .NET applications. It provides a set of tools and libraries for developers to interact with relational databases using .NET objects.
+
+ORM, or Object-Relational Mapping, is a programming technique that enables developers to work with relational databases using object-oriented programming languages like C#. ORM frameworks like Entity Framework Core allow developers to map database tables to .NET classes and properties, making it easier to query and manipulate data in the database without having to write SQL queries directly.
+
+- REST API (C# Objects) - Entity Framrwork CORE - DB (Table)
+- add packages for entity framework
+
+```csharp
+    dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+    dotnet add package Microsoft.EntityFrameworkCore.Design
+```
+
+#### Create The User Table
+
+```csharp
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+[Table("Users")]
+public class User
+{
+    [Key, Required]
+    public Guid UserId { get; set; }
+
+    [Required]
+    public string Name { get; set; }
+
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
+
+    [Required]
+    public string Password { get; set; }
+
+    public string Address { get; set; }
+
+    public string Image { get; set; }
+
+    public bool IsAdmin { get; set; }
+
+    public bool IsBanned { get; set; }
+
+    [Required]
+    public DateTime CreatedAt { get; set; }
+}
+```
+
+- Key attribute marks the UserId property as the primary key.
+- Required attribute ensures that Name, Email, Password, and CreatedAt properties are required.
+- EmailAddress attribute ensures that the Email property follows the email address format.
+
+#### Create The Category Table
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.EFCore
+{
+    [Table("Category")]
+    public class Category
+    {
+        [Key, Required]
+        public Guid CategoryId { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public required string Name { get; set; }
+        public string Description { get; set; } = string.Empty;
+
+        [Required]
+        public DateTime CreatedAt { get; set; }
+    }
+}
+```
+
+#### Create The Product Table
+
+```csharp
+
+```
+
+#### Step 1: Create the Database Context
+
+```csharp
+// AppDbContext
+using Microsoft.EntityFrameworkCore;
+
+public class AppDbContext : DbContext
+{
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+
+    public DbSet<User> Users { get; set; }
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Category> Categories { get; set; }
+   
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // Configure entity mappings, relationships, etc.
+       
+
+        // Add additional configurations as needed
+    }
+}
+
+```
+
+#### Step 2: Add the Connection String
+
+- psql postgres
+- SELECT usename FROM pg_user; it has returened postgres, anisul_islam
+- SELECT rolname, rolpassword FROM pg_authid WHERE rolcanlogin = true;
+
+- ALTER USER username WITH PASSWORD 'new_password';
+- ALTER USER myuser WITH PASSWORD 'newpassword';
+
+- Configure the PostgreSQL connection string in your appsettings.json file:
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=myserver;Port=5432;Database=mydatabase;Username=myuser;Password=mypassword;"
+  }
+}
+```
+
+#### Step 3: Configure the application
+
+- Register the DbContext in your Program.cs / Startup.cs class:
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+```
+
+#### Step 4: Use EF Core migrations to create the database schema
+
+The Microsoft.EntityFrameworkCore.Tools package provides the Entity Framework Core command-line tools (dotnet-ef) which are used for various tasks such as:
+
+Migrations: Creating and applying migrations to update the database schema based on changes to your entity classes.
+
+Database Update: Applying migrations to the database to update its schema to match the current state of your entity classes.
+
+Database Creation: Creating a new database based on your DbContext and entity classes.
+Reverse Engineering: Generating entity classes and DbContext from an existing database schema.
+
+Script Generation: Generating SQL scripts for migrations or database creation.
+These tools are essential for managing database schema changes and interactions with the database during development. They provide a convenient way to automate common tasks and streamline the database development process.
+
+In summary, the Microsoft.EntityFrameworkCore.Tools package is necessary for using Entity Framework Core effectively, especially when dealing with database migrations and schema management.
+
+- Install Entity Framework Core Tools: Ensure that you have installed the Entity Framework Core Tools globally. You can do this by running the following command:
+`dotnet tool install --global dotnet-ef`
+
+```bash
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+To undo this action, use 'ef migrations remove'
+```
+
+#### Step 5: check your pgadmin
+
+#### CategoryService
+
+```csharp
+using api.EFCore;
+
+public class CategoryService
+{
+
+
+    private AppDbContext _context;
+
+    public CategoryService(AppDbContext context)
+    {
+        _context = context;
+    }
+    public IEnumerable<CategoryModel> GetAllCategoryService()
+    {
+        List<CategoryModel> categories = new List<CategoryModel>();
+        var dataList = _context.Categories.ToList(); // get all the data from the products Table
+        dataList.ForEach(row => categories.Add(new CategoryModel()
+        {
+            CategoryId = row.CategoryId,
+            Name = row.Name,
+            Description = row.Description,
+        }));
+        return categories;
+    }
+    public void CreateCategoryService(CategoryModel newCategoryModel)
+    {
+        Console.WriteLine($"Hello1");
+
+        Category newCategory = new Category
+        {
+            CategoryId = Guid.NewGuid(),
+            Name = newCategoryModel.Name
+        };
+        Console.WriteLine($"{newCategory}");
+        Console.WriteLine($"Hello2");
+
+        _context.Categories.Add(newCategory);
+        Console.WriteLine($"Hello3");
+        _context.SaveChanges();
+        Console.WriteLine($"Hello4");
+    }
+
+
+
+}
+```
+
+#### category controller
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api.EFCore;
+using Microsoft.AspNetCore.Mvc;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("/api/categories")]
+    public class CategoryController : ControllerBase
+    {
+        private readonly CategoryService _categoryService;
+        public CategoryController(AppDbContext _context)
+        {
+            _categoryService = new CategoryService(_context);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllUsers()
+        {
+            var categories = _categoryService.GetAllCategoryService();
+            return Ok(categories);
+        }
+
+
+
+        [HttpPost]
+        public IActionResult CreateCategory(CategoryModel categoryModel)
+        {
+            _categoryService.CreateCategoryService(categoryModel);
+            return Ok();
+        }
+    }
+```
+
+### 4.13 Inserting 
