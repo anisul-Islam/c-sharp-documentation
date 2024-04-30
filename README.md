@@ -8440,3 +8440,1832 @@ class Test1
   }
 }
 ```
+
+## Intermediate 3 : REST API
+
+### create first web api and folder structure
+
+- what is API? why do we need API?
+- HTTP Verbs + CRUD Operations
+- HTTP Status Code
+
+- `dotnet new list`
+- As a beginner start with this command: `dotnet new web -o ecommerce-api`
+- command `dotnet new webapi -o ecommerce-api`
+- cmd+shift+p -> .NET: New Project + Enter
+- check Program.cs
+
+```cs
+var builder = WebApplication.CreateBuilder(args);
+// WebApplication is basically just host for http server where you can make http requets
+var app = builder.Build();
+
+app.MapGet("/", () => "Hello World!");
+
+app.Run();
+```
+
+- check .csproj file -> where we will add all dependencies mostly
+
+- appsettings.json vs appsettings.Development.json -> mainly for configuration
+
+- launchSettings.json - profiles configuration for only local development not for production development
+
+- obj file is the intermediate
+- bin is the executeable
+- how to build the project: go to root directory: dotnet buiild (ctrl+shift+B)
+- how to run the app (F5) + install Jsonnet Language Server + select c# + http/default or go to solution explorer -> debug -> start without debugging
+- how to run with terminal. go to root directory -> `dotnet run`
+- auto sever restart `dotnet watch run`
+
+### API, REST API
+
+REST (Representational State Transfer) is an architectural style for designing networked applications. It relies on a stateless, client-server communication model and emphasizes the use of standard HTTP methods and status codes. REST APIs adhere to a set of constraints that define their architectural properties. These constraints, defined by Roy Fielding in his doctoral dissertation, help ensure that RESTful APIs are scalable, reliable, and maintainable. Let's explore these constraints with examples:
+
+1. **Client-Server Architecture**:
+   - Constraint: Separation of concerns between client and server.
+   - Example: A web application (client) communicates with a server through HTTP requests. The client is responsible for presenting data to the user, while the server is responsible for processing requests and managing resources.
+
+2. **Statelessness**:
+   - Constraint: Each request from a client must contain all the information necessary for the server to fulfill the request. The server does not store any client state between requests.
+   - Example: In a RESTful API, authentication tokens are sent with each request to authenticate the client. The server does not maintain session state for individual clients.
+
+3. **Cacheability**:
+   - Constraint: Responses from the server must explicitly indicate whether they can be cached by clients or not.
+   - Example: The server includes cache-control headers in its HTTP responses to specify caching behavior. Clients can cache responses for a certain period to reduce the need for repeated requests.
+
+4. **Uniform Interface**:
+   - Constraint: The interface between client and server must be uniform, simplifying the architecture and promoting scalability.
+   - Example:
+     - Resource Identification: Each resource in the API is identified by a unique URI (Uniform Resource Identifier).
+     - Resource Manipulation: Clients interact with resources through standard HTTP methods like GET, POST, PUT, DELETE.
+     - Self-Descriptive Messages: Responses include metadata (e.g., content type, cache directives) to describe how to process the payload.
+     - Hypermedia as the Engine of Application State (HATEOAS): Responses contain hyperlinks that allow clients to navigate the API dynamically.
+
+5. **Layered System**:
+   - Constraint: The architecture must support a hierarchical layered system, allowing intermediaries (e.g., proxies, gateways) to be inserted between clients and servers without affecting the overall behavior.
+   - Example: A client sends a request to a load balancer, which forwards the request to one of several identical server instances. The load balancer acts as an intermediary, distributing incoming requests among the servers.
+
+6. **Code on Demand (Optional)**:
+   - Constraint: Servers can provide executable code (e.g., JavaScript) to clients for extended functionality, but it is optional.
+   - Example: A web server may send client-side scripts (e.g., JavaScript functions) to a web browser as part of an HTML response. The browser can execute these scripts to enhance user interactivity.
+
+These constraints ensure that RESTful APIs are scalable, reliable, and maintainable. By adhering to these principles, developers can design APIs that are easily understood, interoperable, and adaptable to changing requirements.
+
+#### Install REST CLIENT for http requests
+
+- create a ecommerce.http file `GET http://localhost:5277`
+
+#### URL? best practices when naming URL
+
+1. **URL:** `https://www.amazon.com/gp/product/B07H1DWFLG/ref=s9_acsd_hps_bw_c_x_3_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=EK5R9ET1VB7E0M6X23T3&pf_rd_t=101&pf_rd_p=5f6a5c92-95cb-486c-aa05-69e0e2efeb50&pf_rd_i=15240825011`
+   - **Scheme:** `https`
+   - **Authority:** `www.amazon.com`
+   - **Path:** `/gp/product/B07H1DWFLG/ref=s9_acsd_hps_bw_c_x_3_w`
+   - **Query Parameters:** `pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=EK5R9ET1VB7E0M6X23T3&pf_rd_t=101&pf_rd_p=5f6a5c92-95cb-486c-aa05-69e0e2efeb50&pf_rd_i=15240825011`
+   - **Fragment Identifier:** None
+
+2. **URL:** `https://www.example.com/blog/post?id=123#comments`
+   - **Scheme:** `https`
+   - **Authority:** `www.example.com`
+   - **Path:** `/blog/post`
+   - **Query Parameters:** `id=123`
+   - **Fragment Identifier:** `comments`
+
+Best Practices for URL Naming:
+
+1. **Use Descriptive Names:**
+   - **Good Example:** `/products` - Clearly indicates that this endpoint deals with products.
+   - **Bad Example:** `/data` - Vague and unclear.
+
+2. **Use Plural Nouns for Collections:**
+   - **Good Example:** `/users`, `/products` - Represents collections of resources.
+   - **Bad Example:** `/user`, `/product` - Singular form is less intuitive for collections.
+
+3. **Use Singular Nouns for Specific Resources:**
+   - **Good Example:** `/user/{userId}`, `/product/{productId}` - Represents individual instances of resources.
+   - **Bad Example:** `/users/{userId}`, `/products/{productId}` - Confusing plural form for specific resources.
+
+4. **Use Hyphens for Readability:**
+   - **Good Example:** `/product-categories`, `/order-items` - Improves readability.
+   - **Bad Example:** `/productcategories`, `/orderitems` - Less readable and harder to parse.
+
+5. **Avoid Hard-Coding IDs:**
+   - **Good Example:** `/users/{username}` - Uses a meaningful identifier instead of a database ID.
+   - **Bad Example:** `/users/{userId}` - Exposes internal implementation details.
+
+6. **Versioning:**
+   - **Good Example:** `/v1/products`, `/v2/products` - Includes version number for backward compatibility.
+   - **Bad Example:** `/products/v1`, `/products?version=1` - Less standardized and harder to manage.
+
+7. **Use Consistent Naming Conventions:**
+   - **Good Example:** `/customers`, `/orders`, `/payments` - Consistent use of nouns for resources.
+   - **Bad Example:** `/customer`, `/order`, `/pay` - Inconsistent naming convention.
+
+8. **Limit URL Depth:**
+   - **Good Example:** `/users/{userId}/orders` - Concise and avoids excessive nesting.
+   - **Bad Example:** `/users/{userId}/orders/{orderId}/items` - Excessive nesting increases complexity.
+
+9. **Avoid Verbs in URL Paths:**
+   - **Good Example:** `POST /products` - Uses HTTP methods for actions instead of verbs in URL.
+   - **Bad Example:** `/createProduct`, `/deleteOrder` - Verb usage makes URLs less RESTful.
+
+10. **Use Subresources for Relationships:**
+
+- **Good Example:** `/users/{userId}/orders`, `/products/{productId}/reviews` - Represents relationships between resources.
+- **Bad Example:** `/userOrders`, `/productReviews` - Less intuitive and violates REST principles.
+
+By following these best practices, API designers can create URL structures that are intuitive, consistent, and easy to understand, improving the developer experience and usability of the API.
+
+### DTO (Data Transfer Objects)
+
+- dto is just a reperesentation of the resource
+- some pople might name as contracts
+- create a folder called Dtos-> ProductDto.cs
+- we will create record cause they are immutable (non changeable after creating)
+
+```csharp
+  namespace EcommerceAPI;
+
+  public record class ProductDto
+  (int Id, string Name, double Price);
+```
+
+### GET /products and /products{id}
+
+- now inside Program.cs
+
+```csharp
+using EcommerceAPI;
+
+var builder = WebApplication.CreateBuilder(args);
+
+var app = builder.Build();
+
+
+List<ProductDto> products = [
+
+    new ProductDto(1, "Iphone 13", 350.25),
+    new ProductDto(2, "Samsung", 325.25),
+    new ProductDto(3, "IPhone 14", 225.25)
+];
+
+app.MapGet("/products", () => products);
+
+app.MapGet("/products/{id}", (int id) =>
+{
+  var foundProduct = products.Find(product => product.Id == id);
+  return foundProduct is null ? Results.NotFound() : Results.Ok(foundProduct);
+}).WithName("GetProduct");
+```
+
+### how to create API response
+
+```csharp
+// first create the template of the response outside the class
+public record ApiResponse<T>(T Data, string Message);
+
+// now create the response
+var response = new ApiResponse<ProductDto>(foundProduct, "Product found successfully");
+
+// use the response
+ return foundProduct is null ? Results.NotFound() : Results.Ok(response);
+
+ // so finally
+  app.MapGet("/products/{id}", (int id) =>
+    {
+      var foundProduct = products.Find(product => product.Id == id);
+      if (foundProduct != null)
+      {
+        var response = new ApiResponse<ProductDto>(foundProduct, "Product found successfully");
+        return foundProduct is null ? Results.NotFound() : Results.Ok(response);
+      }
+      else
+      {
+        return Results.NotFound("Product not found");
+      }
+
+    }).WithName("GetProduct");
+```
+
+### POST /products
+
+- CreateProductDto.cs another record
+
+The CreateProductDto record in your example is a data transfer object (DTO) used for representing the data needed to create a new product. It has two properties:
+
+Name: Represents the name of the product.
+Price: Represents the price of the product.
+
+```csharp
+// Dtos/CreateProductDto
+namespace EcommerceAPI;
+
+public record class CreateProductDto
+(string Name, double Price);
+
+app.MapPost("/products", (CreateProductDto newProduct) =>
+{
+ ProductDto product = new(
+        products.Count + 1,
+        newProduct.Name,
+        newProduct.Price
+      );
+  products.Add(product);
+  // return products;
+  return Results.CreatedAtRoute("GetProduct", new { id = product.Id }, product);
+});
+```
+
+### PUT /products/{id}
+
+```csharp
+app.MapPut("/products/{id}", (int id, UpdateProductDto updateProduct) =>
+{
+  // find existing product 
+  var foundProductIndex = products.FindIndex(product => product.Id == id);
+  if (foundProductIndex == -1)
+  {
+    return Results.NotFound(); // create or not create if it is not found based on your own expectation
+  }
+  else
+  {
+    products[foundProductIndex] = new ProductDto(id, updateProduct.Name, updateProduct.Price);
+    return Results.NoContent();
+  }
+  // replace with update data
+});
+```
+
+### DELETE /products/{id}
+
+```csharp
+app.MapDelete("/products/{id}", (int id) =>
+{
+  products.RemoveAll(product => product.Id == id);
+  return Results.Ok();
+});
+
+```
+
+### Extension, combine all the endpoints
+
+- create an EndPoints folder and move codes
+
+```csharp
+// EndPoints/ProductEndPoits class
+namespace EcommerceAPI;
+
+public static class ProductEndpoints
+{
+  private static readonly List<ProductDto> products = [
+    new ProductDto(1, "Iphone 13", 350.25),
+    new ProductDto(2, "Samsung", 325.25),
+    new ProductDto(3, "IPhone 14", 225.25)
+  ];
+
+  public static WebApplication MapProductsEndPoints(this WebApplication app)
+  {
+
+    app.MapGet("/products", () => products);
+
+    app.MapGet("/products/{id}", (int id) =>
+    {
+      var foundProduct = products.Find(product => product.Id == id);
+      return foundProduct is null ? Results.NotFound() : Results.Ok(foundProduct);
+    }).WithName("GetProduct");
+
+    app.MapPost("/products", (CreateProductDto newProduct) =>
+    {
+      ProductDto product = new(
+        products.Count + 1,
+        newProduct.Name,
+        newProduct.Price
+      );
+      products.Add(product);
+      // return products;
+      return Results.CreatedAtRoute("GetProduct", new { id = product.Id }, product);
+    });
+
+    app.MapPut("/products/{id}", (int id, UpdateProductDto updateProduct) =>
+    {
+      // find existing product 
+      var foundProductIndex = products.FindIndex(product => product.Id == id);
+      if (foundProductIndex == -1)
+      {
+        return Results.NotFound(); // create or not create if it is not found based on your own expectation
+      }
+      else
+      {
+        products[foundProductIndex] = new ProductDto(id, updateProduct.Name, updateProduct.Price);
+        return Results.NoContent();
+      }
+      // replace with update data
+    });
+
+   app.MapDelete("/products/{id}", (int id) =>
+    {
+        var productToRemove = products.Find(p => p.Id == id);
+        if (productToRemove != null)
+        {
+            products.Remove(productToRemove);
+            return Results.Ok("Product deleted successfully");
+        }
+        else
+        {
+            return Results.NotFound("Product not found");
+        }
+    });
+
+
+    return app;
+
+  }
+
+}
+
+// now Program.cs
+using EcommerceAPI;
+
+var builder = WebApplication.CreateBuilder(args);
+
+var app = builder.Build();
+
+app.MapProductsEndPoints();
+
+app.Run();
+
+```
+
+### grouping routes
+
+```csharp
+namespace EcommerceAPI;
+
+public record ApiResponse<T>(T Data, string Message);
+public static class ProductEndpoints
+{
+  private static readonly List<ProductDto> products = [
+    new ProductDto(1, "Iphone 13", 350.25),
+    new ProductDto(2, "Samsung", 325.25),
+    new ProductDto(3, "IPhone 14", 225.25)
+  ];
+
+  public static RouteGroupBuilder MapProductsEndPoints(this WebApplication app)
+  {
+
+    var group = app.MapGroup("products");
+
+    // GET -> /products
+    group.MapGet("/", () => products);
+
+    // GET -> /products/1
+    group.MapGet("/{id}", (int id) =>
+    {
+      var foundProduct = products.Find(product => product.Id == id);
+      if (foundProduct != null)
+      {
+        var response = new ApiResponse<ProductDto>(foundProduct, "Product found successfully");
+        return foundProduct is null ? Results.NotFound() : Results.Ok(response);
+      }
+      else
+      {
+        return Results.NotFound("Product not found");
+      }
+
+    }).WithName("GetProduct");
+
+    // POST -> /products
+    group.MapPost("/", (CreateProductDto newProduct) =>
+    {
+     ProductDto product = new(
+        products.Count + 1,
+        newProduct.Name,
+        newProduct.Price
+      );
+      products.Add(product);
+      // return products;
+      return Results.CreatedAtRoute("GetProduct", new { id = product.Id }, product);
+    });
+
+    group.MapPut("/{id}", (int id, UpdateProductDto updateProduct) =>
+    {
+      // find existing product 
+      var foundProductIndex = products.FindIndex(product => product.Id == id);
+      if (foundProductIndex == -1)
+      {
+        return Results.NotFound(); // create or not create if it is not found based on your own expectation
+      }
+      else
+      {
+        products[foundProductIndex] = new ProductDto(id, updateProduct.Name, updateProduct.Price);
+        return Results.NoContent();
+      }
+      // replace with update data
+    });
+
+    group.MapDelete("/{id}", (int id) =>
+    {
+      var productToRemove = products.Find(p => p.Id == id);
+      if (productToRemove != null)
+      {
+        products.Remove(productToRemove);
+        return Results.Ok("Product deleted successfully");
+      }
+      else
+      {
+        return Results.NotFound("Product not found");
+      }
+    });
+    return group;
+  }
+
+}
+```
+
+### Validation with Data Annotation / Handling Invalid Inputs
+
+- what happen if you do not pass product name and it creates the product? it should be a bad request 400
+- add the data annotation to the DTOs
+- add the nuget package (MinimalApis.Extensions) from the package manager (add the vsextension)
+
+```csharp
+using System.ComponentModel.DataAnnotations;
+
+namespace EcommerceAPI;
+
+public record class CreateProductDto
+(
+  [Required][StringLength(50)] string Name,
+  [Range(1, 1000)] double Price
+);
+
+using System.ComponentModel.DataAnnotations;
+
+namespace EcommerceAPI;
+
+public record class UpdateProductDto
+(
+  [Required][StringLength(50)] string Name,
+  [Range(1, 1000)] double Price
+);
+
+```
+
+### CRUD operations in React Now
+
+```csharp
+
+```
+
+### .NET Framework - Entity Framework core
+
+Entity Framework Core (EF Core) is an object-relational mapping (ORM) framework developed by Microsoft for .NET applications. It provides a set of tools and libraries for developers to interact with relational databases using .NET objects.
+
+ORM, or Object-Relational Mapping, is a programming technique that enables developers to work with relational databases using object-oriented programming languages like C#. ORM frameworks like Entity Framework Core allow developers to map database tables to .NET classes and properties, making it easier to query and manipulate data in the database without having to write SQL queries directly.
+
+- REST API (C# Objects) - Entity Framrwork CORE - DB (Table)
+
+- defining the data Model
+
+```csharp
+// create the Categories Table
+namespace EcommerceAPI;
+
+public class Categories
+{
+  public int Id { get; set; }
+  public required string Name { get; set; }
+  public required string Description { get; set; }
+
+}
+
+// create the Product Table
+namespace EcommerceAPI;
+
+public class Products
+{
+  public int Id { get; set; }
+  // public string? Name { get; set; } (can have null)
+
+  // public string? Name { get; set; } = string.Empty; (empty string)
+
+  public required string Name { get; set; }
+  public int Price { get; set; }
+
+  public int CategoryId { get; set; }
+  public Categories? Category { get; set; } // populate the Category for the product
+
+}
+```
+
+- add a package for entity framework
+  - `Npgsql.EntityFrameworkCore.PostgreSQL`
+  - `dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 9.0.0-preview.3`
+
+## Intermediate 4 : REST web API - ecommerce
+
+### 4.0 Explain REST API Mechanism
+
+### 4.1 Basic setup
+
+#### 4.1.1 create, build and run a web api
+
+  ```csharp
+    dotnet new webapi -o api
+    dotnet build
+    dotnet run
+    dotnet watch run
+  ```
+
+  ```csharp
+  // clean the code
+  var builder = WebApplication.CreateBuilder(args);
+
+  // Add services to the container.
+  // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+  builder.Services.AddEndpointsApiExplorer();
+  builder.Services.AddSwaggerGen();
+
+  var app = builder.Build();
+
+  // Configure the HTTP request pipeline.
+  if (app.Environment.IsDevelopment())
+  {
+      app.UseSwagger();
+      app.UseSwaggerUI();
+  }
+
+  app.UseHttpsRedirection();
+
+
+  app.Run();
+  ```
+
+#### 4.1.2 status code & how to create API response
+
+- Results.OK()
+
+#### 4.1.3 Testing API
+
+#### 4.1.4 Documenting API: Swagger API Doc -> `http://localhost:5097/swagger/index.html`
+
+#### 4.1.5 HTTP Methods & End Points Naming Conventions
+
+- add all HTTP methods and give a simple response in Program.cs
+
+#### 4.1.6 add few routes `/api/users`
+
+```csharp
+// User Data will look like this
+public class User
+{
+  public Guid UserId { get; set; }
+  public string Name { get; set; }
+  public required string Email { get; set; }
+  public required string Password { get; set; }
+  public string Address { get; set; } = string.Empty;
+  public string Image { get; set; } = string.Empty;
+  public bool IsAdmin { get; set; }
+  public bool IsBanned { get; set; }
+  public DateTime CreatedAt { get; set; }
+}
+
+// Data for Users 
+private static List<User> _users = new List<User>()
+  {
+    new User{
+        UserId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
+        Name = "John Doe",
+        Email = "john@example.com",
+        Password = "password123",
+        Address = "123 Main St",
+        IsAdmin = false,
+        IsBanned = false,
+        CreatedAt = DateTime.Now
+    },
+    new User{
+        UserId = Guid.Parse("24508f7e-94ec-4f0b-b8d6-e8e16a9a3b29"),
+        Name = "Alice Smith",
+        Email = "alice@example.com",
+        Password = "password456",
+        Address = "456 Elm St",
+        IsAdmin = false,
+        IsBanned = false,
+        CreatedAt = DateTime.Now
+    },
+    new User{
+        UserId = Guid.Parse("87e5c4f3-d3e5-4e16-88b5-809b2b08b773"),
+        Name = "Bob Johnson",
+        Email = "bob@example.com",
+        Password = "password789",
+        Address = "789 Oak St",
+        IsAdmin = false,
+        IsBanned = false,
+        CreatedAt = DateTime.Now
+    }
+  };
+
+app.MapGet("/users", () => _users);
+
+app.MapGet("/users/{id}", (int id) =>
+{
+  var foundUser = _users.Find(user => user.Id == id);
+  return foundUser is null ? Results.NotFound() : Results.Ok(foundProduct);
+}).WithName("GeUser");
+
+app.MapPost("/users", (User newUser) =>
+{
+    newUser.UserId = Guid.NewGuid();
+    newUser.CreatedAt = DateTime.Now;
+    _users.Add(newUser);
+  return Results.CreatedAtRoute("GetUser", new { id = newUser.Id }, newUser);
+});
+
+```
+
+### 4.2 MVC Pattern
+
+#### 4.2.1 Create a Model
+
+```csharp
+  public class User
+  {
+    public Guid UserId { get; set; }
+    public string Name { get; set; }
+    public required string Email { get; set; }
+    public required string Password { get; set; }
+    public string Address { get; set; } = string.Empty;
+    public string Image { get; set; } = string.Empty;
+    public bool IsAdmin { get; set; }
+    public bool IsBanned { get; set; }
+    public DateTime CreatedAt { get; set; }
+  }
+```
+
+#### 4.2.2 Create a Service
+
+```csharp
+ // Services/UserService.cs
+  public class UserService
+  {
+    // users api 
+    public static List<User> _users = new List<User>() {
+      new User{
+          UserId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
+          Name = "John Doe",
+          Email = "john@example.com",
+          Password = "password123",
+          Address = "123 Main St",
+          IsAdmin = false,
+          IsBanned = false,
+          CreatedAt = DateTime.Now
+      },
+      new User{
+          UserId = Guid.Parse("24508f7e-94ec-4f0b-b8d6-e8e16a9a3b29"),
+          Name = "Alice Smith",
+          Email = "alice@example.com",
+          Password = "password456",
+          Address = "456 Elm St",
+          IsAdmin = false,
+          IsBanned = false,
+          CreatedAt = DateTime.Now
+      },
+      new User{
+          UserId = Guid.Parse("87e5c4f3-d3e5-4e16-88b5-809b2b08b773"),
+          Name = "Bob Johnson",
+          Email = "bob@example.com",
+          Password = "password789",
+          Address = "789 Oak St",
+          IsAdmin = false,
+          IsBanned = false,
+          CreatedAt = DateTime.Now
+      }
+  };
+
+    public IEnumerable<User> GetAllUsersService()
+    {
+      return _users;
+    }
+    public User? GetUserById(Guid userId)
+    {
+      return _users.Find(user => user.UserId == userId);
+    }
+  }
+```
+
+#### 4.2.3 Create a Controller
+
+```csharp
+// Controllers/UserController.cs
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Threading.Tasks;
+  using Microsoft.AspNetCore.Mvc;
+
+  namespace api.Controllers
+  {
+      [ApiController]
+      [Route("/api/users")]
+      public class UserController : ControllerBase
+      {
+          private readonly UserService _userService;
+          public UserController()
+          {
+              _userService = new UserService(); // Dependency Injection
+          }
+
+          [HttpGet]
+          public IActionResult GetAllUsers()
+          {
+              var users = _userService.GetAllUsersService();
+              return Ok(users);
+          }
+
+          [HttpGet("{userId}")]
+          public IActionResult GetUser(string userId)
+          {
+              if (!Guid.TryParse(userId, out Guid userIdGuid))
+              {
+                  return BadRequest("Invalid user ID Format");
+              }
+              var user = _userService.GetUserById(userIdGuid);
+              if (user == null)
+              {
+                  return NotFound();
+              }
+              else
+              {
+                  return Ok(user);
+              }
+
+          }
+      }
+  }
+```
+
+#### 4.2.4 Make the adjustment in Program.cs
+
+- add few packages and Update Program.cs file for using MVC
+
+  ```csharp
+  // dotnet add package Microsoft.AspNetCore.OData --version 8.0.0-preview3
+  // dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.0.0-preview.6.21355.2
+  // dotnet add package Swashbuckle.AspNetCore --version 6.2.3
+
+  var builder = WebApplication.CreateBuilder(args);
+
+  builder.Services.AddEndpointsApiExplorer();
+  builder.Services.AddSwaggerGen();
+  builder.Services.AddControllers();
+
+  var app = builder.Build();
+
+  // Configure the HTTP request pipeline.
+  if (app.Environment.IsDevelopment())
+  {
+      app.UseSwagger();
+      app.UseSwaggerUI();
+  }
+
+  app.UseHttpsRedirection();
+  app.MapControllers();
+  app.Run();
+
+  ```
+
+### 4.3 Validation with Data Annotation / Handling Invalid Inputs
+
+- [visit here](https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs)
+- what happen if you do not pass user name and it creates the user? it should be a bad request 400
+- add the data annotation to the DTOs
+- add the nuget package (MinimalApis.Extensions) from the package manager (add the vsextension)
+
+```csharp
+using System.ComponentModel.DataAnnotations;
+
+public class User
+{
+  public Guid UserId { get; set; }
+
+  [Required(ErrorMessage = "User Name is Required")]
+  [MaxLength(32, ErrorMessage = "User Name must be less than 32 characters")]
+  [MinLength(2, ErrorMessage = "User Name must be at least 2 characters")]
+  public required string Name { get; set; }
+
+  [EmailAddress(ErrorMessage = "User Email is not a valid email")]
+
+  public required string Email { get; set; }
+
+  [MinLength(6, ErrorMessage = "User Password must be at least 2 characters")]
+  public required string Password { get; set; }
+  public string Address { get; set; } = string.Empty;
+  public string Image { get; set; } = string.Empty;
+  public bool IsAdmin { get; set; }
+  public bool IsBanned { get; set; }
+  public DateTime CreatedAt { get; set; }
+}
+```
+
+- add MinimalApis.Extenstion by using nuget gallery extension in vscode
+
+    ```csharp
+    // to all the endpoints in Program.cs
+
+    // app.MapControllers().WithParameterValidation();
+
+    // to individual endpoints in Program.cs file
+    // app.MapGet("/api/users", () => new UserController().GetAllUsers()).WithParameterValidation();
+    // app.MapGet("/api/users/{userId}", (Guid userId) => new UserController().GetUser(userId)).WithParameterValidation();
+    // app.MapPost("/api/users", (User newUser) => new UserController().CreateUser(newUser)).WithParameterValidation();
+    // app.MapPut("/api/users/{userId}", (Guid userId, User updateUser) => new UserController().UpdateUser(userId, updateUser)).WithParameterValidation();
+    // app.MapDelete("/api/users/{userId}", (Guid userId) => new UserController().DeleteUser(userId)).WithParameterValidation();
+    ```
+
+### 4.4 Exception Handling
+
+```csharp
+// Controllers/UserController.cs
+   public IActionResult GetAllUsers()
+        {
+            try
+            {
+                var users = _userService.GetAllUsersService();
+                if (users.ToList().Count < 1)
+                {
+                    return NotFound();
+                }
+                return Ok(new { message = "Users retrieved successfully", data = users });
+            }
+            catch (Exception ex)
+            {
+
+                // Log the exception for debugging and monitoring purposes
+                Console.WriteLine($"An error occurred while retrieving users: {ex.Message}");
+
+                // Return a server error response with a meaningful error message
+                return StatusCode(500, "An error occurred while processing your request. Please try again later.");
+            }
+        }
+```
+
+### 4.5 Customizing the response (error, success)
+
+```csharp
+// Helpers/ErrorResponse.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Helpers
+{
+    public class ErrorResponse
+    {
+        public bool Success { get; set; } = false;
+        public string? Message { get; set; }
+
+    }
+}
+
+// Helpers/SuccessResponse.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Helpers
+{
+    public class SuccessResponse<T>
+    {
+        public bool Success { get; set; } = true;
+        public string? Message { get; set; }
+        public T? Data { get; set; }
+    }
+}
+
+// now lets change the UserController.cs
+ public IActionResult GetAllUsers()
+  {
+      try
+      {
+          var users = _userService.GetAllUsersService();
+          // if (users == null || !users.Any())
+          // {
+          //     return NoContent(); // Return 204 No Content if there are no users
+          // }
+          if (users.ToList().Count < 1)
+            {
+                return NotFound(new ErrorResponse
+                {
+                    Success = false,
+                    Message = "No user"
+                });
+            }
+          return Ok(new SuccessResponse<IEnumerable<User>>
+            {
+                Success = true,
+                Message = "Users are returned successfully",
+                Data = users
+            });
+      }
+      catch (Exception ex)
+      {
+
+          // Log the exception for debugging and monitoring purposes
+          Console.WriteLine($"An error occurred while retrieving users: {ex.Message}");
+
+          // Return a server error response with a meaningful error message
+            return StatusCode(500, new ErrorResponse
+                {
+                    Success = false,
+                    Message = ex.Message,
+                });
+      }
+  }
+```
+
+### 4.6 Synchronous vs asynchornous programming
+
+```csharp
+// make change to the service
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+public class UserService
+{
+  // users api 
+  public static List<User> _users = new List<User>()
+  {
+    new User{
+        UserId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
+        Name = "John Doe",
+        Email = "john@example.com",
+        Password = "password123",
+        Address = "123 Main St",
+        IsAdmin = false,
+        IsBanned = false,
+        CreatedAt = DateTime.Now
+    },
+    new User{
+        UserId = Guid.Parse("24508f7e-94ec-4f0b-b8d6-e8e16a9a3b29"),
+        Name = "Alice Smith",
+        Email = "alice@example.com",
+        Password = "password456",
+        Address = "456 Elm St",
+        IsAdmin = false,
+        IsBanned = false,
+        CreatedAt = DateTime.Now
+    },
+    new User{
+        UserId = Guid.Parse("87e5c4f3-d3e5-4e16-88b5-809b2b08b773"),
+        Name = "Bob Johnson",
+        Email = "bob@example.com",
+        Password = "password789",
+        Address = "789 Oak St",
+        IsAdmin = false,
+        IsBanned = false,
+        CreatedAt = DateTime.Now
+    }
+  };
+
+  public async Task<IEnumerable<User>> GetAllUsersService()
+  {
+    // await Task.CompletedTask; // Simulate an asynchronous operation without delay
+    return await Task.FromResult(_users.AsEnumerable());
+  }
+
+  public Task<User?> GetUserById(Guid userId)
+  {
+    return Task.FromResult(_users.Find(user => user.UserId == userId));
+  }
+
+  public async Task<User> CreateUserService(User newUser)
+  {
+    // await Task.CompletedTask; // Simulate an asynchronous operation without delay
+    newUser.UserId = Guid.NewGuid();
+    newUser.CreatedAt = DateTime.Now;
+    _users.Add(newUser); // store this user in our database
+    return await Task.FromResult(newUser);
+  }
+
+}
+
+// make change to the controller
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api.Helpers;
+using Microsoft.AspNetCore.Mvc;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("/api/users")]
+    public class UserController : ControllerBase
+    {
+        private readonly UserService _userService;
+        public UserController()
+        {
+            _userService = new UserService();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            try
+            {
+                var users = await _userService.GetAllUsersService();
+                Console.WriteLine($"{users.ToList().Count}");
+
+
+                if (users.ToList().Count < 1)
+                {
+                    return NotFound(new ErrorResponse
+                    {
+                        Success = false,
+                        Message = "No user"
+                    });
+                }
+
+                return Ok(new SuccessResponse<IEnumerable<User>>
+                {
+                    Success = true,
+                    Message = "Users are returned successfully",
+                    Data = users
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occured here when we tried get all the users");
+                // return StatusCode(500, ex.Message);
+                return StatusCode(500, new ErrorResponse
+                {
+                    Success = false,
+                    Message = ex.Message,
+                });
+            }
+        }
+
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetUser(string userId)
+        {
+            try
+            {
+                if (!Guid.TryParse(userId, out Guid userIdGuid))
+                {
+                    return BadRequest("Invalid user ID Format");
+                }
+                var user = await _userService.GetUserById(userIdGuid);
+                if (user == null)
+                {
+                    return NotFound(new ErrorResponse
+                    {
+                        Success = false,
+                        Message = "No user Found"
+                    });
+                }
+                else
+                {
+                    return Ok(new SuccessResponse<User>
+                    {
+                        Success = true,
+                        Message = "User is returned successfully",
+                        Data = user
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occured here when we tried get all the users");
+                return StatusCode(500, new ErrorResponse
+                {
+                    Success = false,
+                    Message = ex.Message,
+                });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(User newUser)
+        {
+            var createdUser = await _userService.CreateUserService(newUser);
+            return CreatedAtAction(nameof(GetUser), new { userId = createdUser.UserId }, createdUser);
+        }
+    }
+}
+
+```
+
+### 4.7 Query Parameters
+
+```csharp
+    public async Task<IActionResult> GetAllUsers([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
+   {
+     // Calculate the number of items to skip
+        int itemsToSkip = (pageNumber - 1) * pageSize;
+        // Retrieve products for the specified page
+        return _users.Skip(itemsToSkip).Take(pageSize);
+   }
+```
+
+### 4.8 Route Constraint
+
+- `[HttpDelete("{userId:guid}")]`
+To restrict the route parameter userId in the [HttpDelete] endpoint to only accept GUID values, you can use route constraints in ASP.NET Core.
+
+### 4.8 User API
+
+#### User Model
+
+```csharp
+using System.ComponentModel.DataAnnotations;
+
+public class User
+{
+  public Guid UserId { get; set; }
+
+  [Required(ErrorMessage = "User Name is Required")]
+  [MaxLength(32, ErrorMessage = "User Name must be less than 32 characters")]
+  [MinLength(2, ErrorMessage = "User Name must be at least 2 characters")]
+  public required string Name { get; set; }
+
+  [EmailAddress(ErrorMessage = "User Email is not a valid email")]
+
+  public required string Email { get; set; }
+
+  [MinLength(6, ErrorMessage = "User Password must be at least 2 characters")]
+  public required string Password { get; set; }
+  public string Address { get; set; } = string.Empty;
+  public string Image { get; set; } = string.Empty;
+  public bool IsAdmin { get; set; }
+  public bool IsBanned { get; set; }
+  public DateTime CreatedAt { get; set; }
+}
+```
+
+#### GET /api/users -> Get All Users
+
+```csharp
+// Services/UserService.cs
+public async Task<IEnumerable<User>> GetAllUsersService()
+  {
+    return await Task.FromResult(_users.AsEnumerable());
+  }
+
+// Controllers/UserController.cs
+  [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            try
+            {
+                var users = await _userService.GetAllUsersService();
+                Console.WriteLine($"{users.ToList().Count}");
+
+
+                if (users.ToList().Count < 1)
+                {
+                    return NotFound(new ErrorResponse
+                    {
+                        Success = false,
+                        Message = "No user"
+                    });
+                }
+
+                return Ok(new SuccessResponse<IEnumerable<User>>
+                {
+                    Success = true,
+                    Message = "Users are returned successfully",
+                    Data = users
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occured here when we tried get all the users");
+                // return StatusCode(500, ex.Message);
+                return StatusCode(500, new ErrorResponse
+                {
+                    Success = false,
+                    Message = ex.Message,
+                });
+            }
+        }
+
+```
+
+#### GET /api/users/{userId} -> Get Single User
+
+```csharp
+// Services/UserService.cs
+  public async Task<User?> GetUserById(Guid userId)
+  {
+    return await Task.FromResult(_users.Find(user => user.UserId == userId));
+  }
+
+// Controllers/UserController.cs
+  [HttpGet("{userId:guid}")]
+        public async Task<IActionResult> GetUser(string userId)
+        {
+            try
+            {
+                if (!Guid.TryParse(userId, out Guid userIdGuid))
+                {
+                    return BadRequest("Invalid user ID Format");
+                }
+                var user = await _userService.GetUserById(userIdGuid);
+                if (user == null)
+                {
+                    return NotFound(new ErrorResponse
+                    {
+                        Success = false,
+                        Message = "No user Found"
+                    });
+                }
+                else
+                {
+                    return Ok(new SuccessResponse<User>
+                    {
+                        Success = true,
+                        Message = "User is returned successfully",
+                        Data = user
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occured here when we tried get all the users");
+                return StatusCode(500, new ErrorResponse
+                {
+                    Success = false,
+                    Message = ex.Message,
+                });
+            }
+        }
+
+```
+
+#### POST /api/users/{userId} -> Create Single User
+
+```csharp
+// Services/UserService.cs
+public async Task<User> CreateUserService(User newUser)
+  {
+    await Task.CompletedTask; // Simulate an asynchronous operation without delay
+    newUser.UserId = Guid.NewGuid();
+    newUser.CreatedAt = DateTime.Now;
+    _users.Add(newUser); // store this user in our database
+    return await Task.FromResult(newUser);
+  }
+
+// Controllers/UserController.cs
+[HttpPost]
+public async Task<IActionResult> CreateUser(User newUser)
+{
+    try
+    {
+        var createdUser = await _userService.CreateUserService(newUser);
+        return CreatedAtAction(nameof(GetUser), new { userId = createdUser.UserId }, new SuccessResponse<User>
+        {
+            Success = true,
+            Message = "User created successfully",
+            Data = createdUser
+        });
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"An error occurred when creating a user: {ex.Message}");
+        return StatusCode(500, new ErrorResponse
+        {
+            Success = false,
+            Message = "An error occurred while processing your request. Please try again later."
+        });
+    }
+}
+
+
+```
+
+#### PUT /api/users/{userId} -> Update Single User
+
+```csharp
+// Services/UserService.cs
+ public async Task<User?> UpdateUserService(Guid userId, User updateUser)
+  {
+    var existingUser = _users.FirstOrDefault(u => u.UserId == userId);
+    if (existingUser != null)
+    {
+      existingUser.Name = updateUser.Name ?? existingUser.Name;
+      existingUser.Email = updateUser.Email;
+      existingUser.Password = updateUser.Password;
+      existingUser.Address = updateUser.Address;
+      existingUser.Image = updateUser.Image;
+      existingUser.IsAdmin = updateUser.IsAdmin;
+      existingUser.IsBanned = updateUser.IsBanned;
+    }
+     return await Task.FromResult(existingUser);
+  }
+
+// Controllers/UserController.cs
+[HttpPut("{userId:guid}")]
+public async Task<IActionResult> UpdateUser(string userId, User updateUser)
+{
+    try
+    {
+        if (!Guid.TryParse(userId, out Guid userIdGuid))
+        {
+            return BadRequest("Invalid user ID Format");
+        }
+        
+        var user = await _userService.UpdateUserService(userIdGuid, updateUser);
+        if (user == null)
+        {
+            return NotFound(new ErrorResponse
+            {
+                Success = false,
+                Message = "User not found"
+            });
+        }
+        
+        return Ok(new SuccessResponse<User>
+        {
+            Success = true,
+            Message = "User updated successfully",
+            Data = user
+        });
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"An error occurred when updating the user: {ex.Message}");
+        return StatusCode(500, new ErrorResponse
+        {
+            Success = false,
+            Message = "An error occurred while processing your request. Please try again later."
+        });
+    }
+}
+
+```
+
+#### DELETE /api/users/{userId} -> Delete Single User
+
+```csharp
+// Services/UserService.cs
+public async Task<bool> DeleteUserService(Guid userId)
+  {
+    await Task.CompletedTask; // Simulate an asynchronous operation without delay
+    var userToRemove = _users.FirstOrDefault(u => u.UserId == userId);
+    if (userToRemove != null)
+    {
+      _users.Remove(userToRemove);
+      return true;
+    }
+    return false;
+  }
+
+// Controllers/UserController.cs
+[HttpDelete("{userId:guid}")]
+public async Task<IActionResult> DeleteUser(string userId)
+{
+    try
+    {
+        if (!Guid.TryParse(userId, out Guid userIdGuid))
+        {
+            return BadRequest("Invalid user ID Format");
+        }
+        
+        var result = await _userService.DeleteUserService(userIdGuid);
+        if (!result)
+        {
+            return NotFound(new ErrorResponse
+            {
+                Success = false,
+                Message = "User not found"
+            });
+        }
+        
+        return NoContent();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"An error occurred when deleting the user: {ex.Message}");
+        return StatusCode(500, new ErrorResponse
+        {
+            Success = false,
+            Message = "An error occurred while processing your request. Please try again later."
+        });
+    }
+}
+```
+
+### 4.9 Category API
+
+#### Category Model
+
+```csharp
+public class Category
+{
+  public Guid CategoryId { get; set; }
+  public required string Name { get; set; }
+  public string Slug { get; set; } = string.Empty;
+  public string Description { get; set; } = string.Empty;
+  public DateTime CreatedAt { get; set; }
+}
+```
+
+#### Category Service
+
+```csharp
+using api.Helpers;
+
+public class CategoryService
+{
+    // users api 
+    public static List<Category> _categories = new List<Category>() {
+    new Category{
+        CategoryId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
+        Name = "smart phone",
+        Slug = "smart-phone",
+        Description = "hello I am a beautiful phone",
+        CreatedAt = DateTime.Now
+    },
+    new Category{
+        CategoryId = Guid.Parse("24508f7e-94ec-4f0b-b8d6-e8e16a9a3b29"),
+        Name = "cloths",
+        Slug = "cloths",
+        Description = "hello I am a beautiful cloths",
+        CreatedAt = DateTime.Now
+    },
+    new Category{
+        CategoryId = Guid.Parse("87e5c4f3-d3e5-4e16-88b5-809b2b08b773"),
+        Name = "food",
+        Slug = "food",
+        Description = "hello I am a beautiful food",
+        CreatedAt = DateTime.Now
+    }
+};
+}
+```
+
+#### Category Controller
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("/api/categories")]
+    public class CategoryController : ControllerBase
+    {
+        private readonly CategoryService _categoryService;
+        public CategoryController()
+        {
+            _categoryService = new CategoryService();
+        }
+    }
+}
+```
+
+#### GET /api/categories -> Get All Categories
+
+```csharp
+
+```
+
+#### GET /api/categories/{categoryId} -> Get Single Categories
+
+```csharp
+
+```
+
+#### How to Create Slug
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Helpers
+{
+    public class Helper
+    {
+        public static string GenerateSlug(string name){
+            return name.ToLower().Replace(" ", "-");
+        }
+    }
+}
+```
+
+#### POST /api/categories -> Create Single Categories
+
+```csharp
+
+```
+
+#### PUT /api/categories/{categoryId} -> Update Single Categories
+
+```csharp
+
+```
+
+#### DELETE /api/categories/{categoryId} -> Delete Single Categories
+
+```csharp
+
+```
+
+### 4.10 Product API
+
+#### Product Model
+
+```csharp
+using System;
+using System.ComponentModel.DataAnnotations;
+
+public class Product
+{
+  public Guid ProductId { get; set; }
+
+  [Required(ErrorMessage = "Name is required")]
+  public required string Name { get; set; }
+
+  public string Slug { get; set; } = string.Empty;
+
+  [Required(ErrorMessage = "Price is required")]
+  [Range(0, double.MaxValue, ErrorMessage = "Price must be a positive number")]
+  public double Price { get; set; }
+
+  public string Image { get; set; } = string.Empty;
+  public string Description { get; set; } = string.Empty;
+
+  [Required(ErrorMessage = "Quantity is required")]
+  public int Quantity { get; set; }
+
+  [Required(ErrorMessage = "Sold quantity is required")]
+  public int Sold { get; set; } = 0;
+
+  [Required(ErrorMessage = "Shipping cost is required")]
+  [Range(0, double.MaxValue, ErrorMessage = "Shipping cost must be a positive number")]
+  public double Shipping { get; set; }
+
+  [Required(ErrorMessage = "CategoryId is required")]
+  public Guid CategoryId { get; set; }
+
+  public Category? Category { get; set; }
+
+  public DateTime CreatedAt { get; set; } = DateTime.Now;
+}
+
+```
+
+#### Product Service
+
+```csharp
+using api.Helpers;
+
+public class ProductService
+{
+    // users api 
+    public static List<Product> _products = new List<Product>() {
+    new Product{
+        ProductId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a015"),
+        Name = "Apple iphone 12",
+        Slug = "apple-iphone-12",
+        Image = "",
+        Price = 1300.50,
+        Quantity = 10,
+        Sold = 2,
+        Shipping = 2.5,
+        CategoryId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
+        CreatedAt = DateTime.Now
+    },
+    new Product{
+        ProductId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a016"),
+        Name = "Apple iphone 13",
+        Slug = "apple-iphone-13",
+        Image = "",
+        Price = 1400.50,
+        Quantity = 10,
+        Sold = 2,
+        Shipping = 2.5,
+        CategoryId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
+        CreatedAt = DateTime.Now
+    },
+
+};
+}
+```
+
+#### Product Controller
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api.Helpers;
+using Microsoft.AspNetCore.Mvc;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("/api/products")]
+    public class ProductController : ControllerBase
+    {
+        private readonly ProductService _productService;
+        public ProductController()
+        {
+            _productService = new ProductService();
+        }
+
+    }
+}
+```
+
+#### GET /api/products -> Get All Product
+
+```csharp
+// Service
+public async Task<IEnumerable<User>> GetAllUsersService()
+  {
+    await Task.CompletedTask; // Simulate an asynchronous operation without delay
+    return await Task.FromResult(_users.AsEnumerable());
+  }
+
+// Controller
+  [HttpGet]
+  public async Task<IActionResult> GetProducts([FromQuery] int page = 1, [FromQuery] int limit = 5)
+  {
+      try
+      {
+          var products = await _productService.GetAllProductService();
+          Console.WriteLine($"page number = {page}, limit = {limit}");
+
+
+          if (products.ToList().Count < 1)
+          {
+              return NotFound(new ErrorResponse
+              {
+                  Success = false,
+                  Message = "No user"
+              });
+          }
+
+          return Ok(new SuccessResponse<IEnumerable<Product>>
+          {
+              Success = true,
+              Message = "Products are returned successfully",
+              Data = products
+          });
+      }
+      catch (Exception ex)
+      {
+          Console.WriteLine($"An error occured here when we tried get all the products");
+          // return StatusCode(500, ex.Message);
+          return StatusCode(500, new ErrorResponse
+          {
+              Success = false,
+              Message = ex.Message,
+          });
+      }
+  }
+
+```
+
+#### GET /api/products/{categoryId} -> Get Single Product
+
+```csharp
+//Service
+public async Task<Product?> GetProductById(Guid productId)
+{      
+    var product = _products.Find(product => product.ProductId == productId);
+    return await Task.FromResult(product);        
+}
+
+// Controller
+
+[HttpGet("{productId}")]
+public async Task<IActionResult> GetProduct(string productId)
+{
+    try
+    {
+        if (!Guid.TryParse(productId, out Guid productIdGuid))
+        {
+            return BadRequest("Invalid product ID Format");
+        }
+        var product = await _productService.GetProductById(productIdGuid);
+        if (product == null)
+        {
+            return NotFound(new ErrorResponse
+            {
+                Success = false,
+                Message = "No product Found"
+            });
+        }
+        else
+        {
+            return Ok(new SuccessResponse<Product>
+            {
+                Success = true,
+                Message = "User is returned successfully",
+                Data = product
+            });
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"An error occured here when we tried get all the users");
+        return StatusCode(500, new ErrorResponse
+        {
+            Success = false,
+            Message = ex.Message,
+        });
+    }
+}
+```
+
+#### POST /api/products -> Create Single Product
+
+```csharp
+ 
+```
+
+#### PUT /api/products/{categoryId} -> Update Single Product
+
+```csharp
+
+```
+
+#### DELETE /api/products/{categoryId} -> Delete Single Product
+
+```csharp
+
+```
+
+### Populating Data from another Model
+
+```csharp
+// ProductService.cs
+   private readonly CategoryService _categoryService;
+
+    public ProductService()
+    {
+        _categoryService = new CategoryService();
+    }
+
+    public async Task<Product?> GetProductById(Guid productId)
+    {
+        var categoriesData = _categoryService.GetAllCategoryService(); // 5 category information
+        var product = _products.Find(product => product.ProductId == productId);
+        if(product != null){
+            // product.CategoryId == categoriesData 
+            product.Category = categoriesData.FirstOrDefault(category => category.CategoryId == product.CategoryId); // 1 category information
+        }
+        return await Task.FromResult(product);
+    }
+```
+
+### 4.11 Order API
+
+#### Order Model
+
+#### GET /api/orders -> Get All orders
+
+```csharp
+
+```
+
+#### GET /api/orders/{categoryId} -> Get Single orders
+
+```csharp
+
+```
+
+#### POST /api/orders -> Create Single orders
+
+```csharp
+
+```
+
+#### PUT /api/orders/{categoryId} -> Update Single orders
+
+```csharp
+
+```
+
+#### DELETE /api/orders/{categoryId} -> Delete Single orders
+
+```csharp
+
+```
+
+### 4.12 Adding Database
