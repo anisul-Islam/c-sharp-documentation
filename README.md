@@ -11278,3 +11278,234 @@ namespace api.Controllers
 }
 
 ```
+
+#### Add asynchronous everywhere 
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api.EntityFramework;
+using api.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace api.Services
+{
+    public class ProductService
+    {
+        private readonly AppDbContext _appDbContext;
+
+        public ProductService(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
+        public async Task<IEnumerable<ProductModel>> GetAllProductsAsync()
+        {
+            var products = await _appDbContext.Products
+                .Select(product => new ProductModel
+                {
+                    ProductId = product.ProductId,
+                    Name = product.Name,
+                    Price = product.Price,
+                    Image = product.Image,
+                    Description = product.Description,
+                    Quantity = product.Quantity,
+                    Sold = product.Sold,
+                    Shipping = product.Shipping,
+                    CategoryId = product.CategoryId,
+                    Category = new CategoryModel
+                    {
+                        CategoryId = product.Category.CategoryId,
+                        Name = product.Category.Name,
+                        Description = product.Category.Description,
+                        CreatedAt = product.Category.CreatedAt
+                    },
+                    CreatedAt = product.CreatedAt
+                })
+                .ToListAsync();
+
+            return products;
+        }
+
+        public async Task<ProductModel> GetProductByIdAsync(Guid productId)
+        {
+            var product = await _appDbContext.Products
+                .Where(p => p.ProductId == productId)
+                .Select(p => new ProductModel
+                {
+                    ProductId = p.ProductId,
+                    Name = p.Name,
+                    Price = p.Price,
+                    Image = p.Image,
+                    Description = p.Description,
+                    Quantity = p.Quantity,
+                    Sold = p.Sold,
+                    Shipping = p.Shipping,
+                    CategoryId = p.CategoryId,
+                    Category = new CategoryModel
+                    {
+                        CategoryId = p.Category.CategoryId,
+                        Name = p.Category.Name,
+                        Description = p.Category.Description,
+                        CreatedAt = p.Category.CreatedAt
+                    },
+                    CreatedAt = p.CreatedAt
+                })
+                .FirstOrDefaultAsync();
+
+            return product;
+        }
+
+        public async Task AddProductAsync(ProductModel newProduct)
+        {
+            var product = new Product
+            {
+                ProductId = Guid.NewGuid(),
+                Name = newProduct.Name,
+                Price = newProduct.Price,
+                Image = newProduct.Image,
+                Description = newProduct.Description,
+                Quantity = newProduct.Quantity,
+                Sold = newProduct.Sold,
+                Shipping = newProduct.Shipping,
+                CategoryId = newProduct.CategoryId,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _appDbContext.Products.Add(product);
+            await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateProductAsync(Guid productId, ProductModel updatedProduct)
+        {
+            var product = await _appDbContext.Products.FirstOrDefaultAsync(p => p.ProductId == productId);
+
+            if (product != null)
+            {
+                product.Name = updatedProduct.Name;
+                product.Price = updatedProduct.Price;
+                product.Image = updatedProduct.Image;
+                product.Description = updatedProduct.Description;
+                product.Quantity = updatedProduct.Quantity;
+                product.Sold = updatedProduct.Sold;
+                product.Shipping = updatedProduct.Shipping;
+                product.CategoryId = updatedProduct.CategoryId;
+
+                await _appDbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteProductAsync(Guid productId)
+        {
+            var product = await _appDbContext.Products.FirstOrDefaultAsync(p => p.ProductId == productId);
+
+            if (product != null)
+            {
+                _appDbContext.Products.Remove(product);
+                await _appDbContext.SaveChangesAsync();
+            }
+        }
+    }
+}
+
+
+// Controller
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using api.Models;
+using api.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("/api/products")]
+    public class ProductController : ControllerBase
+    {
+        private readonly ProductService _productService;
+
+        public ProductController(ProductService productService)
+        {
+            _productService = productService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllProducts()
+        {
+            try
+            {
+                var products = await _productService.GetAllProductsAsync();
+                return Ok(products);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet("{productId}")]
+        public async Task<IActionResult> GetProductById(Guid productId)
+        {
+            try
+            {
+                var product = await _productService.GetProductByIdAsync(productId);
+                if (product != null)
+                {
+                    return Ok(product);
+                }
+                return NotFound("Product not found");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProduct(ProductModel newProduct)
+        {
+            try
+            {
+                await _productService.AddProductAsync(newProduct);
+                return Ok("Product added successfully");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPut("{productId}")]
+        public async Task<IActionResult> UpdateProduct(Guid productId, ProductModel updatedProduct)
+        {
+            try
+            {
+                await _productService.UpdateProductAsync(productId, updatedProduct);
+                return Ok("Product updated successfully");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpDelete("{productId}")]
+        public async Task<IActionResult> DeleteProduct(Guid productId)
+        {
+            try
+            {
+                await _productService.DeleteProductAsync(productId);
+                return Ok("Product deleted successfully");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+    }
+}
+
+```
