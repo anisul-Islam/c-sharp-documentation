@@ -10301,14 +10301,14 @@ namespace api.EntityFramework
         public Guid UserId { get; set; }
 
         [Required]
-        public required string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required]
         [EmailAddress]
-        public required string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required]
-        public required string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         public string Address { get; set; } = string.Empty;
 
@@ -10409,6 +10409,73 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 To undo this action, use 'ef migrations remove'
 ```
+Certainly! Here's a list of commonly used Entity Framework Core migration commands:
+
+1. **Adding a Migration**: Create a new migration based on the changes to your model.
+
+   ```
+   dotnet ef migrations add <NameOfMigration>
+   ```
+
+   Replace `<NameOfMigration>` with a descriptive name for your migration.
+
+2. **Applying Migrations**: Update the database to apply pending migrations.
+
+   ```
+   dotnet ef database update
+   ```
+
+3. **Reverting Migrations**: Rollback the last applied migration.
+
+   ```
+   dotnet ef migrations remove
+   ```
+
+4. **Applying Migrations to a Specific Version**: Update the database to a specific migration.
+
+   ```
+   dotnet ef database update <TargetMigration>
+   ```
+
+   Replace `<TargetMigration>` with the name of the migration you want to update to.
+
+5. **Generating a Script**: Generate a SQL script for a migration without applying it to the database.
+
+   ```
+   dotnet ef migrations script
+   ```
+
+6. **Applying Migrations for a Specific Environment**: Update the database for a specific environment (e.g., Development, Staging, Production).
+
+   ```
+   dotnet ef database update --environment <EnvironmentName>
+   ```
+
+7. **Applying Migrations for a Specific DbContext**: Update the database for a specific DbContext.
+
+   ```
+   dotnet ef database update --context <DbContextName>
+   ```
+
+8. **Applying Migrations for a Specific Project**: Update the database for a specific project within a solution.
+
+   ```
+   dotnet ef database update --project <ProjectName>
+   ```
+
+9. **Generating a Migration for a Specific DbContext**: Create a migration for a specific DbContext.
+
+   ```
+   dotnet ef migrations add <NameOfMigration> --context <DbContextName>
+   ```
+
+10. **Generating a Migration for a Specific Project**: Create a migration for a specific project within a solution.
+
+   ```
+   dotnet ef migrations add <NameOfMigration> --project <ProjectName>
+   ```
+
+These commands help you manage database schema changes effectively during the development lifecycle of your application. Remember to replace placeholders like `<NameOfMigration>`, `<TargetMigration>`, `<EnvironmentName>`, `<DbContextName>`, and `<ProjectName>` with the appropriate values for your project.
 
 #### Step 5: check your pgadmin
 
@@ -10499,6 +10566,88 @@ namespace api.EntityFramework
 - Required attribute ensures that Name, Email, Password, and CreatedAt properties are required.
 - EmailAddress attribute ensures that the Email property follows the email address format.
 
+In the provided code snippet, there are a couple of unnecessary or incorrect parts:
+
+1. **Using `required` modifier for string properties**: In C#, the `required` modifier is not valid for string properties. Instead, you should use just the `string` type without any modifier to indicate a string property.
+
+    Incorrect:
+
+    ```csharp
+    [Required]
+    public required string Name { get; set; }
+    ```
+
+    Correct:
+
+    ```csharp
+    [Required]
+    public string Name { get; set; }
+    ```
+
+2. **Unnecessary initialization for boolean properties**: Initializing boolean properties like `IsAdmin` and `IsBanned` to `false` explicitly is redundant because their default value is already `false`.
+
+    Redundant:
+
+    ```csharp
+    public bool IsAdmin { get; set; } = false;
+
+    public bool IsBanned { get; set; } = false;
+    ```
+
+    Simplified:
+
+    ```csharp
+    public bool IsAdmin { get; set; }
+
+    public bool IsBanned { get; set; }
+    ```
+
+3. **Using `DateTime.UtcNow` for `CreatedAt` property initialization**: While using `DateTime.UtcNow` for initialization is fine, if you're using a database that stores dates in UTC format (which is recommended), you can let the database handle the default value for `CreatedAt` without explicitly initializing it in the code.
+
+    ```csharp
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    ```
+
+    You can remove this line and configure the default value in your database schema instead.
+
+With these corrections, your `User` class would be cleaner and more accurate. Here's the corrected version:
+
+```csharp
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace api.EntityFramework
+{
+    [Table("Users")]
+    public class User
+    {
+        [Key, Required]
+        public Guid UserId { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        public string Password { get; set; }
+
+        public string Address { get; set; }
+
+        public string Image { get; set; }
+
+        public bool IsAdmin { get; set; }
+
+        public bool IsBanned { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
+}
+```
+
 #### 1.3 Create the context
 
 ```csharp
@@ -10518,10 +10667,7 @@ namespace api.EntityFramework
         public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
-            // Create unique index for Email column
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.Email)
-                .IsUnique();
+                      
         }
     }
 }
@@ -10536,37 +10682,41 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.EntityFramework;
 using api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Services
 {
     public class UserService
     {
-        private AppDbContext _appDbContext;
+        private readonly AppDbContext _appDbContext;
 
         public UserService(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
 
-        public IEnumerable<UserModel> GetAllUsers()
+        public async Task<IEnumerable<UserModel>> GetAllUsersAsync()
         {
-            List<UserModel> users = new List<UserModel>();
-            var dataList = _appDbContext.Users.ToList(); // table with 4 rows
-            dataList.ForEach(row => users.Add(new UserModel
-            {
-                UserId = row.UserId,
-                Name = row.Name,
-                Email = row.Email,
-                Password = row.Password,
-                Address = row.Address,
-                CreatedAt = row.CreatedAt,
-            }));
+            var users = await _appDbContext.Users
+                .Select(u => new UserModel
+                {
+                    UserId = u.UserId,
+                    Name = u.Name,
+                    Email = u.Email,
+                    Password = u.Password,
+                    Address = u.Address,
+                    CreatedAt = u.CreatedAt
+                })
+                .ToListAsync();
+
             return users;
         }
 
-        public UserModel? GetUserById(Guid userId)
+        public async Task<UserModel> GetUserByIdAsync(Guid userId)
         {
-            var user = _appDbContext.Users.FirstOrDefault(u => u.UserId == userId);
+            var user = await _appDbContext.Users
+                .FirstOrDefaultAsync(u => u.UserId == userId);
+
             if (user != null)
             {
                 return new UserModel
@@ -10576,62 +10726,61 @@ namespace api.Services
                     Email = user.Email,
                     Password = user.Password,
                     Address = user.Address,
-                    CreatedAt = user.CreatedAt,
+                    CreatedAt = user.CreatedAt
                 };
             }
-            return null; // Return null if user with specified ID is not found
+
+            return null;
         }
 
-        public void AddUser(UserModel newUser)
+        public async Task AddUserAsync(UserModel newUser)
         {
-            // first create the record 
             User user = new User
             {
                 UserId = Guid.NewGuid(),
                 Name = newUser.Name,
                 Email = newUser.Email,
                 Password = newUser.Password,
-                Address = newUser.Address,
+                Address = newUser.Address
             };
-            // add the record to the context 
+
             _appDbContext.Users.Add(user);
-            // save to the database
-            _appDbContext.SaveChanges();
+            await _appDbContext.SaveChangesAsync();
         }
 
-        public void UpdateUser(Guid userId, UserModel updateUser)
+        public async Task UpdateUserAsync(Guid userId, UserModel updateUser)
         {
-            var user = _appDbContext.Users.FirstOrDefault(user => user.UserId == userId);
+            var user = await _appDbContext.Users
+                .FirstOrDefaultAsync(u => u.UserId == userId);
 
             if (user != null)
             {
                 user.Name = updateUser.Name;
-                user.Address = updateUser.Address;   // save to the database
-                _appDbContext.SaveChanges();
+                user.Address = updateUser.Address;
+                await _appDbContext.SaveChangesAsync();
             }
         }
-        public void DeleteUser(Guid userId)
+
+        public async Task DeleteUserAsync(Guid userId)
         {
-            var user = _appDbContext.Users.FirstOrDefault(user => user.UserId == userId);
+            var user = await _appDbContext.Users
+                .FirstOrDefaultAsync(u => u.UserId == userId);
 
             if (user != null)
             {
                 _appDbContext.Users.Remove(user);
-                // save to the database
-                _appDbContext.SaveChanges();
+                await _appDbContext.SaveChangesAsync();
             }
-
         }
     }
 }
+
 ```
 
 #### 1.5 User Controller
 
 ```csharp
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using api.EntityFramework;
 using api.Models;
@@ -10652,11 +10801,11 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetUsers()
+        public async Task<IActionResult> GetUsers()
         {
             try
             {
-                var users = _userService.GetAllUsers();
+                var users = await _userService.GetAllUsersAsync();
                 return Ok(users);
             }
             catch (Exception e)
@@ -10666,11 +10815,11 @@ namespace api.Controllers
         }
 
         [HttpGet("{userId}")]
-        public IActionResult GetUserById(Guid userId)
+        public async Task<IActionResult> GetUserById(Guid userId)
         {
             try
             {
-                var user = _userService.GetUserById(userId);
+                var user = await _userService.GetUserByIdAsync(userId);
                 if (user != null)
                 {
                     return Ok(user);
@@ -10687,49 +10836,224 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddUser(UserModel newUser)
+        public async Task<IActionResult> AddUser(UserModel newUser)
         {
             try
             {
-                _userService.AddUser(newUser);
-                return Ok("User created successfully");
+                await _userService.AddUserAsync(newUser);
+                return Ok("User is created successfully");
             }
             catch (Exception e)
             {
+                Console.WriteLine($"Exception: {e.Message}");
                 return StatusCode(500, e.Message);
             }
         }
 
         [HttpPut("{userId}")]
-        public IActionResult UpdateUser(Guid userId, UserModel updateUser)
+        public async Task<IActionResult> UpdateUser(Guid userId, UserModel updateUser)
         {
             try
             {
-                _userService.UpdateUser(userId, updateUser);
-                return Ok("User updated successfully");
+                await _userService.UpdateUserAsync(userId, updateUser);
+                return Ok("User is updated successfully");
             }
             catch (Exception e)
             {
+                Console.WriteLine($"Exception: {e.Message}");
                 return StatusCode(500, e.Message);
             }
         }
 
         [HttpDelete("{userId}")]
-        public IActionResult DeleteUser(Guid userId)
+        public async Task<IActionResult> DeleteUser(Guid userId)
         {
             try
             {
-                _userService.DeleteUser(userId);
-                return Ok("User deleted successfully");
+                await _userService.DeleteUserAsync(userId);
+                return Ok("User is deleted successfully");
             }
             catch (Exception e)
             {
+                Console.WriteLine($"Exception: {e.Message}");
                 return StatusCode(500, e.Message);
             }
         }
     }
 }
 
+```
+
+#### 1.6 After async await add service to the program.cs and stope-run
+
+- `builder.Services.AddScoped<UserService>();`
+
+#### 1.7 use logger
+
+The ILogger<T> interface is provided by ASP.NET Core's built-in logging infrastructure. It's used for logging messages from your application code to various logging providers, such as console, debug output, files, or third-party logging services.
+
+Instead of returning the raw exception message to the client, I'm returning a generic error message and logging the details of the exception for further analysis. This helps prevent exposing sensitive information to clients and provides a more user-friendly error message.
+
+- added a ILogger<UserController> dependency injection to the controller constructor to enable logging.
+
+```csharp
+
+```
+
+#### 1.8 Fluent API
+
+##### 2 apporaches for rules/constractints: you can use data annotations or Fluent API configuration
+
+ Fluent API provides a powerful and flexible way to configure your database model in Entity Framework Core, allowing you to define complex configurations and relationships with ease.
+
+ Fluent API is a way of configuring entity types and their relationships in Entity Framework Core using a fluent interface instead of data annotations. It provides a more flexible and powerful approach to configuring your database model.
+
+With Fluent API, you configure your entity types and their relationships by chaining methods together in a fluent style. This allows for more complex configurations that are not possible with data annotations alone.
+
+Here are some advantages of using Fluent API:
+
+Complex Configurations: Fluent API allows you to define more complex configurations for your entity types and relationships than what is possible with data annotations alone. This includes specifying indexes, unique constraints, custom column names, etc.
+
+Separation of Concerns: Fluent API keeps your entity classes clean by separating the configuration from the entity class itself. This can make your entity classes more focused and easier to understand.
+
+Support for Conventions: Fluent API allows you to configure conventions that apply to multiple entity types. This can help reduce repetition in your configuration code.
+
+Programmatic Flexibility: Fluent API allows you to programmatically configure your database model, which can be useful in certain scenarios where you need to dynamically generate configurations based on runtime conditions.
+
+```csharp
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<User>()
+        .HasKey(u => u.UserId);
+
+    modelBuilder.Entity<User>()
+        .Property(u => u.UserId)
+        .ValueGeneratedOnAdd();
+
+    modelBuilder.Entity<User>()
+        .Property(u => u.Name)
+        .IsRequired();
+
+    modelBuilder.Entity<User>()
+        .Property(u => u.Email)
+        .IsRequired();
+
+    modelBuilder.Entity<User>()
+        .HasIndex(u => u.Email)
+        .IsUnique();
+
+    modelBuilder.Entity<User>()
+        .Property(u => u.Password)
+        .IsRequired();
+
+    modelBuilder.Entity<User>()
+        .Property(u => u.CreatedAt)
+        .IsRequired()
+        .HasDefaultValueSql("GETDATE()"); // Assuming SQL Server, use appropriate syntax for your database
+
+    // Add more configurations as needed
+}
+```
+
+1. **Entity Key Configuration** (`modelBuilder.Entity<User>().HasKey(u => u.UserId)`):
+   - This line configures the primary key for the `User` entity. It specifies that the `UserId` property should be used as the primary key.
+
+2. **Value Generation Strategy** (`modelBuilder.Entity<User>().Property(u => u.UserId).ValueGeneratedOnAdd()`):
+   - This line configures the value generation strategy for the `UserId` property. It specifies that the value of the `UserId` property should be generated by the database when a new entity is added (`ValueGeneratedOnAdd`).
+
+3. **Required Property Configuration** (`modelBuilder.Entity<User>().Property(u => u.Name).IsRequired()`):
+   - This line configures the `Name` property to be required, meaning it cannot be null.
+
+4. **Unique Constraint Configuration** (`modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique()`):
+   - This line configures a unique constraint for the `Email` property. It specifies that the values in the `Email` column must be unique.
+
+5. **Default Value Configuration** (`modelBuilder.Entity<User>().Property(u => u.CreatedAt).IsRequired().HasDefaultValueSql("GETDATE()")`):
+   - This line configures the `CreatedAt` property to have a default value generated by the database (`GETDATE()` in SQL Server). It ensures that if no value is provided for `CreatedAt`, the current date and time will be used.
+
+These configurations ensure data integrity and consistency in the `User` table. You can add more configurations as needed to further define the behavior of your entities in the database.
+
+#### try to insert data in pgadmin
+
+```sql
+INSERT INTO "Users" ("UserId", "Name", "Email", "Password", "Address", "Image", "IsAdmin", "IsBanned", "CreatedAt")
+VALUES
+    ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'John Doe', 'john@example.com', 'password123', '123 Main St', 'john.jpg', false, false, '2024-04-30 12:00:00'::timestamp),
+
+    ('b6e9f696-6dbb-49b2-bb55-19c13c8e1701', 'Jane Smith', 'jane@example.com', 'password456', '456 Elm St', 'jane.jpg', true, false, '2024-04-30 13:00:00'::timestamp);
+```
+
+#### 1.9 Handling the duplicate error 409
+
+```csharp
+[HttpPost]
+  public async Task<IActionResult> AddUser(UserModel newUser)
+  {
+      try
+      {
+          await _userService.AddUserAsync(newUser);
+          return Ok("User is created successfully");
+      }
+      catch (DbUpdateException ex) when (ex.InnerException is Npgsql.PostgresException postgresException)
+      {
+          if (postgresException.SqlState == "23505") // PostgreSQL unique constraint violation
+          {
+              return Conflict("Duplicate email. Please use a unique email address.");
+          }
+          else
+          {
+              // Handle other database-related errors
+              return StatusCode(500, "An error occurred while adding the user.");
+          }
+      }
+      catch (Exception e)
+      {
+          Console.WriteLine($"Exception: {e.Message}");
+          return StatusCode(500, e.Message);
+      }
+  }
+```
+
+#### 1.10 add few more to the user entity
+
+```csharp
+ modelBuilder.Entity<User>()
+  .HasKey(u => u.UserId);
+
+  modelBuilder.Entity<User>()
+  .HasIndex(u => u.Email)
+  .IsUnique();
+
+   modelBuilder.Entity<User>()
+  .Property(u => u.UserId)
+  .ValueGeneratedOnAdd();
+```
+
+- now go to the user service and remove the user id creation
+
+```csharp
+public async Task AddUserAsync(UserModel newUser)
+        {
+            User user = new User
+            {
+                Name = newUser.Name,
+                Email = newUser.Email,
+                Password = newUser.Password,
+                Address = newUser.Address
+            };
+
+            _appDbContext.Users.Add(user);
+            await _appDbContext.SaveChangesAsync();
+        }
+
+```
+
+- add this to the User entity and adjust the code
+
+```
+ modelBuilder.Entity<User>()
+        .Property(u => u.CreatedAt)
+        .IsRequired()
+        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 ```
 
 #### 2. Category API
