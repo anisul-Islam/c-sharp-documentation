@@ -10479,6 +10479,14 @@ These commands help you manage database schema changes effectively during the de
 
 #### Step 5: check your pgadmin
 
+#### How to console the data in api
+
+```
+dotnet add package Newtonsoft.Json
+using Newtonsoft.Json;
+ Console.WriteLine("Received user: " + JsonConvert.SerializeObject(user));
+```
+
 #### 1. User API
 
 #### 1.1 Create The UserModel
@@ -11827,6 +11835,143 @@ namespace api.Controllers
             catch (Exception e)
             {
                 return StatusCode(500, e.Message);
+            }
+        }
+    }
+}
+
+```
+
+#### Centralized, Reusable, Consistent Api Response
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+namespace api.Controllers
+{
+    public static class ApiResponse
+    {
+        public static IActionResult Success<T>(T data, string message = "Success")
+        {
+            return Ok(new ApiResponse<T>(true, data, message, 200));
+        }
+
+        public static IActionResult Created<T>(T data, string message = "Resource created")
+        {
+            return Created("", new ApiResponse<T>(true, data, message, 201));
+        }
+
+        public static IActionResult NotFound(string message = "Resource not found")
+        {
+            return NotFound(new ApiResponse<object>(false, null, message, 404));
+        }
+
+        public static IActionResult Conflict(string message = "Conflict detected")
+        {
+            return Conflict(new ApiResponse<object>(false, null, message, 409));
+        }
+
+        public static IActionResult BadRequest(string message = "Bad request")
+        {
+            return BadRequest(new ApiResponse<object>(false, null, message, 400));
+        }
+
+        public static IActionResult Unauthorized(string message = "Unauthorized access")
+        {
+            return Unauthorized(new ApiResponse<object>(false, null, message, 401));
+        }
+
+        public static IActionResult Forbidden(string message = "Forbidden access")
+        {
+            return StatusCode(403, new ApiResponse<object>(false, null, message, 403));
+        }
+
+        public static IActionResult Error(string message = "Internal server error")
+        {
+            return StatusCode(500, new ApiResponse<object>(false, null, message, 500));
+        }
+
+        public static IActionResult ServerError(string message = "Internal server error")
+        {
+            return StatusCode(500, new ApiResponse<object>(false, null, message, 500));
+        }
+    }
+
+    public class ApiResponse<T>
+    {
+        public bool Success { get; set; }
+        public T Data { get; set; }
+        public string Message { get; set; }
+        public int StatusCode { get; set; }
+
+        public ApiResponse(bool success, T data, string message = null, int statusCode = 200)
+        {
+            Success = success;
+            Data = data;
+            Message = message;
+            StatusCode = statusCode;
+        }
+    }
+}
+
+using api.Models;
+using api.Services;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("/api/users")]
+    public class UserController : ControllerBase
+    {
+        private readonly UserService _userService;
+
+        public UserController(UserService userService)
+        {
+            _userService = userService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _userService.GetAllUsers();
+            return ApiResponse.Success(users);
+        }
+
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetUserById(Guid userId)
+        {
+            var user = await _userService.GetUserByIdAsync(userId);
+            if (user == null)
+                return ApiResponse.NotFound();
+
+            return ApiResponse.Success(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddUser(UserModel userModel)
+        {
+            try
+            {
+                var userId = await _userService.AddUserAsync(userModel);
+                return ApiResponse.Created(new { UserId = userId });
+            }
+            catch (DbUpdateException ex) when (ex.InnerException is Npgsql.PostgresException postgresException)
+            {
+                if (postgresException.SqlState == "23505")
+                {
+                    return ApiResponse.Conflict("Duplicate email. User with email already exists");
+                }
+                else
+                {
+                    return ApiResponse.Error("Internal server error: " + ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                return ApiResponse.Error("Internal server error: " + ex.Message);
             }
         }
     }
