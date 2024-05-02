@@ -11978,3 +11978,605 @@ namespace api.Controllers
 }
 
 ```
+
+#### DTO
+
+Yes, the `OrderModel` class in your provided C# code could be considered a Data Transfer Object (DTO), especially if it's used to transfer data between different parts of a software application or between different applications.
+
+DTOs are often used in the context of software design to encapsulate data and send it from one subsystem of an application to another, or between applications. DTOs typically:
+
+1. **Are simple objects**: They have only public properties to carry data.
+2. **Do not include business logic**: They focus purely on transferring data and do not contain any business logic or methods other than property accessors.
+3. **Are used to reduce the number of method calls**: They package multiple data elements that would otherwise require multiple calls to fetch.
+
+In the context of your code, if `OrderModel` is used to communicate data about orders from the API to a client, or for internal communication between layers (like from the service layer to the repository layer), it fits well with the DTO pattern. However, the presence of the `UserModel` object within `OrderModel` suggests it might be doing more than a typical DTO, potentially also being used as a domain model, depending on how `UserModel` is implemented and used.
+
+DTOs can be very similar to view models or domain models, but the key distinction often lies in their intended use. DTOs are specifically for transferring data across boundaries, focusing on what the client or another part of the system needs, rather than representing the domain's complexity or the database structure directly.
+
+#### Many-To-Many Relationship
+
+Let's consider the following scenario where we have two users and two profiles:
+
+- User 1 (UserId: 1) is associated with Profile 1 (ProfileId: 1) and Profile 2 (ProfileId: 2).
+- User 2 (UserId: 2) is associated with Profile 2 (ProfileId: 2).
+
+Here's how the dataset would look:
+
+**Users:**
+
+| UserId | Name  | Email             |
+|--------|-------|-------------------|
+| 1      | John  | <john@example.com>  |
+| 2      | Alice | <alice@example.com> |
+
+**Profiles:**
+
+| ProfileId | Bio              |
+|-----------|------------------|
+| 1         | Software Engineer|
+| 2         | Data Scientist   |
+
+**UserProfiles (Junction Table):**
+
+| UserId | ProfileId |
+|--------|-----------|
+| 1      | 1         |
+| 1      | 2         |
+| 2      | 2         |
+
+In this dataset:
+
+- User 1 (John) is associated with Profile 1 (Software Engineer) and Profile 2 (Data Scientist).
+- User 2 (Alice) is associated only with Profile 2 (Data Scientist).
+- Profile 1 (Software Engineer) is associated only with User 1 (John).
+- Profile 2 (Data Scientist) is associated with both User 1 (John) and User 2 (Alice).
+
+This demonstrates a many-to-many relationship between users and profiles through the `UserProfiles` junction table.
+
+##### Adjust the model
+
+Based on the provided EF Core models, here are the updates for the corresponding API models:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Models
+{
+    public class UserModel
+    {
+        [Required]
+        public Guid UserId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+
+        public List<ProfileModel>? Profiles { get; set; } // Many-to-many relation
+        public List<OrderModel>? Orders { get; set; }  // 1 - many relation
+    }
+}
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Models
+{
+    public class OrderModel
+    {
+        public Guid OrderId { get; set; }
+        public string ProductName { get; set; }
+        public Guid UserId { get; set; } // Foreign key to User 
+        public UserModel? User { get; set; }
+    }
+}
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace api.Models
+{
+    public class ProfileModel
+    {
+        public Guid ProfileId { get; set; }
+        public string Bio { get; set; }
+        public List<UserModel>? Users { get; set; } // Many-to-many relation
+    }
+}
+```
+
+In these updates:
+
+- `UserModel` now includes a `List<ProfileModel>` property named `Profiles` to represent the many-to-many relationship between users and profiles.
+- `ProfileModel` includes a `List<UserModel>` property named `Users` to represent the many-to-many relationship between profiles and users.
+
+##### Adjust the entitites
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace api.EF_CORE
+{
+    [Table("Users")]
+    public class User
+    {
+        public Guid UserId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public List<UserProfile> UserProfiles { get; set; } // Navigation Property - Many-to-many relation with profiles
+        public List<Order> Orders { get; set; } // Navigation Property - 1-many relation
+    }
+
+    [Table("Profiles")]
+    public class Profile
+    {
+        public Guid ProfileId { get; set; }
+        public string Bio { get; set; }
+        public List<UserProfile> UserProfiles { get; set; } // Many-to-many relation with users
+    }
+
+    [Table("Orders")]
+    public class Order
+    {
+        public Guid OrderId { get; set; }
+        public string ProductName { get; set; }
+        public Guid UserId { get; set; } // Foreign key to User to help the navigation property
+        public User User { get; set; } // Navigation Property to load User Data from DB
+    }
+
+    // Junction table for many-to-many relationship between User and Profile
+    // Junction table for many-to-many relationship between User and Profile
+    [Table("UserProfiles")]
+    public class UserProfile
+    {
+        [Key]
+        [Column(Order = 1)]
+        public Guid UserId { get; set; }
+        [Key]
+        [Column(Order = 2)]
+        public Guid ProfileId { get; set; }
+
+        public User User { get; set; }
+        public Profile Profile { get; set; }
+    }
+}
+```
+
+##### Relationship
+
+No, you don't need to create a separate model for the junction table in your API models.
+
+In Entity Framework Core, when modeling a many-to-many relationship, you typically define a junction table to represent the relationship between the two entities. However, in your API models, you can directly represent the many-to-many relationship between UserModel and ProfileModel (and vice versa) by including navigation properties.
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
+namespace api.EF_CORE
+{
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Start configuring the many-to-many relationship between User and Profile entities by defining the join entity UserProfile.
+
+            // Define a composite key for UserProfile consisting of UserId and ProfileId, ensuring uniqueness across combinations of users and profiles.
+            modelBuilder.Entity<UserProfile>()
+                .HasKey(up => new { up.UserId, up.ProfileId });
+
+            // Configure the relationship from UserProfile to User:
+            // Each UserProfile links to one User (indicating which user the profile is associated with),
+            // and each User can link to many UserProfile instances (representing all the profiles associated with that user).
+            // Also, specify UserId as the foreign key in the UserProfile table.
+            modelBuilder.Entity<UserProfile>()
+                .HasOne(up => up.User) // Specifies the navigation property in UserProfile that links to User.
+                .WithMany(u => u.UserProfiles) // Specifies the collection in User that will hold UserProfile instances.
+                .HasForeignKey(up => up.UserId);
+
+            // Configure the relationship from UserProfile to Profile:
+            // Each UserProfile links to one Profile (indicating which profile is linked to the user),
+            // and each Profile can link to many UserProfile instances (representing all the users that are linked to this profile).
+            // Also, specify ProfileId as the foreign key in the UserProfile table.
+            modelBuilder.Entity<UserProfile>()
+                .HasOne(up => up.Profile) // Specifies the navigation property in UserProfile that links to Profile.
+                .WithMany(p => p.UserProfiles) // Specifies the collection in Profile that will hold UserProfile instances.
+                .HasForeignKey(up => up.ProfileId);
+
+
+            // 1-many
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Orders)
+                .WithOne(o => o.User)
+                .HasForeignKey(o => o.UserId);
+
+            modelBuilder.Entity<Profile>()
+                .HasKey(p => p.ProfileId);
+
+            modelBuilder.Entity<Order>()
+                .HasKey(o => o.OrderId);
+        }
+    }
+}
+```
+
+##### Explanation
+
+In Entity Framework Core, the `HasKey` method is used to specify the primary key for an entity.
+
+Here's what's happening in the code snippet you provided:
+
+```csharp
+modelBuilder.Entity<UserProfile>()
+    .HasKey(up => new { up.UserId, up.ProfileId });
+```
+
+This line of code is configuring the primary key for the `UserProfile` entity. However, in this case, the primary key is not a single property but a combination of two properties: `UserId` and `ProfileId`.
+
+- `modelBuilder.Entity<UserProfile>()`: This specifies that we are configuring the `UserProfile` entity in the model.
+- `.HasKey(up => new { up.UserId, up.ProfileId })`: This indicates that the primary key for the `UserProfile` entity consists of a composite key made up of the `UserId` and `ProfileId` properties of the `UserProfile` class.
+
+In other words, it's defining that each combination of `UserId` and `ProfileId` in the `UserProfile` entity will uniquely identify a record in the table representing the many-to-many relationship between `User` and `Profile`.
+
+- next explanation here 
+
+Certainly! Let's break down the code snippet:
+
+```csharp
+modelBuilder.Entity<UserProfile>()
+    .HasOne(up => up.User)
+    .WithMany(u => u.UserProfiles)
+    .HasForeignKey(up => up.UserId);
+```
+
+This code configures the relationship between the `UserProfile` and `User` entities in Entity Framework Core. Here's what each part does:
+
+- `modelBuilder.Entity<UserProfile>()`: This specifies that we are configuring the `UserProfile` entity in the model.
+
+- `.HasOne(up => up.User)`: This indicates that the `UserProfile` entity has a reference navigation property `User` which represents the user associated with this profile. This establishes a one-to-many relationship between `UserProfile` and `User`, where each `UserProfile` belongs to exactly one `User`.
+
+- `.WithMany(u => u.UserProfiles)`: This specifies that the `User` entity has a collection navigation property `UserProfiles` which represents all the profiles associated with this user. Since a user can have multiple profiles, this establishes a one-to-many relationship between `User` and `UserProfile`.
+
+- `.HasForeignKey(up => up.UserId)`: This sets up the foreign key constraint between the `UserProfile` entity and the `User` entity. It specifies that the `UserId` property in the `UserProfile` entity is the foreign key that references the primary key `UserId` in the `User` entity. This establishes the relationship between `UserProfile` and `User`, where `UserId` in `UserProfile` refers to the primary key of the associated `User`.
+
+- now update the UserService
+
+```csharp
+ using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using api.EF_CORE;
+using api.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace api.Services
+{
+    public class UserService
+    {
+        private readonly AppDbContext _appDbContext;
+
+        public UserService(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+        public async Task<List<User>> GetAllUsers()
+        {
+            return await _appDbContext.Users
+                .Include(user => user.Orders)  // Include the user's orders
+                .Include(user => user.UserProfiles) // Include the junction table for the many-to-many relationship
+                    .ThenInclude(userProfile => userProfile.Profile) // Include the related profiles
+                .ToListAsync();
+        }
+
+
+        public async Task<Guid> AddUserAsync(UserModel userModel)
+        {
+            var user = new User
+            {
+                UserId = Guid.NewGuid(),
+                Name = userModel.Name,
+                Email = userModel.Email
+            };
+
+
+            await _appDbContext.Users.AddAsync(user);
+            await _appDbContext.SaveChangesAsync();
+
+            return user.UserId;
+        }
+
+        public async Task AddProfileToUserAsync(Guid userId, Guid profileId)
+        {
+            if (_appDbContext.UserProfiles.Any(up => up.UserId == userId && up.ProfileId == profileId))
+            {
+                throw new InvalidOperationException("This profile is already linked to the user.");
+            }
+
+            var userProfile = new UserProfile
+            {
+                UserId = userId,
+                ProfileId = profileId
+            };
+
+            await _appDbContext.UserProfiles.AddAsync(userProfile);
+            await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task<User?> GetUserByIdAsync(Guid userId)
+        {
+            return await _appDbContext.Users
+                .Include(u => u.UserProfiles) // Include the junction table for the many-to-many relationship
+                    .ThenInclude(userProfile => userProfile.Profile) // Include the related profile
+                .Include(u => u.Orders) // Include the user's orders
+                .FirstOrDefaultAsync(u => u.UserId == userId);
+        }
+    }
+}
+  ```
+
+- update the userController
+
+```csharp
+using System;
+using System.Threading.Tasks;
+using api.EF_CORE;
+using api.Models;
+using api.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("/api/users")]
+    public class UserController : ControllerBase
+    {
+        private readonly UserService _userService;
+
+        public UserController(AppDbContext appDbContext)
+        {
+            _userService = new UserService(appDbContext);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            try
+            {
+                var users = await _userService.GetAllUsers();
+                return ApiResponse.Success(users, "All users are returned");
+            }
+            catch (Exception ex)
+            {
+                return ApiResponse.ServerError(ex.Message);
+            }
+        }
+
+        [HttpGet("{userId:guid}")]
+        public async Task<IActionResult> GetUserById(Guid userId)
+        {
+            var user = await _userService.GetUserByIdAsync(userId);
+            if (user == null)
+                return ApiResponse.NotFound("User was not found");
+            return ApiResponse.Created(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddUser(UserModel userModel)
+        {
+            try
+            {
+                var response = await _userService.AddUserAsync(userModel);
+                return ApiResponse.Created(response);
+            }
+            catch (DbUpdateException ex) when (ex.InnerException is Npgsql.PostgresException postgresException)
+            {
+                if (postgresException.SqlState == "23505")
+                {
+                    return ApiResponse.Conflict("Duplicate email. User with email already exists");
+                }
+                else
+                {
+                    return ApiResponse.ServerError(ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Hey error is here!!!"); // Log the error
+                return ApiResponse.ServerError(ex.Message);
+            }
+        }
+
+        [HttpPost("add-profile")]
+        public async Task<IActionResult> AddProfileToUser([FromQuery] Guid userId, [FromQuery] Guid profileId)
+        {
+            try
+            {
+                await _userService.AddProfileToUserAsync(userId, profileId);
+                return ApiResponse.Created("", "Profile added to user successfully.");
+            }
+            catch (InvalidOperationException ex)
+            {
+                return ApiResponse.BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return ApiResponse.ServerError(ex.Message);
+            }
+        }
+    }
+}
+
+```
+
+- profileServices updated
+
+```csharp
+using api.EF_CORE;
+using api.Models;
+
+public class ProfileService
+{
+    private readonly AppDbContext _context;
+
+    public ProfileService(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Guid> AddProfileAsync(ProfileModel profileModel)
+    {
+        Console.WriteLine($"hello");
+
+        var profile = new Profile
+        {
+            ProfileId = Guid.NewGuid(),
+            Bio = profileModel.Bio,
+        };
+
+        await _context.Profiles.AddAsync(profile);
+        await _context.SaveChangesAsync();
+
+        return profile.ProfileId;
+    }
+}
+```
+
+- profileControllerupdated
+
+```csharp
+using api.Models;
+using api.Services;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("api/profiles")]
+    public class ProfileController : ControllerBase
+    {
+        private readonly ProfileService _profileService;
+
+        public ProfileController(ProfileService profileService)
+        {
+            _profileService = profileService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProfile(ProfileModel profileModel)
+        {
+            try
+            {
+                var profileId = await _profileService.AddProfileAsync(profileModel);
+                return ApiResponse.Created(profileId);
+            }
+            catch (Exception ex)
+            {
+                return ApiResponse.ServerError(ex.Message);
+            }
+        }
+    }
+}
+
+```
+
+- orderServices updated
+
+```csharp
+using api.EF_CORE;
+using api.Models;
+using System;
+using System.Threading.Tasks;
+
+namespace api.Services
+{
+    public class OrderService
+    {
+        private readonly AppDbContext _context;
+
+        public OrderService(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Guid> AddOrderAsync(OrderModel orderModel)
+        {
+            var order = new Order
+            {
+                OrderId = Guid.NewGuid(),
+                ProductName = orderModel.ProductName,
+                UserId = orderModel.UserId
+            };
+
+            await _context.Orders.AddAsync(order);
+            await _context.SaveChangesAsync();
+
+            return order.OrderId;
+        }
+    }
+}
+
+```
+
+- orderControllerupdated
+
+```csharp
+using api.Models;
+using api.Services;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("api/orders")]
+    public class OrderController : ControllerBase
+    {
+        private readonly OrderService _orderService;
+
+        public OrderController(OrderService orderService)
+        {
+            _orderService = orderService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddOrder(OrderModel orderModel)
+        {
+            try
+            {
+                var orderId = await _orderService.AddOrderAsync(orderModel);
+                return ApiResponse.Success(orderId);
+            }
+            catch (Exception ex)
+            {
+                return ApiResponse.ServerError(ex.Message);
+            }
+        }
+    }
+}
+
+```
