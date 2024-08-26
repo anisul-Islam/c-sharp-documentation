@@ -3716,7 +3716,77 @@ Exception handling in C# allows you to manage runtime errors gracefully by catch
 
 Exception handling is a fundamental aspect of robust software development in C#, helping you write more reliable and resilient applications.
 
-#### Example
+#### Example 1
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            // 1. DivideByZeroException
+            int a = 10;
+            int b = 0;
+            int result = a / b;
+            Console.WriteLine("Result: " + result);
+
+            // 2. FormatException
+            string input = "abc";
+            int number = int.Parse(input);
+            Console.WriteLine("Parsed number: " + number);
+
+            // 3. NullReferenceException
+            string str = null;
+            int length = str.Length;
+            Console.WriteLine("Length: " + length);
+
+            // 4. IndexOutOfRangeException
+            int[] numbers = { 1, 2, 3 };
+            int value = numbers[5];
+            Console.WriteLine("Value: " + value);
+
+            // 5. OverflowException
+            int max = int.MaxValue;
+            int overflowResult = checked(max + 1);
+            Console.WriteLine("Overflow result: " + overflowResult);
+        }
+        catch (DivideByZeroException ex)
+        {
+            Console.WriteLine("Error: Attempted to divide by zero.");
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine("Error: Invalid format. Cannot parse input as a number.");
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Error: Null reference encountered.");
+        }
+        catch (IndexOutOfRangeException ex)
+        {
+            Console.WriteLine("Error: Index out of range.");
+        }
+        catch (OverflowException ex)
+        {
+            Console.WriteLine("Error: Overflow occurred during arithmetic operation.");
+        }
+        catch (Exception ex) // Generic exception handler
+        {
+            Console.WriteLine("An unexpected error occurred: " + ex.Message);
+        }
+        finally
+        {
+            Console.WriteLine("This block always executes, whether an exception is thrown or not.");
+        }
+    }
+}
+
+```
+
+#### Example 2
 
 ```csharp
 public class MyClass
