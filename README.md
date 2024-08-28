@@ -129,6 +129,8 @@ Visual Studio Code (VS Code) and Visual Studio (VS) are both popular Integrated 
 
     8. **Unity Code Snippets**: Another useful extension for Unity development, providing code snippets for common Unity-related tasks.
       - [Unity Code Snippets](https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets)
+    
+    9. C# Dev kit - C# Dev Kit extension enhances VS Code's existing Workspaces with a new Solution Explorer view, providing a curated and structured view of your application for effortless, central project management. This lets you quickly add new projects or files to your solutions and easily build all or part of your solution.
 
     To install these extensions, you can open Visual Studio Code, navigate to the Extensions view by clicking on the square icon on the sidebar or by pressing `Cmd + Shift + X`, and search for each extension by name. Then, click on the extension and select "Install". Alternatively, you can install them from the links provided above.
 
@@ -2806,6 +2808,138 @@ public class MyClass
 
 }
 ```
+
+To check if an email address is valid in C#, you can use regular expressions (regex) to match the email against a pattern that defines a valid email format. C# provides the `System.Text.RegularExpressions` namespace, which includes the `Regex` class for this purpose.
+
+### Method 1: Using Regular Expressions (Regex)
+
+Here's a simple way to validate an email address using regex:
+
+#### Code Example
+
+```csharp
+using System;
+using System.Text.RegularExpressions;
+
+class Program
+{
+    static bool IsValidEmail(string email)
+    {
+        // Regular expression pattern for validating email
+        string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
+        return regex.IsMatch(email);
+    }
+
+    static void Main()
+    {
+        Console.Write("Enter an email address: ");
+        string email = Console.ReadLine();
+
+        if (IsValidEmail(email))
+        {
+            Console.WriteLine("The email address is valid.");
+        }
+        else
+        {
+            Console.WriteLine("The email address is invalid.");
+        }
+    }
+}
+```
+
+#### Explanation
+
+1. **Regular Expression Pattern:**
+   - The pattern `^[^@\s]+@[^@\s]+\.[^@\s]+$` checks the following:
+     - `^` and `$` mark the start and end of the string.
+     - `[^@\s]+` matches one or more characters that are not `@` or whitespace.
+     - `@` matches the literal `@` symbol.
+     - `[^@\s]+` after `@` ensures one or more characters that are not `@` or whitespace.
+     - `\.` matches the literal `.` symbol.
+     - `[^@\s]+` after `.` ensures there is at least one character following the `.`.
+
+2. **Regex Class:**
+   - `Regex.IsMatch()` checks if the email string matches the provided pattern.
+
+3. **User Input:**
+   - The user is prompted to enter an email address, which is then validated using the `IsValidEmail` function.
+
+#### Output
+
+- **Input:** `"example@test.com"`
+  - Output: `"The email address is valid."`
+
+- **Input:** `"invalid-email"`
+  - Output: `"The email address is invalid."`
+
+### Method 2: Using `System.Net.Mail` Namespace
+
+If you want a more comprehensive check that considers more rules for email validation, you can use the `MailAddress` class from the `System.Net.Mail` namespace.
+
+#### Code Example
+
+```csharp
+using System;
+using System.Net.Mail;
+
+class Program
+{
+    static bool IsValidEmail(string email)
+    {
+        try
+        {
+            var mailAddress = new MailAddress(email);
+            return true;
+        }
+        catch (FormatException)
+        {
+            return false;
+        }
+    }
+
+    static void Main()
+    {
+        Console.Write("Enter an email address: ");
+        string email = Console.ReadLine();
+
+        if (IsValidEmail(email))
+        {
+            Console.WriteLine("The email address is valid.");
+        }
+        else
+        {
+            Console.WriteLine("The email address is invalid.");
+        }
+    }
+}
+```
+
+#### Explanation
+
+1. **`MailAddress` Class:**
+   - The constructor of the `MailAddress` class attempts to create a new `MailAddress` object using the provided email string. If the format is invalid, it throws a `FormatException`.
+
+2. **Exception Handling:**
+   - The `try-catch` block catches a `FormatException` if the email is invalid, returning `false`.
+
+3. **User Input:**
+   - The user inputs an email address, and the `IsValidEmail` function checks its validity.
+
+#### Output
+
+- **Input:** `"test@domain.com"`
+  - Output: `"The email address is valid."`
+
+- **Input:** `"invalidemail.com"`
+  - Output: `"The email address is invalid."`
+
+### Conclusion
+
+- **Method 1 (Regex):** Allows you to define your own custom pattern for validation, which can be tailored to specific needs.
+- **Method 2 (MailAddress Class):** Provides a more comprehensive validation that considers the structure and format of email addresses according to standard email rules.
+
+Choose the method that best suits your requirements for email validation in your C# application.
 
 ## Basic 4. Methods / function
 
