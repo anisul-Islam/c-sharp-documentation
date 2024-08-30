@@ -6,7 +6,7 @@
    - [1. Intro to C#](#basic-1-introduction)
       - [Intro to C# language](#11-intro-to-c-sharp-language)  
       - [Setting up the environment](#12-setting-up-the-environment)  
-      - [First C# Program](#13-create-first-console-application)  
+      - [Create and Run First C# Program](#13-create--run-first-console-application)  
       - [Comments and escape sequences](#14-comments-and-escape-sequences)  
       - [Variables and data types](#15-variables-and-data-types)  
       - [User Input](#16-user-input)  
@@ -89,18 +89,18 @@ Key features and aspects of C# include:
 
 Visual Studio Code (VS Code) and Visual Studio (VS) are both popular Integrated Development Environments (IDEs) used for software development, but they have some key differences:
 
-  1. **VS Code (Visual Studio Code)**:
-    - VS Code is a lightweight, open-source code editor developed by Microsoft.
-    - It provides extensive support for various programming languages through extensions.
-    - VS Code is highly customizable and has a vast ecosystem of extensions for additional features and functionalities.
-    - VS Code is suitable for a wide range of development tasks, including web development, cloud development, and scripting.
+    - **VS Code (Visual Studio Code)**:
+      - VS Code is a lightweight, open-source code editor developed by Microsoft.
+      - It provides extensive support for various programming languages through extensions.
+      - VS Code is highly customizable and has a vast ecosystem of extensions for additional features and functionalities.
+      - VS Code is suitable for a wide range of development tasks, including web development, cloud development, and scripting.
 
-  2. **Visual Studio (VS)**:
-    - Visual Studio is a full-featured Integrated Development Environment (IDE) developed by Microsoft.
-    - All the tools are already installed for development purpose. It provides comprehensive tools and features for various types of software development, including desktop applications, web applications, mobile applications, and cloud services.
-    - Visual Studio includes powerful debugging tools, code analysis, and testing capabilities.
-    - Visual Studio has built-in support for multiple programming languages and platforms, including C#, C++, .NET, and more.  
-    - It offers extensive project and solution management features, making it suitable for large-scale enterprise development.
+    - **Visual Studio (VS)**:
+      - Visual Studio is a full-featured Integrated Development Environment (IDE) developed by Microsoft.
+      - All the tools are already installed for development purpose. It provides comprehensive tools and features for various types of software development, including desktop applications, web applications, mobile applications, and cloud services.
+      - Visual Studio includes powerful debugging tools, code analysis, and testing capabilities.
+      - Visual Studio has built-in support for multiple programming languages and platforms, including C#, C++, .NET, and more.  
+      - It offers extensive project and solution management features, making it suitable for large-scale enterprise development.
 
 - step 3: some useful for .NET and c# extension
 
@@ -137,37 +137,37 @@ Visual Studio Code (VS Code) and Visual Studio (VS) are both popular Integrated 
 - step 4: important commands: run `dotnet new list`
 Here are some important .NET CLI (Command Line Interface) commands used in .NET development:
 
-1. **dotnet new**: Creates a new project or file based on the specified template.
-   - Example: `dotnet new console` creates a new console application.
+    1. **dotnet new**: Creates a new project or file based on the specified template.
+      - Example: `dotnet new console` creates a new console application.
 
-2. **dotnet restore**: Restores the dependencies and tools of a project.
-   - Example: `dotnet restore` restores the NuGet packages for a project.
+    2. **dotnet restore**: Restores the dependencies and tools of a project.
+      - Example: `dotnet restore` restores the NuGet packages for a project.
 
-3. **dotnet build**: Builds the project and its dependencies.
-   - Example: `dotnet build` compiles the project into executable output.
+    3. **dotnet build**: Builds the project and its dependencies.
+      - Example: `dotnet build` compiles the project into executable output.
 
-4. **dotnet run**: Builds and runs the project.
-   - Example: `dotnet run` compiles and executes the project's entry point.
+    4. **dotnet run**: Builds and runs the project.
+      - Example: `dotnet run` compiles and executes the project's entry point.
 
-5. **dotnet test**: Executes the tests in the project.
-   - Example: `dotnet test` runs the unit tests in the project.
+    5. **dotnet test**: Executes the tests in the project.
+      - Example: `dotnet test` runs the unit tests in the project.
 
-6. **dotnet publish**: Publishes the application for deployment.
-   - Example: `dotnet publish -c Release -o ./publish` publishes the application to the specified output directory in Release mode.
+    6. **dotnet publish**: Publishes the application for deployment.
+      - Example: `dotnet publish -c Release -o ./publish` publishes the application to the specified output directory in Release mode.
 
-7. **dotnet clean**: Cleans the output directory and intermediate build files.
-   - Example: `dotnet clean` removes the build artifacts from the project directory.
+    7. **dotnet clean**: Cleans the output directory and intermediate build files.
+      - Example: `dotnet clean` removes the build artifacts from the project directory.
 
-8. **dotnet add reference**: Adds a project-to-project (P2P) reference to the project file.
-   - Example: `dotnet add reference ../path/to/project.csproj` adds a reference to another project.
+    8. **dotnet add reference**: Adds a project-to-project (P2P) reference to the project file.
+      - Example: `dotnet add reference ../path/to/project.csproj` adds a reference to another project.
 
-9. **dotnet ef**: Entity Framework Core command-line tools for database migrations and scaffolding.
-   - Example: `dotnet ef migrations add InitialCreate` creates a new migration for the database.
+    9. **dotnet ef**: Entity Framework Core command-line tools for database migrations and scaffolding.
+      - Example: `dotnet ef migrations add InitialCreate` creates a new migration for the database.
 
-10. **dotnet tool install**: Installs the specified .NET Core CLI tool.
-    - Example: `dotnet tool install --global dotnet-ef` installs the Entity Framework Core CLI tool globally.
+    10. **dotnet tool install**: Installs the specified .NET Core CLI tool.
+        - Example: `dotnet tool install --global dotnet-ef` installs the Entity Framework Core CLI tool globally.
 
-### 1.3 Create First Console Application
+### 1.3 Create & Run First Console Application
 
 - run `dotnet new list` and explain all the templates
 - then create a basic console application with `dotnet new console` or `dotnet new console -o FirstConsoleApp`
@@ -185,170 +185,79 @@ Here are some important .NET CLI (Command Line Interface) commands used in .NET 
   - .dll is the byte code or intermediate language
   - you wont see the binary code as the JIT (Just In Time) do not expose cause durinf the running process it will keep the binary code in the memory. JIT can create the binary code based the OS and it made the platform independent.
 
-- output: a message on screen/terminal. `Console.WriteLine("Welcome to C#!");`
+- Create your First Program
 
   ```c#
+  // Program 1: Print your bio
   using System;
 
   public class Program
   {
       public static void Main(string[] args)
       {
-          Console.Write("Welcome to the Code Playground");
-          Console.WriteLine("Welcome to the Code Playground");
-          Console.ReadKey();
+         Console.WriteLine($"My name is Anisul Islam.");
+         Console.WriteLine($"I am 34 Years old.");
+         Console.WriteLine($"I am living in Finland");
       }
   }
   ```
 
-- break down basic structure
+  - Namespaces / Class: helps to separate code. `using System;` allows you to use Console.WriteLine method and other methods. Namespaces are optional. Instead of System.Console.WriteLine use Console.WriteLine method by use System. Use . operator to access the class or namespace members.
 
-- Namespaces / Class: helps to separate code. `using System;` allows you to use Console.WriteLine method and other methods. Namespaces are optional. Instead of System.Console.WriteLine use Console.WriteLine method by use System. Use . operator to access the class or namespace members.
+  - In C#, creating a class is mandatory for the program’s execution. Main method is the entry point or starting point of the program.
 
-- In C#, creating a class is mandatory for the program’s execution. Main method is the entry point or starting point of the program.
+- Run the Program
 
-To run the first C# program in Visual Studio Code (VSCode), follow these steps:
+  1. **Open Terminal in VSCode:**
+    In VSCode, open a new terminal by clicking on "View" in the top menu and selecting "Terminal."
 
-#### Step 1: Install Required Software
+  2. **Build and Run:**
+    In the terminal, run the following commands to build and run your C# program:
 
-1. **Install Visual Studio Code:**
-   If you don't have Visual Studio Code installed, you can download and install it from the official website: [Visual Studio Code](https://code.visualstudio.com/).
+    ```bash
+    dotnet build
+    dotnet run
+    ```
 
-2. **Install .NET SDK:**
-   Ensure you have the .NET SDK installed on your machine. You can follow the previous instructions to install it using Homebrew on macOS.
-
-#### Step 2: Set Up a C# Project
-
-1. **Create a Folder:**
-   Open your terminal and create a new folder for your C# project:
-
-   ```bash
-   mkdir HelloWorld
-   cd HelloWorld
-   ```
-
-2. **Initialize a C# Project:**
-   Run the following command to initialize a new C# console application:
-
-   ```bash
-   dotnet new console
-   ```
-
-   This command creates a simple "Hello World" C# console application.
-
-#### Step 3: Open Project in Visual Studio Code
-
-1. **Open VSCode:**
-   Open Visual Studio Code and navigate to the folder you created for your C# project:
-
-   ```bash
-   code .
-   ```
-
-   This command opens the current folder in VSCode.
-
-#### Step 4: Run the Program
-
-1. **Open Terminal in VSCode:**
-   In VSCode, open a new terminal by clicking on "View" in the top menu and selecting "Terminal."
-
-2. **Build and Run:**
-   In the terminal, run the following commands to build and run your C# program:
-
-   ```bash
-   dotnet build
-   dotnet run
-   ```
-
-   This will build and execute your C# program. You should see the "Hello World" output in the terminal.
-
-Congratulations! You've successfully run your first C# program in Visual Studio Code. You can now start exploring and writing C# code in your VSCode environment.
-
-#### Statements
-
-- A statement (a line of code) performs a specific task. Each Statement ends with a semicolon.
-- In case of multiple statements top to bottom is the apporach of executing statements.
-
-```c#
-public class Program{
-  public static void Main(string[] args)
-  {
-    Console.WriteLine("My name is Anisul Islam.");
-    Console.WriteLine(143);
-  }
-}
-```
+    This will build and execute your C# program. You should see the "Hello World" output in the terminal.
 
 #### Assignment 1: Print your bio
 
-```csharp
-class Test
-{
-  public static void Main(string[] args)
+  ```csharp
+  class Test
   {
-    Console.WriteLine("Name: Anisul Islam");
-    Console.WriteLine("Age: 32");
-    Console.WriteLine("Profession: Software developer");
+    public static void Main(string[] args)
+    {
+      Console.WriteLine("Name: Anisul Islam");
+      Console.WriteLine("Age: 32");
+      Console.WriteLine("Profession: Software developer");
+    }
   }
-}
-```
-
-#### Naming conventions in Micorsoft ecosystem
-
-Sure, here's a breakdown of which naming convention is commonly used for what purpose in the Microsoft ecosystem:
-
-1. **PascalCase**:
-   - Class names: Used for naming classes and types. Example: `CustomerService`, `HttpRequest`.
-   - Method names: Used for naming methods and functions. Example: `CalculateTotal`, `SendEmail`.
-   - Property names: Used for naming properties of classes and objects. Example: `FirstName`, `TotalAmount`.
-
-2. **camelCase**:
-   - Variable names: Used for naming variables, parameters, and local variables. Example: `totalAmount`, `numberOfItems`.
-   - Method parameter names: Used for naming parameters of methods and functions. Example: `firstName`, `orderId`.
-   - undesrcore followed by camelCase for private instance.
-
-3. **snake_case**:
-   - File names: Used for naming files in some cases, particularly in web development. Example: `index.html`, `user_profile.css`.
-   - Database identifiers: Used for naming database tables, columns, and stored procedures in some cases. Example: `user_profile`, `order_details`.
-
-4. **Hungarian notation**:
-   - Less commonly used in modern development but may still be found in legacy codebases. Example: `strFirstName` for a string variable holding a first name, `intAge` for an integer variable holding an age.
-
-5. **Abbreviations**:
-   - Used for common terms and concepts, especially in APIs and libraries. Example: `IO` for Input/Output, `HTTP` for Hypertext Transfer Protocol.
-
-6. **Acronyms**:
-   - Used for abbreviations and initialisms. Example: `HTML` for Hypertext Markup Language, `JSON` for JavaScript Object Notation.
-
-7. **Namespaces and Assemblies**:
-   - Namespaces and assemblies generally follow PascalCase and may include a reverse domain name. Example: `System.Collections`, `Microsoft.AspNetCore.Mvc`.
-
-8. **Constants**:
-   - Constants are typically named using PascalCase with all uppercase letters. Example: `MAX_VALUE`, `DEFAULT_TIMEOUT`.
-
-These conventions help maintain consistency and readability across codebases, making it easier for developers to understand and maintain the code. However, it's essential to follow the specific naming guidelines of the project or organization you're working on.
+  ```
 
 ### 1.4 comments and escape sequences
 
-- what is comment and why do you need comment?
-      - to explain your code
-      - to avoid running some part of your code for debugging
-- single line comment -> `// this is a single line comment`
-- multi-line comments -> `/*   */`
+- Why do you need comment?
+  - To explain your code
+  - To create a todo list
+  - To avoid running some part of your code for debugging
+  - single line comment -> `// this is a single line comment`
+  - multi-line comments -> `/*   */`
 - escape sequences: \n, \t, \r, \\, \", \'
 
-```csharp
-   string fullName = "Aniul\nIslam\nRubel";
-   Console.WriteLine(fullName);
-   Console.ReadKey();
-```
+    ```csharp
+      // Program 2 : Comments and Escape Sequences
+      string fullName = "Aniul\nIslam\nRubel";
+      Console.WriteLine(fullName);
+      Console.ReadKey();
+    ```
 
 - verbatim string: it allows linebreaks in strings. use @ symbol before double quotes.
 
-```csharp
-Console.WriteLine(@"Hello!
-Welcome to the verbatim string");
-```
+    ```csharp
+    Console.WriteLine(@"Hello!
+    Welcome to the verbatim string");
+    ```
 
 ### 1.5 Variables and data types
 
@@ -356,18 +265,7 @@ Welcome to the verbatim string");
 
 #### Data type
 
-![alt text](image-1.png)
-
-- 2 main type: Built-in: Value Types, Reference Type, User Defined
-- example
-  - string; example of string: "this is a string" `string name; name="Anisul Islam";`
-  - char; char bloodGroup = 'A'
-  - int; int age = 32
-  - double; double age = 95.4
-  - float height = 1.82f;
-  - decimal weight = 92.8m;
-  - bool isRegistered = true;
-  - DateTime (8 bytes) - value range from 0:00:00 on 1/1/2001 to 23:59:59 on 12/31/9999
+  ![alt text](image-1.png)
 
 C# provides several built-in data types, which can be categorized into the following groups:
 
@@ -407,11 +305,10 @@ C# provides several built-in data types, which can be categorized into the follo
 4. **DateTime**
    - DateTime (8 bytes) - value range from 0:00:00 on 1/1/2001 to 23:59:59 on 12/31/9999
 
-C# also allows user-defined data types through the use of structures (`struct`) and enumerations (`enum`).
-
 Here's an example demonstrating the declaration of variables with different data types:
 
 ```csharp
+// Program 3: Data types
 using System;
 
 class Program
@@ -461,7 +358,9 @@ class Program
 }
 ```
 
-- **structure type**
+##### struct, enum, tuple, dynamic, object, record, delegate (move them)
+<!-- 
+- **struct type**
 
     for simple data structure such as storing colors, pints, coordinates. similar to classes but they have differences in many aspectes.
 
@@ -871,7 +770,52 @@ Record Point: (50, 60)
 - In the `PointStruct` instance, we cannot modify the `X` and `Y` properties directly because structs are immutable. Attempting to do so will result in a compilation error.
 - Similarly, the `PointRecord` instance is also immutable, so we cannot modify its properties directly. Any attempt to do so will result in a compilation error.
 
-This example illustrates the differences in mutability between classes, structs, and records in C#. Classes are mutable, structs are usually immutable (except for methods that explicitly modify them), and records are immutable by default.
+This example illustrates the differences in mutability between classes, structs, and records in C#. Classes are mutable, structs are usually immutable (except for methods that explicitly modify them), and records are immutable by default. -->
+
+#### Naming conventions in Micorsoft ecosystem
+
+1. **PascalCase**:
+   - Class names: Used for naming classes and types. Example: `CustomerService`, `HttpRequest`.
+   - Method names: Used for naming methods and functions. Example: `CalculateTotal`, `SendEmail`.
+   - Property names: Used for naming properties of classes and objects. Example: `FirstName`, `TotalAmount`.
+
+2. **camelCase**:
+   - Variable names: Used for naming variables, parameters, and local variables. Example: `totalAmount`, `numberOfItems`.
+   - Method parameter names: Used for naming parameters of methods and functions. Example: `firstName`, `orderId`.
+   - undesrcore followed by camelCase for private instance.
+
+3. **snake_case**:
+   - File names: Used for naming files in some cases, particularly in web development. Example: `index.html`, `user_profile.css`.
+   - Database identifiers: Used for naming database tables, columns, and stored procedures in some cases. Example: `user_profile`, `order_details`.
+
+4. **Hungarian notation**:
+   - Less commonly used in modern development but may still be found in legacy codebases. Example: `strFirstName` for a string variable holding a first name, `intAge` for an integer variable holding an age.
+
+5. **Abbreviations**:
+   - Used for common terms and concepts, especially in APIs and libraries. Example: `IO` for Input/Output, `HTTP` for Hypertext Transfer Protocol.
+
+6. **Acronyms**:
+   - Used for abbreviations and initialisms. Example: `HTML` for Hypertext Markup Language, `JSON` for JavaScript Object Notation.
+
+7. **Namespaces and Assemblies**:
+   - Namespaces and assemblies generally follow PascalCase and may include a reverse domain name. Example: `System.Collections`, `Microsoft.AspNetCore.Mvc`.
+
+8. **Constants**:
+   - Constants are typically named using PascalCase with all uppercase letters. Example: `MAX_VALUE`, `DEFAULT_TIMEOUT`.
+
+#### Constant variables and multiple variables
+
+- constant variables: const string universityName = "Leading University";
+- string concatenation: "anisul" + "islam"
+- multiple variables: int x,y,z; x=y=z=50;
+
+#### var vs int
+
+Using `var` allows the compiler to determine the type of the loop variable automatically based on the context, which can make the code cleaner and more concise. It's especially useful when dealing with complex types or when the type name is long and repetitive.
+
+#### Assignment 2: declare product data types and print variables
+
+![assignment-2](images/assignment-2.png)
 
 #### checking data type of a variable
 
@@ -928,42 +872,6 @@ In C#, you can check the data type of a variable or object using various methods
         Console.WriteLine($"Object is a string: {text}");
     }
     ```
-
-These are some common ways to check the data type in C#. The choice of method depends on the specific scenario and requirements of your program.
-
-#### variable naming conventions
-
-- descriptive
-- meaningful
-- camelCase
-- avoid single letter naming (exception for loops)
-
-#### var vs int
-
-In the provided code example, `var` is used instead of `int` for the loop variable because the loop variable is inferred from the type of the collection being iterated over. In this case, `Enumerable.Range(0, numbers.Length)` returns an `IEnumerable<int>`, so the loop variable will be of type `int`.
-
-Using `var` allows the compiler to determine the type of the loop variable automatically based on the context, which can make the code cleaner and more concise. It's especially useful when dealing with complex types or when the type name is long and repetitive.
-
-Here's the same code with `int` explicitly specified:
-
-```csharp
-foreach (int index in Enumerable.Range(0, numbers.Length))
-{
-    Console.WriteLine($"Index: {index}, Value: {numbers[index]}");
-}
-```
-
-Both versions of the code will work identically, but using `var` can sometimes make the code more readable and maintainable.
-
-#### Assignment 2: declare product data types and print variables
-
-![assignment-2](images/assignment-2.png)
-
-#### Constant variables and multiple variables
-
-- constant variables: const string universityName = "Leading University";
-- string concatenation: "anisul" + "islam"
-- multiple variables: int x,y,z; x=y=z=50;
 
 #### Type Casting - Implicit, Explicit
 
