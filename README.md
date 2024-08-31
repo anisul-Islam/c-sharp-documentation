@@ -9,15 +9,13 @@
       - [Create and Run First C# Program](#13-create--run-first-console-application)  
       - [Comments and escape sequences](#14-comments-and-escape-sequences)  
       - [Variables and data types](#15-variables-and-data-types)  
-      - [User Input](#16-user-input)  
-      - [Math operatoions & Precedence](#17-math-operatoions--precedence)  
-      - [Formatting output](#18-formatting-output---string-concatenation--interpolation)  
+      - [Formatting output](#16-formatting-output---string-concatenation--interpolation)
+      - [User Input and Type Conversion](#17-user-input-and-type-conversion)
    - [2. Operators](#basic-2-operators)  
    - [3. Control Statement](#basic-3-control-statement)  
       - [Conditional Control Statement](#31-conditional-control-statement)  
       - [Loop Control Statement](#32-loop-control-statement)  
    - [4. Methods](#basic-4-methods--function)  
-
 
 2. [Intermediate C]()
    - [Intermediate 1. OOP](#intermediate-1-oop)
@@ -87,24 +85,22 @@ Key features and aspects of C# include:
 
 - step 2: install IDE: Visual Studio is the popular one.
 
-Visual Studio Code (VS Code) and Visual Studio (VS) are both popular Integrated Development Environments (IDEs) used for software development, but they have some key differences:
+  - **VS Code (Visual Studio Code)**:
+    - VS Code is a lightweight, open-source code editor developed by Microsoft.
+    - It provides extensive support for various programming languages through extensions.
+    - VS Code is highly customizable and has a vast ecosystem of extensions for additional features and functionalities.
+    - VS Code is suitable for a wide range of development tasks, including web development, cloud development, and scripting.
 
-    - **VS Code (Visual Studio Code)**:
-      - VS Code is a lightweight, open-source code editor developed by Microsoft.
-      - It provides extensive support for various programming languages through extensions.
-      - VS Code is highly customizable and has a vast ecosystem of extensions for additional features and functionalities.
-      - VS Code is suitable for a wide range of development tasks, including web development, cloud development, and scripting.
-
-    - **Visual Studio (VS)**:
-      - Visual Studio is a full-featured Integrated Development Environment (IDE) developed by Microsoft.
-      - All the tools are already installed for development purpose. It provides comprehensive tools and features for various types of software development, including desktop applications, web applications, mobile applications, and cloud services.
-      - Visual Studio includes powerful debugging tools, code analysis, and testing capabilities.
-      - Visual Studio has built-in support for multiple programming languages and platforms, including C#, C++, .NET, and more.  
-      - It offers extensive project and solution management features, making it suitable for large-scale enterprise development.
+  - **Visual Studio (VS)**:
+    - Visual Studio is a full-featured Integrated Development Environment (IDE) developed by Microsoft.
+    - All the tools are already installed for development purpose. It provides comprehensive tools and features for various types of software development, including desktop applications, web applications, mobile applications, and cloud services.
+    - Visual Studio includes powerful debugging tools, code analysis, and testing capabilities.
+    - Visual Studio has built-in support for multiple programming languages and platforms, including C#, C++, .NET, and more.  
+    - It offers extensive project and solution management features, making it suitable for large-scale enterprise development.
 
 - step 3: some useful for .NET and c# extension
 
-  When working with C# and .NET in Visual Studio Code on macOS, you'll want to install some extensions to enhance your development experience. Here are some essential extensions:
+  When working with C# and .NET in Visual Studio Code on macOS, you'll want to install some extensions to enhance your development experience. To install these extensions, you can open Visual Studio Code, navigate to the Extensions view by clicking on the square icon on the sidebar or by pressing `Cmd + Shift + X`, and search for each extension by name. Then, click on the extension and select "Install". 
 
     1. **C# for Visual Studio Code**: This official extension provides support for C# syntax highlighting, debugging, and IntelliSense. It's essential for C# development in Visual Studio Code.
       - [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
@@ -131,8 +127,6 @@ Visual Studio Code (VS Code) and Visual Studio (VS) are both popular Integrated 
       - [Unity Code Snippets](https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets)
     
     9. C# Dev kit - C# Dev Kit extension enhances VS Code's existing Workspaces with a new Solution Explorer view, providing a curated and structured view of your application for effortless, central project management. This lets you quickly add new projects or files to your solutions and easily build all or part of your solution.
-
-    To install these extensions, you can open Visual Studio Code, navigate to the Extensions view by clicking on the square icon on the sidebar or by pressing `Cmd + Shift + X`, and search for each extension by name. Then, click on the extension and select "Install". Alternatively, you can install them from the links provided above.
 
 - step 4: important commands: run `dotnet new list`
 Here are some important .NET CLI (Command Line Interface) commands used in .NET development:
@@ -261,8 +255,6 @@ Here are some important .NET CLI (Command Line Interface) commands used in .NET 
 
 ### 1.5 Variables and data types
 
-- variable declaration and initialization
-
 #### Data type
 
   ![alt text](image-1.png)
@@ -305,58 +297,101 @@ C# provides several built-in data types, which can be categorized into the follo
 4. **DateTime**
    - DateTime (8 bytes) - value range from 0:00:00 on 1/1/2001 to 23:59:59 on 12/31/9999
 
-Here's an example demonstrating the declaration of variables with different data types:
+  ```csharp
+  // Program 3: Data types
+  using System;
 
-```csharp
-// Program 3: Data types
-using System;
+  class Program
+  {
+      static void Main()
+      {
+          Console.WriteLine("Variables declared with different data types:");
+          Console.WriteLine("sbyte: " + (-100));
+          Console.WriteLine("byte: " + 200);
+          Console.WriteLine("short: " + (-30000));
+          Console.WriteLine("ushort: " + 60000);
+          Console.WriteLine("int: " + (-2000000000));
+          Console.WriteLine("uint: " + 4000000000U);
+          Console.WriteLine("long: " + (-9000000000000000000L));
+          Console.WriteLine("ulong: " + 18000000000000000000UL);
+          Console.WriteLine("float: " + 3.14f);
+          Console.WriteLine("double: " + 3.14159265359);
+          Console.WriteLine("decimal: " + 123.45m);
+          Console.WriteLine("char: " + 'A');
+          Console.WriteLine("bool: " + true);
+          Console.WriteLine("string: " + "Hello, world!");
+          Console.WriteLine("object: " + 123);
+      }
+  }
+  ```
 
-class Program
-{
-    static void Main()
-    {
-        // Integral Types
-        sbyte sb = -100;
-        byte b = 200;
-        short sh = -30000;
-        ushort ush = 60000;
-        int i = -2000000000;
-        uint ui = 4000000000;
-        long l = -9000000000000000000;
-        ulong ul = 18000000000000000000;
+#### Variables
 
-        // Floating-Point Types
-        float f = 3.14f;
-        double d = 3.14159265359;
-        decimal dec = 123.45m;
+#### Naming conventions in Micorsoft ecosystem
 
-        // Other Value Types
-        char ch = 'A';
-        bool flag = true;
+1. **PascalCase**:
+   - Class names: Used for naming classes and types. Example: `CustomerService`, `HttpRequest`.
+   - Method names: Used for naming methods and functions. Example: `CalculateTotal`, `SendEmail`.
+   - Property names: Used for naming properties of classes and objects. Example: `FirstName`, `TotalAmount`.
 
-        // Reference Types
-        string str = "Hello, world!";
-        object obj = 123;
+2. **camelCase**:
+   - Variable names: Used for naming variables, parameters, and local variables. Example: `totalAmount`, `numberOfItems`.
+   - Method parameter names: Used for naming parameters of methods and functions. Example: `firstName`, `orderId`.
+   - undesrcore followed by camelCase for private instance.
 
-        Console.WriteLine("Variables declared with different data types:");
-        Console.WriteLine($"sbyte: {sb}");
-        Console.WriteLine($"byte: {b}");
-        Console.WriteLine($"short: {sh}");
-        Console.WriteLine($"ushort: {ush}");
-        Console.WriteLine($"int: {i}");
-        Console.WriteLine($"uint: {ui}");
-        Console.WriteLine($"long: {l}");
-        Console.WriteLine($"ulong: {ul}");
-        Console.WriteLine($"float: {f}");
-        Console.WriteLine($"double: {d}");
-        Console.WriteLine($"decimal: {dec}");
-        Console.WriteLine($"char: {ch}");
-        Console.WriteLine($"bool: {flag}");
-        Console.WriteLine($"string: {str}");
-        Console.WriteLine($"object: {obj}");
-    }
-}
-```
+3. **snake_case**:
+   - File names: Used for naming files in some cases, particularly in web development. Example: `index.html`, `user_profile.css`.
+   - Database identifiers: Used for naming database tables, columns, and stored procedures in some cases. Example: `user_profile`, `order_details`.
+
+4. **Hungarian notation**:
+   - Less commonly used in modern development but may still be found in legacy codebases. Example: `strFirstName` for a string variable holding a first name, `intAge` for an integer variable holding an age.
+
+5. **Abbreviations**:
+   - Used for common terms and concepts, especially in APIs and libraries. Example: `IO` for Input/Output, `HTTP` for Hypertext Transfer Protocol.
+
+6. **Acronyms**:
+   - Used for abbreviations and initialisms. Example: `HTML` for Hypertext Markup Language, `JSON` for JavaScript Object Notation.
+
+7. **Namespaces and Assemblies**:
+   - Namespaces and assemblies generally follow PascalCase and may include a reverse domain name. Example: `System.Collections`, `Microsoft.AspNetCore.Mvc`.
+
+8. **Constants**:
+   - Constants are typically named using PascalCase with all uppercase letters. Example: `MAX_VALUE`, `DEFAULT_TIMEOUT`.
+
+#### Constant variables and multiple variables
+
+- constant variables: const string universityName = "Leading University";
+- string concatenation: "anisul" + "islam"
+- multiple variables: int x,y,z; x=y=z=50;
+
+ ```csharp
+    // Program 4: Variables
+    string fullName = "Anisul Islam";
+    int age = 34;
+    string countryName = "Finland";
+    char bloodGroup = 'A';
+    bool isRegistered = true;
+    const string BIRTH_PLACE = "Bangladesh";
+
+    Console.WriteLine(fullName);
+    Console.WriteLine(age);
+    Console.WriteLine(countryName);
+    Console.WriteLine(bloodGroup);
+    Console.WriteLine(isRegistered);
+    Console.WriteLine(BIRTH_PLACE);
+  ```
+
+#### var vs int
+
+Using `var` allows the compiler to determine the type of the loop variable automatically based on the context, which can make the code cleaner and more concise. It's especially useful when dealing with complex types or when the type name is long and repetitive.
+
+#### Assignment 2: declare product data types and print variables
+
+![assignment-2](images/assignment-2.png)
+
+Here’s a simple assignment that covers variables, string interpolation, comments, and escape sequences in C#. This assignment is designed for beginners to help them understand these concepts.
+
+---
 
 ##### struct, enum, tuple, dynamic, object, record, delegate (move them)
 <!-- 
@@ -772,239 +807,302 @@ Record Point: (50, 60)
 
 This example illustrates the differences in mutability between classes, structs, and records in C#. Classes are mutable, structs are usually immutable (except for methods that explicitly modify them), and records are immutable by default. -->
 
-#### Naming conventions in Micorsoft ecosystem
+### 1.6 Formatting output - String concatenation & interpolation
 
-1. **PascalCase**:
-   - Class names: Used for naming classes and types. Example: `CustomerService`, `HttpRequest`.
-   - Method names: Used for naming methods and functions. Example: `CalculateTotal`, `SendEmail`.
-   - Property names: Used for naming properties of classes and objects. Example: `FirstName`, `TotalAmount`.
+- we can use variable inside a string by using string interpolation!
 
-2. **camelCase**:
-   - Variable names: Used for naming variables, parameters, and local variables. Example: `totalAmount`, `numberOfItems`.
-   - Method parameter names: Used for naming parameters of methods and functions. Example: `firstName`, `orderId`.
-   - undesrcore followed by camelCase for private instance.
+  ```csharp
+  // Program 5: string concatenation
+  string fullName = "Anisul Islam";
+  int age = 34;
+  string countryName = "Finland";
+  char bloodGroup = 'A';
+  bool isRegistered = true;
+  const string BIRTH_PLACE = "Bangladesh";
 
-3. **snake_case**:
-   - File names: Used for naming files in some cases, particularly in web development. Example: `index.html`, `user_profile.css`.
-   - Database identifiers: Used for naming database tables, columns, and stored procedures in some cases. Example: `user_profile`, `order_details`.
+  Console.WriteLine("My name is " + fullName + ".");
+  Console.WriteLine("I am " + age + " years old.");
+  Console.WriteLine("I am living in " + countryName + ".");
+  Console.WriteLine(countryName + " is a very beautiful country.");
+  Console.WriteLine("At the age of " + age + " I enjoy teaching people programming.");
+  Console.WriteLine("Blood Group " + bloodGroup);
+  Console.WriteLine("You are registered in a football club: " + isRegistered);
+  Console.WriteLine("Birth Place: " + BIRTH_PLACE);
+  ```
 
-4. **Hungarian notation**:
-   - Less commonly used in modern development but may still be found in legacy codebases. Example: `strFirstName` for a string variable holding a first name, `intAge` for an integer variable holding an age.
+  ```c sharp
+    // Program 6: string interpolation
+    string fullName = "Anisul Islam";
+    int age = 34;
+    string countryName = "Finland";
+    char bloodGroup = 'A';
+    bool isRegistered = true;
+    const string BIRTH_PLACE = "Bangladesh";
 
-5. **Abbreviations**:
-   - Used for common terms and concepts, especially in APIs and libraries. Example: `IO` for Input/Output, `HTTP` for Hypertext Transfer Protocol.
+    Console.WriteLine($"My name is {fullName}.");
+    Console.WriteLine($"I am {age} Years old.");
+    Console.WriteLine($"I am living in {countryName}");
+    Console.WriteLine($"{countryName} is a very beautiful country.");
+    Console.WriteLine($"At the age of {age} I enjoy teaching people programming");
+    Console.WriteLine($"Bllod Group {bloodGroup}");
+    Console.WriteLine($"You are register in a football club :  {isRegistered}");
+    Console.WriteLine($"Birth Place: {BIRTH_PLACE}");
+  ```
 
-6. **Acronyms**:
-   - Used for abbreviations and initialisms. Example: `HTML` for Hypertext Markup Language, `JSON` for JavaScript Object Notation.
+#### **Extra Assignment: Personal Introduction Program**
 
-7. **Namespaces and Assemblies**:
-   - Namespaces and assemblies generally follow PascalCase and may include a reverse domain name. Example: `System.Collections`, `Microsoft.AspNetCore.Mvc`.
+**Objective:** Create a C# program that uses variables, string interpolation, comments, and escape sequences to display a formatted introduction message.
 
-8. **Constants**:
-   - Constants are typically named using PascalCase with all uppercase letters. Example: `MAX_VALUE`, `DEFAULT_TIMEOUT`.
+**Instructions:**
 
-#### Constant variables and multiple variables
+1. **Declare Variables:**
+   - Create variables to store the following information:
+     - Your name (string)
+     - Your age (int)
+     - Your favorite hobby (string)
+     - A favorite quote or saying (string)
 
-- constant variables: const string universityName = "Leading University";
-- string concatenation: "anisul" + "islam"
-- multiple variables: int x,y,z; x=y=z=50;
+2. **Use Comments:**
+   - Add comments in your code to describe what each part of your code is doing.
 
-#### var vs int
+3. **String Interpolation:**
+   - Use string interpolation to create a sentence that introduces yourself, including your name, age, and favorite hobby.
 
-Using `var` allows the compiler to determine the type of the loop variable automatically based on the context, which can make the code cleaner and more concise. It's especially useful when dealing with complex types or when the type name is long and repetitive.
+4. **Escape Sequences:**
+   - Include escape sequences in your favorite quote, like using `\"` for quotes inside the string, or `\n` for a new line.
 
-#### Assignment 2: declare product data types and print variables
+5. **Display the Output:**
+   - Print your introduction and the favorite quote using `Console.WriteLine`.
 
-![assignment-2](images/assignment-2.png)
+**Example Code:**
 
-#### checking data type of a variable
+  Here's what your code might look like:
 
-In C#, you can check the data type of a variable or object using various methods. Here are some common ways:
+  ```csharp
+  using System;
 
-    1. **Using the `typeof` Operator**:
-      - The `typeof` operator returns a `Type` object representing the specified type.
+  public class Program
+  {
+      public static void Main()
+      {
+          // Declare variables
+          string name = "Alice"; // Your name
+          int age = 25; // Your age
+          string hobby = "reading books"; // Your favorite hobby
+          string favoriteQuote = "The only limit to our realization of tomorrow is our doubts of today.\n- Franklin D. Roosevelt"; // A favorite quote
 
-    ```csharp
-    int number = 10;
-    Type type = typeof(int);
-    Console.WriteLine(type); // Output: System.Int32
-    ```
+          // String interpolation to create a personal introduction message
+          string introduction = $"Hello, my name is {name}. I am {age} years old and I love {hobby}.";
 
-    2. **Using the `GetType` Method**:
-      - The `GetType` method returns the runtime type of an instance.
+          // Print the introduction message
+          Console.WriteLine(introduction);
 
-    ```csharp
-    string text = "Hello";
-    Type type = text.GetType();
-    Console.WriteLine(type); // Output: System.String
-    ```
+          // Print the favorite quote with escape sequences for new line
+          Console.WriteLine($"My favorite quote is:\n\"{favoriteQuote}\"");
+      }
+  }
+  ```
 
-    3. **Using the `is` Operator**:
-      - The `is` operator checks if an object is compatible with a given type and returns a Boolean result.
+  **Expected Output:**
 
-    ```csharp
-    object obj = "Hello";
-    if (obj is string)
-    {
-        Console.WriteLine("Object is a string");
-    }
-    ```
+  ```
+  Hello, my name is Alice. I am 25 years old and I love reading books.
+  My favorite quote is:
+  "The only limit to our realization of tomorrow is our doubts of today.
+  - Franklin D. Roosevelt"
+  ```
 
-    4. **Using the `as` Operator**:
-      - The `as` operator performs a safe type conversion or casting and returns `null` if the conversion fails.
+  ---
 
-    ```csharp
-    object obj = "Hello";
-    string text = obj as string;
-    if (text != null)
-    {
-        Console.WriteLine("Object is successfully converted to string");
-    }
-    ```
+**Key Concepts Covered:**
 
-    5. **Using Pattern Matching (C# 7 and later)**:
-      - Pattern matching allows you to test the type of an object and extract values from it in a single step.
+- **Variables**: Storing data in variables like `name`, `age`, etc.
+- **String Interpolation**: Using `$` to embed variables directly within strings.
+- **Comments**: Describing what each line or section of code does.
+- **Escape Sequences**: Using special characters to format strings, like `\n` for a new line and `\"` for including quotes.
 
-    ```csharp
-    object obj = "Hello";
-    if (obj is string text)
-    {
-        Console.WriteLine($"Object is a string: {text}");
-    }
-    ```
+### 1.7 User Input and Type Conversion
 
-#### Type Casting - Implicit, Explicit
+- Console.ReadLine() return a string,
+- Console.Read() - Keep in mind that Console.Read() only reads a single character, so if you enter a string, it will only read the first character of that string. It returns an integer representing the Unicode value of the character read.
+
+#### Type Conversion - Implicit, Explicit
 
 In C#, there are several ways to convert data types. Here are some commonly used methods:
 
 1. **Implicit Conversion**: This happens automatically by the compiler when there is no risk of data loss. For example, converting an integer to a double.
 
-```csharp
-int numInt = 10;
-double numDouble = numInt; // Implicit conversion
-```
+  ```csharp
+  int numInt = 10;
+  double numDouble = numInt; // Implicit conversion
+  ```
 
 2. **Explicit Conversion (Casting)**: This involves manually converting one type to another using type casting operators. Explicit conversion may result in data loss or exceptions if the data cannot be represented in the target type.
 
-```csharp
-double numDouble = 10.5;
-int numInt = (int)numDouble; // Explicit conversion
-```
+  ```csharp
+  double numDouble = 10.5;
+  int numInt = (int)numDouble; // Explicit conversion
+  ```
 
-3. **Convert Class**: The `Convert` class provides methods to convert base data types to other base data types.
+3. Convert vs Parse vs TryParse
 
-```csharp
-int numInt = 10;
-string numString = Convert.ToString(numInt); // Convert int to string
-```
+When deciding between `Convert`, `TryParse`, and `Parse` for converting user input in C#, each has its advantages and appropriate use cases:
 
-4. **Parse Methods**: Each primitive data type has a `Parse` method to convert a string representation of that data type to the actual data type.
+##### **1. `TryParse`:**
 
-```csharp
-string numString = "10";
-int numInt = int.Parse(numString); // Parse string to int
-```
+- **Usage**: Safely tries to convert the input to the desired type without throwing exceptions if the conversion fails.
+- **Advantages**:
+  - **No Exceptions**: It does not throw an exception if the input is invalid; instead, it returns `false`.
+  - **Safe for User Input**: Ideal for handling user input where errors are common.
+  - **Output Variable**: Outputs the converted value directly using an `out` parameter.
+  
+- **When to Use**:
+  - Best when dealing with user input or uncertain data.
+  - When you want to avoid exception handling and gracefully handle invalid inputs.
 
-5. **TryParse Methods**: Similar to `Parse`, but does not throw an exception on failure. It returns a Boolean indicating success or failure, and the result is stored in an `out` parameter.
-
-```csharp
-string numString = "10";
-int numInt;
-if (int.TryParse(numString, out numInt))
-{
-    // Conversion successful
-}
-else
-{
-    // Conversion failed
-}
-```
-
-6. **User-Defined Conversions**: Custom conversion methods can be defined in classes using explicit or implicit operator overloading.
+**Example from your code:**
 
 ```csharp
-public class MyClass
-{
-    public int Value { get; set; }
-
-    // Implicit conversion
-    public static implicit operator MyClass(int value)
-    {
-        return new MyClass { Value = value };
-    }
-
-    // Explicit conversion
-    public static explicit operator int(MyClass myClass)
-    {
-        return myClass.Value;
-    }
-}
+int.TryParse(ageInput, out int age);
+char.TryParse(bloodGroupInput, out char bloodGroup);
+bool.TryParse(registerInput, out bool isRegistered);
 ```
+
+##### **2. `Parse`:**
+
+- **Usage**: Directly converts a string to the specified type but throws an exception if the conversion fails.
+- **Advantages**:
+  - **Straightforward**: Converts the string directly if you are certain the input is valid.
+  - **Performance**: Slightly faster than `TryParse` because it does not include the overhead of returning `false`.
+  
+- **When to Use**:
+  - Use when you are sure that the input is always valid.
+  - Typically used when data is already validated or comes from a reliable source.
+
+**Example:**
+
+```csharp
+int age = int.Parse(ageInput); // Throws an exception if ageInput is not a valid integer.
+```
+
+##### **3. `Convert`:**
+
+- **Usage**: Converts various types to another type, handling `null` values and returning a default type value (like 0 for numbers).
+- **Advantages**:
+  - **Handles Nulls**: Does not throw an exception for `null` input, but instead converts to a default value (e.g., 0, false).
+  - **Versatile**: Can convert between various types, not just strings to other types.
+  
+- **When to Use**:
+  - When you need to handle `null` values gracefully without exceptions.
+  - Suitable for converting multiple types, not just strings.
+
+**Example:**
+
+```csharp
+int age = Convert.ToInt32(ageInput); // Converts null to 0 and invalid input throws an exception.
+```
+
 
 These are some of the common methods used for data type conversion in C#. Each method has its own use cases and should be chosen based on the specific requirements of the program.
 
-### 1.6 User Input
-
-- Console.ReadLine() return a string,
-- Console.Read() - Keep in mind that Console.Read() only reads a single character, so if you enter a string, it will only read the first character of that string. It returns an integer representing the Unicode value of the character read.
-- For Data Type conversion
-  - Convert.ToString(), Convert.ToBoolean(), Convert.ToInt16(),Convert.ToInt32(), Convert.ToInt64() and Convert.ToChar(), Convert.ToDouble()
-- Error: not possible to convert a textual string like "welcome" to an int.
-
 ```c#
-using System;
-class Test
-{
-  public static void Main(string[] args)
-  {
-    string? studentName;
-    int studentAge;
-    double salary;
-    char bloodGroup;
+// Program 7: How To Get User Input
+Console.Write("Enter Your Name: ");
+string? fullName = Console.ReadLine();
 
-    Console.Write("Enter your name: ");
-    studentName = Console.ReadLine();
+Console.Write("Enter Your Age: ");
+string? ageInput = Console.ReadLine();
+int.TryParse(ageInput, out int age);
 
-    Console.Write("Enter your age: ");
-    studentAge = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter Your Country: ");
+string? countryName = Console.ReadLine();
 
-    Console.Write("Enter your monthly salary: ");
-    salary = Convert.ToDouble(Console.ReadLine());
+Console.Write("Enter Your Blood Group: ");
+string? bloodGroupInput = Console.ReadLine();
+char.TryParse(bloodGroupInput, out char bloodGroup);
 
-    Console.Write("Enter your blood group: ");
-    bloodGroup = Convert.ToChar(Console.Read());
+Console.Write("Are you registered? true/false:  ");
+string? registerInput = Console.ReadLine();
+bool.TryParse(registerInput, out bool isRegistered);
 
+const string BIRTH_PLACE = "Bangladesh";
 
-    Console.WriteLine("Name: " + studentName);
-    Console.WriteLine("Blood Group: " + bloodGroup);
-    Console.WriteLine("Age: " + studentAge + " years old");
-    Console.WriteLine($"Welcome {name}. You are {age}. Your salary is ${salary:F2}");
-  }
-}
+Console.WriteLine($"My name is {fullName}.");
+Console.WriteLine($"I am {age} Years old.");
+Console.WriteLine($"I am living in {countryName}");
+Console.WriteLine($"{countryName} is a very beautiful country.");
+Console.WriteLine($"At the age of {age} I enjoy teaching people programming");
+Console.WriteLine($"Bllod Group {bloodGroup}");
+Console.WriteLine($"You are register in a football club :  {isRegistered}");
+Console.WriteLine($"Birth Place: {BIRTH_PLACE}");
 ```
+
+##### **Best Practice for Your Code:**
+
+Given that user input can often be invalid, `TryParse` is the best option here because it:
+
+- Does not throw exceptions, which simplifies error handling.
+- Allows you to provide default values or messages when conversion fails without interrupting program flow.
+
+Using `TryParse` ensures your application is user-friendly and robust when handling various types of input, making it the ideal choice for your scenario.
 
 #### Assignment 3: take student input for gpa and isRegistered
 
-### 1.7 Math operatoions & Precedence
+### 1.8 checking data type of a variable
 
-### 1.8 Formatting output - String concatenation & interpolation
+In C#, you can check the data type of a variable or object using various methods. Here are some common ways:
 
-- we can use variable inside a string by using string interpolation!
+  1. **Using the `typeof` Operator**:
+    - The `typeof` operator returns a `Type` object representing the specified type.
 
-```c sharp
-    int number1 = 10;
-    int number2 = 3;
-    int result;
-    double pi = 3.1416;
+  ```csharp
+  int number = 10;
+  Type type = typeof(int);
+  Console.WriteLine(type); // Output: System.Int32
+    ```
 
-    result = number1 + number2;
-    // Console.WriteLine($"{number1} + {number2} = {result}");
-    Console.WriteLine("{0} + {1} = {2}", number1, number2, result);
+  2. **Using the `GetType` Method**:
+    - The `GetType` method returns the runtime type of an instance.
 
-   Console.WriteLine($"pi = {pi}");
-   Console.WriteLine($"pi = {pi:F2}");
+  ```csharp
+  string text = "Hello";
+  Type type = text.GetType();
+  Console.WriteLine(type); // Output: System.String
+  ```
 
-```
+  3. **Using the `is` Operator**:
+    - The `is` operator checks if an object is compatible with a given type and returns a Boolean result.
+
+  ```csharp
+  object obj = "Hello";
+  if (obj is string)
+  {
+      Console.WriteLine("Object is a string");
+  }
+  ```
+
+  4. **Using the `as` Operator**:
+    - The `as` operator performs a safe type conversion or casting and returns `null` if the conversion fails.
+
+  ```csharp
+  object obj = "Hello";
+  string text = obj as string;
+  if (text != null)
+  {
+      Console.WriteLine("Object is successfully converted to string");
+  }
+  ```
+
+  5. **Using Pattern Matching (C# 7 and later)**:
+    - Pattern matching allows you to test the type of an object and extract values from it in a single step.
+
+  ```csharp
+  object obj = "Hello";
+  if (obj is string text)
+  {
+      Console.WriteLine($"Object is a string: {text}");
+  }
+  ```
 
 ## Basic 2. Operators
 
