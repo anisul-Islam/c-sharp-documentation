@@ -1142,80 +1142,164 @@ C# supports various operators that allow you to perform operations on variables 
 
 - some arithmetic operators programs
 
-```csharp
-// basic calculator
-using System;
-class Test
-{
-  public static void Main(string[] args)
+  ```csharp
+  // Program 8: basic calculator
+  // Arithmetic Operators => + - / * %
+
+  int num1 = 10;
+  int num2 = 3;
+
+  int sum = num1 + num2;
+  Console.WriteLine($"{num1} + {num2} = {sum}");
+
+  int sub = num1 - num2;
+  Console.WriteLine($"{num1} - {num2} = {sub}");
+
+  int mul = num1 * num2;
+  Console.WriteLine($"{num1} * {num2} = {mul}");
+
+  float div = (float)num1 / num2;
+  Console.WriteLine($"{num1} / {num2} = {div:F2}");
+
+  int rem = num1 % num2;
+  Console.WriteLine($"{num1} % {num2} = {rem}");
+  ```
+
+  ```csharp
+  // Program 9 : User Input and Calculator
+  // Arithmetic Operators => + - / * %
+
+  Console.Write($"Enter number 1 = ");
+  int.TryParse(Console.ReadLine(), out int num1);
+
+  Console.Write($"Enter number 2 = ");
+  int.TryParse(Console.ReadLine(), out int num2);
+
+  int sum = num1 + num2;
+  Console.WriteLine($"{num1} + {num2} = {sum}");
+
+  int sub = num1 - num2;
+  Console.WriteLine($"{num1} - {num2} = {sub}");
+
+  int mul = num1 *num2;
+  Console.WriteLine($"{num1}* {num2} = {mul}");
+
+  float div = (float)num1 / num2;
+  Console.WriteLine($"{num1} / {num2} = {div:F2}");
+
+  int rem = num1 % num2;
+  Console.WriteLine($"{num1} % {num2} = {rem}");
+  Console.Write($"Enter number 1 = ");
+  int.TryParse(Console.ReadLine(), out int num1);
+
+  Console.Write($"Enter number 2 = ");
+  int.TryParse(Console.ReadLine(), out int num2);
+
+  int sum = num1 + num2;
+  Console.WriteLine($"{num1} + {num2} = {sum}");
+
+  int sub = num1 - num2;
+  Console.WriteLine($"{num1} - {num2} = {sub}");
+
+  int mul = num1 *num2;
+  Console.WriteLine($"{num1}* {num2} = {mul}");
+
+  float div = (float)num1 / num2;
+  Console.WriteLine($"{num1} / {num2} = {div:F2}");
+
+  int rem = num1 % num2;
+  Console.WriteLine($"{num1} % {num2} = {rem}");
+  ```
+
+  ```csharp
+    // Program 10: Sum and average of 5 numbers
+    // Arithmetic Operators => + - / * %
+
+    // Area of triangle  = 1/2 *base* height
+    // Area of circle  = 3.1416 *radius* radius
+
+    // 1. Find out sum and average of 5 numbers
+
+    // define 5 numbers
+    int num1 = 10;
+    int num2 = 20;
+    int num3 = 5;
+    int num4 = 15;
+    int num5 = 2;
+
+    // find the sum
+    int sum = num1 + num2 + num3 + num4 + num5;
+
+    // find the average
+    float average = (float)sum / 5;
+
+    Console.WriteLine($"The sum is {sum}");
+    Console.WriteLine($"The average is {average:F2}");
+
+  ```
+
+  ```csharp
+  // Program 10: Area of triagle
+  using System;
+  class Test
   {
-    int number1 = 10;
-    int number2 = 3;
-    int result;
+    public static void Main(string[] args)
+    {
+      // triangle area = 0.5 * base * height
+      double baseLength, height, triangleArea;
 
-    result = number1 + number2;
-    // Console.WriteLine($"{number1} + {number2} = {result}");
-    Console.WriteLine("{0} + {1} = {2}", number1, number2, result);
+      Console.WriteLine("Triangle Area Calculator");
 
-    result = number1 - number2;
-    Console.WriteLine($"{number1} - {number2} = {result}");
+      Console.Write("Base = ");
+      baseLength = Convert.ToDouble(Console.ReadLine());
 
-    result = number1 * number2;
-    Console.WriteLine($"{number1} * {number2} = {result}");
+      Console.Write("Height = ");
+      height = Convert.ToDouble(Console.ReadLine());
 
-
-    double div = (double)number1 / number2;
-    Console.WriteLine($"{number1} / {number2} = {div.ToString("F2")}");
-    Console.WriteLine($"{number1} / {number2} = {div:F2}");
-
-
-    result = number1 % number2;
-    Console.WriteLine($"{number1} % {number2} = {result}");
-
+      triangleArea = 0.5 * baseLength * height;
+      Console.WriteLine($"Triangle Area = {triangleArea.ToString("F2")}");
+    }
   }
-}
 
-// area of triagle
-using System;
-class Test
-{
-  public static void Main(string[] args)
+  // Area of triangle
+  Console.Write($"Enter Base: ");
+  double.TryParse(Console.ReadLine(), out double baseValue);
+
+  Console.Write($"Enter Height: ");
+  double.TryParse(Console.ReadLine(), out double heightValue);
+
+  double areaOfTriangle = 0.5 *baseValue* heightValue;
+  Console.WriteLine($"Area of Triangle : {areaOfTriangle}");
+  ```
+
+  ```csharp
+  // Program 11: Temperature converter
+  // temperature conversion (celsius to fahrenheit conversion)
+  using System;
+  class Test
   {
-    // triangle area = 0.5 * base * height
-    double baseLength, height, triangleArea;
+    public static void Main(string[] args)
+    {
+      double fahrenheit, celsius;
 
-    Console.WriteLine("Triangle Area Calculator");
+      Console.Write("fahrenheit = ");
+      fahrenheit = Convert.ToDouble(Console.ReadLine());
 
-    Console.Write("Base = ");
-    baseLength = Convert.ToDouble(Console.ReadLine());
+      celsius = (fahrenheit - 32) / 1.8;
+      Console.WriteLine($"celsius = {celsius:F2} degrees");
 
-    Console.Write("Height = ");
-    height = Convert.ToDouble(Console.ReadLine());
-
-    triangleArea = 0.5 * baseLength * height;
-    Console.WriteLine($"Triangle Area = {triangleArea.ToString("F2")}");
+    }
   }
-}
 
+  // OTHER WAY
+  Console.Write($"Fahrenheit = ");
 
-// temperature conversion (celsius to fahrenheit conversion)
-using System;
-class Test
-{
-  public static void Main(string[] args)
-  {
-    double fahrenheit, celsius;
+  bool isValidFarnValue = double.TryParse(Console.ReadLine(), out double farn);
 
-    Console.Write("fahrenheit = ");
-    fahrenheit = Convert.ToDouble(Console.ReadLine());
+  double celsius = (farn - 32) / 1.8;
+  Console.WriteLine($"Celsius = {celsius:F3}");
 
-    celsius = (fahrenheit - 32) / 1.8;
-    Console.WriteLine($"celsius = {celsius:F2} degrees");
-
-  }
-}
-
-```
+  ```
 
 #### Assignment 4: sum and average of 3 numbers
 
@@ -1328,33 +1412,34 @@ class Test
    a %= 3;  // equivalent to a = a % 3;
    ```
 
-```csharp
-using System;
-class Test
-{
-  public static void Main(string[] args)
+  ```csharp
+  // Program 12
+  using System;
+  class Test
   {
-    int number = 20;
+    public static void Main(string[] args)
+    {
+      int number = 20;
 
-    number += 5; // number = number + 5
-    Console.WriteLine($"{number}");
+      number += 5; // number = number + 5
+      Console.WriteLine($"{number}");
 
-    number -= 5; // number = number - 5
-    Console.WriteLine($"{number}");
+      number -= 5; // number = number - 5
+      Console.WriteLine($"{number}");
 
-    number *= 5; // number = number * 5
-    Console.WriteLine($"{number}");
+      number *= 5; // number = number * 5
+      Console.WriteLine($"{number}");
 
-    number /= 5; // number = number / 5
-    Console.WriteLine($"{number}");
+      number /= 5; // number = number / 5
+      Console.WriteLine($"{number}");
 
-    number %= 5; // number = number % 5
-    Console.WriteLine($"{number}");
+      number %= 5; // number = number % 5
+      Console.WriteLine($"{number}");
 
+    }
   }
-}
 
-```
+  ```
 
 ### Relational Operators
 
@@ -1490,27 +1575,26 @@ Bitwise operators are commonly used in scenarios where individual bits represent
 
 ### Conditional Operator (Ternary Operator)
 
-```csharp
-int result = (a > b) ? a : b;
+  ```csharp
+  // Program 13
+  int result = (a > b) ? a : b;
 
-// even/odd program
-class Test
-{
-  public static void Main(string[] args)
+  // even/odd program
+  class Test
   {
-    Console.Write("Enter a number: ");
-    int number = Convert.ToInt32(Console.ReadLine());
+    public static void Main(string[] args)
+    {
+      Console.Write("Enter a number: ");
+      int number = Convert.ToInt32(Console.ReadLine());
 
-    string result = number % 2 == 0 ? "Even" : "Odd";
-    Console.WriteLine($"{number} is an {result} number");
-    Console.Read();
+      string result = number % 2 == 0 ? "Even" : "Odd";
+      Console.WriteLine($"{number} is an {result} number");
+      Console.Read();
+    }
   }
-}
-```
+  ```
 
-This is a concise way to express an `if-else` statement.
-
-These are some of the basic operators in C#. Understanding how to use these operators is fundamental to writing effective C# code.
+  This is a concise way to express an `if-else` statement.
 
 ## Basic 3. Control Statement
 
@@ -1526,9 +1610,6 @@ Control statements in C# are used to control the flow of execution in a program.
      {
          // Code to be executed if the condition is true
      }
-     ```
-
-   - nested if
 
 2. **else Statement:**
    - The `else` statement is used with `if` to execute a block of code if the `if` condition is false.
@@ -1562,376 +1643,649 @@ Control statements in C# are used to control the flow of execution in a program.
      }
      ```
 
-4. **switch Statement:**
-   - 4 keywords to remember: switch, case, break and default. The `switch` statement is used to select one of many code blocks to be executed.
+        ```
 
      ```csharp
-     switch (variable)
-     {
-         case value1:
-             // Code to be executed if variable equals value1
-             break;
-         case value2:
-             // Code to be executed if variable equals value2
-             break;
-         // ... other cases ...
-         default:
-             // Code to be executed if none of the cases match
-             break;
-     }
+      // Program 14
+      // Control Statement
 
-     // multiple params
-     using System;
+      // Large number between 2 numbers
+      int number1 = 15;
+      int number2 = 15;
+
+      if (number1 > number2)
+      {
+        Console.WriteLine($"Largest number is {number1}");
+      }
+      else if (number1 < number2)
+      {
+        Console.WriteLine($"Largest number is {number2}");
+      }
+      else
+      {
+        Console.WriteLine($"Both are equal numbers");
+
+      }
+     ```
+
+   - nested if
+
+    ```csharp
+    
+    // Program 15
+    // Control Statement
+    // Large number among 3 numbers
+    int number1 = 45;
+    int number2 = 55;
+    int number3 = 35;
+
+    if (number1 > number2)
+    {
+      if (number1 > number3)
+      {
+        Console.WriteLine($"Largest number is {number1}");
+      }
+    }
+    else if (number2 > number1)
+    {
+      if (number2 > number3)
+      {
+        Console.WriteLine($"Largest number is {number2}");
+      }
+      else
+      {
+        Console.WriteLine($"Largest number is {number3}");
+      }
+    }
+    else if (number3 > number1)
+    {
+      if (number3 > number2)
+      {
+        Console.WriteLine($"Largest number is {number3}");
+      }
+    }
+    else
+    {
+      Console.WriteLine($"Equal numbers");
+
+    }
+    ```
+
+#### Input Validation
+
+- Length Check: Ensure the string is within a certain length range.
+- Character Restrictions: Ensure the string contains only letters, digits, or specific characters.
+- No Special Characters: Reject strings containing special characters (e.g., !@#$%^&*()).
+- No Numeric Only Strings: Reject strings that are purely numeric.
+- Custom Regex Pattern: Apply a custom pattern to enforce specific formats (e.g., email format, no spaces).
+- Type Checking with GetType(): Added basic type validation checks within each validation function to ensure inputs are handled as strings.
+- Enhanced String Validation: Rejects strings that are purely numeric using the IsNumeric() function.
+Continues to validate against length, special characters, and non-empty conditions.
+- IsNumeric() Function: Determines if a string is purely numeric by checking against multiple numeric types (int, float, double, decimal).
+
+  ```csharp
+  using System;
+  using System.Text.RegularExpressions;
+
+  public class InputValidationProgram
+  {
+      public static void Main()
+      {
+          // String Validation
+          string validatedString = GetValidatedString();
+
+          // Integer Validation
+          int validatedInt = GetValidatedInt();
+
+          // Float Validation
+          float validatedFloat = GetValidatedFloat();
+
+          // Double Validation
+          double validatedDouble = GetValidatedDouble();
+
+          // Display Validated Inputs
+          Console.WriteLine("\nValidated Inputs:");
+          Console.WriteLine("Validated String: " + validatedString);
+          Console.WriteLine("Validated Integer: " + validatedInt);
+          Console.WriteLine("Validated Float: " + validatedFloat);
+          Console.WriteLine("Validated Double: " + validatedDouble);
+      }
+
+      // Function to get a validated string with enhanced checks
+      private static string GetValidatedString()
+      {
+          string? input;
+          bool isValid;
+
+          do
+          {
+              Console.Write("Enter a valid string (no special characters, not empty, length 3-20, not purely numeric): ");
+              input = Console.ReadLine();
+              isValid = ValidateString(input);
+
+              if (!isValid)
+              {
+                  Console.WriteLine("Invalid input. Ensure the string is not empty, contains no special characters, is not purely numeric, and has a length between 3 and 20 characters.");
+              }
+          } while (!isValid);
+
+          return input!;
+      }
+
+      // Function to validate the string with multiple checks including type validation
+      private static bool ValidateString(string? input)
+      {
+          // Check if the string is null, empty, or whitespace
+          if (string.IsNullOrWhiteSpace(input))
+          {
+              return false;
+          }
+
+          // Check the length of the string (minimum 3 characters, maximum 20)
+          if (input.Length < 3 || input.Length > 20)
+          {
+              return false;
+          }
+
+          // Check if the string contains only letters and numbers (no special characters)
+          Regex regex = new Regex("^[a-zA-Z0-9]+$");
+          if (!regex.IsMatch(input))
+          {
+              return false;
+          }
+
+          // Check if the string is purely numeric, using type checking
+          if (IsNumeric(input))
+          {
+              return false;
+          }
+
+          return true;
+      }
+
+      // Function to check if a string is purely numeric
+      private static bool IsNumeric(string input)
+      {
+          // Using TryParse to determine if input is numeric
+          return int.TryParse(input, out _) || float.TryParse(input, out _) || double.TryParse(input, out _) || decimal.TryParse(input, out _);
+      }
+
+      // Function to get a validated integer
+      private static int GetValidatedInt()
+      {
+          int result;
+          string? input;
+          bool isValid;
+
+          do
+          {
+              Console.Write("Enter an integer: ");
+              input = Console.ReadLine();
+
+              // Check if the input is a valid integer
+              isValid = int.TryParse(input, out result);
+
+              if (!isValid || input!.GetType() != typeof(string))
+              {
+                  Console.WriteLine("Invalid input. Please enter a valid integer.");
+              }
+              else if (result < int.MinValue || result > int.MaxValue)
+              {
+                  Console.WriteLine($"Invalid input. The value must be between {int.MinValue} and {int.MaxValue}.");
+                  isValid = false;
+              }
+          } while (!isValid);
+
+          return result;
+      }
+
+      // Function to get a validated float
+      private static float GetValidatedFloat()
+      {
+          float result;
+          string? input;
+          bool isValid;
+
+          do
+          {
+              Console.Write("Enter a float (decimal value): ");
+              input = Console.ReadLine();
+
+              // Check if the input is a valid float
+              isValid = float.TryParse(input, out result);
+
+              if (!isValid || input!.GetType() != typeof(string))
+              {
+                  Console.WriteLine("Invalid input. Please enter a valid float.");
+              }
+              else if (result < float.MinValue || result > float.MaxValue)
+              {
+                  Console.WriteLine($"Invalid input. The value must be between {float.MinValue} and {float.MaxValue}.");
+                  isValid = false;
+              }
+          } while (!isValid);
+
+          return result;
+      }
+
+      // Function to get a validated double
+      private static double GetValidatedDouble()
+      {
+          double result;
+          string? input;
+          bool isValid;
+
+          do
+          {
+              Console.Write("Enter a double (decimal value): ");
+              input = Console.ReadLine();
+
+              // Check if the input is a valid double
+              isValid = double.TryParse(input, out result);
+
+              if (!isValid || input!.GetType() != typeof(string))
+              {
+                  Console.WriteLine("Invalid input. Please enter a valid double.");
+              }
+              else if (result < double.MinValue || result > double.MaxValue)
+              {
+                  Console.WriteLine($"Invalid input. The value must be between {double.MinValue} and {double.MaxValue}.");
+                  isValid = false;
+              }
+          } while (!isValid);
+
+          return result;
+      }
+  }
+  ```
+
+##### **Expected Output Example**
+
+  ```
+  Enter a valid string (no special characters, not empty, length 3-20, not purely numeric): 123
+  Invalid input. Ensure the string is not empty, contains no special characters, is not purely numeric, and has a length between 3 and 20 characters.
+  Enter a valid string (no special characters, not empty, length 3-20, not purely numeric): User123
+  Enter an integer: abc
+  Invalid input. Please enter a valid integer.
+  Enter an integer: 50
+  Enter a float (decimal value): notafloat
+  Invalid input. Please enter a valid float.
+  Enter a float (decimal value): 3.14
+  Enter a double (decimal value): doublevalue
+  Invalid input. Please enter a valid double.
+  Enter a double (decimal value): 2.71828
+
+  Validated Inputs:
+  Validated String: User123
+  Validated Integer: 50
+  Validated Float: 3.14
+  Validated Double: 2.71828
+  ```
+
+4. **switch Statement:**
+    - 4 keywords to remember: switch, case, break and default. The `switch` statement is used to select one of many code blocks to be executed.
+
+      ```csharp
+      switch (variable)
+      {
+          case value1:
+              // Code to be executed if variable equals value1
+              break;
+          case value2:
+              // Code to be executed if variable equals value2
+              break;
+          // ... other cases ...
+          default:
+              // Code to be executed if none of the cases match
+              break;
+      }
+
+      // multiple params
+      using System;
+
+        class Program
+        {
+            static void Main()
+            {
+                Console.WriteLine("Enter two numbers separated by a space:");
+                string input = Console.ReadLine();
+                string[] parts = input.Split();
+
+                if (parts.Length != 2)
+                {
+                    Console.WriteLine("Invalid input format. Please enter two numbers separated by a space.");
+                    return;
+                }
+
+                string firstParam = parts[0];
+                string secondParam = parts[1];
+
+                // Use tuple pattern matching with switch
+                switch ((firstParam, secondParam))
+                {
+                    case ("1", "a"):
+                        Console.WriteLine("First param is '1' and second param is 'a'.");
+                        break;
+                    case ("2", "b"):
+                        Console.WriteLine("First param is '2' and second param is 'b'.");
+                        break;
+                    default:
+                        Console.WriteLine("No matching case found.");
+                        break;
+                }
+            }
+        }
+
+      ```
+
+    - **shorthand switch**:
+
+      In C#, starting from C# 8.0, you can use switch expressions as a shorthand method for simpler switch statements. Switch expressions allow you to perform pattern matching and return a value based on the matched pattern. Here's the syntax:
+
+      ```csharp
+      result = switch (variable)
+      {
+          pattern1 => expression1,
+          pattern2 => expression2,
+          ...
+          _ => defaultExpression // Optional default case
+      };
+      ```
+
+      Let's see an example of a switch statement converted to a switch expression:
+
+      ```csharp
+      // Switch statement
+      int num = 3;
+      string message;
+
+      switch (num)
+      {
+          case 1:
+              message = "One";
+              break;
+          case 2:
+              message = "Two";
+              break;
+          default:
+              message = "Other";
+              break;
+      }
+
+      Console.WriteLine(message); // Output: Other
+      ```
+
+      Converted to a switch expression:
+
+      ```csharp
+      // Switch expression
+      int num = 3;
+      string message = num switch
+      {
+          1 => "One",
+          2 => "Two",
+          _ => "Other" // Default case
+      };
+
+      Console.WriteLine(message); // Output: Other
+      ```
+
+      In the switch expression:
+
+      - The variable being evaluated (`num` in this case) is followed by the `switch` keyword.
+      - Each case is written using the `=>` operator instead of the `case` keyword.
+      - The `_` underscore pattern represents the default case, similar to the `default` keyword in switch statements.
+      - The result of the matched expression is assigned directly to the `message` variable.
+
+      Switch expressions provide a more concise and expressive way to handle simple switch statements. They are particularly useful when you want to assign a value based on different cases without the need for separate statements for each case.
+
+  - swicth and type pattern: type pattern switching was introduced in C# 9.0. Here are some examples
+
+  ```csharp
+  public static string GetTypeWithoutPattern(object obj)
+  {
+      switch (obj)
+      {
+          case int:
+              return "Integer";
+          case string:
+              return "String";
+          case double:
+              return "Double";
+          default:
+              return "Unknown Type";
+      }
+  }
+
+  static void Main(string[] args)
+  {
+      object value = "Hello";
+      Console.WriteLine(GetTypeWithoutPattern(value)); // Output: String
+  }
+
+  public static string GetTypeWithTypePattern(object obj)
+  {
+      return obj switch
+      {
+          int => "Integer",
+          string => "String",
+          double => "Double",
+          _ => "Unknown Type"
+      };
+  }
+
+  static void Main(string[] args)
+  {
+      object value = 10;
+      Console.WriteLine(GetTypeWithTypePattern(value)); // Output: Integer
+  }
+
+
+  ```
+
+  1. **Without Type Pattern (Traditional Approach)**:
+
+  Suppose we have a method that processes different types of vehicles:
+
+  ```csharp
+  public static string ProcessVehicleWithoutPattern(object vehicle)
+  {
+      switch (vehicle)
+      {
+          case Car:
+              return "Driving a car";
+          case Bicycle:
+              return "Riding a bicycle";
+          case Truck:
+              return "Driving a truck";
+          default:
+              return "Unknown vehicle type";
+      }
+  }
+
+  // Define vehicle types
+  public class Car { }
+  public class Bicycle { }
+  public class Truck { }
+
+  static void Main(string[] args)
+  {
+      object myVehicle = new Car();
+      Console.WriteLine(ProcessVehicleWithoutPattern(myVehicle)); // Output: Driving a car
+  }
+  ```
+
+  2. **With Type Pattern (Using Modern Approach)**:
+
+  Now, let's rewrite the same functionality using type patterns:
+
+  ```csharp
+  public static string ProcessVehicleWithTypePattern(object vehicle)
+  {
+      return vehicle switch
+      {
+          Car => "Driving a car",
+          Bicycle => "Riding a bicycle",
+          Truck => "Driving a truck",
+          _ => "Unknown vehicle type"
+      };
+  }
+
+  // Define vehicle types (same as above)
+
+  static void Main(string[] args)
+  {
+      object myVehicle = new Bicycle();
+      Console.WriteLine(ProcessVehicleWithTypePattern(myVehicle)); // Output: Riding a bicycle
+  }
+  ```
+
+  In this example, the switch expression with type patterns provides a cleaner and more readable way to handle different vehicle types compared to the traditional approach without type patterns.
+
+  - switch and condition together
+
+  ```csharp
+  // switch statement with condition without switch expression
+  using System;
+
+  class Program
+  {
+      static void Main()
+      {
+          Console.WriteLine("Enter a number between 1 and 10:");
+          if (int.TryParse(Console.ReadLine(), out int number))
+          {
+              switch (number)
+              {
+                  case int n when n % 2 == 0:
+                      Console.WriteLine("Even number.");
+                      break;
+                  case int n when n % 2 != 0:
+                      Console.WriteLine("Odd number.");
+                      break;
+                  default:
+                      Console.WriteLine("Number is out of range.");
+                      break;
+              }
+          }
+          else
+          {
+              Console.WriteLine("Invalid input. Please enter a valid number.");
+          }
+      }
+  }
+
+
+  // switch statement with condition with switch expression
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      Console.WriteLine("Enter a number between 1 to 10: ");
+
+      if (int.TryParse(Console.ReadLine(), out int number))
+      {
+        string result = number switch
+        {
+          int num when num >= 1 && num <= 10 => num % 2 == 0 ? "Even Number" : "Odd Number",
+          _ => "Number is out of Range"
+        };
+        Console.WriteLine($"{result}");
+      }
+      else
+      {
+        Console.WriteLine($"Invalid Input. Please enter a valid number");
+
+      }
+
+      Console.ReadKey();
+    }
+
+  }
+  ```
+
+  - switch and method
+
+    ```csharp
+      using System;
 
       class Program
       {
           static void Main()
           {
-              Console.WriteLine("Enter two numbers separated by a space:");
-              string input = Console.ReadLine();
-              string[] parts = input.Split();
+              Console.WriteLine("Calculator");
 
-              if (parts.Length != 2)
+              Console.Write("Enter the first number: ");
+              double num1 = GetValidNumber();
+
+              Console.Write("Enter the second number: ");
+              double num2 = GetValidNumber();
+
+              Console.Write("Enter the operation (+, -, *, /): ");
+              char operation = GetValidOperation();
+
+              switch ((operation, num1, num2))
               {
-                  Console.WriteLine("Invalid input format. Please enter two numbers separated by a space.");
-                  return;
-              }
-
-              string firstParam = parts[0];
-              string secondParam = parts[1];
-
-              // Use tuple pattern matching with switch
-              switch ((firstParam, secondParam))
-              {
-                  case ("1", "a"):
-                      Console.WriteLine("First param is '1' and second param is 'a'.");
+                  case ('+', var a, var b):
+                      Console.WriteLine($"{a} + {b} = {a + b}");
                       break;
-                  case ("2", "b"):
-                      Console.WriteLine("First param is '2' and second param is 'b'.");
+                  case ('-', var a, var b):
+                      Console.WriteLine($"{a} - {b} = {a - b}");
+                      break;
+                  case ('*', var a, var b):
+                      Console.WriteLine($"{a} * {b} = {a * b}");
+                      break;
+                  case ('/', var a, var b) when b != 0:
+                      Console.WriteLine($"{a} / {b} = {a / b}");
+                      break;
+                  case (_, _, _) when num2 == 0:
+                      Console.WriteLine("Cannot divide by zero.");
                       break;
                   default:
-                      Console.WriteLine("No matching case found.");
+                      Console.WriteLine("Invalid operation.");
                       break;
               }
+          }
+
+          static int GetValidNumber()
+          {
+            int number;
+            // int.TryParse(Console.ReadLine(), out number)
+            // The second parameter is an out parameter, which means it will be assigned the parsed int value if the parsing succeeds.
+            while (!int.TryParse(Console.ReadLine(), out number))
+            {
+              Console.Write("Invalid input. Please enter a valid number: ");
+            }
+            return number;
+          }
+
+          static double GetValidNumber()
+          {
+              double number;
+              while (!double.TryParse(Console.ReadLine(), out number))
+              {
+                  Console.Write("Invalid input. Please enter a valid number: ");
+              }
+              return number;
+          }
+
+          static char GetValidOperation()
+          {
+              char operation;
+              while (!char.TryParse(Console.ReadLine(), out operation) || !IsValidOperation(operation))
+              {
+                  Console.Write("Invalid input. Please enter a valid operation (+, -, *, /): ");
+              }
+              return operation;
+          }
+
+          static bool IsValidOperation(char operation)
+          {
+              return operation == '+' || operation == '-' || operation == '*' || operation == '/';
           }
       }
 
-     ```
-
-   - **shorthand switch**:
-
-    In C#, starting from C# 8.0, you can use switch expressions as a shorthand method for simpler switch statements. Switch expressions allow you to perform pattern matching and return a value based on the matched pattern. Here's the syntax:
-
-    ```csharp
-    result = switch (variable)
-    {
-        pattern1 => expression1,
-        pattern2 => expression2,
-        ...
-        _ => defaultExpression // Optional default case
-    };
     ```
-
-    Let's see an example of a switch statement converted to a switch expression:
-
-    ```csharp
-    // Switch statement
-    int num = 3;
-    string message;
-
-    switch (num)
-    {
-        case 1:
-            message = "One";
-            break;
-        case 2:
-            message = "Two";
-            break;
-        default:
-            message = "Other";
-            break;
-    }
-
-    Console.WriteLine(message); // Output: Other
-    ```
-
-    Converted to a switch expression:
-
-    ```csharp
-    // Switch expression
-    int num = 3;
-    string message = num switch
-    {
-        1 => "One",
-        2 => "Two",
-        _ => "Other" // Default case
-    };
-
-    Console.WriteLine(message); // Output: Other
-    ```
-
-    In the switch expression:
-
-    - The variable being evaluated (`num` in this case) is followed by the `switch` keyword.
-    - Each case is written using the `=>` operator instead of the `case` keyword.
-    - The `_` underscore pattern represents the default case, similar to the `default` keyword in switch statements.
-    - The result of the matched expression is assigned directly to the `message` variable.
-
-    Switch expressions provide a more concise and expressive way to handle simple switch statements. They are particularly useful when you want to assign a value based on different cases without the need for separate statements for each case.
-
-- swicth and type pattern: type pattern switching was introduced in C# 9.0. Here are some examples
-
-```csharp
-public static string GetTypeWithoutPattern(object obj)
-{
-    switch (obj)
-    {
-        case int:
-            return "Integer";
-        case string:
-            return "String";
-        case double:
-            return "Double";
-        default:
-            return "Unknown Type";
-    }
-}
-
-static void Main(string[] args)
-{
-    object value = "Hello";
-    Console.WriteLine(GetTypeWithoutPattern(value)); // Output: String
-}
-
-public static string GetTypeWithTypePattern(object obj)
-{
-    return obj switch
-    {
-        int => "Integer",
-        string => "String",
-        double => "Double",
-        _ => "Unknown Type"
-    };
-}
-
-static void Main(string[] args)
-{
-    object value = 10;
-    Console.WriteLine(GetTypeWithTypePattern(value)); // Output: Integer
-}
-
-
-```
-
-Certainly! Let's consider a more realistic example of using switch statements with and without type patterns:
-
-1. **Without Type Pattern (Traditional Approach)**:
-
-Suppose we have a method that processes different types of vehicles:
-
-```csharp
-public static string ProcessVehicleWithoutPattern(object vehicle)
-{
-    switch (vehicle)
-    {
-        case Car:
-            return "Driving a car";
-        case Bicycle:
-            return "Riding a bicycle";
-        case Truck:
-            return "Driving a truck";
-        default:
-            return "Unknown vehicle type";
-    }
-}
-
-// Define vehicle types
-public class Car { }
-public class Bicycle { }
-public class Truck { }
-
-static void Main(string[] args)
-{
-    object myVehicle = new Car();
-    Console.WriteLine(ProcessVehicleWithoutPattern(myVehicle)); // Output: Driving a car
-}
-```
-
-2. **With Type Pattern (Using Modern Approach)**:
-
-Now, let's rewrite the same functionality using type patterns:
-
-```csharp
-public static string ProcessVehicleWithTypePattern(object vehicle)
-{
-    return vehicle switch
-    {
-        Car => "Driving a car",
-        Bicycle => "Riding a bicycle",
-        Truck => "Driving a truck",
-        _ => "Unknown vehicle type"
-    };
-}
-
-// Define vehicle types (same as above)
-
-static void Main(string[] args)
-{
-    object myVehicle = new Bicycle();
-    Console.WriteLine(ProcessVehicleWithTypePattern(myVehicle)); // Output: Riding a bicycle
-}
-```
-
-In this example, the switch expression with type patterns provides a cleaner and more readable way to handle different vehicle types compared to the traditional approach without type patterns.
-
-- switch and condition together
-
-```csharp
-// switch statement with condition without switch expression
-using System;
-
-class Program
-{
-    static void Main()
-    {
-        Console.WriteLine("Enter a number between 1 and 10:");
-        if (int.TryParse(Console.ReadLine(), out int number))
-        {
-            switch (number)
-            {
-                case int n when n % 2 == 0:
-                    Console.WriteLine("Even number.");
-                    break;
-                case int n when n % 2 != 0:
-                    Console.WriteLine("Odd number.");
-                    break;
-                default:
-                    Console.WriteLine("Number is out of range.");
-                    break;
-            }
-        }
-        else
-        {
-            Console.WriteLine("Invalid input. Please enter a valid number.");
-        }
-    }
-}
-
-
-// switch statement with condition with switch expression
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    Console.WriteLine("Enter a number between 1 to 10: ");
-
-    if (int.TryParse(Console.ReadLine(), out int number))
-    {
-      string result = number switch
-      {
-        int num when num >= 1 && num <= 10 => num % 2 == 0 ? "Even Number" : "Odd Number",
-        _ => "Number is out of Range"
-      };
-      Console.WriteLine($"{result}");
-    }
-    else
-    {
-      Console.WriteLine($"Invalid Input. Please enter a valid number");
-
-    }
-
-    Console.ReadKey();
-  }
-
-}
-
-
-
-
-```
-
-- switch and method
-
-  ```csharp
-    using System;
-
-    class Program
-    {
-        static void Main()
-        {
-            Console.WriteLine("Calculator");
-
-            Console.Write("Enter the first number: ");
-            double num1 = GetValidNumber();
-
-            Console.Write("Enter the second number: ");
-            double num2 = GetValidNumber();
-
-            Console.Write("Enter the operation (+, -, *, /): ");
-            char operation = GetValidOperation();
-
-            switch ((operation, num1, num2))
-            {
-                case ('+', var a, var b):
-                    Console.WriteLine($"{a} + {b} = {a + b}");
-                    break;
-                case ('-', var a, var b):
-                    Console.WriteLine($"{a} - {b} = {a - b}");
-                    break;
-                case ('*', var a, var b):
-                    Console.WriteLine($"{a} * {b} = {a * b}");
-                    break;
-                case ('/', var a, var b) when b != 0:
-                    Console.WriteLine($"{a} / {b} = {a / b}");
-                    break;
-                case (_, _, _) when num2 == 0:
-                    Console.WriteLine("Cannot divide by zero.");
-                    break;
-                default:
-                    Console.WriteLine("Invalid operation.");
-                    break;
-            }
-        }
-
-        static int GetValidNumber()
-        {
-          int number;
-          // int.TryParse(Console.ReadLine(), out number)
-          // The second parameter is an out parameter, which means it will be assigned the parsed int value if the parsing succeeds.
-          while (!int.TryParse(Console.ReadLine(), out number))
-          {
-            Console.Write("Invalid input. Please enter a valid number: ");
-          }
-          return number;
-        }
-
-        static double GetValidNumber()
-        {
-            double number;
-            while (!double.TryParse(Console.ReadLine(), out number))
-            {
-                Console.Write("Invalid input. Please enter a valid number: ");
-            }
-            return number;
-        }
-
-        static char GetValidOperation()
-        {
-            char operation;
-            while (!char.TryParse(Console.ReadLine(), out operation) || !IsValidOperation(operation))
-            {
-                Console.Write("Invalid input. Please enter a valid operation (+, -, *, /): ");
-            }
-            return operation;
-        }
-
-        static bool IsValidOperation(char operation)
-        {
-            return operation == '+' || operation == '-' || operation == '*' || operation == '/';
-        }
-    }
-
-  ```
 
 #### program 1 positive, negative or zero
 
