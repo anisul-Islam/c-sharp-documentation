@@ -393,420 +393,6 @@ Here’s a simple assignment that covers variables, string interpolation, commen
 
 ---
 
-##### struct, enum, tuple, dynamic, object, record, delegate (move them)
-<!-- 
-- **struct type**
-
-    for simple data structure such as storing colors, pints, coordinates. similar to classes but they have differences in many aspectes.
-
-    In C#, a structure (struct) is a value type data type that allows you to encapsulate related data members and behaviors. Similar to classes, structures can have fields, properties, methods, and constructors. However, there are some key differences between classes and structures:
-
-    1. **Memory Allocation**:
-      - Objects of classes are allocated memory on the heap, while instances of structures are allocated memory on the stack.
-      - This difference in memory allocation can lead to performance benefits for structures, especially for small, frequently used data types.
-
-    2. **Inheritance**:
-      - Structures cannot inherit from other structures or classes.
-      - They cannot serve as base types for other structures or classes.
-
-    3. **Default Constructor**:
-      - Structures always have an implicit default parameterless constructor, which initializes all fields to their default values.
-
-    4. **Copy Semantics**:
-      - When you pass a structure to a method or assign it to another variable, the entire structure is copied. This contrasts with classes, where only a reference to the object is copied.
-
-    5. **Boxing and Unboxing**:
-      - Structures are value types, and they do not require boxing and unboxing when used in certain contexts. This can improve performance in scenarios where boxing and unboxing are frequent.
-
-    Here's a basic example of a structure in C#:
-
-    ```csharp
-    using System;
-
-    public struct Point
-    {
-        // Fields
-        public int X;
-        public int Y;
-
-        // Constructor
-        public Point(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        // Method
-        public void Display()
-        {
-            Console.WriteLine($"Point coordinates: ({X}, {Y})");
-        }
-    }
-
-    class Program
-    {
-        static void Main()
-        {
-            // Creating an instance of the Point structure
-            Point point = new Point(10, 20);
-
-            // Accessing fields and calling method
-            Console.WriteLine($"X coordinate: {point.X}");
-            Console.WriteLine($"Y coordinate: {point.Y}");
-            point.Display();
-        }
-    }
-    ```
-
-    In this example, `Point` is a structure that represents a point in 2D space. It has two fields `X` and `Y`, a constructor to initialize these fields, and a method `Display()` to print the coordinates of the point.
-
-- enum type
-
-  - In C#, an enumeration (enum) is a distinct type consisting of a set of named constants called the enumerator list.
-  - Enums are used to define a group of named integral constants.
-  - Enums are commonly used in scenarios where you have a fixed set of related values that represent different states or options, such as days of the week, months, status codes, etc.
-  - They help make code more readable and maintainable by giving meaningful names to constant values.
-  
-  Here's how you define and use enums in C#:
-
-    ```csharp
-    // Syntax
-    enum TypeName
-    {
-        Constant1,
-        Constant2,
-        // Add more constants as needed
-    }
-    ```
-
-    ```csharp
-    // Example
-    using System;
-
-    public class Program
-    {
-        // Define an enum for days of the week
-        enum Days
-        {
-            Sunday,
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday,
-            Friday,
-            Saturday
-        }
-
-        public static void Main(string[] args)
-        {
-            // Assign a value from the enum
-            Days today = Days.Friday;
-
-            // Output the value of today
-            Console.WriteLine("Today is: " + today);
-            
-            // Convert enum value to int
-            int dayNumber = (int)today;
-            Console.WriteLine("Day number: " + dayNumber);
-            
-            // Convert int to enum value
-            Days anotherDay = (Days)2;
-            Console.WriteLine("Another day is: " + anotherDay);
-        }
-    }
-    ```
-
-    ```text
-    // Output
-    Today is: Friday
-    Day number: 5
-    Another day is: Tuesday
-    ```
-
-  - Enums provide a way to define a set of named integral constants that can be assigned to variables.
-  - In the example, we define an enum `Days` with constants for each day of the week.
-  - We assign the `Friday` constant to a variable `today`, and then output its value.
-  - Enums are strongly typed, and you can convert between enum values and their underlying integral types (usually `int`).
-  - You can also convert integral values to enum values using type casting.
-
-- **tuple type**
-
-  A tuple in C# is a data structure that allows you to store a fixed-size collection of heterogeneous elements (i.e., elements of different data types) in a single object. Tuples provide a convenient way to group together related data without the need to define a custom class or structure explicitly.
-
-  Here's a basic example of how to use tuples in C#:
-
-  ```csharp
-  using System;
-
-  class Program
-  {
-      static void Main()
-      {
-          // Creating a tuple
-          var person = Tuple.Create("John", 30, true);
-
-          // Accessing tuple elements
-          Console.WriteLine($"Name: {person.Item1}");
-          Console.WriteLine($"Age: {person.Item2}");
-          Console.WriteLine($"IsEmployed: {person.Item3}");
-
-          // Updating tuple elements (not allowed, tuples are immutable)
-          // person.Item1 = "Alice"; // This will result in a compile-time error
-
-          // Deconstructing a tuple
-          (string name, int age, bool isEmployed) = person;
-          Console.WriteLine($"Name: {name}, Age: {age}, IsEmployed: {isEmployed}");
-      }
-  }
-  ```
-
-  In this example:
-
-  - We create a tuple `person` containing three elements: a string representing the person's name, an integer representing their age, and a boolean indicating whether they are employed.
-  - We access tuple elements using the `Item1`, `Item2`, and `Item3` properties of the tuple object.
-  - We demonstrate how to deconstruct a tuple into individual variables using the C# deconstruction syntax `(string name, int age, bool isEmployed) = person`.
-
-  Starting from C# 7.0, you can also use named tuples, which provide more expressive code by giving names to the elements of the tuple. Here's how you can use named tuples:
-
-  ```csharp
-  using System;
-
-  class Program
-  {
-      static void Main()
-      {
-          // Creating a named tuple
-          var person = (Name: "John", Age: 30, IsEmployed: true);
-
-          // Accessing named tuple elements
-          Console.WriteLine($"Name: {person.Name}");
-          Console.WriteLine($"Age: {person.Age}");
-          Console.WriteLine($"IsEmployed: {person.IsEmployed}");
-
-          // Deconstructing a named tuple
-          (string name, int age, bool isEmployed) = person;
-          Console.WriteLine($"Name: {name}, Age: {age}, IsEmployed: {isEmployed}");
-      }
-  }
-  ```
-
-  In this example, we define a tuple with named elements `Name`, `Age`, and `IsEmployed`, making the code more readable and self-explanatory. We then access these named elements directly using their names.
-
-- dynamic and object type
-    In C#, both `dynamic` and `object` are used to handle situations where the type of an object is not known at compile time. However, they have different behaviors and use cases:
-
-    1. **`dynamic`**:
-      - The `dynamic` keyword is used to declare a type that can hold any type of value at runtime.
-      - It defers type checking until runtime rather than compile time.
-      - It allows you to perform operations on objects without explicit type casting.
-      - It provides late binding, meaning method calls and property accesses are resolved at runtime.
-      - Example:
-
-        ```csharp
-          using System;
-
-          class Program
-          {
-              static void Main(string[] args)
-              {
-                  // Example using object type
-                  object obj = 10;
-                  Console.WriteLine($"Object value: {obj}"); // Output: Object value: 10
-
-                  int intValue = (int)obj; // Explicit casting
-                  Console.WriteLine($"Int value: {intValue}"); // Output: Int value: 10
-
-                  // Example using dynamic type
-                  dynamic dynamicVariable = 10;
-                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: 10
-
-                  dynamicVariable = "Hello";
-                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: Hello
-
-                  dynamicVariable = DateTime.Now;
-                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: [current datetime]
-              }
-          }
-
-        ```
-
-    2. **`object`**:
-      - The `object` type is a reference type that represents the base type of all other types in C#.
-      - It can hold any type of value but requires explicit casting to access its members or convert it to another type.
-      - It is a compile-time construct and doesn't provide late binding like `dynamic`.
-      - It is typically used when you need to work with values of different types in a homogeneous collection or when the specific type is not known at compile time.
-  
-    In summary, `dynamic` is used for late binding and dynamic behavior at runtime, while `object` is used for static typing and type safety at compile time. Choose between them based on your specific requirements and whether you need dynamic or static typing in your code.
-
-- record and a delegate type:
-
-    1. **Record**: (use record / struct / class based on your need)
-      Records are a feature introduced in C# 9.0 that provide a concise syntax for creating immutable data types. Records are primarily used for modeling data and are especially useful for DTOs (Data Transfer Objects), entities, and other types where immutability and equality are important.
-
-    ```csharp
-    using System;
-
-    // Example of a record
-    public record Person(string FirstName, string LastName, int Age);
-
-    class Program
-    {
-        static void Main()
-        {
-            // Creating an instance of the record
-            var person = new Person("John", "Doe", 30);
-
-            // Accessing properties
-            Console.WriteLine($"Name: {person.FirstName} {person.LastName}, Age: {person.Age}");
-        }
-    }
-    ```
-
-    In the above example:
-
-  - We define a `Person` record with properties `FirstName`, `LastName`, and `Age`.
-  - Records automatically generate a constructor, properties, `Equals()` method, `GetHashCode()` method, and `ToString()` method based on their members.
-  - We create an instance of the `Person` record and access its properties.
-
-    2. **Delegate**:
-      Delegates are used to define references to methods. They are similar to function pointers in C++ or function types in other languages. Delegates are especially useful for implementing events, callbacks, and LINQ queries.
-
-        ```csharp
-        using System;
-
-        // Example of a delegate
-        public delegate void MyDelegate(string message);
-
-        class Program
-        {
-            static void Main()
-            {
-                // Creating an instance of the delegate
-                MyDelegate myDelegate = DisplayMessage;
-
-                // Invoking the delegate
-                myDelegate("Hello, delegates!");
-
-                // Multicast delegate
-                myDelegate += DisplayAnotherMessage;
-                myDelegate("Hello again!");
-            }
-
-            static void DisplayMessage(string message)
-            {
-                Console.WriteLine($"Message: {message}");
-            }
-
-            static void DisplayAnotherMessage(string message)
-            {
-                Console.WriteLine($"Another message: {message}");
-            }
-        }
-        ```
-
-        In the above example:
-
-        - We define a delegate `MyDelegate` that points to methods accepting a `string` parameter and returning `void`.
-        - We create an instance of the delegate and assign it to a method `DisplayMessage`.
-        - We invoke the delegate, which in turn invokes the `DisplayMessage` method.
-        - We demonstrate a multicast delegate by adding another method to the delegate invocation list using `+=`. When the delegate is invoked, both methods are called in the order they were added.
-
-        These examples showcase the usage of records for immutable data types and delegates for method references and event handling in C#.
-
-#### Class vs Struct vs Record
-
-Key Differences:
-
-- Classes are reference types with full support for inheritance and customization, while structs and records are value types with limited or no inheritance capabilities.
-- Structs are primarily used for small, single-value data types and are passed by value, while records provide a concise syntax for defining immutable data types with value semantics.
-- Records automatically generate boilerplate code for immutability and value equality, reducing developer overhead and potential sources of errors.
-In summary, choose the appropriate type (class, struct, or record) based on the specific requirements of your application, considering factors such as mutability, inheritance, memory usage, and performance.
-
-Sure, let's create an example to demonstrate the differences between classes, structs, and records.
-
-**Example**:
-
-Suppose we want to define a data type to represent a 2D point with X and Y coordinates. We'll create implementations using a class, a struct, and a record to showcase their differences.
-
-1. **Class Implementation**:
-
-   ```csharp
-   public class PointClass
-   {
-       public int X { get; set; }
-       public int Y { get; set; }
-
-       public PointClass(int x, int y)
-       {
-           X = x;
-           Y = y;
-       }
-   }
-   ```
-
-2. **Struct Implementation**:
-
-   ```csharp
-   public struct PointStruct
-   {
-       public int X { get; }
-       public int Y { get; }
-
-       public PointStruct(int x, int y)
-       {
-           X = x;
-           Y = y;
-       }
-   }
-   ```
-
-3. **Record Implementation**:
-
-   ```csharp
-   public record PointRecord(int X, int Y);
-   ```
-
-Now, let's demonstrate the differences by creating instances of each type and modifying them:
-
-```csharp
-class Program
-{
-    static void Main(string[] args)
-    {
-        // Creating instances
-        var classPoint = new PointClass(10, 20);
-        var structPoint = new PointStruct(30, 40);
-        var recordPoint = new PointRecord(50, 60);
-
-        // Modifying values
-        classPoint.X = 100; // Allowed because classes are mutable
-        // structPoint.X = 200; // Error: Cannot modify readonly members in structs
-        // recordPoint.X = 300; // Error: Records are immutable
-
-        // Displaying values
-        Console.WriteLine($"Class Point: ({classPoint.X}, {classPoint.Y})");
-        Console.WriteLine($"Struct Point: ({structPoint.X}, {structPoint.Y})");
-        Console.WriteLine($"Record Point: ({recordPoint.X}, {recordPoint.Y})");
-    }
-}
-```
-
-**Output**:
-
-```
-Class Point: (100, 20)
-Struct Point: (30, 40)
-Record Point: (50, 60)
-```
-
-**Explanation**:
-
-- We can modify the `X` and `Y` properties of the `PointClass` instance because classes are mutable.
-- In the `PointStruct` instance, we cannot modify the `X` and `Y` properties directly because structs are immutable. Attempting to do so will result in a compilation error.
-- Similarly, the `PointRecord` instance is also immutable, so we cannot modify its properties directly. Any attempt to do so will result in a compilation error.
-
-This example illustrates the differences in mutability between classes, structs, and records in C#. Classes are mutable, structs are usually immutable (except for methods that explicitly modify them), and records are immutable by default. -->
-
 ### 1.6 Formatting output - String concatenation & interpolation
 
 - we can use variable inside a string by using string interpolation!
@@ -3953,7 +3539,223 @@ In the above example, the `MyClass` defines a destructor using the `~` operator 
 
   Given these considerations, it's generally recommended to use the `IDisposable` interface and the `Dispose` pattern for resource cleanup in C#. Destructors should be used sparingly and only when dealing with unmanaged resources that cannot be managed by `Dispose`.
 
-### static vs non-static member
+### readonly, static vs non-static member
+
+- we can declare Method, Variable / Fields, Properties as static. This makes those members belong to the class itself, instead of belonging to individual objects. No matter how many objects of the class are created, there is only one copy of the static member.
+
+```csharp
+// static variable example
+class Person
+{
+  public string name;
+  static public int count = 0;
+  public Person(string name)
+  {
+    this.name = name;
+    count++;
+  }
+}
+
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    var p1 = new Person("Anisul Islam");
+    var p2 = new Person("Anisul Islam");
+    Console.WriteLine($"{Person.count}"); // static members can be accessed directly using the class name without an object.
+
+    Console.ReadKey();
+  }
+
+}
+```
+
+- static method
+- static constructor
+- static Properties
+
+  ```csharp
+    CODE PLAYGROUND: C#
+
+    class SomeClass {
+      public static int X { get; set; }
+      public static int Y { get; set; }
+
+      static SomeClass() {
+        X = 10;
+        Y = 20;
+      }
+    }
+  ```
+
+- constant member is by default static `public const int ONE = 1;`
+
+- static class: A static class can contain only static members. Some common used static classes: Math, Array, String, DateTime.
+
+  - Math class
+
+      The `Math` class in C# provides a set of static properties and methods for mathematical operations. Here are some of the commonly used properties and static methods of the `Math` class:
+
+      1. **Properties**:
+        - `E`: Represents the natural logarithmic base, e.
+        - `PI`: Represents the ratio of the circumference of a circle to its diameter, π (pi).
+
+      2. **Static Methods**:
+        - `Abs`: Returns the absolute value of a specified number.
+        - `Ceiling`: Returns the smallest integral value that is greater than or equal to the specified double-precision floating-point number.
+        - `Floor`: Returns the largest integer less than or equal to the specified double-precision floating-point number.
+        - `Max`: Returns the larger of two specified numbers.
+        - `Min`: Returns the smaller of two specified numbers.
+        - `Pow`: Returns a specified number raised to the specified power.
+        - `Round`: Rounds a double-precision floating-point value to the nearest integer.
+        - `Sqrt`: Returns the square root of a specified number.
+
+      Here's a simple example demonstrating the usage of some properties and static methods of the `Math` class:
+
+      ```csharp
+      using System;
+
+      class Program
+      {
+          static void Main()
+          {
+              // Properties
+              Console.WriteLine($"Value of e: {Math.E}");
+              Console.WriteLine($"Value of π (pi): {Math.PI}");
+
+              // Static methods
+              double number = -10.5;
+              Console.WriteLine($"Absolute value of {number}: {Math.Abs(number)}");
+              Console.WriteLine($"Ceiling of {number}: {Math.Ceiling(number)}");
+              Console.WriteLine($"Floor of {number}: {Math.Floor(number)}");
+              Console.WriteLine($"Square root of {Math.Abs(number)}: {Math.Sqrt(Math.Abs(number))}");
+              Console.WriteLine($"2 raised to the power of 3: {Math.Pow(2, 3)}");
+              Console.WriteLine($"Rounded value of {number}: {Math.Round(number)}");
+              Console.WriteLine($"Maximum of 10 and 20: {Math.Max(10, 20)}");
+              Console.WriteLine($"Minimum of 10 and 20: {Math.Min(10, 20)}");
+          }
+      }
+      ```
+
+      Output:
+
+      ```
+      Value of e: 2.718281828459045
+      Value of π (pi): 3.141592653589793
+      Absolute value of -10.5: 10.5
+      Ceiling of -10.5: -10
+      Floor of -10.5: -11
+      Square root of 10.5: 3.24037034920393
+      2 raised to the power of 3: 8
+      Rounded value of -10.5: -10
+      Maximum of 10 and 20: 20
+      Minimum of 10 and 20: 10
+      ```
+
+      These properties and methods of the `Math` class provide convenient ways to perform various mathematical operations in C#.
+
+  - Array static Class
+  - String static Class
+  - DateTime static Class
+
+    ```csharp
+      using System;
+
+      class Program
+      {
+          static void Main()
+          {
+              // Get the current date and time
+              DateTime now = DateTime.Now;
+              Console.WriteLine("Current Date and Time: " + now);
+
+              // Get the current date
+              DateTime today = DateTime.Today;
+              Console.WriteLine("Current Date: " + today);
+
+              // Get the current time
+              DateTime currentTime = DateTime.Now.TimeOfDay;
+              Console.WriteLine("Current Time: " + currentTime);
+
+              // Get the day of the week
+              DayOfWeek dayOfWeek = DateTime.Today.DayOfWeek;
+              Console.WriteLine("Day of the Week: " + dayOfWeek);
+
+              // Parse a string to DateTime
+              string dateString = "2023-01-15";
+              DateTime parsedDate = DateTime.Parse(dateString);
+              Console.WriteLine("Parsed Date: " + parsedDate);
+
+              // Format DateTime to string
+              string formattedDate = now.ToString("dd/MM/yyyy HH:mm:ss");
+              Console.WriteLine("Formatted Date: " + formattedDate);
+
+              // Adding days to a DateTime
+              DateTime futureDate = now.AddDays(7);
+              Console.WriteLine("Date 7 days from now: " + futureDate);
+
+              // Subtracting days from a DateTime
+              DateTime pastDate = now.AddDays(-7);
+              Console.WriteLine("Date 7 days ago: " + pastDate);
+
+              // Comparing dates
+              DateTime date1 = new DateTime(2022, 12, 31);
+              DateTime date2 = new DateTime(2023, 1, 1);
+              int result = DateTime.Compare(date1, date2);
+              Console.WriteLine("Comparison Result: " + result);
+
+              // Check if a year is leap year
+              int year = 2024;
+              bool isLeapYear = DateTime.IsLeapYear(year);
+              Console.WriteLine("Is " + year + " a leap year? " + isLeapYear);
+          }
+      }
+
+    ```
+
+In C#, `this` and `readonly` serve different purposes:
+
+1. **`this` Keyword**:
+   - `this` is a reference to the current instance of a class.
+   - It can be used to access instance members (fields, properties, methods) of the current object within its scope.
+   - It is often used to disambiguate between instance members and local variables or parameters with the same name.
+   - `this` can also be used to pass the current object as an argument to other methods or constructors.
+
+2. **`readonly` Keyword**:
+   - `readonly` is a modifier that can be applied to fields in C#.
+   - **It indicates that the field can only be assigned a value once, either during initialization or in a constructor, and cannot be modified thereafter. 2 ways to assign value for a readonly field - decalartion + constructor**
+   - `readonly` fields can be initialized at the time of declaration or within the constructor of the class.
+   - They provide a way to create immutable fields whose values cannot be changed after initialization.
+
+Here's an example demonstrating the use of `this` keyword and `readonly` fields in a class:
+
+```csharp
+public class Student
+{
+  public readonly int age;
+
+  public Student(int age)
+  {
+    this.age = age;
+  }
+}
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    Student s1 = new Student(30);
+    Console.WriteLine($"{s1.age}");
+
+  }
+}
+```
+
+In this example:
+
+- `readonlyField` is a readonly field of the `MyClass` class.
+- The constructor of `MyClass` initializes the `readonlyField` using the `this` keyword.
+- The `PrintFieldValue` method accesses the `readonlyField` using `this`.
+- Once initialized, the value of `readonlyField` cannot be changed due to the `readonly` modifier.
 
 ### Assignment for oop 1
 
@@ -4158,7 +3960,7 @@ This assignment provides a practical, hands-on approach to understanding how cla
 
 **Objective:** This assignment will help you practice defining classes, creating objects, using constructors, properties, and methods in C#. You will create a simple bank account system that demonstrates these concepts.
 
-##### **Assignment Instructions 2:**
+#### **Assignment Instructions 2:**
 
 1. **Create a Class named `BankAccount`:**
    - Define the `BankAccount` class with the following properties:
@@ -5413,226 +5215,6 @@ Here's a brief explanation of each part of the code:
 
 Finally, it prints out the counts for each category.
 
-### new: static member
-
-- we can declare Method, Variable / Fields, Properties as static. This makes those members belong to the class itself, instead of belonging to individual objects. No matter how many objects of the class are created, there is only one copy of the static member.
-
-```csharp
-// static variable example
-class Person
-{
-  public string name;
-  static public int count = 0;
-  public Person(string name)
-  {
-    this.name = name;
-    count++;
-  }
-}
-
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    var p1 = new Person("Anisul Islam");
-    var p2 = new Person("Anisul Islam");
-    Console.WriteLine($"{Person.count}"); // static members can be accessed directly using the class name without an object.
-
-    Console.ReadKey();
-  }
-
-}
-```
-
-- static method
-- static constructor
-- static Properties
-
-  ```csharp
-    CODE PLAYGROUND: C#
-
-    class SomeClass {
-      public static int X { get; set; }
-      public static int Y { get; set; }
-
-      static SomeClass() {
-        X = 10;
-        Y = 20;
-      }
-    }
-  ```
-
-- constant member is by default static `public const int ONE = 1;`
-
-- static class: A static class can contain only static members. Some common used static classes: Math, Array, String, DateTime.
-
-  - Math class
-
-      The `Math` class in C# provides a set of static properties and methods for mathematical operations. Here are some of the commonly used properties and static methods of the `Math` class:
-
-      1. **Properties**:
-        - `E`: Represents the natural logarithmic base, e.
-        - `PI`: Represents the ratio of the circumference of a circle to its diameter, π (pi).
-
-      2. **Static Methods**:
-        - `Abs`: Returns the absolute value of a specified number.
-        - `Ceiling`: Returns the smallest integral value that is greater than or equal to the specified double-precision floating-point number.
-        - `Floor`: Returns the largest integer less than or equal to the specified double-precision floating-point number.
-        - `Max`: Returns the larger of two specified numbers.
-        - `Min`: Returns the smaller of two specified numbers.
-        - `Pow`: Returns a specified number raised to the specified power.
-        - `Round`: Rounds a double-precision floating-point value to the nearest integer.
-        - `Sqrt`: Returns the square root of a specified number.
-
-      Here's a simple example demonstrating the usage of some properties and static methods of the `Math` class:
-
-      ```csharp
-      using System;
-
-      class Program
-      {
-          static void Main()
-          {
-              // Properties
-              Console.WriteLine($"Value of e: {Math.E}");
-              Console.WriteLine($"Value of π (pi): {Math.PI}");
-
-              // Static methods
-              double number = -10.5;
-              Console.WriteLine($"Absolute value of {number}: {Math.Abs(number)}");
-              Console.WriteLine($"Ceiling of {number}: {Math.Ceiling(number)}");
-              Console.WriteLine($"Floor of {number}: {Math.Floor(number)}");
-              Console.WriteLine($"Square root of {Math.Abs(number)}: {Math.Sqrt(Math.Abs(number))}");
-              Console.WriteLine($"2 raised to the power of 3: {Math.Pow(2, 3)}");
-              Console.WriteLine($"Rounded value of {number}: {Math.Round(number)}");
-              Console.WriteLine($"Maximum of 10 and 20: {Math.Max(10, 20)}");
-              Console.WriteLine($"Minimum of 10 and 20: {Math.Min(10, 20)}");
-          }
-      }
-      ```
-
-      Output:
-
-      ```
-      Value of e: 2.718281828459045
-      Value of π (pi): 3.141592653589793
-      Absolute value of -10.5: 10.5
-      Ceiling of -10.5: -10
-      Floor of -10.5: -11
-      Square root of 10.5: 3.24037034920393
-      2 raised to the power of 3: 8
-      Rounded value of -10.5: -10
-      Maximum of 10 and 20: 20
-      Minimum of 10 and 20: 10
-      ```
-
-      These properties and methods of the `Math` class provide convenient ways to perform various mathematical operations in C#.
-
-  - Array static Class
-  - String static Class
-  - DateTime static Class
-
-    ```csharp
-      using System;
-
-      class Program
-      {
-          static void Main()
-          {
-              // Get the current date and time
-              DateTime now = DateTime.Now;
-              Console.WriteLine("Current Date and Time: " + now);
-
-              // Get the current date
-              DateTime today = DateTime.Today;
-              Console.WriteLine("Current Date: " + today);
-
-              // Get the current time
-              DateTime currentTime = DateTime.Now.TimeOfDay;
-              Console.WriteLine("Current Time: " + currentTime);
-
-              // Get the day of the week
-              DayOfWeek dayOfWeek = DateTime.Today.DayOfWeek;
-              Console.WriteLine("Day of the Week: " + dayOfWeek);
-
-              // Parse a string to DateTime
-              string dateString = "2023-01-15";
-              DateTime parsedDate = DateTime.Parse(dateString);
-              Console.WriteLine("Parsed Date: " + parsedDate);
-
-              // Format DateTime to string
-              string formattedDate = now.ToString("dd/MM/yyyy HH:mm:ss");
-              Console.WriteLine("Formatted Date: " + formattedDate);
-
-              // Adding days to a DateTime
-              DateTime futureDate = now.AddDays(7);
-              Console.WriteLine("Date 7 days from now: " + futureDate);
-
-              // Subtracting days from a DateTime
-              DateTime pastDate = now.AddDays(-7);
-              Console.WriteLine("Date 7 days ago: " + pastDate);
-
-              // Comparing dates
-              DateTime date1 = new DateTime(2022, 12, 31);
-              DateTime date2 = new DateTime(2023, 1, 1);
-              int result = DateTime.Compare(date1, date2);
-              Console.WriteLine("Comparison Result: " + result);
-
-              // Check if a year is leap year
-              int year = 2024;
-              bool isLeapYear = DateTime.IsLeapYear(year);
-              Console.WriteLine("Is " + year + " a leap year? " + isLeapYear);
-          }
-      }
-
-    ```
-
-#### new: this and readonly
-
-In C#, `this` and `readonly` serve different purposes:
-
-1. **`this` Keyword**:
-   - `this` is a reference to the current instance of a class.
-   - It can be used to access instance members (fields, properties, methods) of the current object within its scope.
-   - It is often used to disambiguate between instance members and local variables or parameters with the same name.
-   - `this` can also be used to pass the current object as an argument to other methods or constructors.
-
-2. **`readonly` Keyword**:
-   - `readonly` is a modifier that can be applied to fields in C#.
-   - **It indicates that the field can only be assigned a value once, either during initialization or in a constructor, and cannot be modified thereafter. 2 ways to assign value for a readonly field - decalartion + constructor**
-   - `readonly` fields can be initialized at the time of declaration or within the constructor of the class.
-   - They provide a way to create immutable fields whose values cannot be changed after initialization.
-
-Here's an example demonstrating the use of `this` keyword and `readonly` fields in a class:
-
-```csharp
-public class Student
-{
-  public readonly int age;
-
-  public Student(int age)
-  {
-    this.age = age;
-  }
-}
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    Student s1 = new Student(30);
-    Console.WriteLine($"{s1.age}");
-
-  }
-}
-```
-
-In this example:
-
-- `readonlyField` is a readonly field of the `MyClass` class.
-- The constructor of `MyClass` initializes the `readonlyField` using the `this` keyword.
-- The `PrintFieldValue` method accesses the `readonlyField` using `this`.
-- Once initialized, the value of `readonlyField` cannot be changed due to the `readonly` modifier.
-
 ### new: shallow copy vs deep copy
 
 [shallow copy and deep copy](image-6.png)
@@ -6659,7 +6241,442 @@ This example demonstrates how reflection allows us to inspect and manipulate the
 
 ## Intermediate 2. aaa
 
-## Generics
+### struct, enum, tuple, dynamic, object, record, delegate (move them)
+
+- **struct type**
+
+    for simple data structure such as storing colors, pints, coordinates. similar to classes but they have differences in many aspectes.
+
+    In C#, a structure (struct) is a value type data type that allows you to encapsulate related data members and behaviors. Similar to classes, structures can have fields, properties, methods, and constructors. However, there are some key differences between classes and structures:
+
+    1. **Memory Allocation**:
+      - Objects of classes are allocated memory on the heap, while instances of structures are allocated memory on the stack.
+      - This difference in memory allocation can lead to performance benefits for structures, especially for small, frequently used data types.
+
+    2. **Inheritance**:
+      - Structures cannot inherit from other structures or classes.
+      - They cannot serve as base types for other structures or classes.
+
+    3. **Default Constructor**:
+      - Structures always have an implicit default parameterless constructor, which initializes all fields to their default values.
+
+    4. **Copy Semantics**:
+      - When you pass a structure to a method or assign it to another variable, the entire structure is copied. This contrasts with classes, where only a reference to the object is copied.
+
+    5. **Boxing and Unboxing**:
+      - Structures are value types, and they do not require boxing and unboxing when used in certain contexts. This can improve performance in scenarios where boxing and unboxing are frequent.
+
+    Here's a basic example of a structure in C#:
+
+    ```csharp
+    using System;
+
+    public struct Point
+    {
+        // Fields
+        public int X;
+        public int Y;
+
+        // Constructor
+        public Point(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        // Method
+        public void Display()
+        {
+            Console.WriteLine($"Point coordinates: ({X}, {Y})");
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            // Creating an instance of the Point structure
+            Point point = new Point(10, 20);
+
+            // Accessing fields and calling method
+            Console.WriteLine($"X coordinate: {point.X}");
+            Console.WriteLine($"Y coordinate: {point.Y}");
+            point.Display();
+        }
+    }
+    ```
+
+    In this example, `Point` is a structure that represents a point in 2D space. It has two fields `X` and `Y`, a constructor to initialize these fields, and a method `Display()` to print the coordinates of the point.
+
+- enum type
+
+  - In C#, an enumeration (enum) is a distinct type consisting of a set of named constants called the enumerator list.
+  - Enums are used to define a group of named integral constants.
+  - Enums are commonly used in scenarios where you have a fixed set of related values that represent different states or options, such as days of the week, months, status codes, etc.
+  - They help make code more readable and maintainable by giving meaningful names to constant values.
+  
+  Here's how you define and use enums in C#:
+
+    ```csharp
+    // Syntax
+    enum TypeName
+    {
+        Constant1,
+        Constant2,
+        // Add more constants as needed
+    }
+    ```
+
+    ```csharp
+    // Example
+    using System;
+
+    public class Program
+    {
+        // Define an enum for days of the week
+        enum Days
+        {
+            Sunday,
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday
+        }
+
+        public static void Main(string[] args)
+        {
+            // Assign a value from the enum
+            Days today = Days.Friday;
+
+            // Output the value of today
+            Console.WriteLine("Today is: " + today);
+            
+            // Convert enum value to int
+            int dayNumber = (int)today;
+            Console.WriteLine("Day number: " + dayNumber);
+            
+            // Convert int to enum value
+            Days anotherDay = (Days)2;
+            Console.WriteLine("Another day is: " + anotherDay);
+        }
+    }
+    ```
+
+    ```text
+    // Output
+    Today is: Friday
+    Day number: 5
+    Another day is: Tuesday
+    ```
+
+  - Enums provide a way to define a set of named integral constants that can be assigned to variables.
+  - In the example, we define an enum `Days` with constants for each day of the week.
+  - We assign the `Friday` constant to a variable `today`, and then output its value.
+  - Enums are strongly typed, and you can convert between enum values and their underlying integral types (usually `int`).
+  - You can also convert integral values to enum values using type casting.
+
+- **tuple type**
+
+  A tuple in C# is a data structure that allows you to store a fixed-size collection of heterogeneous elements (i.e., elements of different data types) in a single object. Tuples provide a convenient way to group together related data without the need to define a custom class or structure explicitly.
+
+  Here's a basic example of how to use tuples in C#:
+
+  ```csharp
+  using System;
+
+  class Program
+  {
+      static void Main()
+      {
+          // Creating a tuple
+          var person = Tuple.Create("John", 30, true);
+
+          // Accessing tuple elements
+          Console.WriteLine($"Name: {person.Item1}");
+          Console.WriteLine($"Age: {person.Item2}");
+          Console.WriteLine($"IsEmployed: {person.Item3}");
+
+          // Updating tuple elements (not allowed, tuples are immutable)
+          // person.Item1 = "Alice"; // This will result in a compile-time error
+
+          // Deconstructing a tuple
+          (string name, int age, bool isEmployed) = person;
+          Console.WriteLine($"Name: {name}, Age: {age}, IsEmployed: {isEmployed}");
+      }
+  }
+  ```
+
+  In this example:
+
+  - We create a tuple `person` containing three elements: a string representing the person's name, an integer representing their age, and a boolean indicating whether they are employed.
+  - We access tuple elements using the `Item1`, `Item2`, and `Item3` properties of the tuple object.
+  - We demonstrate how to deconstruct a tuple into individual variables using the C# deconstruction syntax `(string name, int age, bool isEmployed) = person`.
+
+  Starting from C# 7.0, you can also use named tuples, which provide more expressive code by giving names to the elements of the tuple. Here's how you can use named tuples:
+
+  ```csharp
+  using System;
+
+  class Program
+  {
+      static void Main()
+      {
+          // Creating a named tuple
+          var person = (Name: "John", Age: 30, IsEmployed: true);
+
+          // Accessing named tuple elements
+          Console.WriteLine($"Name: {person.Name}");
+          Console.WriteLine($"Age: {person.Age}");
+          Console.WriteLine($"IsEmployed: {person.IsEmployed}");
+
+          // Deconstructing a named tuple
+          (string name, int age, bool isEmployed) = person;
+          Console.WriteLine($"Name: {name}, Age: {age}, IsEmployed: {isEmployed}");
+      }
+  }
+  ```
+
+  In this example, we define a tuple with named elements `Name`, `Age`, and `IsEmployed`, making the code more readable and self-explanatory. We then access these named elements directly using their names.
+
+- dynamic and object type
+    In C#, both `dynamic` and `object` are used to handle situations where the type of an object is not known at compile time. However, they have different behaviors and use cases:
+
+    1. **`dynamic`**:
+      - The `dynamic` keyword is used to declare a type that can hold any type of value at runtime.
+      - It defers type checking until runtime rather than compile time.
+      - It allows you to perform operations on objects without explicit type casting.
+      - It provides late binding, meaning method calls and property accesses are resolved at runtime.
+      - Example:
+
+        ```csharp
+          using System;
+
+          class Program
+          {
+              static void Main(string[] args)
+              {
+                  // Example using object type
+                  object obj = 10;
+                  Console.WriteLine($"Object value: {obj}"); // Output: Object value: 10
+
+                  int intValue = (int)obj; // Explicit casting
+                  Console.WriteLine($"Int value: {intValue}"); // Output: Int value: 10
+
+                  // Example using dynamic type
+                  dynamic dynamicVariable = 10;
+                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: 10
+
+                  dynamicVariable = "Hello";
+                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: Hello
+
+                  dynamicVariable = DateTime.Now;
+                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: [current datetime]
+              }
+          }
+
+        ```
+
+    2. **`object`**:
+      - The `object` type is a reference type that represents the base type of all other types in C#.
+      - It can hold any type of value but requires explicit casting to access its members or convert it to another type.
+      - It is a compile-time construct and doesn't provide late binding like `dynamic`.
+      - It is typically used when you need to work with values of different types in a homogeneous collection or when the specific type is not known at compile time.
+  
+    In summary, `dynamic` is used for late binding and dynamic behavior at runtime, while `object` is used for static typing and type safety at compile time. Choose between them based on your specific requirements and whether you need dynamic or static typing in your code.
+
+- record and a delegate type:
+
+    1. **Record**: (use record / struct / class based on your need)
+      Records are a feature introduced in C# 9.0 that provide a concise syntax for creating immutable data types. Records are primarily used for modeling data and are especially useful for DTOs (Data Transfer Objects), entities, and other types where immutability and equality are important.
+
+    ```csharp
+    using System;
+
+    // Example of a record
+    public record Person(string FirstName, string LastName, int Age);
+
+    class Program
+    {
+        static void Main()
+        {
+            // Creating an instance of the record
+            var person = new Person("John", "Doe", 30);
+
+            // Accessing properties
+            Console.WriteLine($"Name: {person.FirstName} {person.LastName}, Age: {person.Age}");
+        }
+    }
+    ```
+
+    In the above example:
+
+  - We define a `Person` record with properties `FirstName`, `LastName`, and `Age`.
+  - Records automatically generate a constructor, properties, `Equals()` method, `GetHashCode()` method, and `ToString()` method based on their members.
+  - We create an instance of the `Person` record and access its properties.
+
+    2. **Delegate**:
+      Delegates are used to define references to methods. They are similar to function pointers in C++ or function types in other languages. Delegates are especially useful for implementing events, callbacks, and LINQ queries.
+
+        ```csharp
+        using System;
+
+        // Example of a delegate
+        public delegate void MyDelegate(string message);
+
+        class Program
+        {
+            static void Main()
+            {
+                // Creating an instance of the delegate
+                MyDelegate myDelegate = DisplayMessage;
+
+                // Invoking the delegate
+                myDelegate("Hello, delegates!");
+
+                // Multicast delegate
+                myDelegate += DisplayAnotherMessage;
+                myDelegate("Hello again!");
+            }
+
+            static void DisplayMessage(string message)
+            {
+                Console.WriteLine($"Message: {message}");
+            }
+
+            static void DisplayAnotherMessage(string message)
+            {
+                Console.WriteLine($"Another message: {message}");
+            }
+        }
+        ```
+
+        In the above example:
+
+        - We define a delegate `MyDelegate` that points to methods accepting a `string` parameter and returning `void`.
+        - We create an instance of the delegate and assign it to a method `DisplayMessage`.
+        - We invoke the delegate, which in turn invokes the `DisplayMessage` method.
+        - We demonstrate a multicast delegate by adding another method to the delegate invocation list using `+=`. When the delegate is invoked, both methods are called in the order they were added.
+
+        These examples showcase the usage of records for immutable data types and delegates for method references and event handling in C#.
+
+#### Class vs Struct vs Record
+
+Key Differences:
+
+- Classes are reference types with full support for inheritance and customization, while structs and records are value types with limited or no inheritance capabilities.
+- Structs are primarily used for small, single-value data types and are passed by value, while records provide a concise syntax for defining immutable data types with value semantics.
+- Records automatically generate boilerplate code for immutability and value equality, reducing developer overhead and potential sources of errors.
+In summary, choose the appropriate type (class, struct, or record) based on the specific requirements of your application, considering factors such as mutability, inheritance, memory usage, and performance.
+
+Sure, let's create an example to demonstrate the differences between classes, structs, and records.
+
+**Example**:
+
+Suppose we want to define a data type to represent a 2D point with X and Y coordinates. We'll create implementations using a class, a struct, and a record to showcase their differences.
+
+1. **Class Implementation**:
+
+   ```csharp
+   public class PointClass
+   {
+       public int X { get; set; }
+       public int Y { get; set; }
+
+       public PointClass(int x, int y)
+       {
+           X = x;
+           Y = y;
+       }
+   }
+   ```
+
+2. **Struct Implementation**:
+
+   ```csharp
+   public struct PointStruct
+   {
+       public int X { get; }
+       public int Y { get; }
+
+       public PointStruct(int x, int y)
+       {
+           X = x;
+           Y = y;
+       }
+   }
+   ```
+
+3. **Record Implementation**:
+
+   ```csharp
+   public record PointRecord(int X, int Y);
+   ```
+
+Now, let's demonstrate the differences by creating instances of each type and modifying them:
+
+```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Creating instances
+        var classPoint = new PointClass(10, 20);
+        var structPoint = new PointStruct(30, 40);
+        var recordPoint = new PointRecord(50, 60);
+
+        // Modifying values
+        classPoint.X = 100; // Allowed because classes are mutable
+        // structPoint.X = 200; // Error: Cannot modify readonly members in structs
+        // recordPoint.X = 300; // Error: Records are immutable
+
+        // Displaying values
+        Console.WriteLine($"Class Point: ({classPoint.X}, {classPoint.Y})");
+        Console.WriteLine($"Struct Point: ({structPoint.X}, {structPoint.Y})");
+        Console.WriteLine($"Record Point: ({recordPoint.X}, {recordPoint.Y})");
+    }
+}
+```
+
+**Output**:
+
+```
+Class Point: (100, 20)
+Struct Point: (30, 40)
+Record Point: (50, 60)
+```
+
+**Explanation**:
+
+- We can modify the `X` and `Y` properties of the `PointClass` instance because classes are mutable.
+- In the `PointStruct` instance, we cannot modify the `X` and `Y` properties directly because structs are immutable. Attempting to do so will result in a compilation error.
+- Similarly, the `PointRecord` instance is also immutable, so we cannot modify its properties directly. Any attempt to do so will result in a compilation error.
+
+#### More on Record
+
+Records are a feature introduced in C# 9.0 that provide a concise syntax for creating immutable data types. Records are primarily used for modeling data and are especially useful for DTOs (Data Transfer Objects), entities, and other types where immutability and equality are important.
+
+    ```csharp
+    using System;
+
+    // Example of a record
+    public record Person(string FirstName, string LastName, int Age);
+
+    class Program
+    {
+        static void Main()
+        {
+            // Creating an instance of the record
+            var person = new Person("John", "Doe", 30);
+
+            // Accessing properties
+            Console.WriteLine($"Name: {person.FirstName} {person.LastName}, Age: {person.Age}");
+        }
+    }
+    ```
+
+### Generics
 
 In C#, generics provide a way to define classes, interfaces, and methods with placeholder types. These placeholder types can be specified when using the generic type, allowing you to create reusable, type-safe code. Generics enable you to create classes, structures, interfaces, and methods that operate on data types without specifying the data types in advance.
 
@@ -6809,6 +6826,139 @@ In C#, collections are used to store and manipulate groups of related objects. T
 
 #### 1. `List<T>`
 
+Both **lists** and **arrays** are used to store collections of data in C#, but they have key differences in terms of functionality, flexibility, and usage. Here’s a detailed comparison of **List** and **Array** in C#:
+
+##### **1. List vs. Array: Overview**
+
+- **Array**: A fixed-size collection of elements of the same type. Arrays are part of the base `System` namespace.
+- **List**: A dynamic-size collection that can grow and shrink as needed. Lists are part of the `System.Collections.Generic` namespace.
+
+###### **2. Key Differences Between List and Array**
+
+| Feature                  | Array                                     | List                                              |
+|--------------------------|-------------------------------------------|---------------------------------------------------|
+| **Size**                 | Fixed size; must specify size at creation | Dynamic size; grows and shrinks automatically     |
+| **Namespace**            | `System`                                  | `System.Collections.Generic`                      |
+| **Initialization**       | Must specify size or initialize with elements | No size required, initialized as an empty list    |
+| **Performance**          | Faster for simple, fixed-size collections | Slightly slower due to dynamic resizing           |
+| **Flexibility**          | Less flexible; can't change size          | More flexible; can add, remove, or modify elements|
+| **Memory Efficiency**    | More memory-efficient for fixed data      | May allocate more memory than needed temporarily  |
+| **Access Time**          | Constant time access (`O(1)`)             | Constant time access (`O(1)`)                     |
+| **Methods Available**    | Limited methods (`Length`, `Sort`, etc.)  | Rich methods (`Add`, `Remove`, `Insert`, `Sort`)  |
+| **Type Safety**          | Strongly typed                            | Strongly typed (generic)                          |
+| **Ease of Use**          | Basic, straightforward                    | More user-friendly with utility methods           |
+| **Use Case**             | Best for fixed-size collections           | Best for collections where size changes frequently|
+
+###### **3. Examples**
+
+###### **Array Example**
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Array declaration and initialization
+        int[] numbers = new int[5]; // Fixed size of 5
+        numbers[0] = 10;
+        numbers[1] = 20;
+        numbers[2] = 30;
+
+        // Accessing array elements
+        Console.WriteLine("Array Elements:");
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            Console.WriteLine(numbers[i]);
+        }
+
+        // Changing an element
+        numbers[0] = 100;
+        Console.WriteLine($"Modified first element: {numbers[0]}");
+    }
+}
+```
+
+###### **List Example**
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // List declaration and initialization
+        List<int> numbers = new List<int>(); // Dynamic size
+        numbers.Add(10);
+        numbers.Add(20);
+        numbers.Add(30);
+
+        // Accessing list elements
+        Console.WriteLine("List Elements:");
+        foreach (int number in numbers)
+        {
+            Console.WriteLine(number);
+        }
+
+        // Adding and removing elements
+        numbers.Add(40);
+        numbers.Remove(20);
+
+        // Changing an element
+        numbers[0] = 100;
+        Console.WriteLine($"Modified first element: {numbers[0]}");
+    }
+}
+```
+
+###### **4. When to Use Arrays vs. Lists**
+
+- **Use Arrays When**:
+  - You know the number of elements in advance, and it won't change.
+  - Performance is critical, and you need a minimal overhead collection.
+  - You need multidimensional data (e.g., matrices).
+
+- **Use Lists When**:
+  - You need a collection that can grow or shrink dynamically.
+  - You want to use built-in methods like `Add`, `Remove`, `Insert`, etc.
+  - You prefer higher-level abstractions and don’t want to manage array sizes manually.
+
+###### **5. Advantages and Disadvantages**
+
+###### **Arrays:**
+
+**Advantages**:
+
+- Fast access due to contiguous memory allocation.
+- Memory-efficient for fixed-size collections.
+
+**Disadvantages**:
+
+- Fixed size; cannot be resized once created.
+- Limited built-in methods.
+
+###### **Lists:**
+
+**Advantages**:
+
+- Dynamic size; easy to add or remove elements.
+- Rich set of utility methods for managing data.
+
+**Disadvantages**:
+
+- Slightly slower than arrays due to internal resizing.
+- May allocate more memory temporarily during resizing operations.
+
+###### **Summary**
+
+- **Arrays** are best for simple, fixed-size data structures where performance and memory efficiency are crucial.
+- **Lists** are more flexible and user-friendly, suitable for most dynamic data manipulation tasks due to their extensive built-in methods and dynamic sizing capabilities.
+
+###### List properties and methods
+
 - **Properties**:
   - `Count`: Gets the number of elements contained in the list.
   - `Capacity`: Gets or sets the total number of elements the internal data structure can hold without resizing.
@@ -6828,6 +6978,81 @@ numbers.Add(20);
 numbers.Remove(10);
 Console.WriteLine(numbers.Contains(20)); // Output: True
 ```
+
+## new: List Operations
+
+Here are examples of common list operations in C# using the `List<T>` class:
+
+1. **Initialization:**
+
+   ```csharp
+   List<int> numbers = new List<int>(); // Initialize an empty list
+   List<string> names = new List<string> { "Alice", "Bob", "Charlie" }; // Initialize a list with elements
+   ```
+
+2. **Adding Elements:**
+
+   ```csharp
+   numbers.Add(10); // Add a single element to the end of the list
+   numbers.AddRange(new int[] { 20, 30, 40 }); // Add multiple elements to the end of the list
+   ```
+
+3. **Accessing Elements:**
+
+   ```csharp
+   int firstNumber = numbers[0]; // Access the first element
+   ```
+
+4. **Inserting Elements:**
+
+   ```csharp
+   numbers.Insert(1, 15); // Insert an element at a specific index
+   ```
+
+5. **Removing Elements:**
+
+   ```csharp
+   numbers.Remove(20); // Remove the first occurrence of a specific element
+   numbers.RemoveAt(2); // Remove the element at a specific index
+   numbers.RemoveRange(1, 2); // Remove a range of elements starting from a specific index
+   numbers.Clear(); // Remove all elements from the list
+   ```
+
+6. **Checking Existence:**
+
+   ```csharp
+   bool containsBob = names.Contains("Bob"); // Check if a specific element exists in the list
+   ```
+
+7. **Sorting:**
+
+   ```csharp
+   numbers.Sort(); // Sort the elements of the list in ascending order
+   names.Sort(); // Sort the elements of the list in alphabetical order
+   ```
+
+8. **Counting Elements:**
+
+   ```csharp
+   int count = numbers.Count; // Get the number of elements in the list
+   ```
+
+9. **Iterating Over Elements:**
+
+   ```csharp
+   foreach (int number in numbers)
+   {
+       Console.WriteLine(number);
+   }
+   ```
+
+10. **Converting to Array:**
+
+    ```csharp
+    int[] numbersArray = numbers.ToArray(); // Convert the list to an array
+    ```
+
+These are just some of the common operations that can be performed with lists in C#. The `List<T>` class provides many more methods and properties for various list manipulations and operations.
 
 #### 2. `Dictionary<TKey, TValue>`
 
@@ -6888,9 +7113,6 @@ numbers.Push(20);
 numbers.Pop();
 Console.WriteLine(numbers.Peek()); // Output: 10
 ```
-
-These are just a few examples of collection classes available in C#. Depending on your specific requirements, you can choose the appropriate collection class to work with. Each collection class has its own properties and methods tailored to its specific purpose.
-
 
 ### Some generic classes for collection
 
@@ -7049,8 +7271,6 @@ let's go through each of the mentioned generic classes and provide a brief expla
    }
    ```
 
-These examples demonstrate how to use some of the commonly used generic classes in C#. Each class has its own specific use case and provides functionality tailored to its purpose.
-
 ## new: Random Number Generator
 
 ```csharp
@@ -7069,128 +7289,6 @@ public class MyClass
 
 }
 ```
-
-## new: Array vs List
-
-In C#, both arrays and lists are used to store collections of elements, but they have some differences in terms of flexibility and functionality. Here's a comparison between arrays and lists:
-
-1. **Declaration and Initialization:**
-   - **Array:** Arrays are declared using square brackets `[]`. They have a fixed size that is specified at the time of declaration.
-
-     ```csharp
-     int[] numbers = new int[5]; // Declaration and initialization of an array with size 5
-     ```
-
-   - **List:** Lists are declared using the `List<T>` class from the `System.Collections.Generic` namespace. Lists can dynamically resize to accommodate the number of elements added to them.
-
-     ```csharp
-     List<int> numbersList = new List<int>(); // Declaration of a list
-     ```
-
-2. **Size:**
-   - **Array:** Arrays have a fixed size, which means you cannot change the size after initialization.
-   - **List:** Lists can dynamically grow or shrink in size as elements are added or removed. They automatically handle memory management and resizing internally.
-
-3. **Accessing Elements:**
-   - **Array:** Elements in an array are accessed using zero-based index notation.
-
-     ```csharp
-     int value = numbers[0]; // Accessing the first element of the array
-     ```
-
-   - **List:** Elements in a list are accessed using the `List<T>` indexer property in a similar manner.
-
-     ```csharp
-     int value = numbersList[0]; // Accessing the first element of the list
-     ```
-
-4. **Flexibility:**
-   - **Array:** Arrays have a fixed size and cannot change once initialized. You cannot easily add or remove elements from an array without creating a new array.
-   - **List:** Lists are more flexible as they can dynamically resize. You can add, remove, or modify elements in a list without needing to create a new list.
-
-5. **Performance:**
-   - **Array:** Arrays generally offer better performance for random access because they store elements in contiguous memory locations.
-   - **List:** Lists are implemented using arrays internally but provide additional functionality for dynamic resizing. They may have slightly lower performance for random access compared to arrays due to their dynamic resizing capability.
-
-6. **Additional Functionality:**
-   - **List:** Lists provide additional methods and properties for common operations such as adding, removing, sorting, searching, and more. These methods are not available directly with arrays and require manual implementation.
-
-In summary, arrays are suitable for situations where the size of the collection is fixed or known in advance, while lists are more suitable for scenarios where the size may change dynamically or where additional functionality like resizing and manipulation is required.
-
-## new: List Operations
-
-Here are examples of common list operations in C# using the `List<T>` class:
-
-1. **Initialization:**
-
-   ```csharp
-   List<int> numbers = new List<int>(); // Initialize an empty list
-   List<string> names = new List<string> { "Alice", "Bob", "Charlie" }; // Initialize a list with elements
-   ```
-
-2. **Adding Elements:**
-
-   ```csharp
-   numbers.Add(10); // Add a single element to the end of the list
-   numbers.AddRange(new int[] { 20, 30, 40 }); // Add multiple elements to the end of the list
-   ```
-
-3. **Accessing Elements:**
-
-   ```csharp
-   int firstNumber = numbers[0]; // Access the first element
-   ```
-
-4. **Inserting Elements:**
-
-   ```csharp
-   numbers.Insert(1, 15); // Insert an element at a specific index
-   ```
-
-5. **Removing Elements:**
-
-   ```csharp
-   numbers.Remove(20); // Remove the first occurrence of a specific element
-   numbers.RemoveAt(2); // Remove the element at a specific index
-   numbers.RemoveRange(1, 2); // Remove a range of elements starting from a specific index
-   numbers.Clear(); // Remove all elements from the list
-   ```
-
-6. **Checking Existence:**
-
-   ```csharp
-   bool containsBob = names.Contains("Bob"); // Check if a specific element exists in the list
-   ```
-
-7. **Sorting:**
-
-   ```csharp
-   numbers.Sort(); // Sort the elements of the list in ascending order
-   names.Sort(); // Sort the elements of the list in alphabetical order
-   ```
-
-8. **Counting Elements:**
-
-   ```csharp
-   int count = numbers.Count; // Get the number of elements in the list
-   ```
-
-9. **Iterating Over Elements:**
-
-   ```csharp
-   foreach (int number in numbers)
-   {
-       Console.WriteLine(number);
-   }
-   ```
-
-10. **Converting to Array:**
-
-    ```csharp
-    int[] numbersArray = numbers.ToArray(); // Convert the list to an array
-    ```
-
-These are just some of the common operations that can be performed with lists in C#. The `List<T>` class provides many more methods and properties for various list manipulations and operations.
 
 ## new: Some of the LINQ Methods
 
