@@ -20,6 +20,10 @@
 2. [Intermediate C]
    - [Intermediate 1. OOP](#intermediate-1-oop)
       - [Class and Object](#classes-and-objects)
+      - [Constructor](#constructor)
+      - [readonly, static vs non-static member](#readonly-static-vs-non-static-member)
+      - [Assignment for oop part-1](#assignment-for-oop-part-1)
+      - [OOP 1: Encapsulation](#oop-1-encapsulation)
    - [Intermediate 2. Collections, Generics, LINQ](#intermediate-2-collections-generics-linq)
 3. [3. Advanced C](#basic-c)
    - []()
@@ -3755,7 +3759,7 @@ In this example:
 - The `PrintFieldValue` method accesses the `readonlyField` using `this`.
 - Once initialized, the value of `readonlyField` cannot be changed due to the `readonly` modifier.
 
-### [Assignment for oop 1](https://github.com/anisul-Islam/csharp-oop-practice-1/blob/main/README.md)
+### [Assignment for oop part-1](https://github.com/anisul-Islam/csharp-oop-practice-1/blob/main/README.md)
 
 #### Practice 1: Creating a Simple Student Management System with Validation**
 
