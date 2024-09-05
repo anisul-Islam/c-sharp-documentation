@@ -17,10 +17,10 @@
       - [Loop Control Statement](#32-loop-control-statement)  
    - [4. Methods](#basic-4-methods--function)  
 
-2. [Intermediate C]()
+2. [Intermediate C]
    - [Intermediate 1. OOP](#intermediate-1-oop)
       - [Class and Object](#classes-and-objects)
-   - [Intermediate 1. OOP](#intermediate-1-oop)
+   - [Intermediate 2. Collections, Generics, LINQ](#intermediate-2-collections-generics-linq)
 3. [3. Advanced C](#basic-c)
    - []()
 
@@ -3489,8 +3489,6 @@ class Program
   }
   ```
 
-This code demonstrates the use of each type of constructor in C#, including default, parameterized, copy, static, and private constructors. Additionally, it includes properties and methods to demonstrate their usage within the class.
-
 #### new: Destructor
 
 In C#, a destructor is a special method in a class that is invoked automatically when an object is about to be destroyed or garbage collected. It is defined using the tilde (~) followed by the class name and doesn't take any parameters. Unlike constructors, destructors cannot be overloaded or explicitly called.
@@ -3757,72 +3755,185 @@ In this example:
 - The `PrintFieldValue` method accesses the `readonlyField` using `this`.
 - Once initialized, the value of `readonlyField` cannot be changed due to the `readonly` modifier.
 
-### Assignment for oop 1
+### [Assignment for oop 1](https://github.com/anisul-Islam/csharp-oop-practice-1/blob/main/README.md)
 
-#### Practice 1: Creating a Simple Student Management System**
+#### Practice 1: Creating a Simple Student Management System with Validation**
 
-**Objective:** This assignment is designed to help you understand the concepts of classes, objects, constructors, methods, and static members in C#. You will create a simple student management system that demonstrates these concepts.
+**Objective:** This assignment is designed to help you understand the concepts of classes, objects, constructors, methods, static members, and validation in C#. You will create a simple student management system that demonstrates these concepts while also incorporating validation for student data.
 
 ##### **Assignment Instructions:**
 
-1. **Create a Class named `Student`:**
+1. **Create a Class Named `Student`:**
 
    - Define the `Student` class with the following properties:
      - `Name` (string) - Name of the student.
      - `Age` (int) - Age of the student.
      - `Grade` (double) - Grade of the student.
+   - Add validation to ensure:
+     - The `Name` is not empty or null.
+     - The `Age` is between 5 and 100.
+     - The `Grade` is between 0.0 and 100.0.
    - Add a static member to keep track of the total number of students created.
 
 2. **Create a Constructor for the `Student` Class:**
 
-   - The constructor should take the student's name, age, and grade as parameters and initialize the properties accordingly.
-   - Increment the static member that tracks the number of students whenever a new student object is created.
+   - The constructor should take the student's name, age, and grade as parameters and initialize the properties accordingly after validation.
+   - If validation fails, display an error message and do not increment the student count.
+   - Increment the static member that tracks the number of students whenever a new valid student object is created.
 
-3. **Create a Method in the `Student` Class:**
+3. **Create Methods in the `Student` Class:**
 
    - Add a method named `DisplayInfo` that prints the student's details in a formatted manner.
+   - Add a static method named `DisplayTotalStudents` to display the total number of valid students created.
 
-4. **Create a Static Method in the `Student` Class:**
+4. **Create an `App` Class with the Main Method:**
 
-   - Add a static method named `DisplayTotalStudents` to display the total number of students created.
-
-5. **Create an `App` Class with the `Main` Method:**
    - Create multiple student objects using the `Student` class.
    - Call the methods of each student object to display their details.
-   - Use the static method to display the total number of students.
+   - Use the static method to display the total number of valid students.
+
+##### **Implementation Code:**
+
+```csharp
+using System;
+
+public class Student
+{
+    // Properties of the Student class
+    public string Name { get; private set; }
+    public int Age { get; private set; }
+    public double Grade { get; private set; }
+
+    // Static member to keep track of the total number of valid students
+    private static int totalStudents = 0;
+
+    // Constructor with validation
+    public Student(string name, int age, double grade)
+    {
+        if (ValidateName(name) && ValidateAge(age) && ValidateGrade(grade))
+        {
+            Name = name;
+            Age = age;
+            Grade = grade;
+            totalStudents++; // Increment count only if validation passes
+        }
+        else
+        {
+            Console.WriteLine("Failed to create student due to invalid data.");
+        }
+    }
+
+    // Method to display student information
+    public void DisplayInfo()
+    {
+        if (Name != null) // Check to ensure the student was created successfully
+        {
+            Console.WriteLine($"Student Name: {Name}");
+            Console.WriteLine($"Age: {Age}");
+            Console.WriteLine($"Grade: {Grade}");
+            Console.WriteLine("-----------------");
+        }
+    }
+
+    // Static method to display the total number of valid students
+    public static void DisplayTotalStudents()
+    {
+        Console.WriteLine($"Total number of valid students: {totalStudents}");
+    }
+
+    // Validation for Name
+    private static bool ValidateName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            Console.WriteLine("Error: Name cannot be empty.");
+            return false;
+        }
+        return true;
+    }
+
+    // Validation for Age
+    private static bool ValidateAge(int age)
+    {
+        if (age < 5 || age > 100)
+        {
+            Console.WriteLine("Error: Age must be between 5 and 100.");
+            return false;
+        }
+        return true;
+    }
+
+    // Validation for Grade
+    private static bool ValidateGrade(double grade)
+    {
+        if (grade < 0.0 || grade > 100.0)
+        {
+            Console.WriteLine("Error: Grade must be between 0.0 and 100.0.");
+            return false;
+        }
+        return true;
+    }
+}
+
+public class App
+{
+    public static void Main(string[] args)
+    {
+        // Create student objects with validation
+        Student student1 = new Student("Alice", 20, 85.5);
+        Student student2 = new Student("Bob", 150, 90.0); // Invalid age
+        Student student3 = new Student("", 19, 78.2); // Invalid name
+        Student student4 = new Student("Charlie", 25, 101.0); // Invalid grade
+        Student student5 = new Student("David", 22, 95.0); // Valid student
+
+        // Display each student's details
+        student1.DisplayInfo();
+        student2.DisplayInfo();
+        student3.DisplayInfo();
+        student4.DisplayInfo();
+        student5.DisplayInfo();
+
+        // Display the total number of valid students
+        Student.DisplayTotalStudents();
+    }
+}
+```
+
+##### **Explanation of the Code:**
+
+1. **Validation Methods**:
+   - `ValidateName`: Ensures the `Name` is not empty or null.
+   - `ValidateAge`: Ensures the `Age` is between 5 and 100.
+   - `ValidateGrade`: Ensures the `Grade` is between 0.0 and 100.0.
+
+2. **Constructor Validation**:
+   - The constructor uses the validation methods to ensure that each property is set correctly. If any validation fails, it outputs an error and does not increment the `totalStudents`.
+
+3. **Static Members**:
+   - The static `totalStudents` keeps track of the number of valid student objects created.
+
+4. **Displaying Information**:
+   - The `DisplayInfo` method only displays details if the student object was created successfully.
 
 ##### **Expected Output:**
 
 ```
-Student 1 Information:
 Student Name: Alice
 Age: 20
-Grade: 3.80
-
-Student 2 Information:
-Student Name: Bob
+Grade: 85.5
+-----------------
+Error: Age must be between 5 and 100.
+Failed to create student due to invalid data.
+Error: Name cannot be empty.
+Failed to create student due to invalid data.
+Error: Grade must be between 0.0 and 100.0.
+Failed to create student due to invalid data.
+Student Name: David
 Age: 22
-Grade: 3.50
-
-Student 3 Information:
-Student Name: Charlie
-Age: 19
-Grade: 3.90
-
-Summary:
-Total Students: 3
+Grade: 95
+-----------------
+Total number of valid students: 2
 ```
-
-##### **Concepts Covered:**
-
-1. **Class**: Definition of the `Student` class with properties.
-2. **Object**: Creation of `Student` objects (`student1`, `student2`, `student3`).
-3. **Constructor**: Initializes properties and increments the student count.
-4. **Method**: `DisplayInfo()` method to show student details.
-5. **Static Member**: `totalStudents` to keep track of all students.
-6. **Static Method**: `DisplayTotalStudents()` to show the total number of students.
-
-This assignment provides a practical, hands-on approach to understanding how classes, objects, constructors, methods, and static members work together in C#.
 
 ### OOP 1: Encapsulation
 
@@ -3897,63 +4008,82 @@ This assignment provides a practical, hands-on approach to understanding how cla
 
 - encapsulate members and give access them with Property a public member that will have accessor (get and set accessors)
 
+- Properties in C# are special members of a class that provide a flexible mechanism to read, write, or compute the values of private fields. Properties are used to encapsulate data, allowing controlled access to the data fields of an object. They act like public data members but provide better control over how the data is accessed and modified.
+
+- Key Features of Properties:
+  - Encapsulation: Properties help in encapsulating fields, allowing controlled access.
+  - Get and Set Accessors: Properties use get and set accessors to define how values are read from or written to a field.
+    - get accessor: Returns the property value.
+    - set accessor: Assigns a new value to the property.
+  - Validation: You can add validation logic inside the set accessor to control how values are assigned.
+  - Read-Only and Write-Only: You can create read-only properties (with only get) and write-only properties (with only set).
+
   ```csharp
-  // version 6
   class Person
+
   {
-    private string name; // field
-    public string Name // property
+    private string? name; // yes read, yes write
+    private int age; // YES read, yes write
+    public string? Name
     {
-      set { name = value; } // value is a special keyword here
       get { return name; }
+      set
+      {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+          throw new ArgumentException("Name can not be empty or null");
+        }
+        name = value;
+      }
+    }
+    public int Age
+    {
+      get { return age; }
+      set
+      {
+        if (value < 0)
+        {
+          throw new ArgumentException("Age can not be negative");
+        }
+        age = value;
+      }
     }
 
-    // if you do not set
-    public string Name 
+    // private double gpa;
+    public double Gpa { get; set; }
+
+    public Person(string? name, int age, double gpa)
     {
-      set;
-      get;
+      Name = name;
+      Age = age;
+      Gpa = gpa;
+      Console.WriteLine($"{gpa}");
+
     }
+
   }
 
-  public class MyClass
+  class Program
   {
     public static void Main(string[] args)
     {
-      var p1 = new Person();
-      p1.Name = "Anisul Islam";
-      Console.WriteLine($"{p1.Name}");
+      try
+      {
+        // Person person = new Person("Jordan", 32, 3.45);
+        // Person person = new Person("Jordan", -32, 3.45);
+        Person person = new Person("", -32, 3.45);
+        Console.WriteLine($"{person.Name}");
+        Console.WriteLine($"{person.Age}");
+        Console.WriteLine($"{person.Gpa}");
+      }
+      catch (ArgumentException ex)
+      {
+        Console.WriteLine($"{ex.Message}");
+      }
 
-      Console.ReadKey();
     }
-
   }
 
-
-  // version 7
-  public class Person
-
-    {
-        private string name; // field
-
-        public string Name // property
-        {
-            get { return name; }
-            set
-            {
-                // Condition to check if the provided name is not null or empty
-                if (!string.IsNullOrEmpty(value))
-                {
-                    name = value;
-                }
-                else
-                {
-                    // Handle the case when the provided name is null or empty
-                    Console.WriteLine("Name cannot be null or empty.");
-                }
-            }
-        }
-    }
   ```
 
 ### OOP Practice 2: Building a Simple Bank Account System**
@@ -6239,7 +6369,8 @@ In this example:
 
 This example demonstrates how reflection allows us to inspect and manipulate the members of a type dynamically at runtime.
 
-## Intermediate 2. aaa
+
+## Intermediate 2. Collections, Generics, LINQ
 
 ### struct, enum, tuple, dynamic, object, record, delegate (move them)
 
@@ -6733,7 +6864,7 @@ In this example:
 
 Generics provide flexibility and type safety by allowing you to write code that operates on different data types without sacrificing performance or type checking. They are extensively used in collections (e.g., `List<T>`, `Dictionary<TKey, TValue>`) and other data structures and algorithms in C#.
 
-### Generic constratint
+#### Generic constratint
 
 Sure, let's simplify the example. Here's a basic example of a generic class with a constraint that ensures the type parameter implements the `IComparable<T>` interface:
 
@@ -6979,7 +7110,7 @@ numbers.Remove(10);
 Console.WriteLine(numbers.Contains(20)); // Output: True
 ```
 
-## new: List Operations
+#### new: List Operations
 
 Here are examples of common list operations in C# using the `List<T>` class:
 
@@ -7114,7 +7245,7 @@ numbers.Pop();
 Console.WriteLine(numbers.Peek()); // Output: 10
 ```
 
-### Some generic classes for collection
+#### Some generic classes for collection
 
 let's go through each of the mentioned generic classes and provide a brief explanation along with an example for each:
 
@@ -7271,7 +7402,7 @@ let's go through each of the mentioned generic classes and provide a brief expla
    }
    ```
 
-## new: Random Number Generator
+### new: Random Number Generator
 
 ```csharp
 using System.Globalization;
@@ -7290,218 +7421,9 @@ public class MyClass
 }
 ```
 
-## new: Some of the LINQ Methods
+### new: LINQ operations
 
-Sure! I'll explain each of these LINQ methods with a code example:
-
-### 1. Any
-
-The `Any` method checks whether any element in a collection satisfies a given condition. It returns true if at least one element satisfies the condition; otherwise, it returns false.
-
-```csharp
-using System;
-using System.Linq;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        int[] numbers = { 1, 2, 3, 4, 5 };
-
-        // Check if any element is greater than 3
-        bool anyGreaterThanThree = numbers.Any(x => x > 3);
-        Console.WriteLine($"Any element greater than 3? {anyGreaterThanThree}"); // Output: True
-    }
-}
-```
-
-### 2. FirstOrDefault
-
-The `FirstOrDefault` method returns the first element in a collection that satisfies a given condition, or a default value if no such element is found. If the collection is empty, it returns the default value for the element type.
-
-```csharp
-using System;
-using System.Linq;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        int[] numbers = { 1, 2, 3, 4, 5 };
-
-        // Get the first element greater than 3, or default value if not found
-        int firstGreaterThanThree = numbers.FirstOrDefault(x => x > 3);
-        Console.WriteLine($"First element greater than 3: {firstGreaterThanThree}"); // Output: 4
-    }
-}
-```
-
-### 3. Sum
-
-The `Sum` method calculates the sum of all elements in a collection. It is commonly used with numerical collections.
-
-```csharp
-using System;
-using System.Linq;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        int[] numbers = { 1, 2, 3, 4, 5 };
-
-        // Calculate the sum of all numbers
-        int sum = numbers.Sum();
-        Console.WriteLine($"Sum of all numbers: {sum}"); // Output: 15
-    }
-}
-```
-
-### 4. OrderBy
-
-The `OrderBy` method sorts the elements of a collection in ascending order based on a specified key. Optionally, you can use `OrderByDescending` for descending order.
-
-```csharp
-using System;
-using System.Linq;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        string[] names = { "John", "Alice", "Bob", "David" };
-
-        // Sort the names in ascending order
-        var sortedNames = names.OrderBy(name => name);
-        Console.WriteLine("Names sorted in ascending order:");
-        foreach (var name in sortedNames)
-        {
-            Console.WriteLine(name);
-        }
-        // Output: Alice, Bob, David, John
-    }
-}
-```
-
-In each example, LINQ methods are used to perform operations on collections (`numbers` or `names`) to achieve specific results. These LINQ methods provide powerful functionalities for querying and manipulating data in C#.
-
-### 1. Any with List
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
-
-        // Check if any element is greater than 3
-        bool anyGreaterThanThree = numbers.Any(x => x > 3);
-        Console.WriteLine($"Any element greater than 3? {anyGreaterThanThree}"); // Output: True
-    }
-}
-```
-
-### 2. FirstOrDefault with List
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
-
-        // Get the first element greater than 3, or default value if not found
-        int firstGreaterThanThree = numbers.FirstOrDefault(x => x > 3);
-        Console.WriteLine($"First element greater than 3: {firstGreaterThanThree}"); // Output: 4
-    }
-}
-```
-
-### 3. Sum with List
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
-
-        // Calculate the sum of all numbers
-        int sum = numbers.Sum();
-        Console.WriteLine($"Sum of all numbers: {sum}"); // Output: 15
-    }
-}
-```
-
-### 4. OrderBy with List
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        List<string> names = new List<string> { "John", "Alice", "Bob", "David" };
-
-        // Sort the names in ascending order
-        var sortedNames = names.OrderBy(name => name);
-        Console.WriteLine("Names sorted in ascending order:");
-        foreach (var name in sortedNames)
-        {
-            Console.WriteLine(name);
-        }
-        // Output: Alice, Bob, David, John
-    }
-}
-```
-
-In each example, LINQ methods are used with `List<T>` instead of arrays (`numbers` or `names`) to perform the same operations, demonstrating the flexibility of LINQ with different collection types.
-
-To perform a reverse ordering using LINQ's `OrderBy` method, you can simply use the `OrderByDescending` method instead. This method sorts the elements of a collection in descending order based on a specified key. Here's how you can achieve reverse ordering with `OrderByDescending`:
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        List<string> names = new List<string> { "John", "Alice", "Bob", "David" };
-
-        // Sort the names in descending order
-        var sortedNames = names.OrderByDescending(name => name);
-        Console.WriteLine("Names sorted in descending order:");
-        foreach (var name in sortedNames)
-        {
-            Console.WriteLine(name);
-        }
-        // Output: John, David, Bob, Alice
-    }
-}
-```
-
-In this example, `OrderByDescending` is used instead of `OrderBy` to sort the `names` list in descending order. The names are then printed in descending order, demonstrating the reverse ordering.
-
-## new: LINQ operations
-
-### 1. Filtering with `Where` Operator
+#### 1. Filtering with `Where` Operator
 
 **The `Where` method is used to filter elements from a sequence based on a specified condition.** It returns a sequences of character or empty sequence which is iterable. In the example below, `numbers.Where(n => n % 2 == 0)` filters the `numbers` array to select only the even numbers. The lambda expression `n => n % 2 == 0` specifies the condition for filtering, where only elements that satisfy the condition (i.e., divisible by 2 with remainder 0) are included in the result.
 
@@ -7620,6 +7542,45 @@ In this example, `OrderByDescending` is used instead of `OrderBy` to sort the `n
   // Filteration with Where
   ```
 
+  ```csharp
+  // new problem
+  public record Person(string Name, int Age);
+
+  class Program
+  {
+    public static List<Person> GetData()
+    {
+      return new List<Person>() {
+        new Person("Robin", 23),
+        new("Anisul Islam", 34),
+        new("Taiyba", 19),
+        new("Lut", 18),
+        };
+    }
+    public static void Main(string[] args)
+    {
+      List<Person> persons = GetData();
+
+      var personsGreaterThan30 = persons.Where(x => x.Age > 30);
+
+      Print(personsGreaterThan30);
+    }
+
+    public static void Print(IEnumerable<Person> persons)
+    {
+      Console.WriteLine($"Printing Data: ");
+
+      foreach (var person in persons)
+      {
+        Console.WriteLine($"Name: {person.Name},Age: {person.Age}");
+      }
+
+      Console.WriteLine($"-----------------");
+
+    }
+  }
+  ```
+
 ### 2. Projection with `Select` and `SelectMany` Operator
 
 **The `Select` method is used to transform each element of a sequence into a new form.** **SelectMany Operator flatten all collections into one**
@@ -7699,6 +7660,46 @@ In this example, `OrderByDescending` is used instead of `OrderBy` to sort the `n
   }
   ```
 
+  ```csharp
+  // new problem
+  public record Person(string Name, int Age);
+
+  class Program
+  {
+    public static List<Person> GetData()
+    {
+      return new List<Person>() {
+        new Person("Robin", 23),
+        new("Anisul Islam", 34),
+        new("Taiyba", 19),
+        new("Lut", 18),
+        };
+    }
+    public static void Main(string[] args)
+    {
+      List<Person> persons = GetData();
+
+      var personsGreaterThan30 = persons.Where(x => x.Age > 30).Select(p => p with { Name = p.Name.ToUpper() }).ToList();
+
+      Print(personsGreaterThan30);
+    }
+
+    public static void Print(IEnumerable<Person> persons)
+    {
+      Console.WriteLine($"Printing Data: ");
+
+      foreach (var person in persons)
+      {
+        Console.WriteLine($"Name: {person.Name},Age: {person.Age}");
+      }
+
+      Console.WriteLine($"-----------------");
+
+    }
+  }
+
+  ```
+
 - example 3: Selecting Properties from Objects
 
   ```csharp
@@ -7764,7 +7765,51 @@ In this example, `OrderByDescending` is used instead of `OrderBy` to sort the `n
       }
     }
 
-    // LINQ: Projection with Select and SelectMany Operator
+    // New
+    public record Person(string Name, int Age, string bloodGroup);
+
+    class Program
+    {
+      public static List<Person> GetData()
+      {
+        return new List<Person>() {
+          new Person("Robin", 23, "A+"),
+          new("Anisul Islam", 34, "A-"),
+          new("Taiyba", 19, "B"),
+          new("Lut", 18, "O"),
+          };
+      }
+      public static void Main(string[] args)
+      {
+        List<Person> persons = GetData();
+
+        // filter the people greater than age 30
+        // filter age greater then 30 and transform to uppercase
+        // select people's name and bloodGroup only
+        var personsInfo = persons.Select(p => (p.Name, p.bloodGroup));
+
+        foreach (var (Name, BloodGroup) in personsInfo)
+        {
+          Console.WriteLine($"Name: {Name}, Blood Group: {BloodGroup}");
+        }
+
+
+        // Print(personsInfo);
+      }
+
+      public static void Print(IEnumerable<Person> persons)
+      {
+        Console.WriteLine($"Printing Data: ");
+
+        foreach (var person in persons)
+        {
+          Console.WriteLine($"Name: {person.Name},Age: {person.Age}");
+        }
+
+        Console.WriteLine($"-----------------");
+
+      }
+    }
   ```
 
 ### 3. Ordering with `OrderBy`, `OrderByDescending`, `ThenBy`, `Reverse`
@@ -7871,6 +7916,54 @@ In this example, the `OrderBy` operator is used to sort the `numbers` array in a
   ```
 
   In this example, the `OrderBy` operator is used to sort the `people` list by the `Name` property in ascending order. The `ThenBy` operator is then used to perform a secondary sort by the `Age` property within each group of people with the same name. The resulting sequence `sortedPeople` contains the `Person` objects sorted first by name and then by age.
+
+  - Another example
+
+  ```csharp
+    public record Person(string Name, int Age, string bloodGroup);
+
+    class Program
+    {
+      public static List<Person> GetData()
+      {
+        return new List<Person>() {
+          new Person("Robin", 23, "A+"),
+          new("Anisul Islam", 34, "A-"),
+          new("Taiyba", 19, "B"),
+          new("Lut", 18, "O"),
+          };
+      }
+      public static void Main(string[] args)
+      {
+        List<Person> persons = GetData();
+
+        // filter the people greater than age 30
+        // filter age greater then 30 and transform to uppercase
+        // select people's name and bloodGroup only
+        // OrderBy Age 
+        // OrderBy Name and then Age
+
+        var orderByNameAndAge = persons.OrderBy(p => p.Name).ThenBy(p => p.Age).ToList();
+
+
+
+        Print(orderByNameAndAge);
+      }
+
+      public static void Print(IEnumerable<Person> persons)
+      {
+        Console.WriteLine($"Printing Data: ");
+
+        foreach (var person in persons)
+        {
+          Console.WriteLine($"Name: {person.Name},Age: {person.Age}");
+        }
+
+        Console.WriteLine($"-----------------");
+
+      }
+    }
+  ```
 
 - Reverse Operator
 
@@ -7980,6 +8073,58 @@ The `Contains` method checks if a sequence contains a specific element.
   ```
 
   In this example, the `Contains` method checks if the `fruits` array contains the string "banana". Since "banana" is present in the array, the output will be `True`.
+
+  ```csharp
+      public record Person(string Name, int Age, string bloodGroup);
+
+    class Program
+    {
+      public static List<Person> GetData()
+      {
+        return new List<Person>() {
+          new Person("Robin", 23, "A+"),
+          new("Anisul Islam", 34, "A-"),
+          new("Taiyba", 19, "B"),
+          new("Lut", 18, "O"),
+          };
+      }
+      public static void Main(string[] args)
+      {
+        List<Person> persons = GetData();
+
+        // filter the people greater than age 30
+        // filter age greater then 30 and transform to uppercase
+        // select people's name and bloodGroup only
+        // OrderBy Age 
+        // OrderBy Name and then Age
+        // All the persons are adult?
+        // one person is adult?
+        // do we have a person called Anisul?
+
+        var adult = persons.Where(p => p.Name.Contains("Anisul", StringComparison.OrdinalIgnoreCase));
+
+        Console.WriteLine($"{adult}");
+
+
+
+
+        // Print(orderByNameAndAge);
+      }
+
+      public static void Print(IEnumerable<Person> persons)
+      {
+        Console.WriteLine($"Printing Data: ");
+
+        foreach (var person in persons)
+        {
+          Console.WriteLine($"Name: {person.Name},Age: {person.Age}");
+        }
+
+        Console.WriteLine($"-----------------");
+
+      }
+    }
+  ```
 
 #### A best example for all of them
 
@@ -8293,7 +8438,7 @@ Difference in numbers1:
 
 ### 8. Element with `First`, `Last`, `ElementAt` and `Except`
 
-Certainly! These LINQ methods are used to retrieve elements from a collection based on specific criteria or positions:
+These LINQ methods are used to retrieve elements from a collection based on specific criteria or positions. However, it's important to note that `First` and `Last` methods throw an exception if no element satisfies the condition, while `ElementAt` returns the default value for the element type if the index is out of range.
 
 #### 1. First
 
@@ -8351,8 +8496,6 @@ Console.WriteLine("Element at index 2: " + elementAtIndex2);
 ```
 Element at index 2: 30
 ```
-
-These methods are helpful when you need to retrieve specific elements from a collection based on certain conditions or positions. However, it's important to note that `First` and `Last` methods throw an exception if no element satisfies the condition, while `ElementAt` returns the default value for the element type if the index is out of range.
 
 ### 9. Grouping with `GroupBy`
 
