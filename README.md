@@ -1325,6 +1325,392 @@ Control statements in C# are used to control the flow of execution in a program.
     }
     ```
 
+4. **switch Statement:**
+  
+- 4 keywords to remember: switch, case, break and default. The `switch` statement is used to select one of many code blocks to be executed.
+
+      ```csharp
+      switch (variable)
+      {
+          case value1:
+              // Code to be executed if variable equals value1
+              break;
+          case value2:
+              // Code to be executed if variable equals value2
+              break;
+          // ... other cases ...
+          default:
+              // Code to be executed if none of the cases match
+              break;
+      }
+
+      // multiple params
+      using System;
+
+        class Program
+        {
+            static void Main()
+            {
+                Console.WriteLine("Enter two numbers separated by a space:");
+                string input = Console.ReadLine();
+                string[] parts = input.Split();
+
+                if (parts.Length != 2)
+                {
+                    Console.WriteLine("Invalid input format. Please enter two numbers separated by a space.");
+                    return;
+                }
+
+                string firstParam = parts[0];
+                string secondParam = parts[1];
+
+                // Use tuple pattern matching with switch
+                switch ((firstParam, secondParam))
+                {
+                    case ("1", "a"):
+                        Console.WriteLine("First param is '1' and second param is 'a'.");
+                        break;
+                    case ("2", "b"):
+                        Console.WriteLine("First param is '2' and second param is 'b'.");
+                        break;
+                    default:
+                        Console.WriteLine("No matching case found.");
+                        break;
+                }
+            }
+        }
+
+      ```
+
+  - **shorthand switch**:
+
+      In C#, starting from C# 8.0, you can use switch expressions as a shorthand method for simpler switch statements. Switch expressions allow you to perform pattern matching and return a value based on the matched pattern. Here's the syntax:
+
+      ```csharp
+      result = switch (variable)
+      {
+          pattern1 => expression1,
+          pattern2 => expression2,
+          ...
+          _ => defaultExpression // Optional default case
+      };
+      ```
+
+      Let's see an example of a switch statement converted to a switch expression:
+
+      ```csharp
+      // Switch statement
+      int num = 3;
+      string message;
+
+      switch (num)
+      {
+          case 1:
+              message = "One";
+              break;
+          case 2:
+              message = "Two";
+              break;
+          default:
+              message = "Other";
+              break;
+      }
+
+      Console.WriteLine(message); // Output: Other
+      ```
+
+      Converted to a switch expression:
+
+      ```csharp
+      // Switch expression
+      int num = 3;
+      string message = num switch
+      {
+          1 => "One",
+          2 => "Two",
+          _ => "Other" // Default case
+      };
+
+      Console.WriteLine(message); // Output: Other
+      ```
+
+      ```csharp
+        Console.Write($"Enter a letter from a-z: ");
+
+        string input = Console.ReadLine().ToLower();
+
+        if (string.IsNullOrEmpty(input) || input.Length != 1)
+        {
+          Console.WriteLine($"Invalid Input. Please enter a single character");
+          return;
+        }
+        char letter = input[0];
+
+        string result = letter switch
+        {
+          not (>= 'a' and <= 'z') => "Not a Letter",
+          'a' or 'e' or 'i' or 'o' or 'u' => "Vowel",
+          _ => "Consonant",
+        };
+        Console.WriteLine(result);
+
+      ```
+
+    In the switch expression:
+
+    - The variable being evaluated (`num` in this case) is followed by the `switch` keyword.
+    - Each case is written using the `=>` operator instead of the `case` keyword.
+    - The `_` underscore pattern represents the default case, similar to the `default` keyword in switch statements.
+    - The result of the matched expression is assigned directly to the `message` variable.
+
+    Switch expressions provide a more concise and expressive way to handle simple switch statements. They are particularly useful when you want to assign a value based on different cases without the need for separate statements for each case.
+
+  - swicth and type pattern: type pattern switching was introduced in C# 9.0. Here are some examples
+
+  ```csharp
+  public static string GetTypeWithoutPattern(object obj)
+  {
+      switch (obj)
+      {
+          case int:
+              return "Integer";
+          case string:
+              return "String";
+          case double:
+              return "Double";
+          default:
+              return "Unknown Type";
+      }
+  }
+
+  static void Main(string[] args)
+  {
+      object value = "Hello";
+      Console.WriteLine(GetTypeWithoutPattern(value)); // Output: String
+  }
+
+  public static string GetTypeWithTypePattern(object obj)
+  {
+      return obj switch
+      {
+          int => "Integer",
+          string => "String",
+          double => "Double",
+          _ => "Unknown Type"
+      };
+  }
+
+  static void Main(string[] args)
+  {
+      object value = 10;
+      Console.WriteLine(GetTypeWithTypePattern(value)); // Output: Integer
+  }
+  ```
+
+  1. **Without Type Pattern (Traditional Approach)**:
+
+  Suppose we have a method that processes different types of vehicles:
+
+    ```csharp
+    public static string ProcessVehicleWithoutPattern(object vehicle)
+    {
+        switch (vehicle)
+        {
+            case Car:
+                return "Driving a car";
+            case Bicycle:
+                return "Riding a bicycle";
+            case Truck:
+                return "Driving a truck";
+            default:
+                return "Unknown vehicle type";
+        }
+    }
+
+    // Define vehicle types
+    public class Car { }
+    public class Bicycle { }
+    public class Truck { }
+
+    static void Main(string[] args)
+    {
+        object myVehicle = new Car();
+        Console.WriteLine(ProcessVehicleWithoutPattern(myVehicle)); // Output: Driving a car
+    }
+    ```
+
+  2. **With Type Pattern (Using Modern Approach)**:
+
+  Now, let's rewrite the same functionality using type patterns:
+
+    ```csharp
+    public static string ProcessVehicleWithTypePattern(object vehicle)
+    {
+        return vehicle switch
+        {
+            Car => "Driving a car",
+            Bicycle => "Riding a bicycle",
+            Truck => "Driving a truck",
+            _ => "Unknown vehicle type"
+        };
+    }
+
+    // Define vehicle types (same as above)
+
+    static void Main(string[] args)
+    {
+        object myVehicle = new Bicycle();
+        Console.WriteLine(ProcessVehicleWithTypePattern(myVehicle)); // Output: Riding a bicycle
+    }
+    ```
+
+  In this example, the switch expression with type patterns provides a cleaner and more readable way to handle different vehicle types compared to the traditional approach without type patterns.
+
+  - switch and condition together
+
+  ```csharp
+  // switch statement with condition without switch expression
+  using System;
+
+  class Program
+  {
+      static void Main()
+      {
+          Console.WriteLine("Enter a number between 1 and 10:");
+          if (int.TryParse(Console.ReadLine(), out int number))
+          {
+              switch (number)
+              {
+                  case int n when n % 2 == 0:
+                      Console.WriteLine("Even number.");
+                      break;
+                  case int n when n % 2 != 0:
+                      Console.WriteLine("Odd number.");
+                      break;
+                  default:
+                      Console.WriteLine("Number is out of range.");
+                      break;
+              }
+          }
+          else
+          {
+              Console.WriteLine("Invalid input. Please enter a valid number.");
+          }
+      }
+  }
+
+
+  // switch statement with condition with switch expression
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      Console.WriteLine("Enter a number between 1 to 10: ");
+
+      if (int.TryParse(Console.ReadLine(), out int number))
+      {
+        string result = number switch
+        {
+          int num when num >= 1 && num <= 10 => num % 2 == 0 ? "Even Number" : "Odd Number",
+          _ => "Number is out of Range"
+        };
+        Console.WriteLine($"{result}");
+      }
+      else
+      {
+        Console.WriteLine($"Invalid Input. Please enter a valid number");
+
+      }
+
+      Console.ReadKey();
+    }
+
+  }
+  ```
+
+  - switch and method
+
+    ```csharp
+      using System;
+
+      class Program
+      {
+          static void Main()
+          {
+              Console.WriteLine("Calculator");
+
+              Console.Write("Enter the first number: ");
+              double num1 = GetValidNumber();
+
+              Console.Write("Enter the second number: ");
+              double num2 = GetValidNumber();
+
+              Console.Write("Enter the operation (+, -, *, /): ");
+              char operation = GetValidOperation();
+
+              switch ((operation, num1, num2))
+              {
+                  case ('+', var a, var b):
+                      Console.WriteLine($"{a} + {b} = {a + b}");
+                      break;
+                  case ('-', var a, var b):
+                      Console.WriteLine($"{a} - {b} = {a - b}");
+                      break;
+                  case ('*', var a, var b):
+                      Console.WriteLine($"{a} * {b} = {a * b}");
+                      break;
+                  case ('/', var a, var b) when b != 0:
+                      Console.WriteLine($"{a} / {b} = {a / b}");
+                      break;
+                  case (_, _, _) when num2 == 0:
+                      Console.WriteLine("Cannot divide by zero.");
+                      break;
+                  default:
+                      Console.WriteLine("Invalid operation.");
+                      break;
+              }
+          }
+
+          static int GetValidNumber()
+          {
+            int number;
+            // int.TryParse(Console.ReadLine(), out number)
+            // The second parameter is an out parameter, which means it will be assigned the parsed int value if the parsing succeeds.
+            while (!int.TryParse(Console.ReadLine(), out number))
+            {
+              Console.Write("Invalid input. Please enter a valid number: ");
+            }
+            return number;
+          }
+
+          static double GetValidNumber()
+          {
+              double number;
+              while (!double.TryParse(Console.ReadLine(), out number))
+              {
+                  Console.Write("Invalid input. Please enter a valid number: ");
+              }
+              return number;
+          }
+
+          static char GetValidOperation()
+          {
+              char operation;
+              while (!char.TryParse(Console.ReadLine(), out operation) || !IsValidOperation(operation))
+              {
+                  Console.Write("Invalid input. Please enter a valid operation (+, -, *, /): ");
+              }
+              return operation;
+          }
+
+          static bool IsValidOperation(char operation)
+          {
+              return operation == '+' || operation == '-' || operation == '*' || operation == '/';
+          }
+      }
+
+    ```
+
 #### Input Validation
 
 - Length Check: Ensure the string is within a certain length range.
@@ -1535,372 +1921,6 @@ Continues to validate against length, special characters, and non-empty conditio
   Validated Float: 3.14
   Validated Double: 2.71828
   ```
-
-4. **switch Statement:**
-  
-- 4 keywords to remember: switch, case, break and default. The `switch` statement is used to select one of many code blocks to be executed.
-
-      ```csharp
-      switch (variable)
-      {
-          case value1:
-              // Code to be executed if variable equals value1
-              break;
-          case value2:
-              // Code to be executed if variable equals value2
-              break;
-          // ... other cases ...
-          default:
-              // Code to be executed if none of the cases match
-              break;
-      }
-
-      // multiple params
-      using System;
-
-        class Program
-        {
-            static void Main()
-            {
-                Console.WriteLine("Enter two numbers separated by a space:");
-                string input = Console.ReadLine();
-                string[] parts = input.Split();
-
-                if (parts.Length != 2)
-                {
-                    Console.WriteLine("Invalid input format. Please enter two numbers separated by a space.");
-                    return;
-                }
-
-                string firstParam = parts[0];
-                string secondParam = parts[1];
-
-                // Use tuple pattern matching with switch
-                switch ((firstParam, secondParam))
-                {
-                    case ("1", "a"):
-                        Console.WriteLine("First param is '1' and second param is 'a'.");
-                        break;
-                    case ("2", "b"):
-                        Console.WriteLine("First param is '2' and second param is 'b'.");
-                        break;
-                    default:
-                        Console.WriteLine("No matching case found.");
-                        break;
-                }
-            }
-        }
-
-      ```
-
-    - **shorthand switch**:
-
-      In C#, starting from C# 8.0, you can use switch expressions as a shorthand method for simpler switch statements. Switch expressions allow you to perform pattern matching and return a value based on the matched pattern. Here's the syntax:
-
-      ```csharp
-      result = switch (variable)
-      {
-          pattern1 => expression1,
-          pattern2 => expression2,
-          ...
-          _ => defaultExpression // Optional default case
-      };
-      ```
-
-      Let's see an example of a switch statement converted to a switch expression:
-
-      ```csharp
-      // Switch statement
-      int num = 3;
-      string message;
-
-      switch (num)
-      {
-          case 1:
-              message = "One";
-              break;
-          case 2:
-              message = "Two";
-              break;
-          default:
-              message = "Other";
-              break;
-      }
-
-      Console.WriteLine(message); // Output: Other
-      ```
-
-      Converted to a switch expression:
-
-      ```csharp
-      // Switch expression
-      int num = 3;
-      string message = num switch
-      {
-          1 => "One",
-          2 => "Two",
-          _ => "Other" // Default case
-      };
-
-      Console.WriteLine(message); // Output: Other
-      ```
-
-      In the switch expression:
-
-      - The variable being evaluated (`num` in this case) is followed by the `switch` keyword.
-      - Each case is written using the `=>` operator instead of the `case` keyword.
-      - The `_` underscore pattern represents the default case, similar to the `default` keyword in switch statements.
-      - The result of the matched expression is assigned directly to the `message` variable.
-
-      Switch expressions provide a more concise and expressive way to handle simple switch statements. They are particularly useful when you want to assign a value based on different cases without the need for separate statements for each case.
-
-  - swicth and type pattern: type pattern switching was introduced in C# 9.0. Here are some examples
-
-  ```csharp
-  public static string GetTypeWithoutPattern(object obj)
-  {
-      switch (obj)
-      {
-          case int:
-              return "Integer";
-          case string:
-              return "String";
-          case double:
-              return "Double";
-          default:
-              return "Unknown Type";
-      }
-  }
-
-  static void Main(string[] args)
-  {
-      object value = "Hello";
-      Console.WriteLine(GetTypeWithoutPattern(value)); // Output: String
-  }
-
-  public static string GetTypeWithTypePattern(object obj)
-  {
-      return obj switch
-      {
-          int => "Integer",
-          string => "String",
-          double => "Double",
-          _ => "Unknown Type"
-      };
-  }
-
-  static void Main(string[] args)
-  {
-      object value = 10;
-      Console.WriteLine(GetTypeWithTypePattern(value)); // Output: Integer
-  }
-
-
-  ```
-
-  1. **Without Type Pattern (Traditional Approach)**:
-
-  Suppose we have a method that processes different types of vehicles:
-
-  ```csharp
-  public static string ProcessVehicleWithoutPattern(object vehicle)
-  {
-      switch (vehicle)
-      {
-          case Car:
-              return "Driving a car";
-          case Bicycle:
-              return "Riding a bicycle";
-          case Truck:
-              return "Driving a truck";
-          default:
-              return "Unknown vehicle type";
-      }
-  }
-
-  // Define vehicle types
-  public class Car { }
-  public class Bicycle { }
-  public class Truck { }
-
-  static void Main(string[] args)
-  {
-      object myVehicle = new Car();
-      Console.WriteLine(ProcessVehicleWithoutPattern(myVehicle)); // Output: Driving a car
-  }
-  ```
-
-  2. **With Type Pattern (Using Modern Approach)**:
-
-  Now, let's rewrite the same functionality using type patterns:
-
-  ```csharp
-  public static string ProcessVehicleWithTypePattern(object vehicle)
-  {
-      return vehicle switch
-      {
-          Car => "Driving a car",
-          Bicycle => "Riding a bicycle",
-          Truck => "Driving a truck",
-          _ => "Unknown vehicle type"
-      };
-  }
-
-  // Define vehicle types (same as above)
-
-  static void Main(string[] args)
-  {
-      object myVehicle = new Bicycle();
-      Console.WriteLine(ProcessVehicleWithTypePattern(myVehicle)); // Output: Riding a bicycle
-  }
-  ```
-
-  In this example, the switch expression with type patterns provides a cleaner and more readable way to handle different vehicle types compared to the traditional approach without type patterns.
-
-  - switch and condition together
-
-  ```csharp
-  // switch statement with condition without switch expression
-  using System;
-
-  class Program
-  {
-      static void Main()
-      {
-          Console.WriteLine("Enter a number between 1 and 10:");
-          if (int.TryParse(Console.ReadLine(), out int number))
-          {
-              switch (number)
-              {
-                  case int n when n % 2 == 0:
-                      Console.WriteLine("Even number.");
-                      break;
-                  case int n when n % 2 != 0:
-                      Console.WriteLine("Odd number.");
-                      break;
-                  default:
-                      Console.WriteLine("Number is out of range.");
-                      break;
-              }
-          }
-          else
-          {
-              Console.WriteLine("Invalid input. Please enter a valid number.");
-          }
-      }
-  }
-
-
-  // switch statement with condition with switch expression
-  public class MyClass
-  {
-    public static void Main(string[] args)
-    {
-      Console.WriteLine("Enter a number between 1 to 10: ");
-
-      if (int.TryParse(Console.ReadLine(), out int number))
-      {
-        string result = number switch
-        {
-          int num when num >= 1 && num <= 10 => num % 2 == 0 ? "Even Number" : "Odd Number",
-          _ => "Number is out of Range"
-        };
-        Console.WriteLine($"{result}");
-      }
-      else
-      {
-        Console.WriteLine($"Invalid Input. Please enter a valid number");
-
-      }
-
-      Console.ReadKey();
-    }
-
-  }
-  ```
-
-  - switch and method
-
-    ```csharp
-      using System;
-
-      class Program
-      {
-          static void Main()
-          {
-              Console.WriteLine("Calculator");
-
-              Console.Write("Enter the first number: ");
-              double num1 = GetValidNumber();
-
-              Console.Write("Enter the second number: ");
-              double num2 = GetValidNumber();
-
-              Console.Write("Enter the operation (+, -, *, /): ");
-              char operation = GetValidOperation();
-
-              switch ((operation, num1, num2))
-              {
-                  case ('+', var a, var b):
-                      Console.WriteLine($"{a} + {b} = {a + b}");
-                      break;
-                  case ('-', var a, var b):
-                      Console.WriteLine($"{a} - {b} = {a - b}");
-                      break;
-                  case ('*', var a, var b):
-                      Console.WriteLine($"{a} * {b} = {a * b}");
-                      break;
-                  case ('/', var a, var b) when b != 0:
-                      Console.WriteLine($"{a} / {b} = {a / b}");
-                      break;
-                  case (_, _, _) when num2 == 0:
-                      Console.WriteLine("Cannot divide by zero.");
-                      break;
-                  default:
-                      Console.WriteLine("Invalid operation.");
-                      break;
-              }
-          }
-
-          static int GetValidNumber()
-          {
-            int number;
-            // int.TryParse(Console.ReadLine(), out number)
-            // The second parameter is an out parameter, which means it will be assigned the parsed int value if the parsing succeeds.
-            while (!int.TryParse(Console.ReadLine(), out number))
-            {
-              Console.Write("Invalid input. Please enter a valid number: ");
-            }
-            return number;
-          }
-
-          static double GetValidNumber()
-          {
-              double number;
-              while (!double.TryParse(Console.ReadLine(), out number))
-              {
-                  Console.Write("Invalid input. Please enter a valid number: ");
-              }
-              return number;
-          }
-
-          static char GetValidOperation()
-          {
-              char operation;
-              while (!char.TryParse(Console.ReadLine(), out operation) || !IsValidOperation(operation))
-              {
-                  Console.Write("Invalid input. Please enter a valid operation (+, -, *, /): ");
-              }
-              return operation;
-          }
-
-          static bool IsValidOperation(char operation)
-          {
-              return operation == '+' || operation == '-' || operation == '*' || operation == '/';
-          }
-      }
-
-    ```
 
 #### program 1 positive, negative or zero
 
@@ -2505,13 +2525,70 @@ class Test
 
 ```
 
+### Switch statement + Enum
+
+```csharp
+// day as a string => monday
+// weekday or weekend
+
+enum DayOfWeek
+{
+  Monday = 1,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+
+
+    Console.Write($"Enter the day of the week (1-7), where 1=Monday and 7=Sunday: ");
+    int input = Convert.ToInt32(Console.ReadLine());
+
+    if (input < 0 || input > 7)
+    {
+      Console.WriteLine($"Inavlid Input. Please Enter the day of the week (1-7), where 1=Monday and 7=Sunday.");
+      return;
+    }
+
+    DayOfWeek day = (DayOfWeek)input;
+
+
+    switch (day)
+    {
+      case DayOfWeek.Monday:
+      case DayOfWeek.Tuesday:
+      case DayOfWeek.Wednesday:
+      case DayOfWeek.Thursday:
+      case DayOfWeek.Friday:
+        Console.WriteLine($"Weekday");
+        break;
+      case DayOfWeek.Saturday:
+      case DayOfWeek.Sunday:
+        Console.WriteLine($"Weekend");
+        break;
+      default:
+        Console.WriteLine($"Invalid day entered");
+        break;
+    }
+
+  }
+}
+```
+
 ### Final Assignment for if-else
 
 - Unit Converter Using Operators in C#**
 
 **Objective:** This assignment will help you practice using operators and data type conversion in a real-life scenario. You will create a simple unit converter that allows users to convert between different units of measurement (e.g., kilometers to miles, Celsius to Fahrenheit) using arithmetic operators.
 
-#### **Instructions:**
+#### **Instructions 2:**
 
 1. **Create a C# Console Application.**
 
@@ -3045,7 +3122,7 @@ class Program
 
 Choose the method that best suits your requirements for email validation in your C# application.
 
-### Final Assignment
+### Final Assignment: Calculator program
 
 - Basic Calculator with User Input, Operators, and Data Type Conversion in C#**
 
