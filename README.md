@@ -1186,6 +1186,30 @@ Bitwise operators are commonly used in scenarios where individual bits represent
 
   This is a concise way to express an `if-else` statement.
 
+### Final Assignment for Operators
+
+- Unit Converter Using Operators in C#**
+
+**Objective:** This assignment will help you practice using operators and data type conversion in a real-life scenario. You will create a simple unit converter that allows users to convert between different units of measurement (e.g., kilometers to miles, Celsius to Fahrenheit) using arithmetic operators.
+
+#### **Instructions:**
+
+1. **Create a C# Console Application.**
+
+2. **Implement Unit Conversion Calculations:**
+   - Convert between kilometers and miles.
+   - Convert between Celsius and Fahrenheit.
+   - Convert between kilograms and pounds.
+
+3. **Use Arithmetic Operators for Conversions:**
+   - Use multiplication, division, and addition operators to perform the conversions.
+
+4. **Prompt the User for Input:**
+   - Ask the user to enter the value.
+
+5. **Display the Conversion Result:**
+   - Show the user the converted value.
+
 ## Basic 3. Control Statement
 
 ### 3.1 Conditional control statement
@@ -2481,6 +2505,135 @@ class Test
 
 ```
 
+### Final Assignment for if-else
+
+- Unit Converter Using Operators in C#**
+
+**Objective:** This assignment will help you practice using operators and data type conversion in a real-life scenario. You will create a simple unit converter that allows users to convert between different units of measurement (e.g., kilometers to miles, Celsius to Fahrenheit) using arithmetic operators.
+
+#### **Instructions:**
+
+1. **Create a C# Console Application.**
+
+2. **Implement Unit Conversion Calculations:**
+   - Convert between kilometers and miles.
+   - Convert between Celsius and Fahrenheit.
+   - Convert between kilograms and pounds.
+
+3. **Use Arithmetic Operators for Conversions:**
+   - Use multiplication, division, and addition operators to perform the conversions.
+
+4. **Prompt the User for Input:**
+   - Ask the user to enter the value and the type of conversion they want to perform.
+
+5. **Display the Conversion Result:**
+   - Show the user the converted value.
+
+#### **Sample Code:**
+
+Here's an implementation of the assignment:
+
+```csharp
+using System;
+
+class UnitConverter
+{
+    public static void Main()
+    {
+        Console.WriteLine("Welcome to the Unit Converter!");
+
+        // Prompt the user to enter the value and the type of conversion
+        Console.WriteLine("\nAvailable Conversions:");
+        Console.WriteLine("1. Kilometers to Miles");
+        Console.WriteLine("2. Miles to Kilometers");
+        Console.WriteLine("3. Celsius to Fahrenheit");
+        Console.WriteLine("4. Fahrenheit to Celsius");
+        Console.WriteLine("5. Kilograms to Pounds");
+        Console.WriteLine("6. Pounds to Kilograms");
+
+        Console.Write("\nEnter the number corresponding to the conversion you want to perform: ");
+        string conversionType = Console.ReadLine();
+
+        // Prompt the user to enter the value to convert
+        Console.Write("Enter the value you want to convert: ");
+        string inputValue = Console.ReadLine();
+
+        // Convert the input value to double
+        double value = Convert.ToDouble(inputValue);
+
+        // Perform conversions using operators
+        double convertedValue = 0;
+
+        if (conversionType == "1") // Kilometers to Miles
+        {
+            convertedValue = value * 0.621371; // 1 kilometer = 0.621371 miles
+            Console.WriteLine($"{value} kilometers is equal to {convertedValue} miles.");
+        }
+        else if (conversionType == "2") // Miles to Kilometers
+        {
+            convertedValue = value / 0.621371; // 1 mile = 1.60934 kilometers
+            Console.WriteLine($"{value} miles is equal to {convertedValue} kilometers.");
+        }
+        else if (conversionType == "3") // Celsius to Fahrenheit
+        {
+            convertedValue = (value * 9 / 5) + 32; // Celsius to Fahrenheit formula
+            Console.WriteLine($"{value} degrees Celsius is equal to {convertedValue} degrees Fahrenheit.");
+        }
+        else if (conversionType == "4") // Fahrenheit to Celsius
+        {
+            convertedValue = (value - 32) * 5 / 9; // Fahrenheit to Celsius formula
+            Console.WriteLine($"{value} degrees Fahrenheit is equal to {convertedValue} degrees Celsius.");
+        }
+        else if (conversionType == "5") // Kilograms to Pounds
+        {
+            convertedValue = value * 2.20462; // 1 kilogram = 2.20462 pounds
+            Console.WriteLine($"{value} kilograms is equal to {convertedValue} pounds.");
+        }
+        else if (conversionType == "6") // Pounds to Kilograms
+        {
+            convertedValue = value / 2.20462; // 1 pound = 0.453592 kilograms
+            Console.WriteLine($"{value} pounds is equal to {convertedValue} kilograms.");
+        }
+        else
+        {
+            Console.WriteLine("Invalid selection. Please run the program again.");
+        }
+    }
+}
+```
+
+#### **Key Concepts Covered:**
+
+1. **Operators:**
+   - Use of arithmetic operators (`*`, `/`, `+`, `-`) for performing conversions.
+
+2. **Data Type Conversion:**
+   - Converting user input from `string` to `double` using `Convert.ToDouble()`.
+
+3. **User Input Handling:**
+   - Using `Console.ReadLine()` to capture user input for the value and conversion type.
+
+4. **Real-Life Application:**
+   - The example demonstrates real-world scenarios like converting distances, temperatures, and weights, showcasing how operators are used in everyday calculations.
+
+#### **Expected Output:**
+
+```
+Welcome to the Unit Converter!
+
+Available Conversions:
+1. Kilometers to Miles
+2. Miles to Kilometers
+3. Celsius to Fahrenheit
+4. Fahrenheit to Celsius
+5. Kilograms to Pounds
+6. Pounds to Kilograms
+
+Enter the number corresponding to the conversion you want to perform: 1
+Enter the value you want to convert: 10
+10 kilometers is equal to 6.21371 miles.
+```
+
 ### 3.2 Loop control statement
 
 1. **while Loop:**
@@ -2762,7 +2915,7 @@ public class MyClass
 
 To check if an email address is valid in C#, you can use regular expressions (regex) to match the email against a pattern that defines a valid email format. C# provides the `System.Text.RegularExpressions` namespace, which includes the `Regex` class for this purpose.
 
-### Method 1: Using Regular Expressions (Regex)
+#### Method 1: Using Regular Expressions (Regex)
 
 Here's a simple way to validate an email address using regex:
 
@@ -2824,11 +2977,11 @@ class Program
 - **Input:** `"invalid-email"`
   - Output: `"The email address is invalid."`
 
-### Method 2: Using `System.Net.Mail` Namespace
+#### Method 2: Using `System.Net.Mail` Namespace
 
 If you want a more comprehensive check that considers more rules for email validation, you can use the `MailAddress` class from the `System.Net.Mail` namespace.
 
-#### Code Example
+##### Code Example 1
 
 ```csharp
 using System;
@@ -2866,7 +3019,7 @@ class Program
 }
 ```
 
-#### Explanation
+##### Explanation 2
 
 1. **`MailAddress` Class:**
    - The constructor of the `MailAddress` class attempts to create a new `MailAddress` object using the provided email string. If the format is invalid, it throws a `FormatException`.
@@ -2877,7 +3030,7 @@ class Program
 3. **User Input:**
    - The user inputs an email address, and the `IsValidEmail` function checks its validity.
 
-#### Output
+##### Output 3
 
 - **Input:** `"test@domain.com"`
   - Output: `"The email address is valid."`
@@ -2885,12 +3038,157 @@ class Program
 - **Input:** `"invalidemail.com"`
   - Output: `"The email address is invalid."`
 
-### Conclusion
+#### Conclusion
 
 - **Method 1 (Regex):** Allows you to define your own custom pattern for validation, which can be tailored to specific needs.
 - **Method 2 (MailAddress Class):** Provides a more comprehensive validation that considers the structure and format of email addresses according to standard email rules.
 
 Choose the method that best suits your requirements for email validation in your C# application.
+
+### Final Assignment
+
+- Basic Calculator with User Input, Operators, and Data Type Conversion in C#**
+
+**Objective:** This assignment will help you practice using various operators, handling user input, and performing data type conversions in C#. You will create a simple calculator that performs arithmetic operations based on user input.
+
+#### **Instructions:**
+
+1. **Create a C# Console Application.**
+
+2. **Prompt the User for Input:**
+   - Ask the user to enter two numbers.
+   - Ask the user to choose an operation (`+`, `-`, `*`, `/`, `%`).
+
+3. **Perform Data Type Conversion:**
+   - Convert the user input from `string` to the appropriate data types (`int`, `double`).
+
+4. **Use Operators to Perform Calculations:**
+   - Based on the user’s choice, perform the corresponding arithmetic operation.
+   - Handle division carefully to avoid division by zero.
+
+5. **Display the Result:**
+   - Show the user the result of the calculation.
+   - Handle errors such as invalid input or unsupported operations gracefully.
+
+6. **Optional Enhancements:**
+   - Allow the user to perform another calculation or exit the program.
+   - Display error messages for invalid inputs, such as non-numeric values or division by zero.
+
+#### **Sample Code:**
+
+Here’s a sample implementation of the assignment:
+
+```csharp
+using System;
+
+class BasicCalculator
+{
+    public static void Main()
+    {
+        Console.WriteLine("Welcome to the Basic Calculator!");
+
+        // Loop to allow multiple calculations
+        while (true)
+        {
+            try
+            {
+                // User input for the first number
+                Console.Write("Enter the first number: ");
+                string input1 = Console.ReadLine();
+                double num1 = Convert.ToDouble(input1); // Convert string to double
+
+                // User input for the second number
+                Console.Write("Enter the second number: ");
+                string input2 = Console.ReadLine();
+                double num2 = Convert.ToDouble(input2); // Convert string to double
+
+                // User input for the operation
+                Console.Write("Choose an operation (+, -, *, /, %): ");
+                string operation = Console.ReadLine();
+
+                double result = 0;
+
+                // Perform the calculation based on the chosen operation
+                switch (operation)
+                {
+                    case "+":
+                        result = num1 + num2; // Addition
+                        break;
+                    case "-":
+                        result = num1 - num2; // Subtraction
+                        break;
+                    case "*":
+                        result = num1 * num2; // Multiplication
+                        break;
+                    case "/":
+                        if (num2 != 0)
+                        {
+                            result = num1 / num2; // Division
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: Division by zero is not allowed.");
+                            continue;
+                        }
+                        break;
+                    case "%":
+                        result = num1 % num2; // Modulus
+                        break;
+                    default:
+                        Console.WriteLine("Error: Unsupported operation.");
+                        continue;
+                }
+
+                // Display the result
+                Console.WriteLine($"Result: {num1} {operation} {num2} = {result}");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Error: Please enter a valid number.");
+            }
+
+            // Ask if the user wants to perform another calculation
+            Console.Write("Do you want to perform another calculation? (yes/no): ");
+            string choice = Console.ReadLine().ToLower();
+
+            if (choice != "yes")
+            {
+                Console.WriteLine("Thank you for using the Basic Calculator! Goodbye.");
+                break;
+            }
+        }
+    }
+}
+```
+
+#### **Key Concepts Covered:**
+
+1. **Operators:**
+   - Use of arithmetic operators (`+`, `-`, `*`, `/`, `%`) to perform calculations.
+
+2. **Data Type Conversion:**
+   - Converting user input from `string` to `double` using `Convert.ToDouble()`.
+
+3. **User Input Handling:**
+   - Using `Console.ReadLine()` to capture user input and handling invalid input with `try-catch` blocks.
+
+4. **Conditional Logic:**
+   - Using `switch` statements to perform different operations based on user input.
+
+5. **Error Handling:**
+   - Handling division by zero and invalid number inputs gracefully.
+
+#### **Expected Output:**
+
+```
+Welcome to the Basic Calculator!
+Enter the first number: 10
+Enter the second number: 5
+Choose an operation (+, -, *, /, %): *
+Result: 10 * 5 = 50
+Do you want to perform another calculation? (yes/no): no
+Thank you for using the Basic Calculator! Goodbye.
+```
 
 ## Basic 4. Methods / function
 
@@ -3938,6 +4236,74 @@ Grade: 95
 -----------------
 Total number of valid students: 2
 ```
+
+#### Practice 2: Building a Simple Bank Account System**
+
+**Objective:** This assignment will help you practice defining classes, creating objects, using constructors, properties, and methods in C#. You will create a simple bank account system that demonstrates these concepts.
+
+##### **Assignment 2 Instructions:**
+
+1. **Create a Class named `BankAccount`:**
+   - Define the `BankAccount` class with the following properties:
+     - `AccountHolder` (string) - The name of the account holder.
+     - `AccountNumber` (string) - The account number (auto-generated or manually set).
+     - `Balance` (double) - The current balance of the account (should only be modified within the class).
+
+2. **Create a Constructor for the `BankAccount` Class:**
+   - The constructor should take the account holder's name and initial deposit amount as parameters.
+   - It should initialize the account holder's name, set an account number, and set the balance to the initial deposit amount.
+
+3. **Create Methods in the `BankAccount` Class:**
+   - `Deposit(double amount)`: A method to deposit money into the account. Increase the balance by the deposited amount.
+   - `Withdraw(double amount)`: A method to withdraw money from the account. Decrease the balance if there are sufficient funds; otherwise, display an error message.
+   - `DisplayAccountInfo()`: A method to display the account holder’s name, account number, and balance.
+
+4. **Create an `App` Class with the `Main` Method:**
+   - Create at least two `BankAccount` objects using the `BankAccount` class.
+   - Use the methods to deposit and withdraw money from the accounts.
+   - Display the account information for each account.
+
+##### **Expected Output 2:**
+
+```
+Account 1 Information:
+Account Holder: Alice Johnson
+Account Number: ACC1000
+Balance: $500.00
+
+Account 2 Information:
+Account Holder: Bob Smith
+Account Number: ACC1001
+Balance: $1,000.00
+
+Performing transactions on Account 1...
+Successfully deposited $200.00. New balance: $700.00
+Successfully withdrew $100.00. New balance: $600.00
+
+Performing transactions on Account 2...
+Successfully deposited $300.00. New balance: $1,300.00
+Invalid withdraw amount. Please ensure you have sufficient funds.
+
+Updated Account 1 Information:
+Account Holder: Alice Johnson
+Account Number: ACC1000
+Balance: $600.00
+
+Updated Account 2 Information:
+Account Holder: Bob Smith
+Account Number: ACC1001
+Balance: $1,300.00
+```
+
+##### **Concepts 2 Covered:**
+
+1. **Class**: Definition of the `BankAccount` class.
+2. **Object**: Creation of `BankAccount` objects (`account1`, `account2`).
+3. **Constructor**: Initializes properties with provided values.
+4. **Properties**: Public properties for account holder and private set for account number and balance.
+5. **Methods**: `Deposit`, `Withdraw`, and `DisplayAccountInfo` to perform account operations.
+
+This assignment provides a practical and engaging way for students to practice class, object creation, properties, methods, and constructors in C#.
 
 ### OOP 1: Encapsulation
 
@@ -6372,7 +6738,6 @@ In this example:
    - Invoke the `MyMethod` method dynamically with a parameter.
 
 This example demonstrates how reflection allows us to inspect and manipulate the members of a type dynamically at runtime.
-
 
 ## Intermediate 2. Collections, Generics, LINQ
 
@@ -8934,6 +9299,251 @@ Deferred execution and immediate execution are two different execution strategie
 
 - Asynchronous programming in C# allows you to execute tasks concurrently, enabling more efficient use of system resources and improving responsiveness in applications. Asynchronous programming is especially useful when dealing with I/O-bound operations such as reading from files, making network requests, or accessing databases, where waiting for the operation to complete would cause blocking.
 
+- Example 1
+
+```csharp
+// Synchronous VS Asynchornous programming
+// Main Thread
+// version 1
+class Program
+{
+  public static void Main(string[] args)
+  {
+    Console.WriteLine("Task 1 is started");
+    Console.WriteLine("Task 1 is completed");
+    Console.WriteLine("Task 2: Fetch User Data is started");
+    Console.WriteLine("Task 2: Fetch User Data is completed");
+    Console.WriteLine("Task 3: Fetch Order data is started");
+    Console.WriteLine("Task 3: Fetch Order data is completed");
+    Console.WriteLine("Task 4 is started");
+    Console.WriteLine("Task 4 is completed");
+  }
+}
+// version 2
+class Program
+{
+  public static void Task2()
+  {
+    Console.WriteLine("Task 2: Fetch User Data is started");
+    Console.WriteLine("Task 2: Fetch User Data is completed");
+  } 
+  public static void Task3()
+  {
+    Console.WriteLine("Task 3: Fetch Order data is started");
+    Console.WriteLine("Task 3: Fetch Order data is completed");
+  }
+  public static void Main(string[] args)
+  {
+    Console.WriteLine("Task 1 is started");
+    Console.WriteLine("Task 1 is completed");
+
+    Task2();
+    Task3();
+
+    Console.WriteLine("Task 4 is started");
+    Console.WriteLine("Task 4 is completed");
+  }
+}
+
+// version 3: taking time
+class Program
+{
+  public static void Task2()
+  {
+    Console.WriteLine("Task 2: Fetch User Data is started");
+    Thread.Sleep(3000);
+    Console.WriteLine("Task 2: Fetch User Data is completed");
+  }
+  public static void Task3()
+  {
+    Console.WriteLine("Task 3: Fetch Order data is started");
+    Thread.Sleep(1000);
+    Console.WriteLine("Task 3: Fetch Order data is completed");
+  }
+  public static void Main(string[] args)
+  {
+    Console.WriteLine("Task 1 is started");
+    Console.WriteLine("Task 1 is completed");
+
+    Task2();
+    Task3();
+
+    Console.WriteLine("Task 4 is started");
+    Console.WriteLine("Task 4 is completed");
+  }
+}
+
+// version 4
+class Program
+{
+  public static void Task2()
+  {
+    Console.WriteLine("Task 2: Fetch User Data is started");
+    Thread.Sleep(3000);
+    Console.WriteLine("Task 2: Fetch User Data is completed");
+  }
+  public static void Task3()
+  {
+    Console.WriteLine("Task 3: Fetch Order data is started");
+    Thread.Sleep(1000);
+    Console.WriteLine("Task 3: Fetch Order data is completed");
+  }
+  public static async Task Main(string[] args)
+  {
+    Console.WriteLine("Task 1 is started");
+    Console.WriteLine("Task 1 is completed");
+
+    // Run Task2 and Task3 in parallel
+    Task task2 = Task.Run(() => Task2());
+    Task task3 = Task.Run(() => Task3());
+
+    Console.WriteLine("Task 4 is started");
+    Console.WriteLine("Task 4 is completed");
+
+    // Wait for Task2 and Task3 to complete
+    await Task.WhenAll(task2, task3);
+  }
+}
+
+// version 5
+class Program
+{
+  public static async Task Task2()
+  {
+    Console.WriteLine("Task 2: Fetch User Data is started");
+    await Task.Delay(3000);
+    Console.WriteLine("Task 2: Fetch User Data is completed");
+  }
+  public static async Task Task3()
+  {
+    Console.WriteLine("Task 3: Fetch Order data is started");
+    await Task.Delay(1000);
+    Console.WriteLine("Task 3: Fetch Order data is completed");
+  }
+  public static async Task Main(string[] args)
+  {
+    Console.WriteLine("Task 1 is started");
+    Console.WriteLine("Task 1 is completed");
+
+    // Run Task2 and Task3 in parallel
+    Task task2 = Task.Run(() => Task2());
+    Task task3 = Task.Run(() => Task3());
+
+    Console.WriteLine("Task 4 is started");
+    Console.WriteLine("Task 4 is completed");
+
+    // Wait for Task2 and Task3 to complete
+    await Task.WhenAll(task2, task3);
+  }
+}
+
+// version 5
+class Program
+{
+  public static async Task Task2()
+  {
+    Console.WriteLine("Task 2: Fetch User Data is started");
+    await Task.Delay(3000);
+    Console.WriteLine("Task 2: Fetch User Data is completed");
+  }
+  public static async Task Task3()
+  {
+    Console.WriteLine("Task 3: Fetch Order data is started");
+    await Task.Delay(1000);
+    Console.WriteLine("Task 3: Fetch Order data is completed");
+  }
+  public static async Task Main(string[] args)
+  {
+    Console.WriteLine("Task 1 is started");
+    Console.WriteLine("Task 1 is completed");
+
+    // Run Task2 and Task3 in parallel
+    await Task2();
+    await Task3();
+
+    Console.WriteLine("Task 4 is started");
+    Console.WriteLine("Task 4 is completed");
+
+  }
+}
+
+// fetch data example
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program
+{
+  static async Task Main(string[] args)
+  {
+    await DownloadAndProcessDataAsync();
+    Console.WriteLine("Data processing completed.");
+  }
+
+
+  static async Task DownloadAndProcessDataAsync()
+  {
+    using var httpClient = new HttpClient();
+    var response = await httpClient.GetStringAsync("https://jsonplaceholder.typicode.com/posts/1");
+    Console.WriteLine(response);
+  }
+
+}
+
+// Another data fetching example
+using System;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
+
+// Define a class that matches the structure of the JSON data
+public class Todo
+{
+    public int UserId { get; set; }
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public bool Completed { get; set; }
+}
+
+class Program
+{
+    // Fetch and display data as a structured object
+    public static async Task FetchData()
+    {
+        using var httpRequest = new HttpClient();
+
+        // Fetch and deserialize the JSON data into a Todo object
+        var todo = await httpRequest.GetFromJsonAsync<Todo>("https://jsonplaceholder.typicode.com/todos/1");
+
+        // Display the fetched data
+        if (todo != null)
+        {
+            Console.WriteLine($"UserId: {todo.UserId}");
+            Console.WriteLine($"Id: {todo.Id}");
+            Console.WriteLine($"Title: {todo.Title}");
+            Console.WriteLine($"Completed: {todo.Completed}");
+        }
+        else
+        {
+            Console.WriteLine("Failed to fetch the data.");
+        }
+    }
+
+    public static async Task Main(string[] args)
+    {
+        Console.WriteLine("Task 1 is started");
+        Console.WriteLine("Task 1 is Completed");
+
+        // Fetch JSON data asynchronously
+        await FetchData();
+
+        Console.WriteLine("Task 4 is started");
+        Console.WriteLine("Task 4 is completed");
+    }
+}
+
+```
+
 - **Task vs Thread:** While both are used for concurrent and parallel programming, tasks provide a higher-level abstraction for asynchronous operations and simplify error handling and composition. On the other hand, threads offer more low-level control but require manual management of synchronization.
 
 ```csharp
@@ -9042,7 +9652,7 @@ class Program
   static async Task DownloadAndProcessDataAsync()
   {
       // Create an instance of HttpClient
-      var httpClient = new HttpClient();
+     // var httpClient = new HttpClient();
 
       // You can create an instance of HttpClient without using the using statement. The using statement is used to ensure that the HttpClient instance is properly disposed of after it's no longer needed, particularly when dealing with resources that need to be cleaned up, such as network connections.
       // Create an instance of HttpClient using the using statement
