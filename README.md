@@ -4384,8 +4384,7 @@ This assignment provides a practical and engaging way for students to practice c
 
 ### OOP 1: Encapsulation
 
-- Encapsulate -> group (members in a class) and protect (access modifiers for the class members).
-- encapsulation is the idea of "surrounding" an entity, not just to keep what's inside together, but also to protect it. hiding from outside using private.
+- Encapsulate -> Encapsulation is the bundling of data and methods that operate on that data within a single unit, or class, and restricting access to some of the object's components. This helps in data hiding and keeps the internal state safe from unintended modifications.
 - benefits of encapsulation
   - You can control access or modification of the data.
   - You can make the code more flexible and easy to change with new requirements.
@@ -6187,6 +6186,91 @@ In both versions, we have a `ProductCatalog` class managing a collection of `Pro
 
 ### OOP 2: Inheritance
 
+Inheritance is a fundamental concept of Object-Oriented Programming (OOP) in C# that allows a class (called the derived or child class) to inherit the properties, methods, fields, and behaviors of another class (called the base or parent class). This concept models real-world relationships between objects and allows you to create hierarchical classifications.
+
+Key Points about Inheritance:
+
+- Inheritance promotes code reusability, allowing you to build upon existing classes without rewriting code.
+- It establishes a parent-child relationship where the child class can extend or modify the functionality of the parent class.
+- Inheritance supports the DRY principle (Don't Repeat Yourself) by reducing code duplication.
+
+#### Inheritance Example 1
+
+```csharp
+class Person
+{
+  private string name;
+  private int age;
+
+  public string Name { get { return name; } set { name = value; } }
+
+  public int Age { get { return age; } set { age = value; } }
+  public Person(string name, int age)
+  {
+    Name = name;
+    Age = age;
+  }
+  public void DisplayInfo1()
+  {
+    Console.WriteLine($"Name: {Name}");
+    Console.WriteLine($"Age: {Age}");
+  }
+}
+
+class Student : Person
+{
+  private string studentId;
+  public string StudentId { get { return studentId; } set { studentId = value; } }
+
+  public Student(string name, int age, string studentId) : base(name, age)
+  {
+    StudentId = studentId;
+  }
+
+  // Person: DisplayInfo
+  public void DisplayInfo2()
+  {
+    base.DisplayInfo1();
+    Console.WriteLine($"StudentId: {StudentId}");
+  }
+}
+
+class Teacher : Person
+{
+  private string subject;
+  public string Subject { get { return subject; } set { subject = value; } }
+
+  public Teacher(string name, int age, string subject) : base(name, age)
+  {
+    Subject = subject;
+  }
+
+  // Person DisplayInfo()
+  public void DisplayInfo3()
+  {
+    base.DisplayInfo1();
+    Console.WriteLine($"Subject: {Subject}");
+  }
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Person person = new Person("Anisul Islam", 34);
+    person.DisplayInfo1();
+
+    Student student = new Student("Albert", 23, "1301");
+    student.DisplayInfo2();
+
+    Teacher teacher = new Teacher("Ayat", 32, "English");
+    teacher.DisplayInfo3();
+  }
+}
+```
+
+#### Inheritance in  Bank Example
+
 - without inheritance
 
 ```csharp
@@ -6313,7 +6397,433 @@ class Test
 }
 ```
 
+#### Types of Inheritance
+
+![alt text](image-7.png)
+
+In C#, inheritance is a fundamental concept of Object-Oriented Programming (OOP) that allows one class to inherit the properties, methods, and behaviors of another class. Inheritance promotes code reusability and hierarchical classification. Below are the types of inheritance in C#, along with brief explanations and examples:
+
+1. **Single Inheritance**
+2. **Multiple Inheritance (via Interfaces)**
+3. **Multilevel Inheritance**
+4. **Hierarchical Inheritance**
+5. **Hybrid Inheritance**
+
+##### **1. Single Inheritance**
+
+**Definition**: Single inheritance occurs when a class inherits from one and only one base class. This is the simplest and most common form of inheritance.
+
+**Example**:
+
+```csharp
+// Base class
+class Animal
+{
+    public void Eat()
+    {
+        Console.WriteLine("Eating...");
+    }
+}
+
+// Derived class
+class Dog : Animal
+{
+    public void Bark()
+    {
+        Console.WriteLine("Barking...");
+    }
+}
+
+class Program
+{
+    public static void Main()
+    {
+        Dog dog = new Dog();
+        dog.Eat();  // Inherited from Animal
+        dog.Bark(); // Specific to Dog
+    }
+}
+```
+
+**Explanation**: In this example, the `Dog` class inherits from the `Animal` class, allowing it to use the `Eat` method defined in `Animal`.
+
+##### **2. Multiple Inheritance (via Interfaces)**
+
+**Definition**: C# does not support multiple inheritance directly, meaning a class cannot inherit from more than one class. However, it can implement multiple interfaces, effectively achieving multiple inheritance.
+
+**Example**:
+
+```csharp
+// Interface 1
+interface IFly
+{
+    void Fly();
+}
+
+// Interface 2
+interface ISwim
+{
+    void Swim();
+}
+
+// Class implementing multiple interfaces
+class Duck : IFly, ISwim
+{
+    public void Fly()
+    {
+        Console.WriteLine("Flying...");
+    }
+
+    public void Swim()
+    {
+        Console.WriteLine("Swimming...");
+    }
+}
+
+class Program
+{
+    public static void Main()
+    {
+        Duck duck = new Duck();
+        duck.Fly();
+        duck.Swim();
+    }
+}
+```
+
+**Explanation**: The `Duck` class implements both `IFly` and `ISwim` interfaces, allowing it to have methods from both without direct multiple class inheritance.
+
+##### **3. Multilevel Inheritance**
+
+**Definition**: Multilevel inheritance involves a class inheriting from another derived class, forming a chain of inheritance levels.
+
+**Example**:
+
+```csharp
+// Base class
+class Person
+{
+    public void Walk()
+    {
+        Console.WriteLine("Walking...");
+    }
+}
+
+// Derived class inheriting from Person
+class Employee : Person
+{
+    public void Work()
+    {
+        Console.WriteLine("Working...");
+    }
+}
+
+// Further derived class inheriting from Employee
+class Manager : Employee
+{
+    public void Manage()
+    {
+        Console.WriteLine("Managing...");
+    }
+}
+
+class Program
+{
+    public static void Main()
+    {
+        Manager manager = new Manager();
+        manager.Walk();  // Inherited from Person
+        manager.Work();  // Inherited from Employee
+        manager.Manage(); // Specific to Manager
+    }
+}
+```
+
+**Explanation**: The `Manager` class inherits from `Employee`, which in turn inherits from `Person`, forming a multilevel inheritance hierarchy.
+
+##### **4. Hierarchical Inheritance**
+
+**Definition**: Hierarchical inheritance occurs when multiple classes inherit from a single base class.
+
+**Example**:
+
+```csharp
+// Base class
+class Vehicle
+{
+    public void Start()
+    {
+        Console.WriteLine("Vehicle starting...");
+    }
+}
+
+// Derived class 1
+class Car : Vehicle
+{
+    public void Drive()
+    {
+        Console.WriteLine("Driving a car...");
+    }
+}
+
+// Derived class 2
+class Bike : Vehicle
+{
+    public void Ride()
+    {
+        Console.WriteLine("Riding a bike...");
+    }
+}
+
+class Program
+{
+    public static void Main()
+    {
+        Car car = new Car();
+        car.Start();
+        car.Drive();
+
+        Bike bike = new Bike();
+        bike.Start();
+        bike.Ride();
+    }
+}
+```
+
+**Explanation**: In this example, both `Car` and `Bike` classes inherit from the `Vehicle` class, making the inheritance hierarchical.
+
+##### **5. Hybrid Inheritance**
+
+**Definition**: Hybrid inheritance is a combination of two or more types of inheritance. However, C# does not directly support multiple inheritance with classes but can achieve hybrid inheritance through interfaces.
+
+**Example**:
+
+```csharp
+// Base class
+class Animal
+{
+    public void Eat()
+    {
+        Console.WriteLine("Eating...");
+    }
+}
+
+// Interface
+interface IRun
+{
+    void Run();
+}
+
+// Derived class implementing an interface and inheriting from a class
+class Cat : Animal, IRun
+{
+    public void Meow()
+    {
+        Console.WriteLine("Meowing...");
+    }
+
+    public void Run()
+    {
+        Console.WriteLine("Running...");
+    }
+}
+
+class Program
+{
+    public static void Main()
+    {
+        Cat cat = new Cat();
+        cat.Eat();  // Inherited from Animal
+        cat.Meow(); // Specific to Cat
+        cat.Run();  // From IRun interface
+    }
+}
+```
+
+**Explanation**: The `Cat` class inherits from the `Animal` class and implements the `IRun` interface, demonstrating a hybrid of inheritance types.
+
+##### **Summary of Inheritance Types:**
+
+- **Single Inheritance**: One class inherits from another class.
+- **Multiple Inheritance (via Interfaces)**: A class implements multiple interfaces (since direct multiple class inheritance is not supported).
+- **Multilevel Inheritance**: A class is derived from another derived class, creating a chain.
+- **Hierarchical Inheritance**: Multiple classes inherit from a single base class.
+- **Hybrid Inheritance**: A combination of inheritance types, often using interfaces to achieve complex inheritance structures.
+
+These types of inheritance help in designing flexible, reusable, and organized code in C#.
+
 ### OOP 3: Polymorphism
+
+#### **Polymorphism in C#: An Overview**
+
+Polymorphism is one of the core principles of Object-Oriented Programming (OOP) in C#. It allows objects of different classes to be treated as objects of a common base class, enabling a single function, method, or property to operate in multiple ways depending on the object that invokes it. The term "polymorphism" literally means "many forms."
+
+#### **Types of Polymorphism in C#:**
+
+1. **Compile-Time Polymorphism (Static Binding):**
+   - Achieved through method overloading and operator overloading.
+   - The decision about which method to call is made at compile time.
+
+2. **Run-Time Polymorphism (Dynamic Binding):**
+   - Achieved through method overriding.
+   - The decision about which method to call is made at runtime, based on the actual object type.
+
+#### **Why Use Polymorphism?**
+
+1. **Flexibility and Extensibility**: Polymorphism allows you to design a more flexible and easily extendable system, enabling you to add new classes and behaviors with minimal changes to existing code.
+
+2. **Code Reusability**: Polymorphism promotes code reuse by allowing a single method or property to work with different types of objects.
+
+3. **Clean and Manageable Code**: It helps in managing code complexity by providing a clear interface for interacting with different objects.
+
+#### **Example of Polymorphism in C#: Animal, Dog, and Cat**
+
+This example will demonstrate both compile-time and run-time polymorphism in C#. We’ll use a base class `Animal` and derived classes `Dog` and `Cat` to illustrate polymorphism in action.
+
+#### **1. Compile-Time Polymorphism: Method Overloading**
+
+**Method overloading** allows multiple methods with the same name but different parameters within the same class.
+
+```csharp
+using System;
+
+class Calculator
+{
+    // Method Overloading: Different signatures for the same method name
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    public double Add(double a, double b)
+    {
+        return a + b;
+    }
+
+    public int Add(int a, int b, int c)
+    {
+        return a + b + c;
+    }
+}
+
+class Program
+{
+    public static void Main()
+    {
+        Calculator calc = new Calculator();
+        Console.WriteLine(calc.Add(5, 10));        // Calls Add(int, int)
+        Console.WriteLine(calc.Add(5.5, 4.3));     // Calls Add(double, double)
+        Console.WriteLine(calc.Add(1, 2, 3));      // Calls Add(int, int, int)
+    }
+}
+```
+
+**Expected Output:**
+
+```
+15
+9.8
+6
+```
+
+**Explanation**: This demonstrates compile-time polymorphism through method overloading, where the same method name is used with different parameter types or counts.
+
+#### **2. Run-Time Polymorphism: Method Overriding**
+
+**Method overriding** allows a derived class to provide a specific implementation of a method that is already defined in its base class.
+
+#### **Example: Using Polymorphism with Animal, Dog, and Cat**
+
+```csharp
+using System;
+
+// Base class representing an Animal
+class Animal
+{
+    // Virtual method to allow overriding in derived classes
+    public virtual void MakeSound()
+    {
+        Console.WriteLine("The animal makes a sound.");
+    }
+}
+
+// Derived class representing a Dog
+class Dog : Animal
+{
+    // Overriding the base class method
+    public override void MakeSound()
+    {
+        Console.WriteLine("Woof! Woof!");
+    }
+}
+
+// Derived class representing a Cat
+class Cat : Animal
+{
+    // Overriding the base class method
+    public override void MakeSound()
+    {
+        Console.WriteLine("Meow! Meow!");
+    }
+}
+
+class Program
+{
+    public static void Main()
+    {
+        // Polymorphism: Using the base class reference to refer to derived class objects
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+
+        // Calls the overridden methods based on the object type
+        myDog.MakeSound(); // Outputs: Woof! Woof!
+        myCat.MakeSound(); // Outputs: Meow! Meow!
+
+        // Demonstrating polymorphism with an array of Animals
+        Animal[] animals = { new Dog(), new Cat(), new Animal() };
+        foreach (Animal animal in animals)
+        {
+            animal.MakeSound(); // Calls the appropriate method based on the object's type
+        }
+    }
+}
+```
+
+#### **Explanation of the Example:**
+
+1. **Base Class (`Animal`)**:
+   - The `MakeSound()` method is marked as `virtual`, allowing derived classes to override it.
+
+2. **Derived Classes (`Dog` and `Cat`)**:
+   - Both classes override the `MakeSound()` method to provide their specific behavior.
+
+3. **Polymorphic Behavior**:
+   - `Animal myDog = new Dog();` demonstrates polymorphism, where the base class reference (`Animal`) is used to refer to a derived class object (`Dog`).
+   - The correct overridden method is called based on the actual object type, showcasing run-time polymorphism.
+
+#### **Expected Output:**
+
+```
+Woof! Woof!
+Meow! Meow!
+Woof! Woof!
+Meow! Meow!
+The animal makes a sound.
+```
+
+#### **Key Benefits of Polymorphism:**
+
+1. **Code Flexibility**: Polymorphism allows you to create flexible systems where new object types can be easily introduced without modifying existing code.
+
+2. **Unified Interfaces**: It provides a unified way to interact with different object types, making the code simpler and cleaner.
+
+3. **Extensibility**: With polymorphism, you can extend existing code by adding new derived classes, making the system adaptable and scalable.
+
+4. **Reduced Complexity**: It simplifies complex systems by allowing common interfaces for different behaviors, improving code readability and maintenance.
+
+Polymorphism is a powerful OOP feature that enhances the design of applications by allowing multiple forms of behaviors under a single interface, making codebases more flexible, maintainable, and scalable.
+
+#### Polymorphism in  Bank Example
 
 ```csharp
 public class BankAccount
@@ -6382,6 +6892,26 @@ public class CurrentAccount : BankAccount
 ```
 
 ### OOP 4: Abstracttion
+
+Abstraction is one of the four fundamental principles of Object-Oriented Programming (OOP) in C#. It is the concept of hiding the complex implementation details of a system and exposing only the essential features to the user. Abstraction allows developers to define the "what" without worrying about the "how."
+
+#### Key Points of Abstraction
+
+- Simplifies Complexity: By exposing only relevant data and hiding unnecessary details, abstraction simplifies the interface for interacting with objects, making code easier to use and understand.
+
+- Enhances Maintainability: Abstraction helps in managing changes in the code since internal changes to the implementation do not affect the external interface.
+
+- Supports Reusability: Abstract classes and interfaces promote code reusability by defining common methods and properties that can be implemented differently by derived classes.
+
+- Focus on What to Do: Abstraction focuses on what an object does rather than how it does it, allowing different implementations to be used interchangeably.
+
+#### How to Achieve Abstraction
+
+- Abstract Classes: An abstract class cannot be instantiated and can contain abstract methods (without implementation) as well as concrete methods (with implementation). Derived classes must implement the abstract methods.
+
+- Interfaces: An interface defines a contract that implementing classes must adhere to, specifying methods and properties without any implementation details. All methods in an interface are implicitly abstract.
+
+#### Asbtraction in Bank Example
 
 ```csharp
 public abstract class BankAccount
@@ -6463,6 +6993,286 @@ public class CurrentAccount : BankAccount
   }
 }
 ```
+
+#### Assignment: Vehicle Management System Using the Four Pillars of OOP in C#**
+
+**Objective:** This assignment will help students practice the four main principles of Object-Oriented Programming (OOP) — **Encapsulation**, **Abstraction**, **Inheritance**, and **Polymorphism** — in C#. Students will create a simple Vehicle Management System that manages different types of vehicles (Car, Bike, Truck), demonstrating each pillar of OOP.
+
+##### **Assignment Instructions**
+
+1. **Create an Abstract Base Class (`Vehicle`)**:
+   - This class will serve as the base class for all types of vehicles in the system.
+   - Define the following properties: `Model`, `Year`, `FuelType`.
+   - Include an abstract method `DisplayInfo()` that must be implemented by derived classes.
+   - Include a method `Start()` that displays a start message.
+
+2. **Create Derived Classes (`Car`, `Bike`, and `Truck`) Using Inheritance**:
+   - **`Car` Class**:
+     - Inherit from `Vehicle`.
+     - Add a property `NumberOfDoors`.
+     - Implement the `DisplayInfo()` method to display the car’s information.
+   - **`Bike` Class**:
+     - Inherit from `Vehicle`.
+     - Add a property `HasCarrier`.
+     - Implement the `DisplayInfo()` method to display the bike’s information.
+   - **`Truck` Class**:
+     - Inherit from `Vehicle`.
+     - Add a property `LoadCapacity`.
+     - Implement the `DisplayInfo()` method to display the truck’s information.
+
+3. **Encapsulation**:
+   - Use private fields and public properties to encapsulate data within classes.
+   - Implement methods to manage specific behaviors of each vehicle type.
+
+4. **Abstraction**:
+   - Use abstract classes and methods to define common structure and behavior for all vehicles.
+   - Define an interface `IServiceable` that contains methods like `Service()` which will be implemented by all derived classes.
+
+5. **Polymorphism**:
+   - Demonstrate polymorphism by creating a method that accepts `Vehicle` objects and calls the `DisplayInfo()` method.
+   - Show how different vehicle types interact with the system through polymorphic behavior.
+
+6. **Main Program**:
+   - Create instances of `Car`, `Bike`, and `Truck`.
+   - Demonstrate calling their methods, especially focusing on polymorphic behavior.
+
+##### **Expected Output**
+
+Your code should demonstrate the four pillars of OOP by showing how different vehicles interact with the system.
+
+##### **Sample Code Structure:**
+
+Here's a guide to help students get started with their implementation.
+
+```csharp
+using System;
+
+// Abstract class demonstrating Abstraction
+abstract class Vehicle
+{
+    // Encapsulation with private fields and public properties
+    private string model;
+    private int year;
+    private string fuelType;
+
+    public string Model
+    {
+        get { return model; }
+        set { model = value; }
+    }
+
+    public int Year
+    {
+        get { return year; }
+        set { year = value; }
+    }
+
+    public string FuelType
+    {
+        get { return fuelType; }
+        set { fuelType = value; }
+    }
+
+    // Constructor
+    public Vehicle(string model, int year, string fuelType)
+    {
+        this.model = model;
+        this.year = year;
+        this.fuelType = fuelType;
+    }
+
+    // Abstract method to be implemented by derived classes
+    public abstract void DisplayInfo();
+
+    // Non-abstract method demonstrating common functionality
+    public void Start()
+    {
+        Console.WriteLine($"{model} is starting.");
+    }
+}
+
+// Interface demonstrating Abstraction
+interface IServiceable
+{
+    void Service();
+}
+
+// Derived class demonstrating Inheritance
+class Car : Vehicle, IServiceable
+{
+    private int numberOfDoors;
+
+    public int NumberOfDoors
+    {
+        get { return numberOfDoors; }
+        set { numberOfDoors = value; }
+    }
+
+    // Constructor for Car class
+    public Car(string model, int year, string fuelType, int numberOfDoors)
+        : base(model, year, fuelType)
+    {
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    // Implementing the abstract method
+    public override void DisplayInfo()
+    {
+        Console.WriteLine($"Car Model: {Model}, Year: {Year}, Fuel Type: {FuelType}, Doors: {NumberOfDoors}");
+    }
+
+    // Implementing the Service method from IServiceable interface
+    public void Service()
+    {
+        Console.WriteLine($"{Model} car is being serviced.");
+    }
+}
+
+// Derived class demonstrating Inheritance
+class Bike : Vehicle, IServiceable
+{
+    private bool hasCarrier;
+
+    public bool HasCarrier
+    {
+        get { return hasCarrier; }
+        set { hasCarrier = value; }
+    }
+
+    // Constructor for Bike class
+    public Bike(string model, int year, string fuelType, bool hasCarrier)
+        : base(model, year, fuelType)
+    {
+        this.hasCarrier = hasCarrier;
+    }
+
+    // Implementing the abstract method
+    public override void DisplayInfo()
+    {
+        Console.WriteLine($"Bike Model: {Model}, Year: {Year}, Fuel Type: {FuelType}, Carrier: {(HasCarrier ? "Yes" : "No")}");
+    }
+
+    // Implementing the Service method from IServiceable interface
+    public void Service()
+    {
+        Console.WriteLine($"{Model} bike is being serviced.");
+    }
+}
+
+// Derived class demonstrating Inheritance
+class Truck : Vehicle, IServiceable
+{
+    private double loadCapacity;
+
+    public double LoadCapacity
+    {
+        get { return loadCapacity; }
+        set { loadCapacity = value; }
+    }
+
+    // Constructor for Truck class
+    public Truck(string model, int year, string fuelType, double loadCapacity)
+        : base(model, year, fuelType)
+    {
+        this.loadCapacity = loadCapacity;
+    }
+
+    // Implementing the abstract method
+    public override void DisplayInfo()
+    {
+        Console.WriteLine($"Truck Model: {Model}, Year: {Year}, Fuel Type: {FuelType}, Load Capacity: {LoadCapacity} tons");
+    }
+
+    // Implementing the Service method from IServiceable interface
+    public void Service()
+    {
+        Console.WriteLine($"{Model} truck is being serviced.");
+    }
+}
+
+// Main program demonstrating Polymorphism
+class Program
+{
+    public static void Main()
+    {
+        // Create instances of Car, Bike, and Truck
+        Vehicle myCar = new Car("Toyota Corolla", 2022, "Petrol", 4);
+        Vehicle myBike = new Bike("Yamaha", 2020, "Petrol", true);
+        Vehicle myTruck = new Truck("Volvo", 2021, "Diesel", 15.5);
+
+        // Demonstrate polymorphism by calling methods on the abstract type
+        myCar.Start();
+        myCar.DisplayInfo();
+
+        Console.WriteLine();
+
+        myBike.Start();
+        myBike.DisplayInfo();
+
+        Console.WriteLine();
+
+        myTruck.Start();
+        myTruck.DisplayInfo();
+
+        Console.WriteLine();
+
+        // Using an array of Vehicle objects to demonstrate polymorphism
+        Vehicle[] vehicles = { myCar, myBike, myTruck };
+        foreach (Vehicle vehicle in vehicles)
+        {
+            vehicle.DisplayInfo();
+            ((IServiceable)vehicle).Service(); // Casting to IServiceable to call Service method
+        }
+    }
+}
+```
+
+##### **Key Concepts Demonstrated in the Assignment:**
+
+1. **Encapsulation**:
+   - Fields such as `model`, `year`, `fuelType`, `numberOfDoors`, `hasCarrier`, and `loadCapacity` are encapsulated within their respective classes.
+
+2. **Abstraction**:
+   - The `Vehicle` class is abstract, defining a contract for common behavior without specifying the implementation.
+   - The `IServiceable` interface abstracts the service action that all vehicles must provide.
+
+3. **Inheritance**:
+   - `Car`, `Bike`, and `Truck` inherit from `Vehicle`, reusing base class functionality and adding specific features.
+
+4. **Polymorphism**:
+   - The overridden `DisplayInfo()` method demonstrates different outputs based on the object type (Car, Bike, Truck).
+   - The `Start()` method shows shared behavior among all vehicles.
+
+##### **Expected Output:**
+
+```
+Toyota Corolla is starting.
+Car Model: Toyota Corolla, Year: 2022, Fuel Type: Petrol, Doors: 4
+
+Yamaha is starting.
+Bike Model: Yamaha, Year: 2020, Fuel Type: Petrol, Carrier: Yes
+
+Volvo is starting.
+Truck Model: Volvo, Year: 2021, Fuel Type: Diesel, Load Capacity: 15.5 tons
+
+Car Model: Toyota Corolla, Year: 2022, Fuel Type: Petrol, Doors: 4
+Toyota Corolla car is being serviced.
+Bike Model: Yamaha, Year: 2020, Fuel Type: Petrol, Carrier: Yes
+Yamaha bike is being serviced.
+Truck Model: Volvo, Year: 2021, Fuel Type: Diesel, Load Capacity: 15.5 tons
+Volvo truck is being serviced.
+```
+
+##### **Summary of the Assignment:**
+
+This assignment helps students practice and understand the four pillars of OOP in C#:
+
+- **Encapsulation** keeps data within classes secure and manageable.
+- **Abstraction** hides complex implementation details while providing essential interfaces.
+- **Inheritance** allows new classes to reuse and extend existing class functionality.
+- **Polymorphism** enables flexible and dynamic method invocation based on object types.
+
+This practical approach helps students learn how these OOP concepts work together in a cohesive and real-world application scenario.
 
 ### OOP 5: Interface
 
