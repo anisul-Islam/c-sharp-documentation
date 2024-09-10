@@ -18,19 +18,27 @@
       - [Logical Operators](#logical-operators)
       - [Bitwise Operators](#bitwise-operators)
       - [Unary Operators](#increment-and-decrement-operators)
-      - [Final Assignment for Operators](#final-assignment-for-operators)
    - [3. Control Statement](#basic-3-control-statement)  
-      - [Conditional Control Statement](#31-conditional-control-statement)  
+      - [Conditional Control Statement](#31-conditional-control-statement)
       - [Loop Control Statement](#32-loop-control-statement)  
-   - [4. Methods](#basic-4-methods--function)  
+   - [4. Methods](#basic-4-methods--function)
+   - [5. Exception Handling](#basic-5-exception-handling)
+   - [6. Projects]
+      - [Project 1: Unit Converter App](#61-unit-converter-app-project)
+      - [Project 2: Unit Converter App](#61-unit-converter-app-project)
 
 2. [Intermediate C]
-   - [Intermediate 1. OOP](#intermediate-1-oop)
+   - [1. OOP](#intermediate-1-oop)
       - [Class and Object](#classes-and-objects)
       - [Constructor](#constructor)
       - [readonly, static vs non-static member](#readonly-static-vs-non-static-member)
       - [Assignment for oop part-1](#assignment-for-oop-part-1)
-      - [OOP 1: Encapsulation](#oop-1-encapsulation)
+      - [4 Pillars of OOP: Encapsulation](#4-pillars-of-oop-encapsulation)
+      - [4 Pillars of OOP: Inheritance](#4-pillars-of-oop-inheritance)
+      - [4 Pillars of OOP: Polymprphism](#4-pillars-of-oop-polymorphism)
+      - [4 Pillars of OOP: Abstraction](#4-pillars-of-oop-abstracttion)
+      - [Interface and Why Interface?](#interface-and-why-interface)
+      - [Interface and Why Interface?](#interface-and-why-interface)
    - [Intermediate 2. Collections, Generics, LINQ](#intermediate-2-collections-generics-linq)
 3. [3. Advanced C](#basic-c)
    - []()
@@ -1192,30 +1200,6 @@ Bitwise operators are commonly used in scenarios where individual bits represent
   ```
 
   This is a concise way to express an `if-else` statement.
-
-### Final Assignment for Operators
-
-- Unit Converter Using Operators in C#**
-
-**Objective:** This assignment will help you practice using operators and data type conversion in a real-life scenario. You will create a simple unit converter that allows users to convert between different units of measurement (e.g., kilometers to miles, Celsius to Fahrenheit) using arithmetic operators.
-
-#### **Instructions:**
-
-1. **Create a C# Console Application.**
-
-2. **Implement Unit Conversion Calculations:**
-   - Convert between kilometers and miles.
-   - Convert between Celsius and Fahrenheit.
-   - Convert between kilograms and pounds.
-
-3. **Use Arithmetic Operators for Conversions:**
-   - Use multiplication, division, and addition operators to perform the conversions.
-
-4. **Prompt the User for Input:**
-   - Ask the user to enter the value.
-
-5. **Display the Conversion Result:**
-   - Show the user the converted value.
 
 ## Basic 3. Control Statement
 
@@ -2532,7 +2516,7 @@ class Test
 
 ```
 
-### Switch statement + Enum
+#### Switch statement + Enum
 
 ```csharp
 // day as a string => monday
@@ -2587,135 +2571,6 @@ class Test
 
   }
 }
-```
-
-### Final Assignment for if-else
-
-- Unit Converter Using Operators in C#**
-
-**Objective:** This assignment will help you practice using operators and data type conversion in a real-life scenario. You will create a simple unit converter that allows users to convert between different units of measurement (e.g., kilometers to miles, Celsius to Fahrenheit) using arithmetic operators.
-
-#### **Instructions 2:**
-
-1. **Create a C# Console Application.**
-
-2. **Implement Unit Conversion Calculations:**
-   - Convert between kilometers and miles.
-   - Convert between Celsius and Fahrenheit.
-   - Convert between kilograms and pounds.
-
-3. **Use Arithmetic Operators for Conversions:**
-   - Use multiplication, division, and addition operators to perform the conversions.
-
-4. **Prompt the User for Input:**
-   - Ask the user to enter the value and the type of conversion they want to perform.
-
-5. **Display the Conversion Result:**
-   - Show the user the converted value.
-
-#### **Sample Code:**
-
-Here's an implementation of the assignment:
-
-```csharp
-using System;
-
-class UnitConverter
-{
-    public static void Main()
-    {
-        Console.WriteLine("Welcome to the Unit Converter!");
-
-        // Prompt the user to enter the value and the type of conversion
-        Console.WriteLine("\nAvailable Conversions:");
-        Console.WriteLine("1. Kilometers to Miles");
-        Console.WriteLine("2. Miles to Kilometers");
-        Console.WriteLine("3. Celsius to Fahrenheit");
-        Console.WriteLine("4. Fahrenheit to Celsius");
-        Console.WriteLine("5. Kilograms to Pounds");
-        Console.WriteLine("6. Pounds to Kilograms");
-
-        Console.Write("\nEnter the number corresponding to the conversion you want to perform: ");
-        string conversionType = Console.ReadLine();
-
-        // Prompt the user to enter the value to convert
-        Console.Write("Enter the value you want to convert: ");
-        string inputValue = Console.ReadLine();
-
-        // Convert the input value to double
-        double value = Convert.ToDouble(inputValue);
-
-        // Perform conversions using operators
-        double convertedValue = 0;
-
-        if (conversionType == "1") // Kilometers to Miles
-        {
-            convertedValue = value * 0.621371; // 1 kilometer = 0.621371 miles
-            Console.WriteLine($"{value} kilometers is equal to {convertedValue} miles.");
-        }
-        else if (conversionType == "2") // Miles to Kilometers
-        {
-            convertedValue = value / 0.621371; // 1 mile = 1.60934 kilometers
-            Console.WriteLine($"{value} miles is equal to {convertedValue} kilometers.");
-        }
-        else if (conversionType == "3") // Celsius to Fahrenheit
-        {
-            convertedValue = (value * 9 / 5) + 32; // Celsius to Fahrenheit formula
-            Console.WriteLine($"{value} degrees Celsius is equal to {convertedValue} degrees Fahrenheit.");
-        }
-        else if (conversionType == "4") // Fahrenheit to Celsius
-        {
-            convertedValue = (value - 32) * 5 / 9; // Fahrenheit to Celsius formula
-            Console.WriteLine($"{value} degrees Fahrenheit is equal to {convertedValue} degrees Celsius.");
-        }
-        else if (conversionType == "5") // Kilograms to Pounds
-        {
-            convertedValue = value * 2.20462; // 1 kilogram = 2.20462 pounds
-            Console.WriteLine($"{value} kilograms is equal to {convertedValue} pounds.");
-        }
-        else if (conversionType == "6") // Pounds to Kilograms
-        {
-            convertedValue = value / 2.20462; // 1 pound = 0.453592 kilograms
-            Console.WriteLine($"{value} pounds is equal to {convertedValue} kilograms.");
-        }
-        else
-        {
-            Console.WriteLine("Invalid selection. Please run the program again.");
-        }
-    }
-}
-```
-
-#### **Key Concepts Covered:**
-
-1. **Operators:**
-   - Use of arithmetic operators (`*`, `/`, `+`, `-`) for performing conversions.
-
-2. **Data Type Conversion:**
-   - Converting user input from `string` to `double` using `Convert.ToDouble()`.
-
-3. **User Input Handling:**
-   - Using `Console.ReadLine()` to capture user input for the value and conversion type.
-
-4. **Real-Life Application:**
-   - The example demonstrates real-world scenarios like converting distances, temperatures, and weights, showcasing how operators are used in everyday calculations.
-
-#### **Expected Output:**
-
-```
-Welcome to the Unit Converter!
-
-Available Conversions:
-1. Kilometers to Miles
-2. Miles to Kilometers
-3. Celsius to Fahrenheit
-4. Fahrenheit to Celsius
-5. Kilograms to Pounds
-6. Pounds to Kilograms
-
-Enter the number corresponding to the conversion you want to perform: 1
-Enter the value you want to convert: 10
-10 kilometers is equal to 6.21371 miles.
 ```
 
 ### 3.2 Loop control statement
@@ -2949,7 +2804,7 @@ class Test
 // 5 X 10 = 50
 ```
 
-### Input Validation part-2
+### 3.3 Input Validation part-2
 
 ```csharp
 public class MyClass
@@ -3129,7 +2984,7 @@ class Program
 
 Choose the method that best suits your requirements for email validation in your C# application.
 
-### Final Assignment: Calculator program
+### 3.4 Final Assignment: Calculator program
 
 - Basic Calculator with User Input, Operators, and Data Type Conversion in C#**
 
@@ -3159,8 +3014,6 @@ Choose the method that best suits your requirements for email validation in your
    - Display error messages for invalid inputs, such as non-numeric values or division by zero.
 
 #### **Sample Code:**
-
-Here’s a sample implementation of the assignment:
 
 ```csharp
 using System;
@@ -3314,8 +3167,6 @@ public class MyClass
 
 ### Assignment 11: create a calculator using function
 
-Certainly! Here's a simple project idea for practicing methods in C#: a basic calculator application.
-
 **Calculator Project:**
 
 **Requirements:**
@@ -3432,178 +3283,857 @@ This simple calculator project allows students to practice creating a class with
 
 ### Assignment 12: create an area calculator - triangle, rectangle
 
-### Project 4 - Converter Project
+## Basic 5. Exception Handling
 
-Certainly! Here's a simple C# console application for a converter that converts between units. In this example, let's create a basic length converter:
+    ```csharp
+      Console.Write("Enter a number: ");
+        int num = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine(num);
+    ```
 
-```csharp
-using System;
+    Exception handling in C# allows you to manage runtime errors gracefully by catching and handling exceptional conditions that might occur during program execution. This prevents your program from crashing and provides a mechanism to respond to errors in a controlled manner. Here's an overview of exception handling in C#:
 
-class Program
-{
-    static void Main()
+    1. **Try-Catch Block**: The basic structure for handling exceptions is the `try-catch` block. Code that might raise an exception is enclosed within the `try` block, and any potential exceptions are caught and handled in the `catch` block.
+
+      ```csharp
+      try
+      {
+          // Code that might throw an exception
+      }
+      catch (ExceptionType ex)
+      {
+          // Handle the exception
+          // ex.Message
+      }
+      ```
+
+    2. **Exception Types**: You can catch specific types of exceptions by specifying the exception type in the `catch` block. This allows you to handle different types of exceptions differently.
+
+      ```csharp
+      try
+      {
+          // Code that might throw an exception
+      }
+      catch (DivideByZeroException ex)
+      {
+          // Handle divide by zero exception
+      }
+      catch (ArgumentException ex)
+      {
+          // Handle argument exception
+      }
+      catch (Exception ex) // Catch-all for other exceptions
+      {
+          // Handle other exceptions
+      }
+      ```
+
+    3. **Finally Block**: You can optionally include a `finally` block after the `catch` block. Code in the `finally` block is executed whether an exception occurs or not. This block is commonly used for cleanup tasks such as closing resources.
+
+      ```csharp
+      try
+      {
+          // Code that might throw an exception
+      }
+      catch (Exception ex)
+      {
+          // Handle the exception
+      }
+      finally
+      {
+          // Cleanup code
+      }
+      ```
+
+    4. **Throwing Exceptions**: You can explicitly throw exceptions using the `throw` keyword. This is useful for indicating errors or exceptional conditions within your code.
+
+      ```csharp
+      if (condition)
+      {
+          throw new Exception("An error occurred.");
+      }
+      ```
+
+    5. **Custom Exceptions**: You can define your own exception types by creating classes that derive from `Exception`. This allows you to create custom exception types tailored to your application's needs.
+
+      ```csharp
+      public class CustomException : Exception
+      {
+          public CustomException(string message) : base(message)
+          {
+          }
+      }
+      ```
+
+    6. **Exception Handling Best Practices**:
+      - Catch specific exceptions rather than using a generic `catch (Exception ex)` block.
+      - Provide meaningful error messages or log information when handling exceptions.
+      - Use exception handling judiciously and avoid catching exceptions that you cannot handle properly.
+
+    #### Example 1
+
+    ```csharp
+    using System;
+
+    class Program
     {
-        while (true)
+        static void Main()
         {
-            Console.WriteLine("Unit Converter");
-            Console.WriteLine("1. Convert Inches to Centimeters");
-            Console.WriteLine("2. Convert Centimeters to Inches");
-            Console.WriteLine("3. Exit");
-
-            Console.Write("Choose an operation (1-3): ");
-            string choice = Console.ReadLine();
-
-            if (int.TryParse(choice, out int operation) && operation >= 1 && operation <= 3)
+            try
             {
-                if (operation == 3)
-                {
-                    Console.WriteLine("Exiting the unit converter. Goodbye!");
-                    break;
-                }
+                // 1. DivideByZeroException
+                int a = 10;
+                int b = 0;
+                int result = a / b;
+                Console.WriteLine("Result: " + result);
 
-                switch (operation)
-                {
-                    case 1:
-                        Console.Write("Enter length in inches: ");
-                        if (double.TryParse(Console.ReadLine(), out double inches))
-                        {
-                            double centimeters = InchesToCentimeters(inches);
-                            Console.WriteLine($"{inches} inches is equal to {centimeters} centimeters.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid input for inches.");
-                        }
-                        break;
-                    case 2:
-                        Console.Write("Enter length in centimeters: ");
-                        if (double.TryParse(Console.ReadLine(), out double centimeters))
-                        {
-                            double inches = CentimetersToInches(centimeters);
-                            Console.WriteLine($"{centimeters} centimeters is equal to {inches} inches.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid input for centimeters.");
-                        }
-                        break;
-                }
+                // 2. FormatException
+                string input = "abc";
+                int number = int.Parse(input);
+                Console.WriteLine("Parsed number: " + number);
+
+                // 3. NullReferenceException
+                string str = null;
+                int length = str.Length;
+                Console.WriteLine("Length: " + length);
+
+                // 4. IndexOutOfRangeException
+                int[] numbers = { 1, 2, 3 };
+                int value = numbers[5];
+                Console.WriteLine("Value: " + value);
+
+                // 5. OverflowException
+                int max = int.MaxValue;
+                int overflowResult = checked(max + 1);
+                Console.WriteLine("Overflow result: " + overflowResult);
             }
-            else
+            catch (DivideByZeroException ex)
             {
-                Console.WriteLine("Invalid choice. Please enter a number between 1 and 3.");
+                Console.WriteLine("Error: Attempted to divide by zero.");
             }
-
-            Console.WriteLine();
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Error: Invalid format. Cannot parse input as a number.");
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine("Error: Null reference encountered.");
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("Error: Index out of range.");
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("Error: Overflow occurred during arithmetic operation.");
+            }
+            catch (Exception ex) // Generic exception handler
+            {
+                Console.WriteLine("An unexpected error occurred: " + ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("This block always executes, whether an exception is thrown or not.");
+            }
         }
     }
 
-    private static double InchesToCentimeters(double inches)
+    ```
+
+    #### Example 2
+
+    ```csharp
+    public class MyClass
     {
-        return inches * 2.54;
+      public static void Main(string[] args)
+      {
+        Console.WriteLine($"Welcome to the calculator App");
+        try
+        {
+          int num1 = ReadIntegerInput("num1");
+          int num2 = ReadIntegerInput("num2");
+
+          if (num2 > 1000)
+          {
+            throw new ArgumentException("num2 can not be greater than 1000");
+          }
+
+          int result = num1 / num2;
+          Console.WriteLine($"Result: {result}");
+        }
+        catch (Exception e)
+        {
+          Console.WriteLine($"An error occured: {e.Message}");
+        }
+        finally
+        {
+          Console.WriteLine($"Goodbye!!!");
+        }
+
+      }
+
+      static int ReadIntegerInput(string prompt)
+      {
+        while (true)
+        {
+
+          Console.Write($"Enter {prompt} = ");
+          string input = Console.ReadLine() ?? "";
+          if (!int.TryParse(input, out int result) || string.IsNullOrEmpty(input))
+          {
+            Console.WriteLine($"Invalid Input! Please enter a valid integer.");
+            continue;
+          }
+          return result;
+        }
+      }
     }
 
-    private static double CentimetersToInches(double centimeters)
-    {
-        return centimeters / 2.54;
-    }
+    ```
+
+### **Difference Between Handling Errors with `if-else` and `try-catch` in C#**
+
+Error handling is a crucial part of programming, and two common approaches in C# are using `if-else` statements and `try-catch` blocks. Both have their specific use cases, advantages, and limitations. Here's a detailed comparison of the two:
+
+#### **1. `if-else` Error Handling**
+
+**Description:**
+`if-else` statements are used to handle expected or predictable errors by checking conditions before performing actions. They help validate inputs or state before proceeding with an operation.
+
+**Example:**
+
+```csharp
+// Using if-else for input validation
+int number;
+string input = Console.ReadLine();
+
+if (int.TryParse(input, out number))
+{
+    Console.WriteLine($"You entered: {number}");
+}
+else
+{
+    Console.WriteLine("Invalid input, please enter a number.");
 }
 ```
 
-This simple converter allows users to convert lengths between inches and centimeters. Users can choose the desired conversion, enter the length, and get the converted result. Feel free to expand and modify the converter to include other units or functionalities based on your needs.
+**Advantages:**
 
-#### lambda expression in C
+- **Predictable Errors**: `if-else` is ideal for handling predictable scenarios, such as validating user input or checking if a file exists.
+- **Performance**: `if-else` statements are generally more performant than `try-catch` because they avoid the overhead associated with exception handling.
+- **Readability**: Clearly indicates the expected flow and validation checks, making code easier to understand.
+
+**Disadvantages:**
+
+- **Limited Scope**: Only handles errors that are predictable or can be anticipated with conditions.
+- **Code Duplication**: When handling similar errors in multiple places, `if-else` can lead to repetitive code.
+
+#### **2. `try-catch` Error Handling**
+
+**Description:**
+`try-catch` blocks are used to handle exceptions, which are errors that occur at runtime and are not necessarily predictable. They provide a mechanism to catch exceptions and take corrective action, such as logging errors or providing fallback solutions.
+
+**Example:**
+
+```csharp
+// Using try-catch for handling runtime exceptions
+try
+{
+    int number = int.Parse(Console.ReadLine());
+    Console.WriteLine($"You entered: {number}");
+}
+catch (FormatException ex)
+{
+    Console.WriteLine("Invalid input, please enter a number.");
+    // Optionally log the exception or take further action
+}
+```
+
+**Advantages:**
+
+- **Unpredictable Errors**: Handles unexpected or runtime errors, such as file not found, network errors, or invalid data formats.
+- **Centralized Error Handling**: Allows for centralized exception handling, improving code organization and reducing error-handling clutter.
+- **Control Flow**: Prevents the application from crashing by gracefully handling exceptions, maintaining control over program flow.
+
+**Disadvantages:**
+
+- **Performance Overhead**: Handling exceptions with `try-catch` is more resource-intensive compared to `if-else`. The performance cost comes from throwing and catching exceptions, which can be significant if misused.
+- **Misuse for Control Flow**: Using `try-catch` for regular control flow (instead of actual error handling) is considered a bad practice, leading to inefficient and confusing code.
+
+#### **When to Use `if-else` vs. `try-catch`**
+
+1. **Use `if-else` When:**
+   - The error can be predicted or validated easily (e.g., checking if input is valid).
+   - You need to check a condition before proceeding (e.g., checking if a file exists).
+   - Performance is a key concern, and you want to avoid the overhead of exception handling.
+
+2. **Use `try-catch` When:**
+   - The error is unpredictable or beyond your control (e.g., network errors, file I/O issues).
+   - You need to handle errors that could crash the program.
+   - You want to catch multiple types of exceptions and handle them differently.
+   - Error handling needs to be centralized, such as in larger applications or services.
+
+#### **Combined Use of `if-else` and `try-catch`**
+
+In many scenarios, it's effective to use both `if-else` and `try-catch` together. For instance, you can use `if-else` for input validation and `try-catch` to handle runtime exceptions.
+
+**Example Combining Both:**
+
+```csharp
+string input = Console.ReadLine();
+
+if (int.TryParse(input, out int number))
+{
+    try
+    {
+        // Simulate some operation that might fail
+        int result = 10 / number; // Risk of DivideByZeroException
+        Console.WriteLine($"Result: {result}");
+    }
+    catch (DivideByZeroException)
+    {
+        Console.WriteLine("Error: Division by zero is not allowed.");
+    }
+}
+else
+{
+    Console.WriteLine("Invalid input, please enter a valid number.");
+}
+```
+
+#### **Summary**
+
+- **`if-else`**: Best for predictable and manageable errors. It provides clarity and performance benefits but is limited to anticipated conditions.
+- **`try-catch`**: Best for unexpected runtime errors and exceptions. It helps maintain program stability but comes with a performance cost if overused.
+
+Choosing the right approach depends on the nature of the error you expect and the need to balance performance with error management robustness.
+
+## 6. Project
+
+### 6.1 Unit Converter App Project
+
+#### Unit Converter Using Operators**
+
+**Objective:** This assignment will help you practice using operators and data type conversion in a real-life scenario. You will create a simple unit converter that allows users to convert between different units of measurement (e.g., kilometers to miles, Celsius to Fahrenheit) using arithmetic operators.
+
+1. **Create a C# Console Application.**
+
+2. **Implement Unit Conversion Calculations:**
+   - Convert between kilometers and miles.
+   - Convert between Celsius and Fahrenheit.
+   - Convert between kilograms and pounds.
+
+3. **Use Arithmetic Operators for Conversions:**
+   - Use multiplication, division, and addition operators to perform the conversions.
+
+4. **Prompt the User for Input:**
+   - Ask the user to enter the value.
+
+5. **Display the Conversion Result:**
+   - Show the user the converted value.
+
+```csharp
+string? inputValue;
+double value, convertedValue;
+
+Console.WriteLine($"Welcome to the unit converter App");
+Console.WriteLine($"\nAvailable Conversions:");
+
+// Kilometers to Miles
+Console.WriteLine($"1. Kilometers to Miles");
+Console.Write($"Enter the value you want to convert: ");
+inputValue = Console.ReadLine();
+value = Convert.ToDouble(inputValue);
+convertedValue = value * 0.621371;
+Console.WriteLine($"{value} Kilometers = {convertedValue:F2} Miles");
+
+
+// Miles to Kilometers
+Console.WriteLine($"\n\n2. Miles to Kilometers");
+Console.Write($"Enter the value you want to convert: ");
+inputValue = Console.ReadLine();
+value = Convert.ToDouble(inputValue);
+convertedValue = value / 0.621371;
+Console.WriteLine($"{value} Miles = {convertedValue:F2} Kilometers");
+
+
+//Celsius to Fahrenheit
+Console.WriteLine($"\n\n3. Celsius to Fahrenheit.");
+Console.Write($"Enter the value you want to convert: ");
+inputValue = Console.ReadLine();
+value = Convert.ToDouble(inputValue);
+convertedValue = (value * 1.8) + 32;
+Console.WriteLine($"{value} Celsius = {convertedValue:F2} Fahrenheit");
+
+// Fahrenheit to Celsius
+Console.WriteLine($"\n\n4. Fahrenheit to Celsius");
+Console.Write($"Enter the value you want to convert: ");
+inputValue = Console.ReadLine();
+value = Convert.ToDouble(inputValue);
+convertedValue = (value - 32) / 1.8;
+Console.WriteLine($"{value} Fahrenheit = {convertedValue:F2} Celsius");
+
+// kilograms to pounds
+Console.WriteLine($"\n\n5. kilograms to pounds");
+Console.Write($"Enter the value you want to convert: ");
+inputValue = Console.ReadLine();
+value = Convert.ToDouble(inputValue);
+convertedValue = value * 2.20462; // 1 kilogram = 2.20462 pounds
+Console.WriteLine($"{value} kilograms = {convertedValue:F2} Pounds");
+
+// Pounds to kilograms
+Console.WriteLine($"\n\n6. Pounds to kilograms");
+Console.Write($"Enter the value you want to convert: ");
+inputValue = Console.ReadLine();
+value = Convert.ToDouble(inputValue);
+convertedValue = value / 2.20462; // 1 Pound = 0.453592 kilograms
+Console.WriteLine($"{value} Pounds = {convertedValue:F2} kilograms");
+```
+
+#### Unit Converter with if-else
+
+**Objective:** Make decision based on if-else in a program.
+
+##### **Instructions 2:**
+
+1. **Prompt the User for Input:**
+   - Ask the user to enter the option and the type of conversion they want to perform. Then based on the option convert using if-else.
+
+##### **Sample Code 2:**
+
+Here's an implementation of the assignment:
 
 ```csharp
 using System;
 
-class Program
+class UnitConverter
 {
-    static void Main(string[] args)
+    public static void Main()
     {
-        // Lambda expression to add two numbers
-        Func<int, int, int> add = (x, y) => x + y;
+        Console.WriteLine("Welcome to the Unit Converter!");
 
-        // Using the lambda expression to add numbers
-        Console.WriteLine("5 + 3 = " + add(5, 3));  // Output: 8
-        Console.WriteLine("10 + 7 = " + add(10, 7)); // Output: 17
+        // Prompt the user to enter the value and the type of conversion
+        Console.WriteLine("\nAvailable Conversions:");
+        Console.WriteLine("1. Kilometers to Miles");
+        Console.WriteLine("2. Miles to Kilometers");
+        Console.WriteLine("3. Celsius to Fahrenheit");
+        Console.WriteLine("4. Fahrenheit to Celsius");
+        Console.WriteLine("5. Kilograms to Pounds");
+        Console.WriteLine("6. Pounds to Kilograms");
+
+        Console.Write("\nEnter the number corresponding to the conversion you want to perform: ");
+        string conversionType = Console.ReadLine();
+
+        // Prompt the user to enter the value to convert
+        Console.Write("Enter the value you want to convert: ");
+        string inputValue = Console.ReadLine();
+
+        // Convert the input value to double
+        double value = Convert.ToDouble(inputValue);
+
+        // Perform conversions using operators
+        double convertedValue = 0;
+
+        if (conversionType == "1") // Kilometers to Miles
+        {
+            convertedValue = value * 0.621371; // 1 kilometer = 0.621371 miles
+            Console.WriteLine($"{value} kilometers is equal to {convertedValue} miles.");
+        }
+        else if (conversionType == "2") // Miles to Kilometers
+        {
+            convertedValue = value / 0.621371; // 1 mile = 1.60934 kilometers
+            Console.WriteLine($"{value} miles is equal to {convertedValue} kilometers.");
+        }
+        else if (conversionType == "3") // Celsius to Fahrenheit
+        {
+            convertedValue = (value * 9 / 5) + 32; // Celsius to Fahrenheit formula
+            Console.WriteLine($"{value} degrees Celsius is equal to {convertedValue} degrees Fahrenheit.");
+        }
+        else if (conversionType == "4") // Fahrenheit to Celsius
+        {
+            convertedValue = (value - 32) * 5 / 9; // Fahrenheit to Celsius formula
+            Console.WriteLine($"{value} degrees Fahrenheit is equal to {convertedValue} degrees Celsius.");
+        }
+        else if (conversionType == "5") // Kilograms to Pounds
+        {
+            convertedValue = value * 2.20462; // 1 kilogram = 2.20462 pounds
+            Console.WriteLine($"{value} kilograms is equal to {convertedValue} pounds.");
+        }
+        else if (conversionType == "6") // Pounds to Kilograms
+        {
+            convertedValue = value / 2.20462; // 1 pound = 0.453592 kilograms
+            Console.WriteLine($"{value} pounds is equal to {convertedValue} kilograms.");
+        }
+        else
+        {
+            Console.WriteLine("Invalid selection. Please run the program again.");
+        }
     }
 }
 ```
 
-In this example:
+##### **Expected Output 2:**
 
-- We define a lambda expression `(x, y) => x + y` which takes two integers `x` and `y` as input parameters and returns their sum.
-- We use the lambda expression through a delegate `Func<int, int, int> add`, where the first two `int`s specify the input parameter types, and the third `int` specifies the return type.
-- We then call the `add` function with different pairs of numbers to compute their sum and print the results.
+```
+Welcome to the Unit Converter!
 
-Lambda expressions provide a concise and expressive way to define inline functions, making the code more readable and efficient, especially when working with delegates, LINQ, and functional programming constructs in C#.
+Available Conversions:
+1. Kilometers to Miles
+2. Miles to Kilometers
+3. Celsius to Fahrenheit
+4. Fahrenheit to Celsius
+5. Kilograms to Pounds
+6. Pounds to Kilograms
 
+Enter the number corresponding to the conversion you want to perform: 1
+Enter the value you want to convert: 10
+10 kilometers is equal to 6.21371 miles.
+```
 
-- Here are a few more examples of lambda expressions in C#:
+#### Unit Converter with switch
 
-    1. **Basic Example**:
+**Objective:** How to use switch as an alternative of if-else.
 
-    ```csharp
-    Func<int, int> square = x => x * x;
-    Console.WriteLine(square(5)); // Output: 25
-    ```
+##### **Instructions 3:**
 
-    2. **Using with LINQ**:
+1. **Prompt the User for Input:**
+   - Ask the user to enter the value and the type of conversion they want to perform using switch.
 
-    ```csharp
-    List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
-    var evenNumbers = numbers.Where(x => x % 2 == 0);
-    foreach (var num in evenNumbers)
-    {
-        Console.WriteLine(num); // Output: 2, 4
-    }
-    ```
+##### **Sample Code 3:**
 
-    3. **Using with Sorting**:
+Here's an implementation of the assignment:
 
-    ```csharp
-    List<string> names = new List<string> { "Alice", "Bob", "Charlie", "David" };
-    names.Sort((x, y) => x.CompareTo(y));
-    foreach (var name in names)
-    {
-        Console.WriteLine(name); // Output: Alice, Bob, Charlie, David (in alphabetical order)
-    }
-    ```
+```csharp
+string? inputValue;
+double value, convertedValue;
 
-    4. **Using with Delegates**:
+Console.WriteLine($"Welcome to the unit converter App");
+Console.WriteLine($"\nAvailable Conversions:");
+Console.WriteLine($"1. Kilometers to Miles");
+Console.WriteLine($"2. Miles to Kilometers");
+Console.WriteLine($"3. Celsius to Fahrenheit.");
+Console.WriteLine($"4. Fahrenheit to Celsius");
+Console.WriteLine($"5. kilograms to pounds");
+Console.WriteLine($"6. Pounds to kilograms");
+int option = Convert.ToInt32(Console.ReadLine());
 
-    ```csharp
-    Action<string> greet = name => Console.WriteLine($"Hello, {name}!");
-    greet("John"); // Output: Hello, John!
-    ```
+Console.Write($"Enter the value you want to convert: ");
+inputValue = Console.ReadLine();
+value = Convert.ToDouble(inputValue);
 
-    5. **Using with Predicate**:
+switch ((option, value))
+{
+  case (1, var valueFromUser):
+    convertedValue = valueFromUser * 0.621371;
+    Console.WriteLine($"{valueFromUser} Kilometers = {convertedValue:F2} Miles");
+    break;
+  case (2, var valueFromUser):
+    // Miles to Kilometers
+    convertedValue = valueFromUser / 0.621371;
+    Console.WriteLine($"{valueFromUser} Miles = {convertedValue:F2} Kilometers");
+    break;
+  case (3, var valueFromUser):
+    //Celsius to Fahrenheit
+    convertedValue = (valueFromUser * 1.8) + 32;
+    Console.WriteLine($"{valueFromUser} Celsius = {convertedValue:F2} Fahrenheit");
+    break;
+  case (4, var valueFromUser):
+    // Fahrenheit to Celsius
+    convertedValue = (valueFromUser - 32) / 1.8;
+    Console.WriteLine($"{valueFromUser} Fahrenheit = {convertedValue:F2} Celsius");
+    break;
+  case (5, var valueFromUser):
+    // kilograms to pounds
+    convertedValue = valueFromUser * 2.20462; // 1 kilogram = 2.20462 pounds
+    Console.WriteLine($"{valueFromUser} kilograms = {convertedValue:F2} Pounds");
+    break;
+  case (6, var valueFromUser):
+    // Pounds to kilograms
+    convertedValue = valueFromUser / 2.20462; // 1 Pound = 0.453592 kilograms
+    Console.WriteLine($"{valueFromUser} Pounds = {convertedValue:F2} kilograms");
+    break;
+  default:
+    Console.WriteLine($"Invalid Selection. Please run the program again."); break;
 
-    ```csharp
-    Predicate<int> isPositive = x => x > 0;
-    Console.WriteLine(isPositive(5)); // Output: True
-    Console.WriteLine(isPositive(-5)); // Output: False
-    ```
+}
+```
 
-    These examples demonstrate different scenarios where lambda expressions can be used, such as defining simple functions, filtering data with LINQ, sorting collections, working with delegates, and creating predicates for conditional operations.
+##### **Expected Output 3:**
 
-#### Get a valid integer
+```
+Welcome to the Unit Converter!
 
-  ```csharp
-  public static int GetValidatedIntegerInput()
+Available Conversions:
+1. Kilometers to Miles
+2. Miles to Kilometers
+3. Celsius to Fahrenheit
+4. Fahrenheit to Celsius
+5. Kilograms to Pounds
+6. Pounds to Kilograms
+
+Enter the number corresponding to the conversion you want to perform: 1
+Enter the value you want to convert: 10
+10 kilometers is equal to 6.21371 miles.
+```
+
+#### Unit Converter with Loop and Input Validation
+
+**Objective:** How to use Loop for iteration and how to add validation.
+
+##### **Instructions 4:**
+
+1. **Add Input Validation:**
+   - Ensure the user inputs are valid for each conversion scenario.
+   - Display an error message if the input is invalid.
+   - Take the user input until we have a valid value.
+
+##### **Sample Code with Input Validation:**
+
+```csharp
+while (true)
+{
+  string? inputValue;
+  double convertedValue;
+
+  Console.WriteLine($"Welcome to the unit converter App");
+  Console.WriteLine($"Available Conversions:");
+  Console.WriteLine($"1. Kilometers to Miles");
+  Console.WriteLine($"2. Miles to Kilometers");
+  Console.WriteLine($"3. Celsius to Fahrenheit.");
+  Console.WriteLine($"4. Fahrenheit to Celsius");
+  Console.WriteLine($"5. kilograms to pounds");
+  Console.WriteLine($"6. Pounds to kilograms");
+  string optionInput = Console.ReadLine();
+  bool isInt = int.TryParse(optionInput, out int option);
+
+  if (!isInt)
   {
-      while (true)
-      {
-          Console.Write("Enter an integer: ");
-          if (int.TryParse(Console.ReadLine(), out int number))
-          {
-              return number;
-          }
-          Console.WriteLine("Invalid input! Please enter a valid integer.");
-      }
+    Console.WriteLine($"Only numeric value is allowed. Please select from option 1-6\n");
+    continue;
   }
-  ```
+
+  if (option < 1 || option > 6)
+  {
+    Console.WriteLine($"Invalid Selection. Please select from option 1-6\n");
+    continue;
+  }
+
+  Console.Write($"Enter the value you want to convert: ");
+  inputValue = Console.ReadLine();
+
+  if (string.IsNullOrWhiteSpace(inputValue))
+  {
+    Console.WriteLine($"Input can not be empty. Please enter a valid numeric value");
+    continue;
+  }
+
+  bool isValidValue = double.TryParse(inputValue, out double convertedValidValue);
+  if (!isValidValue || convertedValidValue < 0)
+  {
+    Console.WriteLine($"Only numeric Positive value is allowed for the conversion.");
+    continue;
+  }
+
+  if (convertedValidValue > double.MaxValue)
+  {
+    Console.WriteLine($"Warning: The value is too large and may not realistic.");
+    continue;
+  }
+
+  switch ((option, convertedValidValue))
+  {
+    case (1, var valueFromUser):
+      convertedValue = valueFromUser * 0.621371;
+      Console.WriteLine($"{valueFromUser} Kilometers = {convertedValue:F2} Miles");
+      break;
+    case (2, var valueFromUser):
+      // Miles to Kilometers
+      convertedValue = valueFromUser / 0.621371;
+      Console.WriteLine($"{valueFromUser} Miles = {convertedValue:F2} Kilometers");
+      break;
+    case (3, var valueFromUser):
+      //Celsius to Fahrenheit
+      convertedValue = (valueFromUser * 1.8) + 32;
+      Console.WriteLine($"{valueFromUser} Celsius = {convertedValue:F2} Fahrenheit");
+      break;
+    case (4, var valueFromUser):
+      // Fahrenheit to Celsius
+      convertedValue = (valueFromUser - 32) / 1.8;
+      Console.WriteLine($"{valueFromUser} Fahrenheit = {convertedValue:F2} Celsius");
+      break;
+    case (5, var valueFromUser):
+      // kilograms to pounds
+      convertedValue = valueFromUser * 2.20462; // 1 kilogram = 2.20462 pounds
+      Console.WriteLine($"{valueFromUser} kilograms = {convertedValue:F2} Pounds");
+      break;
+    case (6, var valueFromUser):
+      // Pounds to kilograms
+      convertedValue = valueFromUser / 2.20462; // 1 Pound = 0.453592 kilograms
+      Console.WriteLine($"{valueFromUser} Pounds = {convertedValue:F2} kilograms");
+      break;
+    default:
+      Console.WriteLine($"Invalid Selection. Please run the program again."); break;
+  }
+  break;
+}
+```
+
+#### Unit Converter with Functions
+
+```csharp
+
+```
+
+#### Unit Converter with Exception Handling
+
+To further improve and simplify the code, we can make the following changes:
+
+1. **Refactor Method Names**: Make the method names more intuitive and consistent.
+2. **Refactor Menu and Input Methods**: Combine the input reading and validation steps to reduce redundancy.
+3. **Exception Handling**: Adding exception handling is a good idea, especially when dealing with user inputs, file operations, or other scenarios where unexpected behavior can occur. It will help provide clear feedback when things go wrong and prevent the program from crashing.
+
+##### **Improved Code with Exception Handling**
+
+Here is the refactored and improved code with exception handling and some simplifications:
+
+```csharp
+using System;
+
+class UnitConverterApp
+{
+    // Display the conversion menu
+    static void DisplayMenu()
+    {
+        Console.WriteLine("Welcome to the Unit Converter App");
+        Console.WriteLine("Available Conversions:");
+        Console.WriteLine("1. Kilometers to Miles");
+        Console.WriteLine("2. Miles to Kilometers");
+        Console.WriteLine("3. Celsius to Fahrenheit");
+        Console.WriteLine("4. Fahrenheit to Celsius");
+        Console.WriteLine("5. Kilograms to Pounds");
+        Console.WriteLine("6. Pounds to Kilograms");
+        Console.Write("Please select an option from 1-6: ");
+    }
+
+    // Method to get and validate the option input from the user
+    static bool TryGetOption(out int option)
+    {
+        string? input = Console.ReadLine();
+        if (int.TryParse(input, out option) && option >= 1 && option <= 6)
+        {
+            return true;
+        }
+
+        Console.WriteLine("Only numeric values from 1 to 6 are allowed.\n");
+        return false;
+    }
+
+    // Method to get and validate the value input for conversion
+    static bool TryGetConversionValue(out double value)
+    {
+        Console.Write("Enter the value you want to convert: ");
+        string? inputValue = Console.ReadLine();
+
+        try
+        {
+            if (string.IsNullOrWhiteSpace(inputValue))
+            {
+                throw new ArgumentException("Input cannot be empty.");
+            }
+
+            if (!double.TryParse(inputValue, out value) || value < 0)
+            {
+                throw new ArgumentException("Only positive numeric values are allowed.");
+            }
+
+            if (value > double.MaxValue)
+            {
+                throw new ArgumentOutOfRangeException("The value is too large and may not be realistic.");
+            }
+
+            return true;
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+
+        value = 0;
+        return false;
+    }
+
+    // Conversion methods
+    static double ConvertKilometersToMiles(double kilometers) => kilometers * 0.621371;
+    static double ConvertMilesToKilometers(double miles) => miles / 0.621371;
+    static double ConvertCelsiusToFahrenheit(double celsius) => (celsius * 1.8) + 32;
+    static double ConvertFahrenheitToCelsius(double fahrenheit) => (fahrenheit - 32) / 1.8;
+    static double ConvertKilogramsToPounds(double kilograms) => kilograms * 2.20462;
+    static double ConvertPoundsToKilograms(double pounds) => pounds / 2.20462;
+
+    // Method to perform the selected conversion
+    static void PerformConversion(int option, double value)
+    {
+        double convertedValue;
+        switch (option)
+        {
+            case 1:
+                convertedValue = ConvertKilometersToMiles(value);
+                Console.WriteLine($"{value} Kilometers = {convertedValue:F2} Miles");
+                break;
+            case 2:
+                convertedValue = ConvertMilesToKilometers(value);
+                Console.WriteLine($"{value} Miles = {convertedValue:F2} Kilometers");
+                break;
+            case 3:
+                convertedValue = ConvertCelsiusToFahrenheit(value);
+                Console.WriteLine($"{value} Celsius = {convertedValue:F2} Fahrenheit");
+                break;
+            case 4:
+                convertedValue = ConvertFahrenheitToCelsius(value);
+                Console.WriteLine($"{value} Fahrenheit = {convertedValue:F2} Celsius");
+                break;
+            case 5:
+                convertedValue = ConvertKilogramsToPounds(value);
+                Console.WriteLine($"{value} Kilograms = {convertedValue:F2} Pounds");
+                break;
+            case 6:
+                convertedValue = ConvertPoundsToKilograms(value);
+                Console.WriteLine($"{value} Pounds = {convertedValue:F2} Kilograms");
+                break;
+            default:
+                Console.WriteLine("Invalid Selection. Please run the program again.");
+                break;
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        while (true)
+        {
+            DisplayMenu();
+
+            if (!TryGetOption(out int option))
+            {
+                continue;
+            }
+
+            if (!TryGetConversionValue(out double value))
+            {
+                continue;
+            }
+
+            PerformConversion(option, value);
+            break; // Exit the loop after a successful conversion
+        }
+    }
+}
+```
+
+### 6.2 Guessing Game App Project
 
 ## Intermediate 1. OOP
 
@@ -4143,11 +4673,11 @@ In this example:
 
 ### [Assignment for oop part-1](https://github.com/anisul-Islam/csharp-oop-practice-1/blob/main/README.md)
 
-#### Practice 1: Creating a Simple Student Management System with Validation**
+### Practice 1: Creating a Simple Student Management System with Validation**
 
 **Objective:** This assignment is designed to help you understand the concepts of classes, objects, constructors, methods, static members, and validation in C#. You will create a simple student management system that demonstrates these concepts while also incorporating validation for student data.
 
-##### **Assignment Instructions:**
+#### **Assignment Instructions:**
 
 1. **Create a Class Named `Student`:**
 
@@ -4389,7 +4919,7 @@ Balance: $1,300.00
 
 This assignment provides a practical and engaging way for students to practice class, object creation, properties, methods, and constructors in C#.
 
-### OOP 1: Encapsulation
+### 4 Pillars of OOP: Encapsulation
 
 - Encapsulate -> Encapsulation is the bundling of data and methods that operate on that data within a single unit, or class, and restricting access to some of the object's components. This helps in data hiding and keeps the internal state safe from unintended modifications.
 - benefits of encapsulation
@@ -4694,216 +5224,6 @@ This assignment provides a practical and engaging way for students to practice c
             "}"
         ],
         "description": "Creates a basic interface structure."
-  }
-}
-
-```
-
-### Exception Handling
-
-```csharp
-  Console.Write("Enter a number: ");
-    int num = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine(num);
-```
-
-Exception handling in C# allows you to manage runtime errors gracefully by catching and handling exceptional conditions that might occur during program execution. This prevents your program from crashing and provides a mechanism to respond to errors in a controlled manner. Here's an overview of exception handling in C#:
-
-1. **Try-Catch Block**: The basic structure for handling exceptions is the `try-catch` block. Code that might raise an exception is enclosed within the `try` block, and any potential exceptions are caught and handled in the `catch` block.
-
-   ```csharp
-   try
-   {
-       // Code that might throw an exception
-   }
-   catch (ExceptionType ex)
-   {
-       // Handle the exception
-       // ex.Message
-   }
-   ```
-
-2. **Exception Types**: You can catch specific types of exceptions by specifying the exception type in the `catch` block. This allows you to handle different types of exceptions differently.
-
-   ```csharp
-   try
-   {
-       // Code that might throw an exception
-   }
-   catch (DivideByZeroException ex)
-   {
-       // Handle divide by zero exception
-   }
-   catch (ArgumentException ex)
-   {
-       // Handle argument exception
-   }
-   catch (Exception ex) // Catch-all for other exceptions
-   {
-       // Handle other exceptions
-   }
-   ```
-
-3. **Finally Block**: You can optionally include a `finally` block after the `catch` block. Code in the `finally` block is executed whether an exception occurs or not. This block is commonly used for cleanup tasks such as closing resources.
-
-   ```csharp
-   try
-   {
-       // Code that might throw an exception
-   }
-   catch (Exception ex)
-   {
-       // Handle the exception
-   }
-   finally
-   {
-       // Cleanup code
-   }
-   ```
-
-4. **Throwing Exceptions**: You can explicitly throw exceptions using the `throw` keyword. This is useful for indicating errors or exceptional conditions within your code.
-
-   ```csharp
-   if (condition)
-   {
-       throw new Exception("An error occurred.");
-   }
-   ```
-
-5. **Custom Exceptions**: You can define your own exception types by creating classes that derive from `Exception`. This allows you to create custom exception types tailored to your application's needs.
-
-   ```csharp
-   public class CustomException : Exception
-   {
-       public CustomException(string message) : base(message)
-       {
-       }
-   }
-   ```
-
-6. **Exception Handling Best Practices**:
-   - Catch specific exceptions rather than using a generic `catch (Exception ex)` block.
-   - Provide meaningful error messages or log information when handling exceptions.
-   - Use exception handling judiciously and avoid catching exceptions that you cannot handle properly.
-
-Exception handling is a fundamental aspect of robust software development in C#, helping you write more reliable and resilient applications.
-
-#### Example 1
-
-```csharp
-using System;
-
-class Program
-{
-    static void Main()
-    {
-        try
-        {
-            // 1. DivideByZeroException
-            int a = 10;
-            int b = 0;
-            int result = a / b;
-            Console.WriteLine("Result: " + result);
-
-            // 2. FormatException
-            string input = "abc";
-            int number = int.Parse(input);
-            Console.WriteLine("Parsed number: " + number);
-
-            // 3. NullReferenceException
-            string str = null;
-            int length = str.Length;
-            Console.WriteLine("Length: " + length);
-
-            // 4. IndexOutOfRangeException
-            int[] numbers = { 1, 2, 3 };
-            int value = numbers[5];
-            Console.WriteLine("Value: " + value);
-
-            // 5. OverflowException
-            int max = int.MaxValue;
-            int overflowResult = checked(max + 1);
-            Console.WriteLine("Overflow result: " + overflowResult);
-        }
-        catch (DivideByZeroException ex)
-        {
-            Console.WriteLine("Error: Attempted to divide by zero.");
-        }
-        catch (FormatException ex)
-        {
-            Console.WriteLine("Error: Invalid format. Cannot parse input as a number.");
-        }
-        catch (NullReferenceException ex)
-        {
-            Console.WriteLine("Error: Null reference encountered.");
-        }
-        catch (IndexOutOfRangeException ex)
-        {
-            Console.WriteLine("Error: Index out of range.");
-        }
-        catch (OverflowException ex)
-        {
-            Console.WriteLine("Error: Overflow occurred during arithmetic operation.");
-        }
-        catch (Exception ex) // Generic exception handler
-        {
-            Console.WriteLine("An unexpected error occurred: " + ex.Message);
-        }
-        finally
-        {
-            Console.WriteLine("This block always executes, whether an exception is thrown or not.");
-        }
-    }
-}
-
-```
-
-#### Example 2
-
-```csharp
-public class MyClass
-{
-  public static void Main(string[] args)
-  {
-    Console.WriteLine($"Welcome to the calculator App");
-    try
-    {
-      int num1 = ReadIntegerInput("num1");
-      int num2 = ReadIntegerInput("num2");
-
-      if (num2 > 1000)
-      {
-        throw new ArgumentException("num2 can not be greater than 1000");
-      }
-
-      int result = num1 / num2;
-      Console.WriteLine($"Result: {result}");
-    }
-    catch (Exception e)
-    {
-      Console.WriteLine($"An error occured: {e.Message}");
-    }
-    finally
-    {
-      Console.WriteLine($"Goodbye!!!");
-    }
-
-  }
-
-  static int ReadIntegerInput(string prompt)
-  {
-    while (true)
-    {
-
-      Console.Write($"Enter {prompt} = ");
-      string input = Console.ReadLine() ?? "";
-      if (!int.TryParse(input, out int result) || string.IsNullOrEmpty(input))
-      {
-        Console.WriteLine($"Invalid Input! Please enter a valid integer.");
-        continue;
-      }
-      return result;
-    }
   }
 }
 
@@ -6191,7 +6511,7 @@ class Program
 
 In both versions, we have a `ProductCatalog` class managing a collection of `Product` objects. The first version uses traditional methods to add, remove, and find products, while the second version introduces an indexer allowing direct access to products by their Id.
 
-### OOP 2: Inheritance
+### 4 Pillars of OOP: Inheritance
 
 Inheritance is a fundamental concept of Object-Oriented Programming (OOP) in C# that allows a class (called the derived or child class) to inherit the properties, methods, fields, and behaviors of another class (called the base or parent class). This concept models real-world relationships between objects and allows you to create hierarchical classifications.
 
@@ -6659,7 +6979,7 @@ class Program
 
 These types of inheritance help in designing flexible, reusable, and organized code in C#.
 
-### OOP 3: Polymorphism
+### 4 Pillars of OOP: Polymorphism
 
 #### **Polymorphism in C#: An Overview**
 
@@ -6898,7 +7218,7 @@ public class CurrentAccount : BankAccount
 }
 ```
 
-### OOP 4: Abstracttion
+### 4 Pillars of OOP: Abstracttion
 
 Abstraction is one of the four fundamental principles of Object-Oriented Programming (OOP) in C#. It is the concept of hiding the complex implementation details of a system and exposing only the essential features to the user. Abstraction allows developers to define the "what" without worrying about the "how."
 
@@ -7281,7 +7601,7 @@ This assignment helps students practice and understand the four pillars of OOP i
 
 This practical approach helps students learn how these OOP concepts work together in a cohesive and real-world application scenario.
 
-### OOP 5: Interface
+### Interface and Why Interface?
 
 ```csharp
 public interface IBanking
@@ -7374,7 +7694,7 @@ public class CurrentAccount : BankAccount
 }
 ```
 
-### OOP 6: Why Interface?
+#### Why Interface?
 
 - supports multilevel inheritance
 
@@ -7382,15 +7702,14 @@ public class CurrentAccount : BankAccount
 
 ```
 
-### OOP 7: Composition and dependency Injection
-
-Let's create separate examples for composition and dependency injection in C#.
+### Composition and dependency Injection
 
 #### Composition Example
 
 Composition involves creating a class that contains an instance of another class as one of its fields. Here's an example of composition without using dependency injection:
 
 ```csharp
+// Example
 using System;
 
 // Engine class representing the engine of a car
@@ -7461,6 +7780,7 @@ In this example:
 Dependency injection involves passing dependencies to a class from the outside, rather than creating them within the class itself. Here's an example of dependency injection:
 
 ```csharp
+// Example 1
 using System;
 
 // Engine class representing the engine of a car
@@ -7529,7 +7849,7 @@ In this example:
 - The `Main` method creates an `Engine` instance and passes it to the `Car` constructor.
 - This is an example of dependency injection, where the `Car` class depends on an `Engine` instance that is injected from the outside.
 
-Composition offers several benefits in software development:
+#### Composition offers several benefits in software development:
 
 1. **Code Reusability**: By composing objects together, you can reuse existing classes without inheritance. This promotes a more modular approach to building software, where individual components can be easily reused in different contexts.
 
@@ -7547,14 +7867,662 @@ Composition offers several benefits in software development:
 
 Overall, composition offers a more flexible, modular, and maintainable approach to designing software compared to inheritance. It encourages better design practices and leads to code that is easier to understand, modify, and extend over time.
 
-Comparison: Composition vs Inheritance
+#### Comparison: Composition vs Inheritance
 
-Flexibility: Composition offers greater flexibility than inheritance, as it allows for dynamic changes at runtime by modifying the objects that compose a class.
-Code Reusability: While both composition and inheritance promote code reusability, composition tends to offer more flexibility in terms of reusing objects in different contexts.
-Encapsulation: Composition often promotes encapsulation better than inheritance, as it allows the internal implementation details of composed objects to be hidden.
-Design Approach: Composition is often preferred over inheritance for modeling "has-a" relationships and building modular, loosely coupled systems. Inheritance is more suitable for modeling "is-a" relationships and creating class hierarchies with shared behaviors.
+- Flexibility: Composition offers greater flexibility than inheritance, as it allows for dynamic changes at runtime by modifying the objects that compose a class.
+- Code Reusability: While both composition and inheritance promote code reusability, composition tends to offer more flexibility in terms of reusing objects in different contexts.
+- Encapsulation: Composition often promotes encapsulation better than inheritance, as it allows the internal implementation details of composed objects to be hidden.
+- Design Approach: Composition is often preferred over inheritance for modeling "has-a" relationships and building modular, loosely coupled systems. Inheritance is more suitable for modeling "is-a" relationships and creating class hierarchies with shared behaviors.
 
-### OOP 8: Reflection
+#### **Example 2: Computer Composition**
+
+In this example, a `Computer` is composed of a `CPU`, `RAM`, and `HardDrive`. Each component is responsible for a specific task, and the `Computer` class coordinates these components.
+
+```csharp
+using System;
+
+// CPU class representing the Central Processing Unit of a computer
+public class CPU
+{
+    public void ProcessData()
+    {
+        Console.WriteLine("CPU is processing data...");
+    }
+}
+
+// RAM class representing the Random Access Memory of a computer
+public class RAM
+{
+    public void LoadData()
+    {
+        Console.WriteLine("RAM is loading data...");
+    }
+}
+
+// HardDrive class representing the storage of a computer
+public class HardDrive
+{
+    public void ReadData()
+    {
+        Console.WriteLine("HardDrive is reading data...");
+    }
+}
+
+// Computer class representing a computer that contains a CPU, RAM, and HardDrive
+public class Computer
+{
+    private readonly CPU _cpu;
+    private readonly RAM _ram;
+    private readonly HardDrive _hardDrive;
+
+    // Constructor to initialize the components of the computer
+    public Computer()
+    {
+        _cpu = new CPU();
+        _ram = new RAM();
+        _hardDrive = new HardDrive();
+    }
+
+    // Method to start the computer, coordinating the components
+    public void Start()
+    {
+        Console.WriteLine("Starting the computer...");
+        _hardDrive.ReadData();
+        _ram.LoadData();
+        _cpu.ProcessData();
+        Console.WriteLine("Computer started successfully.");
+    }
+
+    // Method to shut down the computer
+    public void Shutdown()
+    {
+        Console.WriteLine("Shutting down the computer...");
+        Console.WriteLine("Computer shut down successfully.");
+    }
+}
+
+// Main program to demonstrate composition
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create an instance of Computer
+        var computer = new Computer();
+
+        // Start the computer
+        computer.Start();
+
+        // Shut down the computer
+        computer.Shutdown();
+    }
+}
+```
+
+##### **Explanation of the Code 6:**
+
+1. **Components (`CPU`, `RAM`, `HardDrive`)**:
+   - Each component class (`CPU`, `RAM`, `HardDrive`) represents a distinct part of the computer.
+   - They perform specific tasks, such as processing data, loading data, and reading data, which are essential for the computer to function.
+
+2. **Composition in `Computer`**:
+   - The `Computer` class composes the three components (`CPU`, `RAM`, `HardDrive`) using private fields.
+   - This demonstrates composition because the `Computer` is not functional without these components, and these components do not make sense outside the context of a computer.
+
+3. **Starting and Shutting Down**:
+   - The `Start` method coordinates the interaction between the components to start the computer.
+   - The `Shutdown` method stops the computer, demonstrating that the `Computer` manages its components as a single unit.
+
+##### **Benefits of Using Composition in This Example:**
+
+- **Encapsulation**: Each component's behavior is encapsulated within its own class, promoting separation of concerns.
+- **Flexibility**: You can easily extend the `Computer` class with additional components or modify existing components without altering the `Computer` class itself.
+- **Reusability**: Components like `CPU`, `RAM`, and `HardDrive` could be reused in other contexts or upgraded independently.
+
+This example clearly demonstrates composition by showing how a `Computer` relies on its individual parts to function as a whole, providing a realistic yet simple scenario that highlights the benefits of this design principle.
+
+### **Loosely Coupled vs. Strongly Coupled in Inheritance**
+
+In object-oriented programming, coupling refers to the degree of direct dependency between classes or components. Understanding the difference between loosely coupled and strongly coupled systems is crucial, as it impacts the flexibility, maintainability, and reusability of your code. In the context of inheritance, coupling can determine how easy it is to change or extend your code.
+
+#### **1. Strongly Coupled Inheritance**
+
+**Definition:**
+
+- Strongly coupled inheritance refers to a design where classes are highly dependent on each other, especially between a base class and its derived classes.
+- Changes in the base class can have significant, often unintended, effects on derived classes because they are tightly bound to the base class’s implementation.
+
+**Characteristics of Strong Coupling in Inheritance:**
+
+- **High Dependency**: Derived classes rely heavily on the implementation details of the base class.
+- **Difficult to Modify**: Changes in the base class can break the functionality of derived classes.
+- **Low Flexibility**: Adding new features or modifying behavior often requires changing both the base and derived classes.
+- **Code Reuse is Limited**: Code reuse is limited because the derived class cannot be easily detached from the base class's behavior.
+
+**Example of Strongly Coupled Inheritance:**
+
+```csharp
+// Base class
+public class Animal
+{
+    public void Eat()
+    {
+        Console.WriteLine("Animal is eating.");
+    }
+
+    public void Sleep()
+    {
+        Console.WriteLine("Animal is sleeping.");
+    }
+}
+
+// Derived class with strong coupling
+public class Dog : Animal
+{
+    public void Bark()
+    {
+        Console.WriteLine("Dog is barking.");
+    }
+}
+
+// Main program
+class Program
+{
+    static void Main(string[] args)
+    {
+        Dog dog = new Dog();
+        dog.Eat();  // Inherited behavior
+        dog.Sleep(); // Inherited behavior
+        dog.Bark();  // Dog-specific behavior
+    }
+}
+```
+
+**Why is this Strongly Coupled?**
+
+- The `Dog` class is tightly bound to the `Animal` class, directly inheriting methods like `Eat()` and `Sleep()`.
+- If the `Animal` class changes (e.g., `Eat()` is modified), it directly impacts the behavior of `Dog`, making maintenance harder.
+
+#### **2. Loosely Coupled Inheritance**
+
+**Definition:**
+
+- Loosely coupled inheritance refers to a design where derived classes are minimally dependent on the base class. The derived class uses interfaces, composition, or other techniques to minimize dependency on the base class’s implementation.
+- This approach promotes flexibility and reduces the impact of changes in one class on another.
+
+**Characteristics of Loose Coupling in Inheritance:**
+
+- **Low Dependency**: Derived classes depend less on specific implementation details of the base class.
+- **Easier to Modify and Extend**: Changes in the base class have minimal impact on derived classes.
+- **High Flexibility**: Classes can be extended or modified without significant changes to dependent classes.
+- **Better Code Reuse**: Code can be reused more effectively, as classes are not tightly bound to specific implementations.
+
+**Example of Loosely Coupled Inheritance Using Interfaces and Composition:**
+
+```csharp
+// Interface defining the behavior
+public interface IAnimalActions
+{
+    void Eat();
+    void Sleep();
+}
+
+// Implementation of interface in a base class
+public class Animal : IAnimalActions
+{
+    public void Eat()
+    {
+        Console.WriteLine("Animal is eating.");
+    }
+
+    public void Sleep()
+    {
+        Console.WriteLine("Animal is sleeping.");
+    }
+}
+
+// Derived class using composition to use behaviors
+public class Dog
+{
+    private readonly IAnimalActions _animalActions;
+
+    // Constructor injects an implementation of IAnimalActions
+    public Dog(IAnimalActions animalActions)
+    {
+        _animalActions = animalActions;
+    }
+
+    public void Bark()
+    {
+        Console.WriteLine("Dog is barking.");
+    }
+
+    public void PerformAnimalActions()
+    {
+        _animalActions.Eat();
+        _animalActions.Sleep();
+    }
+}
+
+// Main program
+class Program
+{
+    static void Main(string[] args)
+    {
+        IAnimalActions animalActions = new Animal();
+        Dog dog = new Dog(animalActions);
+
+        dog.PerformAnimalActions();  // Using loosely coupled animal actions
+        dog.Bark();  // Dog-specific behavior
+    }
+}
+```
+
+**Why is this Loosely Coupled?**
+
+- The `Dog` class depends on the `IAnimalActions` interface rather than the specific `Animal` class implementation.
+- If the implementation of `IAnimalActions` changes, the impact on the `Dog` class is minimized because it depends on the interface contract, not the specific implementation.
+- This design allows you to switch out the `Animal` class for any other class implementing `IAnimalActions` without modifying the `Dog` class.
+
+#### **Key Differences Between Loosely and Strongly Coupled Inheritance:**
+
+1. **Dependency**:
+   - **Strongly Coupled**: High dependency on the base class, leading to fragile code.
+   - **Loosely Coupled**: Low dependency on implementation, promoting more stable and adaptable code.
+
+2. **Flexibility**:
+   - **Strongly Coupled**: Difficult to modify or extend without affecting dependent classes.
+   - **Loosely Coupled**: Easier to modify, extend, and maintain due to minimal dependencies.
+
+3. **Maintainability**:
+   - **Strongly Coupled**: Changes in the base class can lead to unintended consequences in derived classes.
+   - **Loosely Coupled**: Changes are isolated, reducing the impact on other parts of the codebase.
+
+4. **Reusability**:
+   - **Strongly Coupled**: Reuse is limited due to tight binding between classes.
+   - **Loosely Coupled**: Promotes better reuse because classes are less dependent on each other.
+
+#### **Conclusion**
+
+Choosing between loose and strong coupling depends on the context and requirements of your application. However, aiming for loose coupling generally leads to more robust, flexible, and maintainable code, especially when working with inheritance and composition in object-oriented design.
+
+### Design Pattern
+
+#### **Composition and Dependency Injection: What They Do and Their Roles in Design Patterns**
+
+**Composition** and **Dependency Injection** are key concepts in software design that promote flexibility, modularity, and maintainability in object-oriented programming. While they are not strictly design patterns themselves, they are closely related to and often used within design patterns to achieve specific design goals.
+
+#### **1. Composition**
+
+**What is Composition?**
+
+- **Composition** is a design principle where a class is composed of one or more objects from other classes, rather than inheriting from them. It allows you to build complex types by combining simpler objects, enabling greater flexibility and reusability.
+- It represents a "has-a" relationship (e.g., a `Car` has an `Engine`), unlike inheritance, which represents an "is-a" relationship (e.g., a `Dog` is an `Animal`).
+
+**Example of Composition:**
+In the example of a `Car` with an `Engine`, the `Car` class does not inherit from `Engine`. Instead, it uses an `Engine` object to perform specific functions, demonstrating composition.
+
+```csharp
+// Engine class
+public class Engine
+{
+    public void Start() => Console.WriteLine("Engine started.");
+}
+
+// Car class composed of an Engine
+public class Car
+{
+    private readonly Engine _engine;
+
+    public Car()
+    {
+        _engine = new Engine();
+    }
+
+    public void StartCar()
+    {
+        _engine.Start();
+        Console.WriteLine("Car started.");
+    }
+}
+
+// Usage
+var car = new Car();
+car.StartCar();
+```
+
+**What Composition Achieves:**
+
+- **Encapsulation**: Each class handles its specific functionality, making the system easier to understand and maintain.
+- **Flexibility**: Changing or extending functionality is simpler since each component can be modified independently.
+- **Reusability**: Components like `Engine` can be reused in different contexts without changing their code.
+
+**Is Composition a Design Pattern?**
+
+- **No**, composition itself is not a design pattern but a fundamental object-oriented principle. However, it is heavily used in various design patterns, such as the **Decorator**, **Strategy**, and **Adapter** patterns.
+
+#### **2. Dependency Injection (DI)**
+
+**What is Dependency Injection?**
+
+- **Dependency Injection** is a design technique where an object receives (or is injected with) its dependencies from an external source rather than creating them internally. This helps decouple the class from the creation of its dependencies, enhancing testability, flexibility, and maintainability.
+- DI is commonly used to provide an object with its dependencies via constructor injection, property injection, or method injection.
+
+**Example of Dependency Injection:**
+Here, a `Car` class receives an `Engine` via constructor injection rather than creating it internally, promoting loose coupling.
+
+```csharp
+// Engine interface
+public interface IEngine
+{
+    void Start();
+}
+
+// Concrete Engine implementation
+public class Engine : IEngine
+{
+    public void Start() => Console.WriteLine("Engine started.");
+}
+
+// Car class using Dependency Injection
+public class Car
+{
+    private readonly IEngine _engine;
+
+    // Constructor injection
+    public Car(IEngine engine)
+    {
+        _engine = engine;
+    }
+
+    public void StartCar()
+    {
+        _engine.Start();
+        Console.WriteLine("Car started.");
+    }
+}
+
+// Usage
+var engine = new Engine();
+var car = new Car(engine); // Injecting the dependency
+car.StartCar();
+```
+
+**What Dependency Injection Achieves:**
+
+- **Loose Coupling**: The `Car` class does not depend on a specific `Engine` implementation; it depends on the `IEngine` interface, making it easy to switch implementations.
+- **Testability**: Makes unit testing easier since you can inject mock dependencies during testing.
+- **Scalability**: Simplifies scaling the application as dependencies are managed externally, often using DI containers.
+
+#### **Comparison and Use in Design Patterns**
+
+1. **Composition**:
+   - Used in design patterns like **Decorator**, **Strategy**, **Composite**, and **Adapter**.
+   - Emphasizes building complex objects by combining simpler ones.
+
+2. **Dependency Injection**:
+   - Used in patterns like **Service Locator** and **Factory**.
+   - Focuses on how dependencies are provided to an object, rather than it creating them itself.
+
+#### **Key Differences and Synergy**
+
+- **Composition** deals with object structure, focusing on assembling objects to achieve complex functionality.
+- **Dependency Injection** deals with object behavior and lifecycle management, focusing on how dependencies are managed and supplied.
+
+Here are a few design patterns that are directly relevant to composition, each explained with an easy-to-understand example:
+
+### **1. Decorator Pattern**
+
+**Definition**:
+The Decorator Pattern allows behavior to be added to individual objects, dynamically, without affecting the behavior of other objects from the same class. It involves wrapping a class with additional behavior, achieved through composition rather than inheritance.
+
+**How It Uses Composition**:
+The pattern composes objects to add new functionality by wrapping one object inside another, allowing you to extend behavior at runtime.
+
+**Example**: Adding additional features to a coffee order.
+
+```csharp
+// Base interface for coffee
+public interface ICoffee
+{
+    string GetDescription();
+    double GetCost();
+}
+
+// Basic coffee implementation
+public class SimpleCoffee : ICoffee
+{
+    public string GetDescription() => "Simple Coffee";
+    public double GetCost() => 2.00;
+}
+
+// Decorator base class implementing the same interface
+public abstract class CoffeeDecorator : ICoffee
+{
+    protected ICoffee _coffee;
+
+    public CoffeeDecorator(ICoffee coffee)
+    {
+        _coffee = coffee;
+    }
+
+    public virtual string GetDescription() => _coffee.GetDescription();
+    public virtual double GetCost() => _coffee.GetCost();
+}
+
+// Milk decorator adding milk to the coffee
+public class MilkDecorator : CoffeeDecorator
+{
+    public MilkDecorator(ICoffee coffee) : base(coffee) { }
+
+    public override string GetDescription() => _coffee.GetDescription() + ", Milk";
+    public override double GetCost() => _coffee.GetCost() + 0.50;
+}
+
+// Sugar decorator adding sugar to the coffee
+public class SugarDecorator : CoffeeDecorator
+{
+    public SugarDecorator(ICoffee coffee) : base(coffee) { }
+
+    public override string GetDescription() => _coffee.GetDescription() + ", Sugar";
+    public override double GetCost() => _coffee.GetCost() + 0.25;
+}
+
+// Main program demonstrating the Decorator pattern
+class Program
+{
+    static void Main(string[] args)
+    {
+        ICoffee coffee = new SimpleCoffee();
+        Console.WriteLine($"{coffee.GetDescription()} costs ${coffee.GetCost()}");
+
+        // Adding milk to the coffee
+        coffee = new MilkDecorator(coffee);
+        Console.WriteLine($"{coffee.GetDescription()} costs ${coffee.GetCost()}");
+
+        // Adding sugar to the coffee
+        coffee = new SugarDecorator(coffee);
+        Console.WriteLine($"{coffee.GetDescription()} costs ${coffee.GetCost()}");
+    }
+}
+```
+
+**Explanation**:
+
+- **Composition** is used to wrap the coffee object with decorators (`MilkDecorator`, `SugarDecorator`), adding new behavior dynamically without modifying the original `SimpleCoffee` class.
+- This pattern is ideal for adding optional features to objects at runtime.
+
+### **2. Strategy Pattern**
+
+**Definition**:
+The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. It lets the algorithm vary independently from clients that use it, allowing different strategies (behaviors) to be composed into an object.
+
+**How It Uses Composition**:
+The client class (context) contains a reference to a strategy interface, allowing behavior to be composed at runtime based on which strategy is used.
+
+**Example**: Sorting data using different strategies.
+
+```csharp
+// Strategy interface for sorting algorithms
+public interface ISortingStrategy
+{
+    void Sort(List<int> list);
+}
+
+// Concrete strategy for Bubble Sort
+public class BubbleSort : ISortingStrategy
+{
+    public void Sort(List<int> list)
+    {
+        Console.WriteLine("Sorting using Bubble Sort");
+        // Bubble sort logic here
+    }
+}
+
+// Concrete strategy for Quick Sort
+public class QuickSort : ISortingStrategy
+{
+    public void Sort(List<int> list)
+    {
+        Console.WriteLine("Sorting using Quick Sort");
+        // Quick sort logic here
+    }
+}
+
+// Context class that uses a sorting strategy
+public class Sorter
+{
+    private readonly ISortingStrategy _strategy;
+
+    public Sorter(ISortingStrategy strategy)
+    {
+        _strategy = strategy;
+    }
+
+    public void Sort(List<int> list)
+    {
+        _strategy.Sort(list);
+    }
+}
+
+// Main program demonstrating the Strategy pattern
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<int> numbers = new List<int> { 5, 3, 8, 1 };
+
+        // Using Bubble Sort strategy
+        Sorter sorter = new Sorter(new BubbleSort());
+        sorter.Sort(numbers);
+
+        // Switching to Quick Sort strategy
+        sorter = new Sorter(new QuickSort());
+        sorter.Sort(numbers);
+    }
+}
+```
+
+**Explanation**:
+
+- **Composition** allows the `Sorter` class to delegate sorting behavior to the injected `ISortingStrategy`, making it easy to switch sorting algorithms without modifying the `Sorter` class.
+- The Strategy pattern is highly compositional, as it relies on injecting different strategies into the context object.
+
+### **3. Composite Pattern**
+
+**Definition**:
+The Composite Pattern allows you to build a tree-like structure of objects, where individual objects and compositions of objects are treated uniformly. It is often used for representing hierarchies of objects.
+
+**How It Uses Composition**:
+Composite pattern composes objects into tree structures, allowing individual objects and their compositions to be treated the same.
+
+**Example**: A file system structure with files and folders.
+
+```csharp
+// Component interface for files and folders
+public interface IFileSystemItem
+{
+    void Display(int depth);
+}
+
+// Leaf class representing a File
+public class File : IFileSystemItem
+{
+    private readonly string _name;
+
+    public File(string name)
+    {
+        _name = name;
+    }
+
+    public void Display(int depth)
+    {
+        Console.WriteLine(new string('-', depth) + _name);
+    }
+}
+
+// Composite class representing a Folder
+public class Folder : IFileSystemItem
+{
+    private readonly string _name;
+    private readonly List<IFileSystemItem> _items = new List<IFileSystemItem>();
+
+    public Folder(string name)
+    {
+        _name = name;
+    }
+
+    public void Add(IFileSystemItem item)
+    {
+        _items.Add(item);
+    }
+
+    public void Display(int depth)
+    {
+        Console.WriteLine(new string('-', depth) + _name);
+        foreach (var item in _items)
+        {
+            item.Display(depth + 2);
+        }
+    }
+}
+
+// Main program demonstrating the Composite pattern
+class Program
+{
+    static void Main(string[] args)
+    {
+        var root = new Folder("Root");
+
+        var file1 = new File("File1.txt");
+        var file2 = new File("File2.txt");
+
+        var subFolder = new Folder("SubFolder");
+        var file3 = new File("File3.txt");
+
+        root.Add(file1);
+        root.Add(file2);
+        root.Add(subFolder);
+        subFolder.Add(file3);
+
+        root.Display(1);
+    }
+}
+```
+
+**Explanation**:
+
+- **Composition** is used to create a recursive structure where `Folder` can contain both `File` and other `Folder` objects, building a tree-like hierarchy.
+- The Composite pattern allows you to treat individual objects (`File`) and compositions of objects (`Folder`) uniformly, using composition to achieve a flexible design.
+
+### **Summary4**
+
+- **Decorator Pattern**: Adds new functionality to objects dynamically through composition without altering the object itself.
+- **Strategy Pattern**: Encapsulates algorithms and allows dynamic switching of behavior via composition.
+- **Composite Pattern**: Builds hierarchical structures of objects using composition, enabling uniform treatment of individual and composite objects.
+
+These patterns showcase how composition can create flexible, extensible, and maintainable designs by combining objects rather than relying solely on inheritance.
+
+### Reflection
 
 Reflection in C# is a powerful feature that allows you to inspect and manipulate the metadata of types (classes, interfaces, structs, enums), members (fields, properties, methods, events), and assemblies at runtime. It provides the ability to dynamically query and interact with types, even if those types were not known at compile time. Reflection enables various advanced programming techniques, such as dependency injection, dynamic loading of assemblies, and creating extensible frameworks.
 
