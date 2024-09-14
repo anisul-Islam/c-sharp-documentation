@@ -20,12 +20,15 @@
       - [Unary Operators](#increment-and-decrement-operators)
    - [3. Control Statement](#basic-3-control-statement)  
       - [Conditional Control Statement](#31-conditional-control-statement)
-      - [Loop Control Statement](#32-loop-control-statement)  
+      - [Loop Control Statement](#32-loop-control-statement)
+      - [FizzBuzz Challenge](#fizzbuzz-challenge)
    - [4. Methods](#basic-4-methods--function)
    - [5. Exception Handling](#basic-5-exception-handling)
-   - [6. Projects]
-      - [Project 1: Unit Converter App](#61-unit-converter-app-project)
-      - [Project 2: Unit Converter App](#61-unit-converter-app-project)
+   - [6. Projects](#basic-6-project)
+      - [Project 1: Simple Calculator App](#61-project-simple-calculator-with-conditional-checks)
+      - [Project 2: Basic Currency Converter](#62-project-basic-currency-converter)
+      - [Project 3: Unit Converter App](#63-unit-converter-app-project)
+      - [Project 4: Guessing Game App](#64-number-guessing-game)
 
 2. [Intermediate C]
    - [1. OOP](#intermediate-1-oop)
@@ -280,7 +283,7 @@ Here are some important .NET CLI (Command Line Interface) commands used in .NET 
 
 C# provides several built-in data types, which can be categorized into the following groups:
 
-1. **Value Types**:
+1. **Value Types**: (store data in stack memory)
    - **Integral Types**: Represent whole numbers without a fractional component.
      - `sbyte`: 8-bit signed integer (-128 to 127)
      - `byte`: 8-bit unsigned integer (0 to 255)
@@ -302,7 +305,7 @@ C# provides several built-in data types, which can be categorized into the follo
      - tuple : for stroing different realted data types in a single object
      - Nullable
 
-2. **Reference Types**:
+2. **Reference Types**: (store data in heap memory)
    - **Class**: Defines a reference type.
    - **Interface**: Defines a contract for classes to implement.
    - **Delegate**: Defines a reference to a method.
@@ -343,6 +346,50 @@ C# provides several built-in data types, which can be categorized into the follo
       }
   }
   ```
+
+#### Data Types Range
+
+```csharp
+
+// sbyte num = 12;
+// byte (1 byte), short(2 bytes), int(4 bytes), long(8 bytes)
+
+// 1 byte = (0,1) = 256 (-128,-127, ...,0,1,...,127)
+// 2 bytes = 16 bits = 65, (-32768 to 32767)
+Console.WriteLine($"Signed Integral Types");
+
+Console.WriteLine($"sbyte: {sbyte.MinValue} to {sbyte.MaxValue}");
+Console.WriteLine($"short: {short.MinValue} to {short.MaxValue}");
+Console.WriteLine($"int: {int.MinValue} to {int.MaxValue}");
+Console.WriteLine($"long: {long.MinValue} to {long.MaxValue}");
+
+Console.WriteLine($"\n\nUnSigned Integral Types");
+Console.WriteLine($"byte: {byte.MinValue} to {byte.MaxValue}");
+Console.WriteLine($"ushort: {ushort.MinValue} to {ushort.MaxValue}");
+Console.WriteLine($"uint: {uint.MinValue} to {uint.MaxValue}");
+Console.WriteLine($"ulong: {ulong.MinValue} to {ulong.MaxValue}");
+
+// float, double, decimal
+Console.WriteLine($"\n\nFloating Point Types");
+Console.WriteLine($"float: {float.MinValue} to {float.MaxValue}"); // decimal point 6-9 
+Console.WriteLine($"double: {double.MinValue} to {double.MaxValue}"); // decimal point 15-17
+Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue}"); // decimal point 28-29 
+
+```
+
+#### which data types I should use?
+
+**When in doubt, stick with the basics**
+While you've looked at several considerations, as you're getting started, for simplicity's sake you should prefer a subset of basic data types, including:
+
+- int for most whole numbers
+- decimal for numbers representing money
+- bool for true or false values
+- string for alphanumeric value
+- byte: working with encoded data that comes from other computer systems or using different caracter sets.
+- double: working with geometric or scientific purposes. double is used frequently when bilding games involving motion.
+-System.DateTime for a specific date and time value.
+- System.TimeSpan for a span of years / months / days / hours / minutes / seconds / milliseconds.
 
 #### Variables
 
@@ -2982,7 +3029,38 @@ class Program
 - **Method 1 (Regex):** Allows you to define your own custom pattern for validation, which can be tailored to specific needs.
 - **Method 2 (MailAddress Class):** Provides a more comprehensive validation that considers the structure and format of email addresses according to standard email rules.
 
-Choose the method that best suits your requirements for email validation in your C# application.
+### FizzBuzz Challenge
+
+![alt text](image-9.png)
+
+```csharp
+class FizzBuzzProject
+{
+  public static void FizzBuzz()
+  {
+    for (int number = 1; number < 101; number++)
+    {
+
+      if (number % 3 == 0 && number % 5 == 0)
+      {
+        Console.WriteLine($"{number} - FizzBuzz");
+      }
+      else if (number % 3 == 0)
+      {
+        Console.WriteLine($"{number} - Fizz");
+      }
+      else if (number % 5 == 0)
+      {
+        Console.WriteLine($"{number} - Buzz");
+      }
+      else
+      {
+        Console.WriteLine($"{number}");
+      }
+    }
+  }
+}
+```
 
 ### 3.4 Final Assignment: Calculator program
 
@@ -3608,9 +3686,272 @@ else
 
 Choosing the right approach depends on the nature of the error you expect and the need to balance performance with error management robustness.
 
-## 6. Project
+## Basic 6. Project
 
-### 6.1 Unit Converter App Project
+### 6.1 Project: Simple Calculator with Conditional Checks**
+
+![alt text](image-8.png)
+
+**Objective:**  
+This extension of the previous project will help you practice using basic arithmetic operators with simple conditional checks (`if` statements). You will enhance the calculator to validate user input and handle division by zero errors gracefully.
+
+#### **Project Description:**
+
+The calculator will:
+
+- Prompt the user to input two numbers.
+- Check if the input numbers are valid and handle division by zero.
+- Perform addition, subtraction, multiplication, and division on the numbers.
+- Display the results of each operation.
+
+#### **Instructions0:**
+
+1. **Set Up the Project:**
+   - Extend the previous C# Console Application.
+
+2. **Implement Conditional Checks:**
+   - Use `if` statements to validate input and handle division by zero.
+
+3. **New Features:**
+   - Check if the second number is zero before performing division to avoid runtime errors.
+
+#### **Updated Sample Code:**
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Step 1: Prompt the user to enter the first number
+        Console.Write("Enter the first number: ");
+        bool isValidNum1 = double.TryParse(Console.ReadLine(), out double num1);
+
+        // Step 2: Prompt the user to enter the second number
+        Console.Write("Enter the second number: ");
+        bool isValidNum2 = double.TryParse(Console.ReadLine(), out double num2);
+
+        // Step 3: Validate input using if statements
+        if (!isValidNum1 || !isValidNum2)
+        {
+            Console.WriteLine("Invalid input. Please enter valid numeric values.");
+        }
+        else
+        {
+            // Step 4: Perform operations using arithmetic operators
+            double sum = num1 + num2;            // Addition
+            double difference = num1 - num2;     // Subtraction
+            double product = num1 * num2;        // Multiplication
+
+            // Step 5: Check for division by zero
+            if (num2 != 0)
+            {
+                double quotient = num1 / num2;   // Division
+                Console.WriteLine($"\nResults:");
+                Console.WriteLine($"Addition: {num1} + {num2} = {sum}");
+                Console.WriteLine($"Subtraction: {num1} - {num2} = {difference}");
+                Console.WriteLine($"Multiplication: {num1} * {num2} = {product}");
+                Console.WriteLine($"Division: {num1} / {num2} = {quotient}");
+            }
+            else
+            {
+                Console.WriteLine($"\nResults:");
+                Console.WriteLine($"Addition: {num1} + {num2} = {sum}");
+                Console.WriteLine($"Subtraction: {num1} - {num2} = {difference}");
+                Console.WriteLine($"Multiplication: {num1} * {num2} = {product}");
+                Console.WriteLine("Division: Cannot divide by zero.");
+            }
+        }
+    }
+}
+```
+
+#### **Expected Output0:**
+
+When you run the program, it should look something like this:
+
+```
+Enter the first number: 10
+Enter the second number: 0
+
+Results:
+Addition: 10 + 0 = 10
+Subtraction: 10 - 0 = 10
+Multiplication: 10 * 0 = 0
+Division: Cannot divide by zero.
+```
+
+Or, if the inputs are valid:
+
+```
+Enter the first number: 10
+Enter the second number: 5
+
+Results:
+Addition: 10 + 5 = 15
+Subtraction: 10 - 5 = 5
+Multiplication: 10 * 5 = 50
+Division: 10 / 5 = 2
+```
+
+#### **Key Concepts Practiced:**
+
+- **Arithmetic Operators**: `+`, `-`, `*`, `/`.
+- **Conditional Logic**: Using `if` statements to validate input and handle errors.
+- **Error Handling**: Managing division by zero scenarios gracefully.
+
+This extension helps reinforce the use of conditional statements in combination with basic arithmetic operators, adding robustness to the code.
+
+### 6.2 Project: Basic Currency Converter
+
+**Objective:**  
+This project will help you practice using arithmetic operators along with basic conditional checks (`if` statements). You will create a simple currency converter that performs conversions between different currencies based on user input and predefined conversion rates.
+
+- **Project Description:**
+
+The currency converter will:
+
+- Prompt the user to input an amount in a specific currency.
+- Prompt the user to select the target currency for conversion.
+- Perform conversion using predefined conversion rates.
+- Display the conversion result.
+
+- **Instructions:**
+
+1. **Set Up the Project:**
+   - Create a new C# Console Application.
+
+2. **Implement the Currency Converter:**
+   - Use arithmetic operators (`*` for multiplication) to calculate conversions.
+   - Use `if` statements to validate input and handle unsupported currencies.
+
+3. **Currencies and Conversion Rates:**
+   - Define fixed conversion rates for the following currencies:
+     - USD to EUR: 0.85
+     - EUR to USD: 1.18
+     - USD to GBP: 0.75
+     - GBP to USD: 1.33
+     - EUR to GBP: 0.88
+     - GBP to EUR: 1.14
+
+4. **Restrictions:**
+   - Use direct expressions and `if` statements for conversion.
+   - Avoid using loops, functions, or complex control statements.
+
+- **Sample Code:**
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Step 1: Prompt the user to enter the amount
+        Console.Write("Enter the amount you want to convert: ");
+        bool isValidAmount = double.TryParse(Console.ReadLine(), out double amount);
+
+        // Step 2: Validate the amount input
+        if (!isValidAmount || amount <= 0)
+        {
+            Console.WriteLine("Invalid input. Please enter a positive numeric value.");
+        }
+        else
+        {
+            // Step 3: Prompt the user to select the conversion type
+            Console.WriteLine("Available Conversions:");
+            Console.WriteLine("1. USD to EUR");
+            Console.WriteLine("2. EUR to USD");
+            Console.WriteLine("3. USD to GBP");
+            Console.WriteLine("4. GBP to USD");
+            Console.WriteLine("5. EUR to GBP");
+            Console.WriteLine("6. GBP to EUR");
+
+            Console.Write("Select the conversion option (1-6): ");
+            bool isValidOption = int.TryParse(Console.ReadLine(), out int option);
+
+            // Step 4: Validate the selected option
+            if (!isValidOption || option < 1 || option > 6)
+            {
+                Console.WriteLine("Invalid selection. Please choose a number between 1 and 6.");
+            }
+            else
+            {
+                // Step 5: Perform conversion based on selected option
+                double convertedAmount = 0;
+
+                if (option == 1) // USD to EUR
+                {
+                    convertedAmount = amount * 0.85;
+                    Console.WriteLine($"{amount} USD is equivalent to {convertedAmount:F2} EUR");
+                }
+                if (option == 2) // EUR to USD
+                {
+                    convertedAmount = amount * 1.18;
+                    Console.WriteLine($"{amount} EUR is equivalent to {convertedAmount:F2} USD");
+                }
+                if (option == 3) // USD to GBP
+                {
+                    convertedAmount = amount * 0.75;
+                    Console.WriteLine($"{amount} USD is equivalent to {convertedAmount:F2} GBP");
+                }
+                if (option == 4) // GBP to USD
+                {
+                    convertedAmount = amount * 1.33;
+                    Console.WriteLine($"{amount} GBP is equivalent to {convertedAmount:F2} USD");
+                }
+                if (option == 5) // EUR to GBP
+                {
+                    convertedAmount = amount * 0.88;
+                    Console.WriteLine($"{amount} EUR is equivalent to {convertedAmount:F2} GBP");
+                }
+                if (option == 6) // GBP to EUR
+                {
+                    convertedAmount = amount * 1.14;
+                    Console.WriteLine($"{amount} GBP is equivalent to {convertedAmount:F2} EUR");
+                }
+            }
+        }
+    }
+}
+```
+
+- **Expected Output:**
+
+When you run the program, it should look something like this:
+
+```
+Enter the amount you want to convert: 100
+Available Conversions:
+1. USD to EUR
+2. EUR to USD
+3. USD to GBP
+4. GBP to USD
+5. EUR to GBP
+6. GBP to EUR
+Select the conversion option (1-6): 1
+100 USD is equivalent to 85.00 EUR
+```
+
+Or, if an invalid input is entered:
+
+```
+Enter the amount you want to convert: abc
+Invalid input. Please enter a positive numeric value.
+```
+
+- **Key Concepts Practiced:**
+
+- **Arithmetic Operators**: Using `*` for multiplication in currency conversion.
+- **Conditional Logic**: Using `if` statements to validate input and perform specific conversions.
+- **Input Validation**: Ensuring that user input is correct before performing calculations.
+
+This simple project reinforces basic arithmetic and condition checks, making it perfect for students practicing foundational programming skills.
+
+### 6.3 Unit Converter App Project
+
+- [App GitHub Link Here](https://github.com/anisul-Islam/unit-converter-csharp)
 
 #### Unit Converter Using Operators**
 
@@ -4256,7 +4597,114 @@ class UnitConverterApp
 }
 ```
 
-### 6.2 Guessing Game App Project
+### 6.4 Number Guessing Game
+
+**Objective:**  
+This project will help you practice using loops, `switch` statements, and generating random numbers in C#. You will create a simple number guessing game where the user tries to guess a randomly generated number within a specified range.
+
+- **Project Description:**
+  - Generate a random number between 1 and 100.
+  - Prompt the user to guess the number.
+  - Use a loop to allow the user multiple attempts.
+  - Provide feedback on each guess (too high, too low, or correct).
+  - Use a `switch` statement to handle different outcomes (correct guess, too high, too low).
+
+- **Instructions:**
+
+1. **Set Up the Project:**
+   - Create a new C# Console Application.
+
+2. **Implement the Number Guessing Game:**
+   - Use `Random` class to generate a random number.
+   - Use a `while` loop to keep the game running until the correct number is guessed.
+   - Use a `switch` statement to evaluate the user’s guess.
+
+3. **Game Flow:**
+   - The game starts by generating a random number between 1 and 100.
+   - The user is prompted to enter a guess.
+   - The game provides feedback on whether the guess is too high, too low, or correct.
+   - The game continues until the user guesses correctly.
+
+- **Sample Code:**
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Step 1: Generate a random number between 1 and 100
+        Random random = new Random();
+        int randomNumber = random.Next(1, 101); // Generates a number between 1 and 100
+        int attempts = 0; // To count the number of attempts
+        bool isCorrectGuess = false;
+
+        Console.WriteLine("Welcome to the Number Guessing Game!");
+        Console.WriteLine("I have selected a number between 1 and 100. Try to guess it!");
+
+        // Step 2: Start the guessing loop
+        while (!isCorrectGuess)
+        {
+            // Step 3: Prompt the user to enter a guess
+            Console.Write("Enter your guess: ");
+            string input = Console.ReadLine();
+            bool isValidNumber = int.TryParse(input, out int userGuess);
+
+            // Validate input
+            if (!isValidNumber || userGuess < 1 || userGuess > 100)
+            {
+                Console.WriteLine("Please enter a valid number between 1 and 100.");
+                continue;
+            }
+
+            attempts++; // Increment the attempt count
+
+            // Step 4: Use switch statement to handle the guess
+            switch (userGuess)
+            {
+                case var _ when userGuess < randomNumber:
+                    Console.WriteLine("Too low! Try again.");
+                    break;
+                case var _ when userGuess > randomNumber:
+                    Console.WriteLine("Too high! Try again.");
+                    break;
+                case var _ when userGuess == randomNumber:
+                    Console.WriteLine($"Congratulations! You've guessed the correct number {randomNumber} in {attempts} attempts.");
+                    isCorrectGuess = true;
+                    break;
+            }
+        }
+
+        Console.WriteLine("Thanks for playing the Number Guessing Game!");
+    }
+}
+```
+
+- **Expected Output:**
+
+When you run the program, it will look something like this:
+
+```
+Welcome to the Number Guessing Game!
+I have selected a number between 1 and 100. Try to guess it!
+Enter your guess: 50
+Too high! Try again.
+Enter your guess: 25
+Too low! Try again.
+Enter your guess: 37
+Congratulations! You've guessed the correct number 37 in 3 attempts.
+Thanks for playing the Number Guessing Game!
+```
+
+- **Key Concepts Practiced:**
+
+- **Loops (`while`)**: Used to repeatedly prompt the user for input until the correct guess is made.
+- **Random Number Generation**: Using `Random` class to generate a number between 1 and 100.
+- **Switch Statement**: Used to evaluate the user's guess and provide feedback.
+- **Input Validation**: Ensuring the user's guess is within the valid range.
+
+This project introduces students to basic control structures in C#, allowing them to practice handling user input, working with random numbers, and using conditional logic to create an interactive console application.
 
 ## Intermediate 1. OOP
 
@@ -6721,6 +7169,8 @@ class Program
 
 #### Inheritance in  Bank Example
 
+![alt text](chatuml-diagram.png)
+
 - without inheritance
 
 ```csharp
@@ -6788,6 +7238,7 @@ class Test
 ```
 
 - with inheritance
+![alt text](chatuml-diagram (1).png)
 
 ```csharp
 public class BankAccount
