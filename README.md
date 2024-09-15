@@ -4706,6 +4706,118 @@ Thanks for playing the Number Guessing Game!
 
 This project introduces students to basic control structures in C#, allowing them to practice handling user input, working with random numbers, and using conditional logic to create an interactive console application.
 
+### 6.5 Students Grade Manager
+
+Here's a simple project in C# that focuses on arrays. This project will help beginners understand how to work with arrays, including initializing, accessing, modifying, and iterating through them. The project will be a small application that manages a list of student grades, calculates the average grade, finds the highest and lowest grades, and displays the grades.
+
+- **Objective:**
+
+Create a C# console application that allows the user to:
+
+1. Input grades for students.
+2. Display all grades.
+3. Calculate and display the average grade.
+4. Find and display the highest and lowest grades.
+
+- **Steps:**
+
+1. Initialize an array to store student grades.
+2. Allow the user to input grades into the array.
+3. Display all grades entered.
+4. Calculate the average grade.
+5. Find the highest and lowest grades.
+
+**C# Code:**
+
+```csharp
+using System;
+
+class StudentGradesManager
+{
+    static void Main(string[] args)
+    {
+        // Step 1: Initialize an array to store grades.
+        Console.Write("Enter the number of students: ");
+        int numberOfStudents = Convert.ToInt32(Console.ReadLine());
+        double[] grades = new double[numberOfStudents];
+
+        // Step 2: Input grades for students.
+        for (int i = 0; i < grades.Length; i++)
+        {
+            Console.Write($"Enter grade for student {i + 1}: ");
+            grades[i] = Convert.ToDouble(Console.ReadLine());
+        }
+
+        // Step 3: Display all grades entered.
+        Console.WriteLine("\nGrades entered:");
+        foreach (double grade in grades)
+        {
+            Console.WriteLine(grade);
+        }
+
+        // Step 4: Calculate the average grade.
+        double total = 0;
+        foreach (double grade in grades)
+        {
+            total += grade;
+        }
+        double average = total / grades.Length;
+        Console.WriteLine($"\nAverage grade: {average:F2}");
+
+        // Step 5: Find the highest and lowest grades.
+        double highest = grades[0];
+        double lowest = grades[0];
+
+        foreach (double grade in grades)
+        {
+            if (grade > highest)
+            {
+                highest = grade;
+            }
+            if (grade < lowest)
+            {
+                lowest = grade;
+            }
+        }
+
+        Console.WriteLine($"Highest grade: {highest}");
+        Console.WriteLine($"Lowest grade: {lowest}");
+    }
+}
+```
+
+- **Explanation of the Code:**
+
+1. **Array Initialization:**  
+   - The program starts by asking the user how many students' grades they want to enter and initializes an array of that size.
+
+2. **Input Grades:**  
+   - Using a `for` loop, the program prompts the user to input each student's grade, which is then stored in the array.
+
+3. **Display Grades:**  
+   - A `foreach` loop iterates over the array to display each grade entered.
+
+4. **Calculate Average Grade:**  
+   - The program calculates the total sum of grades using a `foreach` loop and then divides by the number of grades to find the average.
+
+5. **Find Highest and Lowest Grades:**  
+   - The program initializes the highest and lowest grades with the first element of the array and then uses a `foreach` loop to find the actual highest and lowest grades.
+
+- **Key Concepts Covered:**
+
+- **Arrays**: Learn how to declare, initialize, and manipulate arrays.
+- **Loops**: Use `for` and `foreach` loops to iterate through the array.
+- **Basic Calculations**: Calculate sums, averages, and find the highest/lowest values.
+- **User Input**: Accept input from the user and store it in an array.
+
+- **Extensions for Further Learning:**
+
+- Add validation to ensure the grades entered are within a valid range (e.g., 0-100).
+- Extend the program to allow editing or deleting grades.
+- Use methods to separate different functionalities like adding grades, calculating averages, etc.
+
+This project is a great way to start learning about arrays and basic operations in C#.
+
 ## Intermediate 1. OOP
 
 ![alt text](image-4.png)
