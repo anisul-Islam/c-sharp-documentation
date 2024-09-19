@@ -14169,327 +14169,6 @@ app.Run();
   (int Id, string Name, double Price);
 ```
 
-### GET /products and /products{id}
-
-- now inside Program.cs
-
-```csharp
-using EcommerceAPI;
-
-var builder = WebApplication.CreateBuilder(args);
-
-var app = builder.Build();
-
-
-List<ProductDto> products = [
-
-    new ProductDto(1, "Iphone 13", 350.25),
-    new ProductDto(2, "Samsung", 325.25),
-    new ProductDto(3, "IPhone 14", 225.25)
-];
-
-app.MapGet("/products", () => products);
-
-app.MapGet("/products/{id}", (int id) =>
-{
-  var foundProduct = products.Find(product => product.Id == id);
-  return foundProduct is null ? Results.NotFound() : Results.Ok(foundProduct);
-}).WithName("GetProduct");
-```
-
-### how to create API response
-
-```csharp
-// first create the template of the response outside the class
-public record ApiResponse<T>(T Data, string Message);
-
-// now create the response
-var response = new ApiResponse<ProductDto>(foundProduct, "Product found successfully");
-
-// use the response
- return foundProduct is null ? Results.NotFound() : Results.Ok(response);
-
- // so finally
-  app.MapGet("/products/{id}", (int id) =>
-    {
-      var foundProduct = products.Find(product => product.Id == id);
-      if (foundProduct != null)
-      {
-        var response = new ApiResponse<ProductDto>(foundProduct, "Product found successfully");
-        return foundProduct is null ? Results.NotFound() : Results.Ok(response);
-      }
-      else
-      {
-        return Results.NotFound("Product not found");
-      }
-
-    }).WithName("GetProduct");
-```
-
-### POST /products
-
-- CreateProductDto.cs another record
-
-The CreateProductDto record in your example is a data transfer object (DTO) used for representing the data needed to create a new product. It has two properties:
-
-Name: Represents the name of the product.
-Price: Represents the price of the product.
-
-```csharp
-// Dtos/CreateProductDto
-namespace EcommerceAPI;
-
-public record CreateProductDto
-(string Name, double Price);
-
-app.MapPost("/products", (CreateProductDto newProduct) =>
-{
- ProductDto product = new(
-        products.Count + 1,
-        newProduct.Name,
-        newProduct.Price
-      );
-  products.Add(product);
-  // return products;
-  return Results.CreatedAtRoute("GetProduct", new { id = product.Id }, product);
-});
-```
-
-### PUT /products/{id}
-
-```csharp
-app.MapPut("/products/{id}", (int id, UpdateProductDto updateProduct) =>
-{
-  // find existing product 
-  var foundProductIndex = products.FindIndex(product => product.Id == id);
-  if (foundProductIndex == -1)
-  {
-    return Results.NotFound(); // create or not create if it is not found based on your own expectation
-  }
-  else
-  {
-    products[foundProductIndex] = new ProductDto(id, updateProduct.Name, updateProduct.Price);
-    return Results.NoContent();
-  }
-  // replace with update data
-});
-```
-
-### DELETE /products/{id}
-
-```csharp
-app.MapDelete("/products/{id}", (int id) =>
-{
-  products.RemoveAll(product => product.Id == id);
-  return Results.Ok();
-});
-
-```
-
-### Extension, combine all the endpoints
-
-- create an EndPoints folder and move codes
-
-```csharp
-// EndPoints/ProductEndPoits class
-namespace EcommerceAPI;
-
-public static class ProductEndpoints
-{
-  private static readonly List<ProductDto> products = [
-    new ProductDto(1, "Iphone 13", 350.25),
-    new ProductDto(2, "Samsung", 325.25),
-    new ProductDto(3, "IPhone 14", 225.25)
-  ];
-
-  public static WebApplication MapProductsEndPoints(this WebApplication app)
-  {
-
-    app.MapGet("/products", () => products);
-
-    app.MapGet("/products/{id}", (int id) =>
-    {
-      var foundProduct = products.Find(product => product.Id == id);
-      return foundProduct is null ? Results.NotFound() : Results.Ok(foundProduct);
-    }).WithName("GetProduct");
-
-    app.MapPost("/products", (CreateProductDto newProduct) =>
-    {
-      ProductDto product = new(
-        products.Count + 1,
-        newProduct.Name,
-        newProduct.Price
-      );
-      products.Add(product);
-      // return products;
-      return Results.CreatedAtRoute("GetProduct", new { id = product.Id }, product);
-    });
-
-    app.MapPut("/products/{id}", (int id, UpdateProductDto updateProduct) =>
-    {
-      // find existing product 
-      var foundProductIndex = products.FindIndex(product => product.Id == id);
-      if (foundProductIndex == -1)
-      {
-        return Results.NotFound(); // create or not create if it is not found based on your own expectation
-      }
-      else
-      {
-        products[foundProductIndex] = new ProductDto(id, updateProduct.Name, updateProduct.Price);
-        return Results.NoContent();
-      }
-      // replace with update data
-    });
-
-   app.MapDelete("/products/{id}", (int id) =>
-    {
-        var productToRemove = products.Find(p => p.Id == id);
-        if (productToRemove != null)
-        {
-            products.Remove(productToRemove);
-            return Results.Ok("Product deleted successfully");
-        }
-        else
-        {
-            return Results.NotFound("Product not found");
-        }
-    });
-
-
-    return app;
-
-  }
-
-}
-
-// now Program.cs
-using EcommerceAPI;
-
-var builder = WebApplication.CreateBuilder(args);
-
-var app = builder.Build();
-
-app.MapProductsEndPoints();
-
-app.Run();
-
-```
-
-### grouping routes
-
-```csharp
-namespace EcommerceAPI;
-
-public record ApiResponse<T>(T Data, string Message);
-public static class ProductEndpoints
-{
-  private static readonly List<ProductDto> products = [
-    new ProductDto(1, "Iphone 13", 350.25),
-    new ProductDto(2, "Samsung", 325.25),
-    new ProductDto(3, "IPhone 14", 225.25)
-  ];
-
-  public static RouteGroupBuilder MapProductsEndPoints(this WebApplication app)
-  {
-
-    var group = app.MapGroup("products");
-
-    // GET -> /products
-    group.MapGet("/", () => products);
-
-    // GET -> /products/1
-    group.MapGet("/{id}", (int id) =>
-    {
-      var foundProduct = products.Find(product => product.Id == id);
-      if (foundProduct != null)
-      {
-        var response = new ApiResponse<ProductDto>(foundProduct, "Product found successfully");
-        return foundProduct is null ? Results.NotFound() : Results.Ok(response);
-      }
-      else
-      {
-        return Results.NotFound("Product not found");
-      }
-
-    }).WithName("GetProduct");
-
-    // POST -> /products
-    group.MapPost("/", (CreateProductDto newProduct) =>
-    {
-     ProductDto product = new(
-        products.Count + 1,
-        newProduct.Name,
-        newProduct.Price
-      );
-      products.Add(product);
-      // return products;
-      return Results.CreatedAtRoute("GetProduct", new { id = product.Id }, product);
-    });
-
-    group.MapPut("/{id}", (int id, UpdateProductDto updateProduct) =>
-    {
-      // find existing product 
-      var foundProductIndex = products.FindIndex(product => product.Id == id);
-      if (foundProductIndex == -1)
-      {
-        return Results.NotFound(); // create or not create if it is not found based on your own expectation
-      }
-      else
-      {
-        products[foundProductIndex] = new ProductDto(id, updateProduct.Name, updateProduct.Price);
-        return Results.NoContent();
-      }
-      // replace with update data
-    });
-
-    group.MapDelete("/{id}", (int id) =>
-    {
-      var productToRemove = products.Find(p => p.Id == id);
-      if (productToRemove != null)
-      {
-        products.Remove(productToRemove);
-        return Results.Ok("Product deleted successfully");
-      }
-      else
-      {
-        return Results.NotFound("Product not found");
-      }
-    });
-    return group;
-  }
-
-}
-```
-
-### Validation with Data Annotation / Handling Invalid Inputs
-
-- what happen if you do not pass product name and it creates the product? it should be a bad request 400
-- add the data annotation to the DTOs
-- add the nuget package (MinimalApis.Extensions) from the package manager (add the vsextension)
-
-```csharp
-using System.ComponentModel.DataAnnotations;
-
-namespace EcommerceAPI;
-
-public record class CreateProductDto
-(
-  [Required][StringLength(50)] string Name,
-  [Range(1, 1000)] double Price
-);
-
-using System.ComponentModel.DataAnnotations;
-
-namespace EcommerceAPI;
-
-public record class UpdateProductDto
-(
-  [Required][StringLength(50)] string Name,
-  [Range(1, 1000)] double Price
-);
-
-```
-
 ### CRUD operations in React Now
 
 ```csharp
@@ -14498,11 +14177,9 @@ public record class UpdateProductDto
 
 ## Intermediate 5 : REST web API - ecommerce
 
-### 5.0 Explain REST API Mechanism
+### 5.1 Basic setup
 
-### 4.1 Basic setup
-
-#### 4.1.1 create, build and run a web api
+#### 5.1.1 create, build and run a web api
 
   ```csharp
     dotnet new webapi -o api
@@ -14514,60 +14191,74 @@ public record class UpdateProductDto
   ```csharp
   // clean the code
   var builder = WebApplication.CreateBuilder(args);
-
-  // Add services to the container.
-  // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-  builder.Services.AddEndpointsApiExplorer();
-  builder.Services.AddSwaggerGen();
-
   var app = builder.Build();
-
-  // Configure the HTTP request pipeline.
-  if (app.Environment.IsDevelopment())
-  {
-      app.UseSwagger();
-      app.UseSwaggerUI();
-  }
-
   app.UseHttpsRedirection();
+P  ```
 
-
-  app.Run();
-  ```
-
-#### 4.1.2 status code & how to create API response
-
-- Results.OK()
-
-#### 4.1.3 Testing API
-
-#### 4.1.4 Documenting API: Swagger API Doc -> `http://localhost:5097/swagger/index.html`
-
-#### 4.1.5 HTTP Methods & End Points Naming Conventions
-
-- add all HTTP methods and give a simple response in Program.cs
-
-#### 4.1.6 add few routes `/api/users`
+#### 5.1.2 status code & how to create API response
 
 ```csharp
-// User Data will look like this
-public class User
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+
+var app = builder.Build();
+
+app.UseHttpsRedirection();
+
+app.MapGet("/", () =>
 {
-  public Guid UserId { get; set; }
-  public string Name { get; set; }
-  public required string Email { get; set; }
-  public required string Password { get; set; }
-  public string Address { get; set; } = string.Empty;
-  public string Image { get; set; } = string.Empty;
-  public bool IsAdmin { get; set; }
-  public bool IsBanned { get; set; }
-  public DateTime CreatedAt { get; set; }
+    var response = new
+    {
+        Success = true,
+        Message = "Api is working..."
+    };
+    return Results.Ok(response);
+});
+
+app.Run();
+```
+
+#### 5.1.3 Testing API
+
+#### 5.1.4 User API : Create the UserDto class
+
+- think about tha data model
+- cmd + shift + p => class => create a class
+
+```csharp
+// UserDto.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ecommrce_api.Dtos.users
+{
+    public class UserDto
+    {
+        public Guid UserId { get; set; }
+        public required string Name { get; set; } = string.Empty;
+        public required string Email { get; set; }
+        public required string Password { get; set; }
+        public string Address { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
+        public bool IsAdmin { get; set; } = false;
+        public bool IsBanned { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+    }
 }
 
-// Data for Users 
-private static List<User> _users = new List<User>()
+```
+
+#### 5.1.5 User API : Prepare the dummy data
+
+```csharp
+// Program.cs
+List<UserDto> _users = new List<UserDto>()
   {
-    new User{
+    new UserDto{
+
         UserId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
         Name = "John Doe",
         Email = "john@example.com",
@@ -14577,7 +14268,7 @@ private static List<User> _users = new List<User>()
         IsBanned = false,
         CreatedAt = DateTime.Now
     },
-    new User{
+    new UserDto{
         UserId = Guid.Parse("24508f7e-94ec-4f0b-b8d6-e8e16a9a3b29"),
         Name = "Alice Smith",
         Email = "alice@example.com",
@@ -14587,7 +14278,7 @@ private static List<User> _users = new List<User>()
         IsBanned = false,
         CreatedAt = DateTime.Now
     },
-    new User{
+    new UserDto{
         UserId = Guid.Parse("87e5c4f3-d3e5-4e16-88b5-809b2b08b773"),
         Name = "Bob Johnson",
         Email = "bob@example.com",
@@ -14598,149 +14289,224 @@ private static List<User> _users = new List<User>()
         CreatedAt = DateTime.Now
     }
   };
-
-app.MapGet("/users", () => _users);
-
-app.MapGet("/users/{id}", (int id) =>
-{
-  var foundUser = _users.Find(user => user.Id == id);
-  return foundUser is null ? Results.NotFound() : Results.Ok(foundProduct);
-}).WithName("GeUser");
-
-app.MapPost("/users", (User newUser) =>
-{
-    newUser.UserId = Guid.NewGuid();
-    newUser.CreatedAt = DateTime.Now;
-    _users.Add(newUser);
-  return Results.CreatedAtRoute("GetUser", new { id = newUser.Id }, newUser);
-});
-
 ```
 
-#### 4.1.7 Add VS Code extensions: Nuget Open Gallery
-
-### 4.2 MVC Pattern
-
-#### 4.2.1 Create a Model (Make Sure to Use Model in the end of file/class Name)
+#### 5.1.6 User API: create CRUD endpoints and test
 
 ```csharp
-  public class User
-  {
-    public Guid UserId { get; set; }
-    public string Name { get; set; }
-    public required string Email { get; set; }
-    public required string Password { get; set; }
-    public string Address { get; set; } = string.Empty;
-    public string Image { get; set; } = string.Empty;
-    public bool IsAdmin { get; set; }
-    public bool IsBanned { get; set; }
-    public DateTime CreatedAt { get; set; }
-  }
+
+app.MapGet("/users", () =>
+{
+    if (_users.Count > 0)
+    {
+        return Results.Ok(_users);
+    }
+    return Results.NotFound($"No products exist");
+});
+
+app.MapGet("/users/{id}", (Guid id) =>
+{
+    var foundUser = _users.Find(user => user.UserId == id);
+    return foundUser is null ? Results.NotFound($"User with {id} does not exist") : Results.Ok(foundUser);
+});
+
+app.MapPost("/users", (UserDto newUser) =>
+{
+    newUser.UserId = Guid.NewGuid();
+    _users.Add(newUser);
+    return Results.Created("GetUser", newUser);
+});
 ```
 
-#### 4.2.2 Create a Service
+```js
+GET http://localhost:5111
+
+###
+
+GET http://localhost:5111/users
+
+###
+
+POST http://localhost:5111/users
+Content-Type: application/json
+
+{
+  "name": "anisul islam",
+  "email": "anis@gmail.com",
+  "password": "123456",
+  "address": "sylhet"
+}
+```
+
+### 5.2 MVC Pattern
+
+#### 5.2.1 Create User Model
+
+#### 5.2.2 Create User Service
 
 ```csharp
  // Services/UserService.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using ecommrce_api.Dtos.users;
+
+namespace ecommrce_api
+{
   public class UserService
   {
-    // users api 
-    public static List<User> _users = new List<User>() {
-      new User{
-          UserId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
-          Name = "John Doe",
-          Email = "john@example.com",
-          Password = "password123",
-          Address = "123 Main St",
-          IsAdmin = false,
-          IsBanned = false,
-          CreatedAt = DateTime.Now
-      },
-      new User{
-          UserId = Guid.Parse("24508f7e-94ec-4f0b-b8d6-e8e16a9a3b29"),
-          Name = "Alice Smith",
-          Email = "alice@example.com",
-          Password = "password456",
-          Address = "456 Elm St",
-          IsAdmin = false,
-          IsBanned = false,
-          CreatedAt = DateTime.Now
-      },
-      new User{
-          UserId = Guid.Parse("87e5c4f3-d3e5-4e16-88b5-809b2b08b773"),
-          Name = "Bob Johnson",
-          Email = "bob@example.com",
-          Password = "password789",
-          Address = "789 Oak St",
-          IsAdmin = false,
-          IsBanned = false,
-          CreatedAt = DateTime.Now
-      }
-  };
 
-    public IEnumerable<User> GetAllUsersService()
+    public static List<UserDto> _users = new List<UserDto>()
+      {
+        new UserDto{
+
+            UserId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
+            Name = "John Doe",
+            Email = "john@example.com",
+            Password = "password123",
+            Address = "123 Main St",
+            IsAdmin = false,
+            IsBanned = false,
+            CreatedAt = DateTime.Now
+        },
+        new UserDto{
+            UserId = Guid.Parse("24508f7e-94ec-4f0b-b8d6-e8e16a9a3b29"),
+            Name = "Alice Smith",
+            Email = "alice@example.com",
+            Password = "password456",
+            Address = "456 Elm St",
+            IsAdmin = false,
+            IsBanned = false,
+            CreatedAt = DateTime.Now
+        },
+        new UserDto{
+            UserId = Guid.Parse("87e5c4f3-d3e5-4e16-88b5-809b2b08b773"),
+            Name = "Bob Johnson",
+            Email = "bob@example.com",
+            Password = "password789",
+            Address = "789 Oak St",
+            IsAdmin = false,
+            IsBanned = false,
+            CreatedAt = DateTime.Now
+        }
+      };
+
+    public List<UserDto> GetAllUsersService()
     {
       return _users;
     }
-    public User? GetUserById(Guid userId)
+    public UserDto? GetUserByIdService(Guid id)
     {
-      return _users.Find(user => user.UserId == userId);
+      var foundUser = _users.Find(user => user.UserId == id);
+      return foundUser;
     }
+    public bool DeleteUserByIdService(Guid id)
+    {
+      var userToRemove = _users.FirstOrDefault(u => u.UserId == id);
+      if (userToRemove != null)
+      {
+        _users.Remove(userToRemove);
+        return true;
+      }
+      return false;
+    }
+
+    // app.MapGet("/users", () =>
+    // {
+    //     if (_users.Count > 0)
+    //     {
+    //         return Results.Ok(_users);
+    //     }
+    //     return Results.NotFound($"No products exist");
+    // });
+
+    // app.MapGet("/users/{id}", (Guid id) =>
+    // {
+    //     var foundUser = _users.Find(user => user.UserId == id);
+    //     return foundUser is null ? Results.NotFound($"User with {id} does not exist") : Results.Ok(foundUser);
+    // });
+
+    // app.MapPost("/users", (UserDto newUser) =>
+    // {
+    //     newUser.UserId = Guid.NewGuid();
+    //     _users.Add(newUser);
+    //     return Results.Created("GetUser", newUser);
+    // });
+
+
   }
+}
 ```
 
-#### 4.2.3 Create a Controller
+#### 5.2.3 Create User Controller
 
 ```csharp
 // Controllers/UserController.cs
-  using System;
-  using System.Collections.Generic;
-  using System.Linq;
-  using System.Threading.Tasks;
-  using Microsoft.AspNetCore.Mvc;
+ using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
-  namespace api.Controllers
-  {
-      [ApiController]
-      [Route("/api/users")]
-      public class UserController : ControllerBase
-      {
-          private readonly UserService _userService;
-          public UserController()
-          {
-              _userService = new UserService(); // Dependency Injection
-          }
+namespace ecommrce_api.Controllers
+{
+    [ApiController]
+    [Route("/api/v1/users")]
+    public class UserController : ControllerBase
+    {
+        private readonly UserService _userService;
+        public UserController()
+        {
+            _userService = new UserService();
+        }
 
-          [HttpGet]
-          public IActionResult GetAllUsers()
-          {
-              var users = _userService.GetAllUsersService();
-              return Ok(users);
-          }
+        [HttpGet]
+        public IActionResult GetAllUsers()
+        {
+            var users = _userService.GetAllUsersService();
+            return Ok(users);
+        }
 
-          [HttpGet("{userId}")]
-          public IActionResult GetUser(string userId)
-          {
-              if (!Guid.TryParse(userId, out Guid userIdGuid))
-              {
-                  return BadRequest("Invalid user ID Format");
-              }
-              var user = _userService.GetUserById(userIdGuid);
-              if (user == null)
-              {
-                  return NotFound();
-              }
-              else
-              {
-                  return Ok(user);
-              }
+        [HttpGet("{userId}")]
+        public IActionResult GetSingleUserById(string userId)
+        {
+            if (!Guid.TryParse(userId, out Guid userIdGuid))
+            {
+                return BadRequest("Invalid user ID Format");
+            }
 
-          }
-      }
-  }
+            var user = _userService.GetUserByIdService(userIdGuid);
+
+            if (user == null)
+            {
+                return NotFound($"User with {userId} does not exist");
+            }
+            return Ok(user);
+        }
+
+        [HttpDelete("{userId}")]
+        public IActionResult DeleteUserById(string userId)
+        {
+            if (!Guid.TryParse(userId, out Guid userIdGuid))
+            {
+                return BadRequest("Invalid user ID Format");
+            }
+
+            bool result = _userService.DeleteUserByIdService(userIdGuid);
+
+            if (!result)
+            {
+                return NotFound($"User with {userId} does not exist");
+            }
+            return NoContent();
+        }
+
+    }
+}
 ```
 
-#### 4.2.4 Make the adjustment in Program.cs
+#### 5.2.4 Make the adjustment in Program.cs
 
 - add few packages and Update Program.cs file for using MVC
 
@@ -14770,7 +14536,7 @@ app.MapPost("/users", (User newUser) =>
 
   ```
 
-### 4.3 Validation with Data Annotation / Handling Invalid Inputs
+### 5.3 Validation with Data Annotation / Handling Invalid Inputs
 
 - [visit here](https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs)
 - what happen if you do not pass user name and it creates the user? it should be a bad request 400
@@ -14818,7 +14584,7 @@ public class User
     // app.MapDelete("/api/users/{userId}", (Guid userId) => new UserController().DeleteUser(userId)).WithParameterValidation();
     ```
 
-### 4.4 Exception Handling
+### 5.4 Exception Handling
 
 ```csharp
 // Controllers/UserController.cs
@@ -14845,7 +14611,7 @@ public class User
         }
 ```
 
-### 4.5 Customizing the response (error, success)
+### 5.5 Customizing the response (error, success)
 
 ```csharp
 // Helpers/ErrorResponse.cs
@@ -14921,7 +14687,7 @@ namespace api.Helpers
   }
 ```
 
-### 4.6 Synchronous vs asynchornous programming
+### 5.6 Synchronous vs asynchornous programming
 
 ```csharp
 // make change to the service
@@ -15096,7 +14862,7 @@ namespace api.Controllers
 
 ```
 
-### 4.7 Query Parameters
+### 5.7 Query Parameters
 
 ```csharp
     public async Task<IActionResult> GetAllUsers([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
@@ -15108,12 +14874,12 @@ namespace api.Controllers
    }
 ```
 
-### 4.8 Route Constraint
+### 5.8 Route Constraint
 
 - `[HttpDelete("{userId:guid}")]`
 To restrict the route parameter userId in the [HttpDelete] endpoint to only accept GUID values, you can use route constraints in ASP.NET Core.
 
-### 4.8 User API
+### 5.9 User API
 
 #### User Model
 
