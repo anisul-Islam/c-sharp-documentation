@@ -1,4 +1,4 @@
-# C# Documentation
+# C# and ASP.NET Documentation
 
 ## Table of Contents
 
@@ -22,15 +22,19 @@
       - [Conditional Control Statement](#31-conditional-control-statement)
       - [Loop Control Statement](#32-loop-control-statement)
       - [FizzBuzz Challenge](#fizzbuzz-challenge)
-   - [4. Methods](#basic-4-methods--function)
-   - [5. Exception Handling](#basic-5-exception-handling)
-   - [6. Projects](#basic-6-project)
-      - [Project 1: Simple Calculator App](#61-project-simple-calculator-with-conditional-checks)
-      - [Project 2: Basic Currency Converter](#62-project-basic-currency-converter)
-      - [Project 3: Unit Converter App](#63-unit-converter-app-project)
-      - [Project 4: Guessing Game App](#64-number-guessing-game)
+   - [4. Methods](#basic-4-methods)
+   - [5. Testing, Debugging and Exception Handling](#basic-5-testing-debugging-and-exception-handling)
+   - [6. Array and String](#basic-6-array-and-string)
+   - [7. Projects](#basic-7-project)
+      - [Project 1: Simple Calculator](#71-project-simple-calculator-with-conditional-checks)
+      - [Project 2: Basic Currency Converter](#72-project-basic-currency-converter)
+      - [Project 3: FizzBuzz](#73-fizzbuzz-challenge)
+      - [Project 4: Guessing Game](#74-number-guessing-game)
+      - [Project 5: Students Grade Manager](#75-students-grade-manager)
+      - [Project 6: String Reverse](#76-string-reverse-app)
+      - [Project 7: Unit Converter](#77-unit-converter-app-project)
 
-2. [Intermediate C]
+2. [Intermediate C#]
    - [1. OOP](#intermediate-1-oop)
       - [Class and Object](#classes-and-objects)
       - [Constructor](#constructor)
@@ -43,8 +47,8 @@
       - [Interface and Why Interface?](#interface-and-why-interface)
       - [Interface and Why Interface?](#interface-and-why-interface)
    - [Intermediate 2. Collections, Generics, LINQ](#intermediate-2-collections-generics-linq)
-3. [3. Advanced C](#basic-c)
-   - []()
+
+3. [3. Advanced C#]
 
 ## Basic 1. Introduction
 
@@ -3205,7 +3209,9 @@ Do you want to perform another calculation? (yes/no): no
 Thank you for using the Basic Calculator! Goodbye.
 ```
 
-## Basic 4. Methods / function
+## Basic 4. Methods
+
+### Methods
 
 - use capital letter for Method Name
 - what to learn?
@@ -3361,17 +3367,106 @@ This simple calculator project allows students to practice creating a class with
 
 ### Assignment 12: create an area calculator - triangle, rectangle
 
-## Basic 5. Exception Handling
+## Basic 5: Testing, Debugging and Exception Handling
 
-    ```csharp
-      Console.Write("Enter a number: ");
-        int num = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine(num);
-    ```
+- Testing, debugging, and exception handling are all important tasks for software developers.
+- Testing can be categorized into functional and nonfunctional testing, and developers are expected to perform some level of testing.
+  - Functional testing - Unit testing - Integration testing - System testing - Acceptance testing
+  - Nonfunctional testing - Security testing - Performance testing - Usability testing - Compatibility testing
+- Code debugging is the process of isolating issues and identifying ways to fix them, and it's a developer responsibility.
+- Exception handling is the process of managing errors that occur during runtime, and developers are responsible for handling exceptions by using "try" and "catch" statements in their code.
 
-    Exception handling in C# allows you to manage runtime errors gracefully by catching and handling exceptional conditions that might occur during program execution. This prevents your program from crashing and provides a mechanism to respond to errors in a controlled manner. Here's an overview of exception handling in C#:
+  ```csharp
 
-    1. **Try-Catch Block**: The basic structure for handling exceptions is the `try-catch` block. Code that might raise an exception is enclosed within the `try` block, and any potential exceptions are caught and handled in the `catch` block.
+  // Example 1
+  string[] students = new string[] {"Sophia", "Nicolas", "Zahirah", "Jeong"};
+  int studentCount = students.Length;
+  Console.WriteLine("The final name is: " + students[studentCount]);
+
+  // Example 2
+  Console.Write("Enter a number: ");
+  int num = Convert.ToInt32(Console.ReadLine());
+  Console.WriteLine(num);
+  ```
+
+### Debugger
+
+- The primary benefit of using a debugger is that you can watch your program running. You can follow program execution one line of code at a time. This approach minimizes the chance of guessing wrong.
+- Code debugging is a crucial skill in the software development process that every developer learns.
+- The best approach to debugging your applications is to use a debugger, not rereading your code five times or adding console.WriteLine() statements throughout your code.
+- Debuggers enable you to pause your application, step through your code line-by-line, and observe the state of variables and function parameters.
+
+- debug the following codes
+
+  ```csharp
+  /* 
+  This code uses a names array and corresponding methods to display
+  greeting messages
+  */
+
+  string[] names = new string[] { "Sophia", "Andrew", "AllGreetings" };
+
+  string messageText = "";
+
+  foreach (string name in names)
+  {
+    if (name == "Sophia")
+      messageText = SophiaMessage();
+    else if (name == "Andrew")
+      messageText = AndrewMessage();
+    else if (name == "AllGreetings")
+      messageText = SophiaMessage() + "\n\r" + AndrewMessage();
+
+    Console.WriteLine(messageText + "\n\r");
+  }
+
+  bool pauseCode = true;
+  while (pauseCode == true) ;
+
+  static string SophiaMessage()
+  {
+    return "Hello, my name is Sophia.";
+  }
+
+  static string AndrewMessage()
+  {
+    return "Hi, my name is Andrew. Good to meet you.";
+  }
+
+
+  // another  example
+  int x = 5;
+  x = ChangeValue(x);
+  Console.WriteLine(x);
+
+  int ChangeValue(int value) 
+  {
+      value = 10;
+      return value;
+  }
+  ```
+
+### Exception handling
+
+in C# allows you to manage runtime errors gracefully by catching and handling exceptional conditions that might occur during program execution. This prevents your program from crashing and provides a mechanism to respond to errors in a controlled manner.
+
+#### Common scenarios that require exception handling include
+
+User input: Exceptions can occur when code processes user input. For example, exceptions occur when the input value is in the wrong format or out of range.
+
+Data processing and computations: Exceptions can occur when code performs data calculations or conversions. For example, exceptions occur when code attempts to divide by zero, cast to an unsupported type, or assign a value that's out of range.
+
+File input/output operations: Exceptions can occur when code reads from or writes to a file. For example, exceptions occur when the file doesn't exist, the program doesn't have permission to access the file, or the file is in use by another process.
+
+Database operations: Exceptions can occur when code interacts with a database. For example, exceptions occur when the database connection is lost, a syntax error occurs in a SQL statement, or a constraint violation occurs.
+
+Network communication: Exceptions can occur when code communicates over a network. For example, exceptions occur when the network connection is lost, a timeout occurs, or the remote server returns an error.
+
+Other external resources: Exceptions can occur when code communicates with other external resources. Web Services, REST APIs, or third-party libraries, can throw exceptions for various reasons. For example, exceptions occur due to network connections issues, malformed data, etc.
+
+ Here's an overview of exception handling in C#:
+
+  1. **Try-Catch Block**: The basic structure for handling exceptions is the `try-catch` block. Code that might raise an exception is enclosed within the `try` block, and any potential exceptions are caught and handled in the `catch` block.
 
       ```csharp
       try
@@ -3385,7 +3480,7 @@ This simple calculator project allows students to practice creating a class with
       }
       ```
 
-    2. **Exception Types**: You can catch specific types of exceptions by specifying the exception type in the `catch` block. This allows you to handle different types of exceptions differently.
+  2. **Exception Types**: You can catch specific types of exceptions by specifying the exception type in the `catch` block. This allows you to handle different types of exceptions differently.
 
       ```csharp
       try
@@ -3406,33 +3501,55 @@ This simple calculator project allows students to practice creating a class with
       }
       ```
 
-    3. **Finally Block**: You can optionally include a `finally` block after the `catch` block. Code in the `finally` block is executed whether an exception occurs or not. This block is commonly used for cleanup tasks such as closing resources.
+  3. **Finally Block**: You can optionally include a `finally` block after the `catch` block. Code in the `finally` block is executed whether an exception occurs or not. This block is commonly used for cleanup tasks such as closing resources.
 
-      ```csharp
-      try
-      {
-          // Code that might throw an exception
-      }
-      catch (Exception ex)
-      {
-          // Handle the exception
-      }
-      finally
-      {
-          // Cleanup code
-      }
-      ```
+        ```csharp
+        try
+        {
+            // Code that might throw an exception
+        }
+        catch (Exception ex)
+        {
+            // Handle the exception
+        }
+        finally
+        {
+            // Cleanup code
+        }
+        ```
 
-    4. **Throwing Exceptions**: You can explicitly throw exceptions using the `throw` keyword. This is useful for indicating errors or exceptional conditions within your code.
+        ```csharp
+          try
 
-      ```csharp
-      if (condition)
-      {
-          throw new Exception("An error occurred.");
-      }
-      ```
+            {
+                // Step 1: code execution begins
+                try
+                {
+                    // Step 2: an exception occurs here
+                }
+                finally
+                {
+                    // Step 4: the system executes the finally code block associated with the try statement where the exception occurred
+                }
 
-    5. **Custom Exceptions**: You can define your own exception types by creating classes that derive from `Exception`. This allows you to create custom exception types tailored to your application's needs.
+            }
+            catch // Step 3: the system finds a catch clause that can handle the exception
+            {
+              // Step 5: the system transfers control to the first line of the catch code block
+            }
+
+        ```
+
+  4. **Throwing Exceptions**: You can explicitly throw exceptions using the `throw` keyword. This is useful for indicating errors or exceptional conditions within your code.
+
+        ```csharp
+        if (condition)
+        {
+            throw new Exception("An error occurred.");
+        }
+        ```
+
+  5. **Custom Exceptions**: You can define your own exception types by creating classes that derive from `Exception`. This allows you to create custom exception types tailored to your application's needs.
 
       ```csharp
       public class CustomException : Exception
@@ -3443,137 +3560,212 @@ This simple calculator project allows students to practice creating a class with
       }
       ```
 
-    6. **Exception Handling Best Practices**:
-      - Catch specific exceptions rather than using a generic `catch (Exception ex)` block.
-      - Provide meaningful error messages or log information when handling exceptions.
-      - Use exception handling judiciously and avoid catching exceptions that you cannot handle properly.
+  6. **Exception Handling Best Practices**:
+    - Catch specific exceptions rather than using a generic `catch (Exception ex)` block.
+    - Provide meaningful error messages or log information when handling exceptions.
+    - Use exception handling judiciously and avoid catching exceptions that you cannot handle properly.
 
-    #### Example 1
+#### Compiler-generated exceptions
 
-    ```csharp
-    using System;
+The .NET runtime throws exceptions when basic operations fail. Here's a short list of runtime exceptions and their error conditions:
 
-    class Program
-    {
-        static void Main()
-        {
-            try
-            {
-                // 1. DivideByZeroException
-                int a = 10;
-                int b = 0;
-                int result = a / b;
-                Console.WriteLine("Result: " + result);
+- ArrayTypeMismatchException: Thrown when an array can't store a given element because the actual type of the element is incompatible with the actual type of the array.
+- DivideByZeroException: Thrown when an attempt is made to divide an integral value by zero.
+- FormatException: Thrown when the format of an argument is invalid.
+- IndexOutOfRangeException: Thrown when an attempt is made to index an array when the index is less than zero or outside the bounds of the array.
+- InvalidCastException: Thrown when an explicit conversion from a base type to an interface or to a derived type fails at runtime.
+- NullReferenceException: Thrown when an attempt is made to reference an object whose value is null.
+- OverflowException: Thrown when an arithmetic operation in a checked context overflows.
 
-                // 2. FormatException
-                string input = "abc";
-                int number = int.Parse(input);
-                Console.WriteLine("Parsed number: " + number);
+#### Example 1
 
-                // 3. NullReferenceException
-                string str = null;
-                int length = str.Length;
-                Console.WriteLine("Length: " + length);
+  ```csharp
+  using System;
 
-                // 4. IndexOutOfRangeException
-                int[] numbers = { 1, 2, 3 };
-                int value = numbers[5];
-                Console.WriteLine("Value: " + value);
-
-                // 5. OverflowException
-                int max = int.MaxValue;
-                int overflowResult = checked(max + 1);
-                Console.WriteLine("Overflow result: " + overflowResult);
-            }
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine("Error: Attempted to divide by zero.");
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine("Error: Invalid format. Cannot parse input as a number.");
-            }
-            catch (NullReferenceException ex)
-            {
-                Console.WriteLine("Error: Null reference encountered.");
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                Console.WriteLine("Error: Index out of range.");
-            }
-            catch (OverflowException ex)
-            {
-                Console.WriteLine("Error: Overflow occurred during arithmetic operation.");
-            }
-            catch (Exception ex) // Generic exception handler
-            {
-                Console.WriteLine("An unexpected error occurred: " + ex.Message);
-            }
-            finally
-            {
-                Console.WriteLine("This block always executes, whether an exception is thrown or not.");
-            }
-        }
-    }
-
-    ```
-
-    #### Example 2
-
-    ```csharp
-    public class MyClass
-    {
-      public static void Main(string[] args)
+  class Program
+  {
+      static void Main()
       {
-        Console.WriteLine($"Welcome to the calculator App");
-        try
-        {
-          int num1 = ReadIntegerInput("num1");
-          int num2 = ReadIntegerInput("num2");
-
-          if (num2 > 1000)
+          try
           {
-            throw new ArgumentException("num2 can not be greater than 1000");
+              // 1. DivideByZeroException
+              int number1 = 3000;
+              int number2 = 0;
+              Console.WriteLine(number1 / number2); // DivideByZeroException occurs
+
+              // 2. FormatException
+              // string input = "abc";
+              // int number = int.Parse(input);
+              // Console.WriteLine("Parsed number: " + number);
+              int valueEntered;
+              string userValue = "two";
+              valueEntered = int.Parse(userValue); // FormatException occurs
+
+              // 3. NullReferenceException
+              string str = null;
+              int length = str.Length;
+              Console.WriteLine("Length: " + length);
+              
+              int[] values = null;
+              for (int i = 0; i <= 9; i++)
+                  values[i] = i * 2;
+
+              // 4. IndexOutOfRangeException. 
+              int[] numbers = { 1, 2, 3 };
+              int value = numbers[5];
+              Console.WriteLine("Value: " + value);
+
+              int[] values1 = { 3, 6, 9, 12, 15, 18, 21 };
+              int[] values2 = new int[6];
+              values2[values1.Length - 1] = values1[values1.Length - 1]; // IndexOutOfRangeException occurs
+
+              // 5. OverflowException
+              int max = int.MaxValue;
+              int overflowResult = checked(max + 1);
+              Console.WriteLine("Overflow result: " + overflowResult);
+
+              decimal x = 400;
+              byte i;
+
+              i = (byte)x; // OverflowException occurs
+              Console.WriteLine(i);
+
+              // 6. InvalidCastException
+              object obj = "This is a string";
+              int num = (int)obj; // InvalidCastException
           }
+          catch (DivideByZeroException ex)
+          {
+              Console.WriteLine("Error: Attempted to divide by zero.");
+          }
+          catch (FormatException ex)
+          {
+              Console.WriteLine("Error: Invalid format. Cannot parse input as a number.");
+          }
+          catch (NullReferenceException ex)
+          {
+              Console.WriteLine("Error: Null reference encountered.");
+          }
+          catch (IndexOutOfRangeException ex)
+          {
+              Console.WriteLine("Error: Index out of range.");
+          }
+          catch (OverflowException ex)
+          {
+              Console.WriteLine("Error: Overflow occurred during arithmetic operation.");
+          }
+          catch (Exception ex) // Generic exception handler
+          {
+              Console.WriteLine("An unexpected error occurred: " + ex.Message);
+          }
+          finally
+          {
+              Console.WriteLine("This block always executes, whether an exception is thrown or not.");
+          }
+      }
+  }
 
-          int result = num1 / num2;
-          Console.WriteLine($"Result: {result}");
-        }
-        catch (Exception e)
+  ```
+
+#### Example 2
+
+```csharp
+// debug this
+double float1 = 3000.0;
+double float2 = 0.0;
+int number1 = 3000;
+int number2 = 0;
+
+Console.WriteLine(float1 / float2);
+Console.WriteLine(number1 / number2);
+Console.WriteLine("Exit program");
+
+// add try catch
+try
+{
+  Process1();
+}
+catch
+{
+  Console.WriteLine("An exception has occurred");
+}
+
+Console.WriteLine("Exit program");
+
+static void Process1()
+{
+  WriteMessage();
+}
+
+static void WriteMessage()
+{
+  double float1 = 3000.0;
+  double float2 = 0.0;
+  int number1 = 3000;
+  int number2 = 0;
+
+  Console.WriteLine(float1 / float2);
+  Console.WriteLine(number1 / number2);
+}
+
+```
+
+#### Example 3
+
+  ```csharp
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      Console.WriteLine($"Welcome to the calculator App");
+      try
+      {
+        int num1 = ReadIntegerInput("num1");
+        int num2 = ReadIntegerInput("num2");
+
+        if (num2 > 1000)
         {
-          Console.WriteLine($"An error occured: {e.Message}");
-        }
-        finally
-        {
-          Console.WriteLine($"Goodbye!!!");
+          throw new ArgumentException("num2 can not be greater than 1000");
         }
 
+        int result = num1 / num2;
+        Console.WriteLine($"Result: {result}");
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine($"An error occured: {e.Message}");
+      }
+      finally
+      {
+        Console.WriteLine($"Goodbye!!!");
       }
 
-      static int ReadIntegerInput(string prompt)
-      {
-        while (true)
-        {
-
-          Console.Write($"Enter {prompt} = ");
-          string input = Console.ReadLine() ?? "";
-          if (!int.TryParse(input, out int result) || string.IsNullOrEmpty(input))
-          {
-            Console.WriteLine($"Invalid Input! Please enter a valid integer.");
-            continue;
-          }
-          return result;
-        }
-      }
     }
 
-    ```
+    static int ReadIntegerInput(string prompt)
+    {
+      while (true)
+      {
 
-### **Difference Between Handling Errors with `if-else` and `try-catch` in C#**
+        Console.Write($"Enter {prompt} = ");
+        string input = Console.ReadLine() ?? "";
+        if (!int.TryParse(input, out int result) || string.IsNullOrEmpty(input))
+        {
+          Console.WriteLine($"Invalid Input! Please enter a valid integer.");
+          continue;
+        }
+        return result;
+      }
+    }
+  }
+
+  ```
+
+#### **Difference Between Handling Errors with `if-else` and `try-catch` in C#**
 
 Error handling is a crucial part of programming, and two common approaches in C# are using `if-else` statements and `try-catch` blocks. Both have their specific use cases, advantages, and limitations. Here's a detailed comparison of the two:
 
-#### **1. `if-else` Error Handling**
+##### **1. `if-else` Error Handling**
 
 **Description:**
 `if-else` statements are used to handle expected or predictable errors by checking conditions before performing actions. They help validate inputs or state before proceeding with an operation.
@@ -3606,7 +3798,7 @@ else
 - **Limited Scope**: Only handles errors that are predictable or can be anticipated with conditions.
 - **Code Duplication**: When handling similar errors in multiple places, `if-else` can lead to repetitive code.
 
-#### **2. `try-catch` Error Handling**
+##### **2. `try-catch` Error Handling**
 
 **Description:**
 `try-catch` blocks are used to handle exceptions, which are errors that occur at runtime and are not necessarily predictable. They provide a mechanism to catch exceptions and take corrective action, such as logging errors or providing fallback solutions.
@@ -3638,7 +3830,7 @@ catch (FormatException ex)
 - **Performance Overhead**: Handling exceptions with `try-catch` is more resource-intensive compared to `if-else`. The performance cost comes from throwing and catching exceptions, which can be significant if misused.
 - **Misuse for Control Flow**: Using `try-catch` for regular control flow (instead of actual error handling) is considered a bad practice, leading to inefficient and confusing code.
 
-#### **When to Use `if-else` vs. `try-catch`**
+##### **When to Use `if-else` vs. `try-catch`**
 
 1. **Use `if-else` When:**
    - The error can be predicted or validated easily (e.g., checking if input is valid).
@@ -3651,7 +3843,7 @@ catch (FormatException ex)
    - You want to catch multiple types of exceptions and handle them differently.
    - Error handling needs to be centralized, such as in larger applications or services.
 
-#### **Combined Use of `if-else` and `try-catch`**
+##### **Combined Use of `if-else` and `try-catch`**
 
 In many scenarios, it's effective to use both `if-else` and `try-catch` together. For instance, you can use `if-else` for input validation and `try-catch` to handle runtime exceptions.
 
@@ -3679,16 +3871,945 @@ else
 }
 ```
 
-#### **Summary**
+##### **Summary**
 
 - **`if-else`**: Best for predictable and manageable errors. It provides clarity and performance benefits but is limited to anticipated conditions.
 - **`try-catch`**: Best for unexpected runtime errors and exceptions. It helps maintain program stability but comes with a performance cost if overused.
 
 Choosing the right approach depends on the nature of the error you expect and the need to balance performance with error management robustness.
 
-## Basic 6. Project
+## Basic 6. Array and String
 
-### 6.1 Project: Simple Calculator with Conditional Checks**
+### Array
+
+```csharp
+// for vs foreach
+class Test
+{
+  public static void Main(string[] args)
+  {
+    string[] names = new string[3];
+    names[0] = "Anisul";
+    names[1] = "Nusrat";
+    names[2] = "Alex";
+
+    string[] names = new string[3] { "Anisul", "Nusrat", "Alex" };
+
+    string[] names = { "Anisul", "Nusrat", "Alex", "Sathi", "Bob" };
+
+    for (int index = 0; index < names.Length; index++)
+    {
+      Console.WriteLine(names[index]);
+    }
+
+    foreach (string name in names)
+    {
+      Console.WriteLine(name);
+    }
+
+    // printing an array as string
+    int[] numbers = {1,2,3,4,5};
+    string arrayString = string.Join(",", numbers);
+    Console.WriteLine($"{arrayString}");
+  }
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+    string[] names = { "Anisul", "Nusrat", "Alex", "Sathi", "Bob" };
+
+    foreach (string name in names)
+    {
+      Console.WriteLine(name);
+    }
+  }
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int[] numbers = { -10, 20, -30, 40, 50 };
+    int sum = 0;
+    foreach (int number in numbers)
+    {
+      sum = sum + number;
+    }
+    Console.WriteLine(sum);
+  }
+}
+
+class Test
+{
+  public static void Main(string[] args)
+  {
+    int[] numbers = { -10, 20, -30, 40, 50, 0 };
+    foreach (int number in numbers)
+    {
+      if (number > 0)
+      {
+        Console.WriteLine(number);
+      }
+    }
+  }
+}
+```
+
+- 2D Array
+
+    A 2D array in C# is an array of arrays, meaning it's an array where each element is also an array. This creates a grid-like structure, where elements are accessed using two indices: one for the row and one for the column.
+
+    A few real-life examples of 2D arrays:
+
+    1. **Image Representation**: Images can be represented as 2D arrays of pixels. Each element of the array stores information about the color of the corresponding pixel.
+
+    2. **Game Boards**: In games like Chess, Checkers, or Tic-Tac-Toe, the game board can be represented using a 2D array. Each element of the array represents a square on the board, and the value of the element indicates the state of that square (empty, occupied by a player's piece, etc.).
+
+    3. **Spreadsheet Data**: Spreadsheets, like Excel, organize data into rows and columns. Each cell in a spreadsheet can be thought of as an element in a 2D array.
+
+    4. **Maps**: Maps in computer graphics or geographical applications are often represented using 2D arrays. Each element of the array corresponds to a location on the map, and the value of the element represents attributes such as elevation, terrain type, or population density.
+
+    5. **Matrix Operations**: Matrices in mathematics are commonly represented using 2D arrays. They are used in various applications, including computer graphics, physics simulations, and solving systems of linear equations.
+
+    6. **Seating Arrangements**: In venues like theaters, stadiums, or classrooms, seating arrangements can be represented using a 2D array. Each element represents a seat, and the value indicates whether the seat is occupied or available.
+
+    These are just a few examples of how 2D arrays are used in real-life scenarios. They are versatile data structures that find applications in many fields of computer science and beyond.
+
+    Here's how you can declare, initialize, and work with 2D arrays in C#:
+
+    **Declaration and Initialization:**
+
+    ```csharp
+    // example 1: declare,initialize, print a simple 2D Array
+    public class MyClass
+    {
+      public static void Main(string[] args)
+      {
+        int[,] matrix = new int[2, 3];
+        matrix[0, 0] = 1;
+        matrix[0, 1] = 2;
+        matrix[0, 2] = 3;
+
+        matrix[1, 0] = 4;
+        matrix[1, 1] = 5;
+        matrix[1, 2] = 6;
+
+        Console.Write($"{matrix[0, 0]} ");
+        Console.Write($"{matrix[0, 1]} ");
+        Console.Write($"{matrix[0, 2]} ");
+
+        Console.WriteLine();
+        Console.Write($"{matrix[1, 0]} ");
+        Console.Write($"{matrix[1, 1]} ");
+        Console.Write($"{matrix[1, 2]} ");
+
+        Console.ReadKey();
+
+      }
+
+    }
+
+    // example 2: declare and initailze a simple 2D Array
+    public class MyClass
+    {
+      public static void Main(string[] args)
+      {
+        int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
+
+        Console.Write($"{matrix[0, 0]} ");
+        Console.Write($"{matrix[0, 1]} ");
+        Console.Write($"{matrix[0, 2]} ");
+
+        Console.WriteLine();
+        Console.Write($"{matrix[1, 0]} ");
+        Console.Write($"{matrix[1, 1]} ");
+        Console.Write($"{matrix[1, 2]} ");
+
+        Console.ReadKey();
+
+      }
+
+    }
+
+    // example 3: Iterating Over the Array with loop
+    public class MyClass
+    {
+      public static void Main(string[] args)
+      {
+        int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
+
+        for (int row = 0; row < matrix.GetLength(0); row++)
+        {
+          for (int col = 0; col < matrix.GetLength(1); col++)
+          {
+            Console.Write($"{matrix[row, col]} ");
+          }
+          Console.WriteLine();
+        }
+        Console.ReadKey();
+      }
+    }
+
+
+  **Initializing a Jagged Array (Array of Arrays):**
+
+  Alternatively, you can use a jagged array, which is an array of arrays. It provides more flexibility as each row can have a different length.
+
+  ```csharp
+  // 1st version:
+  /*
+  1 2
+  3 4 5
+  6 
+  8 9 10 11
+  */
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      int[][] jaggedArray = new int[4][];
+
+      jaggedArray[0] = new int[] { 1, 2 };
+      jaggedArray[1] = new int[] { 3, 4, 5 };
+      jaggedArray[2] = new int[] { 6 };
+      jaggedArray[3] = new int[] { 8, 9, 10, 11 };
+
+      for (int row = 0; row < jaggedArray.Length; row++)
+      {
+        for (int col = 0; col < jaggedArray[row].Length; col++)
+        {
+          Console.Write($"{jaggedArray[row][col]} ");
+        }
+        Console.WriteLine();
+
+      }
+
+
+      Console.ReadKey();
+    }
+  }
+
+  // 2nd version: 
+  /*
+  1 2
+  3 4 5
+  6 
+  8 9 10 11
+  */
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      int[][] jaggedArray = new int[][]
+      {
+        new int[] { 1, 2 },
+        new int[] { 3, 4, 5 },
+        new int[] { 6 },
+        new int[] { 8, 9, 10, 11 }
+      };
+
+      for (int row = 0; row < jaggedArray.Length; row++)
+      {
+        for (int col = 0; col < jaggedArray[row].Length; col++)
+        {
+          Console.Write($"{jaggedArray[row][col]} ");
+        }
+        Console.WriteLine();
+
+      }
+
+
+      Console.ReadKey();
+    }
+  }
+
+  // 3rd version
+  /*
+  1 2
+  3 4 5
+  6 
+  8 9 10 11
+  */
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      int[][] jaggedArray = new int[][]
+      {
+        new int[] { 1, 2 },
+        new int[] { 3, 4, 5 },
+        new int[] { 6 },
+        new int[] { 8, 9, 10, 11 }
+      };
+
+      foreach (var row in jaggedArray)
+      {
+        foreach (var item in row)
+        {
+          Console.Write($"{item} ");
+        }
+        Console.WriteLine();
+
+      }
+
+
+      Console.ReadKey();
+    }
+  }
+
+  // 4th version
+  /*
+  1 2
+  3 4 5
+  6 
+  8 9 10 11
+  */
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      int[][] jaggedArray =
+      {
+        new [] { 1, 2 },
+        new [] { 3, 4, 5 },
+        new [] { 6 },
+        new [] { 8, 9, 10, 11 }
+      };
+
+      foreach (var row in jaggedArray)
+      {
+        foreach (var item in row)
+        {
+          Console.Write($"{item} ");
+        }
+        Console.WriteLine();
+
+      }
+
+
+      Console.ReadKey();
+    }
+  }
+
+  // 5th version
+
+  public class MyClass
+  {
+      public static void Main(string[] args)
+      {
+          int[][] jaggedArray = new int[4][];
+
+          jaggedArray[0] = new int[] { 1 };
+          jaggedArray[1] = new int[] { 2, 3 };
+          jaggedArray[2] = new int[] { 4, 5, 6 };
+          jaggedArray[3] = new int[] { 7, 8 };
+
+          for (int row = 0; row < jaggedArray.Length; row++)
+          {
+              for (int col = 0; col < jaggedArray[row].Length; col++)
+              {
+                  Console.Write($"{jaggedArray[row][col]} ");
+              }
+              Console.WriteLine();
+          }
+          Console.ReadKey();
+      }
+  }
+  ```
+
+  **Usage Considerations:**
+
+  - Use a 2D array when you need a fixed-size grid with consistent row and column counts.
+  - Use a jagged array when you need flexibility in row lengths or when the array elements represent different sizes of data.
+
+- A challenage collected from Sololearn
+
+```csharp
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            int day1Winner = Convert.ToInt32(Console.ReadLine());
+            int day2Winner = Convert.ToInt32(Console.ReadLine());
+            int day3Winner = Convert.ToInt32(Console.ReadLine());
+
+
+            string[][] olympiad = new string[][]
+            {
+                //day 1 - 5 participants
+                new string[] { "Jill Yan", "Bridgette Ramona", "Sree Sanda", "Jareth Charlene", "Carl Soner" },
+                //day 2 - 7 participants
+                new string[] { "Anna Hel", "Mariette Vedrana", "Fran Mayur", "Drake Hilmar", "Nikolay Brooks", "Eliana Vlatko", "Villem Mario" },
+                //day 3 - 4 participants
+                new string[] { "Hieremias Zavia", "Ziya Ollie", "Christoffel Casper", "Kristian Dana", }
+
+            };
+            //your code goes here                 
+            Console.WriteLine(olympiad[0][day1Winner-1]);
+            Console.WriteLine(olympiad[1][day2Winner-1]);
+            Console.WriteLine(olympiad[2][day3Winner-1]);               
+           
+            
+        }
+    }
+```
+
+#### User Input for Array
+
+Certainly! Here's the modified code with exception handling added:
+
+```csharp
+class MyClass
+{
+  public static void Main(string[] args)
+  {
+    try
+    {
+      Console.Write($"How many elements you want: ");
+      int size = ValidIntegerInput();
+
+
+      // creating the array
+      int[] numbers = new int[size];
+
+      // array initialize
+      int sum = 0;
+      for (int i = 0; i < numbers.Length; i++)
+      {
+        Console.Write($"Enter element {i + 1}: ");
+        int number = ValidIntegerInput();
+        numbers[i] = number;
+        sum += numbers[i];
+      }
+
+      // finding the max and minimum here
+      int max = numbers[0];
+      int min = numbers[0];
+      for (int i = 1; i < numbers.Length; i++)
+      {
+        if (max < numbers[i])
+        {
+          max = numbers[i];
+        }
+        if (min > numbers[i])
+        {
+          min = numbers[i];
+        }
+      }
+
+      double avg = (float)sum / numbers.Length;
+
+      // printing max, min 
+      Console.WriteLine($"Maximum element of the array : {max}");
+      Console.WriteLine($"Minimum element of the array : {min}");
+      Console.WriteLine($"Sum of the array : {sum}");
+      Console.WriteLine($"Average of the array : {avg:F2}");
+
+    }
+
+    catch (OutOfMemoryException)
+    {
+      Console.WriteLine($"Out of memory. Unable to create arrays with such large dimensions");
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine($"An error occured: {ex.Message}");
+    }
+  }
+
+  public static int ValidIntegerInput()
+  {
+    while (true)
+    {
+      string input = Console.ReadLine() ?? "";
+      if (int.TryParse(input, out int number))
+      {
+        return number;
+      }
+      else
+      {
+        Console.WriteLine($"Invalid Input! Please enter a valid integer.");
+      }
+    }
+  }
+}
+```
+
+This code now includes exception handling for various scenarios, such as when the user enters invalid input (e.g., non-integer values), when the input is too large or too small, or when there's not enough memory to create the arrays. The `finally` block ensures that the program waits for a key press before exiting, regardless of whether an exception occurred or not.
+
+#### Array Properties and Methods
+
+- array.Length and array.Rank Properties: the Length and Rank properties return the number of elements and the number of dimensions of the array. we can use dot operator to access Properties.
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Initializing an array
+        int[] numbers = { 5, 3, 8, 4, 2 };
+
+        // Length property: returns the number of elements in the array
+        Console.WriteLine($"Length of the array: {numbers.Length}");
+
+        // rank property: returns the dimensions the array
+        Console.WriteLine($"Length of the array: {numbers.Rank}");
+
+        Console.WriteLine(arr.Max());
+        Console.WriteLine(arr.Min());
+        Console.WriteLine(arr.Sum());
+
+        // Indexer: accessing elements by index
+        Console.WriteLine($"Element at index 2: {numbers[2]}");
+
+        // Iterating through the array using a for loop
+        Console.Write("Array elements: ");
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            Console.Write(numbers[i] + " ");
+        }
+        Console.WriteLine();
+
+        // Array.Sort method: sorts the elements of the array
+        Array.Sort(numbers);
+        Console.Write("Sorted array: ");
+        PrintArray(numbers);
+
+        // Array.Reverse method: reverses the order of the elements in the array
+        Array.Reverse(numbers);
+        Console.Write("Reversed array: ");
+        PrintArray(numbers);
+
+        // Array.IndexOf method: returns the index of the specified value in the array
+        int index = Array.IndexOf(numbers, 8);
+        Console.WriteLine($"Index of value 8: {index}");
+
+        // Array.Exists method: checks if the specified predicate is true for any element in the array
+        bool exists = Array.Exists(numbers, x => x == 6);
+        Console.WriteLine($"Does array contain value 6? {exists}");
+
+        // Array.Copy method: copies a range of elements from one array to another
+        int[] copy = new int[numbers.Length];
+        Array.Copy(numbers, copy, numbers.Length);
+        Console.Write("Copied array: ");
+        PrintArray(copy);
+
+        // Array.Clear method: sets a range of elements in the array to the specified value
+        Array.Clear(numbers, 0, numbers.Length); // Clearing the original array
+        Console.WriteLine("Original array after clearing:");
+        PrintArray(numbers);
+    }
+
+    // Helper method to print array elements
+    static void PrintArray(int[] arr)
+    {
+        foreach (var num in arr)
+        {
+            Console.Write(num + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+```
+
+#### Tic-Tac-Toe game
+
+Sure, here's a basic console application in C# that uses a 2D array to represent a Tic-Tac-Toe game:
+
+```csharp
+using System;
+
+class TicTacToe
+{
+    // 2D array to represent the game board
+    private char[,] board;
+
+    // Constructor to initialize the game board
+    public TicTacToe()
+    {
+        board = new char[3, 3];
+        InitializeBoard();
+    }
+
+    // Method to initialize the game board with empty cells
+    private void InitializeBoard()
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                board[row, col] = '-';
+            }
+        }
+    }
+
+    // Method to display the current state of the game board
+    private void DisplayBoard()
+    {
+        Console.WriteLine("  0 1 2");
+        for (int row = 0; row < 3; row++)
+        {
+            Console.Write(row + " ");
+            for (int col = 0; col < 3; col++)
+            {
+                Console.Write(board[row, col] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    // Method to check if a player has won
+    private bool CheckWin(char player)
+    {
+        // Check rows and columns
+        for (int i = 0; i < 3; i++)
+        {
+            if ((board[i, 0] == player && board[i, 1] == player && board[i, 2] == player) ||
+                (board[0, i] == player && board[1, i] == player && board[2, i] == player))
+            {
+                return true;
+            }
+        }
+
+        // Check diagonals
+        if ((board[0, 0] == player && board[1, 1] == player && board[2, 2] == player) ||
+            (board[0, 2] == player && board[1, 1] == player && board[2, 0] == player))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    // Method to play the game
+    public void PlayGame()
+    {
+        char currentPlayer = 'X';
+        int moves = 0;
+
+        Console.WriteLine("Welcome to Tic-Tac-Toe!");
+        DisplayBoard();
+
+        while (moves < 9)
+        {
+            Console.WriteLine($"Player {currentPlayer}'s turn");
+            Console.Write("Enter row and column (e.g., '0 1'): ");
+            string[] input = Console.ReadLine().Split(' ');
+            int row = int.Parse(input[0]);
+            int col = int.Parse(input[1]);
+
+            if (row < 0 || row >= 3 || col < 0 || col >= 3 || board[row, col] != '-')
+            {
+                Console.WriteLine("Invalid move. Try again.");
+                continue;
+            }
+
+            board[row, col] = currentPlayer;
+            DisplayBoard();
+
+            if (CheckWin(currentPlayer))
+            {
+                Console.WriteLine($"Player {currentPlayer} wins!");
+                return;
+            }
+
+            currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+            moves++;
+        }
+
+        Console.WriteLine("It's a draw!");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        TicTacToe game = new TicTacToe();
+        game.PlayGame();
+    }
+}
+```
+
+This code creates a basic Tic-Tac-Toe game where two players (X and O) take turns placing their marks on a 3x3 grid. The game checks for wins and draws after each move and displays the current state of the board.
+
+### new: params example
+
+The `params` keyword in C# allows you to specify a method parameter that takes a variable number of arguments of the specified type. Here's an example to demonstrate its usage:
+
+```csharp
+using System;
+
+public class Program
+{
+    // Method that takes a variable number of integers as arguments
+    public static int Sum(params int[] numbers)
+    {
+        int sum = 0;
+        foreach (int num in numbers)
+        {
+            sum += num;
+        }
+        return sum;
+    }
+
+    public static void Main(string[] args)
+    {
+        // Calling the Sum method with different number of arguments
+        int sum1 = Sum(1, 2, 3);           // Sum of 1, 2, and 3
+        int sum2 = Sum(10, 20, 30, 40);    // Sum of 10, 20, 30, and 40
+        int sum3 = Sum();                  // Sum of no numbers (0)
+
+        // Displaying the results
+        Console.WriteLine("Sum of 1, 2, and 3: " + sum1);
+        Console.WriteLine("Sum of 10, 20, 30, and 40: " + sum2);
+        Console.WriteLine("Sum of no numbers: " + sum3);
+    }
+}
+```
+
+In this example:
+
+- The `Sum` method is defined with the `params` keyword, allowing it to accept a variable number of integers.
+- Inside the method, the `numbers` parameter behaves like an array, even though you can pass arguments to it directly without explicitly creating an array.
+- You can call the `Sum` method with different numbers of arguments, and the method will calculate the sum of all provided integers.
+- If no arguments are provided, the sum will be zero.
+
+Using `params` allows for cleaner and more flexible method calls when the number of arguments can vary.
+
+### String
+
+- string example
+
+  ```csharp
+
+  // Trim(), TrimStart(), TrimEnd()
+  // Contains(), Equals()
+  // ToLower(), ToUpper()
+  // Replace(), Remove()
+  // Substring()
+  // IndexOf(), LastIndexOf()
+
+  public class MyClass
+    {
+      public static void Main(string[] args)
+      {
+          string a = "some text";
+      Console.WriteLine(a.Length);
+      //Outputs 9
+
+      Console.WriteLine(a.IndexOf('t'));
+      //Outputs 5
+      
+        string text = "Hello everyone ! This is Anisul Islam";
+        Console.WriteLine($"length of string: {text.Length}");
+        Console.WriteLine($"O index from string: {text[0]}");
+
+        var words = text.Split(" ");
+        Console.WriteLine($"{string.Join(",", words)}");
+
+        // foreach (var word in words)
+        // {
+        //   Console.WriteLine($"{word}");
+        // }
+
+        // string removeText = text.Remove(4);
+        // Console.WriteLine($"removeText: {removeText}");
+
+        bool isEmpty = string.IsNullOrEmpty(text);
+        Console.WriteLine($"Is string empty or null? {isEmpty}");
+
+        // string insertedText = text.Insert(0, "Hi !");
+        // Console.WriteLine($"insertedText: {insertedText}");
+
+        string replacedText = text.Replace("Hello everyone", "Hi");
+        Console.WriteLine($"replacedText: {replacedText}");
+
+        bool isAnisulExist = text.Contains("Anisul");
+        Console.WriteLine($"isAnisulExist : {isAnisulExist}");
+
+        string reveresedString = new string(text.Reverse().ToArray());
+        Console.WriteLine($"ReveresedString: {reveresedString}");
+
+        string upper = text.ToUpper();
+        Console.WriteLine($"Upper string: {upper}");
+
+        string lower = text.ToLower();
+        Console.WriteLine($"Lower string: {lower}");
+
+        string trimmedString = text.Trim(); // TrimStart(), TrimEnd()
+        Console.WriteLine($"trimmedString: {trimmedString}");
+
+        string substring = text.Substring(6);
+        Console.WriteLine($"substring: {substring}");
+
+        string substring2 = text.Substring(6, 5);
+        Console.WriteLine($"substring2: {substring2}");
+
+        string message = "hello there!";
+
+        int first_h = message.IndexOf('h');
+        int last_h = message.LastIndexOf('h');
+      }
+    }
+
+  ```
+
+- string formatting
+
+```csharp
+// c for formatting in local currency
+decimal price = 123.45m;
+int discount = 50;
+Console.WriteLine($"Price: {price:C} (Save {discount:C})");
+
+
+// N includes comma and make your code more readable
+decimal measurement = 123456.78912m;
+Console.WriteLine($"Measurement: {measurement:N} units");
+
+decimal tax = .36785m;
+Console.WriteLine($"Tax rate: {tax:P2}");
+
+string first = "Hello";
+string second = "World";
+string result = string.Format("{0} {1}!", first, second);
+Console.WriteLine(result);
+
+Console.WriteLine(input.PadLeft(12, '-'));
+Console.WriteLine(input.PadRight(12, '-'));
+// ----Pad this (4 - on the left)
+//  Pad this----
+
+```
+
+- password checking program
+
+```csharp
+namespace SoloLearn
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string password = Console.ReadLine();
+            char[] notAllowedSymbols = { '!', '#', '$', '%', '&', '(', ')', '*', ',', '+', '-' };
+
+            //your code goes here
+            foreach(var item in notAllowedSymbols){
+                if(password.Contains(item)){
+                    Console.WriteLine("Invalid");
+                    break;
+                }
+            }
+            
+        }
+    }
+}
+```
+
+- string method and properties
+
+  - Methods that add blank spaces for formatting purposes (PadLeft(), PadRight())
+
+  - Methods that compare two strings or facilitate comparison (Trim(), TrimStart(), TrimEnd(), GetHashcode(), the Length property)
+
+  - Methods that help you determine what's inside of a string, or even retrieve just a part of the string (Contains(), StartsWith(), EndsWith(), Substring())
+
+  - Methods that change the content of the string by replacing, inserting, or removing parts (Replace(), Insert(), Remove())
+
+  - Methods that turn a string into an array of strings or characters (Split(), ToCharArray())
+
+  To reverse a string in C#, you can use the `Reverse` method from the `System.Linq` namespace along with `string.Concat` to concatenate the characters in reverse order. Here's how you can do it:
+
+  ```csharp
+  using System;
+  using System.Linq;
+
+  class Program
+  {
+      static void Main()
+      {
+          string str = "Hello, world!";
+          string reversedStr = new string(str.Reverse().ToArray());
+
+          Console.WriteLine("Original string: " + str);
+          Console.WriteLine("Reversed string: " + reversedStr);
+      }
+  }
+  ```
+
+  Output:
+
+  ```
+  Original string: Hello, world!
+  Reversed string: !dlrow ,olleH
+  ```
+
+- **string assignment**
+
+Below is a C# code that counts the number of vowels, consonants, digits, special characters, white spaces, and words in a given string:
+
+```csharp
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        string input = "Hello 123 World!";
+
+        // Count vowels, consonants, digits, special characters, white spaces, and words
+        int vowelCount = input.Count(c => "aeiouAEIOU".Contains(c));
+        int consonantCount = input.Count(c => char.IsLetter(c) && !"aeiouAEIOU".Contains(c));
+        int digitCount = input.Count(char.IsDigit);
+        int specialCharCount = input.Count(c => !char.IsLetterOrDigit(c) && !char.IsWhiteSpace(c));
+        int whiteSpaceCount = input.Count(char.IsWhiteSpace);
+        int wordCount = input.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries).Length;
+
+        // Output the counts
+        Console.WriteLine($"Number of vowels: {vowelCount}");
+        Console.WriteLine($"Number of consonants: {consonantCount}");
+        Console.WriteLine($"Number of digits: {digitCount}");
+        Console.WriteLine($"Number of special characters: {specialCharCount}");
+        Console.WriteLine($"Number of white spaces: {whiteSpaceCount}");
+        Console.WriteLine($"Number of words: {wordCount}");
+    }
+}
+```
+
+This code initializes a string `input` and then calculates the counts of vowels, consonants, digits, special characters, white spaces, and words using LINQ queries and string manipulation methods.
+
+Here's a brief explanation of each part of the code:
+
+1. **Count Vowels**:
+   - Uses `Count` method with a lambda expression to count characters that are vowels (both lowercase and uppercase).
+
+2. **Count Consonants**:
+   - Uses `Count` method with a lambda expression to count characters that are consonants (letters excluding vowels).
+
+3. **Count Digits**:
+   - Uses `Count` method with `char.IsDigit` predicate to count digits.
+
+4. **Count Special Characters**:
+   - Uses `Count` method with a lambda expression to count characters that are neither letters nor digits.
+
+5. **Count White Spaces**:
+   - Uses `Count` method with `char.IsWhiteSpace` predicate to count white space characters.
+
+6. **Count Words**:
+   - Splits the input string into words using `Split` method and then removes empty entries with `StringSplitOptions.RemoveEmptyEntries`.
+   - Uses `Length` property to count the number of words.
+
+## Basic 7. Project
+
+### 7.1 Project: Simple Calculator with Conditional Checks**
 
 ![alt text](image-8.png)
 
@@ -3803,7 +4924,7 @@ Division: 10 / 5 = 2
 
 This extension helps reinforce the use of conditional statements in combination with basic arithmetic operators, adding robustness to the code.
 
-### 6.2 Project: Basic Currency Converter
+### 7.2 Project: Basic Currency Converter
 
 **Objective:**  
 This project will help you practice using arithmetic operators along with basic conditional checks (`if` statements). You will create a simple currency converter that performs conversions between different currencies based on user input and predefined conversion rates.
@@ -3949,7 +5070,290 @@ Invalid input. Please enter a positive numeric value.
 
 This simple project reinforces basic arithmetic and condition checks, making it perfect for students practicing foundational programming skills.
 
-### 6.3 Unit Converter App Project
+### 7.3 FizzBuzz Challenge
+
+```csharp
+class FizzBuzzProject
+{
+  public static void FizzBuzz()
+  {
+    for (int number = 1; number < 101; number++)
+    {
+
+      if (number % 3 == 0 && number % 5 == 0)
+      {
+        Console.WriteLine($"{number} - FizzBuzz");
+      }
+      else if (number % 3 == 0)
+      {
+        Console.WriteLine($"{number} - Fizz");
+      }
+      else if (number % 5 == 0)
+      {
+        Console.WriteLine($"{number} - Buzz");
+      }
+      else
+      {
+        Console.WriteLine($"{number}");
+      }
+    }
+  }
+}
+```
+
+### 7.4 Number Guessing Game
+
+**Objective:**  
+This project will help you practice using loops, `switch` statements, and generating random numbers in C#. You will create a simple number guessing game where the user tries to guess a randomly generated number within a specified range.
+
+- **Project Description:**
+  - Generate a random number between 1 and 100.
+  - Prompt the user to guess the number.
+  - Use a loop to allow the user multiple attempts.
+  - Provide feedback on each guess (too high, too low, or correct).
+  - Use a `switch` statement to handle different outcomes (correct guess, too high, too low).
+
+- **Instructions:**
+
+1. **Set Up the Project:**
+   - Create a new C# Console Application.
+
+2. **Implement the Number Guessing Game:**
+   - Use `Random` class to generate a random number.
+   - Use a `while` loop to keep the game running until the correct number is guessed.
+   - Use a `switch` statement to evaluate the user’s guess.
+
+3. **Game Flow:**
+   - The game starts by generating a random number between 1 and 100.
+   - The user is prompted to enter a guess.
+   - The game provides feedback on whether the guess is too high, too low, or correct.
+   - The game continues until the user guesses correctly.
+
+- **Sample Code:**
+
+```csharp
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Step 1: Generate a random number between 1 and 100
+        Random random = new Random();
+        int randomNumber = random.Next(1, 101); // Generates a number between 1 and 100
+        int attempts = 0; // To count the number of attempts
+        bool isCorrectGuess = false;
+
+        Console.WriteLine("Welcome to the Number Guessing Game!");
+        Console.WriteLine("I have selected a number between 1 and 100. Try to guess it!");
+
+        // Step 2: Start the guessing loop
+        while (!isCorrectGuess)
+        {
+            // Step 3: Prompt the user to enter a guess
+            Console.Write("Enter your guess: ");
+            string input = Console.ReadLine();
+            bool isValidNumber = int.TryParse(input, out int userGuess);
+
+            // Validate input
+            if (!isValidNumber || userGuess < 1 || userGuess > 100)
+            {
+                Console.WriteLine("Please enter a valid number between 1 and 100.");
+                continue;
+            }
+
+            attempts++; // Increment the attempt count
+
+            // Step 4: Use switch statement to handle the guess
+            switch (userGuess)
+            {
+                case var _ when userGuess < randomNumber:
+                    Console.WriteLine("Too low! Try again.");
+                    break;
+                case var _ when userGuess > randomNumber:
+                    Console.WriteLine("Too high! Try again.");
+                    break;
+                case var _ when userGuess == randomNumber:
+                    Console.WriteLine($"Congratulations! You've guessed the correct number {randomNumber} in {attempts} attempts.");
+                    isCorrectGuess = true;
+                    break;
+            }
+        }
+
+        Console.WriteLine("Thanks for playing the Number Guessing Game!");
+    }
+}
+```
+
+- **Expected Output:**
+
+When you run the program, it will look something like this:
+
+```
+Welcome to the Number Guessing Game!
+I have selected a number between 1 and 100. Try to guess it!
+Enter your guess: 50
+Too high! Try again.
+Enter your guess: 25
+Too low! Try again.
+Enter your guess: 37
+Congratulations! You've guessed the correct number 37 in 3 attempts.
+Thanks for playing the Number Guessing Game!
+```
+
+- **Key Concepts Practiced:**
+
+- **Loops (`while`)**: Used to repeatedly prompt the user for input until the correct guess is made.
+- **Random Number Generation**: Using `Random` class to generate a number between 1 and 100.
+- **Switch Statement**: Used to evaluate the user's guess and provide feedback.
+- **Input Validation**: Ensuring the user's guess is within the valid range.
+
+This project introduces students to basic control structures in C#, allowing them to practice handling user input, working with random numbers, and using conditional logic to create an interactive console application.
+
+### 7.5 Students Grade Manager
+
+Here's a simple project in C# that focuses on arrays. This project will help beginners understand how to work with arrays, including initializing, accessing, modifying, and iterating through them. The project will be a small application that manages a list of student grades, calculates the average grade, finds the highest and lowest grades, and displays the grades.
+
+- **Objective:**
+
+Create a C# console application that allows the user to:
+
+1. Input grades for students.
+2. Display all grades.
+3. Calculate and display the average grade.
+4. Find and display the highest and lowest grades.
+
+- **Steps:**
+
+1. Initialize an array to store student grades.
+2. Allow the user to input grades into the array.
+3. Display all grades entered.
+4. Calculate the average grade.
+5. Find the highest and lowest grades.
+
+**C# Code:**
+
+```csharp
+using System;
+
+class StudentGradesManager
+{
+    static void Main(string[] args)
+    {
+        // Step 1: Initialize an array to store grades.
+        Console.Write("Enter the number of students: ");
+        int numberOfStudents = Convert.ToInt32(Console.ReadLine());
+        double[] grades = new double[numberOfStudents];
+
+        // Step 2: Input grades for students.
+        for (int i = 0; i < grades.Length; i++)
+        {
+            Console.Write($"Enter grade for student {i + 1}: ");
+            grades[i] = Convert.ToDouble(Console.ReadLine());
+        }
+
+        // Step 3: Display all grades entered.
+        Console.WriteLine("\nGrades entered:");
+        foreach (double grade in grades)
+        {
+            Console.WriteLine(grade);
+        }
+
+        // Step 4: Calculate the average grade.
+        double total = 0;
+        foreach (double grade in grades)
+        {
+            total += grade;
+        }
+        double average = total / grades.Length;
+        Console.WriteLine($"\nAverage grade: {average:F2}");
+
+        // Step 5: Find the highest and lowest grades.
+        double highest = grades[0];
+        double lowest = grades[0];
+
+        foreach (double grade in grades)
+        {
+            if (grade > highest)
+            {
+                highest = grade;
+            }
+            if (grade < lowest)
+            {
+                lowest = grade;
+            }
+        }
+
+        Console.WriteLine($"Highest grade: {highest}");
+        Console.WriteLine($"Lowest grade: {lowest}");
+    }
+}
+```
+
+- **Explanation of the Code:**
+
+1. **Array Initialization:**  
+   - The program starts by asking the user how many students' grades they want to enter and initializes an array of that size.
+
+2. **Input Grades:**  
+   - Using a `for` loop, the program prompts the user to input each student's grade, which is then stored in the array.
+
+3. **Display Grades:**  
+   - A `foreach` loop iterates over the array to display each grade entered.
+
+4. **Calculate Average Grade:**  
+   - The program calculates the total sum of grades using a `foreach` loop and then divides by the number of grades to find the average.
+
+5. **Find Highest and Lowest Grades:**  
+   - The program initializes the highest and lowest grades with the first element of the array and then uses a `foreach` loop to find the actual highest and lowest grades.
+
+- **Key Concepts Covered:**
+
+- **Arrays**: Learn how to declare, initialize, and manipulate arrays.
+- **Loops**: Use `for` and `foreach` loops to iterate through the array.
+- **Basic Calculations**: Calculate sums, averages, and find the highest/lowest values.
+- **User Input**: Accept input from the user and store it in an array.
+
+- **Extensions for Further Learning:**
+
+- Add validation to ensure the grades entered are within a valid range (e.g., 0-100).
+- Extend the program to allow editing or deleting grades.
+- Use methods to separate different functionalities like adding grades, calculating averages, etc.
+
+This project is a great way to start learning about arrays and basic operations in C#.
+
+### 7.6 String Reverse App
+
+  ```csharp
+    public class StringReverseProject
+    {
+      public void StringReverse()
+      {
+        string pangram = "The quick brown fox jumps over the lazy dog";
+
+        // ehT kciuq nworb xof spmuj revo eht yzal god
+
+        // Split(), ToCharArray(), Array.Reverse(), and String.Join()
+
+        string[] words = pangram.Split(' ');
+        string[] reversedWords = new string[words.Length];
+
+        for (int i = 0; i < words.Length; i++)
+        {
+          char[] letters = words[i].ToCharArray();
+          // letters = {'T', 'h', 'e'}
+          Array.Reverse(letters); //  {'e', 'h', 'T'}
+          reversedWords[i] = new string(letters);      // ehT
+        }
+
+        string result = String.Join(" ", reversedWords);
+        Console.WriteLine($"{result}");
+
+      }
+    }
+  ```
+
+### 7.7 Unit Converter App Project
 
 - [App GitHub Link Here](https://github.com/anisul-Islam/unit-converter-csharp)
 
@@ -4596,227 +6000,6 @@ class UnitConverterApp
     }
 }
 ```
-
-### 6.4 Number Guessing Game
-
-**Objective:**  
-This project will help you practice using loops, `switch` statements, and generating random numbers in C#. You will create a simple number guessing game where the user tries to guess a randomly generated number within a specified range.
-
-- **Project Description:**
-  - Generate a random number between 1 and 100.
-  - Prompt the user to guess the number.
-  - Use a loop to allow the user multiple attempts.
-  - Provide feedback on each guess (too high, too low, or correct).
-  - Use a `switch` statement to handle different outcomes (correct guess, too high, too low).
-
-- **Instructions:**
-
-1. **Set Up the Project:**
-   - Create a new C# Console Application.
-
-2. **Implement the Number Guessing Game:**
-   - Use `Random` class to generate a random number.
-   - Use a `while` loop to keep the game running until the correct number is guessed.
-   - Use a `switch` statement to evaluate the user’s guess.
-
-3. **Game Flow:**
-   - The game starts by generating a random number between 1 and 100.
-   - The user is prompted to enter a guess.
-   - The game provides feedback on whether the guess is too high, too low, or correct.
-   - The game continues until the user guesses correctly.
-
-- **Sample Code:**
-
-```csharp
-using System;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        // Step 1: Generate a random number between 1 and 100
-        Random random = new Random();
-        int randomNumber = random.Next(1, 101); // Generates a number between 1 and 100
-        int attempts = 0; // To count the number of attempts
-        bool isCorrectGuess = false;
-
-        Console.WriteLine("Welcome to the Number Guessing Game!");
-        Console.WriteLine("I have selected a number between 1 and 100. Try to guess it!");
-
-        // Step 2: Start the guessing loop
-        while (!isCorrectGuess)
-        {
-            // Step 3: Prompt the user to enter a guess
-            Console.Write("Enter your guess: ");
-            string input = Console.ReadLine();
-            bool isValidNumber = int.TryParse(input, out int userGuess);
-
-            // Validate input
-            if (!isValidNumber || userGuess < 1 || userGuess > 100)
-            {
-                Console.WriteLine("Please enter a valid number between 1 and 100.");
-                continue;
-            }
-
-            attempts++; // Increment the attempt count
-
-            // Step 4: Use switch statement to handle the guess
-            switch (userGuess)
-            {
-                case var _ when userGuess < randomNumber:
-                    Console.WriteLine("Too low! Try again.");
-                    break;
-                case var _ when userGuess > randomNumber:
-                    Console.WriteLine("Too high! Try again.");
-                    break;
-                case var _ when userGuess == randomNumber:
-                    Console.WriteLine($"Congratulations! You've guessed the correct number {randomNumber} in {attempts} attempts.");
-                    isCorrectGuess = true;
-                    break;
-            }
-        }
-
-        Console.WriteLine("Thanks for playing the Number Guessing Game!");
-    }
-}
-```
-
-- **Expected Output:**
-
-When you run the program, it will look something like this:
-
-```
-Welcome to the Number Guessing Game!
-I have selected a number between 1 and 100. Try to guess it!
-Enter your guess: 50
-Too high! Try again.
-Enter your guess: 25
-Too low! Try again.
-Enter your guess: 37
-Congratulations! You've guessed the correct number 37 in 3 attempts.
-Thanks for playing the Number Guessing Game!
-```
-
-- **Key Concepts Practiced:**
-
-- **Loops (`while`)**: Used to repeatedly prompt the user for input until the correct guess is made.
-- **Random Number Generation**: Using `Random` class to generate a number between 1 and 100.
-- **Switch Statement**: Used to evaluate the user's guess and provide feedback.
-- **Input Validation**: Ensuring the user's guess is within the valid range.
-
-This project introduces students to basic control structures in C#, allowing them to practice handling user input, working with random numbers, and using conditional logic to create an interactive console application.
-
-### 6.5 Students Grade Manager
-
-Here's a simple project in C# that focuses on arrays. This project will help beginners understand how to work with arrays, including initializing, accessing, modifying, and iterating through them. The project will be a small application that manages a list of student grades, calculates the average grade, finds the highest and lowest grades, and displays the grades.
-
-- **Objective:**
-
-Create a C# console application that allows the user to:
-
-1. Input grades for students.
-2. Display all grades.
-3. Calculate and display the average grade.
-4. Find and display the highest and lowest grades.
-
-- **Steps:**
-
-1. Initialize an array to store student grades.
-2. Allow the user to input grades into the array.
-3. Display all grades entered.
-4. Calculate the average grade.
-5. Find the highest and lowest grades.
-
-**C# Code:**
-
-```csharp
-using System;
-
-class StudentGradesManager
-{
-    static void Main(string[] args)
-    {
-        // Step 1: Initialize an array to store grades.
-        Console.Write("Enter the number of students: ");
-        int numberOfStudents = Convert.ToInt32(Console.ReadLine());
-        double[] grades = new double[numberOfStudents];
-
-        // Step 2: Input grades for students.
-        for (int i = 0; i < grades.Length; i++)
-        {
-            Console.Write($"Enter grade for student {i + 1}: ");
-            grades[i] = Convert.ToDouble(Console.ReadLine());
-        }
-
-        // Step 3: Display all grades entered.
-        Console.WriteLine("\nGrades entered:");
-        foreach (double grade in grades)
-        {
-            Console.WriteLine(grade);
-        }
-
-        // Step 4: Calculate the average grade.
-        double total = 0;
-        foreach (double grade in grades)
-        {
-            total += grade;
-        }
-        double average = total / grades.Length;
-        Console.WriteLine($"\nAverage grade: {average:F2}");
-
-        // Step 5: Find the highest and lowest grades.
-        double highest = grades[0];
-        double lowest = grades[0];
-
-        foreach (double grade in grades)
-        {
-            if (grade > highest)
-            {
-                highest = grade;
-            }
-            if (grade < lowest)
-            {
-                lowest = grade;
-            }
-        }
-
-        Console.WriteLine($"Highest grade: {highest}");
-        Console.WriteLine($"Lowest grade: {lowest}");
-    }
-}
-```
-
-- **Explanation of the Code:**
-
-1. **Array Initialization:**  
-   - The program starts by asking the user how many students' grades they want to enter and initializes an array of that size.
-
-2. **Input Grades:**  
-   - Using a `for` loop, the program prompts the user to input each student's grade, which is then stored in the array.
-
-3. **Display Grades:**  
-   - A `foreach` loop iterates over the array to display each grade entered.
-
-4. **Calculate Average Grade:**  
-   - The program calculates the total sum of grades using a `foreach` loop and then divides by the number of grades to find the average.
-
-5. **Find Highest and Lowest Grades:**  
-   - The program initializes the highest and lowest grades with the first element of the array and then uses a `foreach` loop to find the actual highest and lowest grades.
-
-- **Key Concepts Covered:**
-
-- **Arrays**: Learn how to declare, initialize, and manipulate arrays.
-- **Loops**: Use `for` and `foreach` loops to iterate through the array.
-- **Basic Calculations**: Calculate sums, averages, and find the highest/lowest values.
-- **User Input**: Accept input from the user and store it in an array.
-
-- **Extensions for Further Learning:**
-
-- Add validation to ensure the grades entered are within a valid range (e.g., 0-100).
-- Extend the program to allow editing or deleting grades.
-- Use methods to separate different functionalities like adding grades, calculating averages, etc.
-
-This project is a great way to start learning about arrays and basic operations in C#.
 
 ## Intermediate 1. OOP
 
@@ -5911,895 +7094,6 @@ This assignment provides a practical and engaging way for students to practice c
 }
 
 ```
-
-### Array
-
-```csharp
-// for vs foreach
-class Test
-{
-  public static void Main(string[] args)
-  {
-    string[] names = new string[3];
-    names[0] = "Anisul";
-    names[1] = "Nusrat";
-    names[2] = "Alex";
-
-    string[] names = new string[3] { "Anisul", "Nusrat", "Alex" };
-
-    string[] names = { "Anisul", "Nusrat", "Alex", "Sathi", "Bob" };
-
-    for (int index = 0; index < names.Length; index++)
-    {
-      Console.WriteLine(names[index]);
-    }
-
-    foreach (string name in names)
-    {
-      Console.WriteLine(name);
-    }
-
-    // printing an array as string
-    int[] numbers = {1,2,3,4,5};
-    string arrayString = string.Join(",", numbers);
-    Console.WriteLine($"{arrayString}");
-  }
-}
-
-class Test
-{
-  public static void Main(string[] args)
-  {
-    string[] names = { "Anisul", "Nusrat", "Alex", "Sathi", "Bob" };
-
-    foreach (string name in names)
-    {
-      Console.WriteLine(name);
-    }
-  }
-}
-
-class Test
-{
-  public static void Main(string[] args)
-  {
-    int[] numbers = { -10, 20, -30, 40, 50 };
-    int sum = 0;
-    foreach (int number in numbers)
-    {
-      sum = sum + number;
-    }
-    Console.WriteLine(sum);
-  }
-}
-
-class Test
-{
-  public static void Main(string[] args)
-  {
-    int[] numbers = { -10, 20, -30, 40, 50, 0 };
-    foreach (int number in numbers)
-    {
-      if (number > 0)
-      {
-        Console.WriteLine(number);
-      }
-    }
-  }
-}
-```
-
-- 2D Array
-
-    A 2D array in C# is an array of arrays, meaning it's an array where each element is also an array. This creates a grid-like structure, where elements are accessed using two indices: one for the row and one for the column.
-
-    A few real-life examples of 2D arrays:
-
-    1. **Image Representation**: Images can be represented as 2D arrays of pixels. Each element of the array stores information about the color of the corresponding pixel.
-
-    2. **Game Boards**: In games like Chess, Checkers, or Tic-Tac-Toe, the game board can be represented using a 2D array. Each element of the array represents a square on the board, and the value of the element indicates the state of that square (empty, occupied by a player's piece, etc.).
-
-    3. **Spreadsheet Data**: Spreadsheets, like Excel, organize data into rows and columns. Each cell in a spreadsheet can be thought of as an element in a 2D array.
-
-    4. **Maps**: Maps in computer graphics or geographical applications are often represented using 2D arrays. Each element of the array corresponds to a location on the map, and the value of the element represents attributes such as elevation, terrain type, or population density.
-
-    5. **Matrix Operations**: Matrices in mathematics are commonly represented using 2D arrays. They are used in various applications, including computer graphics, physics simulations, and solving systems of linear equations.
-
-    6. **Seating Arrangements**: In venues like theaters, stadiums, or classrooms, seating arrangements can be represented using a 2D array. Each element represents a seat, and the value indicates whether the seat is occupied or available.
-
-    These are just a few examples of how 2D arrays are used in real-life scenarios. They are versatile data structures that find applications in many fields of computer science and beyond.
-
-    Here's how you can declare, initialize, and work with 2D arrays in C#:
-
-    **Declaration and Initialization:**
-
-    ```csharp
-    // example 1: declare,initialize, print a simple 2D Array
-    public class MyClass
-    {
-      public static void Main(string[] args)
-      {
-        int[,] matrix = new int[2, 3];
-        matrix[0, 0] = 1;
-        matrix[0, 1] = 2;
-        matrix[0, 2] = 3;
-
-        matrix[1, 0] = 4;
-        matrix[1, 1] = 5;
-        matrix[1, 2] = 6;
-
-        Console.Write($"{matrix[0, 0]} ");
-        Console.Write($"{matrix[0, 1]} ");
-        Console.Write($"{matrix[0, 2]} ");
-
-        Console.WriteLine();
-        Console.Write($"{matrix[1, 0]} ");
-        Console.Write($"{matrix[1, 1]} ");
-        Console.Write($"{matrix[1, 2]} ");
-
-        Console.ReadKey();
-
-      }
-
-    }
-
-    // example 2: declare and initailze a simple 2D Array
-    public class MyClass
-    {
-      public static void Main(string[] args)
-      {
-        int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
-
-        Console.Write($"{matrix[0, 0]} ");
-        Console.Write($"{matrix[0, 1]} ");
-        Console.Write($"{matrix[0, 2]} ");
-
-        Console.WriteLine();
-        Console.Write($"{matrix[1, 0]} ");
-        Console.Write($"{matrix[1, 1]} ");
-        Console.Write($"{matrix[1, 2]} ");
-
-        Console.ReadKey();
-
-      }
-
-    }
-
-    // example 3: Iterating Over the Array with loop
-    public class MyClass
-    {
-      public static void Main(string[] args)
-      {
-        int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
-
-        for (int row = 0; row < matrix.GetLength(0); row++)
-        {
-          for (int col = 0; col < matrix.GetLength(1); col++)
-          {
-            Console.Write($"{matrix[row, col]} ");
-          }
-          Console.WriteLine();
-        }
-        Console.ReadKey();
-      }
-    }
-
-
-  **Initializing a Jagged Array (Array of Arrays):**
-
-  Alternatively, you can use a jagged array, which is an array of arrays. It provides more flexibility as each row can have a different length.
-
-  ```csharp
-  // 1st version:
-  /*
-  1 2
-  3 4 5
-  6 
-  8 9 10 11
-  */
-  public class MyClass
-  {
-    public static void Main(string[] args)
-    {
-      int[][] jaggedArray = new int[4][];
-
-      jaggedArray[0] = new int[] { 1, 2 };
-      jaggedArray[1] = new int[] { 3, 4, 5 };
-      jaggedArray[2] = new int[] { 6 };
-      jaggedArray[3] = new int[] { 8, 9, 10, 11 };
-
-      for (int row = 0; row < jaggedArray.Length; row++)
-      {
-        for (int col = 0; col < jaggedArray[row].Length; col++)
-        {
-          Console.Write($"{jaggedArray[row][col]} ");
-        }
-        Console.WriteLine();
-
-      }
-
-
-      Console.ReadKey();
-    }
-  }
-
-  // 2nd version: 
-  /*
-  1 2
-  3 4 5
-  6 
-  8 9 10 11
-  */
-  public class MyClass
-  {
-    public static void Main(string[] args)
-    {
-      int[][] jaggedArray = new int[][]
-      {
-        new int[] { 1, 2 },
-        new int[] { 3, 4, 5 },
-        new int[] { 6 },
-        new int[] { 8, 9, 10, 11 }
-      };
-
-      for (int row = 0; row < jaggedArray.Length; row++)
-      {
-        for (int col = 0; col < jaggedArray[row].Length; col++)
-        {
-          Console.Write($"{jaggedArray[row][col]} ");
-        }
-        Console.WriteLine();
-
-      }
-
-
-      Console.ReadKey();
-    }
-  }
-
-  // 3rd version
-  /*
-  1 2
-  3 4 5
-  6 
-  8 9 10 11
-  */
-  public class MyClass
-  {
-    public static void Main(string[] args)
-    {
-      int[][] jaggedArray = new int[][]
-      {
-        new int[] { 1, 2 },
-        new int[] { 3, 4, 5 },
-        new int[] { 6 },
-        new int[] { 8, 9, 10, 11 }
-      };
-
-      foreach (var row in jaggedArray)
-      {
-        foreach (var item in row)
-        {
-          Console.Write($"{item} ");
-        }
-        Console.WriteLine();
-
-      }
-
-
-      Console.ReadKey();
-    }
-  }
-
-  // 4th version
-  /*
-  1 2
-  3 4 5
-  6 
-  8 9 10 11
-  */
-  public class MyClass
-  {
-    public static void Main(string[] args)
-    {
-      int[][] jaggedArray =
-      {
-        new [] { 1, 2 },
-        new [] { 3, 4, 5 },
-        new [] { 6 },
-        new [] { 8, 9, 10, 11 }
-      };
-
-      foreach (var row in jaggedArray)
-      {
-        foreach (var item in row)
-        {
-          Console.Write($"{item} ");
-        }
-        Console.WriteLine();
-
-      }
-
-
-      Console.ReadKey();
-    }
-  }
-
-  // 5th version
-
-  public class MyClass
-  {
-      public static void Main(string[] args)
-      {
-          int[][] jaggedArray = new int[4][];
-
-          jaggedArray[0] = new int[] { 1 };
-          jaggedArray[1] = new int[] { 2, 3 };
-          jaggedArray[2] = new int[] { 4, 5, 6 };
-          jaggedArray[3] = new int[] { 7, 8 };
-
-          for (int row = 0; row < jaggedArray.Length; row++)
-          {
-              for (int col = 0; col < jaggedArray[row].Length; col++)
-              {
-                  Console.Write($"{jaggedArray[row][col]} ");
-              }
-              Console.WriteLine();
-          }
-          Console.ReadKey();
-      }
-  }
-  ```
-
-  **Usage Considerations:**
-
-  - Use a 2D array when you need a fixed-size grid with consistent row and column counts.
-  - Use a jagged array when you need flexibility in row lengths or when the array elements represent different sizes of data.
-
-- A challenage collected from Sololearn
-
-```csharp
- class Program
-    {
-        static void Main(string[] args)
-        {
-            int day1Winner = Convert.ToInt32(Console.ReadLine());
-            int day2Winner = Convert.ToInt32(Console.ReadLine());
-            int day3Winner = Convert.ToInt32(Console.ReadLine());
-
-
-            string[][] olympiad = new string[][]
-            {
-                //day 1 - 5 participants
-                new string[] { "Jill Yan", "Bridgette Ramona", "Sree Sanda", "Jareth Charlene", "Carl Soner" },
-                //day 2 - 7 participants
-                new string[] { "Anna Hel", "Mariette Vedrana", "Fran Mayur", "Drake Hilmar", "Nikolay Brooks", "Eliana Vlatko", "Villem Mario" },
-                //day 3 - 4 participants
-                new string[] { "Hieremias Zavia", "Ziya Ollie", "Christoffel Casper", "Kristian Dana", }
-
-            };
-            //your code goes here                 
-            Console.WriteLine(olympiad[0][day1Winner-1]);
-            Console.WriteLine(olympiad[1][day2Winner-1]);
-            Console.WriteLine(olympiad[2][day3Winner-1]);               
-           
-            
-        }
-    }
-```
-
-#### User Input for Array
-
-Certainly! Here's the modified code with exception handling added:
-
-```csharp
-class MyClass
-{
-  public static void Main(string[] args)
-  {
-    try
-    {
-      Console.Write($"How many elements you want: ");
-      int size = ValidIntegerInput();
-
-
-      // creating the array
-      int[] numbers = new int[size];
-
-      // array initialize
-      int sum = 0;
-      for (int i = 0; i < numbers.Length; i++)
-      {
-        Console.Write($"Enter element {i + 1}: ");
-        int number = ValidIntegerInput();
-        numbers[i] = number;
-        sum += numbers[i];
-      }
-
-      // finding the max and minimum here
-      int max = numbers[0];
-      int min = numbers[0];
-      for (int i = 1; i < numbers.Length; i++)
-      {
-        if (max < numbers[i])
-        {
-          max = numbers[i];
-        }
-        if (min > numbers[i])
-        {
-          min = numbers[i];
-        }
-      }
-
-      double avg = (float)sum / numbers.Length;
-
-      // printing max, min 
-      Console.WriteLine($"Maximum element of the array : {max}");
-      Console.WriteLine($"Minimum element of the array : {min}");
-      Console.WriteLine($"Sum of the array : {sum}");
-      Console.WriteLine($"Average of the array : {avg:F2}");
-
-    }
-
-    catch (OutOfMemoryException)
-    {
-      Console.WriteLine($"Out of memory. Unable to create arrays with such large dimensions");
-    }
-    catch (Exception ex)
-    {
-      Console.WriteLine($"An error occured: {ex.Message}");
-    }
-  }
-
-  public static int ValidIntegerInput()
-  {
-    while (true)
-    {
-      string input = Console.ReadLine() ?? "";
-      if (int.TryParse(input, out int number))
-      {
-        return number;
-      }
-      else
-      {
-        Console.WriteLine($"Invalid Input! Please enter a valid integer.");
-      }
-    }
-  }
-}
-```
-
-This code now includes exception handling for various scenarios, such as when the user enters invalid input (e.g., non-integer values), when the input is too large or too small, or when there's not enough memory to create the arrays. The `finally` block ensures that the program waits for a key press before exiting, regardless of whether an exception occurred or not.
-
-#### Array Properties and Methods
-
-- array.Length and array.Rank Properties: the Length and Rank properties return the number of elements and the number of dimensions of the array. we can use dot operator to access Properties.
-
-```csharp
-using System;
-
-class Program
-{
-    static void Main()
-    {
-        // Initializing an array
-        int[] numbers = { 5, 3, 8, 4, 2 };
-
-        // Length property: returns the number of elements in the array
-        Console.WriteLine($"Length of the array: {numbers.Length}");
-
-        // rank property: returns the dimensions the array
-        Console.WriteLine($"Length of the array: {numbers.Rank}");
-
-        Console.WriteLine(arr.Max());
-        Console.WriteLine(arr.Min());
-        Console.WriteLine(arr.Sum());
-
-        // Indexer: accessing elements by index
-        Console.WriteLine($"Element at index 2: {numbers[2]}");
-
-        // Iterating through the array using a for loop
-        Console.Write("Array elements: ");
-        for (int i = 0; i < numbers.Length; i++)
-        {
-            Console.Write(numbers[i] + " ");
-        }
-        Console.WriteLine();
-
-        // Array.Sort method: sorts the elements of the array
-        Array.Sort(numbers);
-        Console.Write("Sorted array: ");
-        PrintArray(numbers);
-
-        // Array.Reverse method: reverses the order of the elements in the array
-        Array.Reverse(numbers);
-        Console.Write("Reversed array: ");
-        PrintArray(numbers);
-
-        // Array.IndexOf method: returns the index of the specified value in the array
-        int index = Array.IndexOf(numbers, 8);
-        Console.WriteLine($"Index of value 8: {index}");
-
-        // Array.Exists method: checks if the specified predicate is true for any element in the array
-        bool exists = Array.Exists(numbers, x => x == 6);
-        Console.WriteLine($"Does array contain value 6? {exists}");
-
-        // Array.Copy method: copies a range of elements from one array to another
-        int[] copy = new int[numbers.Length];
-        Array.Copy(numbers, copy, numbers.Length);
-        Console.Write("Copied array: ");
-        PrintArray(copy);
-
-        // Array.Clear method: sets a range of elements in the array to the specified value
-        Array.Clear(numbers, 0, numbers.Length); // Clearing the original array
-        Console.WriteLine("Original array after clearing:");
-        PrintArray(numbers);
-    }
-
-    // Helper method to print array elements
-    static void PrintArray(int[] arr)
-    {
-        foreach (var num in arr)
-        {
-            Console.Write(num + " ");
-        }
-        Console.WriteLine();
-    }
-}
-
-```
-
-#### Tic-Tac-Toe game
-
-Sure, here's a basic console application in C# that uses a 2D array to represent a Tic-Tac-Toe game:
-
-```csharp
-using System;
-
-class TicTacToe
-{
-    // 2D array to represent the game board
-    private char[,] board;
-
-    // Constructor to initialize the game board
-    public TicTacToe()
-    {
-        board = new char[3, 3];
-        InitializeBoard();
-    }
-
-    // Method to initialize the game board with empty cells
-    private void InitializeBoard()
-    {
-        for (int row = 0; row < 3; row++)
-        {
-            for (int col = 0; col < 3; col++)
-            {
-                board[row, col] = '-';
-            }
-        }
-    }
-
-    // Method to display the current state of the game board
-    private void DisplayBoard()
-    {
-        Console.WriteLine("  0 1 2");
-        for (int row = 0; row < 3; row++)
-        {
-            Console.Write(row + " ");
-            for (int col = 0; col < 3; col++)
-            {
-                Console.Write(board[row, col] + " ");
-            }
-            Console.WriteLine();
-        }
-    }
-
-    // Method to check if a player has won
-    private bool CheckWin(char player)
-    {
-        // Check rows and columns
-        for (int i = 0; i < 3; i++)
-        {
-            if ((board[i, 0] == player && board[i, 1] == player && board[i, 2] == player) ||
-                (board[0, i] == player && board[1, i] == player && board[2, i] == player))
-            {
-                return true;
-            }
-        }
-
-        // Check diagonals
-        if ((board[0, 0] == player && board[1, 1] == player && board[2, 2] == player) ||
-            (board[0, 2] == player && board[1, 1] == player && board[2, 0] == player))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    // Method to play the game
-    public void PlayGame()
-    {
-        char currentPlayer = 'X';
-        int moves = 0;
-
-        Console.WriteLine("Welcome to Tic-Tac-Toe!");
-        DisplayBoard();
-
-        while (moves < 9)
-        {
-            Console.WriteLine($"Player {currentPlayer}'s turn");
-            Console.Write("Enter row and column (e.g., '0 1'): ");
-            string[] input = Console.ReadLine().Split(' ');
-            int row = int.Parse(input[0]);
-            int col = int.Parse(input[1]);
-
-            if (row < 0 || row >= 3 || col < 0 || col >= 3 || board[row, col] != '-')
-            {
-                Console.WriteLine("Invalid move. Try again.");
-                continue;
-            }
-
-            board[row, col] = currentPlayer;
-            DisplayBoard();
-
-            if (CheckWin(currentPlayer))
-            {
-                Console.WriteLine($"Player {currentPlayer} wins!");
-                return;
-            }
-
-            currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
-            moves++;
-        }
-
-        Console.WriteLine("It's a draw!");
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        TicTacToe game = new TicTacToe();
-        game.PlayGame();
-    }
-}
-```
-
-This code creates a basic Tic-Tac-Toe game where two players (X and O) take turns placing their marks on a 3x3 grid. The game checks for wins and draws after each move and displays the current state of the board.
-
-### new: params example
-
-The `params` keyword in C# allows you to specify a method parameter that takes a variable number of arguments of the specified type. Here's an example to demonstrate its usage:
-
-```csharp
-using System;
-
-public class Program
-{
-    // Method that takes a variable number of integers as arguments
-    public static int Sum(params int[] numbers)
-    {
-        int sum = 0;
-        foreach (int num in numbers)
-        {
-            sum += num;
-        }
-        return sum;
-    }
-
-    public static void Main(string[] args)
-    {
-        // Calling the Sum method with different number of arguments
-        int sum1 = Sum(1, 2, 3);           // Sum of 1, 2, and 3
-        int sum2 = Sum(10, 20, 30, 40);    // Sum of 10, 20, 30, and 40
-        int sum3 = Sum();                  // Sum of no numbers (0)
-
-        // Displaying the results
-        Console.WriteLine("Sum of 1, 2, and 3: " + sum1);
-        Console.WriteLine("Sum of 10, 20, 30, and 40: " + sum2);
-        Console.WriteLine("Sum of no numbers: " + sum3);
-    }
-}
-```
-
-In this example:
-
-- The `Sum` method is defined with the `params` keyword, allowing it to accept a variable number of integers.
-- Inside the method, the `numbers` parameter behaves like an array, even though you can pass arguments to it directly without explicitly creating an array.
-- You can call the `Sum` method with different numbers of arguments, and the method will calculate the sum of all provided integers.
-- If no arguments are provided, the sum will be zero.
-
-Using `params` allows for cleaner and more flexible method calls when the number of arguments can vary.
-
-### String
-
-  ```csharp
-
-  public class MyClass
-    {
-      public static void Main(string[] args)
-      {
-          string a = "some text";
-      Console.WriteLine(a.Length);
-      //Outputs 9
-
-      Console.WriteLine(a.IndexOf('t'));
-      //Outputs 5
-      
-        string text = "Hello everyone ! This is Anisul Islam";
-        Console.WriteLine($"length of string: {text.Length}");
-        Console.WriteLine($"O index from string: {text[0]}");
-
-        var words = text.Split(" ");
-        Console.WriteLine($"{string.Join(",", words)}");
-
-        // foreach (var word in words)
-        // {
-        //   Console.WriteLine($"{word}");
-        // }
-
-        // string removeText = text.Remove(4);
-        // Console.WriteLine($"removeText: {removeText}");
-
-        bool isEmpty = string.IsNullOrEmpty(text);
-        Console.WriteLine($"Is string empty or null? {isEmpty}");
-
-        // string insertedText = text.Insert(0, "Hi !");
-        // Console.WriteLine($"insertedText: {insertedText}");
-
-        string replacedText = text.Replace("Hello everyone", "Hi");
-        Console.WriteLine($"replacedText: {replacedText}");
-
-        bool isAnisulExist = text.Contains("Anisul");
-        Console.WriteLine($"isAnisulExist : {isAnisulExist}");
-
-        string reveresedString = new string(text.Reverse().ToArray());
-        Console.WriteLine($"ReveresedString: {reveresedString}");
-
-        string upper = text.ToUpper();
-        Console.WriteLine($"Upper string: {upper}");
-
-        string lower = text.ToLower();
-        Console.WriteLine($"Lower string: {lower}");
-
-        string trimmedString = text.Trim(); // TrimStart(), TrimEnd()
-        Console.WriteLine($"trimmedString: {trimmedString}");
-
-        string substring = text.Substring(6);
-        Console.WriteLine($"substring: {substring}");
-
-        string substring2 = text.Substring(6, 5);
-        Console.WriteLine($"substring2: {substring2}");
-      }
-    }
-
-  ```
-
-- password checking program
-
-```csharp
-namespace SoloLearn
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string password = Console.ReadLine();
-            char[] notAllowedSymbols = { '!', '#', '$', '%', '&', '(', ')', '*', ',', '+', '-' };
-
-            //your code goes here
-            foreach(var item in notAllowedSymbols){
-                if(password.Contains(item)){
-                    Console.WriteLine("Invalid");
-                    break;
-                }
-            }
-            
-        }
-    }
-}
-```
-
-- string method and properties
-
-  To reverse a string in C#, you can use the `Reverse` method from the `System.Linq` namespace along with `string.Concat` to concatenate the characters in reverse order. Here's how you can do it:
-
-  ```csharp
-  using System;
-  using System.Linq;
-
-  class Program
-  {
-      static void Main()
-      {
-          string str = "Hello, world!";
-          string reversedStr = new string(str.Reverse().ToArray());
-
-          Console.WriteLine("Original string: " + str);
-          Console.WriteLine("Reversed string: " + reversedStr);
-      }
-  }
-  ```
-
-  Output:
-
-  ```
-  Original string: Hello, world!
-  Reversed string: !dlrow ,olleH
-  ```
-
-  Some useful string methods in C# include:
-
-  1. `ToUpper()` and `ToLower()`: Convert a string to upper or lower case.
-  2. `Trim()`: Remove leading and trailing whitespace from a string.
-  3. `Substring(int startIndex)`: Extracts a substring from a string, starting at the specified index.
-  4. `Contains(string value)`: Checks if a string contains a specific substring.
-  5. `Replace(string oldValue, string newValue)`: Replaces all occurrences of a specified substring with another substring.
-  6. `Split(char[] separator)`: Splits a string into substrings based on the characters in an array.
-  7. `IndexOf(char value)`: Returns the zero-based index of the first occurrence of the specified character in the string.
-
-  These are just a few examples of the many methods available for working with strings in C#.
-
-- **string assignment**
-
-Below is a C# code that counts the number of vowels, consonants, digits, special characters, white spaces, and words in a given string:
-
-```csharp
-using System;
-using System.Linq;
-
-class Program
-{
-    static void Main()
-    {
-        string input = "Hello 123 World!";
-
-        // Count vowels, consonants, digits, special characters, white spaces, and words
-        int vowelCount = input.Count(c => "aeiouAEIOU".Contains(c));
-        int consonantCount = input.Count(c => char.IsLetter(c) && !"aeiouAEIOU".Contains(c));
-        int digitCount = input.Count(char.IsDigit);
-        int specialCharCount = input.Count(c => !char.IsLetterOrDigit(c) && !char.IsWhiteSpace(c));
-        int whiteSpaceCount = input.Count(char.IsWhiteSpace);
-        int wordCount = input.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries).Length;
-
-        // Output the counts
-        Console.WriteLine($"Number of vowels: {vowelCount}");
-        Console.WriteLine($"Number of consonants: {consonantCount}");
-        Console.WriteLine($"Number of digits: {digitCount}");
-        Console.WriteLine($"Number of special characters: {specialCharCount}");
-        Console.WriteLine($"Number of white spaces: {whiteSpaceCount}");
-        Console.WriteLine($"Number of words: {wordCount}");
-    }
-}
-```
-
-This code initializes a string `input` and then calculates the counts of vowels, consonants, digits, special characters, white spaces, and words using LINQ queries and string manipulation methods.
-
-Here's a brief explanation of each part of the code:
-
-1. **Count Vowels**:
-   - Uses `Count` method with a lambda expression to count characters that are vowels (both lowercase and uppercase).
-
-2. **Count Consonants**:
-   - Uses `Count` method with a lambda expression to count characters that are consonants (letters excluding vowels).
-
-3. **Count Digits**:
-   - Uses `Count` method with `char.IsDigit` predicate to count digits.
-
-4. **Count Special Characters**:
-   - Uses `Count` method with a lambda expression to count characters that are neither letters nor digits.
-
-5. **Count White Spaces**:
-   - Uses `Count` method with `char.IsWhiteSpace` predicate to count white space characters.
-
-6. **Count Words**:
-   - Splits the input string into words using `Split` method and then removes empty entries with `StringSplitOptions.RemoveEmptyEntries`.
-   - Uses `Length` property to count the number of words.
-
-Finally, it prints out the counts for each category.
 
 ### new: shallow copy vs deep copy
 
@@ -11843,7 +12137,7 @@ Deferred execution and immediate execution are two different execution strategie
     // Iterating over the result stored in the List
     ```
 
-## new: Asynchronous Programming
+## Intermediate 3: Asynchronous Programming
 
 - Asynchronous programming in C# allows you to execute tasks concurrently, enabling more efficient use of system resources and improving responsiveness in applications. Asynchronous programming is especially useful when dealing with I/O-bound operations such as reading from files, making network requests, or accessing databases, where waiting for the operation to complete would cause blocking.
 
@@ -12244,7 +12538,7 @@ class Program
     }
 ```
 
-## new: File I/0
+## new: File I/0, operator overloading and ref
 
 Working with files in C# involves various operations such as reading from and writing to files, creating, deleting, and manipulating files and directories. These are some of the basic file operations in C#. Depending on your requirements, you can perform more advanced file operations using additional classes and methods available in the `System.IO` namespace. Here's an overview of common file operations in C#:
 
@@ -12369,7 +12663,7 @@ Working with files in C# involves various operations such as reading from and wr
     }
     ```
 
-## new: A project for CRUD with Files
+### new: A project for CRUD with Files
 
 Certainly! Here's a more comprehensive example of a simple Products CRUD (Create, Read, Update, Delete) application using files for data storage. In this example, we'll implement functionalities to add, view, update, and delete products from a file-based database:
 
@@ -12554,7 +12848,7 @@ In this example:
 
 You can run this program to manage products through a simple command-line interface.
 
-## new: Operator Overloading
+### new: Operator Overloading and ref
 
 ```csharp
   class Box {
@@ -12581,7 +12875,7 @@ You can run this program to manage products through a simple command-line interf
   }
 ```
 
-## ref keyword
+### ref keyword
 
 ```csharp
 class Test1
@@ -12601,44 +12895,354 @@ class Test1
 }
 ```
 
-## Intermediate 3 : REST API
+## Intermediate 4 : ASP.NET and REST API
 
-### create first web api and folder structure
+### 4.0 Things to learn
 
-- what is API? why do we need API?
-- HTTP Verbs + CRUD Operations
-- HTTP Status Code
+When learning to build an ASP.NET Web API, it's important to approach it step by step to cover the key concepts thoroughly. Below is a structured learning path to guide you through the process:
 
-- `dotnet new list`
-- As a beginner start with this command: `dotnet new web -o ecommerce-api`
-- command `dotnet new webapi -o ecommerce-api`
-- cmd+shift+p -> .NET: New Project + Enter
-- check Program.cs
+#### **Step-by-Step Guide to Learning ASP.NET Web API**
 
-```cs
-var builder = WebApplication.CreateBuilder(args);
-// WebApplication is basically just host for http server where you can make http requets
-var app = builder.Build();
+---
 
-app.MapGet("/", () => "Hello World!");
+#### **1. Basics of ASP.NET Core**
 
-app.Run();
-```
+Before diving into Web API development, you should understand the fundamentals of ASP.NET Core, which is the framework used to build modern web applications and APIs.
 
-- check .csproj file -> where we will add all dependencies mostly
+- **Key Topics**:
+  - What is ASP.NET Core and its benefits.
+  - ASP.NET Core vs. ASP.NET Framework.
+  - Overview of middleware and the request pipeline.
+  - Dependency injection in ASP.NET Core.
+  
+- **What to Do**:
+  - Set up your development environment: Install Visual Studio/Visual Studio Code, .NET SDK.
+  - Create a simple "Hello World" ASP.NET Core project to get familiar with the framework.
 
-- appsettings.json vs appsettings.Development.json -> mainly for configuration
+---
 
-- launchSettings.json - profiles configuration for only local development not for production development
+#### **2. Introduction to Web API**
 
-- obj file is the intermediate
-- bin is the executeable
-- how to build the project: go to root directory: dotnet buiild (ctrl+shift+B)
-- how to run the app (F5) + install Jsonnet Language Server + select c# + http/default or go to solution explorer -> debug -> start without debugging
-- how to run with terminal. go to root directory -> `dotnet run`
-- auto sever restart `dotnet watch run`
+Understand what Web APIs are and how ASP.NET Core allows you to build them.
 
-### API, REST API
+- **Key Topics**:
+  - REST principles and HTTP methods (GET, POST, PUT, DELETE).
+  - What is a Web API and how it works in the ASP.NET Core ecosystem.
+  
+- **What to Do**:
+  - Create a simple Web API project in ASP.NET Core.
+  - Build a basic controller with a couple of endpoints (`GET /hello`, `POST /hello`).
+  - Learn how routing works in ASP.NET Core (`[Route]` and `[HttpGet]`, `[HttpPost]`, etc.).
+
+---
+
+#### **3. Creating API Endpoints**
+
+Learn how to create and define API endpoints and handle HTTP requests in your Web API.
+
+- **Key Topics**:
+  - Controllers and actions in ASP.NET Core.
+  - HTTP methods: `GET`, `POST`, `PUT`, `DELETE`.
+  - Routing: Attribute routing, conventional routing.
+  - Returning responses: JSON data, status codes (`Ok`, `BadRequest`, `NotFound`).
+  
+- **What to Do**:
+  - Build an API with basic CRUD (Create, Read, Update, Delete) operations.
+  - Create simple endpoints like `GET /products`, `POST /products`.
+  - Practice returning responses in different formats (JSON, XML).
+
+---
+
+#### **4. Model Binding and Validation**
+
+Understand how data is passed to and from API endpoints and how to validate the incoming data.
+
+- **Key Topics**:
+  - Model binding: Passing data to methods via route, query string, and request body.
+  - Model validation using data annotations (e.g., `[Required]`, `[Range]`).
+  - Input validation and custom validation.
+  
+- **What to Do**:
+  - Create models (e.g., `Product`, `User`), use data annotations for validation.
+  - Implement input validation and return appropriate error responses when validation fails.
+
+---
+
+#### **5. Dependency Injection and Services**
+
+Learn how to use dependency injection to structure your API in a maintainable and testable way.
+
+- **Key Topics**:
+  - What is dependency injection and why it's important.
+  - Services and repository patterns.
+  - Registering services in `Startup.cs` or `Program.cs`.
+  
+- **What to Do**:
+  - Create services (e.g., `ProductService`) and inject them into controllers.
+  - Register services in `Program.cs` using `AddScoped`, `AddSingleton`, etc.
+
+---
+
+#### **6. Working with Databases (Entity Framework Core)**
+
+Learn how to connect your API to a database using Entity Framework Core.
+
+- **Key Topics**:
+  - Introduction to Entity Framework Core.
+  - Setting up a database context.
+  - Performing CRUD operations with Entity Framework Core.
+  - Migrations: Creating and applying database migrations.
+  
+- **What to Do**:
+  - Create a `DbContext` and connect your Web API to a local or cloud database.
+  - Perform basic CRUD operations on the database using Entity Framework Core.
+  - Implement database migrations to keep your schema in sync.
+
+---
+
+#### **7. Error Handling and Logging**
+
+Handle exceptions and log important information for better troubleshooting and debugging.
+
+- **Key Topics**:
+  - Global exception handling in ASP.NET Core.
+  - Using `try-catch` blocks within controllers.
+  - Logging with ASP.NET Core's built-in logging mechanisms.
+  
+- **What to Do**:
+  - Set up global exception handling middleware.
+  - Use logging in your API (e.g., log errors, requests, and responses).
+  - Customize error responses for your API.
+
+---
+
+#### **8. Authentication and Authorization**
+
+Secure your Web API by implementing authentication and authorization.
+
+- **Key Topics**:
+  - Authentication vs. authorization.
+  - Implementing JWT (JSON Web Token) authentication.
+  - Role-based and claims-based authorization in ASP.NET Core.
+  
+- **What to Do**:
+  - Secure your API endpoints using JWT authentication.
+  - Protect routes using `[Authorize]` attributes and set up role-based permissions.
+
+---
+
+#### **9. Documentation with Swagger**
+
+Automatically generate API documentation to make it easier for developers to use your API.
+
+- **Key Topics**:
+  - Introduction to Swagger/OpenAPI.
+  - Setting up Swagger in an ASP.NET Core Web API.
+  
+- **What to Do**:
+  - Install and configure Swagger for your API.
+  - Generate API documentation and try out the endpoints via the Swagger UI.
+
+---
+
+#### **10. Testing Your API**
+
+Learn how to test your Web API using unit tests and integration tests.
+
+- **Key Topics**:
+  - Unit testing with xUnit or NUnit.
+  - Mocking dependencies (e.g., services) using Moq.
+  - Writing integration tests for API endpoints.
+  
+- **What to Do**:
+  - Write unit tests for controllers and services.
+  - Use a testing tool like Postman or REST Client to manually test API endpoints.
+  - Write integration tests to validate that your API works as expected.
+
+---
+
+#### **11. Versioning Your API**
+
+As your API evolves, it’s important to learn how to version your API to maintain backward compatibility.
+
+- **Key Topics**:
+  - API versioning strategies (URL versioning, query string versioning).
+  - Using ASP.NET Core API versioning package.
+  
+- **What to Do**:
+  - Implement API versioning using the `Microsoft.AspNetCore.Mvc.Versioning` package.
+  - Create different versions of your API endpoints and maintain compatibility.
+
+---
+
+#### **12. Caching and Performance Optimization**
+
+Learn how to improve the performance of your API by implementing caching.
+
+- **Key Topics**:
+  - Caching strategies (in-memory caching, distributed caching).
+  - Response caching in ASP.NET Core.
+  
+- **What to Do**:
+  - Implement in-memory caching to store frequently requested data.
+  - Add response caching to reduce the load on your API.
+
+---
+
+#### **13. Deployment and Hosting**
+
+Learn how to deploy your Web API to a cloud service or server.
+
+- **Key Topics**:
+  - Deploying ASP.NET Core Web API to Azure, AWS, or a local server.
+  - Setting up CI/CD pipelines using GitHub Actions, Azure DevOps, etc.
+  
+- **What to Do**:
+  - Deploy your API to a cloud provider like Azure or AWS.
+  - Set up a continuous integration/continuous deployment (CI/CD) pipeline.
+
+---
+
+#### **14. Asynchronous Programming**
+
+Learn how to handle asynchronous operations in your Web API for better scalability and responsiveness.
+
+- **Key Topics**:
+  - Introduction to async/await in C#.
+  - Implementing asynchronous controllers and services.
+  
+- **What to Do**:
+  - Refactor your API endpoints to handle database calls asynchronously using `async` and `await`.
+
+---
+
+#### **15. Advanced Topics (Optional)**
+
+Once you’re comfortable with the basics, explore advanced topics like:
+
+- Rate limiting for APIs.
+- Handling long-running tasks with background services (e.g., `IHostedService`).
+- GraphQL for APIs.
+  
+---
+
+#### **Conclusionf for ASP.NET**
+
+By following this structured learning path, you'll gradually build up the skills necessary to create a fully functional, secure, and efficient ASP.NET Web API. Start with the basics, get comfortable with CRUD operations and database integration, and then move on to more advanced topics like authentication, versioning, and caching. Happy coding!
+
+### 4.1 What is API? Why do we need API?
+
+![alt text](image-10.png)
+
+![alt text](image-13.png)
+
+![alt text](image-12.png)
+
+![alt text](image-14.png)
+
+### 4.2 Types of API
+
+![alt text](image-11.png)
+
+#### **SOAP vs. REST: Understanding the Differences**
+
+SOAP (Simple Object Access Protocol) and REST (Representational State Transfer) are two popular web service communication protocols. While both are used for enabling communication between applications over the internet, they have significant differences in terms of structure, design, and use cases.
+
+##### **SOAP (Simple Object Access Protocol)**
+
+1. **Protocol**:
+   - SOAP is a protocol that defines a strict set of rules for message structure and communication between web services.
+
+2. **Message Format**:
+   - SOAP uses XML exclusively for message formatting, making it rigid and verbose.
+
+3. **Transport Protocols**:
+   - SOAP can use a variety of transport protocols, including HTTP, SMTP, TCP, and more, though HTTP is the most common.
+
+4. **Standards and Security**:
+   - SOAP follows a rigid set of standards, including WS-Security for security, WS-ReliableMessaging for reliable message delivery, and WS-AtomicTransaction for transaction management.
+
+5. **Statefulness**:
+   - SOAP can be stateful or stateless. It supports complex operations like transactions and sessions.
+
+6. **Error Handling**:
+   - SOAP has built-in error handling through its `fault` element, providing structured information about errors.
+
+7. **Use Cases**:
+   - Suitable for enterprise-level applications that require high security, reliability, and complex transactions (e.g., banking, finance).
+
+8. **Example Structure**:
+
+   ```xml
+   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:exa="http://example.com">
+       <soapenv:Header/>
+       <soapenv:Body>
+           <exa:GetProductRequest>
+               <exa:ProductId>123</exa:ProductId>
+           </exa:GetProductRequest>
+       </soapenv:Body>
+   </soapenv:Envelope>
+   ```
+
+##### **REST (Representational State Transfer)**
+
+1. **Architectural Style**:
+   - REST is not a protocol but an architectural style that uses HTTP requests to perform CRUD (Create, Read, Update, Delete) operations.
+
+2. **Message Format**:
+   - REST can use various data formats, including JSON, XML, HTML, and plain text, with JSON being the most common due to its lightweight nature.
+
+3. **Transport Protocols**:
+   - REST uses HTTP/HTTPS protocols exclusively for communication.
+
+4. **Standards and Security**:
+   - REST does not enforce specific standards; it relies on HTTP status codes for error handling and can use OAuth, JWT, or HTTPS for security.
+
+5. **Statelessness**:
+   - REST is stateless, meaning each request is independent, and no client context is stored on the server between requests.
+
+6. **Error Handling**:
+   - REST uses HTTP status codes to indicate errors (e.g., 404 for not found, 500 for server error).
+
+7. **Use Cases**:
+   - Ideal for web applications, microservices, and public APIs where performance, scalability, and ease of integration are important.
+
+8. **Example Structure**:
+
+   ```http
+   GET /products/123 HTTP/1.1
+   Host: api.example.com
+   Accept: application/json
+   ```
+
+##### **Key Differences Between SOAP and REST**
+
+| Feature              | SOAP                                   | REST                                    |
+|----------------------|----------------------------------------|-----------------------------------------|
+| Protocol             | Strict protocol                        | Architectural style                     |
+| Message Format       | XML only                               | JSON, XML, HTML, plain text             |
+| Transport Protocols  | HTTP, SMTP, TCP, etc.                  | HTTP/HTTPS                              |
+| Standards            | WS-Security, WS-ReliableMessaging, etc.| HTTP status codes, OAuth, JWT           |
+| Statefulness         | Stateful or stateless                  | Stateless                               |
+| Error Handling       | SOAP Faults                            | HTTP status codes                       |
+| Performance          | Slower due to XML and overhead         | Faster due to JSON and simplicity       |
+| Use Cases            | Enterprise, secure, complex operations | Web, mobile, public APIs, microservices |
+
+##### **Choosing Between SOAP and REST**
+
+- **Use SOAP** if you need:
+  - High security and built-in standards.
+  - Support for complex transactions and messaging.
+  - Enterprise-level operations with strict contracts.
+
+- **Use REST** if you need:
+  - Scalability and flexibility.
+  - Lightweight and fast communication.
+  - Integration with web, mobile, and public APIs.
+
+REST is generally preferred for modern web services due to its simplicity, speed, and ease of use, while SOAP remains valuable for specific enterprise scenarios requiring high security and reliability.
+
+##### REST API
 
 REST (Representational State Transfer) is an architectural style for designing networked applications. It relies on a stateless, client-server communication model and emphasizes the use of standard HTTP methods and status codes. REST APIs adhere to a set of constraints that define their architectural properties. These constraints, defined by Roy Fielding in his doctoral dissertation, help ensure that RESTful APIs are scalable, reliable, and maintainable. Let's explore these constraints with examples:
 
@@ -12672,11 +13276,7 @@ REST (Representational State Transfer) is an architectural style for designing n
 
 These constraints ensure that RESTful APIs are scalable, reliable, and maintainable. By adhering to these principles, developers can design APIs that are easily understood, interoperable, and adaptable to changing requirements.
 
-#### Install REST CLIENT for http requests
-
-- create a ecommerce.http file `GET http://localhost:5277`
-
-#### URL? best practices when naming URL
+### 4.3 URL? best practices when naming URL
 
 1. **URL:** `https://www.amazon.com/gp/product/B07H1DWFLG/ref=s9_acsd_hps_bw_c_x_3_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=EK5R9ET1VB7E0M6X23T3&pf_rd_t=101&pf_rd_p=5f6a5c92-95cb-486c-aa05-69e0e2efeb50&pf_rd_i=15240825011`
    - **Scheme:** `https`
@@ -12737,6 +13337,824 @@ Best Practices for URL Naming:
 
 By following these best practices, API designers can create URL structures that are intuitive, consistent, and easy to understand, improving the developer experience and usability of the API.
 
+### 4.4 HTTP Methods
+
+HTTP methods, also known as HTTP verbs, define the actions that can be performed on resources in a RESTful web service. Each method serves a specific purpose and helps to standardize how clients interact with servers. Below are the common types of HTTP methods:
+
+#### **1. GET**
+
+- **Purpose**: Retrieves data from the server.
+- **Characteristics**:
+  - **Read-only**: Does not modify data.
+  - **Idempotent**: Multiple identical requests yield the same result.
+  - **Safe**: Has no side effects (i.e., does not change the state of the resource).
+- **Common Use Case**: Fetching a list of resources or a specific resource.
+- **Example**:
+
+  ```http
+  GET /products/123 HTTP/1.1
+  ```
+
+#### **2. POST**
+
+- **Purpose**: Sends data to the server to create a new resource.
+- **Characteristics**:
+  - **Non-idempotent**: Multiple identical requests can result in multiple resources being created.
+  - **Not Safe**: Changes the state of the resource.
+- **Common Use Case**: Creating new entries, such as a new user or a new order.
+- **Example**:
+
+  ```http
+  POST /products HTTP/1.1
+  Content-Type: application/json
+  
+  {
+    "name": "New Product",
+    "price": 49.99
+  }
+  ```
+
+#### **3. PUT**
+
+- **Purpose**: Updates an existing resource or creates a resource if it does not exist.
+- **Characteristics**:
+  - **Idempotent**: Repeated requests with the same data will have the same effect.
+  - **Not Safe**: Changes the state of the resource.
+- **Common Use Case**: Updating existing resources or creating resources at a known location.
+- **Example**:
+
+  ```http
+  PUT /products/123 HTTP/1.1
+  Content-Type: application/json
+  
+  {
+    "name": "Updated Product",
+    "price": 59.99
+  }
+  ```
+
+#### **4. PATCH**
+
+- **Purpose**: Partially updates an existing resource.
+- **Characteristics**:
+  - **Idempotent**: Applying the same patch request multiple times results in the same outcome.
+  - **Not Safe**: Changes the state of the resource.
+- **Common Use Case**: Making partial updates to resources, such as updating only one field.
+- **Example**:
+
+  ```http
+  PATCH /products/123 HTTP/1.1
+  Content-Type: application/json
+  
+  {
+    "price": 39.99
+  }
+  ```
+
+#### **5. DELETE**
+
+- **Purpose**: Deletes a specified resource.
+- **Characteristics**:
+  - **Idempotent**: Repeated requests to delete the same resource will have the same effect.
+  - **Not Safe**: Changes the state of the resource by removing it.
+- **Common Use Case**: Removing resources, such as deleting a user or a product.
+- **Example**:
+
+  ```http
+  DELETE /products/123 HTTP/1.1
+  ```
+
+#### **6. OPTIONS**
+
+- **Purpose**: Describes the communication options available for a resource or server.
+- **Characteristics**:
+  - **Safe and Idempotent**: Does not modify resources.
+- **Common Use Case**: Checking allowed methods on a resource, often used in CORS (Cross-Origin Resource Sharing) scenarios.
+- **Example**:
+
+  ```http
+  OPTIONS /products HTTP/1.1
+  ```
+
+#### **7. HEAD**
+
+- **Purpose**: Similar to GET but retrieves only the headers of a response without the body.
+- **Characteristics**:
+  - **Idempotent and Safe**: Does not modify the resource.
+- **Common Use Case**: Checking if a resource exists or verifying its status without fetching the entire content.
+- **Example**:
+
+  ```http
+  HEAD /products/123 HTTP/1.1
+  ```
+
+#### **8. TRACE**
+
+- **Purpose**: Echoes back the received request, used for debugging purposes.
+- **Characteristics**:
+  - **Idempotent and Safe**: Does not alter the resource.
+- **Common Use Case**: Diagnosing issues by examining the request path and server's handling.
+- **Example**:
+
+  ```http
+  TRACE /products HTTP/1.1
+  ```
+
+#### **9. CONNECT**
+
+- **Purpose**: Establishes a tunnel to the server, often used for HTTPS connections through an HTTP proxy.
+- **Characteristics**:
+  - Primarily used for setting up a network connection rather than modifying resources.
+- **Common Use Case**: Secure tunneling through proxies.
+- **Example**:
+
+  ```http
+  CONNECT example.com:443 HTTP/1.1
+  ```
+
+#### **Summary of HTTP Verbs**
+
+- **GET**: Retrieve data.
+- **POST**: Create new data.
+- **PUT**: Update or create data.
+- **PATCH**: Partially update data.
+- **DELETE**: Remove data.
+- **OPTIONS**: Discover allowed operations.
+- **HEAD**: Retrieve headers only.
+- **TRACE**: Debugging and diagnostics.
+- **CONNECT**: Establish a network connection.
+
+These methods allow RESTful APIs to manage resources effectively, each serving a distinct role in the lifecycle of web resources.
+
+### 4.5 Your first ASP.NET CRUD web API
+
+- make sure you have dev kit extension to create and run asp.net app
+- dontnet new --list
+- Create an app => dotnet new webapi -o ecommerce-api
+- how to run with terminal. go to root directory -> `dotnet run`
+- auto sever restart `dotnet watch run`
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+var app = builder.Build();
+
+// http methods/verb, url route pattern and method to process the request
+app.MapGet("/", () => "hello world");
+
+app.Run();
+```
+
+```http
+<!-- api.http -->
+@asp_net_tutorial_HostAddress = http://localhost:5050
+
+GET {{asp_net_tutorial_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{asp_net_tutorial_HostAddress}}
+```
+
+### 4.6 Examples of ASP.NET CRUD web API with in memory
+
+```csharp
+// api with GUID
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container (if needed for DI, like AddSingleton, etc.)
+// Here, we're not adding any complex services since we're keeping everything simple.
+
+var app = builder.Build();
+
+// Sample data - In-memory list of products
+var products = new List<Product>();
+
+// Configure the HTTP request pipeline.
+app.UseHttpsRedirection();
+
+// Define Endpoints directly in Program.cs
+
+// GET: /products?pageNumber=2&pageSize=3 - Get all products with pagination
+app.MapGet("/products", (HttpRequest request) =>
+{
+    // Read query parameters from the request
+    int pageNumber = int.TryParse(request.Query["page"], out int parsedPage) ? parsedPage : 1;
+    int pageSize = int.TryParse(request.Query["limit"], out int parsedLimit) ? parsedLimit : 5;
+
+    // Ensure pageNumber and pageSize are positive numbers
+    if (pageNumber < 1 || pageSize < 1)
+    {
+        return Results.BadRequest(new { Message = "Page number and page size must be greater than 0." });
+    }
+
+    // Calculate the total number of products
+    int totalProducts = products.Count;
+
+    // Calculate the number of items to skip based on the current page
+    int skip = (pageNumber - 1) * pageSize;
+
+    // Retrieve the products for the current page
+    var paginatedProducts = products.Skip(skip).Take(pageSize).ToList();
+
+    // Create a response with additional properties
+    var response = new
+    {
+        Status = "Success",
+        TotalProducts = totalProducts,
+        PageNumber = pageNumber,
+        PageSize = pageSize,
+        TotalPages = (int)Math.Ceiling(totalProducts / (double)pageSize),
+        Products = paginatedProducts
+    };
+
+    return Results.Ok(response);
+});
+
+
+// GET: /products/{id} - Get a specific product by ID
+app.MapGet("/products/{id:guid}", (Guid id) =>
+{
+    Console.WriteLine($"{id}");
+
+    var product = products.FirstOrDefault(p => p.Id == id);
+    if (product == null)
+    {
+        return Results.NotFound($"Product with ID {id} not found.");
+    }
+    return Results.Ok(product);
+});
+
+// POST: /products - Create a new product
+app.MapPost("/products", (Product newProduct) =>
+{
+    if (newProduct == null || string.IsNullOrEmpty(newProduct.Name))
+    {
+        return Results.BadRequest("Invalid product data.");
+    }
+    newProduct.Id = Guid.NewGuid();
+    // product.Id = products.Count > 0 ? products.Max(p => p.Id) + 1 : 1; // Auto-increment ID logic
+    products.Add(newProduct);
+    return Results.Created($"/products/{newProduct.Id}", newProduct);
+});
+
+// PUT: /products/{id} - Update an existing product
+app.MapPut("/products/{id:guid}", (Guid id, Product updatedProduct) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+    if (product == null)
+    {
+        return Results.NotFound($"Product with ID {id} not found.");
+    }
+
+    product.Name = updatedProduct.Name;
+    product.Price = updatedProduct.Price;
+    product.Description = updatedProduct.Description;
+    return Results.NoContent();
+});
+
+// DELETE: /products/{id} - Delete a product by ID
+app.MapDelete("/products/{id:guid}", (Guid id) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+    if (product == null)
+    {
+        return Results.NotFound($"Product with ID {id} not found.");
+    }
+
+    products.Remove(product);
+    return Results.NoContent();
+});
+
+app.Run();
+
+// Simple Product Model
+public class Product
+{
+    public Guid Id { get; set; }
+    public string? Name { get; set; }
+    public decimal Price { get; set; }
+    public string? Description { get; set; }
+}
+```
+
+```csharp
+
+// Example 2
+using Microsoft.AspNetCore.Http.HttpResults;
+
+var builder = WebApplication.CreateBuilder(args);
+
+var app = builder.Build();
+
+// http methods/verb, url route pattern and method to process the request
+app.MapGet("/", () => "hello world");
+
+var todos = new List<Todo>();
+
+app.MapGet("/todos/{id}", Results<Ok<Todo>, NotFound> (int id) =>
+{
+    var todo = todos.SingleOrDefault(x => x.Id == id);
+    return todo is null ? TypedResults.NotFound() : TypedResults.Ok(todo);
+});
+
+app.MapGet("/todos", () => todos);
+
+app.MapDelete("/todos/{id}", (int id) =>
+{
+    todos.RemoveAll(x => x.Id == id);
+    return TypedResults.NoContent();
+});
+
+app.MapPost("/todos", (Todo task) =>
+{
+    todos.Add(task);
+    return TypedResults.Created("/todos/{id}", todos);
+});
+
+app.Run();
+
+
+public record Todo(int Id, string Name, DateTime dueDate, bool isCompleted);
+```
+
+```http
+  @asp_net_tutorial_HostAddress = http://localhost:5050
+
+  GET {{asp_net_tutorial_HostAddress}}/weatherforecast/
+  Accept: application/json
+
+  ###
+
+  GET {{asp_net_tutorial_HostAddress}}/todos/1
+
+  ###
+
+  GET {{asp_net_tutorial_HostAddress}}/todos
+
+  ###
+
+  GET {{asp_net_tutorial_HostAddress}}/todos
+
+  ###
+
+  POST {{asp_net_tutorial_HostAddress}}/todos
+  Content-Type: application/json
+
+  {
+    "id": 1,
+    "name": "learn asp",
+    "dueDate": "2023-12-01",
+    "isCompleted": true
+  }
+
+  ###
+
+  DELETE {{asp_net_tutorial_HostAddress}}/todos/1
+
+  ###
+```
+
+### 4.7 API Testing
+
+- install REST CLIENT: create a ecommerce.http file `GET http://localhost:5277`
+- download and install Postman
+
+```http
+PUT http://localhost:5261/products/1
+Content-Type: application/json
+
+{
+  "name": "iPhone 18 Pro Max",
+  "price": 1599.99,
+  "description": "An updated version of the beautiful phone with enhanced features."
+}
+```
+
+### 4.8 **Assignment: User Management API with CRUD Operations**
+
+The goal of this assignment is to help you practice building a basic User Management API using ASP.NET Core. You will create endpoints to manage users with basic CRUD (Create, Read, Update, Delete) operations.
+
+- **Requirements**
+
+1. **Create a User Model**:
+   - The user should have the following properties:
+     - `Id` (Guid) - Unique identifier for each user.
+     - `FirstName` (string) - User's first name.
+     - `LastName` (string) - User's last name.
+     - `Email` (string) - User's email address.
+     - `CreatedAt` (DateTime) - The date when the user was created.
+
+2. **Create CRUD Endpoints**:
+   - **GET** `/users`: Retrieve a list of all users with optional pagination (e.g., `pageNumber` and `pageSize`).
+   - **GET** `/users/{id}`: Retrieve a specific user by their unique `Id`.
+   - **POST** `/users`: Create a new user.
+   - **PUT** `/users/{id}`: Update an existing user's details.
+   - **DELETE** `/users/{id}`: Delete a user by their unique `Id`.
+
+3. **Input Validation**:
+   - Ensure that `Email` is valid and unique.
+   - Ensure that `FirstName` and `LastName` are not empty.
+
+4. **Responses**:
+   - Return appropriate HTTP status codes:
+     - `200 OK` for successful operations.
+     - `201 Created` for successfully created users.
+     - `404 Not Found` if the user is not found.
+     - `400 Bad Request` for invalid inputs.
+
+- **Program.cs**
+
+Here is a basic template for your `Program.cs` file:
+
+```csharp
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
+
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+// In-memory list of users
+var users = new List<User>();
+
+// GET: /users - Retrieve all users with optional pagination
+app.MapGet("/users", (int pageNumber = 1, int pageSize = 5) =>
+{
+    if (pageNumber < 1 || pageSize < 1)
+    {
+        return Results.BadRequest("Page number and page size must be greater than 0.");
+    }
+
+    var totalUsers = users.Count;
+    var paginatedUsers = users.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+    var response = new
+    {
+        Status = "Success",
+        TotalUsers = totalUsers,
+        PageNumber = pageNumber,
+        PageSize = pageSize,
+        TotalPages = (int)Math.Ceiling(totalUsers / (double)pageSize),
+        Users = paginatedUsers
+    };
+
+    return Results.Ok(response);
+});
+
+// GET: /users/{id} - Retrieve a specific user by ID
+app.MapGet("/users/{id:guid}", (Guid id) =>
+{
+    var user = users.FirstOrDefault(u => u.Id == id);
+    if (user == null)
+    {
+        return Results.NotFound($"User with ID {id} not found.");
+    }
+
+    return Results.Ok(user);
+});
+
+// POST: /users - Create a new user
+app.MapPost("/users", (User newUser) =>
+{
+    if (string.IsNullOrWhiteSpace(newUser.FirstName) || string.IsNullOrWhiteSpace(newUser.LastName))
+    {
+        return Results.BadRequest("First name and last name are required.");
+    }
+
+    if (!IsValidEmail(newUser.Email) || users.Any(u => u.Email == newUser.Email))
+    {
+        return Results.BadRequest("Invalid or duplicate email address.");
+    }
+
+    newUser.Id = Guid.NewGuid();
+    newUser.CreatedAt = DateTime.UtcNow;
+    users.Add(newUser);
+
+    var response = new
+    {
+        Success = true,
+        StatusCode = 201,
+        Message = "User created successfully.",
+        User = newUser
+    };
+
+    return Results.Created($"/users/{newUser.Id}", response);
+});
+
+// PUT: /users/{id} - Update an existing user
+app.MapPut("/users/{id:guid}", (Guid id, User updatedUser) =>
+{
+    var user = users.FirstOrDefault(u => u.Id == id);
+    if (user == null)
+    {
+        return Results.NotFound($"User with ID {id} not found.");
+    }
+
+    if (string.IsNullOrWhiteSpace(updatedUser.FirstName) || string.IsNullOrWhiteSpace(updatedUser.LastName))
+    {
+        return Results.BadRequest("First name and last name are required.");
+    }
+
+    if (!IsValidEmail(updatedUser.Email) || users.Any(u => u.Email == updatedUser.Email && u.Id != id))
+    {
+        return Results.BadRequest("Invalid or duplicate email address.");
+    }
+
+    user.FirstName = updatedUser.FirstName;
+    user.LastName = updatedUser.LastName;
+    user.Email = updatedUser.Email;
+
+    return Results.Ok(user);
+});
+
+// DELETE: /users/{id} - Delete a user by ID
+app.MapDelete("/users/{id:guid}", (Guid id) =>
+{
+    var user = users.FirstOrDefault(u => u.Id == id);
+    if (user == null)
+    {
+        return Results.NotFound($"User with ID {id} not found.");
+    }
+
+    users.Remove(user);
+    return Results.NoContent();
+});
+
+app.Run();
+
+// Simple User Model
+public class User
+{
+    public Guid Id { get; set; }
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public DateTime CreatedAt { get; set; }
+}
+
+// Utility method to validate email addresses
+bool IsValidEmail(string email)
+{
+    try
+    {
+        var addr = new System.Net.Mail.MailAddress(email);
+        return addr.Address == email;
+    }
+    catch
+    {
+        return false;
+    }
+}
+```
+
+- **Assignment Tasks for Students**
+
+1. **Extend the User Model**:
+   - Add more properties like `PhoneNumber`, `Address`, or `DateOfBirth` and update CRUD operations accordingly.
+
+2. **Error Handling**:
+   - Improve error handling and add more specific error messages for invalid inputs.
+
+3. **Testing**:
+   - Use Postman, REST Client, or any other tool to test each endpoint (`GET`, `POST`, `PUT`, `DELETE`) thoroughly.
+   - Create various test cases, including edge cases, such as attempting to update or delete a user that does not exist.
+
+4. **Input Validation**:
+   - Add more validation rules, such as ensuring names have a minimum length or that emails follow a specific pattern.
+
+5. **Enhance Pagination**:
+   - Add more complex pagination features, such as sorting by `CreatedAt` or filtering by `FirstName`.
+
+This assignment will help students practice building CRUD operations using ASP.NET Core Minimal APIs, learn to work with `Guid` for unique identifiers, and understand how to validate and manage data effectively in a web application.
+
+### 4.9 Add DTO's (Data Transfer Objects)
+
+- dto is just a reperesentation of the resource
+- some pople might name as contracts
+- create a folder called Dtos-> ProductDto.cs
+- we will create record cause they are immutable (non changeable after creating)
+
+```csharp
+  namespace EcommerceAPI;
+
+  public record ProductDto
+  (int Id, string Name, double Price);
+```
+
+```csharp
+// DTO for general product information (for GET and POST responses)
+public record class ProductDto
+{
+    public Guid Id { get; set; }      // Server-generated
+    public string? Name { get; set; }
+    public decimal Price { get; set; }
+    public string? Description { get; set; }
+}
+
+// DTO for creating a new product (for POST requests)
+public record class CreateProductDto
+{
+    public string? Name { get; set; }
+    public decimal Price { get; set; }
+    public string? Description { get; set; }
+}
+
+// DTO for updating a product (for PUT requests)
+public record class UpdateProductDto
+{
+    public string? Name { get; set; }
+    public decimal? Price { get; set; }  // Nullable to allow partial updates
+    public string? Description { get; set; }
+}
+
+// Program.cs
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+
+var builder = WebApplication.CreateBuilder(args);
+
+var app = builder.Build();
+
+var products = new List<ProductDto>();
+
+app.UseHttpsRedirection();
+
+// GET: /products?pageNumber=2&pageSize=3 - Get all products with pagination
+app.MapGet("/products", (HttpRequest request) =>
+{
+    // Read query parameters from the request
+    int pageNumber = int.TryParse(request.Query["page"], out int parsedPage) ? parsedPage : 1;
+    int pageSize = int.TryParse(request.Query["limit"], out int parsedLimit) ? parsedLimit : 5;
+
+    // Ensure pageNumber and pageSize are positive numbers
+    if (pageNumber < 1 || pageSize < 1)
+    {
+        return Results.BadRequest(new { Message = "Page number and page size must be greater than 0." });
+    }
+
+    // Calculate the total number of products
+    int totalProducts = products.Count;
+
+    // Calculate the number of items to skip based on the current page
+    int skip = (pageNumber - 1) * pageSize;
+
+    // Retrieve the products for the current page
+    var paginatedProducts = products.Skip(skip).Take(pageSize).ToList();
+
+    // Create a response with additional properties
+    var response = new
+    {
+        Status = "Success",
+        TotalProducts = totalProducts,
+        PageNumber = pageNumber,
+        PageSize = pageSize,
+        TotalPages = (int)Math.Ceiling(totalProducts / (double)pageSize),
+        Products = paginatedProducts
+    };
+
+    return Results.Ok(response);
+});
+
+// GET: /products/{id} - Get a specific product by ID
+app.MapGet("/products/{id:guid}", (Guid id) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+    if (product == null)
+    {
+        return Results.NotFound($"Product with ID {id} not found.");
+    }
+    return Results.Ok(product);
+});
+
+// POST: /products - Create a new product using CreateProductDto
+app.MapPost("/products", (CreateProductDto newProduct) =>
+{
+    if (string.IsNullOrEmpty(newProduct.Name))
+    {
+        return Results.BadRequest("Invalid product data.");
+    }
+
+    var product = new ProductDto
+    {
+        Id = Guid.NewGuid(),
+        Name = newProduct.Name,
+        Price = newProduct.Price,
+        Description = newProduct.Description
+    };
+
+    products.Add(product);
+    return Results.Created($"/products/{product.Id}", product);
+});
+
+// PUT: /products/{id} - Update an existing product using UpdateProductDto
+app.MapPut("/products/{id:guid}", (Guid id, UpdateProductDto updatedProduct) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+    if (product == null)
+    {
+        return Results.NotFound($"Product with ID {id} not found.");
+    }
+
+    // Update only the fields provided in the request
+    if (!string.IsNullOrEmpty(updatedProduct.Name)) product.Name = updatedProduct.Name;
+    if (updatedProduct.Price.HasValue) product.Price = updatedProduct.Price.Value;
+    if (!string.IsNullOrEmpty(updatedProduct.Description)) product.Description = updatedProduct.Description;
+
+    return Results.NoContent();
+});
+
+// DELETE: /products/{id} - Delete a product by ID
+app.MapDelete("/products/{id:guid}", (Guid id) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+    if (product == null)
+    {
+        return Results.NotFound($"Product with ID {id} not found.");
+    }
+
+    products.Remove(product);
+    return Results.NoContent();
+});
+
+app.Run();
+
+
+// DTO for general product information (for GET and POST responses)
+public record class ProductDto
+{
+    public Guid Id { get; set; }
+    public string? Name { get; set; }
+    public decimal Price { get; set; }
+    public string? Description { get; set; }
+}
+
+// DTO for creating a new product (for POST requests)
+public record class CreateProductDto
+{
+    public string? Name { get; set; }
+    public decimal Price { get; set; }
+    public string? Description { get; set; }
+}
+
+// DTO for updating a product (for PUT requests)
+public record class UpdateProductDto
+{
+    public string? Name { get; set; }
+    public decimal? Price { get; set; }  // Nullable to allow partial updates
+    public string? Description { get; set; }
+}
+
+```
+
+### 4.10 Entity
+
+### 4.11 MVC
+
+### create first web api and folder structure
+
+- what is API? why do we need API?
+- HTTP Verbs + CRUD Operations
+- HTTP Status Code
+
+- `dotnet new list`
+- As a beginner start with this command: `dotnet new web -o ecommerce-api`
+- command `dotnet new webapi -o ecommerce-api`
+- cmd+shift+p -> .NET: New Project + Enter
+- check Program.cs
+
+```cs
+var builder = WebApplication.CreateBuilder(args);
+// WebApplication is basically just host for http server where you can make http requets
+var app = builder.Build();
+
+app.MapGet("/", () => "Hello World!");
+
+app.Run();
+```
+
+- check .csproj file -> where we will add all dependencies mostly
+
+- appsettings.json vs appsettings.Development.json -> mainly for configuration
+
+- launchSettings.json - profiles configuration for only local development not for production development
+
+- obj file is the intermediate
+- bin is the executeable
+- how to build the project: go to root directory: dotnet buiild (ctrl+shift+B)
+- how to run the app (F5) + install Jsonnet Language Server + select c# + http/default or go to solution explorer -> debug -> start without debugging
+- how to run with terminal. go to root directory -> `dotnet run`
+- auto sever restart `dotnet watch run`
+
 ### DTO (Data Transfer Objects)
 
 - dto is just a reperesentation of the resource
@@ -12747,7 +14165,7 @@ By following these best practices, API designers can create URL structures that 
 ```csharp
   namespace EcommerceAPI;
 
-  public record class ProductDto
+  public record ProductDto
   (int Id, string Name, double Price);
 ```
 
@@ -12821,7 +14239,7 @@ Price: Represents the price of the product.
 // Dtos/CreateProductDto
 namespace EcommerceAPI;
 
-public record class CreateProductDto
+public record CreateProductDto
 (string Name, double Price);
 
 app.MapPost("/products", (CreateProductDto newProduct) =>
@@ -13078,9 +14496,9 @@ public record class UpdateProductDto
 
 ```
 
-## Intermediate 4 : REST web API - ecommerce
+## Intermediate 5 : REST web API - ecommerce
 
-### 4.0 Explain REST API Mechanism
+### 5.0 Explain REST API Mechanism
 
 ### 4.1 Basic setup
 
@@ -16154,589 +17572,3 @@ In the context of your code, if `OrderModel` is used to communicate data about o
 DTOs can be very similar to view models or domain models, but the key distinction often lies in their intended use. DTOs are specifically for transferring data across boundaries, focusing on what the client or another part of the system needs, rather than representing the domain's complexity or the database structure directly.
 
 #### Many-To-Many Relationship
-
-Let's consider the following scenario where we have two users and two profiles:
-
-- User 1 (UserId: 1) is associated with Profile 1 (ProfileId: 1) and Profile 2 (ProfileId: 2).
-- User 2 (UserId: 2) is associated with Profile 2 (ProfileId: 2).
-
-Here's how the dataset would look:
-
-**Users:**
-
-| UserId | Name  | Email             |
-|--------|-------|-------------------|
-| 1      | John  | <john@example.com>  |
-| 2      | Alice | <alice@example.com> |
-
-**Profiles:**
-
-| ProfileId | Bio              |
-|-----------|------------------|
-| 1         | Software Engineer|
-| 2         | Data Scientist   |
-
-**UserProfiles (Junction Table):**
-
-| UserId | ProfileId |
-|--------|-----------|
-| 1      | 1         |
-| 1      | 2         |
-| 2      | 2         |
-
-In this dataset:
-
-- User 1 (John) is associated with Profile 1 (Software Engineer) and Profile 2 (Data Scientist).
-- User 2 (Alice) is associated only with Profile 2 (Data Scientist).
-- Profile 1 (Software Engineer) is associated only with User 1 (John).
-- Profile 2 (Data Scientist) is associated with both User 1 (John) and User 2 (Alice).
-
-This demonstrates a many-to-many relationship between users and profiles through the `UserProfiles` junction table.
-
-##### Adjust the model
-
-Based on the provided EF Core models, here are the updates for the corresponding API models:
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace api.Models
-{
-    public class UserModel
-    {
-        [Required]
-        public Guid UserId { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-
-        public List<ProfileModel>? Profiles { get; set; } // Many-to-many relation
-        public List<OrderModel>? Orders { get; set; }  // 1 - many relation
-    }
-}
-```
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace api.Models
-{
-    public class OrderModel
-    {
-        public Guid OrderId { get; set; }
-        public string ProductName { get; set; }
-        public Guid UserId { get; set; } // Foreign key to User 
-        public UserModel? User { get; set; }
-    }
-}
-```
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace api.Models
-{
-    public class ProfileModel
-    {
-        public Guid ProfileId { get; set; }
-        public string Bio { get; set; }
-        public List<UserModel>? Users { get; set; } // Many-to-many relation
-    }
-}
-```
-
-In these updates:
-
-- `UserModel` now includes a `List<ProfileModel>` property named `Profiles` to represent the many-to-many relationship between users and profiles.
-- `ProfileModel` includes a `List<UserModel>` property named `Users` to represent the many-to-many relationship between profiles and users.
-
-##### Adjust the entitites
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace api.EF_CORE
-{
-    [Table("Users")]
-    public class User
-    {
-        public Guid UserId { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public List<UserProfile> UserProfiles { get; set; } // Navigation Property - Many-to-many relation with profiles
-        public List<Order> Orders { get; set; } // Navigation Property - 1-many relation
-    }
-
-    [Table("Profiles")]
-    public class Profile
-    {
-        public Guid ProfileId { get; set; }
-        public string Bio { get; set; }
-        public List<UserProfile> UserProfiles { get; set; } // Many-to-many relation with users
-    }
-
-    [Table("Orders")]
-    public class Order
-    {
-        public Guid OrderId { get; set; }
-        public string ProductName { get; set; }
-        public Guid UserId { get; set; } // Foreign key to User to help the navigation property
-        public User User { get; set; } // Navigation Property to load User Data from DB
-    }
-
-    // Junction table for many-to-many relationship between User and Profile
-    // Junction table for many-to-many relationship between User and Profile
-    [Table("UserProfiles")]
-    public class UserProfile
-    {
-        [Key]
-        [Column(Order = 1)]
-        public Guid UserId { get; set; }
-        [Key]
-        [Column(Order = 2)]
-        public Guid ProfileId { get; set; }
-
-        public User User { get; set; }
-        public Profile Profile { get; set; }
-    }
-}
-```
-
-##### Relationship
-
-No, you don't need to create a separate model for the junction table in your API models.
-
-In Entity Framework Core, when modeling a many-to-many relationship, you typically define a junction table to represent the relationship between the two entities. However, in your API models, you can directly represent the many-to-many relationship between UserModel and ProfileModel (and vice versa) by including navigation properties.
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-
-namespace api.EF_CORE
-{
-    public class AppDbContext : DbContext
-    {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
-        public DbSet<User> Users { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
-         public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<Order> Orders { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // Start configuring the many-to-many relationship between User and Profile entities by defining the join entity UserProfile.
-
-            // Define a composite key for UserProfile consisting of UserId and ProfileId, ensuring uniqueness across combinations of users and profiles.
-            modelBuilder.Entity<UserProfile>()
-                .HasKey(up => new { up.UserId, up.ProfileId });
-
-            // Configure the relationship from UserProfile to User:
-            // Each UserProfile links to one User (indicating which user the profile is associated with),
-            // and each User can link to many UserProfile instances (representing all the profiles associated with that user).
-            // Also, specify UserId as the foreign key in the UserProfile table.
-            modelBuilder.Entity<UserProfile>()
-                .HasOne(up => up.User) // Specifies the navigation property in UserProfile that links to User.
-                .WithMany(u => u.UserProfiles) // Specifies the collection in User that will hold UserProfile instances.
-                .HasForeignKey(up => up.UserId);
-
-            // Configure the relationship from UserProfile to Profile:
-            // Each UserProfile links to one Profile (indicating which profile is linked to the user),
-            // and each Profile can link to many UserProfile instances (representing all the users that are linked to this profile).
-            // Also, specify ProfileId as the foreign key in the UserProfile table.
-            modelBuilder.Entity<UserProfile>()
-                .HasOne(up => up.Profile) // Specifies the navigation property in UserProfile that links to Profile.
-                .WithMany(p => p.UserProfiles) // Specifies the collection in Profile that will hold UserProfile instances.
-                .HasForeignKey(up => up.ProfileId);
-
-
-            // 1-many
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Orders)
-                .WithOne(o => o.User)
-                .HasForeignKey(o => o.UserId);
-
-            modelBuilder.Entity<Profile>()
-                .HasKey(p => p.ProfileId);
-
-            modelBuilder.Entity<Order>()
-                .HasKey(o => o.OrderId);
-        }
-    }
-}
-```
-
-##### Explanation
-
-In Entity Framework Core, the `HasKey` method is used to specify the primary key for an entity.
-
-Here's what's happening in the code snippet you provided:
-
-```csharp
-modelBuilder.Entity<UserProfile>()
-    .HasKey(up => new { up.UserId, up.ProfileId });
-```
-
-This line of code is configuring the primary key for the `UserProfile` entity. However, in this case, the primary key is not a single property but a combination of two properties: `UserId` and `ProfileId`.
-
-- `modelBuilder.Entity<UserProfile>()`: This specifies that we are configuring the `UserProfile` entity in the model.
-- `.HasKey(up => new { up.UserId, up.ProfileId })`: This indicates that the primary key for the `UserProfile` entity consists of a composite key made up of the `UserId` and `ProfileId` properties of the `UserProfile` class.
-
-In other words, it's defining that each combination of `UserId` and `ProfileId` in the `UserProfile` entity will uniquely identify a record in the table representing the many-to-many relationship between `User` and `Profile`.
-
-- next explanation here 
-
-Certainly! Let's break down the code snippet:
-
-```csharp
-modelBuilder.Entity<UserProfile>()
-    .HasOne(up => up.User)
-    .WithMany(u => u.UserProfiles)
-    .HasForeignKey(up => up.UserId);
-```
-
-This code configures the relationship between the `UserProfile` and `User` entities in Entity Framework Core. Here's what each part does:
-
-- `modelBuilder.Entity<UserProfile>()`: This specifies that we are configuring the `UserProfile` entity in the model.
-
-- `.HasOne(up => up.User)`: This indicates that the `UserProfile` entity has a reference navigation property `User` which represents the user associated with this profile. This establishes a one-to-many relationship between `UserProfile` and `User`, where each `UserProfile` belongs to exactly one `User`.
-
-- `.WithMany(u => u.UserProfiles)`: This specifies that the `User` entity has a collection navigation property `UserProfiles` which represents all the profiles associated with this user. Since a user can have multiple profiles, this establishes a one-to-many relationship between `User` and `UserProfile`.
-
-- `.HasForeignKey(up => up.UserId)`: This sets up the foreign key constraint between the `UserProfile` entity and the `User` entity. It specifies that the `UserId` property in the `UserProfile` entity is the foreign key that references the primary key `UserId` in the `User` entity. This establishes the relationship between `UserProfile` and `User`, where `UserId` in `UserProfile` refers to the primary key of the associated `User`.
-
-- now update the UserService
-
-```csharp
- using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using api.EF_CORE;
-using api.Models;
-using Microsoft.EntityFrameworkCore;
-
-namespace api.Services
-{
-    public class UserService
-    {
-        private readonly AppDbContext _appDbContext;
-
-        public UserService(AppDbContext appDbContext)
-        {
-            _appDbContext = appDbContext;
-        }
-        public async Task<List<User>> GetAllUsers()
-        {
-            return await _appDbContext.Users
-                .Include(user => user.Orders)  // Include the user's orders
-                .Include(user => user.UserProfiles) // Include the junction table for the many-to-many relationship
-                    .ThenInclude(userProfile => userProfile.Profile) // Include the related profiles
-                .ToListAsync();
-        }
-
-
-        public async Task<Guid> AddUserAsync(UserModel userModel)
-        {
-            var user = new User
-            {
-                UserId = Guid.NewGuid(),
-                Name = userModel.Name,
-                Email = userModel.Email
-            };
-
-
-            await _appDbContext.Users.AddAsync(user);
-            await _appDbContext.SaveChangesAsync();
-
-            return user.UserId;
-        }
-
-        public async Task AddProfileToUserAsync(Guid userId, Guid profileId)
-        {
-            if (_appDbContext.UserProfiles.Any(up => up.UserId == userId && up.ProfileId == profileId))
-            {
-                throw new InvalidOperationException("This profile is already linked to the user.");
-            }
-
-            var userProfile = new UserProfile
-            {
-                UserId = userId,
-                ProfileId = profileId
-            };
-
-            await _appDbContext.UserProfiles.AddAsync(userProfile);
-            await _appDbContext.SaveChangesAsync();
-        }
-
-        public async Task<User?> GetUserByIdAsync(Guid userId)
-        {
-            return await _appDbContext.Users
-                .Include(u => u.UserProfiles) // Include the junction table for the many-to-many relationship
-                    .ThenInclude(userProfile => userProfile.Profile) // Include the related profile
-                .Include(u => u.Orders) // Include the user's orders
-                .FirstOrDefaultAsync(u => u.UserId == userId);
-        }
-    }
-}
-  ```
-
-- update the userController
-
-```csharp
-using System;
-using System.Threading.Tasks;
-using api.EF_CORE;
-using api.Models;
-using api.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-
-namespace api.Controllers
-{
-    [ApiController]
-    [Route("/api/users")]
-    public class UserController : ControllerBase
-    {
-        private readonly UserService _userService;
-
-        public UserController(AppDbContext appDbContext)
-        {
-            _userService = new UserService(appDbContext);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
-        {
-            try
-            {
-                var users = await _userService.GetAllUsers();
-                return ApiResponse.Success(users, "All users are returned");
-            }
-            catch (Exception ex)
-            {
-                return ApiResponse.ServerError(ex.Message);
-            }
-        }
-
-        [HttpGet("{userId:guid}")]
-        public async Task<IActionResult> GetUserById(Guid userId)
-        {
-            var user = await _userService.GetUserByIdAsync(userId);
-            if (user == null)
-                return ApiResponse.NotFound("User was not found");
-            return ApiResponse.Created(user);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AddUser(UserModel userModel)
-        {
-            try
-            {
-                var response = await _userService.AddUserAsync(userModel);
-                return ApiResponse.Created(response);
-            }
-            catch (DbUpdateException ex) when (ex.InnerException is Npgsql.PostgresException postgresException)
-            {
-                if (postgresException.SqlState == "23505")
-                {
-                    return ApiResponse.Conflict("Duplicate email. User with email already exists");
-                }
-                else
-                {
-                    return ApiResponse.ServerError(ex.Message);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Hey error is here!!!"); // Log the error
-                return ApiResponse.ServerError(ex.Message);
-            }
-        }
-
-        [HttpPost("add-profile")]
-        public async Task<IActionResult> AddProfileToUser([FromQuery] Guid userId, [FromQuery] Guid profileId)
-        {
-            try
-            {
-                await _userService.AddProfileToUserAsync(userId, profileId);
-                return ApiResponse.Created("", "Profile added to user successfully.");
-            }
-            catch (InvalidOperationException ex)
-            {
-                return ApiResponse.BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return ApiResponse.ServerError(ex.Message);
-            }
-        }
-    }
-}
-
-```
-
-- profileServices updated
-
-```csharp
-using api.EF_CORE;
-using api.Models;
-
-public class ProfileService
-{
-    private readonly AppDbContext _context;
-
-    public ProfileService(AppDbContext context)
-    {
-        _context = context;
-    }
-
-    public async Task<Guid> AddProfileAsync(ProfileModel profileModel)
-    {
-        Console.WriteLine($"hello");
-
-        var profile = new Profile
-        {
-            ProfileId = Guid.NewGuid(),
-            Bio = profileModel.Bio,
-        };
-
-        await _context.Profiles.AddAsync(profile);
-        await _context.SaveChangesAsync();
-
-        return profile.ProfileId;
-    }
-}
-```
-
-- profileControllerupdated
-
-```csharp
-using api.Models;
-using api.Services;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-
-namespace api.Controllers
-{
-    [ApiController]
-    [Route("api/profiles")]
-    public class ProfileController : ControllerBase
-    {
-        private readonly ProfileService _profileService;
-
-        public ProfileController(ProfileService profileService)
-        {
-            _profileService = profileService;
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AddProfile(ProfileModel profileModel)
-        {
-            try
-            {
-                var profileId = await _profileService.AddProfileAsync(profileModel);
-                return ApiResponse.Created(profileId);
-            }
-            catch (Exception ex)
-            {
-                return ApiResponse.ServerError(ex.Message);
-            }
-        }
-    }
-}
-
-```
-
-- orderServices updated
-
-```csharp
-using api.EF_CORE;
-using api.Models;
-using System;
-using System.Threading.Tasks;
-
-namespace api.Services
-{
-    public class OrderService
-    {
-        private readonly AppDbContext _context;
-
-        public OrderService(AppDbContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<Guid> AddOrderAsync(OrderModel orderModel)
-        {
-            var order = new Order
-            {
-                OrderId = Guid.NewGuid(),
-                ProductName = orderModel.ProductName,
-                UserId = orderModel.UserId
-            };
-
-            await _context.Orders.AddAsync(order);
-            await _context.SaveChangesAsync();
-
-            return order.OrderId;
-        }
-    }
-}
-
-```
-
-- orderControllerupdated
-
-```csharp
-using api.Models;
-using api.Services;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-
-namespace api.Controllers
-{
-    [ApiController]
-    [Route("api/orders")]
-    public class OrderController : ControllerBase
-    {
-        private readonly OrderService _orderService;
-
-        public OrderController(OrderService orderService)
-        {
-            _orderService = orderService;
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AddOrder(OrderModel orderModel)
-        {
-            try
-            {
-                var orderId = await _orderService.AddOrderAsync(orderModel);
-                return ApiResponse.Success(orderId);
-            }
-            catch (Exception ex)
-            {
-                return ApiResponse.ServerError(ex.Message);
-            }
-        }
-    }
-}
-
-```
