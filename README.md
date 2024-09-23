@@ -33,6 +33,7 @@
       - [Project 5: Students Grade Manager](#75-students-grade-manager)
       - [Project 6: String Reverse](#76-string-reverse-app)
       - [Project 7: Unit Converter](#77-unit-converter-app-project)
+   - [8. MS Foundational Certification Exam](#basic-8-ms-foundational-certification-exam)
 
 2. [Intermediate C#]
    - [1. OOP](#intermediate-1-oop)
@@ -50,7 +51,9 @@
 
 3. [3. Advanced C#]
 
-## Basic 1. Introduction
+## Basic 1: Introduction
+
+![C# Roadmap](images/c-sharp-roadmap.jpg)
 
 ### 1.1 Intro to C-sharp language
 
@@ -97,13 +100,14 @@ Key features and aspects of C# include:
 [!dot net framework](images/NET.png)
 ![alt text](image-2.png)
 
-- The .NET Framework is not only a language, but it is also a software and language neutral platform.
-- 2 main components: CLR (Common Language Runtime) take care of execution our app or running apps; .NET Framework class Library provides reusable code
-- NET Framework is a mature framework primarily used for Windows-based applications, while .NET Core is a modern, cross-platform framework optimized for cloud-native and containerized applications. With the release of .NET 5 (and later .NET 6), Microsoft unified the .NET platform, merging .NET Core and .NET Framework into a single, unified platform called .NET. This unified platform provides a consistent development experience across different platforms and environments.
+- [What is .NET?](https://learn.microsoft.com/en-us/training/modules/dotnet-introduction/2-what-is-dotnet)
+  - The .NET and C# is not same thing. C# is a language where .NET is a software which give us CLR where we can run our application and use pre0defined linraries. Few major app models => web (asp.net core, asp.net core mvc), web client (blazor), desktop (winforms, .net for mac), mobile (.NET for android and .NET for iOS)
+  - 2 main components: CLR (Common Language Runtime) take care of execution our app or running apps; .NET Framework class Library provides reusable code
+  - NET Framework is a mature framework primarily used for Windows-based applications, while .NET Core is a modern, cross-platform framework optimized for cloud-native and containerized applications. With the release of .NET 5 (and later .NET 6), Microsoft unified the .NET platform, merging .NET Core and .NET Framework into a single, unified platform called .NET. This unified platform provides a consistent development experience across different platforms and environments.
 
-- .NET Ecosystem = Language (c#, f#, VB) + Runtime (CLR/ CORE CLR), Librariers (BCL Functions Base Class Libraries: System is an example)
-  - CLR = JVM
-  - Nuget package manager = npm
+  - .NET Ecosystem = Language (c#, f#, VB) + Runtime (CLR/ CORE CLR), Librariers (BCL Functions Base Class Libraries: System is an example)
+    - CLR = JVM
+    - Nuget package manager = npm
 
 ### 1.2 Setting up the environment
 
@@ -760,7 +764,7 @@ In C#, you can check the data type of a variable or object using various methods
   }
   ```
 
-## Basic 2. Operators
+## Basic 2: Operators
 
 C# supports various operators that allow you to perform operations on variables and values. Here's a list of some common operators in C#:
 
@@ -1252,7 +1256,7 @@ Bitwise operators are commonly used in scenarios where individual bits represent
 
   This is a concise way to express an `if-else` statement.
 
-## Basic 3. Control Statement
+## Basic 3: Control Statement
 
 ### 3.1 Conditional control statement
 
@@ -3209,7 +3213,7 @@ Do you want to perform another calculation? (yes/no): no
 Thank you for using the Basic Calculator! Goodbye.
 ```
 
-## Basic 4. Methods
+## Basic 4: Methods
 
 ### Methods
 
@@ -3878,7 +3882,7 @@ else
 
 Choosing the right approach depends on the nature of the error you expect and the need to balance performance with error management robustness.
 
-## Basic 6. Array and String
+## Basic 6: Array and String
 
 ### Array
 
@@ -4807,7 +4811,7 @@ Here's a brief explanation of each part of the code:
    - Splits the input string into words using `Split` method and then removes empty entries with `StringSplitOptions.RemoveEmptyEntries`.
    - Uses `Length` property to count the number of words.
 
-## Basic 7. Project
+## Basic 7: Project
 
 ### 7.1 Project: Simple Calculator with Conditional Checks**
 
@@ -6000,6 +6004,12 @@ class UnitConverterApp
     }
 }
 ```
+
+## Basic 8: [MS Foundational Certification Exam](https://youtu.be/k6xeG29rGnk?si=5euyrUoMYT-v4_8h)
+
+![alt text](image-15.png)
+
+![alt text](image-16.png)
 
 ## Intermediate 1. OOP
 
@@ -12897,6 +12907,8 @@ class Test1
 
 ## Intermediate 4 : ASP.NET and REST API
 
+![ASP.NET Core roadmap](images/dotnet-roadmap.jpg)
+
 ### 4.0 Things to learn
 
 When learning to build an ASP.NET Web API, it's important to approach it step by step to cover the key concepts thoroughly. Below is a structured learning path to guide you through the process:
@@ -14456,9 +14468,10 @@ namespace ecommrce_api.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
-        public UserController()
+        public UserController(UserService userService)
         {
-            _userService = new UserService();
+            // _userService = new UserService();
+            _userService = userService;
         }
 
         [HttpGet]
@@ -14520,6 +14533,8 @@ namespace ecommrce_api.Controllers
   builder.Services.AddEndpointsApiExplorer();
   builder.Services.AddSwaggerGen();
   builder.Services.AddControllers();
+  builder.Services.AddScoped<UserService>();
+
 
   var app = builder.Build();
 
