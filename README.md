@@ -15426,6 +15426,259 @@ public IActionResult GetAllProducts([FromQuery] int pageNumber=1, [FromQuery] in
   }
 ```
 
+```csharp
+public interface IProductService
+{
+  PagedResult<ProductDto> GetAllProducts(int pageNumber, int pageSize);
+  ProductDto GetProductById(Guid id);
+  Product CreateProduct(CreateProductDto newProduct);
+  bool ProductExistsByName(string name);
+  void DeleteProduct(Guid id);
+  void UpdateProduct(Guid id, UpdateProductDto updateProduct);
+}
+
+// add a model for PagedResult
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_ecommerce_web_api.Models
+{
+    public class PagedResult<T>
+    {
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; }
+        public int TotalPages { get; set; }
+        public int TotalItems { get; set; }
+        public IEnumerable<T> Items { get; set; }
+    }
+
+}
+
+// Create a service for pagination
+  public PagedResult<ProductDto> GetAllProducts(int pageNumber, int pageSize)
+  {
+
+    var totalProducts = _products.Count();
+    var paginatedProducts = _products.Skip((pageNumber - 1) * pageSize).Take(pageSize).Select(p => new ProductDto
+    {
+      Id = p.Id,
+      Name = p.Name,
+      Description = p.Description,
+      Price = p.Price,
+      CreatedAt = p.CreatedAt
+    }).ToList();
+
+
+    return new PagedResult<ProductDto>
+    {
+      PageNumber = pageNumber,
+      PageSize = pageSize,
+      TotalPages = (int)Math.Ceiling(totalProducts / (double)pageSize),
+      TotalItems = totalProducts,
+      Items = paginatedProducts
+    };
+
+  }
+
+// adjust the controller
+// GET: /api/products
+  [HttpGet]
+  public IActionResult GetAllProducts([FromQuery] int pageNumber=1, [FromQuery] int pageSize=3)
+  {
+    if (pageNumber < 1 || pageSize < 1)
+    {
+      return BadRequest("Page number and page size must be greater than 0.");
+    }
+
+    var paginatedResult = _productService.GetAllProducts(pageNumber, pageSize);
+    return Ok(paginatedResult);
+  }
+
+```
+
+##### Product API => Search Product
+
+```csharp
+// Model
+public interface IProductService
+{
+  PagedResult<ProductDto> GetAllProducts(int pageNumber, int pageSize, string? SearchQuery);
+  ProductDto GetProductById(Guid id);
+  Product CreateProduct(CreateProductDto newProduct);
+  bool ProductExistsByName(string name);
+  void DeleteProduct(Guid id);
+  void UpdateProduct(Guid id, UpdateProductDto updateProduct);
+}
+
+// Service
+ public PagedResult<ProductDto> GetAllProducts(int pageNumber, int pageSize, string? searchQuery = null)
+  {
+    var filteredProducts = _products.AsQueryable();
+
+    // Apply search filter if a searchQuery is provided
+    if (!string.IsNullOrEmpty(searchQuery))
+    {
+      filteredProducts = filteredProducts.Where(p => p.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase));
+    }
+
+    var totalProducts = filteredProducts.Count();
+    var paginatedProducts = filteredProducts.Skip((pageNumber - 1) * pageSize).Take(pageSize).Select(p => new ProductDto
+    {
+      Id = p.Id,
+      Name = p.Name,
+      Description = p.Description,
+      Price = p.Price,
+      CreatedAt = p.CreatedAt
+    }).ToList();
+
+
+    return new PagedResult<ProductDto>
+    {
+      PageNumber = pageNumber,
+      PageSize = pageSize,
+      TotalPages = (int)Math.Ceiling(totalProducts / (double)pageSize),
+      TotalItems = totalProducts,
+      Items = paginatedProducts
+    };
+
+  }
+
+  
+// Controller
+
+// GET: /api/products
+  [HttpGet]
+  public IActionResult GetAllProducts([FromQuery] int pageNumber=1, [FromQuery] int pageSize=3, [FromQuery] string? searchQuery=null)
+  {
+    if (pageNumber < 1 || pageSize < 1)
+    {
+      return BadRequest("Page number and page size must be greater than 0.");
+    }
+
+    var paginatedResult = _productService.GetAllProducts(pageNumber, pageSize, searchQuery);
+    return Ok(paginatedResult);
+  }
+```
+
+```http
+Example Usage:
+To get paginated products:
+GET /api/products?pageNumber=1&pageSize=5
+
+To search products by name:
+GET /api/products?searchQuery=Laptop&pageNumber=1&pageSize=5
+```
+
+##### Product API => Sorting by Name, Price, CreatedAt
+
+```csharp
+// Model
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_ecommerce_web_api.Models
+{
+    public class PagedResult<T>
+    {
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; }
+        public int TotalPages { get; set; }
+        public int TotalItems { get; set; }
+        public string? SearchQuery { get; set; } = null;
+        public string? SortBy { get; set; } = null;
+        public string? SortOrder { get; set; } = "asc";
+        public IEnumerable<T> Items { get; set; }
+    }
+
+}
+
+// Services
+public interface IProductService
+{
+  PagedResult<ProductDto> GetAllProducts(int pageNumber, int pageSize, string? SearchQuery, string? sortBy, string? sortOrder);
+  ProductDto GetProductById(Guid id);
+  Product CreateProduct(CreateProductDto newProduct);
+  bool ProductExistsByName(string name);
+  void DeleteProduct(Guid id);
+  void UpdateProduct(Guid id, UpdateProductDto updateProduct);
+}
+
+public PagedResult<ProductDto> GetAllProducts(int pageNumber, int pageSize, string? searchQuery = null, string? sortBy = null, string? sortOrder = "asc")
+  {
+    var filteredProducts = _products.AsQueryable();
+
+    // Apply search filter if a searchQuery is provided
+    if (!string.IsNullOrEmpty(searchQuery))
+    {
+      filteredProducts = filteredProducts.Where(p => p.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase));
+    }
+
+    // Apply sorting based on the sortBy and sortOrder parameters
+    filteredProducts = sortBy?.ToLower() switch
+    {
+      "name" => sortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.Name) : filteredProducts.OrderBy(p => p.Name),
+      "price" => sortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.Price) : filteredProducts.OrderBy(p => p.Price),
+      "date" => sortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.CreatedAt) : filteredProducts.OrderBy(p => p.CreatedAt),
+      _ => filteredProducts.OrderBy(p => p.Name) // Default sorting by Name
+    };
+
+    var totalProducts = filteredProducts.Count();
+    var paginatedProducts = filteredProducts.Skip((pageNumber - 1) * pageSize).Take(pageSize).Select(p => new ProductDto
+    {
+      Id = p.Id,
+      Name = p.Name,
+      Description = p.Description,
+      Price = p.Price,
+      CreatedAt = p.CreatedAt
+    }).ToList();
+
+
+    return new PagedResult<ProductDto>
+    {
+      PageNumber = pageNumber,
+      PageSize = pageSize,
+      TotalPages = (int)Math.Ceiling(totalProducts / (double)pageSize),
+      TotalItems = totalProducts,
+      Items = paginatedProducts
+    };
+
+  }
+
+
+// Controller
+ // GET: /api/products
+  [HttpGet]
+  public IActionResult GetAllProducts([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 3, [FromQuery] string? searchQuery = null, [FromQuery] string? sortBy = null, [FromQuery] string? sortOrder = "asc")
+  {
+    if (pageNumber < 1 || pageSize < 1)
+    {
+      return BadRequest("Page number and page size must be greater than 0.");
+    }
+
+    var paginatedResult = _productService.GetAllProducts(pageNumber, pageSize, searchQuery, sortBy, sortOrder);
+    return Ok(paginatedResult);
+  }
+```
+
+```http
+Example Requests:
+Sort by name ascending (default):
+GET /api/products?sortBy=name&sortOrder=asc
+
+Sort by name descending:
+GET /api/products?sortBy=name&sortOrder=desc
+
+Sort by price ascending:
+GET /api/products?sortBy=price&sortOrder=asc
+
+Sort by created date descending:
+GET /api/products?sortBy=date&sortOrder=desc
+```
+
 ##### Category API => Create the Category DTOs
 
 ##### Category API => POST /categories => Create a category
