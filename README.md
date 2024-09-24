@@ -49,7 +49,9 @@
       - [Interface and Why Interface?](#interface-and-why-interface)
    - [Intermediate 2. Collections, Generics, LINQ](#intermediate-2-collections-generics-linq)
 
-3. [3. Advanced C#]
+3. [Advanced C#]
+
+4. [ASP.NET and REST API]
 
 ## Basic 1: Introduction
 
@@ -12905,11 +12907,11 @@ class Test1
 }
 ```
 
-## Intermediate 4 : ASP.NET and REST API
+## ASP.NET and REST API
 
 ![ASP.NET Core roadmap](images/dotnet-roadmap.jpg)
 
-### 4.0 Things to learn
+### 1. Things to learn
 
 When learning to build an ASP.NET Web API, it's important to approach it step by step to cover the key concepts thoroughly. Below is a structured learning path to guide you through the process:
 
@@ -13142,7 +13144,9 @@ Once you’re comfortable with the basics, explore advanced topics like:
 
 By following this structured learning path, you'll gradually build up the skills necessary to create a fully functional, secure, and efficient ASP.NET Web API. Start with the basics, get comfortable with CRUD operations and database integration, and then move on to more advanced topics like authentication, versioning, and caching. Happy coding!
 
-### 4.1 What is API? Why do we need API?
+### 2. API Basics
+
+#### What is API? Why do we need API?
 
 ![alt text](image-10.png)
 
@@ -13152,11 +13156,11 @@ By following this structured learning path, you'll gradually build up the skills
 
 ![alt text](image-14.png)
 
-### 4.2 Types of API
+#### Types of API
 
 ![alt text](image-11.png)
 
-#### **SOAP vs. REST: Understanding the Differences**
+##### **SOAP vs. REST: Understanding the Differences**
 
 SOAP (Simple Object Access Protocol) and REST (Representational State Transfer) are two popular web service communication protocols. While both are used for enabling communication between applications over the internet, they have significant differences in terms of structure, design, and use cases.
 
@@ -13288,7 +13292,7 @@ REST (Representational State Transfer) is an architectural style for designing n
 
 These constraints ensure that RESTful APIs are scalable, reliable, and maintainable. By adhering to these principles, developers can design APIs that are easily understood, interoperable, and adaptable to changing requirements.
 
-### 4.3 URL? best practices when naming URL
+#### URL? best practices when naming URL
 
 1. **URL:** `https://www.amazon.com/gp/product/B07H1DWFLG/ref=s9_acsd_hps_bw_c_x_3_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=EK5R9ET1VB7E0M6X23T3&pf_rd_t=101&pf_rd_p=5f6a5c92-95cb-486c-aa05-69e0e2efeb50&pf_rd_i=15240825011`
    - **Scheme:** `https`
@@ -13349,11 +13353,11 @@ Best Practices for URL Naming:
 
 By following these best practices, API designers can create URL structures that are intuitive, consistent, and easy to understand, improving the developer experience and usability of the API.
 
-### 4.4 HTTP Methods
+#### HTTP Methods
 
 HTTP methods, also known as HTTP verbs, define the actions that can be performed on resources in a RESTful web service. Each method serves a specific purpose and helps to standardize how clients interact with servers. Below are the common types of HTTP methods:
 
-#### **1. GET**
+##### **1. GET**
 
 - **Purpose**: Retrieves data from the server.
 - **Characteristics**:
@@ -13367,7 +13371,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   GET /products/123 HTTP/1.1
   ```
 
-#### **2. POST**
+##### **2. POST**
 
 - **Purpose**: Sends data to the server to create a new resource.
 - **Characteristics**:
@@ -13386,7 +13390,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   }
   ```
 
-#### **3. PUT**
+##### **3. PUT**
 
 - **Purpose**: Updates an existing resource or creates a resource if it does not exist.
 - **Characteristics**:
@@ -13405,7 +13409,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   }
   ```
 
-#### **4. PATCH**
+##### **4. PATCH**
 
 - **Purpose**: Partially updates an existing resource.
 - **Characteristics**:
@@ -13423,7 +13427,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   }
   ```
 
-#### **5. DELETE**
+##### **5. DELETE**
 
 - **Purpose**: Deletes a specified resource.
 - **Characteristics**:
@@ -13436,7 +13440,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   DELETE /products/123 HTTP/1.1
   ```
 
-#### **6. OPTIONS**
+##### **6. OPTIONS**
 
 - **Purpose**: Describes the communication options available for a resource or server.
 - **Characteristics**:
@@ -13448,7 +13452,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   OPTIONS /products HTTP/1.1
   ```
 
-#### **7. HEAD**
+##### **7. HEAD**
 
 - **Purpose**: Similar to GET but retrieves only the headers of a response without the body.
 - **Characteristics**:
@@ -13460,7 +13464,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   HEAD /products/123 HTTP/1.1
   ```
 
-#### **8. TRACE**
+##### **8. TRACE**
 
 - **Purpose**: Echoes back the received request, used for debugging purposes.
 - **Characteristics**:
@@ -13472,7 +13476,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   TRACE /products HTTP/1.1
   ```
 
-#### **9. CONNECT**
+##### **9. CONNECT**
 
 - **Purpose**: Establishes a tunnel to the server, often used for HTTPS connections through an HTTP proxy.
 - **Characteristics**:
@@ -13484,7 +13488,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   CONNECT example.com:443 HTTP/1.1
   ```
 
-#### **Summary of HTTP Verbs**
+##### **Summary of HTTP Verbs**
 
 - **GET**: Retrieve data.
 - **POST**: Create new data.
@@ -13498,143 +13502,709 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
 
 These methods allow RESTful APIs to manage resources effectively, each serving a distinct role in the lifecycle of web resources.
 
-### 4.5 Your first ASP.NET CRUD web API
+### 3. ASP.NET CRUD web API
 
-- make sure you have dev kit extension to create and run asp.net app
-- dontnet new --list
-- Create an app => dotnet new webapi -o ecommerce-api
-- how to run with terminal. go to root directory -> `dotnet run`
-- auto sever restart `dotnet watch run`
+#### 3.1 Must Todo while building API
+
+- API Planning
+  - CRUD => Create, Read, Update and Delete Resources
+  - always plan first what endpoints you want to implement and follow the best practices
+  - install REST CLIENT extension for testing api
+
+#### 3.2 Create, Understand and Run the API
+
+- Create and run a web api
+  - make sure you have dev kit extension to create and run asp.net app
+  - list all the .NET templates => dontnet new --list
+  - Create an app => dotnet new webapi -o ecommerce-api
+  - how to run with terminal. go to root directory -> `dotnet run`
+  - auto sever restart `dotnet watch run`
+  - stop opening the window everytime after running the app: Go to Properties folder => profiles => launchBrowser : false
+- Project Folder structure
+  - check .csproj file -> where we will add all dependencies mostly
+  - appsettings.json vs appsettings.Development.json -> mainly for configuration
+  - launchSettings.json - profiles configuration for only local development not for production development
+  - obj file is the intermediate
+  - bin is the executeable
+
+#### 3.3 HTTP Request => A simple Get Request
+
+- GET Request, Route Pattern, Request Handler
+
+  ```csharp
+  var builder = WebApplication.CreateBuilder(args);
+
+  var app = builder.Build();
+
+  // http methods/verb, url route pattern and method to process the request
+  app.MapGet("/", () => "api is running");
+
+  app.Run();
+  ```
+
+#### 3.4 Test the endpoints
+
+- You can use postman or VScode extensions such as Thunder client, REST Client
+
+  ```http
+  GET http://localhost:5079
+  ```
+
+#### 3.5 HTTP Response types
+
+  ```csharp
+  var builder = WebApplication.CreateBuilder(args);
+
+  var app = builder.Build();
+
+  // plain text/string response
+  app.MapGet("/string", () => "api is running");
+
+
+  // json response 
+  var response = new { message = "This is a json object", success = true };
+  app.MapGet("/json", () =>
+  {
+      return response;
+  });
+
+  // anonymous object response
+  app.MapGet("/anonymous", () =>
+  {
+      var anonymousObject = new { Name = "Anisul Islam", Age = 34 };
+      return Results.Ok(anonymousObject);
+  });
+
+  // Custom DTO response
+  app.MapGet("/user", () =>
+  {
+      var user = new UserDto(Guid.NewGuid(), "John Doe", 30);
+      return Results.Ok(user);
+  });
+
+  // List of objects
+  app.MapGet("/users", () =>
+  {
+      var users = new List<UserDto>(){
+          new UserDto(Guid.NewGuid(), "Anisul Islam",34),
+          new UserDto(Guid.NewGuid(), "Bob Marley",24)
+      };
+      return Results.Ok(users);
+
+  });
+
+  // HTML response
+  app.MapGet("/html", () => Results.Content("<h1>Hello, World!</h1>", "text/html"));
+
+  // File response
+  app.MapGet("/file", () =>
+  {
+      var filePath = "path/to/your/file.txt";
+      return Results.File(filePath);
+  });
+
+  // Error response with Problem Details
+  app.MapGet("/error", () =>
+  {
+      return Results.Problem("An error occurred.", statusCode: 500, title: "Internal Server Error");
+  });
+
+  app.Run();
+
+  public record UserDto(Guid Id, string Name, int Age);
+  ```
+
+#### 3.6 Product API
+
+##### 3.7 Concept => HTTP Verbs
+
+  ```csharp
+  var builder = WebApplication.CreateBuilder(args);
+
+  var app = builder.Build();
+
+  app.MapGet("/api/products", () =>
+  {
+      // OK = STATUS CODE 200
+      return Results.Ok("products are returned");
+  });
+
+  app.MapPost("/api/products", () =>
+  {
+      // for creating something use Created = status code 201
+      return Results.Created();
+  });
+
+  app.MapDelete("/api/products", () =>
+  {
+      // after delete normally we do not return no content = 204
+      return Results.NoContent();
+  });
+
+  app.MapPut("/api/products", () =>
+  {
+      return Results.NoContent();
+  });
+
+  app.Run();
+
+  ```
+
+##### 3.8 Concept => DTOs
+
+- To better follow the model separation for create, update, and read operations, we can introduce distinct models (DTOs - Data Transfer Objects) for each operation. This will provide clarity in terms of what data is expected in each operation. Here's how we can restructure the code by creating separate models for:
+
+  - CreateProductDto: Used for creating a product.
+  - UpdateProductDto: Used for updating a product.
+  - ProductDto: Used for reading a product (read-only view).
+
+##### 3.9 Product API => DTOs
+
+- To better follow the model separation for create, update, and read operations, we can introduce distinct models (DTOs - Data Transfer Objects) for each operation. This will provide clarity in terms of what data is expected in each operation. Here's how we can restructure the code by creating separate models for:
+
+  - CreateProductDto: Used for creating a product.
+  - UpdateProductDto: Used for updating a product.
+  - ProductDto: Used for reading a product (read-only view).
+
+- Add the DTOs in the Program.cs file
+
+  ```csharp
+
+    // Models: This is your core domain model representing a product.
+    public record Product
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string? Description { get; set; }
+        public DateTime CreatedAt { get; set; }
+    }
+
+    // DTO for creating a product
+    public record CreateProductDto
+    {
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string? Description { get; set; }
+    }
+
+    // DTO for updating a product
+    public record UpdateProductDto
+    {
+        public string? Name { get; set; }
+        public decimal? Price { get; set; }
+        public string? Description { get; set; }
+    }
+
+    // DTO for reading a product
+    public record ProductDto
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string? Description { get; set; }
+        public DateTime CreatedAt { get; set; }
+    }
+  ```
+
+##### 3.10 Product API => POST /products => Create a product
+
+- create the post route and controller
+
+  ```csharp
+  var builder = WebApplication.CreateBuilder(args);
+
+  var app = builder.Build();
+
+  // Sample data - In-memory list of products
+  private static List<Product> _products = new List<Product>();
+
+  app.MapGet("/api/products", () =>
+  {
+      // OK = STATUS CODE 200
+      return Results.Ok("products are returned");
+  });
+
+  // POST => /api/products => Create the Product 
+  app.MapPost("/api/products", (CreateProductDto newProduct) =>
+  {
+      // Create a new product with Guid and set CreatedAt
+      var product = new Product
+      {
+          Id = Guid.NewGuid(),
+          Name = newProduct.Name,
+          Price = newProduct.Price,
+          Description = newProduct.Description,
+          CreatedAt = DateTime.Now
+      };
+
+      _products.Add(product); // Add the newly created product to the list
+      return Results.Created($"/api/products/{product.Id}", product);
+  });
+
+  app.MapDelete("/api/products", () =>
+  {
+      // after delete normally we do not return no content = 204
+      return Results.NoContent();
+  });
+
+  app.MapPut("/api/products", () =>
+  {
+      return Results.NoContent();
+  });
+
+  app.Run();
+
+  // Models
+  public record Product
+  {
+      public Guid Id { get; set; }
+      public string Name { get; set; }
+      public decimal Price { get; set; }
+      public string? Description { get; set; }
+      public DateTime CreatedAt { get; set; }
+  }
+  public record CreateProductDto
+  {
+      public string Name { get; set; }
+      public decimal Price { get; set; }
+      public string? Description { get; set; }
+  }
+
+  // DTO for updating a product
+  public record UpdateProductDto
+  {
+      public string Name { get; set; }
+      public decimal Price { get; set; }
+      public string? Description { get; set; }
+  }
+
+  // DTO for reading a product
+  public record ProductDto
+  {
+      public Guid Id { get; set; }
+      public string Name { get; set; }
+      public decimal Price { get; set; }
+      public string? Description { get; set; }
+      public DateTime CreatedAt { get; set; }
+  }
+  ```
+
+- json data to create product
+
+  ```json
+
+    {
+          "name": "Wireless Mouse",
+          "price": 19.99,
+          "description": "Ergonomic wireless mouse with adjustable DPI settings."
+      },
+      {
+          "name": "Bluetooth Headphones",
+          "price": 59.99,
+          "description": "Noise-cancelling over-ear Bluetooth headphones with 20 hours of battery life."
+      },
+      {
+          "name": "USB-C Charging Cable",
+          "price": 9.99,
+          "description": "Fast charging USB-C cable, 6 feet long, compatible with most devices."
+      },
+      {
+          "name": "Smartwatch",
+          "price": 199.99,
+          "description": "Feature-rich smartwatch with heart rate monitoring and GPS tracking."
+      },
+      {
+          "name": "Portable External Hard Drive",
+          "price": 79.99,
+          "description": "1TB portable external hard drive with USB 3.0 connectivity."
+      }
+
+  ```
+
+- test the POST endpoint
+
+  ```http
+  POST http://localhost:5079/api/products
+  Content-Type: application/json
+
+  {
+      "name": "Smartwatch",
+      "price": 199.99,
+      "description": "Feature-rich smartwatch with heart rate monitoring and GPS tracking."
+  }
+  ```
+
+##### 3.11 Product API => GET /products => Get all the products
 
 ```csharp
-var builder = WebApplication.CreateBuilder(args);
-
-var app = builder.Build();
-
-// http methods/verb, url route pattern and method to process the request
-app.MapGet("/", () => "hello world");
-
-app.Run();
+app.MapGet("/api/products", () =>
+{
+   // SET WHAT YOU WANT TO RETURNS
+    var productDtos = _products.Select(product => new ProductDto
+    {
+        Id = product.Id,
+        Name = product.Name,
+        Description = product.Description,
+        CreatedAt = product.CreatedAt,
+    }).ToList();
+    // OK = STATUS CODE 200
+    return Results.Ok(productDtos);
+});
 ```
+
+- test the get all products endpoint
 
 ```http
-<!-- api.http -->
-@asp_net_tutorial_HostAddress = http://localhost:5050
-
-GET {{asp_net_tutorial_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
-
-GET {{asp_net_tutorial_HostAddress}}
+GET http://localhost:5079/api/products
 ```
 
-### 4.6 Examples of ASP.NET CRUD web API with in memory
+##### 3.12 Concept => Route parameters
+
+- Single Route parameters `// GET => /api/products/{id} => Get a product by id`
+- multiple route parameters `// GET => /api/products/{id}/{category} => Get a product by id and category`
+
+##### 3.13 Product API => GET /products/{id} => Get a single product
+
+  ```csharp
+  // GET => /products{id} => Get a product by id
+  app.MapGet("/api/products/{id}", (Guid id) =>
+  {
+      // Find the product 
+      var product = _products.Find(product => product.Id == id);
+
+      // Return the product as ProductDto
+      var productDto = new ProductDto
+      {
+          Id = product.Id,
+          Name = product.Name,
+          Price = product.Price,
+          Description = product.Description,
+          CreatedAt = product.CreatedAt
+      };
+
+      return Results.Ok(productDto);
+  });
+  ```
+
+- test the get single product endpoint
+
+  ```http
+  GET http://localhost:5079/api/products/product_id_here
+  ```
+
+##### 3.14 Concept => Route Constraint
+
+- {param:int}, {param:bool}, {param:decimal}, {param:guid}, {param:datetime}, {param:alpha}, {param:minlength(x)}, {param:maxlength(x)}, {param:length(x)}, {param:length(x,y)}, {param:range(x,y)}
+
+- Route constraints are a powerful feature in ASP.NET Core that allows you to limit and validate the types of values that can be passed as route parameters. They provide a way to ensure that requests meet certain criteria before processing, helping to reduce errors and improve the user experience.
+
+Here are some common route constraints examples:
+
+###### **Common Route Constraints**
+
+| Constraint  | Description                                         | Example                                                   |
+|-------------|-----------------------------------------------------|-----------------------------------------------------------|
+| `{param:int}` | Restricts the route parameter to an integer         | `/api/products/{id:int}`                                   |
+| `{param:bool}` | Restricts the route parameter to a boolean value   | `/api/status/{active:bool}`                                |
+| `{param:guid}` | Restricts the route parameter to a GUID            | `/api/products/{id:guid}`                                  |
+| `{param:datetime}` | Restricts the route parameter to a `DateTime` value | `/api/events/{date:datetime}`                              |
+| `{param:decimal}` | Restricts the route parameter to a decimal value  | `/api/products/{price:decimal}`                            |
+| `{param:alpha}` | Restricts the route parameter to alphabetical characters | `/api/products/{name:alpha}`                               |
+| `{param:minlength(x)}` | Ensures that the string parameter is at least x characters | `/api/users/{name:minlength(3)}`                           |
+| `{param:maxlength(x)}` | Ensures that the string parameter is at most x characters | `/api/users/{name:maxlength(10)}`                          |
+| `{param:length(x)}` | Restricts the parameter length to exactly x characters | `/api/users/{code:length(5)}`                              |
+| `{param:length(x,y)}` | Restricts the parameter length to a range between x and y characters | `/api/users/{name:length(3,10)}`                      |
+| `{param:range(x,y)}` | Ensures that the parameter value falls within the specified range | `/api/products/{price:range(10,100)}`                      |
+| `{param:regex(...)}` | Ensures that the parameter matches a regex pattern | `/api/users/{email:regex(^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$)}` |
+
+###### **Examples of Route Constraints**
+
+###### 1. **Integer Route Constraint**
+
+Restrict a route parameter to accept only integers:
 
 ```csharp
-// api with GUID
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+app.MapGet("/api/products/{id:int}", (int id) => 
+{
+    return $"Product with ID {id}";
+});
+```
 
+- URL: `/api/products/5` (valid)
+- URL: `/api/products/test` (invalid, returns a 404)
+
+###### 2. **GUID Route Constraint**
+
+Restrict a route parameter to accept only GUIDs:
+
+```csharp
+app.MapGet("/api/products/{id:guid}", (Guid id) =>
+{
+    return $"Product with ID {id}";
+});
+```
+
+- URL: `/api/products/8f2f4ca5-0c1e-4b2c-9d1f-23121dabe75b` (valid)
+- URL: `/api/products/123` (invalid, returns a 404)
+
+###### 3. **DateTime Route Constraint**
+
+Restrict a route parameter to accept only DateTime values:
+
+```csharp
+app.MapGet("/api/events/{date:datetime}", (DateTime date) =>
+{
+    return $"Event on {date.ToShortDateString()}";
+});
+```
+
+- URL: `/api/events/2024-10-01` (valid)
+- URL: `/api/events/not-a-date` (invalid, returns a 404)
+
+###### 4. **Decimal Route Constraint**
+
+Restrict a route parameter to accept only decimal values:
+
+```csharp
+app.MapGet("/api/products/{price:decimal}", (decimal price) =>
+{
+    return $"Product with price {price}";
+});
+```
+
+- URL: `/api/products/10.99` (valid)
+- URL: `/api/products/ten` (invalid, returns a 404)
+
+###### 5. **Alphabetic Route Constraint**
+
+Restrict a route parameter to accept only alphabetic characters:
+
+```csharp
+app.MapGet("/api/products/{name:alpha}", (string name) =>
+{
+    return $"Product name: {name}";
+});
+```
+
+- URL: `/api/products/laptop` (valid)
+- URL: `/api/products/1234` (invalid, returns a 404)
+
+###### 6. **MinLength and MaxLength Route Constraints**
+
+Restrict the length of a route parameter:
+
+```csharp
+// Minimum length of 3 characters
+app.MapGet("/api/users/{username:minlength(3)}", (string username) =>
+{
+    return $"User: {username}";
+});
+
+// Maximum length of 10 characters
+app.MapGet("/api/users/{username:maxlength(10)}", (string username) =>
+{
+    return $"User: {username}";
+});
+```
+
+- URL: `/api/users/john` (valid)
+- URL: `/api/users/jo` (invalid, returns a 404 due to minlength constraint)
+
+###### 7. **Range Route Constraint**
+
+Restrict the route parameter to fall within a certain range:
+
+```csharp
+app.MapGet("/api/products/{price:range(10, 100)}", (int price) =>
+{
+    return $"Product with price in range: {price}";
+});
+```
+
+- URL: `/api/products/50` (valid)
+- URL: `/api/products/5` (invalid, returns a 404 due to out-of-range value)
+
+###### 8. **Regex Route Constraint**
+
+Use a regular expression to validate the route parameter:
+
+```csharp
+app.MapGet("/api/users/{email:regex(^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$)}", (string email) =>
+{
+    return $"User with email: {email}";
+});
+```
+
+- URL: `/api/users/test@example.com` (valid)
+- URL: `/api/users/invalid-email` (invalid, returns a 404 due to regex constraint)
+
+###### Combining Multiple Constraints
+
+You can combine multiple constraints in the same route:
+
+```csharp
+app.MapGet("/api/products/{id:int}/{price:decimal}", (int id, decimal price) =>
+{
+    return $"Product with ID {id} and Price {price}";
+});
+```
+
+- URL: `/api/products/5/19.99` (valid)
+- URL: `/api/products/abc/19.99` (invalid, returns a 404 due to invalid ID)
+- URL: `/api/products/5/abc` (invalid, returns a 404 due to invalid price)
+
+##### 3.15 Product API => Add constraint
+
+  ```csharp
+    // GET => /products{id} => Get a product by id
+    app.MapGet("/api/products/{id:guid}", (Guid id) =>
+    {
+        // Find the product 
+        var product = _products.Find(product => product.Id == id);
+
+        // Return the product as ProductDto
+        var productDto = new ProductDto
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            CreatedAt = product.CreatedAt
+        };
+
+        return Results.Ok(productDto);
+    });
+  ```
+
+##### 3.16 Product API => GET /products/{id} => Delete a single product
+
+```csharp
+// DELETE: /products/{id} - Delete a product by ID
+app.MapDelete("/api/products/{id: guid}", (Guid id) =>
+{
+    var product = _products.Find(product => product.Id == id);
+    products.Remove(product);
+    return Results.NoContent();
+});
+```
+
+- test the delete product endpoint
+
+```http
+DELETE http://localhost:5079/api/products/product_id_here
+```
+
+##### 3.17 Product API => PUT => /products{id} => update a product by id
+
+```csharp
+// PUT => /products{id} => update a product by id
+app.MapPut("/api/products/{id:guid}", (Guid id, UpdateProductDto updateProductData) =>
+{
+    var product = _products.Find(product => product.Id == id);
+
+    // Update product details
+    product.Name = updateProductData.Name ?? product.Name;
+    product.Price = updateProductData.Price ?? product.Price;
+    product.Description = updateProductData.Description ?? product.Description;
+
+    return Results.NoContent();
+});
+```
+
+- test the update product endpoint
+
+```http
+PUT http://localhost:5079/api/products/add_product_id_here
+Content-Type: application/json
+
+{
+  "name": "USB-C Charging Cable 3"
+}
+```
+
+##### 3.18 Product API => Add Basic Validation
+
+```csharp
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container (if needed for DI, like AddSingleton, etc.)
-// Here, we're not adding any complex services since we're keeping everything simple.
 
 var app = builder.Build();
 
 // Sample data - In-memory list of products
-var products = new List<Product>();
+private static List<Product> _products = new List<Product>();
 
-// Configure the HTTP request pipeline.
-app.UseHttpsRedirection();
-
-// Define Endpoints directly in Program.cs
-
-// GET: /products?pageNumber=2&pageSize=3 - Get all products with pagination
-app.MapGet("/products", (HttpRequest request) =>
+app.MapGet("/api/products", () =>
 {
-    // Read query parameters from the request
-    int pageNumber = int.TryParse(request.Query["page"], out int parsedPage) ? parsedPage : 1;
-    int pageSize = int.TryParse(request.Query["limit"], out int parsedLimit) ? parsedLimit : 5;
-
-    // Ensure pageNumber and pageSize are positive numbers
-    if (pageNumber < 1 || pageSize < 1)
+    var productDtos = _products.Select(product => new ProductDto
     {
-        return Results.BadRequest(new { Message = "Page number and page size must be greater than 0." });
+        Id = product.Id,
+        Name = product.Name,
+        Description = product.Description,
+        CreatedAt = product.CreatedAt,
+    }).ToList();
+    // OK = STATUS CODE 200
+    return Results.Ok(productDtos);
+});
+
+// GET => /products{id} => Get a product by id
+app.MapGet("/api/products/{id:guid}", (Guid id) =>
+{
+    // Find the product 
+    var product = _products.Find(product => product.Id == id);
+
+    // basic validation
+    if (product == null)
+    {
+        return Results.NotFound($"Product with ID {id} not found.");
     }
 
-    // Calculate the total number of products
-    int totalProducts = products.Count;
-
-    // Calculate the number of items to skip based on the current page
-    int skip = (pageNumber - 1) * pageSize;
-
-    // Retrieve the products for the current page
-    var paginatedProducts = products.Skip(skip).Take(pageSize).ToList();
-
-    // Create a response with additional properties
-    var response = new
+    // Return the product as ProductDto
+    var productDto = new ProductDto
     {
-        Status = "Success",
-        TotalProducts = totalProducts,
-        PageNumber = pageNumber,
-        PageSize = pageSize,
-        TotalPages = (int)Math.Ceiling(totalProducts / (double)pageSize),
-        Products = paginatedProducts
+        Id = product.Id,
+        Name = product.Name,
+        Price = product.Price,
+        Description = product.Description,
+        CreatedAt = product.CreatedAt
     };
 
-    return Results.Ok(response);
+    return Results.Ok(productDto);
 });
 
-
-// GET: /products/{id} - Get a specific product by ID
-app.MapGet("/products/{id:guid}", (Guid id) =>
+// POST => /api/products => Create the Product 
+app.MapPost("/api/products", (CreateProductDto newProduct) =>
 {
-    Console.WriteLine($"{id}");
-
-    var product = products.FirstOrDefault(p => p.Id == id);
-    if (product == null)
+    // Validate product name
+    if (string.IsNullOrEmpty(newProduct.Name))
     {
-        return Results.NotFound($"Product with ID {id} not found.");
-    }
-    return Results.Ok(product);
-});
-
-// POST: /products - Create a new product
-app.MapPost("/products", (Product newProduct) =>
-{
-    if (newProduct == null || string.IsNullOrEmpty(newProduct.Name))
-    {
-        return Results.BadRequest("Invalid product data.");
-    }
-    newProduct.Id = Guid.NewGuid();
-    // product.Id = products.Count > 0 ? products.Max(p => p.Id) + 1 : 1; // Auto-increment ID logic
-    products.Add(newProduct);
-    return Results.Created($"/products/{newProduct.Id}", newProduct);
-});
-
-// PUT: /products/{id} - Update an existing product
-app.MapPut("/products/{id:guid}", (Guid id, Product updatedProduct) =>
-{
-    var product = products.FirstOrDefault(p => p.Id == id);
-    if (product == null)
-    {
-        return Results.NotFound($"Product with ID {id} not found.");
+        return Results.BadRequest("Product name is required and cannot be empty.");
     }
 
-    product.Name = updatedProduct.Name;
-    product.Price = updatedProduct.Price;
-    product.Description = updatedProduct.Description;
-    return Results.NoContent();
+    // Validate product price
+    if (newProduct.Price <= 0)
+    {
+        return Results.BadRequest("Product price must be greater than zero.");
+    }
+
+    // Create a new product with Guid and set CreatedAt
+    var product = new Product
+    {
+        Id = Guid.NewGuid(),
+        Name = newProduct.Name,
+        Price = newProduct.Price,
+        Description = newProduct.Description,
+        CreatedAt = DateTime.Now
+    };
+
+    products.Add(product); // Add the newly created product to the list
+    return Results.Created($"/api/products/{product.Id}", product);
 });
 
-// DELETE: /products/{id} - Delete a product by ID
-app.MapDelete("/products/{id:guid}", (Guid id) =>
+app.MapDelete("/api/products/{id: guid}", (Guid id) =>
 {
-    var product = products.FirstOrDefault(p => p.Id == id);
+    var product = products.Find(product => product.Id == id);
+
+    // basic validation
     if (product == null)
     {
         return Results.NotFound($"Product with ID {id} not found.");
@@ -13644,112 +14214,74 @@ app.MapDelete("/products/{id:guid}", (Guid id) =>
     return Results.NoContent();
 });
 
+app.MapPut("/api/products/{id:guid}", (Guid id, UpdateProductDto updateProductData) =>
+{
+    var product = _products.Find(product => product.Id == id);
+
+    // basic validation
+    if (product == null)
+    {
+        return Results.NotFound($"Product with ID {id} not found.");
+    }
+
+    // Validate updated product name
+    if (string.IsNullOrEmpty(updateProductData.Name))
+    {
+        return Results.BadRequest("Product name is required and cannot be empty.");
+    }
+
+    // Validate updated product price
+    if (updateProductData.Price <= 0)
+    {
+        return Results.BadRequest("Product price must be greater than zero.");
+    }
+
+    // Update product details
+    product.Name = updateProductData.Name ?? product.Name;
+    product.Price = updateProductData.Price ?? product.Price;
+    product.Description = updateProductData.Description ?? product.Description;
+
+    return Results.NoContent();
+});
+
 app.Run();
 
-// Simple Product Model
-public class Product
+// Models
+public record Product
 {
     public Guid Id { get; set; }
-    public string? Name { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public string? Description { get; set; }
+    public DateTime CreatedAt { get; set; }
+}
+public record CreateProductDto
+{
+    public string Name { get; set; }
     public decimal Price { get; set; }
     public string? Description { get; set; }
 }
-```
 
-```csharp
-
-// Example 2
-using Microsoft.AspNetCore.Http.HttpResults;
-
-var builder = WebApplication.CreateBuilder(args);
-
-var app = builder.Build();
-
-// http methods/verb, url route pattern and method to process the request
-app.MapGet("/", () => "hello world");
-
-var todos = new List<Todo>();
-
-app.MapGet("/todos/{id}", Results<Ok<Todo>, NotFound> (int id) =>
+// DTO for updating a product
+public record UpdateProductDto
 {
-    var todo = todos.SingleOrDefault(x => x.Id == id);
-    return todo is null ? TypedResults.NotFound() : TypedResults.Ok(todo);
-});
+    public string? Name { get; set; }
+    public decimal? Price { get; set; }
+    public string? Description { get; set; }
+}
 
-app.MapGet("/todos", () => todos);
-
-app.MapDelete("/todos/{id}", (int id) =>
+// DTO for reading a product
+public record ProductDto
 {
-    todos.RemoveAll(x => x.Id == id);
-    return TypedResults.NoContent();
-});
-
-app.MapPost("/todos", (Todo task) =>
-{
-    todos.Add(task);
-    return TypedResults.Created("/todos/{id}", todos);
-});
-
-app.Run();
-
-
-public record Todo(int Id, string Name, DateTime dueDate, bool isCompleted);
-```
-
-```http
-  @asp_net_tutorial_HostAddress = http://localhost:5050
-
-  GET {{asp_net_tutorial_HostAddress}}/weatherforecast/
-  Accept: application/json
-
-  ###
-
-  GET {{asp_net_tutorial_HostAddress}}/todos/1
-
-  ###
-
-  GET {{asp_net_tutorial_HostAddress}}/todos
-
-  ###
-
-  GET {{asp_net_tutorial_HostAddress}}/todos
-
-  ###
-
-  POST {{asp_net_tutorial_HostAddress}}/todos
-  Content-Type: application/json
-
-  {
-    "id": 1,
-    "name": "learn asp",
-    "dueDate": "2023-12-01",
-    "isCompleted": true
-  }
-
-  ###
-
-  DELETE {{asp_net_tutorial_HostAddress}}/todos/1
-
-  ###
-```
-
-### 4.7 API Testing
-
-- install REST CLIENT: create a ecommerce.http file `GET http://localhost:5277`
-- download and install Postman
-
-```http
-PUT http://localhost:5261/products/1
-Content-Type: application/json
-
-{
-  "name": "iPhone 18 Pro Max",
-  "price": 1599.99,
-  "description": "An updated version of the beautiful phone with enhanced features."
+    public Guid Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public string? Description { get; set; }
+    public DateTime CreatedAt { get; set; }
 }
 ```
 
-### 4.8 **Assignment: User Management API with CRUD Operations**
+##### **Extra Assignment: User Management API with CRUD Operations**
 
 The goal of this assignment is to help you practice building a basic User Management API using ASP.NET Core. You will create endpoints to manage users with basic CRUD (Create, Read, Update, Delete) operations.
 
@@ -13947,292 +14479,958 @@ bool IsValidEmail(string email)
 
 This assignment will help students practice building CRUD operations using ASP.NET Core Minimal APIs, learn to work with `Guid` for unique identifiers, and understand how to validate and manage data effectively in a web application.
 
-### 4.9 Add DTO's (Data Transfer Objects)
+##### 3.19 Concept => MVC Pattern
 
-- dto is just a reperesentation of the resource
-- some pople might name as contracts
-- create a folder called Dtos-> ProductDto.cs
-- we will create record cause they are immutable (non changeable after creating)
+The MVC (Model-View-Controller) pattern is a design pattern used in ASP.NET for developing web applications. It separates an application into three interconnected components, each with its distinct responsibilities. This separation of concerns allows for a more maintainable, scalable, and testable codebase.
+
+- Benefits of the MVC Pattern:
+  - Separation of concerns: Keeps the data (Model), UI (View), and application logic (Controller) separate, making the application easier to maintain.
+  - Testability: Each component can be tested independently.
+  - Scalability: The application can grow without becoming overly complex because responsibilities are divided among different components.
+
+##### 3.20 Product API => Add MVC Pattern
+
+- To refactor the product API using the MVC pattern, we'll divide it into Model, Controller, and View layers. Although in this case, the API doesn't have a traditional "View" layer because it returns JSON, we'll follow the pattern of separating the responsibilities of each component. Here’s how to separate the code:
+
+- Folder Structure:
+  - Controllers
+    - ProductsController.cs
+  - Models
+    - Product.cs
+    - CreateProductDto.cs
+    - UpdateProductDto.cs
+    - ProductDto.cs
+  - Program.
+
+- Create Models => Models/products
 
 ```csharp
-  namespace EcommerceAPI;
+// Product.cs
+// Product Model representing an actual product
+public record Product
+{
+  public Guid Id { get; set; }
+  public string Name { get; set; }
+  public decimal Price { get; set; }
+  public string? Description { get; set; }
+  public DateTime CreatedAt { get; set; }
+}
 
-  public record ProductDto
-  (int Id, string Name, double Price);
+// Product.cs
+// ProductDto to read a product
+public record Product
+{
+  public Guid Id { get; set; }
+  public string Name { get; set; }
+  public decimal Price { get; set; }
+  public string? Description { get; set; }
+  public DateTime CreatedAt { get; set; }
+}
+
+// CreateProductDto.cs
+// CreateProductDto to create a product
+public record CreateProductDto
+{
+  public string Name { get; set; }
+  public decimal Price { get; set; }
+  public string? Description { get; set; }
+}
+
+// UpdateProductDto.cs
+// UpdateProductDto to update a product
+public record UpdateProductDto
+{
+  public string? Name { get; set; }
+  public decimal? Price { get; set; }
+  public string? Description { get; set; }
+}
 ```
 
+- Create Controller => Controllers => ProductController.cs
+
 ```csharp
-// DTO for general product information (for GET and POST responses)
-public record class ProductDto
+using Microsoft.AspNetCore.Mvc;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
 {
-    public Guid Id { get; set; }      // Server-generated
-    public string? Name { get; set; }
-    public decimal Price { get; set; }
-    public string? Description { get; set; }
-}
+    // In-memory list of products for simplicity
+    private static List<Product> products = new List<Product>();
 
-// DTO for creating a new product (for POST requests)
-public record class CreateProductDto
-{
-    public string? Name { get; set; }
-    public decimal Price { get; set; }
-    public string? Description { get; set; }
-}
-
-// DTO for updating a product (for PUT requests)
-public record class UpdateProductDto
-{
-    public string? Name { get; set; }
-    public decimal? Price { get; set; }  // Nullable to allow partial updates
-    public string? Description { get; set; }
-}
-
-// Program.cs
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-
-var builder = WebApplication.CreateBuilder(args);
-
-var app = builder.Build();
-
-var products = new List<ProductDto>();
-
-app.UseHttpsRedirection();
-
-// GET: /products?pageNumber=2&pageSize=3 - Get all products with pagination
-app.MapGet("/products", (HttpRequest request) =>
-{
-    // Read query parameters from the request
-    int pageNumber = int.TryParse(request.Query["page"], out int parsedPage) ? parsedPage : 1;
-    int pageSize = int.TryParse(request.Query["limit"], out int parsedLimit) ? parsedLimit : 5;
-
-    // Ensure pageNumber and pageSize are positive numbers
-    if (pageNumber < 1 || pageSize < 1)
+    // GET: /api/products
+    [HttpGet]
+    public IActionResult GetAllProducts()
     {
-        return Results.BadRequest(new { Message = "Page number and page size must be greater than 0." });
+        var productDtos = products.Select(product => new ProductDto
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            CreatedAt = product.CreatedAt,
+            Price = product.Price
+        }).ToList();
+        return Ok(productDtos); // Return OK 200 with product DTOs
     }
 
-    // Calculate the total number of products
-    int totalProducts = products.Count;
-
-    // Calculate the number of items to skip based on the current page
-    int skip = (pageNumber - 1) * pageSize;
-
-    // Retrieve the products for the current page
-    var paginatedProducts = products.Skip(skip).Take(pageSize).ToList();
-
-    // Create a response with additional properties
-    var response = new
+    // GET: /api/products/{id}
+    [HttpGet("{id:guid}")]
+    public IActionResult GetProductById(Guid id)
     {
-        Status = "Success",
-        TotalProducts = totalProducts,
-        PageNumber = pageNumber,
-        PageSize = pageSize,
-        TotalPages = (int)Math.Ceiling(totalProducts / (double)pageSize),
-        Products = paginatedProducts
+        var product = products.Find(p => p.Id == id);
+        if (product == null)
+        {
+            return NotFound($"Product with ID {id} not found.");
+        }
+
+        var productDto = new ProductDto
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            CreatedAt = product.CreatedAt
+        };
+
+        return Ok(productDto); // Return OK 200 with product DTO
+    }
+
+    // POST: /api/products
+    [HttpPost]
+    public IActionResult CreateProduct(CreateProductDto newProduct)
+    {
+        // Validate product name
+        if (string.IsNullOrEmpty(newProduct.Name))
+        {
+            return BadRequest("Product name is required.");
+        }
+
+        // Validate product price
+        if (newProduct.Price <= 0)
+        {
+            return BadRequest("Product price must be greater than zero.");
+        }
+
+        var product = new Product
+        {
+            Id = Guid.NewGuid(),
+            Name = newProduct.Name,
+            Price = newProduct.Price,
+            Description = newProduct.Description,
+            CreatedAt = DateTime.Now
+        };
+
+        products.Add(product); // Add the product to the list
+
+        return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+    }
+
+    // DELETE: /api/products/{id}
+    [HttpDelete("{id:guid}")]
+    public IActionResult DeleteProduct(Guid id)
+    {
+        var product = products.Find(p => p.Id == id);
+        if (product == null)
+        {
+            return NotFound($"Product with ID {id} not found.");
+        }
+
+        products.Remove(product);
+        return NoContent(); // Return No Content 204
+    }
+
+    // PUT: /api/products/{id}
+    [HttpPut("{id:guid}")]
+    public IActionResult UpdateProduct(Guid id, UpdateProductDto updateProductData)
+    {
+        var product = products.Find(p => p.Id == id);
+        if (product == null)
+        {
+            return NotFound($"Product with ID {id} not found.");
+        }
+
+        // Validate updated product name
+        if (string.IsNullOrEmpty(updateProductData.Name))
+        {
+            return BadRequest("Product name is required.");
+        }
+
+        // Validate updated product price
+        if (updateProductData.Price <= 0)
+        {
+            return BadRequest("Product price must be greater than zero.");
+        }
+
+        // Update product details
+        product.Name = updateProductData.Name ?? product.Name;
+        product.Price = updateProductData.Price ?? product.Price;
+        product.Description = updateProductData.Description ?? product.Description;
+
+        return NoContent(); // Return No Content 204
+    }
+}
+
+```
+
+- Change in Program.cs
+
+  ```csharp
+  // Program.cs
+  var builder = WebApplication.CreateBuilder(args);
+
+  // Add services to the container
+  builder.Services.AddControllers(); // Add MVC controllers
+
+  var app = builder.Build();
+
+  app.MapControllers();
+
+  app.Run();
+
+  ```
+
+##### 3.21 Concept => Utilities
+
+- Utilities: We will create utility methods to handle common tasks, like validating product names and prices.
+
+##### 3.22 Product API => Add Utilities
+
+- Folder Structure
+  - Utilities
+    - ProductValidator.cs
+  - Controllers
+    - ProductsController.cs
+  - Models
+    - Product.cs
+    - CreateProductDto.cs
+    - UpdateProductDto.cs
+    - ProductDto.cs
+  - Program.
+
+- create the utility
+
+```csharp
+// Utilities/ProductValidator.cs
+public static class ProductValidator
+{
+    public static bool IsValidName(string name)
+    {
+        return !string.IsNullOrEmpty(name);
+    }
+
+    public static bool IsValidPrice(decimal price)
+    {
+        return price > 0;
+    }
+}
+```
+
+- use them from Controller
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+  // In-memory list of products for simplicity
+  private static List<Product> products = new List<Product>();
+
+  // GET: /api/products
+  [HttpGet]
+  public IActionResult GetAllProducts()
+  {
+    var productDtos = products.Select(product => new ProductDto
+    {
+      Id = product.Id,
+      Name = product.Name,
+      Description = product.Description,
+      CreatedAt = product.CreatedAt,
+      Price = product.Price
+    }).ToList();
+    return Ok(productDtos); // Return OK 200 with product DTOs
+  }
+
+  // GET: /api/products/{id}
+  [HttpGet("{id:guid}")]
+  public IActionResult GetProductById(Guid id)
+  {
+    var product = products.Find(p => p.Id == id);
+    if (product == null)
+    {
+      return NotFound($"Product with ID {id} not found.");
+    }
+
+    var productDto = new ProductDto
+    {
+      Id = product.Id,
+      Name = product.Name,
+      Price = product.Price,
+      Description = product.Description,
+      CreatedAt = product.CreatedAt
     };
 
-    return Results.Ok(response);
-});
+    return Ok(productDto); // Return OK 200 with product DTO
+  }
 
-// GET: /products/{id} - Get a specific product by ID
-app.MapGet("/products/{id:guid}", (Guid id) =>
-{
-    var product = products.FirstOrDefault(p => p.Id == id);
-    if (product == null)
+  // POST: /api/products
+  [HttpPost]
+  public IActionResult CreateProduct(CreateProductDto newProduct)
+  {
+    // Validate product name
+    if (!ProductValidator.IsValidName(newProduct.Name))
     {
-        return Results.NotFound($"Product with ID {id} not found.");
-    }
-    return Results.Ok(product);
-});
-
-// POST: /products - Create a new product using CreateProductDto
-app.MapPost("/products", (CreateProductDto newProduct) =>
-{
-    if (string.IsNullOrEmpty(newProduct.Name))
-    {
-        return Results.BadRequest("Invalid product data.");
+      return BadRequest("Product name is required.");
     }
 
-    var product = new ProductDto
+    // Validate product price
+    if (!ProductValidator.IsValidPrice(newProduct.Price))
     {
-        Id = Guid.NewGuid(),
-        Name = newProduct.Name,
-        Price = newProduct.Price,
-        Description = newProduct.Description
+      return BadRequest("Product price must be greater than zero.");
+    }
+
+    var product = new Product
+    {
+      Id = Guid.NewGuid(),
+      Name = newProduct.Name,
+      Price = newProduct.Price,
+      Description = newProduct.Description,
+      CreatedAt = DateTime.Now
     };
 
-    products.Add(product);
-    return Results.Created($"/products/{product.Id}", product);
-});
+    products.Add(product); // Add the product to the list
 
-// PUT: /products/{id} - Update an existing product using UpdateProductDto
-app.MapPut("/products/{id:guid}", (Guid id, UpdateProductDto updatedProduct) =>
-{
-    var product = products.FirstOrDefault(p => p.Id == id);
+    return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+  }
+
+  // DELETE: /api/products/{id}
+  [HttpDelete("{id:guid}")]
+  public IActionResult DeleteProduct(Guid id)
+  {
+    var product = products.Find(p => p.Id == id);
     if (product == null)
     {
-        return Results.NotFound($"Product with ID {id} not found.");
-    }
-
-    // Update only the fields provided in the request
-    if (!string.IsNullOrEmpty(updatedProduct.Name)) product.Name = updatedProduct.Name;
-    if (updatedProduct.Price.HasValue) product.Price = updatedProduct.Price.Value;
-    if (!string.IsNullOrEmpty(updatedProduct.Description)) product.Description = updatedProduct.Description;
-
-    return Results.NoContent();
-});
-
-// DELETE: /products/{id} - Delete a product by ID
-app.MapDelete("/products/{id:guid}", (Guid id) =>
-{
-    var product = products.FirstOrDefault(p => p.Id == id);
-    if (product == null)
-    {
-        return Results.NotFound($"Product with ID {id} not found.");
+      return NotFound($"Product with ID {id} not found.");
     }
 
     products.Remove(product);
-    return Results.NoContent();
-});
+    return NoContent(); // Return No Content 204
+  }
 
-app.Run();
+  // PUT: /api/products/{id}
+  [HttpPut("{id:guid}")]
+  public IActionResult UpdateProduct(Guid id, UpdateProductDto updateProductData)
+  {
+    var product = products.Find(p => p.Id == id);
+    if (product == null)
+    {
+      return NotFound($"Product with ID {id} not found.");
+    }
 
+    // Validate updated product name
+    if (!ProductValidator.IsValidName(product.Name))
+    {
+      return BadRequest("Product name is required.");
+    }
 
-// DTO for general product information (for GET and POST responses)
-public record class ProductDto
-{
-    public Guid Id { get; set; }
-    public string? Name { get; set; }
-    public decimal Price { get; set; }
-    public string? Description { get; set; }
+    // Validate updated product price
+    if (!ProductValidator.IsValidPrice(product.Price))
+    {
+      return BadRequest("Product price must be greater than zero.");
+    }
+
+    // Update product details
+    product.Name = updateProductData.Name ?? product.Name;
+    product.Price = updateProductData.Price ?? product.Price;
+    product.Description = updateProductData.Description ?? product.Description;
+
+    return NoContent(); // Return No Content 204
+  }
 }
+```
 
-// DTO for creating a new product (for POST requests)
-public record class CreateProductDto
-{
-    public string? Name { get; set; }
-    public decimal Price { get; set; }
-    public string? Description { get; set; }
-}
+##### 3.23 Concept => Services
 
-// DTO for updating a product (for PUT requests)
-public record class UpdateProductDto
+- Services: We will move the business logic (e.g., product creation, validation, etc.) to a service layer. This will help keep the controllers clean and focus on handling HTTP requests.
+- Utilities: We will create utility methods to handle common tasks, like validating product names and prices.
+
+- Folder Structure
+  - Utilities
+    - ProductValidator.cs
+  - Services
+    - IProductService.cs
+    - ProductService.cs
+  - Controllers
+    - ProductsController.cs
+  - Models
+    - Product.cs
+    - CreateProductDto.cs
+    - UpdateProductDto.cs
+    - ProductDto.cs
+  - Program.
+
+- Add the service
+
+```csharp
+// Services/ProductService.cs
+
+public class ProductService
 {
-    public string? Name { get; set; }
-    public decimal? Price { get; set; }  // Nullable to allow partial updates
-    public string? Description { get; set; }
+  private readonly List<Product> _products;
+
+  public ProductService()
+  {
+    // Initialize with some sample data
+    _products = new List<Product>();
+  }
+
+  public IEnumerable<ProductDto> GetAllProducts()
+  {
+    return _products.Select(p => new ProductDto
+    {
+      Id = p.Id,
+      Name = p.Name,
+      Description = p.Description,
+      Price = p.Price,
+      CreatedAt = p.CreatedAt
+    });
+  }
+
+  public ProductDto GetProductById(Guid id)
+  {
+    var product = _products.FirstOrDefault(p => p.Id == id);
+    if (product == null) return null;
+
+    return new ProductDto
+    {
+      Id = product.Id,
+      Name = product.Name,
+      Description = product.Description,
+      Price = product.Price,
+      CreatedAt = product.CreatedAt
+    };
+  }
+
+  public Product CreateProduct(CreateProductDto newProduct)
+  {
+    var product = new Product
+    {
+      Id = Guid.NewGuid(),
+      Name = newProduct.Name,
+      Price = newProduct.Price,
+      Description = newProduct.Description,
+      CreatedAt = DateTime.Now
+    };
+
+    _products.Add(product);
+    return product;
+  }
+
+  public bool ProductExistsByName(string name)
+  {
+    return _products.Any(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+  }
+
+  public void DeleteProduct(Guid id)
+  {
+    var product = _products.FirstOrDefault(p => p.Id == id);
+    if (product != null)
+    {
+      _products.Remove(product);
+    }
+  }
+
+  public void UpdateProduct(Guid id, UpdateProductDto updateProduct)
+  {
+    var product = _products.FirstOrDefault(p => p.Id == id);
+    if (product != null)
+    {
+      product.Name = updateProduct.Name ?? product.Name;
+      product.Price = updateProduct.Price ?? product.Price;
+      product.Description = updateProduct.Description ?? product.Description;
+    }
+  }
 }
 
 ```
 
-### 4.10 Entity
+- modify the controller
 
-### 4.11 MVC
+```csharp
+// Controller
+using Microsoft.AspNetCore.Mvc;
 
-### create first web api and folder structure
+[ApiController]
+[Route("api/products")]
+public class ProductController : ControllerBase
+{
+    private readonly ProductService _productService;
 
-- what is API? why do we need API?
-- HTTP Verbs + CRUD Operations
-- HTTP Status Code
+    public ProductController(ProductService productService)
+    {
+        _productService = productService;
+    }
 
-- `dotnet new list`
-- As a beginner start with this command: `dotnet new web -o ecommerce-api`
-- command `dotnet new webapi -o ecommerce-api`
-- cmd+shift+p -> .NET: New Project + Enter
-- check Program.cs
+    // GET: /api/products
+    [HttpGet]
+    public IActionResult GetAllProducts()
+    {
+        var products = _productService.GetAllProducts();
+        return Ok(products);
+    }
 
-```cs
+    // GET: /api/products/{id}
+    [HttpGet("{id:guid}")]
+    public IActionResult GetProductById(Guid id)
+    {
+        var product = _productService.GetProductById(id);
+        if (product == null)
+        {
+            return NotFound($"Product with ID {id} not found.");
+        }
+        return Ok(product);
+    }
+
+    // POST: /api/products
+    [HttpPost]
+    public IActionResult CreateProduct(CreateProductDto newProduct)
+    {
+        // Validate product name
+        if (!ProductValidator.IsValidName(newProduct.Name))
+        {
+            return BadRequest("Product name is required and cannot be empty.");
+        }
+
+        // Validate product price
+        if (!ProductValidator.IsValidPrice(newProduct.Price))
+        {
+            return BadRequest("Product price must be greater than zero.");
+        }
+
+        // Check if product exists by name
+        if (_productService.ProductExistsByName(newProduct.Name))
+        {
+            return Conflict($"A product with the name '{newProduct.Name}' already exists.");
+        }
+
+        // Create and return the product
+        var product = _productService.CreateProduct(newProduct);
+        return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+    }
+
+    // DELETE: /api/products/{id}
+    [HttpDelete("{id:guid}")]
+    public IActionResult DeleteProduct(Guid id)
+    {
+        var product = _productService.GetProductById(id);
+        if (product == null)
+        {
+            return NotFound($"Product with ID {id} not found.");
+        }
+
+        _productService.DeleteProduct(id);
+        return NoContent();
+    }
+
+    // PUT: /api/products/{id}
+    [HttpPut("{id:guid}")]
+    public IActionResult UpdateProduct(Guid id, UpdateProductDto updateProductData)
+    {
+        var product = _productService.GetProductById(id);
+        if (product == null)
+        {
+            return NotFound($"Product with ID {id} not found.");
+        }
+
+        // Validate updated product name
+        if (!ProductValidator.IsValidName(updateProductData.Name))
+        {
+            return BadRequest("Product name is required and cannot be empty.");
+        }
+
+        // Validate updated product price
+        if (!ProductValidator.IsValidPrice(updateProductData.Price ?? 0))
+        {
+            return BadRequest("Product price must be greater than zero.");
+        }
+
+        // Update product
+        _productService.UpdateProduct(id, updateProductData);
+        return NoContent();
+    }
+}
+
+```
+
+- modify the Program.cs
+
+```csharp
 var builder = WebApplication.CreateBuilder(args);
-// WebApplication is basically just host for http server where you can make http requets
+
+// Register ProductService as a service
+builder.Services.AddScoped<ProductService>();
+
+// Add services to the container
+builder.Services.AddControllers(); // Add MVC controllers
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
-
-app.Run();
-```
-
-- check .csproj file -> where we will add all dependencies mostly
-
-- appsettings.json vs appsettings.Development.json -> mainly for configuration
-
-- launchSettings.json - profiles configuration for only local development not for production development
-
-- obj file is the intermediate
-- bin is the executeable
-- how to build the project: go to root directory: dotnet buiild (ctrl+shift+B)
-- how to run the app (F5) + install Jsonnet Language Server + select c# + http/default or go to solution explorer -> debug -> start without debugging
-- how to run with terminal. go to root directory -> `dotnet run`
-- auto sever restart `dotnet watch run`
-
-### DTO (Data Transfer Objects)
-
-- dto is just a reperesentation of the resource
-- some pople might name as contracts
-- create a folder called Dtos-> ProductDto.cs
-- we will create record cause they are immutable (non changeable after creating)
-
-```csharp
-  namespace EcommerceAPI;
-
-  public record ProductDto
-  (int Id, string Name, double Price);
-```
-
-### CRUD operations in React Now
-
-```csharp
-
-```
-
-## Intermediate 5 : REST web API - ecommerce
-
-### 5.1 Basic setup
-
-#### 5.1.1 create, build and run a web api
-
-  ```csharp
-    dotnet new webapi -o api
-    dotnet build
-    dotnet run
-    dotnet watch run
-  ```
-
-  ```csharp
-  // clean the code
-  var builder = WebApplication.CreateBuilder(args);
-  var app = builder.Build();
-  app.UseHttpsRedirection();
-P  ```
-
-#### 5.1.2 status code & how to create API response
-
-```csharp
-// Program.cs
-var builder = WebApplication.CreateBuilder(args);
-
-var app = builder.Build();
-
+// Configure the HTTP request pipeline
 app.UseHttpsRedirection();
 
-app.MapGet("/", () =>
+app.MapControllers();
+
+app.Run();
+
+```
+
+##### 3.24 Concept => interface
+
+##### 3.25 Product => Add interface
+
+```csharp
+public interface IProductService
 {
-    var response = new
+  IEnumerable<ProductDto> GetAllProducts();
+  ProductDto GetProductById(Guid id);
+  Product CreateProduct(CreateProductDto newProduct);
+  bool ProductExistsByName(string name);
+  void DeleteProduct(Guid id);
+  void UpdateProduct(Guid id, UpdateProductDto updateProduct);
+}
+
+public class ProductService: IProductService
+{
+  private readonly List<Product> _products;
+
+  public ProductService()
+  {
+    // Initialize with some sample data
+    _products = new List<Product>();
+  }
+
+  public IEnumerable<ProductDto> GetAllProducts()
+  {
+    return _products.Select(p => new ProductDto
     {
-        Success = true,
-        Message = "Api is working..."
+      Id = p.Id,
+      Name = p.Name,
+      Description = p.Description,
+      Price = p.Price,
+      CreatedAt = p.CreatedAt
+    });
+  }
+
+  public ProductDto GetProductById(Guid id)
+  {
+    var product = _products.FirstOrDefault(p => p.Id == id);
+    if (product == null) return null;
+
+    return new ProductDto
+    {
+      Id = product.Id,
+      Name = product.Name,
+      Description = product.Description,
+      Price = product.Price,
+      CreatedAt = product.CreatedAt
     };
-    return Results.Ok(response);
-});
+  }
+
+  public Product CreateProduct(CreateProductDto newProduct)
+  {
+    var product = new Product
+    {
+      Id = Guid.NewGuid(),
+      Name = newProduct.Name,
+      Price = newProduct.Price,
+      Description = newProduct.Description,
+      CreatedAt = DateTime.Now
+    };
+
+    _products.Add(product);
+    return product;
+  }
+
+  public bool ProductExistsByName(string name)
+  {
+    return _products.Any(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+  }
+
+  public void DeleteProduct(Guid id)
+  {
+    var product = _products.FirstOrDefault(p => p.Id == id);
+    if (product != null)
+    {
+      _products.Remove(product);
+    }
+  }
+
+  public void UpdateProduct(Guid id, UpdateProductDto updateProduct)
+  {
+    var product = _products.FirstOrDefault(p => p.Id == id);
+    if (product != null)
+    {
+      product.Name = updateProduct.Name ?? product.Name;
+      product.Price = updateProduct.Price ?? product.Price;
+      product.Description = updateProduct.Description ?? product.Description;
+    }
+  }
+}
+```
+
+- Modify the controller
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+[ApiController]
+[Route("api/products")]
+public class ProductController : ControllerBase
+{
+  private readonly IProductService _productService;
+
+  public ProductController(IProductService productService)
+  {
+    _productService = productService;
+  }
+
+  // GET: /api/products
+  [HttpGet]
+  public IActionResult GetAllProducts()
+  {
+    var products = _productService.GetAllProducts();
+    return Ok(products);
+  }
+
+  // GET: /api/products/{id}
+  [HttpGet("{id:guid}")]
+  public IActionResult GetProductById(Guid id)
+  {
+    var product = _productService.GetProductById(id);
+    if (product == null)
+    {
+      return NotFound($"Product with ID {id} not found.");
+    }
+    return Ok(product);
+  }
+
+  // POST: /api/products
+  [HttpPost]
+  public IActionResult CreateProduct(CreateProductDto newProduct)
+  {
+    // Validate product name
+    if (!ProductValidator.IsValidName(newProduct.Name))
+    {
+      return BadRequest("Product name is required and cannot be empty.");
+    }
+
+    // Validate product price
+    if (!ProductValidator.IsValidPrice(newProduct.Price))
+    {
+      return BadRequest("Product price must be greater than zero.");
+    }
+
+    // Check if product exists by name
+    if (_productService.ProductExistsByName(newProduct.Name))
+    {
+      return Conflict($"A product with the name '{newProduct.Name}' already exists.");
+    }
+
+    // Create and return the product
+    var product = _productService.CreateProduct(newProduct);
+    return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+  }
+
+  // DELETE: /api/products/{id}
+  [HttpDelete("{id:guid}")]
+  public IActionResult DeleteProduct(Guid id)
+  {
+    var product = _productService.GetProductById(id);
+    if (product == null)
+    {
+      return NotFound($"Product with ID {id} not found.");
+    }
+
+    _productService.DeleteProduct(id);
+    return NoContent();
+  }
+
+  // PUT: /api/products/{id}
+  [HttpPut("{id:guid}")]
+  public IActionResult UpdateProduct(Guid id, UpdateProductDto updateProductData)
+  {
+    var product = _productService.GetProductById(id);
+    if (product == null)
+    {
+      return NotFound($"Product with ID {id} not found.");
+    }
+
+    // Validate updated product name
+    if (!ProductValidator.IsValidName(updateProductData.Name))
+    {
+      return BadRequest("Product name is required and cannot be empty.");
+    }
+
+    // Validate updated product price
+    if (!ProductValidator.IsValidPrice(updateProductData.Price ?? 0))
+    {
+      return BadRequest("Product price must be greater than zero.");
+    }
+
+    // Update product
+    _productService.UpdateProduct(id, updateProductData);
+    return NoContent();
+  }
+}
+
+```
+
+- Modify the Program.cs
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+// Register ProductService as a service
+builder.Services.AddSingleton<IProductService, ProductService>();
+
+// Add services to the container
+builder.Services.AddControllers(); // Add MVC controllers
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline
+app.UseHttpsRedirection();
+
+app.MapControllers();
 
 app.Run();
 ```
 
-#### 5.1.3 Testing API
+##### 3.26 Concept => Query Parameters
 
-#### 5.1.4 User API : Create the UserDto class
+In an **ASP.NET Core** controller, you can retrieve query parameters directly using the `HttpRequest` object, or by defining them as method parameters in your controller action. Here are a few ways to get query parameters in a controller.
+
+###### 1. **Using Method Parameters**
+
+If your action method is handling a query parameter, you can specify the query parameter as a method parameter in the action, and ASP.NET Core will automatically bind it.
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    // GET: /api/products?category=electronics&page=1
+    [HttpGet]
+    public IActionResult GetProducts(string category, int page = 1)
+    {
+        // Use category and page query parameters in your logic
+        return Ok(new { Category = category, Page = page });
+    }
+}
+```
+
+###### 2. **Using `HttpContext.Request.Query`**
+
+You can also use the `HttpContext.Request.Query` to retrieve query parameters manually.
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    // GET: /api/products
+    [HttpGet]
+    public IActionResult GetProducts()
+    {
+        var category = HttpContext.Request.Query["category"].ToString();
+        var page = HttpContext.Request.Query["page"].ToString();
+
+        return Ok(new { Category = category, Page = page });
+    }
+}
+```
+
+###### 3. **Using `[FromQuery]` Attribute**
+
+You can also use the `[FromQuery]` attribute to specify that a parameter should be retrieved from the query string explicitly. This is particularly useful if you want to bind complex types or collections from the query parameters.
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    // GET: /api/products?category=electronics&page=1
+    [HttpGet]
+    public IActionResult GetProducts([FromQuery] string category, [FromQuery] int page = 1)
+    {
+        return Ok(new { Category = category, Page = page });
+    }
+}
+```
+
+###### 4. **Using Custom Model Binding for Complex Query Parameters**
+
+If you have a more complex object, you can define a class and bind the query parameters to that object:
+
+```csharp
+public class ProductFilter
+{
+    public string? Category { get; set; }
+    public int Page { get; set; } = 1;
+    public int PageSize { get; set; } = 10;
+}
+
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    // GET: /api/products?category=electronics&page=1&pageSize=20
+    [HttpGet]
+    public IActionResult GetProducts([FromQuery] ProductFilter filter)
+    {
+        return Ok(new { filter.Category, filter.Page, filter.PageSize });
+    }
+}
+```
+
+In this case, **`ProductFilter`** will automatically map query parameters like `?category=electronics&page=1&pageSize=20` to the class properties.
+
+###### Summary
+
+- You can directly bind query parameters using method parameters in the action, which is the most common approach.
+- Use `[FromQuery]` for more explicit parameter binding or to handle complex query string values.
+- For complex models, create a class and bind it using `[FromQuery]` to make the code more organized and easier to maintain.
+
+##### 3.27 Product API => Add Pagination
+
+```csharp
+// GET http://localhost:5079/api/products?pageNumber=1&pageSize=2
+
+// Method-1
+public IActionResult GetAllProducts(int pageNumber=1, int pageSize=5)
+  {
+    Console.WriteLine($"{pageNumber} and {pageSize}");
+
+    var products = _productService.GetAllProducts();
+    return Ok(products);
+  }
+
+// Method-1
+public IActionResult GetAllProducts([FromQuery] int pageNumber=1, [FromQuery] int pageSize=10)
+  {
+    Console.WriteLine($"{pageNumber} and {pageSize}");
+
+    var products = _productService.GetAllProducts();
+    return Ok(products);
+  }
+```
+
+##### Category API => Create the Category DTOs
+
+##### Category API => POST /categories => Create a category
+
+##### User API : Create the UserDto class
 
 - think about tha data model
 - cmd + shift + p => class => create a class
@@ -14263,7 +15461,7 @@ namespace ecommrce_api.Dtos.users
 
 ```
 
-#### 5.1.5 User API : Prepare the dummy data
+##### 5.1.4 User API : Prepare the dummy data
 
 ```csharp
 // Program.cs
@@ -14303,7 +15501,7 @@ List<UserDto> _users = new List<UserDto>()
   };
 ```
 
-#### 5.1.6 User API: create CRUD endpoints and test
+##### 5.1.5 User API: create CRUD endpoints and test
 
 ```csharp
 
@@ -14350,11 +15548,11 @@ Content-Type: application/json
 }
 ```
 
-### 5.2 MVC Pattern
+##### 5.2 MVC Pattern
 
-#### 5.2.1 Create User Model
+##### 5.2.1 Create User Model
 
-#### 5.2.2 Create User Service
+##### 5.2.2 Create User Service
 
 ```csharp
  // Services/UserService.cs
@@ -14451,7 +15649,7 @@ namespace ecommrce_api
 }
 ```
 
-#### 5.2.3 Create User Controller
+##### 5.2.3 Create User Controller
 
 ```csharp
 // Controllers/UserController.cs
@@ -14519,7 +15717,7 @@ namespace ecommrce_api.Controllers
 }
 ```
 
-#### 5.2.4 Make the adjustment in Program.cs
+##### 5.2.4 Make the adjustment in Program.cs
 
 - add few packages and Update Program.cs file for using MVC
 
@@ -14551,7 +15749,7 @@ namespace ecommrce_api.Controllers
 
   ```
 
-### 5.3 Validation with Data Annotation / Handling Invalid Inputs
+##### 5.3 Validation with Data Annotation / Handling Invalid Inputs
 
 - [visit here](https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs)
 - what happen if you do not pass user name and it creates the user? it should be a bad request 400
@@ -14599,7 +15797,7 @@ public class User
     // app.MapDelete("/api/users/{userId}", (Guid userId) => new UserController().DeleteUser(userId)).WithParameterValidation();
     ```
 
-### 5.4 Exception Handling
+##### 5.4 Exception Handling
 
 ```csharp
 // Controllers/UserController.cs
@@ -14626,7 +15824,7 @@ public class User
         }
 ```
 
-### 5.5 Customizing the response (error, success)
+##### 5.5 Customizing the response (error, success)
 
 ```csharp
 // Helpers/ErrorResponse.cs
@@ -14702,7 +15900,7 @@ namespace api.Helpers
   }
 ```
 
-### 5.6 Synchronous vs asynchornous programming
+##### 5.6 Synchronous vs asynchornous programming
 
 ```csharp
 // make change to the service
@@ -14877,7 +16075,7 @@ namespace api.Controllers
 
 ```
 
-### 5.7 Query Parameters
+##### 5.7 Query Parameters
 
 ```csharp
     public async Task<IActionResult> GetAllUsers([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
@@ -14889,14 +16087,9 @@ namespace api.Controllers
    }
 ```
 
-### 5.8 Route Constraint
+##### 5.9 User API
 
-- `[HttpDelete("{userId:guid}")]`
-To restrict the route parameter userId in the [HttpDelete] endpoint to only accept GUID values, you can use route constraints in ASP.NET Core.
-
-### 5.9 User API
-
-#### User Model
+##### User Model
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -14924,7 +16117,7 @@ public class User
 }
 ```
 
-#### GET /api/users -> Get All Users
+##### GET /api/users -> Get All Users
 
 ```csharp
 // Services/UserService.cs
@@ -14973,7 +16166,7 @@ public async Task<IEnumerable<User>> GetAllUsersService()
 
 ```
 
-#### GET /api/users/{userId} -> Get Single User
+##### GET /api/users/{userId} -> Get Single User
 
 ```csharp
 // Services/UserService.cs
@@ -15024,7 +16217,7 @@ public async Task<IEnumerable<User>> GetAllUsersService()
 
 ```
 
-#### POST /api/users/{userId} -> Create Single User
+##### POST /api/users/{userId} -> Create Single User
 
 ```csharp
 // Services/UserService.cs
@@ -15065,7 +16258,7 @@ public async Task<IActionResult> CreateUser(User newUser)
 
 ```
 
-#### PUT /api/users/{userId} -> Update Single User
+##### PUT /api/users/{userId} -> Update Single User
 
 ```csharp
 // Services/UserService.cs
@@ -15126,7 +16319,7 @@ public async Task<IActionResult> UpdateUser(string userId, User updateUser)
 
 ```
 
-#### DELETE /api/users/{userId} -> Delete Single User
+##### DELETE /api/users/{userId} -> Delete Single User
 
 ```csharp
 // Services/UserService.cs
@@ -15177,9 +16370,9 @@ public async Task<IActionResult> DeleteUser(string userId)
 }
 ```
 
-### 4.9 Category API
+##### 5.10 Category API
 
-#### Category Model
+##### Category Model
 
 ```csharp
 public class Category
@@ -15299,7 +16492,7 @@ namespace api.Helpers
 
 ```
 
-### 4.10 Product API
+### 5.11 Product API
 
 #### Product Model
 
