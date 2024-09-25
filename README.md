@@ -19022,7 +19022,41 @@ DTOs can be very similar to view models or domain models, but the key distinctio
 
 ## ASP.NET with Database (2024)
 
-### 1. Install dependencies for the project
+### 1. Create webapi and Install dependencies for the project
+
+- Create a webapi project: `dotnet new console -o ecommerce-api`
+
+```csharp
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+
+app.MapGet("/", () =>
+{
+
+    return new { Success = true, Message = "api is running fine" };
+})
+.WithOpenApi();
+
+app.Run();
+
+
+```
 
 To set up your ASP.NET Core project with database connectivity using Entity Framework Core (EF Core) and PostgreSQL, you’ll need the following dependencies.
 
@@ -19104,126 +19138,51 @@ Here are all the installation commands you might need for the setup:
 dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet tool install --global dotnet-ef
 dotnet add package Microsoft.AspNetCore.OData --version 8.0.0-preview3
 dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.0.0-preview.6.21355.2
 dotnet add package Swashbuckle.AspNetCore --version 6.2.3
-dotnet tool install --global dotnet-ef
 ```
-
-#### Example of Configuring EF Core with PostgreSQL
-
-Once the dependencies are installed, configure your `DbContext` and connection string in the `Startup.cs` or `Program.cs` file.
-
-```csharp
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container
-builder.Services.AddControllers();
-
-// Add DbContext and configure PostgreSQL
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline
-app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
-app.Run();
-
-// DbContext Example
-public class ApplicationDbContext : DbContext
-{
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-    {
-    }
-
-    public DbSet<User> Users { get; set; }
-}
-
-// Product Model Example
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ecommerce_api.Models
-{
-    public class User
-    {
-        public Guid UserId { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string Address { get; set; } = string.Empty;
-        public string Image { get; set; } = string.Empty;
-        public bool IsAdmin { get; set; } = false;
-        public bool IsBanned { get; set; } = false;
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    }
-}
-```
-
-Don't forget to configure your connection string in `appsettings.json`:
-
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Database=mydb;Username=myuser;Password=mypassword"
-  }
-}
-```
-
-After everything is set up, you can use the `dotnet ef` tools for migrations and database updates.
 
 ### 2. Create the User Entity
 
-```csharp
-// Models/User
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+- Create the EFCore folder and create User Entity
 
-namespace ecommerce_api.Models
+```csharp
+// EFCore/User
+
+public class User
 {
-    public class User
-    {
-        public Guid UserId { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-        public string Address { get; set; } = string.Empty;
-        public string Image { get; set; } = string.Empty;
-        public bool IsAdmin { get; set; } = false;
-        public bool IsBanned { get; set; } = false;
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    }
+    public Guid UserId { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
+    public string? Address { get; set; }
+    public string? Image { get; set; }
+    public bool IsAdmin { get; set; }
+    public bool IsBanned { get; set; }
+    public DateTime CreatedAt { get; set; } 
 }
 ```
 
-### 3. Create the Context
+### 3. Create the DBContext
 
 ```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ecommerce_api.Models;
-using Microsoft.EntityFrameworkCore;
-
+// EFCore/AppDBContext.cs
 namespace ecommerce_api.EFCore
 {
     public class AppDBContext : DbContext
     {
-        public AppDBContext(DbContextOptions<AppDBContext> options): base(options){}
+        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options) {}
 
         public DbSet<User> Users { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder){
-            modelBuilder.Entity<User>(entity => {
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>(entity =>
+            {
                 entity.HasKey(u => u.UserId); // Primary Key configuration
-                entity.Property(u => u.UserId).HasDefaultValueSql("uuid_generate_v4()"); // generate UUID for new records
+                entity.Property(u => u.UserId).HasDefaultValueSql("uuid_generate_v4()"); // Generate UUID for new records
                 entity.Property(u => u.Name).IsRequired().HasMaxLength(100);
                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
                 entity.HasIndex(u => u.Email).IsUnique();
@@ -19246,7 +19205,7 @@ namespace ecommerce_api.EFCore
     "DefaultConnection": "Server=localhost;Port=5432;Database=full-ecommerce-db;Username=postgres;Password=new_password;"
   }
 
-// inside the Startup file
+// inside the Startup file / Program.cs
 builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 ```
@@ -19256,9 +19215,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 - Install Entity Framework Core Tools: Ensure that you have installed the Entity Framework Core Tools globally. You can do this by running the following command: dotnet tool install --global dotnet-ef
 
 ```shell
+# Generate the migration
 dotnet ef migrations add InitialCreate
-dotnet ef database update
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+# Modify the migration file (as explained earlier) to include the following line inside the Up() method:
+migrationBuilder.Sql("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";");
+
+# Run the Migration and Update the Database:
+dotnet ef database update; 
 ```
 
 - you can setup it in pgadmin or in the terminal `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`
@@ -19359,18 +19323,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ecommerce_api.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using review_ecommerce_api.Services;
 
-namespace ecommerce_api.Controllers
+namespace review_ecommerce_api.Controllers
 {
-
     [ApiController]
-    [Route("api/users")]
+    [Route("/api/users")]
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
-
         public UserController(UserService userService)
         {
             _userService = userService;
@@ -19380,14 +19343,142 @@ namespace ecommerce_api.Controllers
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await _userService.GetAllUsersAsync();
-            return Ok(users);
+            var response = new { StatusCode = 200, Message = "Users are returned successfully", Users = users };
+            return Ok(response);
         }
-
     }
 }
 ```
 
-### 10. Create User => /api/users
+- test the endpoint
+
+### 10. Add Exception Handling
+
+```csharp
+// Add excaption handling for service
+ public async Task<List<User>> GetAllUsersAsync()
+  {
+      try
+      {
+          return await _appDbContext.Users.ToListAsync();
+      }
+      catch (Exception ex)
+      {
+          throw new ApplicationException("An error occured while fetching data from the db. " + ex.Message);
+      }
+  }
+
+// Controller
+
+ [HttpGet]
+  public async Task<IActionResult> GetAllUsers()
+  {
+      try
+      {
+          var users = await _userService.GetAllUsersAsync();
+          var response = new { Message = "Users are returned successfully", Users = users };
+          return Ok(response);
+      }
+      catch (ApplicationException ex)
+      {
+          return StatusCode(500, ex.Message);
+      }
+      catch (Exception ex)
+      {
+          return StatusCode(500, ex.Message);
+      }
+  }
+```
+
+### 11. Create User => /api/users
+
+- Create the CreateUserDto first
+
+```csharp
+public class CreateUserDto
+{
+    public string Name { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
+    public string? Address { get; set; }
+    public string? Image { get; set; }
+}
+```
+
+- Create the Service 
+
+```csharp
+public async Task<User> CreateUserAsync(CreateUserDto newUser)
+  {
+      try
+      {
+          var user = new User
+          {
+              Name = newUser.Name,
+              Email = newUser.Email,
+              Password = newUser.Password,
+              Image = newUser.Image ?? string.Empty,  // Default to empty string if null
+              Address = newUser.Address ?? string.Empty, //
+          };
+
+          await _appDbContext.Users.AddAsync(user);
+          await _appDbContext.SaveChangesAsync();
+          return user;
+      }
+      catch (Exception ex)
+      {
+          throw new ApplicationException("An error occured while creating user in the db. " + ex.Message);
+      }
+  }
+
+```
+
+- Create the Controller
+
+```csharp
+  [HttpPost]
+    public async Task<IActionResult> CreateUser([FromBody] CreateUserDto newUser)
+    {
+        try
+        {
+            // Add a null check to ensure data was passed
+            if (newUser == null)
+            {
+                return BadRequest("User data is required.");
+            }
+            
+            var user = await _userService.CreateUserAsync(newUser);
+            var response = new { Message = "Users are returned successfully", User = user};
+            return Created($"/api/users/{user.UserId}",response);
+        }
+        catch (ApplicationException ex)
+        {
+            return StatusCode(500, ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.Message);
+        }
+    }
+```
+
+- test the endpoint
+
+```csharp
+POST http://localhost:5030/api/users
+Content-Type: application/json
+
+{
+  "name": "u",
+  "email": "user6@example.com",
+  "password": "string",
+  "address": "string",
+  "image": "string"
+}
+
+```
+
+### 12. Add Validation with Data annotation
 
 ```csharp
 
@@ -19422,51 +19513,4 @@ namespace ecommerce_api.Models
         public bool IsBanned { get; set; } = false;// Include only if necessary for the context
     }
 }
-
-// services
- public async Task<User> AddUserAsync(CreateUserDto newUserData)
-        {
-            // Map DTO to Entity
-            var user = new User
-            {
-                Name = newUserData.Name,
-                Email = newUserData.Email,
-                Password = newUserData.Password, // Be cautious, ideally, password should be hashed
-                Address = newUserData.Address,
-                Image = newUserData.Image,
-                IsAdmin = newUserData.IsAdmin,
-                IsBanned = newUserData.IsBanned,
-                CreatedAt = DateTime.UtcNow
-            };
-
-            // Add user to the database
-            _appDbcontext.Users.Add(user);
-            await _appDbcontext.SaveChangesAsync();
-
-            return user;
-
-        }
-
-// controller
- [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] CreateUserDto newUserData)
-        {
-            var newUser = await _userService.AddUserAsync(newUserData);
-            // return Created(newUser);
-            return Ok();
-        }
-
-// test
-POST http://localhost:5269/api/users
-Content-Type: application/json
-
-{
-  "name": "user3",
-  "email": "user3@example.com",
-  "password": "string",
-  "address": "string",
-  "image": "string"
-}
 ```
-
-### 11. aa
