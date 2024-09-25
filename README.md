@@ -13616,7 +13616,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
 
 #### 3.6 Product API
 
-##### 3.7 Concept => HTTP Verbs
+##### 1. Concept => HTTP Verbs
 
   ```csharp
   var builder = WebApplication.CreateBuilder(args);
@@ -13650,7 +13650,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
 
   ```
 
-##### 3.8 Concept => DTOs
+##### 2. Concept => DTOs
 
 - To better follow the model separation for create, update, and read operations, we can introduce distinct models (DTOs - Data Transfer Objects) for each operation. This will provide clarity in terms of what data is expected in each operation. Here's how we can restructure the code by creating separate models for:
 
@@ -13658,7 +13658,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
   - UpdateProductDto: Used for updating a product.
   - ProductDto: Used for reading a product (read-only view).
 
-##### 3.9 Product API => DTOs
+##### 3. Product API => DTOs
 
 - To better follow the model separation for create, update, and read operations, we can introduce distinct models (DTOs - Data Transfer Objects) for each operation. This will provide clarity in terms of what data is expected in each operation. Here's how we can restructure the code by creating separate models for:
 
@@ -13707,7 +13707,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
     }
   ```
 
-##### 3.10 Product API => POST /products => Create a product
+##### 4. Product API => POST /products => Create a product
 
 - create the post route and controller
 
@@ -13835,7 +13835,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
   }
   ```
 
-##### 3.11 Product API => GET /products => Get all the products
+##### 5. Product API => GET /products => Get all the products
 
 ```csharp
 app.MapGet("/api/products", () =>
@@ -13859,12 +13859,12 @@ app.MapGet("/api/products", () =>
 GET http://localhost:5079/api/products
 ```
 
-##### 3.12 Concept => Route parameters
+##### 6. Concept => Route parameters
 
 - Single Route parameters `// GET => /api/products/{id} => Get a product by id`
 - multiple route parameters `// GET => /api/products/{id}/{category} => Get a product by id and category`
 
-##### 3.13 Product API => GET /products/{id} => Get a single product
+##### 7. Product API => GET /products/{id} => Get a single product
 
   ```csharp
   // GET => /products{id} => Get a product by id
@@ -13893,7 +13893,7 @@ GET http://localhost:5079/api/products
   GET http://localhost:5079/api/products/product_id_here
   ```
 
-##### 3.14 Concept => Route Constraint
+##### 8. Concept => Route Constraint
 
 - {param:int}, {param:bool}, {param:decimal}, {param:guid}, {param:datetime}, {param:alpha}, {param:minlength(x)}, {param:maxlength(x)}, {param:length(x)}, {param:length(x,y)}, {param:range(x,y)}
 
@@ -14054,7 +14054,7 @@ app.MapGet("/api/products/{id:int}/{price:decimal}", (int id, decimal price) =>
 - URL: `/api/products/abc/19.99` (invalid, returns a 404 due to invalid ID)
 - URL: `/api/products/5/abc` (invalid, returns a 404 due to invalid price)
 
-##### 3.15 Product API => Add constraint
+##### 9. Product API => Add constraint
 
   ```csharp
     // GET => /products{id} => Get a product by id
@@ -14077,7 +14077,7 @@ app.MapGet("/api/products/{id:int}/{price:decimal}", (int id, decimal price) =>
     });
   ```
 
-##### 3.16 Product API => GET /products/{id} => Delete a single product
+##### 10. Product API => GET /products/{id} => Delete a single product
 
 ```csharp
 // DELETE: /products/{id} - Delete a product by ID
@@ -14095,7 +14095,7 @@ app.MapDelete("/api/products/{id: guid}", (Guid id) =>
 DELETE http://localhost:5079/api/products/product_id_here
 ```
 
-##### 3.17 Product API => PUT => /products{id} => update a product by id
+##### 11. Product API => PUT => /products{id} => update a product by id
 
 ```csharp
 // PUT => /products{id} => update a product by id
@@ -14123,7 +14123,7 @@ Content-Type: application/json
 }
 ```
 
-##### 3.18 Product API => Add Basic Validation
+##### 12. Product API => Add Basic Validation
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -14479,7 +14479,7 @@ bool IsValidEmail(string email)
 
 This assignment will help students practice building CRUD operations using ASP.NET Core Minimal APIs, learn to work with `Guid` for unique identifiers, and understand how to validate and manage data effectively in a web application.
 
-##### 3.19 Concept => MVC Pattern
+##### 13. Concept => MVC Pattern
 
 The MVC (Model-View-Controller) pattern is a design pattern used in ASP.NET for developing web applications. It separates an application into three interconnected components, each with its distinct responsibilities. This separation of concerns allows for a more maintainable, scalable, and testable codebase.
 
@@ -14488,7 +14488,7 @@ The MVC (Model-View-Controller) pattern is a design pattern used in ASP.NET for 
   - Testability: Each component can be tested independently.
   - Scalability: The application can grow without becoming overly complex because responsibilities are divided among different components.
 
-##### 3.20 Product API => Add MVC Pattern
+##### 14. Product API => Add MVC Pattern
 
 - To refactor the product API using the MVC pattern, we'll divide it into Model, Controller, and View layers. Although in this case, the API doesn't have a traditional "View" layer because it returns JSON, we'll follow the pattern of separating the responsibilities of each component. Here’s how to separate the code:
 
@@ -14689,11 +14689,11 @@ public class ProductsController : ControllerBase
 
   ```
 
-##### 3.21 Concept => Utilities
+##### 15. Concept => Utilities
 
 - Utilities: We will create utility methods to handle common tasks, like validating product names and prices.
 
-##### 3.22 Product API => Add Utilities
+##### 16. Product API => Add Utilities
 
 - Folder Structure
   - Utilities
@@ -14850,7 +14850,7 @@ public class ProductsController : ControllerBase
 }
 ```
 
-##### 3.23 Concept => Services
+##### 17. Concept => Services
 
 - Services: We will move the business logic (e.g., product creation, validation, etc.) to a service layer. This will help keep the controllers clean and focus on handling HTTP requests.
 - Utilities: We will create utility methods to handle common tasks, like validating product names and prices.
@@ -15085,9 +15085,9 @@ app.Run();
 
 ```
 
-##### 3.24 Concept => interface
+##### 18. Concept => interface
 
-##### 3.25 Product => Add interface
+##### 19. Product => Add interface
 
 ```csharp
 public interface IProductService
@@ -15307,7 +15307,7 @@ app.MapControllers();
 app.Run();
 ```
 
-##### 3.26 Concept => Query Parameters
+##### 20. Concept => Query Parameters
 
 In an **ASP.NET Core** controller, you can retrieve query parameters directly using the `HttpRequest` object, or by defining them as method parameters in your controller action. Here are a few ways to get query parameters in a controller.
 
@@ -15402,7 +15402,7 @@ In this case, **`ProductFilter`** will automatically map query parameters like `
 - Use `[FromQuery]` for more explicit parameter binding or to handle complex query string values.
 - For complex models, create a class and bind it using `[FromQuery]` to make the code more organized and easier to maintain.
 
-##### 3.27 Product API => Add Pagination
+##### 21. Product API => Add Pagination
 
 ```csharp
 // GET http://localhost:5079/api/products?pageNumber=1&pageSize=2
@@ -15498,7 +15498,7 @@ namespace asp_ecommerce_web_api.Models
 
 ```
 
-##### Product API => Search Product
+##### 22. Product API => Search Product
 
 ```csharp
 // Model
@@ -15571,7 +15571,7 @@ To search products by name:
 GET /api/products?searchQuery=Laptop&pageNumber=1&pageSize=5
 ```
 
-##### Product API => Sorting by Name, Price, CreatedAt
+##### 23. Product API => Sorting by Name, Price, CreatedAt
 
 ```csharp
 // Model
@@ -15679,335 +15679,188 @@ Sort by created date descending:
 GET /api/products?sortBy=date&sortOrder=desc
 ```
 
-##### Category API => Create the Category DTOs
+##### 24. Concept => Handle the parameters more cleaner way
 
-##### Category API => POST /categories => Create a category
+Handling method parameters in a cleaner and more maintainable way can be achieved by encapsulating them into a dedicated class or object. This approach simplifies method signatures, improves readability, and makes it easier to manage and extend parameters.
 
-##### User API : Create the UserDto class
-
-- think about tha data model
-- cmd + shift + p => class => create a class
+##### 25. Product API => Handle the parameters more cleaner way
 
 ```csharp
-// UserDto.cs
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ecommrce_api.Dtos.users
+// Create the following class in a model or DTOs folder (best thing to do) or Requests or Filter or Queries Folder
+public class ProductQueryParameters
 {
-    public class UserDto
-    {
-        public Guid UserId { get; set; }
-        public required string Name { get; set; } = string.Empty;
-        public required string Email { get; set; }
-        public required string Password { get; set; }
-        public string Address { get; set; } = string.Empty;
-        public string Image { get; set; } = string.Empty;
-        public bool IsAdmin { get; set; } = false;
-        public bool IsBanned { get; set; } = false;
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-
-    }
+    public int PageNumber { get; set; } = 1;
+    public int PageSize { get; set; } = 10;
+    public string? SearchQuery { get; set; } = null;
+    public string? SortBy { get; set; } = null;
+    public string? SortOrder { get; set; } = "asc";
 }
 
-```
-
-##### 5.1.4 User API : Prepare the dummy data
-
-```csharp
-// Program.cs
-List<UserDto> _users = new List<UserDto>()
+// Change is controller
+  // GET: /api/products
+  [HttpGet]
+  public IActionResult GetAllProducts([FromQuery] ProductQueryParameters productQueryParameters)
   {
-    new UserDto{
-
-        UserId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
-        Name = "John Doe",
-        Email = "john@example.com",
-        Password = "password123",
-        Address = "123 Main St",
-        IsAdmin = false,
-        IsBanned = false,
-        CreatedAt = DateTime.Now
-    },
-    new UserDto{
-        UserId = Guid.Parse("24508f7e-94ec-4f0b-b8d6-e8e16a9a3b29"),
-        Name = "Alice Smith",
-        Email = "alice@example.com",
-        Password = "password456",
-        Address = "456 Elm St",
-        IsAdmin = false,
-        IsBanned = false,
-        CreatedAt = DateTime.Now
-    },
-    new UserDto{
-        UserId = Guid.Parse("87e5c4f3-d3e5-4e16-88b5-809b2b08b773"),
-        Name = "Bob Johnson",
-        Email = "bob@example.com",
-        Password = "password789",
-        Address = "789 Oak St",
-        IsAdmin = false,
-        IsBanned = false,
-        CreatedAt = DateTime.Now
-    }
-  };
-```
-
-##### 5.1.5 User API: create CRUD endpoints and test
-
-```csharp
-
-app.MapGet("/users", () =>
-{
-    if (_users.Count > 0)
+    if (productQueryParameters.PageNumber < 1 || productQueryParameters.PageSize < 1)
     {
-        return Results.Ok(_users);
-    }
-    return Results.NotFound($"No products exist");
-});
-
-app.MapGet("/users/{id}", (Guid id) =>
-{
-    var foundUser = _users.Find(user => user.UserId == id);
-    return foundUser is null ? Results.NotFound($"User with {id} does not exist") : Results.Ok(foundUser);
-});
-
-app.MapPost("/users", (UserDto newUser) =>
-{
-    newUser.UserId = Guid.NewGuid();
-    _users.Add(newUser);
-    return Results.Created("GetUser", newUser);
-});
-```
-
-```js
-GET http://localhost:5111
-
-###
-
-GET http://localhost:5111/users
-
-###
-
-POST http://localhost:5111/users
-Content-Type: application/json
-
-{
-  "name": "anisul islam",
-  "email": "anis@gmail.com",
-  "password": "123456",
-  "address": "sylhet"
-}
-```
-
-##### 5.2 MVC Pattern
-
-##### 5.2.1 Create User Model
-
-##### 5.2.2 Create User Service
-
-```csharp
- // Services/UserService.cs
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ecommrce_api.Dtos.users;
-
-namespace ecommrce_api
-{
-  public class UserService
-  {
-
-    public static List<UserDto> _users = new List<UserDto>()
-      {
-        new UserDto{
-
-            UserId = Guid.Parse("75424b9b-cbd4-49b9-901b-056dd1c6a020"),
-            Name = "John Doe",
-            Email = "john@example.com",
-            Password = "password123",
-            Address = "123 Main St",
-            IsAdmin = false,
-            IsBanned = false,
-            CreatedAt = DateTime.Now
-        },
-        new UserDto{
-            UserId = Guid.Parse("24508f7e-94ec-4f0b-b8d6-e8e16a9a3b29"),
-            Name = "Alice Smith",
-            Email = "alice@example.com",
-            Password = "password456",
-            Address = "456 Elm St",
-            IsAdmin = false,
-            IsBanned = false,
-            CreatedAt = DateTime.Now
-        },
-        new UserDto{
-            UserId = Guid.Parse("87e5c4f3-d3e5-4e16-88b5-809b2b08b773"),
-            Name = "Bob Johnson",
-            Email = "bob@example.com",
-            Password = "password789",
-            Address = "789 Oak St",
-            IsAdmin = false,
-            IsBanned = false,
-            CreatedAt = DateTime.Now
-        }
-      };
-
-    public List<UserDto> GetAllUsersService()
-    {
-      return _users;
-    }
-    public UserDto? GetUserByIdService(Guid id)
-    {
-      var foundUser = _users.Find(user => user.UserId == id);
-      return foundUser;
-    }
-    public bool DeleteUserByIdService(Guid id)
-    {
-      var userToRemove = _users.FirstOrDefault(u => u.UserId == id);
-      if (userToRemove != null)
-      {
-        _users.Remove(userToRemove);
-        return true;
-      }
-      return false;
+      return BadRequest("Page number and page size must be greater than 0.");
     }
 
-    // app.MapGet("/users", () =>
-    // {
-    //     if (_users.Count > 0)
-    //     {
-    //         return Results.Ok(_users);
-    //     }
-    //     return Results.NotFound($"No products exist");
-    // });
-
-    // app.MapGet("/users/{id}", (Guid id) =>
-    // {
-    //     var foundUser = _users.Find(user => user.UserId == id);
-    //     return foundUser is null ? Results.NotFound($"User with {id} does not exist") : Results.Ok(foundUser);
-    // });
-
-    // app.MapPost("/users", (UserDto newUser) =>
-    // {
-    //     newUser.UserId = Guid.NewGuid();
-    //     _users.Add(newUser);
-    //     return Results.Created("GetUser", newUser);
-    // });
-
-
-  }
-}
-```
-
-##### 5.2.3 Create User Controller
-
-```csharp
-// Controllers/UserController.cs
- using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-namespace ecommrce_api.Controllers
-{
-    [ApiController]
-    [Route("/api/v1/users")]
-    public class UserController : ControllerBase
-    {
-        private readonly UserService _userService;
-        public UserController(UserService userService)
-        {
-            // _userService = new UserService();
-            _userService = userService;
-        }
-
-        [HttpGet]
-        public IActionResult GetAllUsers()
-        {
-            var users = _userService.GetAllUsersService();
-            return Ok(users);
-        }
-
-        [HttpGet("{userId}")]
-        public IActionResult GetSingleUserById(string userId)
-        {
-            if (!Guid.TryParse(userId, out Guid userIdGuid))
-            {
-                return BadRequest("Invalid user ID Format");
-            }
-
-            var user = _userService.GetUserByIdService(userIdGuid);
-
-            if (user == null)
-            {
-                return NotFound($"User with {userId} does not exist");
-            }
-            return Ok(user);
-        }
-
-        [HttpDelete("{userId}")]
-        public IActionResult DeleteUserById(string userId)
-        {
-            if (!Guid.TryParse(userId, out Guid userIdGuid))
-            {
-                return BadRequest("Invalid user ID Format");
-            }
-
-            bool result = _userService.DeleteUserByIdService(userIdGuid);
-
-            if (!result)
-            {
-                return NotFound($"User with {userId} does not exist");
-            }
-            return NoContent();
-        }
-
-    }
-}
-```
-
-##### 5.2.4 Make the adjustment in Program.cs
-
-- add few packages and Update Program.cs file for using MVC
-
-  ```csharp
-  // dotnet add package Microsoft.AspNetCore.OData --version 8.0.0-preview3
-  // dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.0.0-preview.6.21355.2
-  // dotnet add package Swashbuckle.AspNetCore --version 6.2.3
-
-  var builder = WebApplication.CreateBuilder(args);
-
-  builder.Services.AddEndpointsApiExplorer();
-  builder.Services.AddSwaggerGen();
-  builder.Services.AddControllers();
-  builder.Services.AddScoped<UserService>();
-
-
-  var app = builder.Build();
-
-  // Configure the HTTP request pipeline.
-  if (app.Environment.IsDevelopment())
-  {
-      app.UseSwagger();
-      app.UseSwaggerUI();
+    var paginatedResult = _productService.GetAllProducts(productQueryParameters);
+    return Ok(paginatedResult);
   }
 
-  app.UseHttpsRedirection();
-  app.MapControllers();
-  app.Run();
+// Change is service
+public interface IProductService
+{
+  PagedResult<ProductDto> GetAllProducts(ProductQueryParameters productQueryParameters);
+  ProductDto GetProductById(Guid id);
+  Product CreateProduct(CreateProductDto newProduct);
+  bool ProductExistsByName(string name);
+  void DeleteProduct(Guid id);
+  void UpdateProduct(Guid id, UpdateProductDto updateProduct);
+}
 
-  ```
+public PagedResult<ProductDto> GetAllProducts(ProductQueryParameters productQueryParameters)
+  {
+    var filteredProducts = _products.AsQueryable();
 
-##### 5.3 Validation with Data Annotation / Handling Invalid Inputs
+    // Apply search filter if a searchQuery is provided
+    if (!string.IsNullOrEmpty(productQueryParameters.SearchQuery))
+    {
+      filteredProducts = filteredProducts.Where(p => p.Name.Contains(productQueryParameters.SearchQuery, StringComparison.OrdinalIgnoreCase));
+    }
+
+    // Apply sorting based on the sortBy and sortOrder parameters
+    filteredProducts = productQueryParameters.SortBy?.ToLower() switch
+    {
+      "name" => productQueryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.Name) : filteredProducts.OrderBy(p => p.Name),
+      "price" => productQueryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.Price) : filteredProducts.OrderBy(p => p.Price),
+      "date" => productQueryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.CreatedAt) : filteredProducts.OrderBy(p => p.CreatedAt),
+      _ => filteredProducts.OrderBy(p => p.Name) // Default sorting by Name
+    };
+
+    var totalProducts = filteredProducts.Count();
+    var paginatedProducts = filteredProducts.Skip((productQueryParameters.PageNumber - 1) * productQueryParameters.PageSize).Take(productQueryParameters.PageSize).Select(p => new ProductDto
+    {
+      Id = p.Id,
+      Name = p.Name,
+      Description = p.Description,
+      Price = p.Price,
+      CreatedAt = p.CreatedAt
+    }).ToList();
+
+
+    return new PagedResult<ProductDto>
+    {
+      PageNumber = productQueryParameters.PageNumber,
+      PageSize = productQueryParameters.PageSize,
+      TotalPages = (int)Math.Ceiling(totalProducts / (double)productQueryParameters.PageSize),
+      TotalItems = totalProducts,
+      Items = paginatedProducts
+    };
+
+  }
+
+// 4. Update the PagedResult Class. You can remove redundant parameters from PagedResult, as they are already encapsulated in ProductQueryParameters.
+
+public class PagedResult<T>
+{
+    public int PageNumber { get; set; }
+    public int PageSize { get; set; }
+    public int TotalPages { get; set; }
+    public int TotalItems { get; set; }
+    public IEnumerable<T> Items { get; set; }
+}
+
+```
+
+##### 26. Concept => Validation with Data Annotations Validators
+
+To add comprehensive data annotations to your DTOs in ASP.NET Core, we can use attributes that are part of the System.ComponentModel.DataAnnotations namespace. These annotations are primarily used for validation, which makes your code more robust by ensuring that incoming data follows certain rules.
 
 - [visit here](https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs)
 - what happen if you do not pass user name and it creates the user? it should be a bad request 400
 - add the data annotation to the DTOs
-- add the nuget package (MinimalApis.Extensions) from the package manager (add the vsextension)
+<!-- - add the nuget package (MinimalApis.Extensions) from the package manager (add the vsextension) -->
+
+##### 27. Product API => Add Input Validation to the DTOs
+
+```csharp
+
+using System.ComponentModel.DataAnnotations;
+
+public class CreateProductDto
+{
+    [Required(ErrorMessage = "Product name is required.")]
+    [StringLength(100, MinimumLength = 2, ErrorMessage = "Product name must be between 2 and 100 characters.")]
+    public string Name { get; set; }
+
+    [Required(ErrorMessage = "Product price is required.")]
+    [Range(0.01, double.MaxValue, ErrorMessage = "Product price must be greater than zero.")]
+    public decimal Price { get; set; }
+
+    [StringLength(500, ErrorMessage = "Description cannot be longer than 500 characters.")]
+    public string? Description { get; set; }
+}
+
+using System.ComponentModel.DataAnnotations;
+
+public class UpdateProductDto
+{
+    [StringLength(100, MinimumLength = 2, ErrorMessage = "Product name must be between 2 and 100 characters.")]
+    public string? Name { get; set; }
+
+    [Range(0.01, double.MaxValue, ErrorMessage = "Product price must be greater than zero.")]
+    public decimal? Price { get; set; }
+
+    [StringLength(500, ErrorMessage = "Description cannot be longer than 500 characters.")]
+    public string? Description { get; set; }
+}
+
+using System.ComponentModel.DataAnnotations;
+
+public class ProductDto
+{
+    [Required]
+    public Guid Id { get; set; }
+
+    [Required(ErrorMessage = "Product name is required.")]
+    [StringLength(100, MinimumLength = 2, ErrorMessage = "Product name must be between 2 and 100 characters.")]
+    public string Name { get; set; }
+
+    [Required(ErrorMessage = "Product price is required.")]
+    [Range(0.01, double.MaxValue, ErrorMessage = "Product price must be greater than zero.")]
+    public decimal Price { get; set; }
+
+    [StringLength(500, ErrorMessage = "Description cannot be longer than 500 characters.")]
+    public string? Description { get; set; }
+
+    [Required]
+    public DateTime CreatedAt { get; set; }
+}
+
+
+public class PagedResult<T>
+{
+    [Range(1, int.MaxValue, ErrorMessage = "Page number must be at least 1.")]
+    public int PageNumber { get; set; }
+
+    [Range(1, int.MaxValue, ErrorMessage = "Page size must be at least 1.")]
+    public int PageSize { get; set; }
+
+    public int TotalPages { get; set; }
+    public int TotalItems { get; set; }
+    public IEnumerable<T> Items { get; set; }
+}
+
+```
+
+- [Required]: Ensures that the Name and Price fields are not null or empty.
+- [StringLength]: Enforces the minimum and maximum length of the Name and Description.
+- [Range]: Ensures that Price is greater than zero.
+
+- more detailed example
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -16035,22 +15888,7 @@ public class User
 }
 ```
 
-- add MinimalApis.Extenstion by using nuget gallery extension in vscode
-
-    ```csharp
-    // to all the endpoints in Program.cs
-
-    // app.MapControllers().WithParameterValidation();
-
-    // to individual endpoints in Program.cs file
-    // app.MapGet("/api/users", () => new UserController().GetAllUsers()).WithParameterValidation();
-    // app.MapGet("/api/users/{userId}", (Guid userId) => new UserController().GetUser(userId)).WithParameterValidation();
-    // app.MapPost("/api/users", (User newUser) => new UserController().CreateUser(newUser)).WithParameterValidation();
-    // app.MapPut("/api/users/{userId}", (Guid userId, User updateUser) => new UserController().UpdateUser(userId, updateUser)).WithParameterValidation();
-    // app.MapDelete("/api/users/{userId}", (Guid userId) => new UserController().DeleteUser(userId)).WithParameterValidation();
-    ```
-
-##### 5.4 Exception Handling
+##### 28. Concept => Exception Handling
 
 ```csharp
 // Controllers/UserController.cs
@@ -16076,6 +15914,400 @@ public class User
             }
         }
 ```
+
+##### 29 Product API => Add Exception Handling
+
+```csharp
+// Service.cs
+public PagedResult<ProductDto> GetAllProducts(ProductQueryParameters productQueryParameters)
+{
+    try
+    {
+        var filteredProducts = _products.AsQueryable();
+
+        // Apply search filter if a searchQuery is provided
+        if (!string.IsNullOrEmpty(productQueryParameters.SearchQuery))
+        {
+            filteredProducts = filteredProducts.Where(p => p.Name.Contains(productQueryParameters.SearchQuery, StringComparison.OrdinalIgnoreCase));
+        }
+
+        // Apply sorting based on the sortBy and sortOrder parameters
+        filteredProducts = productQueryParameters.SortBy?.ToLower() switch
+        {
+            "name" => productQueryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.Name) : filteredProducts.OrderBy(p => p.Name),
+            "price" => productQueryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.Price) : filteredProducts.OrderBy(p => p.Price),
+            "date" => productQueryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.CreatedAt) : filteredProducts.OrderBy(p => p.CreatedAt),
+            _ => filteredProducts.OrderBy(p => p.Name) // Default sorting by Name
+        };
+
+        var totalProducts = filteredProducts.Count(); // Synchronous Count for in-memory collection
+        var paginatedProducts = filteredProducts
+            .Skip((productQueryParameters.PageNumber - 1) * productQueryParameters.PageSize)
+            .Take(productQueryParameters.PageSize)
+            .Select(p => new ProductDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price,
+                CreatedAt = p.CreatedAt
+            })
+            .ToList(); // Synchronous ToList
+
+        return new PagedResult<ProductDto>
+        {
+            PageNumber = productQueryParameters.PageNumber,
+            PageSize = productQueryParameters.PageSize,
+            TotalPages = (int)Math.Ceiling(totalProducts / (double)productQueryParameters.PageSize),
+            TotalItems = totalProducts,
+            Items = paginatedProducts
+        };
+    }
+    catch (Exception ex)
+    {
+        // Log the exception (optional)
+        // _logger.LogError(ex, "Error occurred while getting products");
+
+        // Re-throw the exception to be handled at a higher level or return a custom result
+        throw new ApplicationException("An error occurred while retrieving products.", ex);
+    }
+}
+
+//Controller.cs
+[HttpGet]
+public IActionResult GetAllProducts([FromQuery] ProductQueryParameters productQueryParameters)
+{
+    try
+    {
+        if (productQueryParameters.PageNumber < 1 || productQueryParameters.PageSize < 1)
+        {
+            return BadRequest("Page number and page size must be greater than 0.");
+        }
+
+        var paginatedResult = _productService.GetAllProducts(productQueryParameters);
+        return Ok(paginatedResult);
+    }
+    catch (ApplicationException ex)
+    {
+        // Return a custom error response
+        return StatusCode(500, new { Message = ex.Message });
+    }
+    catch (Exception ex)
+    {
+        // Log the error (optional)
+        // _logger.LogError(ex, "An unexpected error occurred");
+
+        // Return a generic error message
+        return StatusCode(500, new { Message = "An unexpected error occurred. Please try again later." });
+    }
+}
+
+```
+
+##### 30 Concept => Centralized Error Response
+
+```csharp
+public class ApiResponse<T>
+{
+    public bool Success { get; set; }
+    public string Message { get; set; } = string.Empty;
+    public T? Data { get; set; }
+    public List<string>? Errors { get; set; }
+
+    public ApiResponse(bool success, string message, T? data = default, List<string>? errors = null)
+    {
+        Success = success;
+        Message = message;
+        Data = data;
+        Errors = errors;
+    }
+
+    public static ApiResponse<T> SuccessResponse(string message, T? data = default)
+    {
+        return new ApiResponse<T>(true, message, data);
+    }
+
+    public static ApiResponse<T> ErrorResponse(string message, List<string>? errors = null)
+    {
+        return new ApiResponse<T>(false, message, default, errors);
+    }
+}
+
+// Controller
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    private readonly IProductService _productService;
+
+    public ProductsController(IProductService productService)
+    {
+        _productService = productService;
+    }
+
+    // GET: /api/products
+    [HttpGet]
+    public IActionResult GetAllProducts([FromQuery] ProductQueryParameters productQueryParameters)
+    {
+        try
+        {
+            var paginatedResult = _productService.GetAllProducts(productQueryParameters);
+            return Ok(ApiResponse<PagedResult<ProductDto>>.SuccessResponse("Products fetched successfully", paginatedResult));
+        }
+        catch (Exception ex)
+        {
+            // Log the error (optional)
+            // _logger.LogError(ex, "An unexpected error occurred");
+
+            return StatusCode(500, ApiResponse<object>.ErrorResponse("An error occurred while fetching products.", new List<string> { ex.Message }));
+        }
+    }
+
+    // POST: /api/products
+    [HttpPost]
+    public IActionResult CreateProduct([FromBody] CreateProductDto newProduct)
+    {
+        if (string.IsNullOrEmpty(newProduct.Name))
+        {
+            return BadRequest(ApiResponse<object>.ErrorResponse("Product name is required"));
+        }
+
+        if (newProduct.Price <= 0)
+        {
+            return BadRequest(ApiResponse<object>.ErrorResponse("Product price must be greater than zero"));
+        }
+
+        try
+        {
+            var createdProduct = _productService.CreateProduct(newProduct);
+            return CreatedAtAction(nameof(GetAllProducts), new { id = createdProduct.Id }, ApiResponse<ProductDto>.SuccessResponse("Product created successfully", createdProduct));
+        }
+        catch (Exception ex)
+        {
+            // Log the error (optional)
+            return StatusCode(500, ApiResponse<object>.ErrorResponse("An error occurred while creating the product.", new List<string> { ex.Message }));
+        }
+    }
+
+    // PUT: /api/products/{id}
+    [HttpPut("{id:guid}")]
+    public IActionResult UpdateProduct(Guid id, [FromBody] UpdateProductDto updatedProduct)
+    {
+        try
+        {
+            var product = _productService.UpdateProduct(id, updatedProduct);
+            return Ok(ApiResponse<ProductDto>.SuccessResponse("Product updated successfully", product));
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(ApiResponse<object>.ErrorResponse("Product not found", new List<string> { ex.Message }));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ApiResponse<object>.ErrorResponse("An error occurred while updating the product.", new List<string> { ex.Message }));
+        }
+    }
+
+    // DELETE: /api/products/{id}
+    [HttpDelete("{id:guid}")]
+    public IActionResult DeleteProduct(Guid id)
+    {
+        try
+        {
+            _productService.DeleteProduct(id);
+            return Ok(ApiResponse<object>.SuccessResponse("Product deleted successfully"));
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(ApiResponse<object>.ErrorResponse("Product not found", new List<string> { ex.Message }));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ApiResponse<object>.ErrorResponse("An error occurred while deleting the product.", new List<string> { ex.Message }));
+        }
+    }
+}
+
+// Services
+public class ProductService : IProductService
+{
+    private readonly List<Product> _products;
+
+    public ProductService()
+    {
+        _products = new List<Product>(); // Example: In-memory product list
+    }
+
+    public ProductDto CreateProduct(CreateProductDto newProduct)
+    {
+        // Simulate checking for a product with the same name
+        var existingProduct = _products.FirstOrDefault(p => p.Name.Equals(newProduct.Name, StringComparison.OrdinalIgnoreCase));
+        
+        if (existingProduct != null)
+        {
+            // Throwing a custom exception if the product name already exists
+            throw new InvalidOperationException($"A product with the name '{newProduct.Name}' already exists.");
+        }
+
+        var product = new Product
+        {
+            Id = Guid.NewGuid(),
+            Name = newProduct.Name,
+            Price = newProduct.Price,
+            Description = newProduct.Description,
+            CreatedAt = DateTime.Now
+        };
+
+        _products.Add(product);
+
+        return new ProductDto
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            CreatedAt = product.CreatedAt
+        };
+    }
+
+    // Other CRUD methods...
+}
+```
+
+##### 30. Concept => Asynchronous
+
+ Asycnhornous improves scalability by freeing up threads for other requests while waiting for IO-bound operations to complete.
+
+Converting a synchronous method to an asynchronous one in C# typically involves utilizing the `async` and `await` keywords, as well as leveraging asynchronous APIs like `Task`, `Task<T>`, and others.
+
+Here’s a step-by-step guide on how to convert your synchronous service methods to asynchronous ones:
+
+###### Steps to Convert Sync to Async
+
+1. **Add the `async` Keyword**:
+   - The method signature should include the `async` keyword.
+
+2. **Use `Task` or `Task<T>` as Return Type**:
+   - For methods that return `void` synchronously, use `Task`.
+   - For methods that return a specific type (like a list of products), use `Task<T>`, where `T` is the return type.
+
+3. **Use `await` with Asynchronous Methods**:
+   - Replace blocking calls (e.g., `.ToList()`, `.Find()`) with their asynchronous counterparts (e.g., `ToListAsync()`, `FirstOrDefaultAsync()`).
+
+4. **Leverage Asynchronous Libraries**:
+   - For database operations (e.g., Entity Framework), use asynchronous methods like `ToListAsync()`, `FirstOrDefaultAsync()`, etc.
+
+###### Example: Converting `GetAllProducts` to Async
+
+Here’s how you can convert the synchronous `GetAllProducts` method to an asynchronous one:
+
+###### **Synchronous Method**
+
+```csharp
+public PagedResult<ProductDto> GetAllProducts(ProductQueryParameters queryParameters)
+{
+    var filteredProducts = _products.AsQueryable();
+
+    // Apply search filter
+    if (!string.IsNullOrEmpty(queryParameters.SearchQuery))
+    {
+        filteredProducts = filteredProducts.Where(p => p.Name.Contains(queryParameters.SearchQuery, StringComparison.OrdinalIgnoreCase));
+    }
+
+    // Apply sorting
+    filteredProducts = queryParameters.SortBy?.ToLower() switch
+    {
+        "name" => queryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.Name) : filteredProducts.OrderBy(p => p.Name),
+        "price" => queryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.Price) : filteredProducts.OrderBy(p => p.Price),
+        "date" => queryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.CreatedAt) : filteredProducts.OrderBy(p => p.CreatedAt),
+        _ => filteredProducts.OrderBy(p => p.Name)
+    };
+
+    var totalProducts = filteredProducts.Count();
+    var paginatedProducts = filteredProducts.Skip((queryParameters.PageNumber - 1) * queryParameters.PageSize)
+        .Take(queryParameters.PageSize)
+        .Select(p => new ProductDto
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Description = p.Description,
+            Price = p.Price,
+            CreatedAt = p.CreatedAt
+        })
+        .ToList();
+
+    return new PagedResult<ProductDto>
+    {
+        PageNumber = queryParameters.PageNumber,
+        PageSize = queryParameters.PageSize,
+        TotalPages = (int)Math.Ceiling(totalProducts / (double)queryParameters.PageSize),
+        TotalItems = totalProducts,
+        Items = paginatedProducts
+    };
+}
+```
+
+###### **Converted Asynchronous Method**
+
+To convert this method, let’s assume you are using Entity Framework (which has async methods like `ToListAsync()`, `CountAsync()`). Here's the async version of this method:
+
+```csharp
+public async Task<PagedResult<ProductDto>> GetAllProductsAsync(ProductQueryParameters queryParameters)
+{
+    var filteredProducts = _products.AsQueryable();
+
+    // Apply search filter
+    if (!string.IsNullOrEmpty(queryParameters.SearchQuery))
+    {
+        filteredProducts = filteredProducts.Where(p => p.Name.Contains(queryParameters.SearchQuery, StringComparison.OrdinalIgnoreCase));
+    }
+
+    // Apply sorting
+    filteredProducts = queryParameters.SortBy?.ToLower() switch
+    {
+        "name" => queryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.Name) : filteredProducts.OrderBy(p => p.Name),
+        "price" => queryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.Price) : filteredProducts.OrderBy(p => p.Price),
+        "date" => queryParameters.SortOrder == "desc" ? filteredProducts.OrderByDescending(p => p.CreatedAt) : filteredProducts.OrderBy(p => p.CreatedAt),
+        _ => filteredProducts.OrderBy(p => p.Name)
+    };
+
+    var totalProducts = await filteredProducts.CountAsync(); // Asynchronous count
+    var paginatedProducts = await filteredProducts.Skip((queryParameters.PageNumber - 1) * queryParameters.PageSize)
+        .Take(queryParameters.PageSize)
+        .Select(p => new ProductDto
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Description = p.Description,
+            Price = p.Price,
+            CreatedAt = p.CreatedAt
+        })
+        .ToListAsync(); // Asynchronous ToList
+
+    return new PagedResult<ProductDto>
+    {
+        PageNumber = queryParameters.PageNumber,
+        PageSize = queryParameters.PageSize,
+        TotalPages = (int)Math.Ceiling(totalProducts / (double)queryParameters.PageSize),
+        TotalItems = totalProducts,
+        Items = paginatedProducts
+    };
+}
+```
+
+- Key Points
+
+1. **Async Task**: Use `Task<T>` for methods returning data and `Task` for void methods.
+2. **Await Asynchronous Methods**: Ensure that any method that involves IO operations (e.g., database access) uses its asynchronous counterpart.
+3. **No Synchronous Blocking**: Avoid synchronous methods like `.ToList()` or `.Count()` when performing IO-bound tasks like database queries.
+
+This conversion improves scalability by freeing up threads for other requests while waiting for IO-bound operations to complete.
+
+##### 31. Product API => Asynchronous
+
+##### Category API => Create the Category DTOs
+
+##### Category API => POST /categories => Create a category
 
 ##### 5.5 Customizing the response (error, success)
 
@@ -16326,18 +16558,6 @@ namespace api.Controllers
     }
 }
 
-```
-
-##### 5.7 Query Parameters
-
-```csharp
-    public async Task<IActionResult> GetAllUsers([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
-   {
-     // Calculate the number of items to skip
-        int itemsToSkip = (pageNumber - 1) * pageSize;
-        // Retrieve products for the specified page
-        return _users.Skip(itemsToSkip).Take(pageSize);
-   }
 ```
 
 ##### 5.9 User API
@@ -18799,3 +19019,454 @@ In the context of your code, if `OrderModel` is used to communicate data about o
 DTOs can be very similar to view models or domain models, but the key distinction often lies in their intended use. DTOs are specifically for transferring data across boundaries, focusing on what the client or another part of the system needs, rather than representing the domain's complexity or the database structure directly.
 
 #### Many-To-Many Relationship
+
+## ASP.NET with Database (2024)
+
+### 1. Install dependencies for the project
+
+To set up your ASP.NET Core project with database connectivity using Entity Framework Core (EF Core) and PostgreSQL, you’ll need the following dependencies.
+
+#### Dependencies for Database Connectivity and EF Core
+
+1. **`Npgsql.EntityFrameworkCore.PostgreSQL`**:
+   - Provides PostgreSQL database provider for EF Core, enabling you to interact with PostgreSQL databases.
+   - Install Command:
+
+     ```bash
+     dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+     ```
+
+2. **`Microsoft.EntityFrameworkCore.Design`**:
+   - Required for design-time tools such as `dotnet ef` commands (migrations, scaffolding).
+   - Install Command:
+
+     ```bash
+     dotnet add package Microsoft.EntityFrameworkCore.Design
+     ```
+
+3. **`Microsoft.EntityFrameworkCore.Tools`**:
+   - Provides command-line tools for EF Core commands (e.g., migrations).
+   - Install Command:
+
+     ```bash
+     dotnet add package Microsoft.EntityFrameworkCore.Tools
+     ```
+
+4. **`Microsoft.Extensions.Configuration`** (already included in ASP.NET Core projects):
+   - This library is used for loading configurations from `appsettings.json`, environment variables, etc., which is needed for database connection strings.
+   - Usually, you don’t need to explicitly install it, but if needed:
+
+     ```bash
+     dotnet add package Microsoft.Extensions.Configuration
+     ```
+
+#### Dependencies for API and Swagger Support
+
+5. **`Swashbuckle.AspNetCore`**:
+   - Provides tools to generate Swagger documentation for your API.
+   - Install Command:
+
+     ```bash
+     dotnet add package Swashbuckle.AspNetCore --version 6.2.3
+     ```
+
+6. **`Microsoft.AspNetCore.OData`**:
+   - Adds support for OData in ASP.NET Core Web APIs.
+   - Install Command:
+
+     ```bash
+     dotnet add package Microsoft.AspNetCore.OData --version 8.0.0-preview3
+     ```
+
+7. **`Microsoft.AspNetCore.Mvc.NewtonsoftJson`**:
+   - Adds support for using Newtonsoft.Json in ASP.NET Core for JSON serialization and deserialization.
+   - Install Command:
+
+     ```bash
+     dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.0.0-preview.6.21355.2
+     ```
+
+#### Additional Dependencies (if required)
+
+8. **`dotnet-ef` (tool)**:
+   - Command-line tool used to create migrations, update the database schema, and scaffold models.
+   - Install Command:
+
+     ```bash
+     dotnet tool install --global dotnet-ef
+     ```
+
+#### Final Commands
+
+Here are all the installation commands you might need for the setup:
+
+```bash
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.AspNetCore.OData --version 8.0.0-preview3
+dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.0.0-preview.6.21355.2
+dotnet add package Swashbuckle.AspNetCore --version 6.2.3
+dotnet tool install --global dotnet-ef
+```
+
+#### Example of Configuring EF Core with PostgreSQL
+
+Once the dependencies are installed, configure your `DbContext` and connection string in the `Startup.cs` or `Program.cs` file.
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container
+builder.Services.AddControllers();
+
+// Add DbContext and configure PostgreSQL
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
+
+// DbContext Example
+public class ApplicationDbContext : DbContext
+{
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    {
+    }
+
+    public DbSet<User> Users { get; set; }
+}
+
+// Product Model Example
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ecommerce_api.Models
+{
+    public class User
+    {
+        public Guid UserId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
+        public bool IsAdmin { get; set; } = false;
+        public bool IsBanned { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
+}
+```
+
+Don't forget to configure your connection string in `appsettings.json`:
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Database=mydb;Username=myuser;Password=mypassword"
+  }
+}
+```
+
+After everything is set up, you can use the `dotnet ef` tools for migrations and database updates.
+
+### 2. Create the User Entity
+
+```csharp
+// Models/User
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ecommerce_api.Models
+{
+    public class User
+    {
+        public Guid UserId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
+        public bool IsAdmin { get; set; } = false;
+        public bool IsBanned { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
+}
+```
+
+### 3. Create the Context
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using ecommerce_api.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace ecommerce_api.EFCore
+{
+    public class AppDBContext : DbContext
+    {
+        public AppDBContext(DbContextOptions<AppDBContext> options): base(options){}
+
+        public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder){
+            modelBuilder.Entity<User>(entity => {
+                entity.HasKey(u => u.UserId); // Primary Key configuration
+                entity.Property(u => u.UserId).HasDefaultValueSql("uuid_generate_v4()"); // generate UUID for new records
+                entity.Property(u => u.Name).IsRequired().HasMaxLength(100);
+                entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
+                entity.HasIndex(u => u.Email).IsUnique();
+                entity.Property(u => u.Password).IsRequired();
+                entity.Property(u => u.Address).HasMaxLength(255);
+                entity.Property(u => u.IsAdmin).HasDefaultValue(false);
+                entity.Property(u => u.IsBanned).HasDefaultValue(false);
+                entity.Property(u => u.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+            });
+        }
+    }
+}
+```
+
+### 4. Configure the Database
+
+```csharp
+// appsettings.json
+ "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Port=5432;Database=full-ecommerce-db;Username=postgres;Password=new_password;"
+  }
+
+// inside the Startup file
+builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+```
+
+### 5. Run the migration scripts
+
+- Install Entity Framework Core Tools: Ensure that you have installed the Entity Framework Core Tools globally. You can do this by running the following command: dotnet tool install --global dotnet-ef
+
+```shell
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+```
+
+- you can setup it in pgadmin or in the terminal `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`
+
+### 6. Create User Service
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using ecommerce_api.EFCore;
+
+namespace ecommerce_api.Services
+{
+    public class UserService
+    {
+        private readonly AppDBContext _appDbcontext;
+
+        public UserService(AppDBContext context)
+        {
+            _appDbcontext = context;
+        }
+    }
+}
+```
+
+### 7. Create User Controller
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using ecommerce_api.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ecommerce_api.Controllers
+{
+
+    [ApiController]
+    [Route("api/users")]
+    public class UserController : ControllerBase
+    {
+        private readonly UserService _userService;
+
+        public UserController(UserService userService)
+        {
+            _userService = userService;
+        }
+
+    }
+}
+```
+
+### 8. Add Services and controllers in Startup file
+
+```csharp
+// Program.cs
+builder.Services.AddScoped<UserService>();
+// Program.cs
+builder.Services.AddControllers();
+app.MapControllers();
+```
+
+### 9. GET users => /api/users
+
+```csharp
+// Service
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using ecommerce_api.EFCore;
+using ecommerce_api.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace ecommerce_api.Services
+{
+    public class UserService
+    {
+        private readonly AppDBContext _appDbcontext;
+
+        public UserService(AppDBContext context)
+        {
+            _appDbcontext = context;
+        }
+
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            return await _appDbcontext.Users.ToListAsync();
+        }
+    }
+}
+
+// Controller
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using ecommerce_api.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ecommerce_api.Controllers
+{
+
+    [ApiController]
+    [Route("api/users")]
+    public class UserController : ControllerBase
+    {
+        private readonly UserService _userService;
+
+        public UserController(UserService userService)
+        {
+            _userService = userService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _userService.GetAllUsersAsync();
+            return Ok(users);
+        }
+
+    }
+}
+```
+
+### 10. Create User => /api/users
+
+```csharp
+
+// dto
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ecommerce_api.Models
+{
+    public class CreateUserDto
+    {
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Name must be between 2 and 100 characters.", MinimumLength = 2)]
+        public string Name { get; set; } = string.Empty;
+
+        [Required]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(255, ErrorMessage = "Password must be between 6 and 255 characters.", MinimumLength = 6)]
+        public string Password { get; set; } = string.Empty; // Note: Include cautiously
+
+        [StringLength(255)]
+        public string Address { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
+        public bool IsAdmin { get; set; } = false;// Include only if necessary for the context
+        public bool IsBanned { get; set; } = false;// Include only if necessary for the context
+    }
+}
+
+// services
+ public async Task<User> AddUserAsync(CreateUserDto newUserData)
+        {
+            // Map DTO to Entity
+            var user = new User
+            {
+                Name = newUserData.Name,
+                Email = newUserData.Email,
+                Password = newUserData.Password, // Be cautious, ideally, password should be hashed
+                Address = newUserData.Address,
+                Image = newUserData.Image,
+                IsAdmin = newUserData.IsAdmin,
+                IsBanned = newUserData.IsBanned,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            // Add user to the database
+            _appDbcontext.Users.Add(user);
+            await _appDbcontext.SaveChangesAsync();
+
+            return user;
+
+        }
+
+// controller
+ [HttpPost]
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserDto newUserData)
+        {
+            var newUser = await _userService.AddUserAsync(newUserData);
+            // return Created(newUser);
+            return Ok();
+        }
+
+// test
+POST http://localhost:5269/api/users
+Content-Type: application/json
+
+{
+  "name": "user3",
+  "email": "user3@example.com",
+  "password": "string",
+  "address": "string",
+  "image": "string"
+}
+```
+
+### 11. aa
