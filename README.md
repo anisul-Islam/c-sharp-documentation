@@ -3,7 +3,7 @@
 ## Table of Contents
 
 1. [Basic C#]
-   - [1. Intro to C#](#basic-1-introduction)
+   - [1. Intro to C#](#basic-11-introduction)
       - [Intro to C# language](#11-intro-to-c-sharp-language)  
       - [Setting up the environment](#12-setting-up-the-environment)  
       - [Create and Run First C# Program](#13-create--run-first-console-application)  
@@ -11,21 +11,21 @@
       - [Variables and data types](#15-variables-and-data-types)  
       - [Formatting output](#16-formatting-output---string-concatenation--interpolation)
       - [User Input and Type Conversion](#17-user-input-and-type-conversion)
-   - [2. Operators](#basic-2-operators)  
+   - [2. Operators](#basic-12-operators)  
       - [Arithmetic Operators](#arithmetic-operators)
       - [Assignment Operators](#assignment-operators)
       - [Relational Operators](#relational-operators)
       - [Logical Operators](#logical-operators)
       - [Bitwise Operators](#bitwise-operators)
       - [Unary Operators](#increment-and-decrement-operators)
-   - [3. Control Statement](#basic-3-control-statement)  
+   - [3. Control Statement](#basic-13-control-statement)  
       - [Conditional Control Statement](#31-conditional-control-statement)
       - [Loop Control Statement](#32-loop-control-statement)
       - [FizzBuzz Challenge](#fizzbuzz-challenge)
-   - [4. Methods](#basic-4-methods)
-   - [5. Testing, Debugging and Exception Handling](#basic-5-testing-debugging-and-exception-handling)
-   - [6. Array and String](#basic-6-array-and-string)
-   - [7. Projects](#basic-7-project)
+   - [4. Methods](#basic-14-methods)
+   - [5. Testing, Debugging and Exception Handling](#basic-15-testing-debugging-and-exception-handling)
+   - [6. Array and String](#basic-16-array-and-string)
+   - [7. Projects](#basic-17-project)
       - [Project 1: Simple Calculator](#71-project-simple-calculator-with-conditional-checks)
       - [Project 2: Basic Currency Converter](#72-project-basic-currency-converter)
       - [Project 3: FizzBuzz](#73-fizzbuzz-challenge)
@@ -36,7 +36,7 @@
    - [8. MS Foundational Certification Exam](#basic-8-ms-foundational-certification-exam)
 
 2. [Intermediate C#]
-   - [1. OOP](#intermediate-1-oop)
+   - [1. OOP](#intermediate-21-oop)
       - [Class and Object](#classes-and-objects)
       - [Constructor](#constructor)
       - [readonly, static vs non-static member](#readonly-static-vs-non-static-member)
@@ -47,13 +47,17 @@
       - [4 Pillars of OOP: Abstraction](#4-pillars-of-oop-abstracttion)
       - [Interface and Why Interface?](#interface-and-why-interface)
       - [Interface and Why Interface?](#interface-and-why-interface)
-   - [Intermediate 2. Collections, Generics, LINQ](#intermediate-2-collections-generics-linq)
+   - [Intermediate 2. Collections, Generics, LINQ](#intermediate-22-collections-generics-linq)
 
 3. [Advanced C#]
 
-4. [ASP.NET and REST API]
+4. [ASP.NET]
+   - [ASP.NET and REST API without Database](#advanced-aspnet-and-rest-api)
+   - [ASP.NET and REST API with Database (2024)](#5-aspnet-and-rest-api-with-database-2024)
 
-## Basic 1: Introduction
+![Language purpose](images/language_purpose.jpeg)
+
+## Basic 1.1: Introduction
 
 ![C# Roadmap](images/c-sharp-roadmap.jpg)
 
@@ -766,7 +770,7 @@ In C#, you can check the data type of a variable or object using various methods
   }
   ```
 
-## Basic 2: Operators
+## Basic 1.2: Operators
 
 C# supports various operators that allow you to perform operations on variables and values. Here's a list of some common operators in C#:
 
@@ -1258,7 +1262,7 @@ Bitwise operators are commonly used in scenarios where individual bits represent
 
   This is a concise way to express an `if-else` statement.
 
-## Basic 3: Control Statement
+## Basic 1.3: Control Statement
 
 ### 3.1 Conditional control statement
 
@@ -3215,7 +3219,7 @@ Do you want to perform another calculation? (yes/no): no
 Thank you for using the Basic Calculator! Goodbye.
 ```
 
-## Basic 4: Methods
+## Basic 1.4: Methods
 
 ### Methods
 
@@ -3373,7 +3377,7 @@ This simple calculator project allows students to practice creating a class with
 
 ### Assignment 12: create an area calculator - triangle, rectangle
 
-## Basic 5: Testing, Debugging and Exception Handling
+## Basic 1.5: Testing, Debugging and Exception Handling
 
 - Testing, debugging, and exception handling are all important tasks for software developers.
 - Testing can be categorized into functional and nonfunctional testing, and developers are expected to perform some level of testing.
@@ -3884,7 +3888,7 @@ else
 
 Choosing the right approach depends on the nature of the error you expect and the need to balance performance with error management robustness.
 
-## Basic 6: Array and String
+## Basic 1.6: Array and String
 
 ### Array
 
@@ -4813,7 +4817,7 @@ Here's a brief explanation of each part of the code:
    - Splits the input string into words using `Split` method and then removes empty entries with `StringSplitOptions.RemoveEmptyEntries`.
    - Uses `Length` property to count the number of words.
 
-## Basic 7: Project
+## Basic 1.7: Project
 
 ### 7.1 Project: Simple Calculator with Conditional Checks**
 
@@ -6007,13 +6011,13 @@ class UnitConverterApp
 }
 ```
 
-## Basic 8: [MS Foundational Certification Exam](https://youtu.be/k6xeG29rGnk?si=5euyrUoMYT-v4_8h)
+## Basic 1.8: [MS Foundational Certification Exam](https://youtu.be/k6xeG29rGnk?si=5euyrUoMYT-v4_8h)
 
 ![alt text](image-15.png)
 
 ![alt text](image-16.png)
 
-## Intermediate 1. OOP
+## Intermediate 2.1: OOP
 
 ![alt text](image-4.png)
 
@@ -9593,7 +9597,7 @@ In this example:
 
 This example demonstrates how reflection allows us to inspect and manipulate the members of a type dynamically at runtime.
 
-## Intermediate 2. Collections, Generics, LINQ
+## Intermediate 2.2: Collections, Generics, LINQ
 
 ### struct, enum, tuple, dynamic, object, record, delegate (move them)
 
@@ -12149,7 +12153,7 @@ Deferred execution and immediate execution are two different execution strategie
     // Iterating over the result stored in the List
     ```
 
-## Intermediate 3: Asynchronous Programming
+## Intermediate 2.3: Asynchronous Programming
 
 - Asynchronous programming in C# allows you to execute tasks concurrently, enabling more efficient use of system resources and improving responsiveness in applications. Asynchronous programming is especially useful when dealing with I/O-bound operations such as reading from files, making network requests, or accessing databases, where waiting for the operation to complete would cause blocking.
 
@@ -12907,11 +12911,13 @@ class Test1
 }
 ```
 
-## ASP.NET and REST API
+## Advanced 3.1
+
+## ASP.NET 4.1 and REST API Without DB
 
 ![ASP.NET Core roadmap](images/dotnet-roadmap.jpg)
 
-### 1. Things to learn
+### Things to learn
 
 When learning to build an ASP.NET Web API, it's important to approach it step by step to cover the key concepts thoroughly. Below is a structured learning path to guide you through the process:
 
@@ -13144,7 +13150,7 @@ Once you’re comfortable with the basics, explore advanced topics like:
 
 By following this structured learning path, you'll gradually build up the skills necessary to create a fully functional, secure, and efficient ASP.NET Web API. Start with the basics, get comfortable with CRUD operations and database integration, and then move on to more advanced topics like authentication, versioning, and caching. Happy coding!
 
-### 2. API Basics
+### API Basics
 
 #### What is API? Why do we need API?
 
@@ -13502,16 +13508,16 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
 
 These methods allow RESTful APIs to manage resources effectively, each serving a distinct role in the lifecycle of web resources.
 
-### 3. ASP.NET CRUD web API
+### ASP.NET CRUD web API
 
-#### 3.1 Must Todo while building API
+#### Must Todo while building API
 
 - API Planning
   - CRUD => Create, Read, Update and Delete Resources
   - always plan first what endpoints you want to implement and follow the best practices
   - install REST CLIENT extension for testing api
 
-#### 3.2 Create, Understand and Run the API
+#### Create, Understand and Run the API
 
 - Create and run a web api
   - make sure you have dev kit extension to create and run asp.net app
@@ -13527,7 +13533,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
   - obj file is the intermediate
   - bin is the executeable
 
-#### 3.3 HTTP Request => A simple Get Request
+#### HTTP Request => A simple Get Request
 
 - GET Request, Route Pattern, Request Handler
 
@@ -13542,7 +13548,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
   app.Run();
   ```
 
-#### 3.4 Test the endpoints
+#### Test the endpoints
 
 - You can use postman or VScode extensions such as Thunder client, REST Client
 
@@ -13550,7 +13556,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
   GET http://localhost:5079
   ```
 
-#### 3.5 HTTP Response types
+#### HTTP Response types
 
   ```csharp
   var builder = WebApplication.CreateBuilder(args);
@@ -13614,9 +13620,129 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
   public record UserDto(Guid Id, string Name, int Age);
   ```
 
-#### 3.6 Product API
+#### Minimal API VS Non-Minimal API
 
-##### 1. Concept => HTTP Verbs
+In ASP.NET Core, **Minimal APIs** and **Non-Minimal APIs (i.e., traditional MVC or Web API)** are two different approaches for building web applications or APIs. The choice between the two depends on factors like simplicity, performance, flexibility, and the complexity of the project. Here’s a breakdown of the key differences:
+
+##### 1. **Minimal API:**
+
+A **Minimal API** is a lightweight approach introduced in .NET 6, designed to make building simple APIs easier and faster. It allows you to create an API with minimal setup and code, without the need for the entire MVC or Web API framework structure (like controllers, views, etc.). You define endpoints directly in the `Program.cs` file or using similar, concise code structures.
+
+###### Key Features
+
+- **Fewer Files**: Minimal APIs consolidate routes, configurations, and business logic into fewer files (often a single file like `Program.cs`).
+- **Less Ceremony**: No need for controllers or separate route attributes. Routes are defined inline.
+- **No Need for Dependency on Controllers or MVC**: No need for attributes like `[ApiController]`, `[Route]`, or complex routing configuration.
+- **Faster Startup**: Since there’s less framework overhead, minimal APIs tend to be faster to start.
+- **Great for Small Applications**: Ideal for small apps, microservices, or APIs with a limited number of endpoints.
+
+###### Example of a Minimal API
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+// Define an endpoint directly in Program.cs
+app.MapGet("/hello", () => "Hello World!");
+
+app.MapPost("/create", (Product newProduct) =>
+{
+    // Simulate saving product and return response
+    return Results.Created($"/create/{newProduct.Id}", newProduct);
+});
+
+app.Run();
+```
+
+###### When to Use Minimal API
+
+- You’re building small, lightweight APIs or microservices.
+- You want to minimize project complexity and speed up development.
+- You don't need the full functionality of MVC (e.g., no views, razor pages, etc.).
+- You prioritize performance and simplicity.
+
+---
+
+##### 2. **Non-Minimal API (Traditional MVC or Web API):**
+
+A **Non-Minimal API** refers to the traditional approach of using the ASP.NET Core MVC or Web API framework. In this model, APIs are structured with controllers, actions, attributes, and route mappings. It provides a lot of built-in features and flexibility to build complex applications.
+
+Key Features:
+
+- **Controllers and Actions**: APIs are built using controllers and actions. Each controller manages a group of endpoints.
+- **Attributes for Routing**: Routes are typically defined using attributes like `[HttpGet]`, `[HttpPost]`, `[Route]`, etc.
+- **Middleware**: Full MVC stack with support for middleware, filters, etc.
+- **Model Binding**: Strong support for model binding, data annotations, and validations.
+- **More Configuration**: Offers more flexibility and customization, like custom filters, middlewares, and complex routing setups.
+- **Great for Large Applications**: Ideal for large, complex applications that need structure, separation of concerns, and robust configuration options.
+
+###### Example of a Non-Minimal API
+
+```csharp
+// In the Program.cs
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+var app = builder.Build();
+app.UseRouting();
+app.MapControllers(); // Maps controller actions
+app.Run();
+
+// ProductController.cs
+[ApiController]
+[Route("api/[controller]")]
+public class ProductController : ControllerBase
+{
+    [HttpGet("{id}")]
+    public ActionResult<Product> GetProduct(int id)
+    {
+        var product = GetProductById(id); // Assume this is a method to retrieve the product.
+        if (product == null) return NotFound();
+        return Ok(product);
+    }
+
+    [HttpPost]
+    public IActionResult CreateProduct([FromBody] Product newProduct)
+    {
+        // Create the product and return a response
+        return CreatedAtAction(nameof(GetProduct), new { id = newProduct.Id }, newProduct);
+    }
+}
+```
+
+###### When to Use Non-Minimal API
+
+- You’re building larger, more complex applications where structure and separation of concerns are critical.
+- You need features like Model Binding, Filters, Dependency Injection, and Middleware.
+- You prefer using controllers and want to leverage the full MVC framework.
+- You need to work with views, Razor Pages, or need advanced routing mechanisms.
+
+---
+
+###### **Comparison Table:**
+
+| Feature                  | Minimal API                                      | Non-Minimal API (Traditional MVC or Web API)  |
+|--------------------------|--------------------------------------------------|-----------------------------------------------|
+| **Structure**             | Single file (e.g., `Program.cs`)                 | Separate files for controllers, views, etc.   |
+| **Route Definition**      | Inline route definition                          | Routes defined via attributes or routing config|
+| **Ease of Use**           | Easier for small apps, microservices             | More configuration and structure              |
+| **Startup Time**          | Faster due to fewer dependencies                 | Slightly slower startup                      |
+| **Use of Controllers**    | No controllers, defined inline                   | Uses controllers and actions                  |
+| **Flexibility**           | Limited, best for simpler applications           | Very flexible, ideal for complex applications |
+| **Dependency Injection**  | Supported                                        | Supported                                     |
+| **Suitable for**          | Small, simple APIs, microservices                | Large applications with complex requirements  |
+| **MVC Features**          | Not available                                    | Full MVC features (Model Binding, Views, etc.)|
+| **Customization**         | Limited                                          | Highly customizable                           |
+
+##### **Conclusion:**
+
+- **Minimal APIs** are perfect when you need a fast, simple, and high-performance solution for small to medium-scale APIs or microservices.
+- **Non-Minimal APIs (MVC/Web API)** are better suited for large, enterprise-scale applications that require more structure, flexibility, and a full MVC framework for complex business logic.
+
+Each approach has its place, and choosing between them depends on the size, scope, and complexity of the application you're building.
+
+#### Product API
+
+##### P1. Concept => HTTP Verbs
 
   ```csharp
   var builder = WebApplication.CreateBuilder(args);
@@ -13650,7 +13776,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
 
   ```
 
-##### 2. Concept => DTOs
+##### P2. Concept => DTOs
 
 - To better follow the model separation for create, update, and read operations, we can introduce distinct models (DTOs - Data Transfer Objects) for each operation. This will provide clarity in terms of what data is expected in each operation. Here's how we can restructure the code by creating separate models for:
 
@@ -13658,7 +13784,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
   - UpdateProductDto: Used for updating a product.
   - ProductDto: Used for reading a product (read-only view).
 
-##### 3. Product API => DTOs
+##### P3. Product API => DTOs
 
 - To better follow the model separation for create, update, and read operations, we can introduce distinct models (DTOs - Data Transfer Objects) for each operation. This will provide clarity in terms of what data is expected in each operation. Here's how we can restructure the code by creating separate models for:
 
@@ -13707,7 +13833,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
     }
   ```
 
-##### 4. Product API => POST /products => Create a product
+##### P4. Product API => POST /products => Create a product
 
 - create the post route and controller
 
@@ -13835,7 +13961,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
   }
   ```
 
-##### 5. Product API => GET /products => Get all the products
+##### P5. Product API => GET /products => Get all the products
 
 ```csharp
 app.MapGet("/api/products", () =>
@@ -13859,12 +13985,12 @@ app.MapGet("/api/products", () =>
 GET http://localhost:5079/api/products
 ```
 
-##### 6. Concept => Route parameters
+##### P6. Concept => Route parameters
 
 - Single Route parameters `// GET => /api/products/{id} => Get a product by id`
 - multiple route parameters `// GET => /api/products/{id}/{category} => Get a product by id and category`
 
-##### 7. Product API => GET /products/{id} => Get a single product
+##### P7. Product API => GET /products/{id} => Get a single product
 
   ```csharp
   // GET => /products{id} => Get a product by id
@@ -13893,7 +14019,7 @@ GET http://localhost:5079/api/products
   GET http://localhost:5079/api/products/product_id_here
   ```
 
-##### 8. Concept => Route Constraint
+##### P8. Concept => Route Constraint
 
 - {param:int}, {param:bool}, {param:decimal}, {param:guid}, {param:datetime}, {param:alpha}, {param:minlength(x)}, {param:maxlength(x)}, {param:length(x)}, {param:length(x,y)}, {param:range(x,y)}
 
@@ -14054,7 +14180,7 @@ app.MapGet("/api/products/{id:int}/{price:decimal}", (int id, decimal price) =>
 - URL: `/api/products/abc/19.99` (invalid, returns a 404 due to invalid ID)
 - URL: `/api/products/5/abc` (invalid, returns a 404 due to invalid price)
 
-##### 9. Product API => Add constraint
+##### P9. Product API => Add constraint
 
   ```csharp
     // GET => /products{id} => Get a product by id
@@ -14077,7 +14203,7 @@ app.MapGet("/api/products/{id:int}/{price:decimal}", (int id, decimal price) =>
     });
   ```
 
-##### 10. Product API => GET /products/{id} => Delete a single product
+##### P10. Product API => GET /products/{id} => Delete a single product
 
 ```csharp
 // DELETE: /products/{id} - Delete a product by ID
@@ -14095,7 +14221,7 @@ app.MapDelete("/api/products/{id: guid}", (Guid id) =>
 DELETE http://localhost:5079/api/products/product_id_here
 ```
 
-##### 11. Product API => PUT => /products{id} => update a product by id
+##### P11. Product API => PUT => /products{id} => update a product by id
 
 ```csharp
 // PUT => /products{id} => update a product by id
@@ -14123,7 +14249,7 @@ Content-Type: application/json
 }
 ```
 
-##### 12. Product API => Add Basic Validation
+##### P12. Product API => Add Basic Validation
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -14479,7 +14605,7 @@ bool IsValidEmail(string email)
 
 This assignment will help students practice building CRUD operations using ASP.NET Core Minimal APIs, learn to work with `Guid` for unique identifiers, and understand how to validate and manage data effectively in a web application.
 
-##### 13. Concept => MVC Pattern
+##### P13. Concept => MVC Pattern
 
 The MVC (Model-View-Controller) pattern is a design pattern used in ASP.NET for developing web applications. It separates an application into three interconnected components, each with its distinct responsibilities. This separation of concerns allows for a more maintainable, scalable, and testable codebase.
 
@@ -14488,7 +14614,7 @@ The MVC (Model-View-Controller) pattern is a design pattern used in ASP.NET for 
   - Testability: Each component can be tested independently.
   - Scalability: The application can grow without becoming overly complex because responsibilities are divided among different components.
 
-##### 14. Product API => Add MVC Pattern
+##### P14. Product API => Add MVC Pattern
 
 - To refactor the product API using the MVC pattern, we'll divide it into Model, Controller, and View layers. Although in this case, the API doesn't have a traditional "View" layer because it returns JSON, we'll follow the pattern of separating the responsibilities of each component. Here’s how to separate the code:
 
@@ -14689,11 +14815,11 @@ public class ProductsController : ControllerBase
 
   ```
 
-##### 15. Concept => Utilities
+##### P15. Concept => Utilities
 
 - Utilities: We will create utility methods to handle common tasks, like validating product names and prices.
 
-##### 16. Product API => Add Utilities
+##### P16. Product API => Add Utilities
 
 - Folder Structure
   - Utilities
@@ -14850,7 +14976,7 @@ public class ProductsController : ControllerBase
 }
 ```
 
-##### 17. Concept => Services
+##### P17. Concept => Services
 
 - Services: We will move the business logic (e.g., product creation, validation, etc.) to a service layer. This will help keep the controllers clean and focus on handling HTTP requests.
 - Utilities: We will create utility methods to handle common tasks, like validating product names and prices.
@@ -15085,9 +15211,9 @@ app.Run();
 
 ```
 
-##### 18. Concept => interface
+##### P18. Concept => interface
 
-##### 19. Product => Add interface
+##### P19. Product => Add interface
 
 ```csharp
 public interface IProductService
@@ -15307,7 +15433,7 @@ app.MapControllers();
 app.Run();
 ```
 
-##### 20. Concept => Query Parameters
+##### P20. Concept => Query Parameters
 
 In an **ASP.NET Core** controller, you can retrieve query parameters directly using the `HttpRequest` object, or by defining them as method parameters in your controller action. Here are a few ways to get query parameters in a controller.
 
@@ -15402,7 +15528,7 @@ In this case, **`ProductFilter`** will automatically map query parameters like `
 - Use `[FromQuery]` for more explicit parameter binding or to handle complex query string values.
 - For complex models, create a class and bind it using `[FromQuery]` to make the code more organized and easier to maintain.
 
-##### 21. Product API => Add Pagination
+##### P21. Product API => Add Pagination
 
 ```csharp
 // GET http://localhost:5079/api/products?pageNumber=1&pageSize=2
@@ -15498,7 +15624,7 @@ namespace asp_ecommerce_web_api.Models
 
 ```
 
-##### 22. Product API => Search Product
+##### P22. Product API => Search Product
 
 ```csharp
 // Model
@@ -15571,7 +15697,7 @@ To search products by name:
 GET /api/products?searchQuery=Laptop&pageNumber=1&pageSize=5
 ```
 
-##### 23. Product API => Sorting by Name, Price, CreatedAt
+##### P23. Product API => Sorting by Name, Price, CreatedAt
 
 ```csharp
 // Model
@@ -15679,11 +15805,11 @@ Sort by created date descending:
 GET /api/products?sortBy=date&sortOrder=desc
 ```
 
-##### 24. Concept => Handle the parameters more cleaner way
+##### P24. Concept => Handle the parameters more cleaner way
 
 Handling method parameters in a cleaner and more maintainable way can be achieved by encapsulating them into a dedicated class or object. This approach simplifies method signatures, improves readability, and makes it easier to manage and extend parameters.
 
-##### 25. Product API => Handle the parameters more cleaner way
+##### P25. Product API => Handle the parameters more cleaner way
 
 ```csharp
 // Create the following class in a model or DTOs folder (best thing to do) or Requests or Filter or Queries Folder
@@ -15775,7 +15901,7 @@ public class PagedResult<T>
 
 ```
 
-##### 26. Concept => Validation with Data Annotations Validators
+##### P26. Concept => Validation with Data Annotations Validators
 
 To add comprehensive data annotations to your DTOs in ASP.NET Core, we can use attributes that are part of the System.ComponentModel.DataAnnotations namespace. These annotations are primarily used for validation, which makes your code more robust by ensuring that incoming data follows certain rules.
 
@@ -15784,7 +15910,7 @@ To add comprehensive data annotations to your DTOs in ASP.NET Core, we can use a
 - add the data annotation to the DTOs
 <!-- - add the nuget package (MinimalApis.Extensions) from the package manager (add the vsextension) -->
 
-##### 27. Product API => Add Input Validation to the DTOs
+##### P27. Product API => Add Input Validation to the DTOs
 
 ```csharp
 
@@ -15888,7 +16014,7 @@ public class User
 }
 ```
 
-##### 28. Concept => Exception Handling
+##### P28. Concept => Exception Handling
 
 ```csharp
 // Controllers/UserController.cs
@@ -15915,7 +16041,7 @@ public class User
         }
 ```
 
-##### 29 Product API => Add Exception Handling
+##### P29. Product API => Add Exception Handling
 
 ```csharp
 // Service.cs
@@ -16004,7 +16130,7 @@ public IActionResult GetAllProducts([FromQuery] ProductQueryParameters productQu
 
 ```
 
-##### 30 Concept => Centralized Error Response
+##### P30 Concept => Centralized Error Response
 
 ```csharp
 public class ApiResponse<T>
@@ -16174,7 +16300,7 @@ public class ProductService : IProductService
 }
 ```
 
-##### 30. Concept => Asynchronous
+##### P31. Concept => Asynchronous
 
  Asycnhornous improves scalability by freeing up threads for other requests while waiting for IO-bound operations to complete.
 
@@ -16303,9 +16429,9 @@ public async Task<PagedResult<ProductDto>> GetAllProductsAsync(ProductQueryParam
 
 This conversion improves scalability by freeing up threads for other requests while waiting for IO-bound operations to complete.
 
-##### 31. Product API => Asynchronous
+##### P32. Product API => Asynchronous
 
-##### Category API => Create the Category DTOs
+#### Category API => Create the Category DTOs
 
 ##### Category API => POST /categories => Create a category
 
@@ -16858,7 +16984,7 @@ public class Category
 }
 ```
 
-#### Category Service
+#### C1: Category Service
 
 ```csharp
 using api.Helpers;
@@ -16892,7 +17018,7 @@ public class CategoryService
 }
 ```
 
-#### Category Controller
+#### C2: Category Controller
 
 ```csharp
 using System;
@@ -16916,19 +17042,19 @@ namespace api.Controllers
 }
 ```
 
-#### GET /api/categories -> Get All Categories
+#### C3: GET /api/categories -> Get All Categories
 
 ```csharp
 
 ```
 
-#### GET /api/categories/{categoryId} -> Get Single Categories
+#### C4: GET /api/categories/{categoryId} -> Get Single Categories
 
 ```csharp
 
 ```
 
-#### How to Create Slug
+#### C5: How to Create Slug
 
 ```csharp
 using System;
@@ -16947,25 +17073,25 @@ namespace api.Helpers
 }
 ```
 
-#### POST /api/categories -> Create Single Categories
+#### C6: POST /api/categories -> Create Single Categories
 
 ```csharp
 
 ```
 
-#### PUT /api/categories/{categoryId} -> Update Single Categories
+#### C7: PUT /api/categories/{categoryId} -> Update Single Categories
 
 ```csharp
 
 ```
 
-#### DELETE /api/categories/{categoryId} -> Delete Single Categories
+#### C8: DELETE /api/categories/{categoryId} -> Delete Single Categories
 
 ```csharp
 
 ```
 
-### 5.11 Product API
+### Product API (UPDATE THIS PART WITH EXISTING ONE)
 
 #### Product Model
 
@@ -17175,24 +17301,6 @@ public async Task<IActionResult> GetProduct(string productId)
 }
 ```
 
-#### POST /api/products -> Create Single Product
-
-```csharp
- 
-```
-
-#### PUT /api/products/{categoryId} -> Update Single Product
-
-```csharp
-
-```
-
-#### DELETE /api/products/{categoryId} -> Delete Single Product
-
-```csharp
-
-```
-
 ### Populating Data from another Model
 
 ```csharp
@@ -17216,41 +17324,41 @@ public async Task<IActionResult> GetProduct(string productId)
     }
 ```
 
-### 4.11 Order API
+### Order API
 
-#### Order Model
+#### OR1: Order Model
 
-#### GET /api/orders -> Get All orders
-
-```csharp
-
-```
-
-#### GET /api/orders/{categoryId} -> Get Single orders
+#### OR2: GET /api/orders -> Get All orders
 
 ```csharp
 
 ```
 
-#### POST /api/orders -> Create Single orders
+#### OR3: GET /api/orders/{categoryId} -> Get Single orders
 
 ```csharp
 
 ```
 
-#### PUT /api/orders/{categoryId} -> Update Single orders
+#### OR4: POST /api/orders -> Create Single orders
 
 ```csharp
 
 ```
 
-#### DELETE /api/orders/{categoryId} -> Delete Single orders
+#### OR5: PUT /api/orders/{categoryId} -> Update Single orders
 
 ```csharp
 
 ```
 
-### 4.12 Adding Database
+#### OR6: DELETE /api/orders/{categoryId} -> Delete Single orders
+
+```csharp
+
+```
+
+### Adding Database (UPDATE THIS PART WITH THE BOTTOM RECENT ONE)
 
 #### [.NET Framework - Entity Framework core](https://learn.microsoft.com/en-us/ef/ef6/fundamentals/install)
 
@@ -17434,7 +17542,8 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 To undo this action, use 'ef migrations remove'
 ```
-Certainly! Here's a list of commonly used Entity Framework Core migration commands:
+
+Here's a list of commonly used Entity Framework Core migration commands:
 
 1. **Adding a Migration**: Create a new migration based on the changes to your model.
 
@@ -18139,12 +18248,6 @@ namespace api.EntityFramework
 }
 ```
 
-#### 2.3 Adjust the context
-
-```csharp
-
-```
-
 #### 2.4 Create The CategoryService
 
 ```csharp
@@ -18636,7 +18739,7 @@ namespace api.Controllers
 
 ```
 
-#### Add asynchronous everywhere 
+#### Add asynchronous everywhere
 
 ```csharp
 using System;
@@ -19020,47 +19123,252 @@ DTOs can be very similar to view models or domain models, but the key distinctio
 
 #### Many-To-Many Relationship
 
-## ASP.NET with Database (2024)
+## 5. ASP.NET and REST API with Database (2024)
 
-### 1. Create webapi and Install dependencies for the project
+### 5.1 Create and Run the web api
 
 - Create a webapi project: `dotnet new console -o ecommerce-api`
+- Run the webapi project: `dotnet watch`
+- Stop opening the tab everytime => Properties folder => launchSettings.json => profiles => launchBrowser => false
+- Add .gitignore => [check this doc](https://github.com/anisul-Islam/dotnet-gitignore/blob/main/README.md)
+- Modify the startup file
 
-```csharp
-// Program.cs
-var builder = WebApplication.CreateBuilder(args);
+  ```csharp
+  // Program.cs
+  var builder = WebApplication.CreateBuilder(args);
 
+  builder.Services.AddEndpointsApiExplorer();
+  builder.Services.AddSwaggerGen();
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+  var app = builder.Build();
 
-var app = builder.Build();
+  // Configure the HTTP request pipeline.
+  if (app.Environment.IsDevelopment())
+  {
+      app.UseSwagger();
+      app.UseSwaggerUI();
+  }
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-
-app.MapGet("/", () =>
-{
-
-    return new { Success = true, Message = "api is running fine" };
-})
-.WithOpenApi();
-
-app.Run();
+  app.UseHttpsRedirection();
 
 
-```
+  app.MapGet("/", () =>
+  {
+      var response = new
+      {
+          StatusCode = 200,
+          Message = "Api is running fine"
+      };
+      return Results.Ok(response);
+  })
+  .WithOpenApi();
+
+  app.Run();
+  ```
 
 To set up your ASP.NET Core project with database connectivity using Entity Framework Core (EF Core) and PostgreSQL, you’ll need the following dependencies.
 
-#### Dependencies for Database Connectivity and EF Core
+### 5.2 Concept: What is Entity and EF Core?
+
+#### EFCore
+
+- Entity Framework Core (EF Core) is a modern, open-source, object-relational mapping (ORM) framework for .NET applications, developed by Microsoft.
+- It allows developers to interact with databases using .NET objects and eliminates the need to write most of the raw SQL queries.
+- EF Core enables developers to work with databases using C# classes (referred to as entities), and it handles the conversion of the data between the database and the application automatically.
+
+#### What is an Entity?
+
+In the context of databases and Entity Framework Core (EF Core), an entity refers to a class that represents a table in a database. Each instance of the entity class corresponds to a row in the table, and the properties of the entity represent the columns of the table.
+
+#### Alternative of EFCore
+
+Apart from **Entity Framework Core (EF Core)**, there are several other ways to connect to a database in .NET applications. Some of these methods provide more control and flexibility over database operations. Below are some common alternatives to EF Core for database connectivity in .NET:
+
+##### 1. **ADO.NET (ActiveX Data Objects)**
+
+- **ADO.NET** is a low-level, foundational data access technology for .NET. It provides a set of classes for accessing databases, executing SQL queries, and retrieving results. ADO.NET offers full control over database operations and is often used when developers need high performance or more direct control over SQL execution.
+
+   **Example:**
+
+   ```csharp
+   using (SqlConnection connection = new SqlConnection("YourConnectionString"))
+   {
+       SqlCommand command = new SqlCommand("SELECT * FROM Products", connection);
+       connection.Open();
+       SqlDataReader reader = command.ExecuteReader();
+       while (reader.Read())
+       {
+           Console.WriteLine($"{reader["Name"]} - {reader["Price"]}");
+       }
+   }
+   ```
+
+   **Advantages:**
+
+- Full control over SQL and database operations.
+- Lightweight and high-performance for large-scale operations.
+
+   **Disadvantages:**
+
+- Requires manual handling of SQL queries, parameters, and result sets.
+- Higher risk of SQL injection if not handled properly.
+
+##### 2. **Dapper**
+
+- **Dapper** is a popular micro ORM (Object-Relational Mapper) that simplifies data access by mapping objects to database tables, similar to EF Core, but with less abstraction. Dapper is lightweight and faster than EF Core because it doesn't do as much under the hood.
+
+   **Example:**
+
+   ```csharp
+   using (var connection = new SqlConnection("YourConnectionString"))
+   {
+       var products = connection.Query<Product>("SELECT * FROM Products").ToList();
+       foreach (var product in products)
+       {
+           Console.WriteLine($"{product.Name} - {product.Price}");
+       }
+   }
+   ```
+
+   **Advantages:**
+
+- Lightweight and fast compared to full ORMs like EF Core.
+- Simple to use and integrate with existing SQL queries.
+- Less overhead, making it ideal for performance-sensitive applications.
+
+   **Disadvantages:**
+
+- Lacks some advanced features like change tracking and migrations found in EF Core.
+- Requires more manual SQL compared to EF Core.
+
+##### 3. **NHibernate**
+
+- **NHibernate** is a full-featured ORM for .NET, similar to EF Core. It provides rich functionality for mapping objects to database tables, but it tends to be more complex than EF Core.
+
+   **Example:**
+
+   ```csharp
+   using (ISession session = sessionFactory.OpenSession())
+   {
+       using (ITransaction transaction = session.BeginTransaction())
+       {
+           var products = session.Query<Product>().ToList();
+           foreach (var product in products)
+           {
+               Console.WriteLine($"{product.Name} - {product.Price}");
+           }
+           transaction.Commit();
+       }
+   }
+   ```
+
+   **Advantages:**
+
+- Highly customizable and powerful ORM.
+- Supports advanced mapping features, caching, and lazy loading.
+
+   **Disadvantages:**
+
+- Complex to set up and use compared to simpler tools like Dapper or ADO.NET.
+- Slower performance than micro ORMs like Dapper.
+
+##### 4. **LINQ to SQL**
+
+- **LINQ to SQL** is an ORM that was introduced in .NET 3.5. It provides a way to map classes to SQL Server tables using LINQ queries, but it's limited to SQL Server. LINQ to SQL is simpler than EF Core but also more limited in functionality.
+
+   **Example:**
+
+   ```csharp
+   using (var db = new DataContext("YourConnectionString"))
+   {
+       var products = db.GetTable<Product>().ToList();
+       foreach (var product in products)
+       {
+           Console.WriteLine($"{product.Name} - {product.Price}");
+       }
+   }
+   ```
+
+   **Advantages:**
+
+- Simple and easy-to-use ORM.
+- Integrates well with LINQ queries.
+
+   **Disadvantages:**
+
+- Limited to SQL Server.
+- Not as feature-rich as EF Core or NHibernate.
+
+##### 5. **Micro ORMs (e.g., PetaPoco, ServiceStack.OrmLite)**
+
+- Micro ORMs are lightweight data access libraries that provide object mapping without the overhead of full ORMs like EF Core or NHibernate. They are designed to provide basic functionality (CRUD operations) without compromising performance.
+
+   **PetaPoco Example:**
+
+   ```csharp
+   using (var db = new Database("YourConnectionString"))
+   {
+       var products = db.Query<Product>("SELECT * FROM Products").ToList();
+       foreach (var product in products)
+       {
+           Console.WriteLine($"{product.Name} - {product.Price}");
+       }
+   }
+   ```
+
+   **Advantages:**
+
+- Lightweight and fast.
+- Less complex than full ORMs.
+
+   **Disadvantages:**
+
+- Fewer features than full ORMs (no change tracking, migrations, etc.).
+
+##### 6. **Raw SQL Queries**
+
+- You can execute raw SQL queries directly in .NET without using any ORM. This gives full control over the database but requires manual query building, parameterization, and result mapping.
+
+   **Example:**
+
+   ```csharp
+   using (SqlConnection connection = new SqlConnection("YourConnectionString"))
+   {
+       SqlCommand command = new SqlCommand("SELECT * FROM Products WHERE Price > @price", connection);
+       command.Parameters.AddWithValue("@price", 100);
+       connection.Open();
+       SqlDataReader reader = command.ExecuteReader();
+       while (reader.Read())
+       {
+           Console.WriteLine($"{reader["Name"]} - {reader["Price"]}");
+       }
+   }
+   ```
+
+   **Advantages:**
+
+- Full control over SQL queries and database operations.
+- No abstraction, making it ideal for complex queries.
+
+   **Disadvantages:**
+
+- Higher risk of errors and security issues (e.g., SQL injection) if not handled correctly.
+- Manual mapping of results to objects.
+
+### 5.3 Dependencies for Database Connectivity and EF Core
+
+Here are all the installation commands you might need for the setup:
+
+```bash
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet tool install --global dotnet-ef
+
+dotnet add package Microsoft.AspNetCore.OData --version 8.0.0-preview3
+dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.0.0-preview.6.21355.2
+dotnet add package Swashbuckle.AspNetCore --version 6.2.3
+```
 
 1. **`Npgsql.EntityFrameworkCore.PostgreSQL`**:
    - Provides PostgreSQL database provider for EF Core, enabling you to interact with PostgreSQL databases.
@@ -19130,74 +19438,37 @@ To set up your ASP.NET Core project with database connectivity using Entity Fram
      dotnet tool install --global dotnet-ef
      ```
 
-#### Final Commands
+### 5.4 Connect Database
 
-Here are all the installation commands you might need for the setup:
+#### Concept: What is DbContext?
 
-```bash
-dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet add package Microsoft.EntityFrameworkCore.Tools
-dotnet tool install --global dotnet-ef
-dotnet add package Microsoft.AspNetCore.OData --version 8.0.0-preview3
-dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.0.0-preview.6.21355.2
-dotnet add package Swashbuckle.AspNetCore --version 6.2.3
-```
+- What is Context? Why do we need Context?
 
-### 2. Create the User Entity
+  In Entity Framework Core (EF Core), a DbContext is a crucial component because it acts as a bridge between your application and the database. It represents a session with the database and is used to query and save data. Creating a DbContext is necessary for several reasons:
 
-- Create the EFCore folder and create User Entity
+  1. Managing Database Connections:
+  The DbContext manages the connection to the database. It opens and closes the connection as needed when querying or saving data. You don't have to manually handle database connections in your code, as the DbContext does it for you, making the process simpler and less error-prone.
 
-```csharp
-// EFCore/User
+  2. Mapping Entities to Database Tables (Object Relational Mapper = ORM):
+  The DbContext allows you to define how your C# classes (entities) map to database tables, columns, and relationships. This mapping is essential because Entity Framework Core is an Object-Relational Mapper (ORM), which means it converts C# objects into database records and vice versa.
 
-public class User
-{
-    public Guid UserId { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
-    public string? Address { get; set; }
-    public string? Image { get; set; }
-    public bool IsAdmin { get; set; }
-    public bool IsBanned { get; set; }
-    public DateTime CreatedAt { get; set; } 
-}
-```
+#### Create the DbContext
 
-### 3. Create the DBContext
+  ```csharp
+  // EFCore/AppDbContext.cs
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
 
-```csharp
-// EFCore/AppDBContext.cs
-namespace ecommerce_api.EFCore
-{
-    public class AppDBContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options) {}
-
-        public DbSet<User> Users { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.HasKey(u => u.UserId); // Primary Key configuration
-                entity.Property(u => u.UserId).HasDefaultValueSql("uuid_generate_v4()"); // Generate UUID for new records
-                entity.Property(u => u.Name).IsRequired().HasMaxLength(100);
-                entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
-                entity.HasIndex(u => u.Email).IsUnique();
-                entity.Property(u => u.Password).IsRequired();
-                entity.Property(u => u.Address).HasMaxLength(255);
-                entity.Property(u => u.IsAdmin).HasDefaultValue(false);
-                entity.Property(u => u.IsBanned).HasDefaultValue(false);
-                entity.Property(u => u.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-            });
-        }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     }
-}
-```
+  ```
 
-### 4. Configure the Database
+#### Configure the Database
 
 ```csharp
 // appsettings.json
@@ -19210,7 +19481,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 ```
 
-### 5. Run the migration scripts
+#### Migration scripts
 
 - Install Entity Framework Core Tools: Ensure that you have installed the Entity Framework Core Tools globally. You can do this by running the following command: dotnet tool install --global dotnet-ef
 
@@ -19218,119 +19489,166 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 # Generate the migration
 dotnet ef migrations add InitialCreate
 
-# Modify the migration file (as explained earlier) to include the following line inside the Up() method:
-migrationBuilder.Sql("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";");
-
 # Run the Migration and Update the Database:
 dotnet ef database update; 
+
+# if you wish to undo this action use 
+dotnet ef migrations remove
 ```
+
+Here's a list of commonly used Entity Framework Core migration commands:
+
+1. **Adding a Migration**: Create a new migration based on the changes to your model.
+
+   ```
+   dotnet ef migrations add <NameOfMigration>
+   ```
+
+   Replace `<NameOfMigration>` with a descriptive name for your migration.
+
+2. **Applying Migrations**: Update the database to apply pending migrations.
+
+   ```
+   dotnet ef database update
+   ```
+
+3. **Reverting Migrations**: Rollback the last applied migration.
+
+   ```
+   dotnet ef migrations remove
+   ```
+
+4. **Applying Migrations to a Specific Version**: Update the database to a specific migration.
+
+   ```
+   dotnet ef database update <TargetMigration>
+   ```
+
+   Replace `<TargetMigration>` with the name of the migration you want to update to.
+
+5. **Generating a Script**: Generate a SQL script for a migration without applying it to the database.
+
+   ```
+   dotnet ef migrations script
+   ```
+
+6. **Applying Migrations for a Specific Environment**: Update the database for a specific environment (e.g., Development, Staging, Production).
+
+   ```
+   dotnet ef database update --environment <EnvironmentName>
+   ```
+
+7. **Applying Migrations for a Specific DbContext**: Update the database for a specific DbContext.
+
+   ```
+   dotnet ef database update --context <DbContextName>
+   ```
+
+8. **Applying Migrations for a Specific Project**: Update the database for a specific project within a solution.
+
+   ```
+   dotnet ef database update --project <ProjectName>
+   ```
+
+9. **Generating a Migration for a Specific DbContext**: Create a migration for a specific DbContext.
+
+   ```
+   dotnet ef migrations add <NameOfMigration> --context <DbContextName>
+   ```
+
+10. **Generating a Migration for a Specific Project**: Create a migration for a specific project within a solution.
+
+   ```
+   dotnet ef migrations add <NameOfMigration> --project <ProjectName>
+   ```
+
+#### Add UUID
 
 - you can setup it in pgadmin or in the terminal `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`
 
-### 6. Create User Service
+### 5.5 User API
+
+#### 5.5.1 Create the User Entity
+
+- What is an Entity?
+
+In the context of databases and Entity Framework Core (EF Core), an entity refers to a class that represents a table in a database. Each instance of the entity class corresponds to a row in the table, and the properties of the entity represent the columns of the table.
 
 ```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ecommerce_api.EFCore;
 
-namespace ecommerce_api.Services
+public class User
 {
-    public class UserService
-    {
-        private readonly AppDBContext _appDbcontext;
-
-        public UserService(AppDBContext context)
-        {
-            _appDbcontext = context;
-        }
-    }
+      public Guid UserId { get; set; }
+      public string UserName { get; set; } = string.Empty;
+      public string Email { get; set; } = string.Empty;
+      public string Password { get; set; } = string.Empty;
+      public string? Address { get; set; }
+      public string? Image { get; set; }
+      public bool IsAdmin { get; set; } = false;
+      public bool IsBanned { get; set; } = false;
+      public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
 ```
 
-### 7. Create User Controller
+#### 5.5.2 Create the User Table in Database
 
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ecommerce_api.Services;
-using Microsoft.AspNetCore.Mvc;
+- Modify the DbContext
 
-namespace ecommerce_api.Controllers
-{
-
-    [ApiController]
-    [Route("api/users")]
-    public class UserController : ControllerBase
+  ```csharp
+  // EFCore/AppDbContext.cs
+    public class AppDBContext : DbContext
     {
-        private readonly UserService _userService;
-
-        public UserController(UserService userService)
-        {
-            _userService = userService;
-        }
-
+        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options) {}
     }
-}
-```
 
-### 8. Add Services and controllers in Startup file
+    public DbSet<User> Users { get; set; } // DbSet will convert LINQ TO SQL Queries
+  ```
 
-```csharp
-// Program.cs
-builder.Services.AddScoped<UserService>();
-// Program.cs
-builder.Services.AddControllers();
-app.MapControllers();
-```
+- run the migration script to change the schema
 
-### 9. GET users => /api/users
+  ```shell
+  dotnet ef migrations add UserTable
+  dotnet ef database update
+  ```
 
-```csharp
-// Service
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ecommerce_api.EFCore;
-using ecommerce_api.Models;
-using Microsoft.EntityFrameworkCore;
+#### 5.5.3 Setup the Service and Controller for User (MVC Pattern)
 
-namespace ecommerce_api.Services
-{
-    public class UserService
+- Create User Service
+
+  ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using ecommerce_api.EFCore;
+
+
+   public class UserService
     {
-        private readonly AppDBContext _appDbcontext;
+        private readonly AppDbContext _appDbContext;
 
-        public UserService(AppDBContext context)
-        {
-            _appDbcontext = context;
-        }
-
-        public async Task<List<User>> GetAllUsersAsync()
-        {
-            return await _appDbcontext.Users.ToListAsync();
+        public UserService(AppDbContext appDbContext){
+            _appDbContext = appDbContext;
         }
     }
-}
+  ```
 
-// Controller
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using review_ecommerce_api.Services;
+- Create User Controller
 
-namespace review_ecommerce_api.Controllers
-{
-    [ApiController]
-    [Route("/api/users")]
+  ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using ecommerce_api.Services;
+    using Microsoft.AspNetCore.Mvc;
+
+
+    [ApiController, Route("/api/users")]
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
@@ -19338,66 +19656,36 @@ namespace review_ecommerce_api.Controllers
         {
             _userService = userService;
         }
-
-        [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
-        {
-            var users = await _userService.GetAllUsersAsync();
-            var response = new { StatusCode = 200, Message = "Users are returned successfully", Users = users };
-            return Ok(response);
-        }
     }
-}
-```
+  ```
 
-- test the endpoint
+- Register Services and controllers in Startup file
 
-### 10. Add Exception Handling
+  ```csharp
+  // Program.cs
+  builder.Services.AddScoped<UserService>();
+  // Program.cs
+  builder.Services.AddControllers();
+  app.MapControllers();
+  ```
 
-```csharp
-// Add excaption handling for service
- public async Task<List<User>> GetAllUsersAsync()
-  {
-      try
-      {
-          return await _appDbContext.Users.ToListAsync();
-      }
-      catch (Exception ex)
-      {
-          throw new ApplicationException("An error occured while fetching data from the db. " + ex.Message);
-      }
-  }
+#### 5.5.4 POST /api/users => Create an user
 
-// Controller
+- workflow of MVC
 
- [HttpGet]
-  public async Task<IActionResult> GetAllUsers()
-  {
-      try
-      {
-          var users = await _userService.GetAllUsersAsync();
-          var response = new { Message = "Users are returned successfully", Users = users };
-          return Ok(response);
-      }
-      catch (ApplicationException ex)
-      {
-          return StatusCode(500, ex.Message);
-      }
-      catch (Exception ex)
-      {
-          return StatusCode(500, ex.Message);
-      }
-  }
-```
+![alt text](image-17.png)
 
-### 11. Create User => /api/users
-
-- Create the CreateUserDto first
+- Create a DTO to get the necessary data to create an user
 
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 public class CreateUserDto
 {
-    public string Name { get; set; } = string.Empty;
+    public string UserName { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
     public string? Address { get; set; }
@@ -19405,112 +19693,490 @@ public class CreateUserDto
 }
 ```
 
-- Create the Service 
+- Create a Controller to handle request for creating an user
 
 ```csharp
-public async Task<User> CreateUserAsync(CreateUserDto newUser)
-  {
-      try
-      {
-          var user = new User
-          {
-              Name = newUser.Name,
-              Email = newUser.Email,
-              Password = newUser.Password,
-              Image = newUser.Image ?? string.Empty,  // Default to empty string if null
-              Address = newUser.Address ?? string.Empty, //
-          };
-
-          await _appDbContext.Users.AddAsync(user);
-          await _appDbContext.SaveChangesAsync();
-          return user;
-      }
-      catch (Exception ex)
-      {
-          throw new ApplicationException("An error occured while creating user in the db. " + ex.Message);
-      }
-  }
-
+[HttpPost]
+public async Task<IActionResult> CreateUser([FromBody] CreateUserDto newUser)
+{
+    var user = await _userService.CreateUserAsync(newUser);
+    var response = new { Message = "An user created successfully", User = user };
+    return Created($"/api/users/{user.UserId}", response);
+}
 ```
 
-- Create the Controller
+- Create a Service to store the user in DB
 
 ```csharp
-  [HttpPost]
-    public async Task<IActionResult> CreateUser([FromBody] CreateUserDto newUser)
+public async Task<User> CreateUserAsync(CreateUserDto newUserDto)
+{
+    // Hash the password using a library like BCrypt.Net
+    // install => dotnet add package BCrypt.Net-Next
+    var hashedPassword = BCrypt.Net.BCrypt.HashPassword(newUserDto.Password);
+
+    var user = new User
     {
+        UserId = Guid.NewGuid(),
+        UserName = newUserDto.UserName,
+        Email = newUserDto.Email,
+        Password = hashedPassword, // Store hashed password
+        Address = newUserDto.Address,
+        Image = newUserDto.Image
+    };
+
+    await _appDbContext.Users.AddAsync(user);
+    await _appDbContext.SaveChangesAsync();
+    return user;
+}
+```
+
+#### 5.5.5 Concept: Data Validation With Data Annotation vs Fluent API
+
+Data Annotations and Fluent API are both used in Entity Framework Core (EF Core) to configure entity classes and their properties, but they work differently in terms of how they handle validation, configuration, and exception handling.
+
+##### 1. **Data Annotations:**
+
+- **Purpose:** Data Annotations are declarative, attribute-based configurations applied directly to your model classes and properties. They provide a simple way to apply rules and validations.
+- **How it works:** Data Annotations are placed directly on the properties of the entity class. They handle validation before the database interaction, and if the data doesn't meet the criteria, an exception will be raised when saving the changes to the database.
+- **Example:**
+
+     ```csharp
+    public class User
+
+    {
+        [Required]
+        [EmailAddress]
+        [StringLength(100)]
+        [Column(TypeName = "varchar(100)")]
+        public string Email { get; set; }
+    }
+     ```
+
+- **Exception Handling in Data Annotations:**
+  - **Where:** Validation is done before changes are sent to the database (client-side). If an entity violates a rule, `ValidationException` will be raised before interacting with the database, and no database query will be executed.
+  - **Exception Example:**
+
+       ```csharp
+        var user = new User { Email = "not-an-email"}; 
+        _context.Users.Add(user);
         try
         {
-            // Add a null check to ensure data was passed
-            if (newUser == null)
+            _context.SaveChanges();
+        }
+        catch (ValidationException ex)
+        {
+            Console.WriteLine(ex.Message); // Handles Data Annotation validation failure
+        }
+       ```
+
+- **Advantages:**
+  - Easier to use, especially for simple validations like `Required`, `StringLength`, `Range`, etc.
+  - Validation occurs at the model level, simplifying form validations.
+
+- **Disadvantages:**
+  - Limited flexibility for more complex configurations.
+  - Harder to reuse across different contexts and databases.
+
+##### 2. **Fluent API:**
+
+- **Purpose:** Fluent API is a more flexible and comprehensive way to configure EF Core models. It's ideal for more complex configurations that cannot be handled by Data Annotations.
+- **How it works:** Fluent API is defined in the `OnModelCreating` method of the `DbContext` class, providing a more granular control over how entities are mapped to the database schema.
+- **Example:**
+
+     ```csharp
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+        {
+            modelBuilder.Entity<User>(entity =>
             {
-                return BadRequest("User data is required.");
-            }
-            
-            var user = await _userService.CreateUserAsync(newUser);
-            var response = new { Message = "Users are returned successfully", User = user};
-            return Created($"/api/users/{user.UserId}",response);
+                // Configuring the Email property using Fluent API
+                entity.Property(e => e.Email)
+                    .IsRequired() // Equivalent to [Required]
+                    .HasMaxLength(100) // Equivalent to [StringLength(100)]
+                    .HasColumnType("varchar(100)") // Equivalent to [Column(TypeName = "varchar(100)")]
+                    .HasAnnotation("EmailAddress", true); // Email validation, this can be custom and part of validation logic.
+            });
         }
-        catch (ApplicationException ex)
-        {
-            return StatusCode(500, ex.Message);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, ex.Message);
-        }
-    }
-```
+     ```
 
-- test the endpoint
+- **Exception Handling in Fluent API:**
+  - **Where:** Fluent API configurations are enforced when EF Core interacts with the database (server-side). Unlike Data Annotations, these configurations apply at the database level, and exceptions such as `DbUpdateException` will be thrown during `SaveChanges()` when the rules are violated.
+  - **Exception Example:**
+
+       ```csharp
+       try
+       {
+           _context.SaveChanges();
+       }
+       catch (DbUpdateException ex)
+       {
+           Console.WriteLine(ex.Message); // Handles Fluent API rule violations (like duplicate key, etc.)
+       }
+       ```
+
+- **Advantages:**
+  - More flexible and powerful for handling complex relationships, unique constraints, table splitting, and other advanced configurations.
+  - Fluent API configurations are centralized in one place (inside `OnModelCreating`), making it easier to manage changes across the entire application.
+
+- **Disadvantages:**
+  - More verbose than Data Annotations for simple cases.
+  - May require more understanding of EF Core internals to handle complex scenarios.
+
+##### **Key Differences:**
+
+| **Aspect**                | **Data Annotations**                                       | **Fluent API**                                              |
+|---------------------------|------------------------------------------------------------|-------------------------------------------------------------|
+| **Configuration Location** | Applied directly to the model properties using attributes. | Configured centrally inside `OnModelCreating` in `DbContext`.|
+| **Complexity**             | Simple to use for basic configurations and validations.    | Suitable for complex configurations and relationships.       |
+| **Scope of Application**   | Works at the **model** level and applies rules at **compile time**. | Works at the **database** level and applies rules at **runtime**.|
+| **Exception Handling**     | Throws `ValidationException` before interacting with the database. | Throws `DbUpdateException` when saving to the database.       |
+| **Flexibility**            | Limited in terms of complex configurations (e.g., unique constraints). | Full flexibility to define more advanced configurations.      |
+| **Validation Location**    | Mostly client-side, before interaction with the database.   | Mostly server-side, enforced during database operations.      |
+
+##### **Which One to Use?**
+
+- **Data Annotations** are better for simpler models where basic validation and configuration are enough.
+- **Fluent API** should be used for more complex scenarios, such as defining relationships, composite keys, or when dealing with custom database behaviors.
+
+**Best Practice:** In a large project, you can combine both methods. Use **Data Annotations** for simpler, model-specific rules and use **Fluent API** for advanced configurations that require more control or aren't possible with Data Annotations alone.
+
+#### 5.5.6 Add Data Validation with Data Annotation in CreateUserDto
+
+you should primarily add data annotations to the DTO (Data Transfer Object), like CreateUserDto. The main reason is that the DTO represents the data being transferred between the client and server, so validation should focus on ensuring that the incoming data (from the client) is valid before it is mapped to the actual entity model (User). This keeps your entity models clean from validation logic, and instead focuses them on representing the structure of your data.
+
+- Add Data annotation to the CreateUserDto
 
 ```csharp
-POST http://localhost:5030/api/users
-Content-Type: application/json
-
-{
-  "name": "u",
-  "email": "user6@example.com",
-  "password": "string",
-  "address": "string",
-  "image": "string"
-}
-
-```
-
-### 12. Add Validation with Data annotation
-
-```csharp
-
-// dto
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ecommerce_api.Models
+namespace review_ecommerce_api.Models
 {
     public class CreateUserDto
     {
+        [Required(ErrorMessage = "Username is required.")]
+        [StringLength(50, ErrorMessage = "Username must be between 3 and 50 characters.", MinimumLength = 3)]
+        public string UserName { get; set; } = string.Empty;
 
-        [Required]
-        [StringLength(100, ErrorMessage = "Name must be between 2 and 100 characters.", MinimumLength = 2)]
-        public string Name { get; set; } = string.Empty;
-
-        [Required]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address.")]
         public string Email { get; set; } = string.Empty;
 
-        [Required]
-        [StringLength(255, ErrorMessage = "Password must be between 6 and 255 characters.", MinimumLength = 6)]
-        public string Password { get; set; } = string.Empty; // Note: Include cautiously
+        [Required(ErrorMessage = "Password is required.")]
+        [StringLength(100, ErrorMessage = "Password must be between 6 and 100 characters.", MinimumLength = 6)]
+        public string Password { get; set; } = string.Empty;
 
-        [StringLength(255)]
-        public string Address { get; set; } = string.Empty;
-        public string Image { get; set; } = string.Empty;
-        public bool IsAdmin { get; set; } = false;// Include only if necessary for the context
-        public bool IsBanned { get; set; } = false;// Include only if necessary for the context
+        [StringLength(255, ErrorMessage = "Address can't exceed 255 characters.")]
+        public string? Address { get; set; }
+
+        // [Url(ErrorMessage = "Invalid URL format for Image.")]
+        public string? Image { get; set; }
     }
 }
 ```
+
+- update the controller
+
+```csharp
+ [HttpPost]
+  public async Task<IActionResult> CreateUser([FromBody] CreateUserDto newUser)
+  {
+      // Check if the model is valid
+      if (!ModelState.IsValid)
+      {
+          // Log the errors or handle them as needed
+          var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+          Console.WriteLine("Validation errors:");
+          errors.ForEach(error => Console.WriteLine(error));
+
+          // Return a custom response with validation errors
+          return BadRequest(new { Message = "Validation failed", Errors = errors });
+      }
+
+     
+      var user = await _userService.CreateUserAsync(newUser);
+      var response = new { Message = "User created successfully", User = user };
+      return Created($"/api/users/{user.UserId}", response);
+     
+  }
+
+```
+
+##### Optionally Disable Automatic Model Validation (Optional)
+
+If you don't want ASP.NET Core to automatically return the 400 Bad Request for validation errors, you can disable this feature by configuring it in Program.cs or in your controller setup:
+
+```csharp
+builder.Services.AddControllers()
+.ConfigureApiBehaviorOptions(options =>
+{
+    options.SuppressModelStateInvalidFilter = true; // Disable automatic model validation response
+});
+
+```
+
+#### 5.5.7 Add Data Validation with Fluent Api in DBcontext (working)
+
+Choose one approach for each concern. For validation, stick with Data Annotations if possible; for complex database rules (e.g., unique constraints, relationships), use Fluent API. This keeps your code organized and avoids redundancy.
+
+```csharp
+// CreateUserDto
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace review_ecommerce_api.Models
+{
+    public class CreateUserDto
+    {
+       
+        public string UserName { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address.")]
+        public string Email { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Password is required.")]
+        [StringLength(100, ErrorMessage = "Password must be between 6 and 100 characters.", MinimumLength = 6)]
+        public string Password { get; set; } = string.Empty;
+
+        [StringLength(255, ErrorMessage = "Address can't exceed 255 characters.")]
+        public string? Address { get; set; }
+
+        // [Url(ErrorMessage = "Invalid URL format for Image.")]
+        public string? Image { get; set; }
+    }
+}
+
+// AppDbContext User Entity
+ protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+      modelBuilder.Entity<User>(entity =>
+      {
+          entity.HasKey(u => u.UserId); // Primary Key configuration
+          entity.Property(u => u.UserId).HasDefaultValueSql("uuid_generate_v4()"); // Generate UUID for new records
+          entity.Property(u => u.UserName).IsRequired().HasMaxLength(100);
+          entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
+          entity.HasIndex(u => u.Email).IsUnique();
+          entity.Property(u => u.Password).IsRequired();
+          entity.Property(u => u.Address).HasMaxLength(255);
+          entity.Property(u => u.IsAdmin).HasDefaultValue(false);
+          entity.Property(u => u.IsBanned).HasDefaultValue(false);
+          entity.Property(u => u.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+      });
+  }
+```
+
+#### 5.5.8 Add Exception Handling
+
+- Create the UserDto
+
+```csharp
+// Controller
+ [HttpPost]
+  public async Task<IActionResult> CreateUser([FromBody] CreateUserDto newUser)
+  {
+      // Check if the model is valid
+      if (!ModelState.IsValid)
+      {
+          // Log the errors or handle them as needed
+          var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+          Console.WriteLine("Validation errors:");
+          errors.ForEach(error => Console.WriteLine(error));
+
+          // Return a custom response with validation errors
+          return BadRequest(new { Message = "Validation failed", Errors = errors });
+      }
+
+      try
+      {
+
+          var user = await _userService.CreateUserAsync(newUser);
+          var response = new { Message = "User created successfully", User = user };
+          return Created($"/api/users/{user.UserId}", response);
+      }
+      catch (ApplicationException ex)
+      {
+
+          return StatusCode(500, "An error occured: " + ex.Message);
+      }
+      catch (Exception ex)
+      {
+
+          return StatusCode(500, "An error occured: " + ex.Message);
+      }
+  }
+
+
+// Services
+ public async Task<User> CreateUserAsync(CreateUserDto newUserDto)
+  {
+
+      try
+      {
+          // Hash the password using a library like BCrypt.Net
+          var hashedPassword = BCrypt.Net.BCrypt.HashPassword(newUserDto.Password);
+
+          var user = new User
+          {
+              UserId = Guid.NewGuid(),
+              UserName = newUserDto.UserName,
+              Email = newUserDto.Email,
+              Password = hashedPassword, // Store hashed password
+              Address = newUserDto.Address,
+              Image = newUserDto.Image
+          };
+
+          await _appDbContext.Users.AddAsync(user);
+          await _appDbContext.SaveChangesAsync();
+          return user;
+      }
+      catch (DbUpdateException dbEx)
+      {
+          // Handle database update exceptions (like unique constraint violations)
+          Console.WriteLine($"Database Update Error: {dbEx.Message}");
+          throw new ApplicationException("An error occurred while saving to the database. Please check the data and try again.");
+      }
+      catch (ValidationException valEx)
+      {
+          // Handle validation exceptions
+          Console.WriteLine($"Validation Error: {valEx.Message}");
+          throw new ApplicationException("Validation failed for the provided data.");
+      }
+      catch (Exception ex)
+      {
+          // Handle any other unexpected exceptions
+          Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+          throw new ApplicationException("An unexpected error occurred. Please try again later.");
+      }
+  }
+```
+
+#### 5.5.6 Centralized Response
+
+```csharp
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using System;
+
+namespace api.Controllers
+{
+  public static class ApiResponse
+  {
+    // Central method to handle the creation of ApiResponseTemplate with ObjectResult
+    private static IActionResult CreateApiResponse<T>(T? data, string message, int statusCode, bool success)
+    {
+      var response = new ApiResponseTemplate<T>(success, data, message, statusCode);
+      return new ObjectResult(response)
+      {
+        StatusCode = statusCode
+      };
+    }
+
+    public static IActionResult Success<T>(T data, string message = "Success")
+    {
+      return CreateApiResponse(data, message, StatusCodes.Status200OK, true);
+    }
+
+    public static IActionResult Created<T>(T data, string message = "Resource Created")
+    {
+      return CreateApiResponse(data, message, StatusCodes.Status201Created, true);
+    }
+
+    public static IActionResult NotFound(string message = "Resource not found")
+    {
+      return CreateApiResponse<object>(null, message, StatusCodes.Status404NotFound, false);
+    }
+
+    public static IActionResult Conflict(string message = "Conflict Detected")
+    {
+      return CreateApiResponse<object>(null, message, StatusCodes.Status409Conflict, false);
+    }
+
+    public static IActionResult BadRequest(string message = "Bad request")
+    {
+      return CreateApiResponse<object>(null, message, StatusCodes.Status400BadRequest, false);
+    }
+
+    public static IActionResult Unauthorized(string message = "Unauthorized access")
+    {
+      return CreateApiResponse<object>(null, message, StatusCodes.Status401Unauthorized, false);
+    }
+
+    public static IActionResult Forbidden(string message = "Forbidden access")
+    {
+      return CreateApiResponse<object>(null, message, StatusCodes.Status403Forbidden, false);
+    }
+
+    public static IActionResult ServerError(string message = "Internal server error")
+    {
+      return CreateApiResponse<object>(null, message, StatusCodes.Status500InternalServerError, false);
+    }
+  }
+
+  public class ApiResponseTemplate<T>
+  {
+    public bool Success { get; set; }
+    public T? Data { get; set; }
+    public string Message { get; set; }
+    public int StatusCode { get; set; }
+
+    public ApiResponseTemplate(bool success, T? data, string message, int statusCode)
+    {
+      Success = success;
+      Data = data;
+      Message = message;
+      StatusCode = statusCode;
+    }
+  }
+}
+
+```
+
+- Use them now in controller (working on this)
+
+```csharp
+
+```
+
+#### 5.5.7 GET /api/users => Get all the users
+
+- Create the UserDto
+
+```csharp
+
+```
+
+- Add a Controller to handle get users request
+
+```csharp
+ [HttpGet]
+  public async Task<IActionResult> GetAllUsers()
+  {
+      var users = await _userService.GetUsersAsync();
+      var response = new { StatusCode = 200, Message = "Users are returned successfully", Users = users };
+      return Ok(response);
+  }
+```
+
+- Add a Service to get users from database
+
+```csharp
+  public async Task<List<User>> GetUsersAsync()
+  {
+      return await _appDbContext.Users.ToListAsync();
+  }
+```
+
+- test the endpoint
+
+```
+GET localhost_address_here/api/users
+```
+
+#### 5.5.8 GET /api/users => Add Pagination, Searching, Sorting
