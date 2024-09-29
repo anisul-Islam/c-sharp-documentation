@@ -12913,11 +12913,13 @@ class Test1
 
 ## Advanced 3.1
 
-## ASP.NET 4.1 and REST API Without DB
+## ASP.NET and REST API Without DB
+
+- Target of this module: ASP.net roadmap, REST API, API testing, MVC Pattern, Exception Handling, Asynchornous Programming
+
+### ASP.NET Roadmap
 
 ![ASP.NET Core roadmap](images/dotnet-roadmap.jpg)
-
-### Things to learn
 
 When learning to build an ASP.NET Web API, it's important to approach it step by step to cover the key concepts thoroughly. Below is a structured learning path to guide you through the process:
 
@@ -13146,19 +13148,17 @@ Once you’re comfortable with the basics, explore advanced topics like:
   
 ---
 
-#### **Conclusionf for ASP.NET**
+#### **Conclusion for ASP.NET**
 
 By following this structured learning path, you'll gradually build up the skills necessary to create a fully functional, secure, and efficient ASP.NET Web API. Start with the basics, get comfortable with CRUD operations and database integration, and then move on to more advanced topics like authentication, versioning, and caching. Happy coding!
 
-### API Basics
+### API Basics, Types of API
 
 #### What is API? Why do we need API?
 
 ![alt text](image-10.png)
 
-![alt text](image-13.png)
-
-![alt text](image-12.png)
+![alt text](image-18.png)
 
 ![alt text](image-14.png)
 
@@ -13508,14 +13508,14 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
 
 These methods allow RESTful APIs to manage resources effectively, each serving a distinct role in the lifecycle of web resources.
 
-### ASP.NET CRUD web API
+### Build an ecommerce API without DB
 
 #### Must Todo while building API
 
 - API Planning
   - CRUD => Create, Read, Update and Delete Resources
   - always plan first what endpoints you want to implement and follow the best practices
-  - install REST CLIENT extension for testing api
+  - always test => install REST CLIENT extension for testing api
 
 #### Create, Understand and Run the API
 
@@ -13526,6 +13526,7 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
   - how to run with terminal. go to root directory -> `dotnet run`
   - auto sever restart `dotnet watch run`
   - stop opening the window everytime after running the app: Go to Properties folder => profiles => launchBrowser : false
+  - add .gitignore file. A [sample](https://github.com/anisul-Islam/dotnet-gitignore/blob/main/README.md) is here.
 - Project Folder structure
   - check .csproj file -> where we will add all dependencies mostly
   - appsettings.json vs appsettings.Development.json -> mainly for configuration
@@ -13550,9 +13551,12 @@ These methods allow RESTful APIs to manage resources effectively, each serving a
 
 #### Test the endpoints
 
+- always test after implementing a simple thing.
 - You can use postman or VScode extensions such as Thunder client, REST Client
+- I have installed REST client vscode extension and gonna try the following command in the file that ends with .http. In your case URL might be different.
 
   ```http
+  // api.http
   GET http://localhost:5079
   ```
 
@@ -19669,7 +19673,14 @@ public class User
   app.MapControllers();
   ```
 
-#### 5.5.4 POST /api/users => Create an user
+#### 5.5.4 POST => /api/users => Create an user
+
+- Few methods for CRUD
+  - Find all data => context.TableName.ToListAsync()
+  - Save data => context.TableName.AddAsync(newData); context.TableName.SaveChangesAsync();
+  - Find data => context.TableName.FindAsync(identidier);
+  - Remove data => context.TableName.Remove(dataToBeDeleted); context.TableName.SaveChangesAsync();
+  - Update data =>  context.TableName.Update(data); context.TableName.SaveChangesAsync();
 
 - workflow of MVC
 
@@ -19688,8 +19699,8 @@ public class CreateUserDto
     public string UserName { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
-    public string? Address { get; set; }
-    public string? Image { get; set; }
+    public string Address { get; set; } = string.Empty;
+    public string? Image { get; set; } = string.Empty;
 }
 ```
 
@@ -19706,6 +19717,9 @@ public async Task<IActionResult> CreateUser([FromBody] CreateUserDto newUser)
 ```
 
 - Create a Service to store the user in DB
+
+  - AddAsync: Marks the entity as to be inserted in the context.
+  - SaveChangesAsync: Actually commits the changes (including the new user) to the database.
 
 ```csharp
 public async Task<User> CreateUserAsync(CreateUserDto newUserDto)
@@ -19724,10 +19738,75 @@ public async Task<User> CreateUserAsync(CreateUserDto newUserDto)
         Image = newUserDto.Image
     };
 
+    // - AddAsync: Marks the entity as to be inserted in the context.
+    // - SaveChangesAsync: Actually commits the changes (including the new user) to the database.
     await _appDbContext.Users.AddAsync(user);
     await _appDbContext.SaveChangesAsync();
     return user;
 }
+```
+
+- Respond with the desried data after the user is created
+
+```csharp
+// Create the Models/UserDto.cs
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace review_ecommerce_api.Models
+{
+    public class UserDto
+    {
+        public Guid UserId { get; set; }
+
+        [Required]
+        public string? UserName { get; set; }
+
+        [Required]
+        public string? Email { get; set; }
+        public string? Address { get; set; }
+        public string? Image { get; set; }
+        public bool IsAdmin { get; set; }
+        public bool IsBanned { get; set; }
+        public DateTime CreatedAt { get; set; }
+    }
+}
+
+// Update the UserService.cs
+  public async Task<UserDto> CreateUserAsync(CreateUserDto newUserDto)
+{ 
+
+ // Hash the password using a library like BCrypt.Net
+    var hashedPassword = BCrypt.Net.BCrypt.HashPassword(newUserDto.Password);
+
+    var user = new User
+    {
+        UserName = newUserDto.UserName,
+        Email = newUserDto.Email,
+        Password = hashedPassword, // Store hashed password
+        Address = newUserDto.Address,
+        Image = newUserDto.Image
+    };
+
+    await _appDbContext.Users.AddAsync(user);
+    await _appDbContext.SaveChangesAsync();
+
+    var userResponse = new UserDto
+    {
+        UserId = user.UserId,
+        UserName = user.UserName,
+        Email = user.Email,
+        Address = user.Address,
+        Image = user.Image,
+        IsAdmin = user.IsAdmin,
+        IsBanned = user.IsBanned,
+    };
+    return userResponse;
+}
+
 ```
 
 #### 5.5.5 Concept: Data Validation With Data Annotation vs Fluent API
@@ -19844,6 +19923,12 @@ Data Annotations and Fluent API are both used in Entity Framework Core (EF Core)
 
 you should primarily add data annotations to the DTO (Data Transfer Object), like CreateUserDto. The main reason is that the DTO represents the data being transferred between the client and server, so validation should focus on ensuring that the incoming data (from the client) is valid before it is mapped to the actual entity model (User). This keeps your entity models clean from validation logic, and instead focuses them on representing the structure of your data.
 
+- Model Validation: The UserModel uses data annotations to ensure that all necessary fields are present and correctly formatted before the model reaches the service layer.
+
+- Service Layer: The service layer converts the validated CreateUserModel into a User entity, ensuring that the business logic and data storage concerns are cleanly separated.
+
+- Controller Logic: The controller checks ModelState.IsValid to determine if the incoming request data conforms to the defined validation rules. If the data is invalid, it returns a BadRequest response with details of the validation errors.
+
 - Add Data annotation to the CreateUserDto
 
 ```csharp
@@ -19918,7 +20003,7 @@ builder.Services.AddControllers()
 
 ```
 
-#### 5.5.7 Add Data Validation with Fluent Api in DBcontext (working)
+#### 5.5.7 Add Data Validation with Fluent Api in DBcontext
 
 Choose one approach for each concern. For validation, stick with Data Annotations if possible; for complex database rules (e.g., unique constraints, relationships), use Fluent API. This keeps your code organized and avoids redundancy.
 
@@ -20014,7 +20099,7 @@ namespace review_ecommerce_api.Models
 
 
 // Services
- public async Task<User> CreateUserAsync(CreateUserDto newUserDto)
+ public async Task<UserDto> CreateUserAsync(CreateUserDto newUserDto)
   {
 
       try
@@ -20034,19 +20119,25 @@ namespace review_ecommerce_api.Models
 
           await _appDbContext.Users.AddAsync(user);
           await _appDbContext.SaveChangesAsync();
-          return user;
+          
+          var userResponse = new UserDto
+              {
+                  UserId = user.UserId,
+                  UserName = user.UserName,
+                  Email = user.Email,
+                  Address = user.Address,
+                  Image = user.Image,
+                  IsAdmin = user.IsAdmin,
+                  IsBanned = user.IsBanned,
+              };
+         return userResponse;
+
       }
       catch (DbUpdateException dbEx)
       {
           // Handle database update exceptions (like unique constraint violations)
           Console.WriteLine($"Database Update Error: {dbEx.Message}");
           throw new ApplicationException("An error occurred while saving to the database. Please check the data and try again.");
-      }
-      catch (ValidationException valEx)
-      {
-          // Handle validation exceptions
-          Console.WriteLine($"Validation Error: {valEx.Message}");
-          throw new ApplicationException("Validation failed for the provided data.");
       }
       catch (Exception ex)
       {
@@ -20059,7 +20150,8 @@ namespace review_ecommerce_api.Models
 
 #### 5.5.6 Centralized Response
 
-```csharp
+- Inside the controller create a file called ApiResponseController.cs
+
 ```csharp
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20138,38 +20230,119 @@ namespace api.Controllers
 
 ```
 
-- Use them now in controller (working on this)
+- Use them now in controller
 
 ```csharp
+  // POST => /api/users => Create an User
+  [HttpPost]
+  public async Task<IActionResult> CreateUser([FromBody] CreateUserDto newUser)
+  {
+      // Check if the model is valid
+      if (!ModelState.IsValid)
+      {
+          // Log the errors or handle them as needed
+          // var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+          // Console.WriteLine("Validation errors:");
+          // errors.ForEach(error => Console.WriteLine(error));
+          return ApiResponse.BadRequest("Invalid User Data");
+      }
 
+      try
+      {
+          var user = await _userService.CreateUserAsync(newUser);
+          return ApiResponse.Created(user, "User created successfully");
+      }
+      catch (ApplicationException ex)
+      {
+          return ApiResponse.Conflict(ex.Message);
+      }
+      catch (Exception ex)
+      {
+          return ApiResponse.ServerError(ex.Message);
+      }
+  }
 ```
 
-#### 5.5.7 GET /api/users => Get all the users
+#### 5.5.7 GET => /api/users => Get all the users
 
 - Create the UserDto
 
 ```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
+namespace review_ecommerce_api.Models
+{
+    public class UserDto
+    {
+        public Guid UserId { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public string Image { get; set; }
+        public bool IsAdmin { get; set; }
+        public bool IsBanned { get; set; }
+        public DateTime CreatedAt { get; set; }
+    }
+}
 ```
 
 - Add a Controller to handle get users request
 
 ```csharp
- [HttpGet]
-  public async Task<IActionResult> GetAllUsers()
+  // GET => /api/users => Get all the users
+  [HttpGet]
+  public async Task<IActionResult> GetUsers()
   {
-      var users = await _userService.GetUsersAsync();
-      var response = new { StatusCode = 200, Message = "Users are returned successfully", Users = users };
-      return Ok(response);
+      try
+      {
+          var users = await _userService.GetUsersAsync();
+          return ApiResponse.Success(users);
+      }
+      catch (ApplicationException ex)
+      {
+          return ApiResponse.ServerError(ex.Message);
+      }
+      catch (Exception ex)
+      {
+          // Log the exception details here to debug or trace issues
+          Console.WriteLine($"Exception : {ex.Message}");
+          return ApiResponse.ServerError("An unexpected error occurred.");
+      }
   }
+
 ```
 
 - Add a Service to get users from database
 
 ```csharp
-  public async Task<List<User>> GetUsersAsync()
+   public async Task<List<UserDto>> GetUsersAsync()
   {
-      return await _appDbContext.Users.ToListAsync();
+      try
+      {
+          var users = await _appDbContext.Users.ToListAsync();
+          var requiredUsersData = users.Select(user => new UserDto
+          {
+              UserId = user.UserId,
+              UserName = user.UserName,
+              Email = user.Email,
+              Address = user.Address,
+              Image = user.Image,
+              IsAdmin = user.IsAdmin,
+              IsBanned = user.IsBanned,
+              CreatedAt = DateTime.UtcNow
+          }).ToList();
+          return requiredUsersData;
+      }
+      catch (Exception ex)
+      {
+          // Handle any other unexpected exceptions
+          Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+          throw new ApplicationException("An unexpected error occurred. Please try again later." + ex.Message);
+      }
   }
 ```
 
@@ -20179,4 +20352,573 @@ namespace api.Controllers
 GET localhost_address_here/api/users
 ```
 
-#### 5.5.8 GET /api/users => Add Pagination, Searching, Sorting
+#### 5.5.8 GET => /api/users => Add Pagination, Searching, Sorting
+
+- Add Pagination
+
+```csharp
+// Controller
+
+
+// Services
+```
+
+#### 5.5.9 GET => /api/users => Add Searching
+
+- Add Searching
+
+```csharp
+// Controller
+
+
+// Services
+```
+
+#### 5.5.10 GET => /api/users => Add Sorting
+
+- Add Sorting
+
+```csharp
+// Controller
+
+
+// Services
+```
+
+#### 5.5.11 GET => /api/users/{userId} => Get a single user
+
+- Find single data from a DB table => context.TableName.FindAsync(identidier);
+- Add a request handler method in controller
+
+```csharp
+ // GET => /api/users/{userId} => Get a single user by Id
+  [HttpGet("{userId:guid}")]
+  public async Task<IActionResult> GetUser(Guid userId)
+  {
+      try
+      {
+          var user = await _userService.GetUserByIdAsync(userId);
+          if (user == null)
+          {
+              return ApiResponse.NotFound("User not found");
+          }
+          return ApiResponse.Success(user, "User Retrived successfully");
+      }
+      catch (ApplicationException ex)
+      {
+          return ApiResponse.ServerError(ex.Message);
+      }
+      catch (Exception ex)
+      {
+          Console.WriteLine($"Exception : {ex.Message}");
+          return ApiResponse.ServerError("An unexpected error occurred.");
+      }
+  }
+```
+
+- Add a service handler method in services
+
+```csharp
+  public async Task<UserDto?> GetUserByIdAsync(Guid userId)
+  {
+      try
+      {
+          var user = await _appDbContext.Users.FindAsync(userId);
+
+          if (user == null)
+          {
+              return null;
+          }
+
+          var singleUser = new UserDto
+          {
+              UserId = user.UserId,
+              UserName = user.UserName,
+              Email = user.Email,
+              Address = user.Address,
+              Image = user.Image,
+              IsAdmin = user.IsAdmin,
+              IsBanned = user.IsBanned,
+              CreatedAt = user.CreatedAt // Return actual CreatedAt from DB
+          };
+
+          // Return null if user not found, otherwise return the user
+          return singleUser;
+      }
+      catch (Exception ex)
+      {
+          // Handle any other unexpected exceptions
+          Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+          throw new ApplicationException("An unexpected error occurred. Please try again later." + ex.Message);
+      }
+  }
+```
+
+#### 5.5.12 PUT => loggedIn => /api/users/{userId} => Update a single user by userId
+
+- create a dto for update data
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace review_ecommerce_api.Models
+{
+  public class UpdateUserDto
+  {
+
+    [Required(ErrorMessage = "Username is required.")]
+    [StringLength(100, ErrorMessage = "Name must be between 2 and 100 characters.", MinimumLength = 2)]
+    public string? UserName { get; set; } = string.Empty;
+
+    [Required(ErrorMessage = "Email is required.")]
+    [EmailAddress(ErrorMessage = "Invalid Email Address.")]
+    public string? Email { get; set; } = string.Empty;
+
+    [Required(ErrorMessage = "Password is required.")]
+    [StringLength(100, ErrorMessage = "Password must be between 6 and 100 characters.", MinimumLength = 6)]
+    public string? Password { get; set; } = string.Empty;
+
+    [StringLength(255, ErrorMessage = "Address can't exceed 255 characters.")]
+    public string? Address { get; set; } = string.Empty;
+
+    public bool? IsAdmin { get; set; } = false;
+    public bool? IsBanned { get; set; } = false;
+
+    // [Url(ErrorMessage = "Invalid URL format for Image.")]
+    public string? Image { get; set; } = string.Empty;
+  }
+}
+```
+
+- create the controller method
+
+```csharp
+  // PUT => /api/users/{userId} => update a single user by Id
+  [HttpPut("{userId:guid}")]
+  public async Task<IActionResult> UpdateUser(Guid userId, [FromBody] UpdateUserDto userData)
+  {
+      if (!ModelState.IsValid)
+      {
+          return ApiResponse.BadRequest("Invalid User Data");
+      }
+
+      try
+      {
+          var updatedUser = await _userService.UpdateUserByIdAsync(userId, userData);
+          if (updatedUser == null)
+          {
+              return ApiResponse.NotFound("User with ID {userId} not found");
+          }
+          return ApiResponse.Success(updatedUser, "User Updated successfully");
+      }
+      catch (ApplicationException ex)
+      {
+          return ApiResponse.ServerError(ex.Message);
+      }
+      catch (Exception ex)
+      {
+          Console.WriteLine($"Exception : {ex.Message}");
+          return ApiResponse.ServerError("An unexpected error occurred.");
+      }
+  }
+```
+
+- create the Service method
+
+```csharp
+  public async Task<UserDto?> UpdateUserByIdAsync(Guid userId, UpdateUserDto userData)
+    {
+        try
+        {
+            var user = await _appDbContext.Users.FindAsync(userId);
+            if (user == null)
+            {
+                return null;
+            }
+
+            // without mapper
+            // Update only the fields that are provided in userData
+            user.UserName = !string.IsNullOrEmpty(userData.UserName) ? userData.UserName : user.UserName;
+            user.Address = !string.IsNullOrEmpty(userData.Address) ? userData.Address : user.Address;
+            user.Image = !string.IsNullOrEmpty(userData.Image) ? userData.Image : user.Image;
+            user.IsAdmin = userData.IsAdmin;
+            user.IsBanned = userData.IsBanned;
+
+
+            _appDbContext.Users.Update(user);
+            await _appDbContext.SaveChangesAsync();
+
+            var updatedUser = new UserDto
+            {
+                UserId = user.UserId,
+                UserName = user.UserName,
+                Email = user.Email,
+                Address = user.Address,
+                Image = user.Image,
+                IsAdmin = user.IsAdmin,
+                IsBanned = user.IsBanned,
+                CreatedAt = user.CreatedAt // Return actual CreatedAt from DB
+            };
+
+            // Return null if user not found, otherwise return the user
+            return updatedUser;
+        }
+        catch (Exception ex)
+        {
+            // Handle any other unexpected exceptions
+            Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+            throw new ApplicationException("An unexpected error occurred. Please try again later." + ex.Message);
+        }
+    }
+```
+
+- test the update
+
+```
+###
+
+PUT  http://localhost:5109/api/users/5673479e-adf9-4157-867c-efc72ef44a2e
+Content-Type: application/json
+
+{
+  "userName": "ANISUL ISLAM",
+  "email": "ANIS2024@example.com",
+  "password": "123456",
+  "address": "string",
+  "image": "https://studywithanis.com"
+}
+```
+
+#### 5.5.13 DELETE => loggedIn => /api/users/{userId} => Delete an user account
+
+- Remove data to a table in DB => context.TableName.Remove(dataToBeDeleted); context.TableName.SaveChangesAsync();
+
+```csharp
+// controller
+ // DELETE => /api/users/{userId} => delete a single user by Id
+  [HttpDelete("{userId:guid}")]
+  public async Task<IActionResult> DeleteUserAccount(Guid userId)
+  {
+      try
+      {
+          bool isUserDeleted = await _userService.DeleteUserByIdAsync(userId);
+          if (!isUserDeleted)
+          {
+              return ApiResponse.NotFound("User not found");
+          }
+          return ApiResponse.Success("null", "User Deleted successfully");
+      }
+      catch (ApplicationException ex)
+      {
+          return ApiResponse.ServerError(ex.Message);
+      }
+      catch (Exception ex)
+      {
+          Console.WriteLine($"Exception : {ex.Message}");
+          return ApiResponse.ServerError("An unexpected error occurred.");
+      }
+  }
+
+// services
+public async Task<bool> DeleteUserByIdAsync(Guid userId)
+{
+    try
+    {
+        var user = await _appDbContext.Users.FindAsync(userId);
+        if (user == null)
+        {
+            return false; // User not found
+        }
+
+        _appDbContext.Users.Remove(user);
+        await _appDbContext.SaveChangesAsync();
+        return true;
+    }
+    catch (Exception ex)
+    {
+        // Handle any other unexpected exceptions
+        Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+        throw new ApplicationException("An unexpected error occurred. Please try again later." + ex.Message);
+    }
+}
+
+```
+
+#### 5.5.14 Concept => AutoMapper Library in .NET
+
+- AutoMapper is a popular library in .NET that helps simplify the process of transferring data between objects, particularly between data models and data transfer objects (DTOs) in applications. can utilize the IMapper interface to map data models to DTOs and vice versa, simplifying data transformation and reducing boilerplate code.
+
+- Without AutoMapper: You need to manually assign each property from the entity to the DTO. This can be error-prone and cumbersome, especially with complex objects.
+
+Benfits of AutoMapper
+
+1. Reduction of Boilerplate Code
+   AutoMapper reduces the amount of manual mapping code you need to write. Without AutoMapper, you would typically write code to map properties from one object to another explicitly. This can be tedious and error-prone, especially with complex objects. AutoMapper automates this by mapping properties based on convention, which can significantly clean up your codebase.
+
+2. Ease of Maintenance
+   When your data model changes, maintaining manual mappings can be cumbersome. AutoMapper helps centralize the mapping logic, making it easier to manage and update. Changes in the data model require changes in the mapping configuration rather than throughout the code where data transformations occur.
+
+3. Consistency
+   AutoMapper encourages consistency in how mappings are handled across an application. By defining mappings in one place, you ensure that the same mapping logic is applied everywhere in the application, reducing the risk of inconsistencies in data handling and manipulation.
+
+4. Customization and Flexibility
+   Although AutoMapper works well with convention-based mapping, it also provides extensive options for customization. You can define custom conversion rules, handle complex type conversions, and conditionally map properties. This flexibility makes it suitable for a wide range of scenarios from simple to complex.
+
+5. Improved Productivity
+   Developers can focus more on the business logic rather than the details of converting between object types. AutoMapper handles the mundane task of copying data from one object to another, which can speed up development time and reduce bugs related to data transformation.
+
+6. Integration with LINQ
+   AutoMapper integrates well with LINQ, allowing for projections directly from database queries to DTOs. This can optimize performance by avoiding the need to retrieve all columns from the database or load entire entity graphs when only a subset is needed.
+
+7. Support for Nested Objects
+   AutoMapper can automatically handle nested objects and collections, which can be complex to map manually. It knows how to traverse these structures and map corresponding elements from source to destination.
+
+- Install the AutoMapper  `dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection`
+
+#### 5.5.15 Use AutoMapper everywhere
+
+- Step 1: Install the AutoMapper  `dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection`
+
+- Step 2: Setup AutoMapper `builder.Services.AddAutoMapper(typeof(Program));`
+
+- Step 3: create Map / Mapping Profile: Create a class to define the mapping configurations.
+
+```csharp
+// Mappers / MappingProfile
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using review_ecommerce_api.EFCore;
+using review_ecommerce_api.Models;
+
+namespace review_ecommerce_api.Mappers
+{
+    public class MappingProfile : Profile
+    {
+        public MappingProfile()
+        {
+            CreateMap<User, UserDto>();
+            CreateMap<CreateUserDto, User>();
+            CreateMap<UpdateUserDto, User>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            // With AutoMapper now configured, your service methods can utilize the IMapper interface to map data models to DTOs and vice versa, simplifying data transformation and reducing boilerplate code.
+        }
+    }
+}
+```
+
+- Step 4: Refactor API to Use AutoMapper
+
+```csharp
+// Inside the service
+private readonly IMapper _mapper;
+
+public UserService(AppDbContext appDbContext, IMapper mapper)
+{
+    _appDbContext = appDbContext;
+    _mapper = mapper;
+}
+````
+
+- step 5: ready to use AutoMapper in services
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using review_ecommerce_api.EFCore;
+using review_ecommerce_api.Models;
+
+namespace review_ecommerce_api.Services
+{
+    public class UserService
+    {
+        private readonly AppDbContext _appDbContext;
+        private readonly IMapper _mapper;
+
+        public UserService(AppDbContext appDbContext, IMapper mapper)
+        {
+            _appDbContext = appDbContext;
+            _mapper = mapper;
+        }
+
+        public async Task<List<UserDto>> GetUsersAsync()
+        {
+            try
+            {
+                var users = await _appDbContext.Users.ToListAsync();
+                var usersDto = _mapper.Map<List<UserDto>>(users);
+                return usersDto;
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unexpected exceptions
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                throw new ApplicationException("An unexpected error occurred. Please try again later." + ex.Message);
+            }
+        }
+
+        public async Task<UserDto> CreateUserAsync(CreateUserDto newUserDto)
+        {
+
+            try
+            {
+                // Hash the password using a library like BCrypt.Net
+                var hashedPassword = BCrypt.Net.BCrypt.HashPassword(newUserDto.Password);
+
+                // convert the CreateUserDto to User
+                var user = _mapper.Map<User>(newUserDto);
+                await _appDbContext.Users.AddAsync(user);
+                await _appDbContext.SaveChangesAsync();
+
+                var userResponse = new UserDto
+                {
+                    UserId = user.UserId,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    Address = user.Address,
+                    Image = user.Image,
+                    IsAdmin = user.IsAdmin,
+                    IsBanned = user.IsBanned,
+                    CreatedAt = DateTime.UtcNow
+                };
+                return userResponse;
+            }
+            catch (DbUpdateException dbEx)
+            {
+                // Handle database update exceptions (like unique constraint violations)
+                Console.WriteLine($"Database Update Error: {dbEx.Message}");
+                throw new ApplicationException("An error occurred while saving to the database. Please check the data and try again.");
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unexpected exceptions
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                throw new ApplicationException("An unexpected error occurred. Please try again later.");
+            }
+        }
+
+        public async Task<UserDto?> GetUserByIdAsync(Guid userId)
+        {
+            try
+            {
+                var user = await _appDbContext.Users.FindAsync(userId);
+
+                if (user == null)
+                {
+                    return null;
+                }
+
+                var userDto = _mapper.Map<UserDto>(user); // Convert User Entity object to UserDto
+
+                // Return null if user not found, otherwise return the user
+                return userDto;
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unexpected exceptions
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                throw new ApplicationException("An unexpected error occurred. Please try again later." + ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteUserByIdAsync(Guid userId)
+        {
+            try
+            {
+                var user = await _appDbContext.Users.FindAsync(userId);
+                if (user == null)
+                {
+                    return false; // User not found
+                }
+
+                _appDbContext.Users.Remove(user);
+                await _appDbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unexpected exceptions
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                throw new ApplicationException("An unexpected error occurred. Please try again later." + ex.Message);
+            }
+        }
+        public async Task<UserDto?> UpdateUserByIdAsync(Guid userId, UpdateUserDto userData)
+        {
+            try
+            {
+                var user = await _appDbContext.Users.FindAsync(userId);
+                if (user == null)
+                {
+                    return null;
+                }
+
+                // with mapper convert the UpdateUserDto to User Entity
+               _mapper.Map<UserDto>(user);
+
+                _appDbContext.Users.Update(user);
+                await _appDbContext.SaveChangesAsync();
+
+                var updatedUser = new UserDto
+                {
+                    UserId = user.UserId,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    Address = user.Address,
+                    Image = user.Image,
+                    IsAdmin = user.IsAdmin,
+                    IsBanned = user.IsBanned,
+                    CreatedAt = user.CreatedAt // Return actual CreatedAt from DB
+                };
+
+                // Return null if user not found, otherwise return the user
+                return updatedUser;
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unexpected exceptions
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                throw new ApplicationException("An unexpected error occurred. Please try again later." + ex.Message);
+            }
+        }
+
+    }
+}
+```
+
+#### 5.5.16 POST => /api/users/login => User login
+
+#### 5.5.17 => How to generate JWT
+
+#### 5.5.18 POST => /api/users/logout => User logout
+
+#### 5.5.19 Authorization Option in Swagger
+
+#### 5.5.20 PUT => /api/users/ban-unban/{userId} => Ban/Unban the user by the userId (Admin)
+
+#### 5.5.21 GET => /api/users/banned-users => List of ban users (Admin)
+
+#### 5.5.22 POST => /api/users/reset-password => Password Reset
+
+#### 5.5.23 Middleware
+
+#### 5.5.24 Environment Variable Setup
+
+#### 5.5.25 CORS Setup
+
+### 5.6 Category API
+
+### 5.7 Product API
+
+### 5.8 Order API
