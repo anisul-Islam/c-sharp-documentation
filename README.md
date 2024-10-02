@@ -15616,3 +15616,638 @@ Feel free to expand upon this foundation by adding features such as authenticati
 ---
 
 **Note**: Replace `"YourConnectionStringHere"` in `Startup.cs` with your actual database connection string. Also, ensure all namespaces are correctly referenced in each file.
+
+## Authorization and Authentication using JWT
+
+0. [Higher level concept](#higher-level-idea)
+1. [Project Setup](#1-project-setup1)
+2. [Install Necessary Packages](#2-install-necessary-packages1)
+3. [Create the User Model](#3-create-the-user-model)
+4. [Set Up the Database Context](#4-set-up-the-database-context)
+5. [Add JWT Settings to `appsettings.json`](#5-add-jwt-settings-to-appsettingsjson)
+6. [Configure Services in `Startup.cs` (`Program.cs` for .NET 6+)](#6-configure-services-in-startupcs-programcs-for-net-6)
+7. [Implement the Authentication Controller](#7-implement-the-authentication-controller)
+8. [Protecting API Endpoints](#8-protecting-api-endpoints)
+9. [Testing the API](#9-testing-the-api)
+10. [Conclusion](#10-conclusion)
+
+---
+
+### Higher Level Idea
+
+### **1. Microsoft.AspNetCore.Authentication.JwtBearer**
+
+#### **Purpose:**
+
+This package provides the middleware necessary to enable JWT bearer authentication in your ASP.NET Core application. It integrates with the ASP.NET Core authentication system to validate incoming JWT tokens and establish the user's identity based on the token's claims.
+
+#### **Key Features:**
+
+- **Authentication Middleware:** Adds JWT bearer authentication capabilities to your ASP.NET Core pipeline.
+- **Token Validation:** Automatically validates JWT tokens included in the `Authorization` header of incoming HTTP requests.
+- **Configuration Options:** Allows you to configure token validation parameters, such as issuer, audience, signing key, token lifetime, etc.
+
+#### **How It Works in Your Application:**
+
+By adding this package and configuring it in your `Startup.cs` or `Program.cs` file, your application can:
+
+- **Authenticate Requests:** Validate JWT tokens sent by clients in the `Authorization: Bearer {token}` header.
+- **Authorize Access:** Protect API endpoints by applying the `[Authorize]` attribute, restricting access to authenticated users.
+- **Handle Authentication Events:** Customize authentication behavior through events like `OnAuthenticationFailed`, `OnTokenValidated`, etc.
+
+#### **Example Configuration:**
+
+```csharp
+services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidIssuer = "YourIssuer",
+        ValidAudience = "YourAudience",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSecretKey"))
+    };
+});
+```
+
+---
+
+### **2. System.IdentityModel.Tokens.Jwt**
+
+#### **Purpose of this package:**
+
+This package provides classes and methods for creating, reading, and validating JWT tokens. It contains the core functionality required to work with JWTs, including handling token serialization and deserialization, signing and validating tokens, and managing token claims.
+
+#### **Key Features of this package:**
+
+- **Token Creation:** Allows you to programmatically create JWT tokens by defining claims and signing credentials.
+- **Token Reading and Validation:** Provides classes to read tokens from strings and validate their authenticity and integrity.
+- **Support for Security Algorithms:** Supports various signing algorithms like HMAC, RSA, etc., for token signing and validation.
+- **Claims Management:** Enables you to work with claims-based identities, adding or retrieving claims from tokens.
+
+#### **How It Works in Your Application with this package:**
+
+In your authentication controller or service, you use this package to:
+
+- **Generate JWT Tokens:** Create tokens when users successfully authenticate (e.g., during login).
+- **Sign Tokens:** Ensure tokens are securely signed using a secret key or certificate.
+- **Set Token Claims:** Include user-specific information (claims) in the token payload, such as user ID, email, roles, etc.
+- **Validate Tokens (If Needed):** While the middleware handles validation, you might use this package directly for custom validation scenarios.
+
+#### **Example of Generating a JWT Token:**
+
+```csharp
+private string GenerateJwtToken(User user)
+{
+    var tokenHandler = new JwtSecurityTokenHandler();
+    var key = Encoding.UTF8.GetBytes("YourSecretKey");
+
+    var claims = new[]
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, user.UserId.ToString()),
+        new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        new Claim("username", user.Username),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+
+    var tokenDescriptor = new SecurityTokenDescriptor
+    {
+        Subject = new ClaimsIdentity(claims),
+        Expires = DateTime.UtcNow.AddHours(1),
+        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+        Issuer = "YourIssuer",
+        Audience = "YourAudience"
+    };
+
+    var token = tokenHandler.CreateToken(tokenDescriptor);
+    return tokenHandler.WriteToken(token);
+}
+```
+
+---
+
+### **Summary of these packages**
+
+- **Microsoft.AspNetCore.Authentication.JwtBearer**:
+  - Integrates JWT authentication into the ASP.NET Core middleware pipeline.
+  - Handles the validation of JWT tokens in incoming HTTP requests.
+  - Enables you to protect API endpoints using the `[Authorize]` attribute.
+
+- **System.IdentityModel.Tokens.Jwt**:
+  - Provides the functionality to create and manage JWT tokens.
+  - Used to generate tokens upon user authentication (e.g., login).
+  - Allows you to define token claims and signing credentials.
+---
+
+
+### **Why Both Packages Are Needed**
+
+- **Token Creation (System.IdentityModel.Tokens.Jwt)**:
+  - You need to create and sign JWT tokens when users authenticate.
+  - This package provides the tools to construct tokens with the necessary claims and signatures.
+
+- **Token Consumption (Microsoft.AspNetCore.Authentication.JwtBearer)**:
+  - Your API needs to validate and authenticate tokens included in incoming requests.
+  - This middleware automates the process of token extraction, validation, and setting the user's identity in the application context.
+
+---
+
+### **1. Project Setup1**
+
+1. **Create a new ASP.NET Core Web API project**: here -n means name
+
+   ```bash
+   dotnet new webapi -n UserApiWithJwt 
+   ```
+
+2. **Navigate to the project directory**:
+
+   ```bash
+   cd UserApiWithJwt
+   ```
+
+---
+
+### **2. Install Necessary Packages1**
+
+Install the packages via the .NET CLI:
+
+```bash
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet tool install --global dotnet-ef
+
+dotnet add package Swashbuckle.AspNetCore
+dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
+
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+dotnet add package System.IdentityModel.Tokens.Jwt
+dotnet add package BCrypt.Net-Next
+```
+
+- Why Both Packages Are Needed?
+
+- Token Creation (System.IdentityModel.Tokens.Jwt):
+You need to create and sign JWT tokens when users authenticate.
+This package provides the tools to construct tokens with the necessary claims and signatures.
+
+- Token Consumption (Microsoft.AspNetCore.Authentication.JwtBearer):
+
+Your API needs to validate and authenticate tokens included in incoming requests.
+This middleware automates the process of token extraction, validation, and setting the user's identity in the application context.
+
+---
+
+### **3. Create the User Model 1**
+
+Create a `Models` folder and add the `User` class.
+
+#### **Models/User.cs 1**
+
+```csharp
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace UserApiWithJwt.Models
+{
+    public class User
+    {
+        [Key]
+        public Guid UserId { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Username { get; set; } = string.Empty;
+
+        [Required]
+        [MaxLength(100)]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        public string PasswordHash { get; set; } = string.Empty;
+    }
+}
+```
+
+---
+
+### **4. Set Up the Database Context**
+
+Create a `Data` folder and add the `AppDbContext` class.
+
+#### **create Data/AppDbContext.cs**
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+using UserApiWithJwt.Models;
+
+namespace UserApiWithJwt.Data
+{
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        { }
+
+        public DbSet<User> Users { get; set; }
+    }
+}
+```
+
+---
+
+### **5. Add JWT Settings to `appsettings.json`**
+
+In the `appsettings.json` file, add a section for JWT settings:
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "JwtSettings": {
+    "SecretKey": "YourVerySecureSecretKeyHere",
+    "Issuer": "YourAppName",
+    "Audience": "YourAppName"
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Port=5432;Database=jwt_validation;Username=postgres;"
+  }
+}
+```
+
+- **Note**: Replace `"YourVerySecureSecretKeyHere"` with a strong secret key. For production, store this securely (e.g., in environment variables or Azure Key Vault).
+
+---
+
+### **6. Configure Services in `Startup.cs` (`Program.cs` for .NET 6+)**
+
+#### **For .NET 6 and Later (`Program.cs`):**
+
+Modify the `Program.cs` file as follows:
+
+```csharp
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using UserApiWithJwt.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+
+// Configure Entity Framework and SQL Server
+builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Configure JWT Authentication
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var secretKey = jwtSettings["SecretKey"];
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false; // Set to true in production
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+    };
+});
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+
+app.UseHttpsRedirection();
+
+app.UseAuthentication(); // Add this line
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
+```
+
+### **7. Implement the Authentication Controller**
+
+#### **Services/AuthService.cs**
+
+```csharp
+
+```
+
+#### **Controllers/AuthController.cs**
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using UserApiWithJwt.Data;
+using UserApiWithJwt.Models;
+
+namespace UserApiWithJwt.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class AuthController : ControllerBase
+    {
+        private readonly AppDbContext _context;
+        private readonly IConfiguration _configuration;
+
+        public AuthController(AppDbContext context, IConfiguration configuration)
+        {
+            _context = context;
+            _configuration = configuration;
+        }
+
+        // POST: api/auth/register
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(UserRegisterDto dto)
+        {
+            // Check if the user already exists
+            if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
+            {
+                return BadRequest("User with this email already exists.");
+            }
+
+            // Create user
+            var user = new User
+            {
+                UserId = Guid.NewGuid(),
+                Username = dto.Username,
+                Email = dto.Email,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password)
+            };
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return Ok("User registered successfully.");
+        }
+
+        // POST: api/auth/login
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(UserLoginDto dto)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
+            {
+                return Unauthorized("Invalid email or password.");
+            }
+
+            var token = GenerateJwtToken(user);
+
+            return Ok(new { Token = token });
+        }
+
+        // Generate JWT Token
+        private string GenerateJwtToken(User user)
+        {
+            var jwtSettings = _configuration.GetSection("JwtSettings");
+            var secretKey = jwtSettings["SecretKey"];
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(secretKey);
+
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserId.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim("username", user.Username),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddHours(1), // Token expiration time
+                Issuer = jwtSettings["Issuer"],
+                Audience = jwtSettings["Audience"],
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return tokenHandler.WriteToken(token);
+        }
+    }
+}
+```
+
+#### **Create DTOs for User Registration and Login**
+
+Create a `Models/Dtos` folder and add DTO classes.
+
+#### **Models/Dtos/UserRegisterDto.cs**
+
+```csharp
+using System.ComponentModel.DataAnnotations;
+
+namespace UserApiWithJwt.Models.Dtos
+{
+    public class UserRegisterDto
+    {
+        [Required]
+        [MaxLength(50)]
+        public string Username { get; set; } = string.Empty;
+
+        [Required]
+        [EmailAddress]
+        [MaxLength(100)]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        [MinLength(6)]
+        public string Password { get; set; } = string.Empty;
+    }
+}
+```
+
+#### **Models/Dtos/UserLoginDto.cs**
+
+```csharp
+using System.ComponentModel.DataAnnotations;
+
+namespace UserApiWithJwt.Models.Dtos
+{
+    public class UserLoginDto
+    {
+        [Required]
+        [EmailAddress]
+        [MaxLength(100)]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        public string Password { get; set; } = string.Empty;
+    }
+}
+```
+
+---
+
+### **8. Protecting API Endpoints**
+
+Create a simple `UserController` to demonstrate protected endpoints.
+
+#### **Controllers/UserController.cs**
+
+```csharp
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace UserApiWithJwt.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Authorize] // Protect all endpoints in this controller
+    public class UserController : ControllerBase
+    {
+        // GET: api/user/profile
+        [HttpGet("profile")]
+        public IActionResult GetUserProfile()
+        {
+            var userId = User.FindFirst("sub")?.Value;
+            var email = User.FindFirst("email")?.Value;
+            var username = User.FindFirst("username")?.Value;
+
+            return Ok(new
+            {
+                UserId = userId,
+                Email = email,
+                Username = username
+            });
+        }
+    }
+}
+```
+
+---
+
+### **9. Testing the API**
+
+#### **Apply Migrations and Update Database**
+
+1. **Add Migrations**:
+
+   ```bash
+   dotnet ef migrations add InitialCreate
+   ```
+
+2. **Update Database**:
+
+   ```bash
+   dotnet ef database update
+   ```
+
+#### **Test the API Using Postman or Similar Tool**
+
+##### **1. Register a New User**
+
+- **Endpoint**: `POST https://localhost:{PORT}/api/auth/register`
+- **Body**:
+
+  ```json
+  {
+    "username": "johndoe",
+    "email": "johndoe@example.com",
+    "password": "Password123!"
+  }
+  ```
+
+- **Expected Response**:
+
+  ```json
+  "User registered successfully."
+  ```
+
+##### **2. Log In to Obtain a JWT Token**
+
+- **Endpoint**: `POST https://localhost:{PORT}/api/auth/login`
+- **Body**:
+
+  ```json
+  {
+    "email": "johndoe@example.com",
+    "password": "Password123!"
+  }
+  ```
+
+- **Expected Response**:
+
+  ```json
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR..."
+  }
+  ```
+
+##### **3. Access Protected Endpoint**
+
+- **Endpoint**: `GET https://localhost:{PORT}/api/user/profile`
+- **Headers**:
+
+  ```
+  Authorization: Bearer {token}
+  ```
+
+  Replace `{token}` with the JWT token received from the login response.
+
+- **Expected Response**:
+
+  ```json
+  {
+    "userId": "GUID",
+    "email": "johndoe@example.com",
+    "username": "johndoe"
+  }
+  ```
+
+---
+
+### **10. Conclusion**
+
+You've successfully built a simple User API that includes JWT token authentication. This setup allows users to register, log in, and access protected endpoints using JWT tokens.
+
+### **Key Takeaways:**
+
+- **User Registration and Login**: Users can create accounts and log in securely.
+- **Password Hashing**: User passwords are hashed using BCrypt before storing them in the database.
+- **JWT Authentication**: Secure endpoints using JWT tokens, which include user claims.
+- **Protected Endpoints**: Use the `[Authorize]` attribute to protect API endpoints.
+
+### **Next Steps:**
+
+- **Implement Refresh Tokens**: For better security and user experience.
+- **Add Role-Based Authorization**: Implement user roles (e.g., Admin, User) and protect endpoints accordingly.
+- **Improve Error Handling**: Implement global exception handling and more detailed error responses.
+- **Secure Secret Keys**: Store secret keys securely using environment variables or secret management tools.
+
+**Note**: Always follow best security practices when handling user data and authentication mechanisms.
+
+---
