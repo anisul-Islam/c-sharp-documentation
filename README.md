@@ -3,50 +3,52 @@
 ## Table of Contents
 
 1. [Basic C#]
+
    - [1. Intro to C#](#basic-11-introduction)
-      - [Intro to C# language](#11-intro-to-c-sharp-language)  
-      - [Setting up the environment](#12-setting-up-the-environment)  
-      - [Create and Run First C# Program](#13-create--run-first-console-application)  
-      - [Comments and escape sequences](#14-comments-and-escape-sequences)  
-      - [Variables and data types](#15-variables-and-data-types)  
-      - [Formatting output](#16-formatting-output---string-concatenation--interpolation)
-      - [User Input and Type Conversion](#17-user-input-and-type-conversion)
-   - [2. Operators](#basic-12-operators)  
-      - [Arithmetic Operators](#arithmetic-operators)
-      - [Assignment Operators](#assignment-operators)
-      - [Relational Operators](#relational-operators)
-      - [Logical Operators](#logical-operators)
-      - [Bitwise Operators](#bitwise-operators)
-      - [Unary Operators](#increment-and-decrement-operators)
-   - [3. Control Statement](#basic-13-control-statement)  
-      - [Conditional Control Statement](#31-conditional-control-statement)
-      - [Loop Control Statement](#32-loop-control-statement)
-      - [FizzBuzz Challenge](#fizzbuzz-challenge)
+     - [Intro to C# language](#11-intro-to-c-sharp-language)
+     - [Setting up the environment](#12-setting-up-the-environment)
+     - [Create and Run First C# Program](#13-create--run-first-console-application)
+     - [Comments and escape sequences](#14-comments-and-escape-sequences)
+     - [Variables and data types](#15-variables-and-data-types)
+     - [Formatting output](#16-formatting-output---string-concatenation--interpolation)
+     - [User Input and Type Conversion](#17-user-input-and-type-conversion)
+   - [2. Operators](#basic-12-operators)
+     - [Arithmetic Operators](#arithmetic-operators)
+     - [Assignment Operators](#assignment-operators)
+     - [Relational Operators](#relational-operators)
+     - [Logical Operators](#logical-operators)
+     - [Bitwise Operators](#bitwise-operators)
+     - [Unary Operators](#increment-and-decrement-operators)
+   - [3. Control Statement](#basic-13-control-statement)
+     - [Conditional Control Statement](#31-conditional-control-statement)
+     - [Loop Control Statement](#32-loop-control-statement)
+     - [FizzBuzz Challenge](#fizzbuzz-challenge)
    - [4. Methods](#basic-14-methods)
    - [5. Testing, Debugging and Exception Handling](#basic-15-testing-debugging-and-exception-handling)
    - [6. Array and String](#basic-16-array-and-string)
    - [7. Projects](#basic-17-project)
-      - [Project 1: Simple Calculator](#71-project-simple-calculator-with-conditional-checks)
-      - [Project 2: Basic Currency Converter](#72-project-basic-currency-converter)
-      - [Project 3: FizzBuzz](#73-fizzbuzz-challenge)
-      - [Project 4: Guessing Game](#74-number-guessing-game)
-      - [Project 5: Students Grade Manager](#75-students-grade-manager)
-      - [Project 6: String Reverse](#76-string-reverse-app)
-      - [Project 7: Unit Converter](#77-unit-converter-app-project)
+     - [Project 1: Simple Calculator](#71-project-simple-calculator-with-conditional-checks)
+     - [Project 2: Basic Currency Converter](#72-project-basic-currency-converter)
+     - [Project 3: FizzBuzz](#73-fizzbuzz-challenge)
+     - [Project 4: Guessing Game](#74-number-guessing-game)
+     - [Project 5: Students Grade Manager](#75-students-grade-manager)
+     - [Project 6: String Reverse](#76-string-reverse-app)
+     - [Project 7: Unit Converter](#77-unit-converter-app-project)
    - [8. MS Foundational Certification Exam](#basic-8-ms-foundational-certification-exam)
 
 2. [Intermediate C#]
+
    - [1. OOP](#intermediate-21-oop)
-      - [Class and Object](#classes-and-objects)
-      - [Constructor](#constructor)
-      - [readonly, static vs non-static member](#readonly-static-vs-non-static-member)
-      - [Assignment for oop part-1](#assignment-for-oop-part-1)
-      - [4 Pillars of OOP: Encapsulation](#4-pillars-of-oop-encapsulation)
-      - [4 Pillars of OOP: Inheritance](#4-pillars-of-oop-inheritance)
-      - [4 Pillars of OOP: Polymprphism](#4-pillars-of-oop-polymorphism)
-      - [4 Pillars of OOP: Abstraction](#4-pillars-of-oop-abstracttion)
-      - [Interface and Why Interface?](#interface-and-why-interface)
-      - [Interface and Why Interface?](#interface-and-why-interface)
+     - [Class and Object](#classes-and-objects)
+     - [Constructor](#constructor)
+     - [readonly, static vs non-static member](#readonly-static-vs-non-static-member)
+     - [Assignment for oop part-1](#assignment-for-oop-part-1)
+     - [4 Pillars of OOP: Encapsulation](#4-pillars-of-oop-encapsulation)
+     - [4 Pillars of OOP: Inheritance](#4-pillars-of-oop-inheritance)
+     - [4 Pillars of OOP: Polymprphism](#4-pillars-of-oop-polymorphism)
+     - [4 Pillars of OOP: Abstraction](#4-pillars-of-oop-abstracttion)
+     - [Interface and Why Interface?](#interface-and-why-interface)
+     - [Interface and Why Interface?](#interface-and-why-interface)
    - [Intermediate 2. Collections, Generics, LINQ](#intermediate-22-collections-generics-linq)
 
 3. [Advanced C#]
@@ -107,6 +109,7 @@ Key features and aspects of C# include:
 ![alt text](image-2.png)
 
 - [What is .NET?](https://learn.microsoft.com/en-us/training/modules/dotnet-introduction/2-what-is-dotnet)
+
   - The .NET and C# is not same thing. C# is a language where .NET is a software which give us CLR where we can run our application and use pre0defined linraries. Few major app models => web (asp.net core, asp.net core mvc), web client (blazor), desktop (winforms, .net for mac), mobile (.NET for android and .NET for iOS)
   - 2 main components: CLR (Common Language Runtime) take care of execution our app or running apps; .NET Framework class Library provides reusable code
   - NET Framework is a mature framework primarily used for Windows-based applications, while .NET Core is a modern, cross-platform framework optimized for cloud-native and containerized applications. With the release of .NET 5 (and later .NET 6), Microsoft unified the .NET platform, merging .NET Core and .NET Framework into a single, unified platform called .NET. This unified platform provides a consistent development experience across different platforms and environments.
@@ -122,6 +125,7 @@ Key features and aspects of C# include:
 - step 2: install IDE: Visual Studio is the popular one.
 
   - **VS Code (Visual Studio Code)**:
+
     - VS Code is a lightweight, open-source code editor developed by Microsoft.
     - It provides extensive support for various programming languages through extensions.
     - VS Code is highly customizable and has a vast ecosystem of extensions for additional features and functionalities.
@@ -131,71 +135,79 @@ Key features and aspects of C# include:
     - Visual Studio is a full-featured Integrated Development Environment (IDE) developed by Microsoft.
     - All the tools are already installed for development purpose. It provides comprehensive tools and features for various types of software development, including desktop applications, web applications, mobile applications, and cloud services.
     - Visual Studio includes powerful debugging tools, code analysis, and testing capabilities.
-    - Visual Studio has built-in support for multiple programming languages and platforms, including C#, C++, .NET, and more.  
+    - Visual Studio has built-in support for multiple programming languages and platforms, including C#, C++, .NET, and more.
     - It offers extensive project and solution management features, making it suitable for large-scale enterprise development.
 
 - step 3: some useful for .NET and c# extension
 
-  When working with C# and .NET in Visual Studio Code on macOS, you'll want to install some extensions to enhance your development experience. To install these extensions, you can open Visual Studio Code, navigate to the Extensions view by clicking on the square icon on the sidebar or by pressing `Cmd + Shift + X`, and search for each extension by name. Then, click on the extension and select "Install". 
+  When working with C# and .NET in Visual Studio Code on macOS, you'll want to install some extensions to enhance your development experience. To install these extensions, you can open Visual Studio Code, navigate to the Extensions view by clicking on the square icon on the sidebar or by pressing `Cmd + Shift + X`, and search for each extension by name. Then, click on the extension and select "Install".
 
-    1. **C# for Visual Studio Code**: This official extension provides support for C# syntax highlighting, debugging, and IntelliSense. It's essential for C# development in Visual Studio Code.
-      - [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+  1. **C# for Visual Studio Code**: This official extension provides support for C# syntax highlighting, debugging, and IntelliSense. It's essential for C# development in Visual Studio Code.
 
-    2. **.NET Core Test Explorer**: If you're writing unit tests with .NET Core, this extension allows you to run and debug your tests directly within Visual Studio Code.
-      - [.NET Core Test Explorer](https://marketplace.visualstudio.com/items?itemName=formulahendry.dotnet-test-explorer)
+     - [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
-    3. **NuGet Package Manager**: This extension allows you to manage NuGet packages directly within Visual Studio Code, making it easier to install, update, and remove packages.
-      - [NuGet Package Manager](https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager)
+  2. **.NET Core Test Explorer**: If you're writing unit tests with .NET Core, this extension allows you to run and debug your tests directly within Visual Studio Code.
 
-    4. **C# XML Documentation Comments**: This extension provides IntelliSense for XML documentation comments in C#, helping you write better-documented code.
-      - [C# XML Documentation Comments](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment)
+     - [.NET Core Test Explorer](https://marketplace.visualstudio.com/items?itemName=formulahendry.dotnet-test-explorer)
 
-    5. **C# Extensions**: This extension provides additional C# code snippets and tools to improve your productivity.
-      - [C# Extensions](https://marketplace.visualstudio.com/items?itemName=jchannon.csharpextensions)
+  3. **NuGet Package Manager**: This extension allows you to manage NuGet packages directly within Visual Studio Code, making it easier to install, update, and remove packages.
 
-    6. **C# FixFormat**: This extension automatically formats your C# code according to configurable rules, ensuring consistent code style.
-      - [C# FixFormat](https://marketplace.visualstudio.com/items?itemName=Leopotam.csharpfixformat)
+     - [NuGet Package Manager](https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager)
 
-    7. **Debugger for Unity**: If you're developing Unity games using C#, this extension allows you to debug Unity applications directly from Visual Studio Code.
-      - [Debugger for Unity](https://marketplace.visualstudio.com/items?itemName=Unity.unity-debug)
+  4. **C# XML Documentation Comments**: This extension provides IntelliSense for XML documentation comments in C#, helping you write better-documented code.
 
-    8. **Unity Code Snippets**: Another useful extension for Unity development, providing code snippets for common Unity-related tasks.
-      - [Unity Code Snippets](https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets)
-    
-    9. C# Dev kit - C# Dev Kit extension enhances VS Code's existing Workspaces with a new Solution Explorer view, providing a curated and structured view of your application for effortless, central project management. This lets you quickly add new projects or files to your solutions and easily build all or part of your solution.
+     - [C# XML Documentation Comments](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment)
+
+  5. **C# Extensions**: This extension provides additional C# code snippets and tools to improve your productivity.
+
+     - [C# Extensions](https://marketplace.visualstudio.com/items?itemName=jchannon.csharpextensions)
+
+  6. **C# FixFormat**: This extension automatically formats your C# code according to configurable rules, ensuring consistent code style.
+
+     - [C# FixFormat](https://marketplace.visualstudio.com/items?itemName=Leopotam.csharpfixformat)
+
+  7. **Debugger for Unity**: If you're developing Unity games using C#, this extension allows you to debug Unity applications directly from Visual Studio Code.
+
+     - [Debugger for Unity](https://marketplace.visualstudio.com/items?itemName=Unity.unity-debug)
+
+  8. **Unity Code Snippets**: Another useful extension for Unity development, providing code snippets for common Unity-related tasks.
+
+     - [Unity Code Snippets](https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets)
+
+  9. C# Dev kit - C# Dev Kit extension enhances VS Code's existing Workspaces with a new Solution Explorer view, providing a curated and structured view of your application for effortless, central project management. This lets you quickly add new projects or files to your solutions and easily build all or part of your solution.
 
 - step 4: important commands: run `dotnet new list`
-Here are some important .NET CLI (Command Line Interface) commands used in .NET development:
+  Here are some important .NET CLI (Command Line Interface) commands used in .NET development:
 
-    1. **dotnet new**: Creates a new project or file based on the specified template.
-      - Example: `dotnet new console` creates a new console application.
+      1. **dotnet new**: Creates a new project or file based on the specified template.
+        - Example: `dotnet new console` creates a new console application.
 
-    2. **dotnet restore**: Restores the dependencies and tools of a project.
-      - Example: `dotnet restore` restores the NuGet packages for a project.
+      2. **dotnet restore**: Restores the dependencies and tools of a project.
+        - Example: `dotnet restore` restores the NuGet packages for a project.
 
-    3. **dotnet build**: Builds the project and its dependencies.
-      - Example: `dotnet build` compiles the project into executable output.
+      3. **dotnet build**: Builds the project and its dependencies.
+        - Example: `dotnet build` compiles the project into executable output.
 
-    4. **dotnet run**: Builds and runs the project.
-      - Example: `dotnet run` compiles and executes the project's entry point.
+      4. **dotnet run**: Builds and runs the project.
+        - Example: `dotnet run` compiles and executes the project's entry point.
 
-    5. **dotnet test**: Executes the tests in the project.
-      - Example: `dotnet test` runs the unit tests in the project.
+      5. **dotnet test**: Executes the tests in the project.
+        - Example: `dotnet test` runs the unit tests in the project.
 
-    6. **dotnet publish**: Publishes the application for deployment.
-      - Example: `dotnet publish -c Release -o ./publish` publishes the application to the specified output directory in Release mode.
+      6. **dotnet publish**: Publishes the application for deployment.
+        - Example: `dotnet publish -c Release -o ./publish` publishes the application to the specified output directory in Release mode.
 
-    7. **dotnet clean**: Cleans the output directory and intermediate build files.
-      - Example: `dotnet clean` removes the build artifacts from the project directory.
+      7. **dotnet clean**: Cleans the output directory and intermediate build files.
+        - Example: `dotnet clean` removes the build artifacts from the project directory.
 
-    8. **dotnet add reference**: Adds a project-to-project (P2P) reference to the project file.
-      - Example: `dotnet add reference ../path/to/project.csproj` adds a reference to another project.
+      8. **dotnet add reference**: Adds a project-to-project (P2P) reference to the project file.
+        - Example: `dotnet add reference ../path/to/project.csproj` adds a reference to another project.
 
-    9. **dotnet ef**: Entity Framework Core command-line tools for database migrations and scaffolding.
-      - Example: `dotnet ef migrations add InitialCreate` creates a new migration for the database.
+      9. **dotnet ef**: Entity Framework Core command-line tools for database migrations and scaffolding.
+        - Example: `dotnet ef migrations add InitialCreate` creates a new migration for the database.
 
-    10. **dotnet tool install**: Installs the specified .NET Core CLI tool.
-        - Example: `dotnet tool install --global dotnet-ef` installs the Entity Framework Core CLI tool globally.
+      10. **dotnet tool install**: Installs the specified .NET Core CLI tool.
+          - Example: `dotnet tool install --global dotnet-ef` installs the Entity Framework Core CLI tool globally.
 
 ### 1.3 Create & Run First Console Application
 
@@ -212,6 +224,7 @@ Here are some important .NET CLI (Command Line Interface) commands used in .NET 
   - When you build a .NET project, the compiler generates intermediate language (IL) code, which is then translated into native machine code by the Just-In-Time (JIT) compiler when the application runs. **The compiled binary files,** along with any necessary resource files, configuration files, and dependencies, are stored in the bin directory.
   - create a .gitignore file `bin/ obj/` push the code and get again after cloning by `dotnet run`
 - **.NET Framework code execution process** ![alt text](image.png)
+
   - .dll is the byte code or intermediate language
   - you wont see the binary code as the JIT (Just In Time) do not expose cause durinf the running process it will keep the binary code in the memory. JIT can create the binary code based the OS and it made the platform independent.
 
@@ -239,31 +252,31 @@ Here are some important .NET CLI (Command Line Interface) commands used in .NET 
 - Run the Program
 
   1. **Open Terminal in VSCode:**
-    In VSCode, open a new terminal by clicking on "View" in the top menu and selecting "Terminal."
+     In VSCode, open a new terminal by clicking on "View" in the top menu and selecting "Terminal."
 
   2. **Build and Run:**
-    In the terminal, run the following commands to build and run your C# program:
+     In the terminal, run the following commands to build and run your C# program:
 
-    ```bash
-    dotnet build
-    dotnet run
-    ```
+  ```bash
+  dotnet build
+  dotnet run
+  ```
 
-    This will build and execute your C# program. You should see the "Hello World" output in the terminal.
+  This will build and execute your C# program. You should see the "Hello World" output in the terminal.
 
 #### Assignment 1: Print your bio
 
-  ```csharp
-  class Test
+```csharp
+class Test
+{
+  public static void Main(string[] args)
   {
-    public static void Main(string[] args)
-    {
-      Console.WriteLine("Name: Anisul Islam");
-      Console.WriteLine("Age: 32");
-      Console.WriteLine("Profession: Software developer");
-    }
+    Console.WriteLine("Name: Anisul Islam");
+    Console.WriteLine("Age: 32");
+    Console.WriteLine("Profession: Software developer");
   }
-  ```
+}
+```
 
 ### 1.4 comments and escape sequences
 
@@ -275,29 +288,30 @@ Here are some important .NET CLI (Command Line Interface) commands used in .NET 
   - multi-line comments -> `/*   */`
 - escape sequences: \n, \t, \r, \\, \", \'
 
-    ```csharp
-      // Program 2 : Comments and Escape Sequences
-      string fullName = "Aniul\nIslam\nRubel";
-      Console.WriteLine(fullName);
-      Console.ReadKey();
-    ```
+  ```csharp
+    // Program 2 : Comments and Escape Sequences
+    string fullName = "Aniul\nIslam\nRubel";
+    Console.WriteLine(fullName);
+    Console.ReadKey();
+  ```
 
 - verbatim string: it allows linebreaks in strings. use @ symbol before double quotes.
 
-    ```csharp
-    Console.WriteLine(@"Hello!
-    Welcome to the verbatim string");
-    ```
+  ```csharp
+  Console.WriteLine(@"Hello!
+  Welcome to the verbatim string");
+  ```
 
 ### 1.5 Variables and data types
 
 #### Data type
 
-  ![alt text](image-1.png)
+![alt text](image-1.png)
 
 C# provides several built-in data types, which can be categorized into the following groups:
 
 1. **Value Types**: (store data in stack memory)
+
    - **Integral Types**: Represent whole numbers without a fractional component.
      - `sbyte`: 8-bit signed integer (-128 to 127)
      - `byte`: 8-bit unsigned integer (0 to 255)
@@ -320,6 +334,7 @@ C# provides several built-in data types, which can be categorized into the follo
      - Nullable
 
 2. **Reference Types**: (store data in heap memory)
+
    - **Class**: Defines a reference type.
    - **Interface**: Defines a contract for classes to implement.
    - **Delegate**: Defines a reference to a method.
@@ -328,38 +343,39 @@ C# provides several built-in data types, which can be categorized into the follo
    - **Object**: The base class for all other types.
 
 3. **Pointer Types** (Unsafe Code):
+
    - Allow direct memory manipulation and are rarely used in typical C# programming.
 
 4. **DateTime**
    - DateTime (8 bytes) - value range from 0:00:00 on 1/1/2001 to 23:59:59 on 12/31/9999
 
-  ```csharp
-  // Program 3: Data types
-  using System;
+```csharp
+// Program 3: Data types
+using System;
 
-  class Program
-  {
-      static void Main()
-      {
-          Console.WriteLine("Variables declared with different data types:");
-          Console.WriteLine("sbyte: " + (-100));
-          Console.WriteLine("byte: " + 200);
-          Console.WriteLine("short: " + (-30000));
-          Console.WriteLine("ushort: " + 60000);
-          Console.WriteLine("int: " + (-2000000000));
-          Console.WriteLine("uint: " + 4000000000U);
-          Console.WriteLine("long: " + (-9000000000000000000L));
-          Console.WriteLine("ulong: " + 18000000000000000000UL);
-          Console.WriteLine("float: " + 3.14f);
-          Console.WriteLine("double: " + 3.14159265359);
-          Console.WriteLine("decimal: " + 123.45m);
-          Console.WriteLine("char: " + 'A');
-          Console.WriteLine("bool: " + true);
-          Console.WriteLine("string: " + "Hello, world!");
-          Console.WriteLine("object: " + 123);
-      }
-  }
-  ```
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Variables declared with different data types:");
+        Console.WriteLine("sbyte: " + (-100));
+        Console.WriteLine("byte: " + 200);
+        Console.WriteLine("short: " + (-30000));
+        Console.WriteLine("ushort: " + 60000);
+        Console.WriteLine("int: " + (-2000000000));
+        Console.WriteLine("uint: " + 4000000000U);
+        Console.WriteLine("long: " + (-9000000000000000000L));
+        Console.WriteLine("ulong: " + 18000000000000000000UL);
+        Console.WriteLine("float: " + 3.14f);
+        Console.WriteLine("double: " + 3.14159265359);
+        Console.WriteLine("decimal: " + 123.45m);
+        Console.WriteLine("char: " + 'A');
+        Console.WriteLine("bool: " + true);
+        Console.WriteLine("string: " + "Hello, world!");
+        Console.WriteLine("object: " + 123);
+    }
+}
+```
 
 #### Data Types Range
 
@@ -385,9 +401,9 @@ Console.WriteLine($"ulong: {ulong.MinValue} to {ulong.MaxValue}");
 
 // float, double, decimal
 Console.WriteLine($"\n\nFloating Point Types");
-Console.WriteLine($"float: {float.MinValue} to {float.MaxValue}"); // decimal point 6-9 
+Console.WriteLine($"float: {float.MinValue} to {float.MaxValue}"); // decimal point 6-9
 Console.WriteLine($"double: {double.MinValue} to {double.MaxValue}"); // decimal point 15-17
-Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue}"); // decimal point 28-29 
+Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue}"); // decimal point 28-29
 
 ```
 
@@ -402,7 +418,7 @@ While you've looked at several considerations, as you're getting started, for si
 - string for alphanumeric value
 - byte: working with encoded data that comes from other computer systems or using different caracter sets.
 - double: working with geometric or scientific purposes. double is used frequently when bilding games involving motion.
--System.DateTime for a specific date and time value.
+  -System.DateTime for a specific date and time value.
 - System.TimeSpan for a span of years / months / days / hours / minutes / seconds / milliseconds.
 
 #### Variables
@@ -410,29 +426,36 @@ While you've looked at several considerations, as you're getting started, for si
 #### Naming conventions in Micorsoft ecosystem
 
 1. **PascalCase**:
+
    - Class names: Used for naming classes and types. Example: `CustomerService`, `HttpRequest`.
    - Method names: Used for naming methods and functions. Example: `CalculateTotal`, `SendEmail`.
    - Property names: Used for naming properties of classes and objects. Example: `FirstName`, `TotalAmount`.
 
 2. **camelCase**:
+
    - Variable names: Used for naming variables, parameters, and local variables. Example: `totalAmount`, `numberOfItems`.
    - Method parameter names: Used for naming parameters of methods and functions. Example: `firstName`, `orderId`.
    - undesrcore followed by camelCase for private instance.
 
 3. **snake_case**:
+
    - File names: Used for naming files in some cases, particularly in web development. Example: `index.html`, `user_profile.css`.
    - Database identifiers: Used for naming database tables, columns, and stored procedures in some cases. Example: `user_profile`, `order_details`.
 
 4. **Hungarian notation**:
+
    - Less commonly used in modern development but may still be found in legacy codebases. Example: `strFirstName` for a string variable holding a first name, `intAge` for an integer variable holding an age.
 
 5. **Abbreviations**:
+
    - Used for common terms and concepts, especially in APIs and libraries. Example: `IO` for Input/Output, `HTTP` for Hypertext Transfer Protocol.
 
 6. **Acronyms**:
+
    - Used for abbreviations and initialisms. Example: `HTML` for Hypertext Markup Language, `JSON` for JavaScript Object Notation.
 
 7. **Namespaces and Assemblies**:
+
    - Namespaces and assemblies generally follow PascalCase and may include a reverse domain name. Example: `System.Collections`, `Microsoft.AspNetCore.Mvc`.
 
 8. **Constants**:
@@ -444,22 +467,22 @@ While you've looked at several considerations, as you're getting started, for si
 - string concatenation: "anisul" + "islam"
 - multiple variables: int x,y,z; x=y=z=50;
 
- ```csharp
-    // Program 4: Variables
-    string fullName = "Anisul Islam";
-    int age = 34;
-    string countryName = "Finland";
-    char bloodGroup = 'A';
-    bool isRegistered = true;
-    const string BIRTH_PLACE = "Bangladesh";
+```csharp
+   // Program 4: Variables
+   string fullName = "Anisul Islam";
+   int age = 34;
+   string countryName = "Finland";
+   char bloodGroup = 'A';
+   bool isRegistered = true;
+   const string BIRTH_PLACE = "Bangladesh";
 
-    Console.WriteLine(fullName);
-    Console.WriteLine(age);
-    Console.WriteLine(countryName);
-    Console.WriteLine(bloodGroup);
-    Console.WriteLine(isRegistered);
-    Console.WriteLine(BIRTH_PLACE);
-  ```
+   Console.WriteLine(fullName);
+   Console.WriteLine(age);
+   Console.WriteLine(countryName);
+   Console.WriteLine(bloodGroup);
+   Console.WriteLine(isRegistered);
+   Console.WriteLine(BIRTH_PLACE);
+```
 
 #### var vs int
 
@@ -522,6 +545,7 @@ Here’s a simple assignment that covers variables, string interpolation, commen
 **Instructions:**
 
 1. **Declare Variables:**
+
    - Create variables to store the following information:
      - Your name (string)
      - Your age (int)
@@ -529,12 +553,15 @@ Here’s a simple assignment that covers variables, string interpolation, commen
      - A favorite quote or saying (string)
 
 2. **Use Comments:**
+
    - Add comments in your code to describe what each part of your code is doing.
 
 3. **String Interpolation:**
+
    - Use string interpolation to create a sentence that introduces yourself, including your name, age, and favorite hobby.
 
 4. **Escape Sequences:**
+
    - Include escape sequences in your favorite quote, like using `\"` for quotes inside the string, or `\n` for a new line.
 
 5. **Display the Output:**
@@ -542,43 +569,43 @@ Here’s a simple assignment that covers variables, string interpolation, commen
 
 **Example Code:**
 
-  Here's what your code might look like:
+Here's what your code might look like:
 
-  ```csharp
-  using System;
+```csharp
+using System;
 
-  public class Program
-  {
-      public static void Main()
-      {
-          // Declare variables
-          string name = "Alice"; // Your name
-          int age = 25; // Your age
-          string hobby = "reading books"; // Your favorite hobby
-          string favoriteQuote = "The only limit to our realization of tomorrow is our doubts of today.\n- Franklin D. Roosevelt"; // A favorite quote
+public class Program
+{
+    public static void Main()
+    {
+        // Declare variables
+        string name = "Alice"; // Your name
+        int age = 25; // Your age
+        string hobby = "reading books"; // Your favorite hobby
+        string favoriteQuote = "The only limit to our realization of tomorrow is our doubts of today.\n- Franklin D. Roosevelt"; // A favorite quote
 
-          // String interpolation to create a personal introduction message
-          string introduction = $"Hello, my name is {name}. I am {age} years old and I love {hobby}.";
+        // String interpolation to create a personal introduction message
+        string introduction = $"Hello, my name is {name}. I am {age} years old and I love {hobby}.";
 
-          // Print the introduction message
-          Console.WriteLine(introduction);
+        // Print the introduction message
+        Console.WriteLine(introduction);
 
-          // Print the favorite quote with escape sequences for new line
-          Console.WriteLine($"My favorite quote is:\n\"{favoriteQuote}\"");
-      }
-  }
-  ```
+        // Print the favorite quote with escape sequences for new line
+        Console.WriteLine($"My favorite quote is:\n\"{favoriteQuote}\"");
+    }
+}
+```
 
-  **Expected Output:**
+**Expected Output:**
 
-  ```
-  Hello, my name is Alice. I am 25 years old and I love reading books.
-  My favorite quote is:
-  "The only limit to our realization of tomorrow is our doubts of today.
-  - Franklin D. Roosevelt"
-  ```
+```
+Hello, my name is Alice. I am 25 years old and I love reading books.
+My favorite quote is:
+"The only limit to our realization of tomorrow is our doubts of today.
+- Franklin D. Roosevelt"
+```
 
-  ---
+---
 
 **Key Concepts Covered:**
 
@@ -598,17 +625,17 @@ In C#, there are several ways to convert data types. Here are some commonly used
 
 1. **Implicit Conversion**: This happens automatically by the compiler when there is no risk of data loss. For example, converting an integer to a double.
 
-  ```csharp
-  int numInt = 10;
-  double numDouble = numInt; // Implicit conversion
-  ```
+```csharp
+int numInt = 10;
+double numDouble = numInt; // Implicit conversion
+```
 
 2. **Explicit Conversion (Casting)**: This involves manually converting one type to another using type casting operators. Explicit conversion may result in data loss or exceptions if the data cannot be represented in the target type.
 
-  ```csharp
-  double numDouble = 10.5;
-  int numInt = (int)numDouble; // Explicit conversion
-  ```
+```csharp
+double numDouble = 10.5;
+int numInt = (int)numDouble; // Explicit conversion
+```
 
 3. Convert vs Parse vs TryParse
 
@@ -621,7 +648,6 @@ When deciding between `Convert`, `TryParse`, and `Parse` for converting user inp
   - **No Exceptions**: It does not throw an exception if the input is invalid; instead, it returns `false`.
   - **Safe for User Input**: Ideal for handling user input where errors are common.
   - **Output Variable**: Outputs the converted value directly using an `out` parameter.
-  
 - **When to Use**:
   - Best when dealing with user input or uncertain data.
   - When you want to avoid exception handling and gracefully handle invalid inputs.
@@ -640,7 +666,6 @@ bool.TryParse(registerInput, out bool isRegistered);
 - **Advantages**:
   - **Straightforward**: Converts the string directly if you are certain the input is valid.
   - **Performance**: Slightly faster than `TryParse` because it does not include the overhead of returning `false`.
-  
 - **When to Use**:
   - Use when you are sure that the input is always valid.
   - Typically used when data is already validated or comes from a reliable source.
@@ -657,7 +682,6 @@ int age = int.Parse(ageInput); // Throws an exception if ageInput is not a valid
 - **Advantages**:
   - **Handles Nulls**: Does not throw an exception for `null` input, but instead converts to a default value (e.g., 0, false).
   - **Versatile**: Can convert between various types, not just strings to other types.
-  
 - **When to Use**:
   - When you need to handle `null` values gracefully without exceptions.
   - Suitable for converting multiple types, not just strings.
@@ -667,7 +691,6 @@ int age = int.Parse(ageInput); // Throws an exception if ageInput is not a valid
 ```csharp
 int age = Convert.ToInt32(ageInput); // Converts null to 0 and invalid input throws an exception.
 ```
-
 
 These are some of the common methods used for data type conversion in C#. Each method has its own use cases and should be chosen based on the specific requirements of the program.
 
@@ -718,57 +741,61 @@ Using `TryParse` ensures your application is user-friendly and robust when handl
 
 In C#, you can check the data type of a variable or object using various methods. Here are some common ways:
 
-  1. **Using the `typeof` Operator**:
-    - The `typeof` operator returns a `Type` object representing the specified type.
+1. **Using the `typeof` Operator**:
 
-  ```csharp
-  int number = 10;
-  Type type = typeof(int);
-  Console.WriteLine(type); // Output: System.Int32
-    ```
+   - The `typeof` operator returns a `Type` object representing the specified type.
 
-  2. **Using the `GetType` Method**:
-    - The `GetType` method returns the runtime type of an instance.
-
-  ```csharp
-  string text = "Hello";
-  Type type = text.GetType();
-  Console.WriteLine(type); // Output: System.String
+````csharp
+int number = 10;
+Type type = typeof(int);
+Console.WriteLine(type); // Output: System.Int32
   ```
 
-  3. **Using the `is` Operator**:
-    - The `is` operator checks if an object is compatible with a given type and returns a Boolean result.
+2. **Using the `GetType` Method**:
+  - The `GetType` method returns the runtime type of an instance.
 
-  ```csharp
-  object obj = "Hello";
-  if (obj is string)
-  {
-      Console.WriteLine("Object is a string");
-  }
-  ```
+```csharp
+string text = "Hello";
+Type type = text.GetType();
+Console.WriteLine(type); // Output: System.String
+````
 
-  4. **Using the `as` Operator**:
-    - The `as` operator performs a safe type conversion or casting and returns `null` if the conversion fails.
+3. **Using the `is` Operator**:
 
-  ```csharp
-  object obj = "Hello";
-  string text = obj as string;
-  if (text != null)
-  {
-      Console.WriteLine("Object is successfully converted to string");
-  }
-  ```
+   - The `is` operator checks if an object is compatible with a given type and returns a Boolean result.
 
-  5. **Using Pattern Matching (C# 7 and later)**:
-    - Pattern matching allows you to test the type of an object and extract values from it in a single step.
+```csharp
+object obj = "Hello";
+if (obj is string)
+{
+    Console.WriteLine("Object is a string");
+}
+```
 
-  ```csharp
-  object obj = "Hello";
-  if (obj is string text)
-  {
-      Console.WriteLine($"Object is a string: {text}");
-  }
-  ```
+4. **Using the `as` Operator**:
+
+   - The `as` operator performs a safe type conversion or casting and returns `null` if the conversion fails.
+
+```csharp
+object obj = "Hello";
+string text = obj as string;
+if (text != null)
+{
+    Console.WriteLine("Object is successfully converted to string");
+}
+```
+
+5. **Using Pattern Matching (C# 7 and later)**:
+
+   - Pattern matching allows you to test the type of an object and extract values from it in a single step.
+
+```csharp
+object obj = "Hello";
+if (obj is string text)
+{
+    Console.WriteLine($"Object is a string: {text}");
+}
+```
 
 ## Basic 1.2: Operators
 
@@ -1078,34 +1105,34 @@ class Test
    a %= 3;  // equivalent to a = a % 3;
    ```
 
-  ```csharp
-  // Program 12
-  using System;
-  class Test
+```csharp
+// Program 12
+using System;
+class Test
+{
+  public static void Main(string[] args)
   {
-    public static void Main(string[] args)
-    {
-      int number = 20;
+    int number = 20;
 
-      number += 5; // number = number + 5
-      Console.WriteLine($"{number}");
+    number += 5; // number = number + 5
+    Console.WriteLine($"{number}");
 
-      number -= 5; // number = number - 5
-      Console.WriteLine($"{number}");
+    number -= 5; // number = number - 5
+    Console.WriteLine($"{number}");
 
-      number *= 5; // number = number * 5
-      Console.WriteLine($"{number}");
+    number *= 5; // number = number * 5
+    Console.WriteLine($"{number}");
 
-      number /= 5; // number = number / 5
-      Console.WriteLine($"{number}");
+    number /= 5; // number = number / 5
+    Console.WriteLine($"{number}");
 
-      number %= 5; // number = number % 5
-      Console.WriteLine($"{number}");
+    number %= 5; // number = number % 5
+    Console.WriteLine($"{number}");
 
-    }
   }
+}
 
-  ```
+```
 
 ### Relational Operators
 
@@ -1170,6 +1197,7 @@ class Test
 In C#, bitwise operators perform operations at the bit level. These operators work with individual bits of integer types (`int`, `long`, `short`, `byte`, etc.). Here are the bitwise operators in C#:
 
 1. **Bitwise AND (`&`):**
+
    - **Description:** Sets each bit to 1 if both bits are 1.
    - **Example:**
 
@@ -1179,6 +1207,7 @@ In C#, bitwise operators perform operations at the bit level. These operators wo
      ```
 
 2. **Bitwise OR (`|`):**
+
    - **Description:** Sets each bit to 1 if at least one of the corresponding bits is 1.
    - **Example:**
 
@@ -1188,6 +1217,7 @@ In C#, bitwise operators perform operations at the bit level. These operators wo
      ```
 
 3. **Bitwise XOR (`^`):**
+
    - **Description:** Sets each bit to 1 if only one of the corresponding bits is 1.
    - **Example:**
 
@@ -1197,6 +1227,7 @@ In C#, bitwise operators perform operations at the bit level. These operators wo
      ```
 
 4. **Bitwise NOT (`~`):**
+
    - **Description:** Inverts each bit.
    - **Example:**
 
@@ -1206,6 +1237,7 @@ In C#, bitwise operators perform operations at the bit level. These operators wo
      ```
 
 5. **Left Shift (`<<`):**
+
    - **Description:** Shifts the bits of a number to the left by a specified number of positions.
    - **Example:**
 
@@ -1215,6 +1247,7 @@ In C#, bitwise operators perform operations at the bit level. These operators wo
      ```
 
 6. **Right Shift (`>>`):**
+
    - **Description:** Shifts the bits of a number to the right by a specified number of positions.
    - **Example:**
 
@@ -1241,26 +1274,26 @@ Bitwise operators are commonly used in scenarios where individual bits represent
 
 ### Conditional Operator (Ternary Operator)
 
-  ```csharp
-  // Program 13
-  int result = (a > b) ? a : b;
+```csharp
+// Program 13
+int result = (a > b) ? a : b;
 
-  // even/odd program
-  class Test
+// even/odd program
+class Test
+{
+  public static void Main(string[] args)
   {
-    public static void Main(string[] args)
-    {
-      Console.Write("Enter a number: ");
-      int number = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Enter a number: ");
+    int number = Convert.ToInt32(Console.ReadLine());
 
-      string result = number % 2 == 0 ? "Even" : "Odd";
-      Console.WriteLine($"{number} is an {result} number");
-      Console.Read();
-    }
+    string result = number % 2 == 0 ? "Even" : "Odd";
+    Console.WriteLine($"{number} is an {result} number");
+    Console.Read();
   }
-  ```
+}
+```
 
-  This is a concise way to express an `if-else` statement.
+This is a concise way to express an `if-else` statement.
 
 ## Basic 1.3: Control Statement
 
@@ -1269,6 +1302,7 @@ Bitwise operators are commonly used in scenarios where individual bits represent
 Control statements in C# are used to control the flow of execution in a program. They allow you to make decisions, loop through code, and execute different blocks of code based on certain conditions. Here are some of the main control statements in C#:
 
 1. **if Statement:**
+
    - The `if` statement is used for conditional branching. It executes a block of code if a specified condition is true.
 
      ```csharp
@@ -1276,8 +1310,10 @@ Control statements in C# are used to control the flow of execution in a program.
      {
          // Code to be executed if the condition is true
      }
+     ```
 
 2. **else Statement:**
+
    - The `else` statement is used with `if` to execute a block of code if the `if` condition is false.
 
      ```csharp
@@ -1292,6 +1328,7 @@ Control statements in C# are used to control the flow of execution in a program.
      ```
 
 3. **else if Statement:**
+
    - The `else if` statement is used to specify a new condition to test if the previous `if` or `else if` conditions are false.
 
      ```csharp
@@ -1309,76 +1346,76 @@ Control statements in C# are used to control the flow of execution in a program.
      }
      ```
 
-        ```
+     ````
 
      ```csharp
-      // Program 14
-      // Control Statement
+     // Program 14
+     // Control Statement
 
-      // Large number between 2 numbers
-      int number1 = 15;
-      int number2 = 15;
+     // Large number between 2 numbers
+     int number1 = 15;
+     int number2 = 15;
 
-      if (number1 > number2)
-      {
-        Console.WriteLine($"Largest number is {number1}");
-      }
-      else if (number1 < number2)
-      {
-        Console.WriteLine($"Largest number is {number2}");
-      }
-      else
-      {
-        Console.WriteLine($"Both are equal numbers");
+     if (number1 > number2)
+     {
+     Console.WriteLine($"Largest number is {number1}");
+     }
+     else if (number1 < number2)
+     {
+     Console.WriteLine($"Largest number is {number2}");
+     }
+     else
+     {
+     Console.WriteLine($"Both are equal numbers");
 
-      }
-     ```
+     }
+     ````
 
    - nested if
 
-    ```csharp
-    
-    // Program 15
-    // Control Statement
-    // Large number among 3 numbers
-    int number1 = 45;
-    int number2 = 55;
-    int number3 = 35;
+   ```csharp
 
-    if (number1 > number2)
-    {
-      if (number1 > number3)
-      {
-        Console.WriteLine($"Largest number is {number1}");
-      }
-    }
-    else if (number2 > number1)
-    {
-      if (number2 > number3)
-      {
-        Console.WriteLine($"Largest number is {number2}");
-      }
-      else
-      {
-        Console.WriteLine($"Largest number is {number3}");
-      }
-    }
-    else if (number3 > number1)
-    {
-      if (number3 > number2)
-      {
-        Console.WriteLine($"Largest number is {number3}");
-      }
-    }
-    else
-    {
-      Console.WriteLine($"Equal numbers");
+   // Program 15
+   // Control Statement
+   // Large number among 3 numbers
+   int number1 = 45;
+   int number2 = 55;
+   int number3 = 35;
 
-    }
-    ```
+   if (number1 > number2)
+   {
+     if (number1 > number3)
+     {
+       Console.WriteLine($"Largest number is {number1}");
+     }
+   }
+   else if (number2 > number1)
+   {
+     if (number2 > number3)
+     {
+       Console.WriteLine($"Largest number is {number2}");
+     }
+     else
+     {
+       Console.WriteLine($"Largest number is {number3}");
+     }
+   }
+   else if (number3 > number1)
+   {
+     if (number3 > number2)
+     {
+       Console.WriteLine($"Largest number is {number3}");
+     }
+   }
+   else
+   {
+     Console.WriteLine($"Equal numbers");
+
+   }
+   ```
 
 4. **switch Statement:**
-  
+
 - 4 keywords to remember: switch, case, break and default. The `switch` statement is used to select one of many code blocks to be executed.
 
       ```csharp
@@ -1436,77 +1473,77 @@ Control statements in C# are used to control the flow of execution in a program.
 
   - **shorthand switch**:
 
-      In C#, starting from C# 8.0, you can use switch expressions as a shorthand method for simpler switch statements. Switch expressions allow you to perform pattern matching and return a value based on the matched pattern. Here's the syntax:
+    In C#, starting from C# 8.0, you can use switch expressions as a shorthand method for simpler switch statements. Switch expressions allow you to perform pattern matching and return a value based on the matched pattern. Here's the syntax:
 
-      ```csharp
-      result = switch (variable)
+    ```csharp
+    result = switch (variable)
+    {
+        pattern1 => expression1,
+        pattern2 => expression2,
+        ...
+        _ => defaultExpression // Optional default case
+    };
+    ```
+
+    Let's see an example of a switch statement converted to a switch expression:
+
+    ```csharp
+    // Switch statement
+    int num = 3;
+    string message;
+
+    switch (num)
+    {
+        case 1:
+            message = "One";
+            break;
+        case 2:
+            message = "Two";
+            break;
+        default:
+            message = "Other";
+            break;
+    }
+
+    Console.WriteLine(message); // Output: Other
+    ```
+
+    Converted to a switch expression:
+
+    ```csharp
+    // Switch expression
+    int num = 3;
+    string message = num switch
+    {
+        1 => "One",
+        2 => "Two",
+        _ => "Other" // Default case
+    };
+
+    Console.WriteLine(message); // Output: Other
+    ```
+
+    ```csharp
+      Console.Write($"Enter a letter from a-z: ");
+
+      string input = Console.ReadLine().ToLower();
+
+      if (string.IsNullOrEmpty(input) || input.Length != 1)
       {
-          pattern1 => expression1,
-          pattern2 => expression2,
-          ...
-          _ => defaultExpression // Optional default case
-      };
-      ```
-
-      Let's see an example of a switch statement converted to a switch expression:
-
-      ```csharp
-      // Switch statement
-      int num = 3;
-      string message;
-
-      switch (num)
-      {
-          case 1:
-              message = "One";
-              break;
-          case 2:
-              message = "Two";
-              break;
-          default:
-              message = "Other";
-              break;
+        Console.WriteLine($"Invalid Input. Please enter a single character");
+        return;
       }
+      char letter = input[0];
 
-      Console.WriteLine(message); // Output: Other
-      ```
-
-      Converted to a switch expression:
-
-      ```csharp
-      // Switch expression
-      int num = 3;
-      string message = num switch
+      string result = letter switch
       {
-          1 => "One",
-          2 => "Two",
-          _ => "Other" // Default case
+        not (>= 'a' and <= 'z') => "Not a Letter",
+        'a' or 'e' or 'i' or 'o' or 'u' => "Vowel",
+        _ => "Consonant",
       };
+      Console.WriteLine(result);
 
-      Console.WriteLine(message); // Output: Other
-      ```
-
-      ```csharp
-        Console.Write($"Enter a letter from a-z: ");
-
-        string input = Console.ReadLine().ToLower();
-
-        if (string.IsNullOrEmpty(input) || input.Length != 1)
-        {
-          Console.WriteLine($"Invalid Input. Please enter a single character");
-          return;
-        }
-        char letter = input[0];
-
-        string result = letter switch
-        {
-          not (>= 'a' and <= 'z') => "Not a Letter",
-          'a' or 'e' or 'i' or 'o' or 'u' => "Vowel",
-          _ => "Consonant",
-        };
-        Console.WriteLine(result);
-
-      ```
+    ```
 
     In the switch expression:
 
@@ -1563,58 +1600,58 @@ Control statements in C# are used to control the flow of execution in a program.
 
   Suppose we have a method that processes different types of vehicles:
 
-    ```csharp
-    public static string ProcessVehicleWithoutPattern(object vehicle)
-    {
-        switch (vehicle)
-        {
-            case Car:
-                return "Driving a car";
-            case Bicycle:
-                return "Riding a bicycle";
-            case Truck:
-                return "Driving a truck";
-            default:
-                return "Unknown vehicle type";
-        }
-    }
+  ```csharp
+  public static string ProcessVehicleWithoutPattern(object vehicle)
+  {
+      switch (vehicle)
+      {
+          case Car:
+              return "Driving a car";
+          case Bicycle:
+              return "Riding a bicycle";
+          case Truck:
+              return "Driving a truck";
+          default:
+              return "Unknown vehicle type";
+      }
+  }
 
-    // Define vehicle types
-    public class Car { }
-    public class Bicycle { }
-    public class Truck { }
+  // Define vehicle types
+  public class Car { }
+  public class Bicycle { }
+  public class Truck { }
 
-    static void Main(string[] args)
-    {
-        object myVehicle = new Car();
-        Console.WriteLine(ProcessVehicleWithoutPattern(myVehicle)); // Output: Driving a car
-    }
-    ```
+  static void Main(string[] args)
+  {
+      object myVehicle = new Car();
+      Console.WriteLine(ProcessVehicleWithoutPattern(myVehicle)); // Output: Driving a car
+  }
+  ```
 
   2. **With Type Pattern (Using Modern Approach)**:
 
   Now, let's rewrite the same functionality using type patterns:
 
-    ```csharp
-    public static string ProcessVehicleWithTypePattern(object vehicle)
-    {
-        return vehicle switch
-        {
-            Car => "Driving a car",
-            Bicycle => "Riding a bicycle",
-            Truck => "Driving a truck",
-            _ => "Unknown vehicle type"
-        };
-    }
+  ```csharp
+  public static string ProcessVehicleWithTypePattern(object vehicle)
+  {
+      return vehicle switch
+      {
+          Car => "Driving a car",
+          Bicycle => "Riding a bicycle",
+          Truck => "Driving a truck",
+          _ => "Unknown vehicle type"
+      };
+  }
 
-    // Define vehicle types (same as above)
+  // Define vehicle types (same as above)
 
-    static void Main(string[] args)
-    {
-        object myVehicle = new Bicycle();
-        Console.WriteLine(ProcessVehicleWithTypePattern(myVehicle)); // Output: Riding a bicycle
-    }
-    ```
+  static void Main(string[] args)
+  {
+      object myVehicle = new Bicycle();
+      Console.WriteLine(ProcessVehicleWithTypePattern(myVehicle)); // Output: Riding a bicycle
+  }
+  ```
 
   In this example, the switch expression with type patterns provides a cleaner and more readable way to handle different vehicle types compared to the traditional approach without type patterns.
 
@@ -1767,12 +1804,12 @@ Control statements in C# are used to control the flow of execution in a program.
 
 - Length Check: Ensure the string is within a certain length range.
 - Character Restrictions: Ensure the string contains only letters, digits, or specific characters.
-- No Special Characters: Reject strings containing special characters (e.g., !@#$%^&*()).
+- No Special Characters: Reject strings containing special characters (e.g., !@#$%^&\*()).
 - No Numeric Only Strings: Reject strings that are purely numeric.
 - Custom Regex Pattern: Apply a custom pattern to enforce specific formats (e.g., email format, no spaces).
 - Type Checking with GetType(): Added basic type validation checks within each validation function to ensure inputs are handled as strings.
 - Enhanced String Validation: Rejects strings that are purely numeric using the IsNumeric() function.
-Continues to validate against length, special characters, and non-empty conditions.
+  Continues to validate against length, special characters, and non-empty conditions.
 - IsNumeric() Function: Determines if a string is purely numeric by checking against multiple numeric types (int, float, double, decimal).
 
   ```csharp
@@ -1953,26 +1990,26 @@ Continues to validate against length, special characters, and non-empty conditio
 
 ##### **Expected Output Example**
 
-  ```
-  Enter a valid string (no special characters, not empty, length 3-20, not purely numeric): 123
-  Invalid input. Ensure the string is not empty, contains no special characters, is not purely numeric, and has a length between 3 and 20 characters.
-  Enter a valid string (no special characters, not empty, length 3-20, not purely numeric): User123
-  Enter an integer: abc
-  Invalid input. Please enter a valid integer.
-  Enter an integer: 50
-  Enter a float (decimal value): notafloat
-  Invalid input. Please enter a valid float.
-  Enter a float (decimal value): 3.14
-  Enter a double (decimal value): doublevalue
-  Invalid input. Please enter a valid double.
-  Enter a double (decimal value): 2.71828
+```
+Enter a valid string (no special characters, not empty, length 3-20, not purely numeric): 123
+Invalid input. Ensure the string is not empty, contains no special characters, is not purely numeric, and has a length between 3 and 20 characters.
+Enter a valid string (no special characters, not empty, length 3-20, not purely numeric): User123
+Enter an integer: abc
+Invalid input. Please enter a valid integer.
+Enter an integer: 50
+Enter a float (decimal value): notafloat
+Invalid input. Please enter a valid float.
+Enter a float (decimal value): 3.14
+Enter a double (decimal value): doublevalue
+Invalid input. Please enter a valid double.
+Enter a double (decimal value): 2.71828
 
-  Validated Inputs:
-  Validated String: User123
-  Validated Integer: 50
-  Validated Float: 3.14
-  Validated Double: 2.71828
-  ```
+Validated Inputs:
+Validated String: User123
+Validated Integer: 50
+Validated Float: 3.14
+Validated Double: 2.71828
+```
 
 #### program 1 positive, negative or zero
 
@@ -2461,7 +2498,7 @@ class Test
   {
     Console.Write("Enter a day of the week : ");
     string day = Console.ReadLine();
-    
+
     switch (day.ToLower())
     {
       case "monday":
@@ -2637,6 +2674,7 @@ class Test
 ### 3.2 Loop control statement
 
 1. **while Loop:**
+
    - The `while` loop is used to repeatedly execute a block of code as long as the specified condition is true.
 
      ```csharp
@@ -2647,6 +2685,7 @@ class Test
      ```
 
 2. **do-while Loop:**
+
    - The `do-while` loop is similar to the `while` loop, but it ensures that the block of code is executed at least once.
 
      ```csharp
@@ -2657,6 +2696,7 @@ class Test
      ```
 
 3. **for Loop:**
+
    - The `for` loop is used to repeatedly execute a block of code a specific number of times.
 
      ```csharp
@@ -2667,6 +2707,7 @@ class Test
      ```
 
 4. **foreach Loop:**
+
    - The `foreach` loop is used to iterate over elements in a collection (e.g., arrays, lists).
 
      ```csharp
@@ -2678,26 +2719,26 @@ class Test
 
      In C#, the `foreach` loop does not directly provide access to the index of the elements being iterated over. However, you can achieve this by using the `IEnumerable<T>.Select()` extension method along with the `Enumerable.Range()` method to generate indices. Here's how you can do it:
 
-      ```csharp
-      using System;
-      using System.Linq;
+     ```csharp
+     using System;
+     using System.Linq;
 
-      class Program
-      {
-          static void Main()
-          {
-              int[] numbers = { 1, 2, 3, 4, 5 };
+     class Program
+     {
+         static void Main()
+         {
+             int[] numbers = { 1, 2, 3, 4, 5 };
 
-              // Using Select with Range to get indices
-              foreach (var index in Enumerable.Range(0, numbers.Length))
-              {
-                  Console.WriteLine($"Index: {index}, Value: {numbers[index]}");
-              }
-          }
-      }
-      ```
+             // Using Select with Range to get indices
+             foreach (var index in Enumerable.Range(0, numbers.Length))
+             {
+                 Console.WriteLine($"Index: {index}, Value: {numbers[index]}");
+             }
+         }
+     }
+     ```
 
-      In this example, `Enumerable.Range(0, numbers.Length)` generates a sequence of numbers from 0 to `numbers.Length - 1`, which represents the indices of the array. Then, we use `Select` to iterate over these indices, and within the loop, we access both the index and the corresponding element from the array.
+     In this example, `Enumerable.Range(0, numbers.Length)` generates a sequence of numbers from 0 to `numbers.Length - 1`, which represents the indices of the array. Then, we use `Select` to iterate over these indices, and within the loop, we access both the index and the corresponding element from the array.
 
 These control statements provide flexibility and help in creating more dynamic and responsive programs in C#.
 
@@ -2731,7 +2772,7 @@ class Test
 // 1 2 3 4 ... 100
 // 1 3 5 7 ... 99
 // 2 4 6 8 ... 100
-// 2 5 8 11 ... 
+// 2 5 8 11 ...
 
 ```
 
@@ -2806,7 +2847,7 @@ class Test
 // inner loop j=3 3<=5 Bangladesh
 // inner loop j=4 4<=5 Bangladesh
 // inner loop j=5 5<=5 Bangladesh
-// inner loop j=6 6<=5 
+// inner loop j=6 6<=5
 
 // outer loop i=2 2<=3
 // inner loop j=1 1<=5 Bangladesh
@@ -2814,7 +2855,7 @@ class Test
 // inner loop j=3 3<=5 Bangladesh
 // inner loop j=4 4<=5 Bangladesh
 // inner loop j=5 5<=5 Bangladesh
-// inner loop j=6 6<=5 
+// inner loop j=6 6<=5
 
 // outer loop i=3 3<=3
 // inner loop j=1 1<=5 Bangladesh
@@ -2822,7 +2863,7 @@ class Test
 // inner loop j=3 3<=5 Bangladesh
 // inner loop j=4 4<=5 Bangladesh
 // inner loop j=5 5<=5 Bangladesh
-// inner loop j=6 6<=5 
+// inner loop j=6 6<=5
 
 // outer loop i=4 4<=3
 
@@ -2859,7 +2900,7 @@ class Test
 
 // number = 5
 // number X i = number*i
-// 5 X 1 = 5  
+// 5 X 1 = 5
 // 5 X 2 = 10
 // ....
 // 5 X 10 = 50
@@ -2955,6 +2996,7 @@ class Program
 #### Explanation
 
 1. **Regular Expression Pattern:**
+
    - The pattern `^[^@\s]+@[^@\s]+\.[^@\s]+$` checks the following:
      - `^` and `$` mark the start and end of the string.
      - `[^@\s]+` matches one or more characters that are not `@` or whitespace.
@@ -2964,6 +3006,7 @@ class Program
      - `[^@\s]+` after `.` ensures there is at least one character following the `.`.
 
 2. **Regex Class:**
+
    - `Regex.IsMatch()` checks if the email string matches the provided pattern.
 
 3. **User Input:**
@@ -2972,6 +3015,7 @@ class Program
 #### Output
 
 - **Input:** `"example@test.com"`
+
   - Output: `"The email address is valid."`
 
 - **Input:** `"invalid-email"`
@@ -3022,9 +3066,11 @@ class Program
 ##### Explanation 2
 
 1. **`MailAddress` Class:**
+
    - The constructor of the `MailAddress` class attempts to create a new `MailAddress` object using the provided email string. If the format is invalid, it throws a `FormatException`.
 
 2. **Exception Handling:**
+
    - The `try-catch` block catches a `FormatException` if the email is invalid, returning `false`.
 
 3. **User Input:**
@@ -3033,6 +3079,7 @@ class Program
 ##### Output 3
 
 - **Input:** `"test@domain.com"`
+
   - Output: `"The email address is valid."`
 
 - **Input:** `"invalidemail.com"`
@@ -3078,7 +3125,7 @@ class FizzBuzzProject
 
 ### 3.4 Final Assignment: Calculator program
 
-- Basic Calculator with User Input, Operators, and Data Type Conversion in C#**
+- Basic Calculator with User Input, Operators, and Data Type Conversion in C#\*\*
 
 **Objective:** This assignment will help you practice using various operators, handling user input, and performing data type conversions in C#. You will create a simple calculator that performs arithmetic operations based on user input.
 
@@ -3087,17 +3134,21 @@ class FizzBuzzProject
 1. **Create a C# Console Application.**
 
 2. **Prompt the User for Input:**
+
    - Ask the user to enter two numbers.
    - Ask the user to choose an operation (`+`, `-`, `*`, `/`, `%`).
 
 3. **Perform Data Type Conversion:**
+
    - Convert the user input from `string` to the appropriate data types (`int`, `double`).
 
 4. **Use Operators to Perform Calculations:**
+
    - Based on the user’s choice, perform the corresponding arithmetic operation.
    - Handle division carefully to avoid division by zero.
 
 5. **Display the Result:**
+
    - Show the user the result of the calculation.
    - Handle errors such as invalid input or unsupported operations gracefully.
 
@@ -3193,15 +3244,19 @@ class BasicCalculator
 #### **Key Concepts Covered:**
 
 1. **Operators:**
+
    - Use of arithmetic operators (`+`, `-`, `*`, `/`, `%`) to perform calculations.
 
 2. **Data Type Conversion:**
+
    - Converting user input from `string` to `double` using `Convert.ToDouble()`.
 
 3. **User Input Handling:**
+
    - Using `Console.ReadLine()` to capture user input and handling invalid input with `try-catch` blocks.
 
 4. **Conditional Logic:**
+
    - Using `switch` statements to perform different operations based on user input.
 
 5. **Error Handling:**
@@ -3224,11 +3279,7 @@ Thank you for using the Basic Calculator! Goodbye.
 ### Methods
 
 - use capital letter for Method Name
-- what to learn?
-      - how to define a function
-      - how to call a function
-      - how to pass parameters to a function
-      - how to return from a function
+- what to learn? - how to define a function - how to call a function - how to pass parameters to a function - how to return from a function
 
 - Method: A method is a block of code created inside a class that performs a specific task or operation. It is a fundamental building block in any programming language and is defined within a class or a struct. Methods are used to encapsulate logic, promote code reusability, and organize code into manageable units.
 
@@ -3409,7 +3460,7 @@ This simple calculator project allows students to practice creating a class with
 - debug the following codes
 
   ```csharp
-  /* 
+  /*
   This code uses a names array and corresponding methods to display
   greeting messages
   */
@@ -3449,7 +3500,7 @@ This simple calculator project allows students to practice creating a class with
   x = ChangeValue(x);
   Console.WriteLine(x);
 
-  int ChangeValue(int value) 
+  int ChangeValue(int value)
   {
       value = 10;
       return value;
@@ -3474,106 +3525,107 @@ Network communication: Exceptions can occur when code communicates over a networ
 
 Other external resources: Exceptions can occur when code communicates with other external resources. Web Services, REST APIs, or third-party libraries, can throw exceptions for various reasons. For example, exceptions occur due to network connections issues, malformed data, etc.
 
- Here's an overview of exception handling in C#:
+Here's an overview of exception handling in C#:
 
-  1. **Try-Catch Block**: The basic structure for handling exceptions is the `try-catch` block. Code that might raise an exception is enclosed within the `try` block, and any potential exceptions are caught and handled in the `catch` block.
+1. **Try-Catch Block**: The basic structure for handling exceptions is the `try-catch` block. Code that might raise an exception is enclosed within the `try` block, and any potential exceptions are caught and handled in the `catch` block.
 
-      ```csharp
-      try
-      {
-          // Code that might throw an exception
-      }
-      catch (ExceptionType ex)
-      {
-          // Handle the exception
-          // ex.Message
-      }
-      ```
+   ```csharp
+   try
+   {
+       // Code that might throw an exception
+   }
+   catch (ExceptionType ex)
+   {
+       // Handle the exception
+       // ex.Message
+   }
+   ```
 
-  2. **Exception Types**: You can catch specific types of exceptions by specifying the exception type in the `catch` block. This allows you to handle different types of exceptions differently.
+2. **Exception Types**: You can catch specific types of exceptions by specifying the exception type in the `catch` block. This allows you to handle different types of exceptions differently.
 
-      ```csharp
-      try
-      {
-          // Code that might throw an exception
-      }
-      catch (DivideByZeroException ex)
-      {
-          // Handle divide by zero exception
-      }
-      catch (ArgumentException ex)
-      {
-          // Handle argument exception
-      }
-      catch (Exception ex) // Catch-all for other exceptions
-      {
-          // Handle other exceptions
-      }
-      ```
+   ```csharp
+   try
+   {
+       // Code that might throw an exception
+   }
+   catch (DivideByZeroException ex)
+   {
+       // Handle divide by zero exception
+   }
+   catch (ArgumentException ex)
+   {
+       // Handle argument exception
+   }
+   catch (Exception ex) // Catch-all for other exceptions
+   {
+       // Handle other exceptions
+   }
+   ```
 
-  3. **Finally Block**: You can optionally include a `finally` block after the `catch` block. Code in the `finally` block is executed whether an exception occurs or not. This block is commonly used for cleanup tasks such as closing resources.
+3. **Finally Block**: You can optionally include a `finally` block after the `catch` block. Code in the `finally` block is executed whether an exception occurs or not. This block is commonly used for cleanup tasks such as closing resources.
 
-        ```csharp
-        try
-        {
-            // Code that might throw an exception
-        }
-        catch (Exception ex)
-        {
-            // Handle the exception
-        }
-        finally
-        {
-            // Cleanup code
-        }
-        ```
+   ```csharp
+   try
+   {
+       // Code that might throw an exception
+   }
+   catch (Exception ex)
+   {
+       // Handle the exception
+   }
+   finally
+   {
+       // Cleanup code
+   }
+   ```
 
-        ```csharp
-          try
+   ```csharp
+     try
 
-            {
-                // Step 1: code execution begins
-                try
-                {
-                    // Step 2: an exception occurs here
-                }
-                finally
-                {
-                    // Step 4: the system executes the finally code block associated with the try statement where the exception occurred
-                }
+       {
+           // Step 1: code execution begins
+           try
+           {
+               // Step 2: an exception occurs here
+           }
+           finally
+           {
+               // Step 4: the system executes the finally code block associated with the try statement where the exception occurred
+           }
 
-            }
-            catch // Step 3: the system finds a catch clause that can handle the exception
-            {
-              // Step 5: the system transfers control to the first line of the catch code block
-            }
+       }
+       catch // Step 3: the system finds a catch clause that can handle the exception
+       {
+         // Step 5: the system transfers control to the first line of the catch code block
+       }
 
-        ```
+   ```
 
-  4. **Throwing Exceptions**: You can explicitly throw exceptions using the `throw` keyword. This is useful for indicating errors or exceptional conditions within your code.
+4. **Throwing Exceptions**: You can explicitly throw exceptions using the `throw` keyword. This is useful for indicating errors or exceptional conditions within your code.
 
-        ```csharp
-        if (condition)
-        {
-            throw new Exception("An error occurred.");
-        }
-        ```
+   ```csharp
+   if (condition)
+   {
+       throw new Exception("An error occurred.");
+   }
+   ```
 
-  5. **Custom Exceptions**: You can define your own exception types by creating classes that derive from `Exception`. This allows you to create custom exception types tailored to your application's needs.
+5. **Custom Exceptions**: You can define your own exception types by creating classes that derive from `Exception`. This allows you to create custom exception types tailored to your application's needs.
 
-      ```csharp
-      public class CustomException : Exception
-      {
-          public CustomException(string message) : base(message)
-          {
-          }
-      }
-      ```
+   ```csharp
+   public class CustomException : Exception
+   {
+       public CustomException(string message) : base(message)
+       {
+       }
+   }
+   ```
 
-  6. **Exception Handling Best Practices**:
-    - Catch specific exceptions rather than using a generic `catch (Exception ex)` block.
-    - Provide meaningful error messages or log information when handling exceptions.
-    - Use exception handling judiciously and avoid catching exceptions that you cannot handle properly.
+6. **Exception Handling Best Practices**:
+
+   - Catch specific exceptions rather than using a generic `catch (Exception ex)` block.
+   - Provide meaningful error messages or log information when handling exceptions.
+   - Use exception handling judiciously and avoid catching exceptions that you cannot handle properly.
 
 #### Compiler-generated exceptions
 
@@ -3589,93 +3641,93 @@ The .NET runtime throws exceptions when basic operations fail. Here's a short li
 
 #### Example 1
 
-  ```csharp
-  using System;
+```csharp
+using System;
 
-  class Program
-  {
-      static void Main()
-      {
-          try
-          {
-              // 1. DivideByZeroException
-              int number1 = 3000;
-              int number2 = 0;
-              Console.WriteLine(number1 / number2); // DivideByZeroException occurs
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            // 1. DivideByZeroException
+            int number1 = 3000;
+            int number2 = 0;
+            Console.WriteLine(number1 / number2); // DivideByZeroException occurs
 
-              // 2. FormatException
-              // string input = "abc";
-              // int number = int.Parse(input);
-              // Console.WriteLine("Parsed number: " + number);
-              int valueEntered;
-              string userValue = "two";
-              valueEntered = int.Parse(userValue); // FormatException occurs
+            // 2. FormatException
+            // string input = "abc";
+            // int number = int.Parse(input);
+            // Console.WriteLine("Parsed number: " + number);
+            int valueEntered;
+            string userValue = "two";
+            valueEntered = int.Parse(userValue); // FormatException occurs
 
-              // 3. NullReferenceException
-              string str = null;
-              int length = str.Length;
-              Console.WriteLine("Length: " + length);
-              
-              int[] values = null;
-              for (int i = 0; i <= 9; i++)
-                  values[i] = i * 2;
+            // 3. NullReferenceException
+            string str = null;
+            int length = str.Length;
+            Console.WriteLine("Length: " + length);
 
-              // 4. IndexOutOfRangeException. 
-              int[] numbers = { 1, 2, 3 };
-              int value = numbers[5];
-              Console.WriteLine("Value: " + value);
+            int[] values = null;
+            for (int i = 0; i <= 9; i++)
+                values[i] = i * 2;
 
-              int[] values1 = { 3, 6, 9, 12, 15, 18, 21 };
-              int[] values2 = new int[6];
-              values2[values1.Length - 1] = values1[values1.Length - 1]; // IndexOutOfRangeException occurs
+            // 4. IndexOutOfRangeException.
+            int[] numbers = { 1, 2, 3 };
+            int value = numbers[5];
+            Console.WriteLine("Value: " + value);
 
-              // 5. OverflowException
-              int max = int.MaxValue;
-              int overflowResult = checked(max + 1);
-              Console.WriteLine("Overflow result: " + overflowResult);
+            int[] values1 = { 3, 6, 9, 12, 15, 18, 21 };
+            int[] values2 = new int[6];
+            values2[values1.Length - 1] = values1[values1.Length - 1]; // IndexOutOfRangeException occurs
 
-              decimal x = 400;
-              byte i;
+            // 5. OverflowException
+            int max = int.MaxValue;
+            int overflowResult = checked(max + 1);
+            Console.WriteLine("Overflow result: " + overflowResult);
 
-              i = (byte)x; // OverflowException occurs
-              Console.WriteLine(i);
+            decimal x = 400;
+            byte i;
 
-              // 6. InvalidCastException
-              object obj = "This is a string";
-              int num = (int)obj; // InvalidCastException
-          }
-          catch (DivideByZeroException ex)
-          {
-              Console.WriteLine("Error: Attempted to divide by zero.");
-          }
-          catch (FormatException ex)
-          {
-              Console.WriteLine("Error: Invalid format. Cannot parse input as a number.");
-          }
-          catch (NullReferenceException ex)
-          {
-              Console.WriteLine("Error: Null reference encountered.");
-          }
-          catch (IndexOutOfRangeException ex)
-          {
-              Console.WriteLine("Error: Index out of range.");
-          }
-          catch (OverflowException ex)
-          {
-              Console.WriteLine("Error: Overflow occurred during arithmetic operation.");
-          }
-          catch (Exception ex) // Generic exception handler
-          {
-              Console.WriteLine("An unexpected error occurred: " + ex.Message);
-          }
-          finally
-          {
-              Console.WriteLine("This block always executes, whether an exception is thrown or not.");
-          }
-      }
-  }
+            i = (byte)x; // OverflowException occurs
+            Console.WriteLine(i);
 
-  ```
+            // 6. InvalidCastException
+            object obj = "This is a string";
+            int num = (int)obj; // InvalidCastException
+        }
+        catch (DivideByZeroException ex)
+        {
+            Console.WriteLine("Error: Attempted to divide by zero.");
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine("Error: Invalid format. Cannot parse input as a number.");
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Error: Null reference encountered.");
+        }
+        catch (IndexOutOfRangeException ex)
+        {
+            Console.WriteLine("Error: Index out of range.");
+        }
+        catch (OverflowException ex)
+        {
+            Console.WriteLine("Error: Overflow occurred during arithmetic operation.");
+        }
+        catch (Exception ex) // Generic exception handler
+        {
+            Console.WriteLine("An unexpected error occurred: " + ex.Message);
+        }
+        finally
+        {
+            Console.WriteLine("This block always executes, whether an exception is thrown or not.");
+        }
+    }
+}
+
+```
 
 #### Example 2
 
@@ -3722,54 +3774,54 @@ static void WriteMessage()
 
 #### Example 3
 
-  ```csharp
-  public class MyClass
+```csharp
+public class MyClass
+{
+  public static void Main(string[] args)
   {
-    public static void Main(string[] args)
+    Console.WriteLine($"Welcome to the calculator App");
+    try
     {
-      Console.WriteLine($"Welcome to the calculator App");
-      try
-      {
-        int num1 = ReadIntegerInput("num1");
-        int num2 = ReadIntegerInput("num2");
+      int num1 = ReadIntegerInput("num1");
+      int num2 = ReadIntegerInput("num2");
 
-        if (num2 > 1000)
-        {
-          throw new ArgumentException("num2 can not be greater than 1000");
-        }
-
-        int result = num1 / num2;
-        Console.WriteLine($"Result: {result}");
-      }
-      catch (Exception e)
+      if (num2 > 1000)
       {
-        Console.WriteLine($"An error occured: {e.Message}");
-      }
-      finally
-      {
-        Console.WriteLine($"Goodbye!!!");
+        throw new ArgumentException("num2 can not be greater than 1000");
       }
 
+      int result = num1 / num2;
+      Console.WriteLine($"Result: {result}");
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine($"An error occured: {e.Message}");
+    }
+    finally
+    {
+      Console.WriteLine($"Goodbye!!!");
     }
 
-    static int ReadIntegerInput(string prompt)
-    {
-      while (true)
-      {
-
-        Console.Write($"Enter {prompt} = ");
-        string input = Console.ReadLine() ?? "";
-        if (!int.TryParse(input, out int result) || string.IsNullOrEmpty(input))
-        {
-          Console.WriteLine($"Invalid Input! Please enter a valid integer.");
-          continue;
-        }
-        return result;
-      }
-    }
   }
 
-  ```
+  static int ReadIntegerInput(string prompt)
+  {
+    while (true)
+    {
+
+      Console.Write($"Enter {prompt} = ");
+      string input = Console.ReadLine() ?? "";
+      if (!int.TryParse(input, out int result) || string.IsNullOrEmpty(input))
+      {
+        Console.WriteLine($"Invalid Input! Please enter a valid integer.");
+        continue;
+      }
+      return result;
+    }
+  }
+}
+
+```
 
 #### **Difference Between Handling Errors with `if-else` and `try-catch` in C#**
 
@@ -3843,6 +3895,7 @@ catch (FormatException ex)
 ##### **When to Use `if-else` vs. `try-catch`**
 
 1. **Use `if-else` When:**
+
    - The error can be predicted or validated easily (e.g., checking if input is valid).
    - You need to check a condition before proceeding (e.g., checking if a file exists).
    - Performance is a key concern, and you want to avoid the overhead of exception handling.
@@ -3969,98 +4022,98 @@ class Test
 
 - 2D Array
 
-    A 2D array in C# is an array of arrays, meaning it's an array where each element is also an array. This creates a grid-like structure, where elements are accessed using two indices: one for the row and one for the column.
+  A 2D array in C# is an array of arrays, meaning it's an array where each element is also an array. This creates a grid-like structure, where elements are accessed using two indices: one for the row and one for the column.
 
-    A few real-life examples of 2D arrays:
+  A few real-life examples of 2D arrays:
 
-    1. **Image Representation**: Images can be represented as 2D arrays of pixels. Each element of the array stores information about the color of the corresponding pixel.
+  1. **Image Representation**: Images can be represented as 2D arrays of pixels. Each element of the array stores information about the color of the corresponding pixel.
 
-    2. **Game Boards**: In games like Chess, Checkers, or Tic-Tac-Toe, the game board can be represented using a 2D array. Each element of the array represents a square on the board, and the value of the element indicates the state of that square (empty, occupied by a player's piece, etc.).
+  2. **Game Boards**: In games like Chess, Checkers, or Tic-Tac-Toe, the game board can be represented using a 2D array. Each element of the array represents a square on the board, and the value of the element indicates the state of that square (empty, occupied by a player's piece, etc.).
 
-    3. **Spreadsheet Data**: Spreadsheets, like Excel, organize data into rows and columns. Each cell in a spreadsheet can be thought of as an element in a 2D array.
+  3. **Spreadsheet Data**: Spreadsheets, like Excel, organize data into rows and columns. Each cell in a spreadsheet can be thought of as an element in a 2D array.
 
-    4. **Maps**: Maps in computer graphics or geographical applications are often represented using 2D arrays. Each element of the array corresponds to a location on the map, and the value of the element represents attributes such as elevation, terrain type, or population density.
+  4. **Maps**: Maps in computer graphics or geographical applications are often represented using 2D arrays. Each element of the array corresponds to a location on the map, and the value of the element represents attributes such as elevation, terrain type, or population density.
 
-    5. **Matrix Operations**: Matrices in mathematics are commonly represented using 2D arrays. They are used in various applications, including computer graphics, physics simulations, and solving systems of linear equations.
+  5. **Matrix Operations**: Matrices in mathematics are commonly represented using 2D arrays. They are used in various applications, including computer graphics, physics simulations, and solving systems of linear equations.
 
-    6. **Seating Arrangements**: In venues like theaters, stadiums, or classrooms, seating arrangements can be represented using a 2D array. Each element represents a seat, and the value indicates whether the seat is occupied or available.
+  6. **Seating Arrangements**: In venues like theaters, stadiums, or classrooms, seating arrangements can be represented using a 2D array. Each element represents a seat, and the value indicates whether the seat is occupied or available.
 
-    These are just a few examples of how 2D arrays are used in real-life scenarios. They are versatile data structures that find applications in many fields of computer science and beyond.
+  These are just a few examples of how 2D arrays are used in real-life scenarios. They are versatile data structures that find applications in many fields of computer science and beyond.
 
-    Here's how you can declare, initialize, and work with 2D arrays in C#:
+  Here's how you can declare, initialize, and work with 2D arrays in C#:
 
-    **Declaration and Initialization:**
+  **Declaration and Initialization:**
 
-    ```csharp
-    // example 1: declare,initialize, print a simple 2D Array
-    public class MyClass
+  ````csharp
+  // example 1: declare,initialize, print a simple 2D Array
+  public class MyClass
+  {
+    public static void Main(string[] args)
     {
-      public static void Main(string[] args)
-      {
-        int[,] matrix = new int[2, 3];
-        matrix[0, 0] = 1;
-        matrix[0, 1] = 2;
-        matrix[0, 2] = 3;
+      int[,] matrix = new int[2, 3];
+      matrix[0, 0] = 1;
+      matrix[0, 1] = 2;
+      matrix[0, 2] = 3;
 
-        matrix[1, 0] = 4;
-        matrix[1, 1] = 5;
-        matrix[1, 2] = 6;
+      matrix[1, 0] = 4;
+      matrix[1, 1] = 5;
+      matrix[1, 2] = 6;
 
-        Console.Write($"{matrix[0, 0]} ");
-        Console.Write($"{matrix[0, 1]} ");
-        Console.Write($"{matrix[0, 2]} ");
+      Console.Write($"{matrix[0, 0]} ");
+      Console.Write($"{matrix[0, 1]} ");
+      Console.Write($"{matrix[0, 2]} ");
 
-        Console.WriteLine();
-        Console.Write($"{matrix[1, 0]} ");
-        Console.Write($"{matrix[1, 1]} ");
-        Console.Write($"{matrix[1, 2]} ");
+      Console.WriteLine();
+      Console.Write($"{matrix[1, 0]} ");
+      Console.Write($"{matrix[1, 1]} ");
+      Console.Write($"{matrix[1, 2]} ");
 
-        Console.ReadKey();
-
-      }
+      Console.ReadKey();
 
     }
 
-    // example 2: declare and initailze a simple 2D Array
-    public class MyClass
+  }
+
+  // example 2: declare and initailze a simple 2D Array
+  public class MyClass
+  {
+    public static void Main(string[] args)
     {
-      public static void Main(string[] args)
-      {
-        int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
+      int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
 
-        Console.Write($"{matrix[0, 0]} ");
-        Console.Write($"{matrix[0, 1]} ");
-        Console.Write($"{matrix[0, 2]} ");
+      Console.Write($"{matrix[0, 0]} ");
+      Console.Write($"{matrix[0, 1]} ");
+      Console.Write($"{matrix[0, 2]} ");
 
-        Console.WriteLine();
-        Console.Write($"{matrix[1, 0]} ");
-        Console.Write($"{matrix[1, 1]} ");
-        Console.Write($"{matrix[1, 2]} ");
+      Console.WriteLine();
+      Console.Write($"{matrix[1, 0]} ");
+      Console.Write($"{matrix[1, 1]} ");
+      Console.Write($"{matrix[1, 2]} ");
 
-        Console.ReadKey();
-
-      }
+      Console.ReadKey();
 
     }
 
-    // example 3: Iterating Over the Array with loop
-    public class MyClass
-    {
-      public static void Main(string[] args)
-      {
-        int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
+  }
 
-        for (int row = 0; row < matrix.GetLength(0); row++)
+  // example 3: Iterating Over the Array with loop
+  public class MyClass
+  {
+    public static void Main(string[] args)
+    {
+      int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 } };
+
+      for (int row = 0; row < matrix.GetLength(0); row++)
+      {
+        for (int col = 0; col < matrix.GetLength(1); col++)
         {
-          for (int col = 0; col < matrix.GetLength(1); col++)
-          {
-            Console.Write($"{matrix[row, col]} ");
-          }
-          Console.WriteLine();
+          Console.Write($"{matrix[row, col]} ");
         }
-        Console.ReadKey();
+        Console.WriteLine();
       }
+      Console.ReadKey();
     }
+  }
 
 
   **Initializing a Jagged Array (Array of Arrays):**
@@ -4072,162 +4125,162 @@ class Test
   /*
   1 2
   3 4 5
-  6 
+  6
   8 9 10 11
   */
   public class MyClass
   {
-    public static void Main(string[] args)
+  public static void Main(string[] args)
+  {
+    int[][] jaggedArray = new int[4][];
+
+    jaggedArray[0] = new int[] { 1, 2 };
+    jaggedArray[1] = new int[] { 3, 4, 5 };
+    jaggedArray[2] = new int[] { 6 };
+    jaggedArray[3] = new int[] { 8, 9, 10, 11 };
+
+    for (int row = 0; row < jaggedArray.Length; row++)
     {
-      int[][] jaggedArray = new int[4][];
-
-      jaggedArray[0] = new int[] { 1, 2 };
-      jaggedArray[1] = new int[] { 3, 4, 5 };
-      jaggedArray[2] = new int[] { 6 };
-      jaggedArray[3] = new int[] { 8, 9, 10, 11 };
-
-      for (int row = 0; row < jaggedArray.Length; row++)
+      for (int col = 0; col < jaggedArray[row].Length; col++)
       {
-        for (int col = 0; col < jaggedArray[row].Length; col++)
-        {
-          Console.Write($"{jaggedArray[row][col]} ");
-        }
-        Console.WriteLine();
-
+        Console.Write($"{jaggedArray[row][col]} ");
       }
+      Console.WriteLine();
 
-
-      Console.ReadKey();
     }
+
+
+    Console.ReadKey();
+  }
   }
 
-  // 2nd version: 
+  // 2nd version:
   /*
   1 2
   3 4 5
-  6 
+  6
   8 9 10 11
   */
   public class MyClass
   {
-    public static void Main(string[] args)
+  public static void Main(string[] args)
+  {
+    int[][] jaggedArray = new int[][]
     {
-      int[][] jaggedArray = new int[][]
-      {
-        new int[] { 1, 2 },
-        new int[] { 3, 4, 5 },
-        new int[] { 6 },
-        new int[] { 8, 9, 10, 11 }
-      };
+      new int[] { 1, 2 },
+      new int[] { 3, 4, 5 },
+      new int[] { 6 },
+      new int[] { 8, 9, 10, 11 }
+    };
 
-      for (int row = 0; row < jaggedArray.Length; row++)
+    for (int row = 0; row < jaggedArray.Length; row++)
+    {
+      for (int col = 0; col < jaggedArray[row].Length; col++)
       {
-        for (int col = 0; col < jaggedArray[row].Length; col++)
-        {
-          Console.Write($"{jaggedArray[row][col]} ");
-        }
-        Console.WriteLine();
-
+        Console.Write($"{jaggedArray[row][col]} ");
       }
+      Console.WriteLine();
 
-
-      Console.ReadKey();
     }
+
+
+    Console.ReadKey();
+  }
   }
 
   // 3rd version
   /*
   1 2
   3 4 5
-  6 
+  6
   8 9 10 11
   */
   public class MyClass
   {
-    public static void Main(string[] args)
+  public static void Main(string[] args)
+  {
+    int[][] jaggedArray = new int[][]
     {
-      int[][] jaggedArray = new int[][]
-      {
-        new int[] { 1, 2 },
-        new int[] { 3, 4, 5 },
-        new int[] { 6 },
-        new int[] { 8, 9, 10, 11 }
-      };
+      new int[] { 1, 2 },
+      new int[] { 3, 4, 5 },
+      new int[] { 6 },
+      new int[] { 8, 9, 10, 11 }
+    };
 
-      foreach (var row in jaggedArray)
+    foreach (var row in jaggedArray)
+    {
+      foreach (var item in row)
       {
-        foreach (var item in row)
-        {
-          Console.Write($"{item} ");
-        }
-        Console.WriteLine();
-
+        Console.Write($"{item} ");
       }
+      Console.WriteLine();
 
-
-      Console.ReadKey();
     }
+
+
+    Console.ReadKey();
+  }
   }
 
   // 4th version
   /*
   1 2
   3 4 5
-  6 
+  6
   8 9 10 11
   */
   public class MyClass
   {
-    public static void Main(string[] args)
+  public static void Main(string[] args)
+  {
+    int[][] jaggedArray =
     {
-      int[][] jaggedArray =
-      {
-        new [] { 1, 2 },
-        new [] { 3, 4, 5 },
-        new [] { 6 },
-        new [] { 8, 9, 10, 11 }
-      };
+      new [] { 1, 2 },
+      new [] { 3, 4, 5 },
+      new [] { 6 },
+      new [] { 8, 9, 10, 11 }
+    };
 
-      foreach (var row in jaggedArray)
+    foreach (var row in jaggedArray)
+    {
+      foreach (var item in row)
       {
-        foreach (var item in row)
-        {
-          Console.Write($"{item} ");
-        }
-        Console.WriteLine();
-
+        Console.Write($"{item} ");
       }
+      Console.WriteLine();
 
-
-      Console.ReadKey();
     }
+
+
+    Console.ReadKey();
+  }
   }
 
   // 5th version
 
   public class MyClass
   {
-      public static void Main(string[] args)
-      {
-          int[][] jaggedArray = new int[4][];
+    public static void Main(string[] args)
+    {
+        int[][] jaggedArray = new int[4][];
 
-          jaggedArray[0] = new int[] { 1 };
-          jaggedArray[1] = new int[] { 2, 3 };
-          jaggedArray[2] = new int[] { 4, 5, 6 };
-          jaggedArray[3] = new int[] { 7, 8 };
+        jaggedArray[0] = new int[] { 1 };
+        jaggedArray[1] = new int[] { 2, 3 };
+        jaggedArray[2] = new int[] { 4, 5, 6 };
+        jaggedArray[3] = new int[] { 7, 8 };
 
-          for (int row = 0; row < jaggedArray.Length; row++)
-          {
-              for (int col = 0; col < jaggedArray[row].Length; col++)
-              {
-                  Console.Write($"{jaggedArray[row][col]} ");
-              }
-              Console.WriteLine();
-          }
-          Console.ReadKey();
-      }
+        for (int row = 0; row < jaggedArray.Length; row++)
+        {
+            for (int col = 0; col < jaggedArray[row].Length; col++)
+            {
+                Console.Write($"{jaggedArray[row][col]} ");
+            }
+            Console.WriteLine();
+        }
+        Console.ReadKey();
+    }
   }
-  ```
+  ````
 
   **Usage Considerations:**
 
@@ -4256,12 +4309,12 @@ class Test
                 new string[] { "Hieremias Zavia", "Ziya Ollie", "Christoffel Casper", "Kristian Dana", }
 
             };
-            //your code goes here                 
+            //your code goes here
             Console.WriteLine(olympiad[0][day1Winner-1]);
             Console.WriteLine(olympiad[1][day2Winner-1]);
-            Console.WriteLine(olympiad[2][day3Winner-1]);               
-           
-            
+            Console.WriteLine(olympiad[2][day3Winner-1]);
+
+
         }
     }
 ```
@@ -4311,7 +4364,7 @@ class MyClass
 
       double avg = (float)sum / numbers.Length;
 
-      // printing max, min 
+      // printing max, min
       Console.WriteLine($"Maximum element of the array : {max}");
       Console.WriteLine($"Minimum element of the array : {min}");
       Console.WriteLine($"Sum of the array : {sum}");
@@ -4615,7 +4668,7 @@ Using `params` allows for cleaner and more flexible method calls when the number
 
       Console.WriteLine(a.IndexOf('t'));
       //Outputs 5
-      
+
         string text = "Hello everyone ! This is Anisul Islam";
         Console.WriteLine($"length of string: {text.Length}");
         Console.WriteLine($"O index from string: {text[0]}");
@@ -4717,7 +4770,7 @@ namespace SoloLearn
                     break;
                 }
             }
-            
+
         }
     }
 }
@@ -4799,18 +4852,23 @@ This code initializes a string `input` and then calculates the counts of vowels,
 Here's a brief explanation of each part of the code:
 
 1. **Count Vowels**:
+
    - Uses `Count` method with a lambda expression to count characters that are vowels (both lowercase and uppercase).
 
 2. **Count Consonants**:
+
    - Uses `Count` method with a lambda expression to count characters that are consonants (letters excluding vowels).
 
 3. **Count Digits**:
+
    - Uses `Count` method with `char.IsDigit` predicate to count digits.
 
 4. **Count Special Characters**:
+
    - Uses `Count` method with a lambda expression to count characters that are neither letters nor digits.
 
 5. **Count White Spaces**:
+
    - Uses `Count` method with `char.IsWhiteSpace` predicate to count white space characters.
 
 6. **Count Words**:
@@ -4819,7 +4877,7 @@ Here's a brief explanation of each part of the code:
 
 ## Basic 1.7: Project
 
-### 7.1 Project: Simple Calculator with Conditional Checks**
+### 7.1 Project: Simple Calculator with Conditional Checks\*\*
 
 ![alt text](image-8.png)
 
@@ -4838,9 +4896,11 @@ The calculator will:
 #### **Instructions0:**
 
 1. **Set Up the Project:**
+
    - Extend the previous C# Console Application.
 
 2. **Implement Conditional Checks:**
+
    - Use `if` statements to validate input and handle division by zero.
 
 3. **New Features:**
@@ -4951,13 +5011,16 @@ The currency converter will:
 - **Instructions:**
 
 1. **Set Up the Project:**
+
    - Create a new C# Console Application.
 
 2. **Implement the Currency Converter:**
+
    - Use arithmetic operators (`*` for multiplication) to calculate conversions.
    - Use `if` statements to validate input and handle unsupported currencies.
 
 3. **Currencies and Conversion Rates:**
+
    - Define fixed conversion rates for the following currencies:
      - USD to EUR: 0.85
      - EUR to USD: 1.18
@@ -5117,6 +5180,7 @@ class FizzBuzzProject
 This project will help you practice using loops, `switch` statements, and generating random numbers in C#. You will create a simple number guessing game where the user tries to guess a randomly generated number within a specified range.
 
 - **Project Description:**
+
   - Generate a random number between 1 and 100.
   - Prompt the user to guess the number.
   - Use a loop to allow the user multiple attempts.
@@ -5126,9 +5190,11 @@ This project will help you practice using loops, `switch` statements, and genera
 - **Instructions:**
 
 1. **Set Up the Project:**
+
    - Create a new C# Console Application.
 
 2. **Implement the Number Guessing Game:**
+
    - Use `Random` class to generate a random number.
    - Use a `while` loop to keep the game running until the correct number is guessed.
    - Use a `switch` statement to evaluate the user’s guess.
@@ -5302,19 +5368,23 @@ class StudentGradesManager
 
 - **Explanation of the Code:**
 
-1. **Array Initialization:**  
+1. **Array Initialization:**
+
    - The program starts by asking the user how many students' grades they want to enter and initializes an array of that size.
 
-2. **Input Grades:**  
+2. **Input Grades:**
+
    - Using a `for` loop, the program prompts the user to input each student's grade, which is then stored in the array.
 
-3. **Display Grades:**  
+3. **Display Grades:**
+
    - A `foreach` loop iterates over the array to display each grade entered.
 
-4. **Calculate Average Grade:**  
+4. **Calculate Average Grade:**
+
    - The program calculates the total sum of grades using a `foreach` loop and then divides by the number of grades to find the average.
 
-5. **Find Highest and Lowest Grades:**  
+5. **Find Highest and Lowest Grades:**
    - The program initializes the highest and lowest grades with the first element of the array and then uses a `foreach` loop to find the actual highest and lowest grades.
 
 - **Key Concepts Covered:**
@@ -5334,54 +5404,57 @@ This project is a great way to start learning about arrays and basic operations 
 
 ### 7.6 String Reverse App
 
-  ```csharp
-    public class StringReverseProject
+```csharp
+  public class StringReverseProject
+  {
+    public void StringReverse()
     {
-      public void StringReverse()
+      string pangram = "The quick brown fox jumps over the lazy dog";
+
+      // ehT kciuq nworb xof spmuj revo eht yzal god
+
+      // Split(), ToCharArray(), Array.Reverse(), and String.Join()
+
+      string[] words = pangram.Split(' ');
+      string[] reversedWords = new string[words.Length];
+
+      for (int i = 0; i < words.Length; i++)
       {
-        string pangram = "The quick brown fox jumps over the lazy dog";
-
-        // ehT kciuq nworb xof spmuj revo eht yzal god
-
-        // Split(), ToCharArray(), Array.Reverse(), and String.Join()
-
-        string[] words = pangram.Split(' ');
-        string[] reversedWords = new string[words.Length];
-
-        for (int i = 0; i < words.Length; i++)
-        {
-          char[] letters = words[i].ToCharArray();
-          // letters = {'T', 'h', 'e'}
-          Array.Reverse(letters); //  {'e', 'h', 'T'}
-          reversedWords[i] = new string(letters);      // ehT
-        }
-
-        string result = String.Join(" ", reversedWords);
-        Console.WriteLine($"{result}");
-
+        char[] letters = words[i].ToCharArray();
+        // letters = {'T', 'h', 'e'}
+        Array.Reverse(letters); //  {'e', 'h', 'T'}
+        reversedWords[i] = new string(letters);      // ehT
       }
+
+      string result = String.Join(" ", reversedWords);
+      Console.WriteLine($"{result}");
+
     }
-  ```
+  }
+```
 
 ### 7.7 Unit Converter App Project
 
 - [App GitHub Link Here](https://github.com/anisul-Islam/unit-converter-csharp)
 
-#### Unit Converter Using Operators**
+#### Unit Converter Using Operators\*\*
 
 **Objective:** This assignment will help you practice using operators and data type conversion in a real-life scenario. You will create a simple unit converter that allows users to convert between different units of measurement (e.g., kilometers to miles, Celsius to Fahrenheit) using arithmetic operators.
 
 1. **Create a C# Console Application.**
 
 2. **Implement Unit Conversion Calculations:**
+
    - Convert between kilometers and miles.
    - Convert between Celsius and Fahrenheit.
    - Convert between kilograms and pounds.
 
 3. **Use Arithmetic Operators for Conversions:**
+
    - Use multiplication, division, and addition operators to perform the conversions.
 
 4. **Prompt the User for Input:**
+
    - Ask the user to enter the value.
 
 5. **Display the Conversion Result:**
@@ -6040,6 +6113,7 @@ there is no visible `Main` method or class defined explicitly in the code snippe
 #### **How Top-Level Statements Work**
 
 1. **Implicit `Main` Method**:
+
    - The C# compiler automatically wraps your code inside a `Main` method, which serves as the entry point of the application.
    - This means you don't need to define `static void Main(string[] args)` explicitly in your code.
 
@@ -6204,7 +6278,7 @@ class Program
 
 - types of constructor
 
-  ```csharp
+  ````csharp
   Sure, here's a complete code example demonstrating each type of constructor in C#:
 
   ```csharp
@@ -6285,7 +6359,7 @@ class Program
           obj2.DisplayInfo();
       }
   }
-  ```
+  ````
 
 #### new: Destructor
 
@@ -6390,65 +6464,67 @@ public class MyClass
 
   - Math class
 
-      The `Math` class in C# provides a set of static properties and methods for mathematical operations. Here are some of the commonly used properties and static methods of the `Math` class:
+    The `Math` class in C# provides a set of static properties and methods for mathematical operations. Here are some of the commonly used properties and static methods of the `Math` class:
 
-      1. **Properties**:
-        - `E`: Represents the natural logarithmic base, e.
-        - `PI`: Represents the ratio of the circumference of a circle to its diameter, π (pi).
+    1. **Properties**:
 
-      2. **Static Methods**:
-        - `Abs`: Returns the absolute value of a specified number.
-        - `Ceiling`: Returns the smallest integral value that is greater than or equal to the specified double-precision floating-point number.
-        - `Floor`: Returns the largest integer less than or equal to the specified double-precision floating-point number.
-        - `Max`: Returns the larger of two specified numbers.
-        - `Min`: Returns the smaller of two specified numbers.
-        - `Pow`: Returns a specified number raised to the specified power.
-        - `Round`: Rounds a double-precision floating-point value to the nearest integer.
-        - `Sqrt`: Returns the square root of a specified number.
+       - `E`: Represents the natural logarithmic base, e.
+       - `PI`: Represents the ratio of the circumference of a circle to its diameter, π (pi).
 
-      Here's a simple example demonstrating the usage of some properties and static methods of the `Math` class:
+    2. **Static Methods**:
 
-      ```csharp
-      using System;
+       - `Abs`: Returns the absolute value of a specified number.
+       - `Ceiling`: Returns the smallest integral value that is greater than or equal to the specified double-precision floating-point number.
+       - `Floor`: Returns the largest integer less than or equal to the specified double-precision floating-point number.
+       - `Max`: Returns the larger of two specified numbers.
+       - `Min`: Returns the smaller of two specified numbers.
+       - `Pow`: Returns a specified number raised to the specified power.
+       - `Round`: Rounds a double-precision floating-point value to the nearest integer.
+       - `Sqrt`: Returns the square root of a specified number.
 
-      class Program
-      {
-          static void Main()
-          {
-              // Properties
-              Console.WriteLine($"Value of e: {Math.E}");
-              Console.WriteLine($"Value of π (pi): {Math.PI}");
+    Here's a simple example demonstrating the usage of some properties and static methods of the `Math` class:
 
-              // Static methods
-              double number = -10.5;
-              Console.WriteLine($"Absolute value of {number}: {Math.Abs(number)}");
-              Console.WriteLine($"Ceiling of {number}: {Math.Ceiling(number)}");
-              Console.WriteLine($"Floor of {number}: {Math.Floor(number)}");
-              Console.WriteLine($"Square root of {Math.Abs(number)}: {Math.Sqrt(Math.Abs(number))}");
-              Console.WriteLine($"2 raised to the power of 3: {Math.Pow(2, 3)}");
-              Console.WriteLine($"Rounded value of {number}: {Math.Round(number)}");
-              Console.WriteLine($"Maximum of 10 and 20: {Math.Max(10, 20)}");
-              Console.WriteLine($"Minimum of 10 and 20: {Math.Min(10, 20)}");
-          }
-      }
-      ```
+    ```csharp
+    using System;
 
-      Output:
+    class Program
+    {
+        static void Main()
+        {
+            // Properties
+            Console.WriteLine($"Value of e: {Math.E}");
+            Console.WriteLine($"Value of π (pi): {Math.PI}");
 
-      ```
-      Value of e: 2.718281828459045
-      Value of π (pi): 3.141592653589793
-      Absolute value of -10.5: 10.5
-      Ceiling of -10.5: -10
-      Floor of -10.5: -11
-      Square root of 10.5: 3.24037034920393
-      2 raised to the power of 3: 8
-      Rounded value of -10.5: -10
-      Maximum of 10 and 20: 20
-      Minimum of 10 and 20: 10
-      ```
+            // Static methods
+            double number = -10.5;
+            Console.WriteLine($"Absolute value of {number}: {Math.Abs(number)}");
+            Console.WriteLine($"Ceiling of {number}: {Math.Ceiling(number)}");
+            Console.WriteLine($"Floor of {number}: {Math.Floor(number)}");
+            Console.WriteLine($"Square root of {Math.Abs(number)}: {Math.Sqrt(Math.Abs(number))}");
+            Console.WriteLine($"2 raised to the power of 3: {Math.Pow(2, 3)}");
+            Console.WriteLine($"Rounded value of {number}: {Math.Round(number)}");
+            Console.WriteLine($"Maximum of 10 and 20: {Math.Max(10, 20)}");
+            Console.WriteLine($"Minimum of 10 and 20: {Math.Min(10, 20)}");
+        }
+    }
+    ```
 
-      These properties and methods of the `Math` class provide convenient ways to perform various mathematical operations in C#.
+    Output:
+
+    ```
+    Value of e: 2.718281828459045
+    Value of π (pi): 3.141592653589793
+    Absolute value of -10.5: 10.5
+    Ceiling of -10.5: -10
+    Floor of -10.5: -11
+    Square root of 10.5: 3.24037034920393
+    2 raised to the power of 3: 8
+    Rounded value of -10.5: -10
+    Maximum of 10 and 20: 20
+    Minimum of 10 and 20: 10
+    ```
+
+    These properties and methods of the `Math` class provide convenient ways to perform various mathematical operations in C#.
 
   - Array static Class
   - String static Class
@@ -6512,6 +6588,7 @@ public class MyClass
 In C#, `this` and `readonly` serve different purposes:
 
 1. **`this` Keyword**:
+
    - `this` is a reference to the current instance of a class.
    - It can be used to access instance members (fields, properties, methods) of the current object within its scope.
    - It is often used to disambiguate between instance members and local variables or parameters with the same name.
@@ -6555,7 +6632,7 @@ In this example:
 
 ### [Assignment for oop part-1](https://github.com/anisul-Islam/csharp-oop-practice-1/blob/main/README.md)
 
-### Practice 1: Creating a Simple Student Management System with Validation**
+### Practice 1: Creating a Simple Student Management System with Validation\*\*
 
 **Objective:** This assignment is designed to help you understand the concepts of classes, objects, constructors, methods, static members, and validation in C#. You will create a simple student management system that demonstrates these concepts while also incorporating validation for student data.
 
@@ -6700,14 +6777,17 @@ public class App
 ##### **Explanation of the Code:**
 
 1. **Validation Methods**:
+
    - `ValidateName`: Ensures the `Name` is not empty or null.
    - `ValidateAge`: Ensures the `Age` is between 5 and 100.
    - `ValidateGrade`: Ensures the `Grade` is between 0.0 and 100.0.
 
 2. **Constructor Validation**:
+
    - The constructor uses the validation methods to ensure that each property is set correctly. If any validation fails, it outputs an error and does not increment the `totalStudents`.
 
 3. **Static Members**:
+
    - The static `totalStudents` keeps track of the number of valid student objects created.
 
 4. **Displaying Information**:
@@ -6733,23 +6813,26 @@ Grade: 95
 Total number of valid students: 2
 ```
 
-#### Practice 2: Building a Simple Bank Account System**
+#### Practice 2: Building a Simple Bank Account System\*\*
 
 **Objective:** This assignment will help you practice defining classes, creating objects, using constructors, properties, and methods in C#. You will create a simple bank account system that demonstrates these concepts.
 
 ##### **Assignment 2 Instructions:**
 
 1. **Create a Class named `BankAccount`:**
+
    - Define the `BankAccount` class with the following properties:
      - `AccountHolder` (string) - The name of the account holder.
      - `AccountNumber` (string) - The account number (auto-generated or manually set).
      - `Balance` (double) - The current balance of the account (should only be modified within the class).
 
 2. **Create a Constructor for the `BankAccount` Class:**
+
    - The constructor should take the account holder's name and initial deposit amount as parameters.
    - It should initialize the account holder's name, set an account number, and set the balance to the initial deposit amount.
 
 3. **Create Methods in the `BankAccount` Class:**
+
    - `Deposit(double amount)`: A method to deposit money into the account. Increase the balance by the deposited amount.
    - `Withdraw(double amount)`: A method to withdraw money from the account. Decrease the balance if there are sufficient funds; otherwise, display an error message.
    - `DisplayAccountInfo()`: A method to display the account holder’s name, account number, and balance.
@@ -6812,62 +6895,62 @@ This assignment provides a practical and engaging way for students to practice c
 
 ![alt text](image-5.png)
 
-  ```csharp
-  public class MyClass
+```csharp
+public class MyClass
+{
+    public int PublicProperty { get; set; } // Accessible everywhere
+
+    private int PrivateField; // Accessible only within the class
+
+    protected int ProtectedField; // Accessible within the class and derived classes
+
+    internal int InternalField; // Accessible within the same assembly
+
+    protected internal int ProtectedInternalField; // Accessible within the same assembly or derived classes
+
+    private protected int PrivateProtectedField; // Accessible within the same assembly or derived classes in the same assembly
+}
+
+```
+
+```csharp
+// version 5
+class Person
+{
+  private string name;
+  private int age;
+
+  public void SetName(string name)
   {
-      public int PublicProperty { get; set; } // Accessible everywhere
+    this.name = name;
+  }
+  public void SetAge(int age)
+  {
+    this.age = age;
+  }
+  public string GetName()
+  {
+    return name;
+  }
+  public int GetAge()
+  {
+    return age;
+  }
+}
 
-      private int PrivateField; // Accessible only within the class
+public class MyClass
+{
+  public static void Main(string[] args)
+  {
+    var p1 = new Person();
+    p1.SetName("Anisul Islam");
+    Console.WriteLine($"{p1.GetName()}");
 
-      protected int ProtectedField; // Accessible within the class and derived classes
-
-      internal int InternalField; // Accessible within the same assembly
-
-      protected internal int ProtectedInternalField; // Accessible within the same assembly or derived classes
-
-      private protected int PrivateProtectedField; // Accessible within the same assembly or derived classes in the same assembly
+    Console.ReadKey();
   }
 
-  ```
-
-  ```csharp
-  // version 5
-  class Person
-  {
-    private string name;
-    private int age;
-
-    public void SetName(string name)
-    {
-      this.name = name;
-    }
-    public void SetAge(int age)
-    {
-      this.age = age;
-    }
-    public string GetName()
-    {
-      return name;
-    }
-    public int GetAge()
-    {
-      return age;
-    }
-  }
-
-  public class MyClass
-  {
-    public static void Main(string[] args)
-    {
-      var p1 = new Person();
-      p1.SetName("Anisul Islam");
-      Console.WriteLine($"{p1.GetName()}");
-
-      Console.ReadKey();
-    }
-
-  }
-  ```
+}
+```
 
 ### Properties
 
@@ -6876,6 +6959,7 @@ This assignment provides a practical and engaging way for students to practice c
 - Properties in C# are special members of a class that provide a flexible mechanism to read, write, or compute the values of private fields. Properties are used to encapsulate data, allowing controlled access to the data fields of an object. They act like public data members but provide better control over how the data is accessed and modified.
 
 - Key Features of Properties:
+
   - Encapsulation: Properties help in encapsulating fields, allowing controlled access.
   - Get and Set Accessors: Properties use get and set accessors to define how values are read from or written to a field.
     - get accessor: Returns the property value.
@@ -6951,23 +7035,26 @@ This assignment provides a practical and engaging way for students to practice c
 
   ```
 
-### OOP Practice 2: Building a Simple Bank Account System**
+### OOP Practice 2: Building a Simple Bank Account System\*\*
 
 **Objective:** This assignment will help you practice defining classes, creating objects, using constructors, properties, and methods in C#. You will create a simple bank account system that demonstrates these concepts.
 
 #### **Assignment Instructions 2:**
 
 1. **Create a Class named `BankAccount`:**
+
    - Define the `BankAccount` class with the following properties:
      - `AccountHolder` (string) - The name of the account holder.
      - `AccountNumber` (string) - The account number (auto-generated or manually set).
      - `Balance` (double) - The current balance of the account (should only be modified within the class).
 
 2. **Create a Constructor for the `BankAccount` Class:**
+
    - The constructor should take the account holder's name and initial deposit amount as parameters.
    - It should initialize the account holder's name, set an account number, and set the balance to the initial deposit amount.
 
 3. **Create Methods in the `BankAccount` Class:**
+
    - `Deposit(double amount)`: A method to deposit money into the account. Increase the balance by the deposited amount.
    - `Withdraw(double amount)`: A method to withdraw money from the account. Decrease the balance if there are sufficient funds; otherwise, display an error message.
    - `DisplayAccountInfo()`: A method to display the account holder’s name, account number, and balance.
@@ -7589,7 +7676,7 @@ class Program
 }
 ```
 
-#### Inheritance in  Bank Example
+#### Inheritance in Bank Example
 
 ![alt text](chatuml-diagram.png)
 
@@ -7660,7 +7747,7 @@ class Test
 ```
 
 - with inheritance
-![alt text](chatuml-diagram (1).png)
+  ![alt text](chatuml-diagram (1).png)
 
 ```csharp
 public class BankAccount
@@ -7677,7 +7764,7 @@ public class BankAccount
   {
     return _balance;
   }
-  
+
   public void Deposit(double amount)
   {
     _balance += amount;
@@ -7687,7 +7774,7 @@ public class SavingAccount : BankAccount
 {
   public SavingAccount(string accountNumber, double initialBalance) : base(accountNumber, initialBalance)
   { }
-   
+
   public void CalculateInterest(double interestRate)
   {
     double interest = GetBalance() * (interestRate / 100);
@@ -7707,7 +7794,7 @@ class Test
 
     SavingAccount savingAccount = new SavingAccount("PA123", 5000);
     CurrentAccount currentAccount = new CurrentAccount("CA123", 3000);
-    
+
     savingAccount.Deposit(1500);
     currentAccount.Deposit(2500);
     savingAccount.CalculateInterest(5);
@@ -7984,6 +8071,7 @@ Polymorphism is one of the core principles of Object-Oriented Programming (OOP) 
 #### **Types of Polymorphism in C#:**
 
 1. **Compile-Time Polymorphism (Static Binding):**
+
    - Achieved through method overloading and operator overloading.
    - The decision about which method to call is made at compile time.
 
@@ -8115,9 +8203,11 @@ class Program
 #### **Explanation of the Example:**
 
 1. **Base Class (`Animal`)**:
+
    - The `MakeSound()` method is marked as `virtual`, allowing derived classes to override it.
 
 2. **Derived Classes (`Dog` and `Cat`)**:
+
    - Both classes override the `MakeSound()` method to provide their specific behavior.
 
 3. **Polymorphic Behavior**:
@@ -8146,7 +8236,7 @@ The animal makes a sound.
 
 Polymorphism is a powerful OOP feature that enhances the design of applications by allowing multiple forms of behaviors under a single interface, making codebases more flexible, maintainable, and scalable.
 
-#### Polymorphism in  Bank Example
+#### Polymorphism in Bank Example
 
 ```csharp
 public class BankAccount
@@ -8317,19 +8407,21 @@ public class CurrentAccount : BankAccount
 }
 ```
 
-#### Assignment: Vehicle Management System Using the Four Pillars of OOP in C#**
+#### Assignment: Vehicle Management System Using the Four Pillars of OOP in C#\*\*
 
 **Objective:** This assignment will help students practice the four main principles of Object-Oriented Programming (OOP) — **Encapsulation**, **Abstraction**, **Inheritance**, and **Polymorphism** — in C#. Students will create a simple Vehicle Management System that manages different types of vehicles (Car, Bike, Truck), demonstrating each pillar of OOP.
 
 ##### **Assignment Instructions**
 
 1. **Create an Abstract Base Class (`Vehicle`)**:
+
    - This class will serve as the base class for all types of vehicles in the system.
    - Define the following properties: `Model`, `Year`, `FuelType`.
    - Include an abstract method `DisplayInfo()` that must be implemented by derived classes.
    - Include a method `Start()` that displays a start message.
 
 2. **Create Derived Classes (`Car`, `Bike`, and `Truck`) Using Inheritance**:
+
    - **`Car` Class**:
      - Inherit from `Vehicle`.
      - Add a property `NumberOfDoors`.
@@ -8344,14 +8436,17 @@ public class CurrentAccount : BankAccount
      - Implement the `DisplayInfo()` method to display the truck’s information.
 
 3. **Encapsulation**:
+
    - Use private fields and public properties to encapsulate data within classes.
    - Implement methods to manage specific behaviors of each vehicle type.
 
 4. **Abstraction**:
+
    - Use abstract classes and methods to define common structure and behavior for all vehicles.
    - Define an interface `IServiceable` that contains methods like `Service()` which will be implemented by all derived classes.
 
 5. **Polymorphism**:
+
    - Demonstrate polymorphism by creating a method that accepts `Vehicle` objects and calls the `DisplayInfo()` method.
    - Show how different vehicle types interact with the system through polymorphic behavior.
 
@@ -8553,13 +8648,16 @@ class Program
 ##### **Key Concepts Demonstrated in the Assignment:**
 
 1. **Encapsulation**:
+
    - Fields such as `model`, `year`, `fuelType`, `numberOfDoors`, `hasCarrier`, and `loadCapacity` are encapsulated within their respective classes.
 
 2. **Abstraction**:
+
    - The `Vehicle` class is abstract, defining a contract for common behavior without specifying the implementation.
    - The `IServiceable` interface abstracts the service action that all vehicles must provide.
 
 3. **Inheritance**:
+
    - `Car`, `Bike`, and `Truck` inherit from `Vehicle`, reusing base class functionality and adding specific features.
 
 4. **Polymorphism**:
@@ -8845,7 +8943,7 @@ In this example:
 - The `Main` method creates an `Engine` instance and passes it to the `Car` constructor.
 - This is an example of dependency injection, where the `Car` class depends on an `Engine` instance that is injected from the outside.
 
-#### Composition offers several benefits in software development:
+#### Composition offers several benefits in software development
 
 1. **Code Reusability**: By composing objects together, you can reuse existing classes without inheritance. This promotes a more modular approach to building software, where individual components can be easily reused in different contexts.
 
@@ -8957,10 +9055,12 @@ class Program
 ##### **Explanation of the Code 6:**
 
 1. **Components (`CPU`, `RAM`, `HardDrive`)**:
+
    - Each component class (`CPU`, `RAM`, `HardDrive`) represents a distinct part of the computer.
    - They perform specific tasks, such as processing data, loading data, and reading data, which are essential for the computer to function.
 
 2. **Composition in `Computer`**:
+
    - The `Computer` class composes the three components (`CPU`, `RAM`, `HardDrive`) using private fields.
    - This demonstrates composition because the `Computer` is not functional without these components, and these components do not make sense outside the context of a computer.
 
@@ -9122,14 +9222,17 @@ class Program
 #### **Key Differences Between Loosely and Strongly Coupled Inheritance:**
 
 1. **Dependency**:
+
    - **Strongly Coupled**: High dependency on the base class, leading to fragile code.
    - **Loosely Coupled**: Low dependency on implementation, promoting more stable and adaptable code.
 
 2. **Flexibility**:
+
    - **Strongly Coupled**: Difficult to modify or extend without affecting dependent classes.
    - **Loosely Coupled**: Easier to modify, extend, and maintain due to minimal dependencies.
 
 3. **Maintainability**:
+
    - **Strongly Coupled**: Changes in the base class can lead to unintended consequences in derived classes.
    - **Loosely Coupled**: Changes are isolated, reducing the impact on other parts of the codebase.
 
@@ -9252,6 +9355,7 @@ car.StartCar();
 #### **Comparison and Use in Design Patterns**
 
 1. **Composition**:
+
    - Used in design patterns like **Decorator**, **Strategy**, **Composite**, and **Adapter**.
    - Emphasizes building complex objects by combining simpler ones.
 
@@ -9553,7 +9657,7 @@ using System.Reflection;
 public class MyClass
 {
     public int MyProperty { get; set; }
-    
+
     public void MyMethod(string message)
     {
         Console.WriteLine($"MyMethod invoked with message: {message}");
@@ -9603,68 +9707,73 @@ This example demonstrates how reflection allows us to inspect and manipulate the
 
 - **struct type**
 
-    for simple data structure such as storing colors, pints, coordinates. similar to classes but they have differences in many aspectes.
+  for simple data structure such as storing colors, pints, coordinates. similar to classes but they have differences in many aspectes.
 
-    In C#, a structure (struct) is a value type data type that allows you to encapsulate related data members and behaviors. Similar to classes, structures can have fields, properties, methods, and constructors. However, there are some key differences between classes and structures:
+  In C#, a structure (struct) is a value type data type that allows you to encapsulate related data members and behaviors. Similar to classes, structures can have fields, properties, methods, and constructors. However, there are some key differences between classes and structures:
 
-    1. **Memory Allocation**:
-      - Objects of classes are allocated memory on the heap, while instances of structures are allocated memory on the stack.
-      - This difference in memory allocation can lead to performance benefits for structures, especially for small, frequently used data types.
+  1. **Memory Allocation**:
 
-    2. **Inheritance**:
-      - Structures cannot inherit from other structures or classes.
-      - They cannot serve as base types for other structures or classes.
+     - Objects of classes are allocated memory on the heap, while instances of structures are allocated memory on the stack.
+     - This difference in memory allocation can lead to performance benefits for structures, especially for small, frequently used data types.
 
-    3. **Default Constructor**:
-      - Structures always have an implicit default parameterless constructor, which initializes all fields to their default values.
+  2. **Inheritance**:
 
-    4. **Copy Semantics**:
-      - When you pass a structure to a method or assign it to another variable, the entire structure is copied. This contrasts with classes, where only a reference to the object is copied.
+     - Structures cannot inherit from other structures or classes.
+     - They cannot serve as base types for other structures or classes.
 
-    5. **Boxing and Unboxing**:
-      - Structures are value types, and they do not require boxing and unboxing when used in certain contexts. This can improve performance in scenarios where boxing and unboxing are frequent.
+  3. **Default Constructor**:
 
-    Here's a basic example of a structure in C#:
+     - Structures always have an implicit default parameterless constructor, which initializes all fields to their default values.
 
-    ```csharp
-    using System;
+  4. **Copy Semantics**:
 
-    public struct Point
-    {
-        // Fields
-        public int X;
-        public int Y;
+     - When you pass a structure to a method or assign it to another variable, the entire structure is copied. This contrasts with classes, where only a reference to the object is copied.
 
-        // Constructor
-        public Point(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
+  5. **Boxing and Unboxing**:
 
-        // Method
-        public void Display()
-        {
-            Console.WriteLine($"Point coordinates: ({X}, {Y})");
-        }
-    }
+     - Structures are value types, and they do not require boxing and unboxing when used in certain contexts. This can improve performance in scenarios where boxing and unboxing are frequent.
 
-    class Program
-    {
-        static void Main()
-        {
-            // Creating an instance of the Point structure
-            Point point = new Point(10, 20);
+  Here's a basic example of a structure in C#:
 
-            // Accessing fields and calling method
-            Console.WriteLine($"X coordinate: {point.X}");
-            Console.WriteLine($"Y coordinate: {point.Y}");
-            point.Display();
-        }
-    }
-    ```
+  ```csharp
+  using System;
 
-    In this example, `Point` is a structure that represents a point in 2D space. It has two fields `X` and `Y`, a constructor to initialize these fields, and a method `Display()` to print the coordinates of the point.
+  public struct Point
+  {
+      // Fields
+      public int X;
+      public int Y;
+
+      // Constructor
+      public Point(int x, int y)
+      {
+          X = x;
+          Y = y;
+      }
+
+      // Method
+      public void Display()
+      {
+          Console.WriteLine($"Point coordinates: ({X}, {Y})");
+      }
+  }
+
+  class Program
+  {
+      static void Main()
+      {
+          // Creating an instance of the Point structure
+          Point point = new Point(10, 20);
+
+          // Accessing fields and calling method
+          Console.WriteLine($"X coordinate: {point.X}");
+          Console.WriteLine($"Y coordinate: {point.Y}");
+          point.Display();
+      }
+  }
+  ```
+
+  In this example, `Point` is a structure that represents a point in 2D space. It has two fields `X` and `Y`, a constructor to initialize these fields, and a method `Display()` to print the coordinates of the point.
 
 - enum type
 
@@ -9672,62 +9781,62 @@ This example demonstrates how reflection allows us to inspect and manipulate the
   - Enums are used to define a group of named integral constants.
   - Enums are commonly used in scenarios where you have a fixed set of related values that represent different states or options, such as days of the week, months, status codes, etc.
   - They help make code more readable and maintainable by giving meaningful names to constant values.
-  
+
   Here's how you define and use enums in C#:
 
-    ```csharp
-    // Syntax
-    enum TypeName
-    {
-        Constant1,
-        Constant2,
-        // Add more constants as needed
-    }
-    ```
+  ```csharp
+  // Syntax
+  enum TypeName
+  {
+      Constant1,
+      Constant2,
+      // Add more constants as needed
+  }
+  ```
 
-    ```csharp
-    // Example
-    using System;
+  ```csharp
+  // Example
+  using System;
 
-    public class Program
-    {
-        // Define an enum for days of the week
-        enum Days
-        {
-            Sunday,
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday,
-            Friday,
-            Saturday
-        }
+  public class Program
+  {
+      // Define an enum for days of the week
+      enum Days
+      {
+          Sunday,
+          Monday,
+          Tuesday,
+          Wednesday,
+          Thursday,
+          Friday,
+          Saturday
+      }
 
-        public static void Main(string[] args)
-        {
-            // Assign a value from the enum
-            Days today = Days.Friday;
+      public static void Main(string[] args)
+      {
+          // Assign a value from the enum
+          Days today = Days.Friday;
 
-            // Output the value of today
-            Console.WriteLine("Today is: " + today);
-            
-            // Convert enum value to int
-            int dayNumber = (int)today;
-            Console.WriteLine("Day number: " + dayNumber);
-            
-            // Convert int to enum value
-            Days anotherDay = (Days)2;
-            Console.WriteLine("Another day is: " + anotherDay);
-        }
-    }
-    ```
+          // Output the value of today
+          Console.WriteLine("Today is: " + today);
 
-    ```text
-    // Output
-    Today is: Friday
-    Day number: 5
-    Another day is: Tuesday
-    ```
+          // Convert enum value to int
+          int dayNumber = (int)today;
+          Console.WriteLine("Day number: " + dayNumber);
+
+          // Convert int to enum value
+          Days anotherDay = (Days)2;
+          Console.WriteLine("Another day is: " + anotherDay);
+      }
+  }
+  ```
+
+  ```text
+  // Output
+  Today is: Friday
+  Day number: 5
+  Another day is: Tuesday
+  ```
 
   - Enums provide a way to define a set of named integral constants that can be assigned to variables.
   - In the example, we define an enum `Days` with constants for each day of the week.
@@ -9799,125 +9908,127 @@ This example demonstrates how reflection allows us to inspect and manipulate the
   In this example, we define a tuple with named elements `Name`, `Age`, and `IsEmployed`, making the code more readable and self-explanatory. We then access these named elements directly using their names.
 
 - dynamic and object type
-    In C#, both `dynamic` and `object` are used to handle situations where the type of an object is not known at compile time. However, they have different behaviors and use cases:
+  In C#, both `dynamic` and `object` are used to handle situations where the type of an object is not known at compile time. However, they have different behaviors and use cases:
 
-    1. **`dynamic`**:
-      - The `dynamic` keyword is used to declare a type that can hold any type of value at runtime.
-      - It defers type checking until runtime rather than compile time.
-      - It allows you to perform operations on objects without explicit type casting.
-      - It provides late binding, meaning method calls and property accesses are resolved at runtime.
-      - Example:
+  1. **`dynamic`**:
 
-        ```csharp
-          using System;
+     - The `dynamic` keyword is used to declare a type that can hold any type of value at runtime.
+     - It defers type checking until runtime rather than compile time.
+     - It allows you to perform operations on objects without explicit type casting.
+     - It provides late binding, meaning method calls and property accesses are resolved at runtime.
+     - Example:
 
-          class Program
-          {
-              static void Main(string[] args)
-              {
-                  // Example using object type
-                  object obj = 10;
-                  Console.WriteLine($"Object value: {obj}"); // Output: Object value: 10
+       ```csharp
+         using System;
 
-                  int intValue = (int)obj; // Explicit casting
-                  Console.WriteLine($"Int value: {intValue}"); // Output: Int value: 10
+         class Program
+         {
+             static void Main(string[] args)
+             {
+                 // Example using object type
+                 object obj = 10;
+                 Console.WriteLine($"Object value: {obj}"); // Output: Object value: 10
 
-                  // Example using dynamic type
-                  dynamic dynamicVariable = 10;
-                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: 10
+                 int intValue = (int)obj; // Explicit casting
+                 Console.WriteLine($"Int value: {intValue}"); // Output: Int value: 10
 
-                  dynamicVariable = "Hello";
-                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: Hello
+                 // Example using dynamic type
+                 dynamic dynamicVariable = 10;
+                 Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: 10
 
-                  dynamicVariable = DateTime.Now;
-                  Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: [current datetime]
-              }
-          }
+                 dynamicVariable = "Hello";
+                 Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: Hello
 
-        ```
+                 dynamicVariable = DateTime.Now;
+                 Console.WriteLine($"Dynamic variable: {dynamicVariable}"); // Output: Dynamic variable: [current datetime]
+             }
+         }
 
-    2. **`object`**:
-      - The `object` type is a reference type that represents the base type of all other types in C#.
-      - It can hold any type of value but requires explicit casting to access its members or convert it to another type.
-      - It is a compile-time construct and doesn't provide late binding like `dynamic`.
-      - It is typically used when you need to work with values of different types in a homogeneous collection or when the specific type is not known at compile time.
-  
-    In summary, `dynamic` is used for late binding and dynamic behavior at runtime, while `object` is used for static typing and type safety at compile time. Choose between them based on your specific requirements and whether you need dynamic or static typing in your code.
+       ```
+
+  2. **`object`**:
+
+     - The `object` type is a reference type that represents the base type of all other types in C#.
+     - It can hold any type of value but requires explicit casting to access its members or convert it to another type.
+     - It is a compile-time construct and doesn't provide late binding like `dynamic`.
+     - It is typically used when you need to work with values of different types in a homogeneous collection or when the specific type is not known at compile time.
+
+  In summary, `dynamic` is used for late binding and dynamic behavior at runtime, while `object` is used for static typing and type safety at compile time. Choose between them based on your specific requirements and whether you need dynamic or static typing in your code.
 
 - record and a delegate type:
 
-    1. **Record**: (use record / struct / class based on your need)
-      Records are a feature introduced in C# 9.0 that provide a concise syntax for creating immutable data types. Records are primarily used for modeling data and are especially useful for DTOs (Data Transfer Objects), entities, and other types where immutability and equality are important.
+  1. **Record**: (use record / struct / class based on your need)
+     Records are a feature introduced in C# 9.0 that provide a concise syntax for creating immutable data types. Records are primarily used for modeling data and are especially useful for DTOs (Data Transfer Objects), entities, and other types where immutability and equality are important.
 
-    ```csharp
-    using System;
+  ```csharp
+  using System;
 
-    // Example of a record
-    public record Person(string FirstName, string LastName, int Age);
+  // Example of a record
+  public record Person(string FirstName, string LastName, int Age);
 
-    class Program
-    {
-        static void Main()
-        {
-            // Creating an instance of the record
-            var person = new Person("John", "Doe", 30);
+  class Program
+  {
+      static void Main()
+      {
+          // Creating an instance of the record
+          var person = new Person("John", "Doe", 30);
 
-            // Accessing properties
-            Console.WriteLine($"Name: {person.FirstName} {person.LastName}, Age: {person.Age}");
-        }
-    }
-    ```
+          // Accessing properties
+          Console.WriteLine($"Name: {person.FirstName} {person.LastName}, Age: {person.Age}");
+      }
+  }
+  ```
 
-    In the above example:
+  In the above example:
 
   - We define a `Person` record with properties `FirstName`, `LastName`, and `Age`.
   - Records automatically generate a constructor, properties, `Equals()` method, `GetHashCode()` method, and `ToString()` method based on their members.
   - We create an instance of the `Person` record and access its properties.
 
     2. **Delegate**:
-      Delegates are used to define references to methods. They are similar to function pointers in C++ or function types in other languages. Delegates are especially useful for implementing events, callbacks, and LINQ queries.
+       Delegates are used to define references to methods. They are similar to function pointers in C++ or function types in other languages. Delegates are especially useful for implementing events, callbacks, and LINQ queries.
 
-        ```csharp
-        using System;
+       ```csharp
+       using System;
 
-        // Example of a delegate
-        public delegate void MyDelegate(string message);
+       // Example of a delegate
+       public delegate void MyDelegate(string message);
 
-        class Program
-        {
-            static void Main()
-            {
-                // Creating an instance of the delegate
-                MyDelegate myDelegate = DisplayMessage;
+       class Program
+       {
+           static void Main()
+           {
+               // Creating an instance of the delegate
+               MyDelegate myDelegate = DisplayMessage;
 
-                // Invoking the delegate
-                myDelegate("Hello, delegates!");
+               // Invoking the delegate
+               myDelegate("Hello, delegates!");
 
-                // Multicast delegate
-                myDelegate += DisplayAnotherMessage;
-                myDelegate("Hello again!");
-            }
+               // Multicast delegate
+               myDelegate += DisplayAnotherMessage;
+               myDelegate("Hello again!");
+           }
 
-            static void DisplayMessage(string message)
-            {
-                Console.WriteLine($"Message: {message}");
-            }
+           static void DisplayMessage(string message)
+           {
+               Console.WriteLine($"Message: {message}");
+           }
 
-            static void DisplayAnotherMessage(string message)
-            {
-                Console.WriteLine($"Another message: {message}");
-            }
-        }
-        ```
+           static void DisplayAnotherMessage(string message)
+           {
+               Console.WriteLine($"Another message: {message}");
+           }
+       }
+       ```
 
-        In the above example:
+       In the above example:
 
-        - We define a delegate `MyDelegate` that points to methods accepting a `string` parameter and returning `void`.
-        - We create an instance of the delegate and assign it to a method `DisplayMessage`.
-        - We invoke the delegate, which in turn invokes the `DisplayMessage` method.
-        - We demonstrate a multicast delegate by adding another method to the delegate invocation list using `+=`. When the delegate is invoked, both methods are called in the order they were added.
+       - We define a delegate `MyDelegate` that points to methods accepting a `string` parameter and returning `void`.
+       - We create an instance of the delegate and assign it to a method `DisplayMessage`.
+       - We invoke the delegate, which in turn invokes the `DisplayMessage` method.
+       - We demonstrate a multicast delegate by adding another method to the delegate invocation list using `+=`. When the delegate is invoked, both methods are called in the order they were added.
 
-        These examples showcase the usage of records for immutable data types and delegates for method references and event handling in C#.
+       These examples showcase the usage of records for immutable data types and delegates for method references and event handling in C#.
 
 #### Class vs Struct vs Record
 
@@ -9926,7 +10037,7 @@ Key Differences:
 - Classes are reference types with full support for inheritance and customization, while structs and records are value types with limited or no inheritance capabilities.
 - Structs are primarily used for small, single-value data types and are passed by value, while records provide a concise syntax for defining immutable data types with value semantics.
 - Records automatically generate boilerplate code for immutability and value equality, reducing developer overhead and potential sources of errors.
-In summary, choose the appropriate type (class, struct, or record) based on the specific requirements of your application, considering factors such as mutability, inheritance, memory usage, and performance.
+  In summary, choose the appropriate type (class, struct, or record) based on the specific requirements of your application, considering factors such as mutability, inheritance, memory usage, and performance.
 
 Sure, let's create an example to demonstrate the differences between classes, structs, and records.
 
@@ -10193,19 +10304,19 @@ Both **lists** and **arrays** are used to store collections of data in C#, but t
 
 ###### **2. Key Differences Between List and Array**
 
-| Feature                  | Array                                     | List                                              |
-|--------------------------|-------------------------------------------|---------------------------------------------------|
-| **Size**                 | Fixed size; must specify size at creation | Dynamic size; grows and shrinks automatically     |
-| **Namespace**            | `System`                                  | `System.Collections.Generic`                      |
-| **Initialization**       | Must specify size or initialize with elements | No size required, initialized as an empty list    |
-| **Performance**          | Faster for simple, fixed-size collections | Slightly slower due to dynamic resizing           |
-| **Flexibility**          | Less flexible; can't change size          | More flexible; can add, remove, or modify elements|
-| **Memory Efficiency**    | More memory-efficient for fixed data      | May allocate more memory than needed temporarily  |
-| **Access Time**          | Constant time access (`O(1)`)             | Constant time access (`O(1)`)                     |
-| **Methods Available**    | Limited methods (`Length`, `Sort`, etc.)  | Rich methods (`Add`, `Remove`, `Insert`, `Sort`)  |
-| **Type Safety**          | Strongly typed                            | Strongly typed (generic)                          |
-| **Ease of Use**          | Basic, straightforward                    | More user-friendly with utility methods           |
-| **Use Case**             | Best for fixed-size collections           | Best for collections where size changes frequently|
+| Feature               | Array                                         | List                                               |
+| --------------------- | --------------------------------------------- | -------------------------------------------------- |
+| **Size**              | Fixed size; must specify size at creation     | Dynamic size; grows and shrinks automatically      |
+| **Namespace**         | `System`                                      | `System.Collections.Generic`                       |
+| **Initialization**    | Must specify size or initialize with elements | No size required, initialized as an empty list     |
+| **Performance**       | Faster for simple, fixed-size collections     | Slightly slower due to dynamic resizing            |
+| **Flexibility**       | Less flexible; can't change size              | More flexible; can add, remove, or modify elements |
+| **Memory Efficiency** | More memory-efficient for fixed data          | May allocate more memory than needed temporarily   |
+| **Access Time**       | Constant time access (`O(1)`)                 | Constant time access (`O(1)`)                      |
+| **Methods Available** | Limited methods (`Length`, `Sort`, etc.)      | Rich methods (`Add`, `Remove`, `Insert`, `Sort`)   |
+| **Type Safety**       | Strongly typed                                | Strongly typed (generic)                           |
+| **Ease of Use**       | Basic, straightforward                        | More user-friendly with utility methods            |
+| **Use Case**          | Best for fixed-size collections               | Best for collections where size changes frequently |
 
 ###### **3. Examples**
 
@@ -10275,6 +10386,7 @@ class Program
 ###### **4. When to Use Arrays vs. Lists**
 
 - **Use Arrays When**:
+
   - You know the number of elements in advance, and it won't change.
   - Performance is critical, and you need a minimal overhead collection.
   - You need multidimensional data (e.g., matrices).
@@ -10318,6 +10430,7 @@ class Program
 ###### List properties and methods
 
 - **Properties**:
+
   - `Count`: Gets the number of elements contained in the list.
   - `Capacity`: Gets or sets the total number of elements the internal data structure can hold without resizing.
 
@@ -10415,6 +10528,7 @@ These are just some of the common operations that can be performed with lists in
 #### 2. `Dictionary<TKey, TValue>`
 
 - **Properties**:
+
   - `Count`: Gets the number of key/value pairs contained in the dictionary.
 
 - **Methods**:
@@ -10435,6 +10549,7 @@ Console.WriteLine(ages.ContainsKey("Alice")); // Output: True
 #### 3. `Queue<T>`
 
 - **Properties**:
+
   - `Count`: Gets the number of elements contained in the queue.
 
 - **Methods**:
@@ -10455,6 +10570,7 @@ Console.WriteLine(names.Peek()); // Output: Alice
 #### 4. `Stack<T>`
 
 - **Properties**:
+
   - `Count`: Gets the number of elements contained in the stack.
 
 - **Methods**:
@@ -11045,7 +11161,7 @@ public class MyClass
 
   The `OrderBy` operator is used to sort elements of a sequence in ascending order based on a specified key. It returns a new sequence with the elements sorted according to the specified ordering.
 
-  - Example: Sorting Integers**
+  - Example: Sorting Integers\*\*
 
   ```csharp
   using System;
@@ -11167,7 +11283,7 @@ In this example, the `OrderBy` operator is used to sort the `numbers` array in a
         // filter the people greater than age 30
         // filter age greater then 30 and transform to uppercase
         // select people's name and bloodGroup only
-        // OrderBy Age 
+        // OrderBy Age
         // OrderBy Name and then Age
 
         var orderByNameAndAge = persons.OrderBy(p => p.Name).ThenBy(p => p.Age).ToList();
@@ -11322,7 +11438,7 @@ The `Contains` method checks if a sequence contains a specific element.
         // filter the people greater than age 30
         // filter age greater then 30 and transform to uppercase
         // select people's name and bloodGroup only
-        // OrderBy Age 
+        // OrderBy Age
         // OrderBy Name and then Age
         // All the persons are adult?
         // one person is adult?
@@ -11774,7 +11890,7 @@ The `GroupBy` method in LINQ is used to group elements of a sequence based on a 
           }
       }
   }
-  
+
   ```
 
   - Output
@@ -11796,7 +11912,7 @@ The `GroupBy` method in LINQ is used to group elements of a sequence based on a 
     - We iterate over the groups and print the age along with the names of people in each group.
 
 - Example 2: where we have a list of Product objects, and we want to group them by their Category.
-  
+
   ```csharp
     class Product
 
@@ -12057,64 +12173,67 @@ class Program
 The `ToArray` and `AsQueryable` methods are both used in LINQ queries to convert sequences into different types. In summary, `ToArray` is used to immediately convert a sequence into an array, while `AsQueryable` is used to defer the execution of the query and work with `IQueryable<T>` interface, especially in scenarios involving LINQ to SQL or LINQ to Entities. Let's discuss each method and provide examples:
 
 1. **ToArray**:
+
    - The `ToArray` method is used to convert a sequence into an array.
    - It forces immediate execution of the query and returns an array containing all elements of the sequence.
    - It is useful when you need to work with an array, which provides random access to elements.
    - Once the array is created, it is not connected to the original sequence, so changes to the original sequence won't affect the array.
    - Example:
 
-    ```csharp
-    using System;
-    using System.Linq;
+   ```csharp
+   using System;
+   using System.Linq;
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            int[] numbers = { 1, 2, 3, 4, 5 };
-            int[] array = numbers.ToArray();
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           int[] numbers = { 1, 2, 3, 4, 5 };
+           int[] array = numbers.ToArray();
 
-            foreach (int num in array)
-            {
-                Console.WriteLine(num);
-            }
-        }
-    }
-    ```
+           foreach (int num in array)
+           {
+               Console.WriteLine(num);
+           }
+       }
+   }
+   ```
 
 2. **AsQueryable**:
+
    - The `AsQueryable` method is used to convert a sequence into an `IQueryable<T>` interface.
    - It doesn't execute the query immediately; instead, it allows deferred execution of the query.
    - It is useful when you need to apply additional query operators that are only available in LINQ to SQL or LINQ to Entities.
    - It is typically used when working with Entity Framework or other ORM frameworks.
    - Example:
 
-    ```csharp
-    using System;
-    using System.Linq;
+   ```csharp
+   using System;
+   using System.Linq;
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            int[] numbers = { 1, 2, 3, 4, 5 };
-            IQueryable<int> queryable = numbers.AsQueryable();
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           int[] numbers = { 1, 2, 3, 4, 5 };
+           IQueryable<int> queryable = numbers.AsQueryable();
 
-            var query = queryable.Where(n => n % 2 == 0);
+           var query = queryable.Where(n => n % 2 == 0);
 
-            foreach (int num in query)
-            {
-                Console.WriteLine(num);
-            }
-        }
-    }
-    ```
+           foreach (int num in query)
+           {
+               Console.WriteLine(num);
+           }
+       }
+   }
+   ```
 
 ### 13. Deferred vs Immediate Execution
 
 Deferred execution and immediate execution are two different execution strategies used in LINQ queries to process data. In summary, deferred execution delays the execution of a LINQ query until its result is enumerated, while immediate execution forces the execution of a query and materializes its result immediately. Both execution strategies have their use cases and advantages, depending on the scenario and requirements of your application. Let's understand each one:
 
 1. **Deferred Execution / Lazy Loading**:
+
    - Deferred execution means that the execution of a LINQ query is delayed until the query result is actually enumerated or iterated over.
    - When you define a LINQ query using query operators (such as `Where`, `Select`, `OrderBy`, etc.), the query is not executed immediately. Instead, it creates an expression tree representing the query.
    - The query is executed only when you iterate over the query result, such as by using a `foreach` loop, calling `ToList`, `ToArray`, or any other method that triggers enumeration.
@@ -12123,18 +12242,19 @@ Deferred execution and immediate execution are two different execution strategie
    - It is used for large data set or where you need to modify the query later on.
    - Example:
 
-    ```csharp
-    var query = students.Where(s => s.Age > 18).OrderBy(s => s.LastName);
-    // Query is not executed yet
+   ```csharp
+   var query = students.Where(s => s.Age > 18).OrderBy(s => s.LastName);
+   // Query is not executed yet
 
-    foreach (var student in query)
-    {
-        Console.WriteLine($"{student.FirstName} {student.LastName}");
-    }
-    // Query is executed when iterating over the result
-    ```
+   foreach (var student in query)
+   {
+       Console.WriteLine($"{student.FirstName} {student.LastName}");
+   }
+   // Query is executed when iterating over the result
+   ```
 
 2. **Immediate Execution / Eager Loading**:
+
    - Immediate execution means that the execution of a LINQ query occurs immediately after it is defined, and the query result is materialized right away.
    - Methods like `ToList`, `ToArray`, `First`, `Single`, `Count`, etc., trigger immediate execution because they need to return a concrete result.
    - Immediate execution is useful when you need to materialize the query result for further processing or when you want to force execution and retrieve the data eagerly.
@@ -12142,16 +12262,16 @@ Deferred execution and immediate execution are two different execution strategie
    - It is used for small data set or where you do not need to modify the query later on.
    - Example:
 
-    ```csharp
-    var query = students.Where(s => s.Age > 18).OrderBy(s => s.LastName).ToList();
-    // Query is executed immediately and result is stored in a List
+   ```csharp
+   var query = students.Where(s => s.Age > 18).OrderBy(s => s.LastName).ToList();
+   // Query is executed immediately and result is stored in a List
 
-    foreach (var student in query)
-    {
-        Console.WriteLine($"{student.FirstName} {student.LastName}");
-    }
-    // Iterating over the result stored in the List
-    ```
+   foreach (var student in query)
+   {
+       Console.WriteLine($"{student.FirstName} {student.LastName}");
+   }
+   // Iterating over the result stored in the List
+   ```
 
 ## Intermediate 2.3: Asynchronous Programming
 
@@ -12184,7 +12304,7 @@ class Program
   {
     Console.WriteLine("Task 2: Fetch User Data is started");
     Console.WriteLine("Task 2: Fetch User Data is completed");
-  } 
+  }
   public static void Task3()
   {
     Console.WriteLine("Task 3: Fetch Order data is started");
@@ -12413,7 +12533,7 @@ public class MyClass
     Thread thread = new Thread(CountNumbers);
     thread.Start();
 
-    // continue with the main thread 
+    // continue with the main thread
     for (int count = 0; count < 10; count++)
     {
       Console.WriteLine($"Inside Main Thread : {count}");
@@ -12452,7 +12572,7 @@ public class MyClass
     // create a task and specify the async method to execute
     Task task = CountNumbers();
 
-    // continue with the main thread 
+    // continue with the main thread
     for (int count = 0; count < 10; count++)
     {
       Console.WriteLine($"Inside Main Thread : {count}");
@@ -12559,125 +12679,131 @@ class Program
 Working with files in C# involves various operations such as reading from and writing to files, creating, deleting, and manipulating files and directories. These are some of the basic file operations in C#. Depending on your requirements, you can perform more advanced file operations using additional classes and methods available in the `System.IO` namespace. Here's an overview of common file operations in C#:
 
 1. **Reading from a File**:
+
    - Use the `StreamReader` class to read text from a file.
    - Example:
 
-    ```csharp
-    using System;
-    using System.IO;
+   ```csharp
+   using System;
+   using System.IO;
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string filePath = "example.txt";
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Console.WriteLine(line);
-                }
-            }
-        }
-    }
-    ```
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string filePath = "example.txt";
+           using (StreamReader reader = new StreamReader(filePath))
+           {
+               string line;
+               while ((line = reader.ReadLine()) != null)
+               {
+                   Console.WriteLine(line);
+               }
+           }
+       }
+   }
+   ```
 
 2. **Writing to a File**:
+
    - Use the `StreamWriter` class to write text to a file.
    - Example:
 
-    ```csharp
-    using System.IO;
+   ```csharp
+   using System.IO;
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string filePath = "output.txt";
-            using (StreamWriter writer = new StreamWriter(filePath))
-            {
-                writer.WriteLine("Hello, world!");
-            }
-        }
-    }
-    ```
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string filePath = "output.txt";
+           using (StreamWriter writer = new StreamWriter(filePath))
+           {
+               writer.WriteLine("Hello, world!");
+           }
+       }
+   }
+   ```
 
 3. **Checking if a File Exists**:
+
    - Use the `File.Exists` method to check if a file exists.
    - Example:
 
-    ```csharp
-    using System;
-    using System.IO;
+   ```csharp
+   using System;
+   using System.IO;
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string filePath = "example.txt";
-            if (File.Exists(filePath))
-            {
-                Console.WriteLine("File exists.");
-            }
-            else
-            {
-                Console.WriteLine("File does not exist.");
-            }
-        }
-    }
-    ```
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string filePath = "example.txt";
+           if (File.Exists(filePath))
+           {
+               Console.WriteLine("File exists.");
+           }
+           else
+           {
+               Console.WriteLine("File does not exist.");
+           }
+       }
+   }
+   ```
 
 4. **Creating a File**:
+
    - Use the `File.Create` method to create a new file.
    - Example:
 
-    ```csharp
-    using System.IO;
+   ```csharp
+   using System.IO;
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string filePath = "newfile.txt";
-            File.Create(filePath).Close();
-        }
-    }
-    ```
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string filePath = "newfile.txt";
+           File.Create(filePath).Close();
+       }
+   }
+   ```
 
 5. **Deleting a File**:
+
    - Use the `File.Delete` method to delete a file.
    - Example:
 
-    ```csharp
-    using System.IO;
+   ```csharp
+   using System.IO;
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string filePath = "fileToDelete.txt";
-            File.Delete(filePath);
-        }
-    }
-    ```
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string filePath = "fileToDelete.txt";
+           File.Delete(filePath);
+       }
+   }
+   ```
 
 6. **Working with Directories**:
+
    - Use the `Directory` class to create, delete, move, and enumerate directories.
    - Example:
 
-    ```csharp
-    using System.IO;
+   ```csharp
+   using System.IO;
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string directoryPath = "newDirectory";
-            Directory.CreateDirectory(directoryPath);
-        }
-    }
-    ```
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string directoryPath = "newDirectory";
+           Directory.CreateDirectory(directoryPath);
+       }
+   }
+   ```
 
 ### new: A project for CRUD with Files
 
@@ -12886,8 +13012,8 @@ You can run this program to manage products through a simple command-line interf
     Box b2 = new Box(5, 7);
     Box b3 = b1 + b2;
 
-    Console.WriteLine(b3.Height); 
-    Console.WriteLine(b3.Width); 
+    Console.WriteLine(b3.Height);
+    Console.WriteLine(b3.Width);
   }
 ```
 
@@ -12925,13 +13051,24 @@ Table of Contents
   - [HTTP Methods, Status Codes, Idempotence and Safety](#http-methods-status-code-idempotence-and-safety)
   - [Create, understand and run a simple web API](#create-understand-and-run-a-simple-web-api)
   - [Test API Endpints](#testing-api-endpoints)
-- [3. Creating API Endpoints](#3-creating-api-endpoints)
-  - [Create and Test Product API EndPoints](#create-and-test-product-api-endpoints)
   - [HTTP Response types](#http-response-types)
   - [Minimal Vs Non-Minimal API](#minimal-api-vs-non-minimal-api)
-  - [Simple Product CRUD Operations](#simple-product-crud-api)
-- [4. Introduction to Web API](#1-basics-of-aspnet-core)
-- [5. Introduction to Web API](#1-basics-of-aspnet-core)
+  - [Simple Category CRUD Operations](#simple-category-crud-api)
+- [3. Model Binding, Validation, Centralized Response and MVC Architecture](#3-model-binding-validation-centralized-response-and-mvc-architecture)
+  - [Passing data to methods via route, query string, and request body](#model-binding-passing-data-to-methods-via-route-query-string-and-request-body)
+  - [Route Constraint](#concept--route-constraint)
+  - [MVC Architecture](#concept--mvc-architecture)
+  - [Models VS Data Transfer Objects (DTOs)](#concept--models-vs-data-transfer-objects-dtos)
+- [4. Dependency Injection and Services](#4-dependency-injectionservices)
+  - [Dependency Injection and why it's important](#dependency-injection-and-why-its-important)
+  - [Repository Pattern](#repository-pattern)
+  - [AutoMapper DI](#automapper)
+- [5. Working with Databases (Entity Framework Core) and Asynchronous](#5-working-with-databases-entity-framework-core-and-asynchronous)
+  - [Introduction to Entity Framework Core](#introduction-to-entity-framework-core)
+  - [Context, Migrations, Database connection](#context-migrations-database-connection)
+  - [Asynchornous and CRUD Categories](#asynchronous-and-crud-of-categories)
+  - [Pagination, Searching, Sorting](#pagination-searching-sorting)
+- [6. lala]()
 
 ### 0. ASP.NET Roadmap
 
@@ -12944,13 +13081,8 @@ Table of Contents
 Before diving into Web API development, you should understand the fundamentals of ASP.NET Core, which is the framework used to build modern web applications and APIs.
 
 - **Key Topics**:
-  - [X] What is ASP.NET Core and its benefits.
-  - [X] ASP.NET Core vs. ASP.NET Framework.
-  - [ ] Overview of middleware and the request pipeline. (Not Done)
-  - [ ] Dependency injection in ASP.NET Core. (Not Done)
-  
-- **What to Do**:
-  - [X] Set up your development environment: Install Visual Studio/Visual Studio Code, .NET SDK.
+  - [x] What is ASP.NET Core and its benefits.
+  - [x] Set up your development environment: Install Visual Studio/Visual Studio Code, .NET SDK, necessary extensions => C#, C# Dev Kit, C# Extensions, C# Snippets, Nuget Package manager
 
 #### .NET Framework VS .NET Core
 
@@ -12958,7 +13090,7 @@ Before diving into Web API development, you should understand the fundamentals o
 
 ![alt text](image-2.png)
 
-- The .NET and C# is not same thing. C# is a language where .NET is a software which give us CLR where we can run our application and use pre0defined linraries. Few major app models => web (asp.net core, asp.net core mvc), web client (blazor), desktop (winforms, .net for mac), mobile (.NET for android and .NET for iOS)
+- The .NET and C# is not same thing. C# is a language where .NET is a software which give us CLR where we can run our application and use predefined linraries. Few major app models => web (asp.net core, asp.net core mvc), web client (blazor), desktop (winforms, .net for mac), mobile (.NET for android and .NET for iOS)
 - 2 main components: CLR (Common Language Runtime) take care of execution our app or running apps; .NET Framework class Library provides reusable code.
 - NET Framework is a mature framework primarily used for Windows-based applications, while .NET Core is a modern, cross-platform framework optimized for cloud-native and containerized applications. With the release of .NET 5 (and later .NET 6), Microsoft unified the .NET platform, merging .NET Core and .NET Framework into a single, unified platform called .NET. This unified platform provides a consistent development experience across different platforms and environments.
 
@@ -12968,11 +13100,13 @@ Before diving into Web API development, you should understand the fundamentals o
 
 #### Setting up the environment
 
+- step 0: check with the command `dotnet`, `dotnet --list-sdks`, `dotnet --list-runtimes`
 - step 1: install .NET Core; for mac using homebrew. `brew install --cask dotnet-sdk` and check the version `dotnet --version` `dotnet --help` for any command use `dotnet command --help`
 
 - step 2: install IDE: Visual Studio is the popular one.
 
   - **VS Code (Visual Studio Code)**:
+
     - VS Code is a lightweight, open-source code editor developed by Microsoft.
     - It provides extensive support for various programming languages through extensions.
     - VS Code is highly customizable and has a vast ecosystem of extensions for additional features and functionalities.
@@ -12982,74 +13116,78 @@ Before diving into Web API development, you should understand the fundamentals o
     - Visual Studio is a full-featured Integrated Development Environment (IDE) developed by Microsoft.
     - All the tools are already installed for development purpose. It provides comprehensive tools and features for various types of software development, including desktop applications, web applications, mobile applications, and cloud services.
     - Visual Studio includes powerful debugging tools, code analysis, and testing capabilities.
-    - Visual Studio has built-in support for multiple programming languages and platforms, including C#, C++, .NET, and more.  
+    - Visual Studio has built-in support for multiple programming languages and platforms, including C#, C++, .NET, and more.
     - It offers extensive project and solution management features, making it suitable for large-scale enterprise development.
 
 - step 3: some useful for .NET and c# extension
 
   When working with C# and .NET in Visual Studio Code on macOS, you'll want to install some extensions to enhance your development experience. To install these extensions, you can open Visual Studio Code, navigate to the Extensions view by clicking on the square icon on the sidebar or by pressing `Cmd + Shift + X`, and search for each extension by name. Then, click on the extension and select "Install".
 
-    1. **C# for Visual Studio Code**: This official extension provides support for C# syntax highlighting, debugging, and IntelliSense. It's essential for C# development in Visual Studio Code.
-      - [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+  1. C# Dev kit - C# Dev Kit extension enhances VS Code's existing Workspaces with a new Solution Explorer view, providing a curated and structured view of your application for effortless, central project management. This lets you quickly add new projects or files to your solutions and easily build all or part of your solution.
 
-    2. **.NET Core Test Explorer**: If you're writing unit tests with .NET Core, this extension allows you to run and debug your tests directly within Visual Studio Code.
-      - [.NET Core Test Explorer](https://marketplace.visualstudio.com/items?itemName=formulahendry.dotnet-test-explorer)
+  2. **C# for Visual Studio Code**: This official extension provides support for C# syntax highlighting, debugging, and IntelliSense. It's essential for C# development in Visual Studio Code.
 
-    3. **NuGet Package Manager**: This extension allows you to manage NuGet packages directly within Visual Studio Code, making it easier to install, update, and remove packages.
-      - [NuGet Package Manager](https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager)
+     - [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
-    4. **C# XML Documentation Comments**: This extension provides IntelliSense for XML documentation comments in C#, helping you write better-documented code.
-      - [C# XML Documentation Comments](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment)
+  3. **.NET Core Test Explorer**: If you're writing unit tests with .NET Core, this extension allows you to run and debug your tests directly within Visual Studio Code.
 
-    5. **C# Extensions**: This extension provides additional C# code snippets and tools to improve your productivity.
-      - [C# Extensions](https://marketplace.visualstudio.com/items?itemName=jchannon.csharpextensions)
+     - [.NET Core Test Explorer](https://marketplace.visualstudio.com/items?itemName=formulahendry.dotnet-test-explorer)
 
-    6. C# Dev kit - C# Dev Kit extension enhances VS Code's existing Workspaces with a new Solution Explorer view, providing a curated and structured view of your application for effortless, central project management. This lets you quickly add new projects or files to your solutions and easily build all or part of your solution.
+  4. **NuGet Package Manager**: This extension allows you to manage NuGet packages directly within Visual Studio Code, making it easier to install, update, and remove packages.
+
+     - [NuGet Package Manager](https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager)
 
 - step 4: important commands: run `dotnet new list`
-Here are some important .NET CLI (Command Line Interface) commands used in .NET development:
+  Here are some important .NET CLI (Command Line Interface) commands used in .NET development:
 
-    1. **dotnet new**: Creates a new project or file based on the specified template.
-      - Example: `dotnet new console` creates a new console application. `dotnew new webapi` creates a new web api
+      1. **dotnet new**: Creates a new project or file based on the specified template.
+        - Example: `dotnet new console` creates a new console application. `dotnew new webapi` creates a new web api
 
-    2. **dotnet restore**: Restores the dependencies and tools of a project.
-      - Example: `dotnet restore` restores the NuGet packages for a project.
+      2. **dotnet restore**: Restores the dependencies and tools of a project.
+        - Example: `dotnet restore` restores the NuGet packages for a project.
 
-    3. **dotnet build**: Builds the project and its dependencies.
-      - Example: `dotnet build` compiles the project into executable output.
+      3. **dotnet build**: Builds the project and its dependencies.
+        - Example: `dotnet build` compiles the project into executable output.
 
-    4. **dotnet run**: Builds and runs the project.
-      - Example: `dotnet run` compiles and executes the project's entry point.
+      4. **dotnet run**: Builds and runs the project.
+        - Example: `dotnet run` compiles and executes the project's entry point.
 
-    5. **dotnet test**: Executes the tests in the project.
-      - Example: `dotnet test` runs the unit tests in the project.
+      5. **dotnet test**: Executes the tests in the project.
+        - Example: `dotnet test` runs the unit tests in the project.
 
-    6. **dotnet publish**: Publishes the application for deployment.
-      - Example: `dotnet publish -c Release -o ./publish` publishes the application to the specified output directory in Release mode.
+      6. **dotnet publish**: Publishes the application for deployment.
+        - Example: `dotnet publish -c Release -o ./publish` publishes the application to the specified output directory in Release mode.
 
-    7. **dotnet clean**: Cleans the output directory and intermediate build files.
-      - Example: `dotnet clean` removes the build artifacts from the project directory.
+      7. **dotnet clean**: Cleans the output directory and intermediate build files.
+        - Example: `dotnet clean` removes the build artifacts from the project directory.
 
-    8. **dotnet ef**: Entity Framework Core command-line tools for database migrations and scaffolding.
-      - Example: `dotnet ef migrations add InitialCreate` creates a new migration for the database.
+      8. **dotnet ef**: Entity Framework Core command-line tools for database migrations and scaffolding.
+        - Example: `dotnet ef migrations add InitialCreate` creates a new migration for the database.
 
-    9. **dotnet tool install**: Installs the specified .NET Core CLI tool.
-        - Example: `dotnet tool install --global dotnet-ef` installs the Entity Framework Core CLI tool globally.
+      9. **dotnet tool install**: Installs the specified .NET Core CLI tool.
+          - Example: `dotnet tool install --global dotnet-ef` installs the Entity Framework Core CLI tool globally.
+
+#### Uninstall the previous SDK for mac
+
+- List Installed .NET SDKs: `dotnet --list-sdks`
+- Remove the Specific SDK Version: `sudo rm -rf /usr/local/share/dotnet/x64/sdk/7.0.100`
+- install the new one
 
 ---
 
 ### **2. Introduction to Web API**
 
-Understand what Web APIs are and how ASP.NET Core allows you to build them.
+Understand what Web APIs are and how ASP.NET Core allows you to build them. Learn how to create and define API endpoints and handle HTTP requests in your Web API.
 
-- **Key Topics**:
-  - [x] REST principles and HTTP methods (GET, POST, PUT, DELETE).
-  - [x] What is a Web API and how it works in the ASP.NET Core ecosystem.
-  
-- **What to Do**:
-  - [x] Create a simple Web API project in ASP.NET Core.
-  - [x] Build a basic controller with a couple of endpoints (`GET /hello`, `POST /hello`).
-  - [x] Learn how routing works in ASP.NET Core (`[Route]` and `[HttpGet]`, `[HttpPost]`, etc.).
+- [x] REST principles and HTTP methods (GET, POST, PUT, DELETE).
+- [x] What is a Web API and how it works in the ASP.NET Core ecosystem.
+- [x] Create a simple Web API project in ASP.NET Core.
+- [x] Build a basic controller with a couple of endpoints (`GET /hello`, `POST /hello`).
+- [x] Testing API => Postman, ThunderClient, REST client, Swagger API Doc
+- [x] HTTP methods: `GET`, `POST`, `PUT`, `DELETE`.
+- [x] Types of API Responses
+- [x] Returning responses: JSON data, status codes (`Ok`, `BadRequest`, `NotFound`).
+- [x] Simple Category CRUD API (Create, Read, Update, Delete) operations.
 
 #### REST API principles and HTTP methods
 
@@ -13074,24 +13212,31 @@ Understand what Web APIs are and how ASP.NET Core allows you to build them.
 SOAP (Simple Object Access Protocol) and REST (Representational State Transfer) are two popular web service communication protocols. While both are used for enabling communication between applications over the internet, they have significant differences in terms of structure, design, and use cases.
 
 1. **Protocol**:
+
    - SOAP is a protocol that defines a strict set of rules for message structure and communication between web services.
 
 2. **Message Format**:
+
    - SOAP uses XML exclusively for message formatting, making it rigid and verbose.
 
 3. **Transport Protocols**:
+
    - SOAP can use a variety of transport protocols, including HTTP, SMTP, TCP, and more, though HTTP is the most common.
 
 4. **Standards and Security**:
+
    - SOAP follows a rigid set of standards, including WS-Security for security, WS-ReliableMessaging for reliable message delivery, and WS-AtomicTransaction for transaction management.
 
 5. **Statefulness**:
+
    - SOAP can be stateful or stateless. It supports complex operations like transactions and sessions.
 
 6. **Error Handling**:
+
    - SOAP has built-in error handling through its `fault` element, providing structured information about errors.
 
 7. **Use Cases**:
+
    - Suitable for enterprise-level applications that require high security, reliability, and complex transactions (e.g., banking, finance).
 
 8. **Example Structure**:
@@ -13110,24 +13255,31 @@ SOAP (Simple Object Access Protocol) and REST (Representational State Transfer) 
 REST (Representational State Transfer)
 
 1. **Architectural Style**:
+
    - REST is not a protocol but an architectural style that uses HTTP requests to perform CRUD (Create, Read, Update, Delete) operations.
 
 2. **Message Format**:
+
    - REST can use various data formats, including JSON, XML, HTML, and plain text, with JSON being the most common due to its lightweight nature.
 
 3. **Transport Protocols**:
+
    - REST uses HTTP/HTTPS protocols exclusively for communication.
 
 4. **Standards and Security**:
+
    - REST does not enforce specific standards; it relies on HTTP status codes for error handling and can use OAuth, JWT, or HTTPS for security.
 
 5. **Statelessness**:
+
    - REST is stateless, meaning each request is independent, and no client context is stored on the server between requests.
 
 6. **Error Handling**:
+
    - REST uses HTTP status codes to indicate errors (e.g., 404 for not found, 500 for server error).
 
 7. **Use Cases**:
+
    - Ideal for web applications, microservices, and public APIs where performance, scalability, and ease of integration are important.
 
 8. **Example Structure**:
@@ -13143,18 +13295,22 @@ REST (Representational State Transfer)
 REST (Representational State Transfer) is an architectural style for designing networked applications. It relies on a stateless, client-server communication model and emphasizes the use of standard HTTP methods and status codes. REST APIs adhere to a set of constraints that define their architectural properties. These constraints, defined by Roy Fielding in his doctoral dissertation, help ensure that RESTful APIs are scalable, reliable, and maintainable. Let's explore these constraints with examples:
 
 1. **Client-Server Architecture**:
+
    - Constraint: Separation of concerns between client and server.
    - Example: A web application (client) communicates with a server through HTTP requests. The client is responsible for presenting data to the user, while the server is responsible for processing requests and managing resources.
 
 2. **Statelessness**:
+
    - Constraint: Each request from a client must contain all the information necessary for the server to fulfill the request. The server does not store any client state between requests.
    - Example: In a RESTful API, authentication tokens are sent with each request to authenticate the client. The server does not maintain session state for individual clients.
 
 3. **Cacheability**:
+
    - Constraint: Responses from the server must explicitly indicate whether they can be cached by clients or not.
    - Example: The server includes cache-control headers in its HTTP responses to specify caching behavior. Clients can cache responses for a certain period to reduce the need for repeated requests.
 
 4. **Uniform Interface**:
+
    - Constraint: The interface between client and server must be uniform, simplifying the architecture and promoting scalability.
    - Example:
      - Resource Identification: Each resource in the API is identified by a unique URI (Uniform Resource Identifier).
@@ -13163,6 +13319,7 @@ REST (Representational State Transfer) is an architectural style for designing n
      - Hypermedia as the Engine of Application State (HATEOAS): Responses contain hyperlinks that allow clients to navigate the API dynamically.
 
 5. **Layered System**:
+
    - Constraint: The architecture must support a hierarchical layered system, allowing intermediaries (e.g., proxies, gateways) to be inserted between clients and servers without affecting the overall behavior.
    - Example: A client sends a request to a load balancer, which forwards the request to one of several identical server instances. The load balancer acts as an intermediary, distributing incoming requests among the servers.
 
@@ -13174,20 +13331,21 @@ These constraints ensure that RESTful APIs are scalable, reliable, and maintaina
 
 ###### Key Differences Between SOAP and REST
 
-| Feature              | SOAP                                   | REST                                    |
-|----------------------|----------------------------------------|-----------------------------------------|
-| Protocol             | Strict protocol                        | Architectural style                     |
-| Message Format       | XML only                               | JSON, XML, HTML, plain text             |
-| Transport Protocols  | HTTP, SMTP, TCP, etc.                  | HTTP/HTTPS                              |
-| Standards            | WS-Security, WS-ReliableMessaging, etc.| HTTP status codes, OAuth, JWT           |
-| Statefulness         | Stateful or stateless                  | Stateless                               |
-| Error Handling       | SOAP Faults                            | HTTP status codes                       |
-| Performance          | Slower due to XML and overhead         | Faster due to JSON and simplicity       |
-| Use Cases            | Enterprise, secure, complex operations | Web, mobile, public APIs, microservices |
+| Feature             | SOAP                                    | REST                                    |
+| ------------------- | --------------------------------------- | --------------------------------------- |
+| Protocol            | Strict protocol                         | Architectural style                     |
+| Message Format      | XML only                                | JSON, XML, HTML, plain text             |
+| Transport Protocols | HTTP, SMTP, TCP, etc.                   | HTTP/HTTPS                              |
+| Standards           | WS-Security, WS-ReliableMessaging, etc. | HTTP status codes, OAuth, JWT           |
+| Statefulness        | Stateful or stateless                   | Stateless                               |
+| Error Handling      | SOAP Faults                             | HTTP status codes                       |
+| Performance         | Slower due to XML and overhead          | Faster due to JSON and simplicity       |
+| Use Cases           | Enterprise, secure, complex operations  | Web, mobile, public APIs, microservices |
 
 ###### **Choosing Between SOAP and REST**
 
 - **Use SOAP** if you need:
+
   - High security and built-in standards.
   - Support for complex transactions and messaging.
   - Enterprise-level operations with strict contracts.
@@ -13202,6 +13360,7 @@ REST is generally preferred for modern web services due to its simplicity, speed
 ##### URL? best practices when naming URL
 
 1. **URL:** `https://www.amazon.com/gp/product/B07H1DWFLG/ref=s9_acsd_hps_bw_c_x_3_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=EK5R9ET1VB7E0M6X23T3&pf_rd_t=101&pf_rd_p=5f6a5c92-95cb-486c-aa05-69e0e2efeb50&pf_rd_i=15240825011`
+
    - **Scheme:** `https`
    - **Authority:** `www.amazon.com`
    - **Path:** `/gp/product/B07H1DWFLG/ref=s9_acsd_hps_bw_c_x_3_w`
@@ -13218,38 +13377,47 @@ REST is generally preferred for modern web services due to its simplicity, speed
 Best Practices for URL Naming:
 
 1. **Use Descriptive Names:**
+
    - **Good Example:** `/products` - Clearly indicates that this endpoint deals with products.
    - **Bad Example:** `/data` - Vague and unclear.
 
 2. **Use Plural Nouns for Collections:**
+
    - **Good Example:** `/users`, `/products` - Represents collections of resources.
    - **Bad Example:** `/user`, `/product` - Singular form is less intuitive for collections.
 
 3. **Use Singular Nouns for Specific Resources:**
+
    - **Good Example:** `/user/{userId}`, `/product/{productId}` - Represents individual instances of resources.
    - **Bad Example:** `/users/{userId}`, `/products/{productId}` - Confusing plural form for specific resources.
 
 4. **Use Hyphens for Readability:**
+
    - **Good Example:** `/product-categories`, `/order-items` - Improves readability.
    - **Bad Example:** `/productcategories`, `/orderitems` - Less readable and harder to parse.
 
 5. **Avoid Hard-Coding IDs:**
+
    - **Good Example:** `/users/{username}` - Uses a meaningful identifier instead of a database ID.
    - **Bad Example:** `/users/{userId}` - Exposes internal implementation details.
 
 6. **Versioning:**
+
    - **Good Example:** `/v1/products`, `/v2/products` - Includes version number for backward compatibility.
    - **Bad Example:** `/products/v1`, `/products?version=1` - Less standardized and harder to manage.
 
 7. **Use Consistent Naming Conventions:**
+
    - **Good Example:** `/customers`, `/orders`, `/payments` - Consistent use of nouns for resources.
    - **Bad Example:** `/customer`, `/order`, `/pay` - Inconsistent naming convention.
 
 8. **Limit URL Depth:**
+
    - **Good Example:** `/users/{userId}/orders` - Concise and avoids excessive nesting.
    - **Bad Example:** `/users/{userId}/orders/{orderId}/items` - Excessive nesting increases complexity.
 
 9. **Avoid Verbs in URL Paths:**
+
    - **Good Example:** `POST /products` - Uses HTTP methods for actions instead of verbs in URL.
    - **Bad Example:** `/createProduct`, `/deleteOrder` - Verb usage makes URLs less RESTful.
 
@@ -13294,7 +13462,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   ```http
   POST /products HTTP/1.1
   Content-Type: application/json
-  
+
   {
     "name": "New Product",
     "price": 49.99
@@ -13313,7 +13481,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   ```http
   PUT /products/123 HTTP/1.1
   Content-Type: application/json
-  
+
   {
     "name": "Updated Product",
     "price": 59.99
@@ -13332,7 +13500,7 @@ HTTP methods, also known as HTTP verbs, define the actions that can be performed
   ```http
   PATCH /products/123 HTTP/1.1
   Content-Type: application/json
-  
+
   {
     "price": 39.99
   }
@@ -13438,6 +13606,42 @@ app.Run();
 
 ---
 
+#### Build a basic controller with a couple of endpoints
+
+    ```csharp
+    var builder = WebApplication.CreateBuilder(args);
+
+    var app = builder.Build();
+
+    app.UseHttpsRedirection();
+
+    app.MapGet("/", () =>
+    {
+        return "Api is working fine.";
+    })
+    .WithOpenApi();
+
+    app.MapGet("/hello", () =>
+    {
+        return "GET Hello";
+    });
+    app.MapPost("/hello", () =>
+    {
+        return "POST Hello";
+    });
+    app.MapPut("/hello", () =>
+    {
+        return "PUT Hello";
+    });
+    app.MapDelete("/hello", () =>
+    {
+        return "Delete Hello";
+    });
+
+    app.Run();
+
+    ```
+
 #### Testing API Endpoints
 
 - always test after implementing a simple thing.
@@ -13449,117 +13653,60 @@ app.Run();
   GET http://localhost:{Port_Number}
   ```
 
-#### Build a basic controller with a couple of endpoints
+##### testing with Swagger and Dependencies
 
-```csharp
-var builder = WebApplication.CreateBuilder(args);
+- `Swashbuckle.AspNetCore` Provides tools to generate Swagger documentation for your API.
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+  - Install Command:
 
-var app = builder.Build();
+    ```bash
+    dotnet add package Microsoft.AspNetCore.OpenApi --version 8.0.0
+    dotnet add package Swashbuckle.AspNetCore --version 6.2.3
+    ```
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    ```csharp
+    var builder = WebApplication.CreateBuilder(args);
 
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
 
+    var app = builder.Build();
 
-app.UseHttpsRedirection();
+    if (app.Environment.IsDevelopment())
+    {
+      app.UseSwagger();
+      app.UseSwaggerUI();
+    }
 
+    app.UseHttpsRedirection();
 
-app.MapGet("/", () =>
-{
-    return "Api is working fine.";
-})
-.WithOpenApi();
+    app.MapGet("/", () =>
+    {
+      return "Api is working fine";
+    });
 
-app.MapGet("/hello", () =>
-{
-    return "GET Hello";
-});
-app.MapPost("/hello", () =>
-{
-    return "POST Hello";
-});
-app.MapPut("/hello", () =>
-{
-    return "PUT Hello";
-});
-app.MapDelete("/hello", () =>
-{
-    return "Delete Hello";
-});
+    app.MapGet("/hello", () =>
+    {
+      return "Get Method: Hello";
+    });
 
-app.Run();
+    app.MapPost("/hello", () =>
+    {
+      return "POST Method: Hello";
+    });
 
-```
+    app.MapPut("/hello", () =>
+    {
+      return "PUT Method: Hello";
+    });
 
-### **3. Creating API Endpoints**
+    app.MapDelete("/hello", () =>
+    {
+      return "Delete Method: Hello";
+    });
 
-Learn how to create and define API endpoints and handle HTTP requests in your Web API.
-
-- **Key Topics**:
-  - [x] HTTP methods: `GET`, `POST`, `PUT`, `DELETE`.
-  - [x] Returning responses: JSON data, status codes (`Ok`, `BadRequest`, `NotFound`).
-  
-- **What to Do**:
-  - [x] Build an API with basic CRUD (Create, Read, Update, Delete) operations.
-  - [x] Create simple endpoints like `GET /products`, `POST /products`.
-  - [x] Practice returning responses in different formats (JSON, XML).
-
-#### Create and Test Product API EndPoints
-
-```csharp
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-
-app.UseHttpsRedirection();
-
-app.MapGet("/", () =>
-{
-    return "Api is working fine.";
-});
-
-app.MapGet("/api/products", () =>
-{
-    // OK = STATUS CODE 200
-    return Results.Ok("products are returned");
-});
-
-app.MapPost("/api/products", () =>
-{
-    // for creating something use Created = status code 201
-    return Results.Created();
-});
-
-app.MapDelete("/api/products", () =>
-{
-    // after delete normally we do not return no content = 204
-    return Results.NoContent();
-});
-
-app.MapPut("/api/products", () =>
-{
-    return Results.NoContent();
-});
-
-app.Run();
-  ```
+    app.Run();
+    ```
 
 #### HTTP Response types
 
@@ -13747,228 +13894,290 @@ Each approach has its place, and choosing between them depends on the size, scop
 
 ---
 
-#### Simple Product CRUD API
+#### Simple Category CRUD API
 
-```csharp
-var builder = WebApplication.CreateBuilder(args);
+- here is some example JSON data for creating categories:
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+Example 1: Electronics Category
 
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+```json
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  "name": "Electronics",
+  "description": "Devices and gadgets including phones, laptops, and other electronic equipment"
 }
-
-
-app.UseHttpsRedirection();
-
-app.MapGet("/", () =>
-{
-    return "Api is working fine.";
-});
-
-List<Product> products = new List<Product>();
-
-app.MapGet("/api/products", () =>
-{
-    return Results.Ok(products);
-});
-
-app.MapPost("/api/products", () =>
-{
-    var product = new Product
-    {
-        // ProductId = Guid.NewGuid(),
-        ProductId = Guid.Parse("6953d581-1c31-4896-9dc0-3f8bbbf20abb"),
-        Name = "Wireless Mouse",
-        Price = 19.99m,
-        Description = "Ergonomic wireless mouse with adjustable DPI settings.",
-        StockQuantity = 5,
-        CategoryName = "Electronics",
-        CreatedAt = DateTime.UtcNow,
-    };
-    products.Add(product);
-    return Results.Created($"/products/{product.ProductId}", product);
-});
-
-app.MapDelete("/api/products", () =>
-{
-    var foundProduct = products.FirstOrDefault(product => product.ProductId == Guid.Parse("6953d581-1c31-4896-9dc0-3f8bbbf20abb"));
-
-    if (foundProduct == null)
-    {
-        return Results.NotFound();
-    }
-
-    products.Remove(foundProduct);
-    return Results.NoContent();
-});
-
-app.MapPut("/api/products", () =>
-{
-    var foundProduct = products.FirstOrDefault(product => product.ProductId == Guid.Parse("6953d581-1c31-4896-9dc0-3f8bbbf20abb"));
-
-    if (foundProduct == null)
-    {
-        return Results.NotFound();
-    }
-
-    foundProduct.Price = 550.35m;
-    foundProduct.StockQuantity = 15;
-    return Results.NoContent();
-});
-
-app.Run();
-
-
-public record Product
-{
-    public Guid ProductId { get; set; }
-    public string Name { get; set; }
-    public decimal Price { get; set; }
-    public int StockQuantity { get; set; }
-    public string Description { get; set; }
-    public string CategoryName { get; set; }
-    public DateTime CreatedAt { get; set; }
-}
-
 ```
 
-### **4. Model Binding and Validation**
+Example 2: Clothing Category
+
+```json
+{
+  "name": "Clothing",
+  "description": "Apparel including shirts, pants, dresses, and more"
+}
+```
+
+Example 3: Books Category
+
+```json
+{
+  "name": "Books",
+  "description": "Various genres of books including fiction, non-fiction, educational, and more"
+}
+```
+
+Example 4: Home & Kitchen Category
+
+```json
+{
+  "name": "Home & Kitchen",
+  "description": "Items for home improvement, kitchen tools, and appliances"
+}
+```
+
+Example 5: Sports & Outdoors Category
+
+```json
+{
+  "name": "Sports & Outdoors",
+  "slug": "sports-outdoors",
+  "description": "Equipment and gear for sports and outdoor activities"
+}
+```
+
+- code for category CRUD
+
+  ```csharp
+  var builder = WebApplication.CreateBuilder(args);
+
+  builder.Services.AddEndpointsApiExplorer();
+  builder.Services.AddSwaggerGen();
+
+  var app = builder.Build();
+
+  if (app.Environment.IsDevelopment())
+  {
+    app.UseSwagger();
+    app.UseSwaggerUI();
+  }
+
+  app.UseHttpsRedirection();
+
+  List<Category> categories = new List<Category>();
+
+  app.MapGet("/", () => "Api is working fine");
+
+  // GET : /api/categories => Read  Categories
+  app.MapGet("/api/categories", () =>
+  {
+    return Results.Ok(categories);
+  });
+
+  // POST : /api/categories => Create a Category
+  app.MapPost("/api/categories", () =>
+  {
+    var newCategory = new Category
+    {
+      CategoryId = Guid.Parse("6953d581-1c31-4896-9dc0-3f8bbbf20abc"),
+      Name = "Electronics",
+      Description = "Devices and gadgets including phones, laptops, and other electronic equipment",
+      CreatedAt = DateTime.UtcNow,
+    };
+    categories.Add(newCategory);
+    return Results.Created($"/api/categories/{newCategory.CategoryId}", newCategory);
+  });
+
+  // DELETE : /api/categories => Delete a Category
+  app.MapDelete("/api/categories", () =>
+  {
+    var foundCategory = categories.FirstOrDefault(category => category.CategoryId == Guid.Parse("6953d581-1c31-4896-9dc0-3f8bbbf20abb"));
+    if (foundCategory == null)
+    {
+      return Results.NotFound("Category with this id does not exist");
+    }
+    categories.Remove(foundCategory);
+    return Results.NoContent();
+  });
+
+  // PUT : /api/categories => Update a Category
+  app.MapPut("/api/categories", () =>
+  {
+    var foundCategory = categories.FirstOrDefault(category => category.CategoryId == Guid.Parse("6953d581-1c31-4896-9dc0-3f8bbbf20abc"));
+    if (foundCategory == null)
+    {
+      return Results.NotFound("Category with this id does not exist");
+    }
+    foundCategory.Name = "Smart Phone";
+    foundCategory.Description = "smart phone is a nice category";
+    return Results.NoContent();
+  });
+
+
+  app.Run();
+
+  public record Category
+  {
+    public Guid CategoryId { get; set; }
+    public string? Name { get; set; }
+    public string? Description { get; set; }
+    public DateTime CreatedAt { get; set; }
+
+  };
+
+  // CRUD
+  // Create => Create a Category => POST : /api/categories
+  // Read => Read a Category => GET : /api/categories
+  // Update => Update a Category => PUT : /api/categories
+  // Delete => Deelete a Category => Delete : /api/categories
+  ```
+
+- testing the endpoints
+
+  ```http
+
+  GET http://localhost:5160
+
+  ###
+
+  GET http://localhost:5160/api/categories
+
+  ###
+
+  POST http://localhost:5160/api/categories
+
+  ###
+
+  PUT http://localhost:5160/api/categories
+
+  ###
+
+  DELETE http://localhost:5160/api/categories
+  ```
+
+### **3. Model Binding, Validation, Centralized Response and MVC Architecture**
 
 Understand how data is passed to and from API endpoints with Controller and how to validate the incoming data.
 
 - **Key Topics**:
-  - [x] Route Constraint
+
   - [x] Model binding: Passing data to methods via route, query string, and request body.
-  - [] Model validation using data annotations (e.g., `[Required]`, `[Range]`).
-  - [] Input validation and custom validation.
-  - [] Controllers and actions in ASP.NET Core.
+  - [x] Route Constraint
+  - [x] Input validation and custom validation.
   - [x] Routing: Attribute routing, conventional routing.
-  
+  - [x] MVC => Model, Controllers and actions in ASP.NET Core.
+  - [x] Models vs DTOs
+  - [x] Model validation using data annotations (e.g., `[Required]`, `[Range]`).
+  - [x] URL Naming Best practices
+
 - **What to Do**:
-  - Create models (e.g., `Product`, `User`), use data annotations for validation.
+  - Create models (e.g., `Catgory`), use data annotations for validation.
   - Implement input validation and return appropriate error responses when validation fails.
 
 #### Model binding: Passing data to methods via route, query string, and request body
 
 - Route parameters
+
   - Single Route parameters `// GET => /api/products/{id} => Get a product by id`
   - multiple route parameters `// GET => /api/products/{id}/{category} => Get a product by id and category`
 
 - Query Parameter `/api/products?searchValue=something&pageNumber=1`
 
 ```csharp
-using System.Buffers;
+  using Microsoft.AspNetCore.Mvc;
 
-var builder = WebApplication.CreateBuilder(args);
+  var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+  builder.Services.AddEndpointsApiExplorer();
+  builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+  var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+  if (app.Environment.IsDevelopment())
+  {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+  }
 
+  app.UseHttpsRedirection();
 
-app.UseHttpsRedirection();
+  List<Category> categories = new List<Category>();
 
-app.MapGet("/", () =>
-{
-    return "Api is working fine.";
-});
+  app.MapGet("/", () => "Api is working fine");
 
-List<Product> products = new List<Product>();
+  // GET : /api/categories => Read  Categories
+  app.MapGet("/api/categories", ([FromQuery] string searchValue = "") =>
+  {
 
-app.MapGet("/api/products", (string serachValue) =>
-{
-    var searchedProducts = products.Where(p => p.Name.Contains(serachValue, StringComparison.OrdinalIgnoreCase)).ToList();
-    return Results.Ok(searchedProducts);
-});
-
-
-app.MapPost("/api/products", (Product newProduct) =>
-{
-    var product = new Product
+    if (!string.IsNullOrEmpty(searchValue))
     {
-        ProductId = Guid.NewGuid(),
-        Name = newProduct.Name,
-        Price = newProduct.Price,
-        Description = newProduct.Description,
-        StockQuantity = newProduct.StockQuantity,
-        CategoryName = newProduct.CategoryName,
-        CreatedAt = DateTime.UtcNow,
+      var searchedCategories = categories.Where(c => c.Name.Contains(searchValue, StringComparison.OrdinalIgnoreCase)).ToList();
+      return Results.Ok(searchedCategories);
+    }
+
+    return Results.Ok(categories);
+  });
+
+  // POST : /api/categories => Create a Category
+  app.MapPost("/api/categories", ([FromBody] Category categoryData) =>
+  {
+    // Console.WriteLine($"{categoryData}");
+
+    var newCategory = new Category
+    {
+      CategoryId = Guid.NewGuid(),
+      Name = categoryData.Name,
+      Description = categoryData.Description,
+      CreatedAt = DateTime.UtcNow,
     };
-    products.Add(product);
-    return Results.Created($"/api/products/{product.ProductId}", product);
-});
+    categories.Add(newCategory);
+    return Results.Created($"/api/categories/{newCategory.CategoryId}", newCategory);
 
+  });
 
-app.MapGet("/api/products/{productId}", (Guid productId) =>
-{
-    var foundProduct = products.FirstOrDefault(product => product.ProductId == productId);
-
-    if (foundProduct == null)
+  // DELETE : /api/categories/{categoryId} => Delete a Category
+  app.MapDelete("/api/categories/{categoryId}", (Guid categoryId) =>
+  {
+    var foundCategory = categories.FirstOrDefault(category => category.CategoryId == categoryId);
+    if (foundCategory == null)
     {
-        return Results.NotFound();
+      return Results.NotFound("Category with this id does not exist");
     }
-    return Results.Ok(foundProduct);
-
-});
-
-app.MapDelete("/api/products/{productId}", (Guid productId) =>
-{
-    var foundProduct = products.FirstOrDefault(product => product.ProductId == productId);
-
-    if (foundProduct == null)
-    {
-        return Results.NotFound();
-    }
-
-    products.Remove(foundProduct);
+    categories.Remove(foundCategory);
     return Results.NoContent();
-});
+  });
 
-app.MapPut("/api/products/{productId}", (Guid productId, Product updateProduct) =>
-{
-    var foundProduct = products.FirstOrDefault(product => product.ProductId == productId);
-
-    if (foundProduct == null)
+  // PUT : /api/categories/{categoryId} => Update a Category
+  app.MapPut("/api/categories/{categoryId}", (Guid categoryId, [FromBody] Category categoryData) =>
+  {
+    var foundCategory = categories.FirstOrDefault(category => category.CategoryId == categoryId);
+    if (foundCategory == null)
     {
-        return Results.NotFound();
+      return Results.NotFound("Category with this id does not exist");
     }
-
-    foundProduct.Price = updateProduct.Price;
-    foundProduct.StockQuantity = updateProduct.StockQuantity;
-    foundProduct.Name = updateProduct.Name;
-    foundProduct.Description = updateProduct.Description;
+    foundCategory.Name = categoryData.Name;
+    foundCategory.Description = categoryData.Description;
     return Results.NoContent();
-});
+  });
 
-app.Run();
 
-// models => Product.cs
-public record Product
-{
-    public Guid ProductId { get; set; }
+  app.Run();
+
+  public record Category
+  {
+    public Guid CategoryId { get; set; }
     public string Name { get; set; }
-    public decimal Price { get; set; }
-    public int StockQuantity { get; set; }
-    public string Description { get; set; }
-    public string CategoryName { get; set; }
+    public string? Description { get; set; }
     public DateTime CreatedAt { get; set; }
-}
+
+  };
+
+  // CRUD
+  // Create => Create a Category => POST : /api/categories
+  // Read => Read a Category => GET : /api/categories
+  // Update => Update a Category => PUT : /api/categories
+  // Delete => Deelete a Category => Delete : /api/categories
 ```
 
-- test the endpoints
+#### test the endpoints for products (move for products)
 
 ```http
  POST http://localhost:5079/api/products
@@ -14002,74 +14211,3221 @@ public record Product
 
 ```
 
-#### Create DTOs
+#### Concept => Route Constraint
 
-#### Add Data Annotations (build in validation)
+- {param:int}, {param:bool}, {param:decimal}, {param:guid}, {param:datetime}, {param:alpha}, {param:minlength(x)}, {param:maxlength(x)}, {param:length(x)}, {param:length(x,y)}, {param:range(x,y)}
+
+- Route constraints are a powerful feature in ASP.NET Core that allows you to limit and validate the types of values that can be passed as route parameters. They provide a way to ensure that requests meet certain criteria before processing, helping to reduce errors and improve the user experience.
+
+Here are some common route constraints examples:
+
+##### **Common Route Constraints**
+
+| Constraint             | Description                                                          | Example                                                                           |
+| ---------------------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `{param:int}`          | Restricts the route parameter to an integer                          | `/api/products/{id:int}`                                                          |
+| `{param:bool}`         | Restricts the route parameter to a boolean value                     | `/api/status/{active:bool}`                                                       |
+| `{param:guid}`         | Restricts the route parameter to a GUID                              | `/api/products/{id:guid}`                                                         |
+| `{param:datetime}`     | Restricts the route parameter to a `DateTime` value                  | `/api/events/{date:datetime}`                                                     |
+| `{param:decimal}`      | Restricts the route parameter to a decimal value                     | `/api/products/{price:decimal}`                                                   |
+| `{param:alpha}`        | Restricts the route parameter to alphabetical characters             | `/api/products/{name:alpha}`                                                      |
+| `{param:minlength(x)}` | Ensures that the string parameter is at least x characters           | `/api/users/{name:minlength(3)}`                                                  |
+| `{param:maxlength(x)}` | Ensures that the string parameter is at most x characters            | `/api/users/{name:maxlength(10)}`                                                 |
+| `{param:length(x)}`    | Restricts the parameter length to exactly x characters               | `/api/users/{code:length(5)}`                                                     |
+| `{param:length(x,y)}`  | Restricts the parameter length to a range between x and y characters | `/api/users/{name:length(3,10)}`                                                  |
+| `{param:range(x,y)}`   | Ensures that the parameter value falls within the specified range    | `/api/products/{price:range(10,100)}`                                             |
+| `{param:regex(...)}`   | Ensures that the parameter matches a regex pattern                   | `/api/users/{email:regex(^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$)}` |
+
+##### **Examples of Route Constraints**
+
+###### 1. **Integer Route Constraint**
+
+Restrict a route parameter to accept only integers:
+
+```csharp
+app.MapGet("/api/categories/{id:int}", (int id) =>
+{
+    return $"Category with ID {id}";
+});
+```
+
+- URL: `/api/categories/5` (valid)
+- URL: `/api/categories/test` (invalid, returns a 404)
+
+###### 2. **GUID Route Constraint**
+
+Restrict a route parameter to accept only GUIDs:
+
+```csharp
+app.MapGet("/api/categories/{id:guid}", (Guid id) =>
+{
+    return $"Product with ID {id}";
+});
+```
+
+- URL: `/api/categories/8f2f4ca5-0c1e-4b2c-9d1f-23121dabe75b` (valid)
+- URL: `/api/categories/123` (invalid, returns a 404)
+
+###### 3. **DateTime Route Constraint**
+
+Restrict a route parameter to accept only DateTime values:
+
+```csharp
+app.MapGet("/api/events/{date:datetime}", (DateTime date) =>
+{
+    return $"Event on {date.ToShortDateString()}";
+});
+```
+
+- URL: `/api/events/2024-10-01` (valid)
+- URL: `/api/events/not-a-date` (invalid, returns a 404)
+
+###### 4. **Decimal Route Constraint**
+
+Restrict a route parameter to accept only decimal values:
+
+```csharp
+app.MapGet("/api/categories/{price:decimal}", (decimal price) =>
+{
+    return $"Product with price {price}";
+});
+```
+
+- URL: `/api/categories/10.99` (valid)
+- URL: `/api/categories/ten` (invalid, returns a 404)
+
+###### 5. **Alphabetic Route Constraint**
+
+Restrict a route parameter to accept only alphabetic characters:
+
+```csharp
+app.MapGet("/api/categories/{name:alpha}", (string name) =>
+{
+    return $"Product name: {name}";
+});
+```
+
+- URL: `/api/categories/laptop` (valid)
+- URL: `/api/categories/1234` (invalid, returns a 404)
+
+###### 6. **MinLength and MaxLength Route Constraints**
+
+Restrict the length of a route parameter:
+
+```csharp
+// Minimum length of 3 characters
+app.MapGet("/api/users/{username:minlength(3)}", (string username) =>
+{
+    return $"User: {username}";
+});
+
+// Maximum length of 10 characters
+app.MapGet("/api/users/{username:maxlength(10)}", (string username) =>
+{
+    return $"User: {username}";
+});
+```
+
+- URL: `/api/users/john` (valid)
+- URL: `/api/users/jo` (invalid, returns a 404 due to minlength constraint)
+
+###### 7. **Range Route Constraint**
+
+Restrict the route parameter to fall within a certain range:
+
+```csharp
+app.MapGet("/api/products/{price:range(10, 100)}", (int price) =>
+{
+    return $"Product with price in range: {price}";
+});
+```
+
+- URL: `/api/products/50` (valid)
+- URL: `/api/products/5` (invalid, returns a 404 due to out-of-range value)
+
+###### 8. **Regex Route Constraint**
+
+Use a regular expression to validate the route parameter:
+
+```csharp
+app.MapGet("/api/users/{email:regex(^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$)}", (string email) =>
+{
+    return $"User with email: {email}";
+});
+```
+
+- URL: `/api/users/test@example.com` (valid)
+- URL: `/api/users/invalid-email` (invalid, returns a 404 due to regex constraint)
+
+###### Combining Multiple Constraints
+
+You can combine multiple constraints in the same route:
+
+```csharp
+app.MapGet("/api/products/{id:int}/{price:decimal}", (int id, decimal price) =>
+{
+    return $"Product with ID {id} and Price {price}";
+});
+```
+
+- URL: `/api/products/5/19.99` (valid)
+- URL: `/api/products/abc/19.99` (invalid, returns a 404 due to invalid ID)
+- URL: `/api/products/5/abc` (invalid, returns a 404 due to invalid price)
+
+###### Add Route constraint to Category
+
+#### Add Basic Input Validation
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+  app.UseSwagger();
+  app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+List<Category> categories = new List<Category>();
+
+app.MapGet("/", () => "Api is working fine");
+
+// GET : /api/categories => Read  Categories
+app.MapGet("/api/categories", ([FromQuery] string searchValue = "") =>
+{
+
+  if (!string.IsNullOrEmpty(searchValue))
+  {
+    var searchedCategories = categories.Where(c => c.Name.Contains(searchValue, StringComparison.OrdinalIgnoreCase)).ToList();
+    return Results.Ok(searchedCategories);
+  }
+
+  return Results.Ok(categories);
+});
+
+// POST : /api/categories => Create a Category
+app.MapPost("/api/categories", ([FromBody] Category categoryData) =>
+{
+  // Console.WriteLine($"{categoryData}");
+
+  if (string.IsNullOrEmpty(categoryData.Name))
+  {
+    return Results.BadRequest("Category Name is required and can not be empty");
+  }
+  if (categoryData.Name.Length > 2)
+  {
+    return Results.BadRequest("Category name must be atleast 2 characters long");
+  }
+
+  var newCategory = new Category
+  {
+    CategoryId = Guid.NewGuid(),
+    Name = categoryData.Name,
+    Description = categoryData.Description,
+    CreatedAt = DateTime.UtcNow,
+  };
+  categories.Add(newCategory);
+  return Results.Created($"/api/categories/{newCategory.CategoryId}", newCategory);
+
+});
+
+// DELETE : /api/categories/{categoryId} => Delete a Category
+app.MapDelete("/api/categories/{categoryId:guid}", (Guid categoryId) =>
+{
+  var foundCategory = categories.FirstOrDefault(category => category.CategoryId == categoryId);
+  if (foundCategory == null)
+  {
+    return Results.NotFound("Category with this id does not exist");
+  }
+  categories.Remove(foundCategory);
+  return Results.NoContent();
+});
+
+// PUT : /api/categories/{categoryId} => Update a Category
+app.MapPut("/api/categories/{categoryId:guid}", (Guid categoryId, [FromBody] Category categoryData) =>
+{
+  if (categoryData == null)
+  {
+    return Results.BadRequest("Category data is missing");
+  }
+
+  var foundCategory = categories.FirstOrDefault(category => category.CategoryId == categoryId);
+  if (foundCategory == null)
+  {
+    return Results.NotFound("Category with this id does not exist");
+  }
+
+  if (!string.IsNullOrEmpty(categoryData.Name))
+  {
+    if (categoryData.Name.Length >= 2)
+    {
+      foundCategory.Name = categoryData.Name;
+    }
+    else
+    {
+      return Results.BadRequest("Category name must be atleast 2 characters long");
+    }
+  }
+
+  if (!string.IsNullOrWhiteSpace(categoryData.Description))
+  {
+    foundCategory.Description = categoryData.Description;
+  }
+
+  return Results.NoContent();
+});
+
+
+app.Run();
+
+public record Category
+{
+  public Guid CategoryId { get; set; }
+  public string Name { get; set; }
+  public string Description { get; set; } = string.Empty;
+  public DateTime CreatedAt { get; set; }
+
+};
+
+// CRUD
+// Create => Create a Category => POST : /api/categories
+// Read => Read a Category => GET : /api/categories
+// Update => Update a Category => PUT : /api/categories
+// Delete => Deelete a Category => Delete : /api/categories
+```
+
+#### Concept => MVC Architecture
+
+The MVC (Model-View-Controller) pattern is a design pattern used in ASP.NET for developing web applications. It separates an application into three interconnected components, each with its distinct responsibilities. This separation of concerns allows for a more maintainable, scalable, and testable codebase.
+
+- Benefits of the MVC Pattern:
+  - Separation of concerns: Keeps the data (Model), UI (View), and application logic (Controller) separate, making the application easier to maintain.
+  - Testability: Each component can be tested independently.
+  - Scalability: The application can grow without becoming overly complex because responsibilities are divided among different components.
+
+##### MVC Architecture in Category
+
+- Create Models/Category.cs
+
+  ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    namespace asp_net_ecommerce_web_api.Models
+    {
+        public class Category
+        {
+            public Guid CategoryId { get; set; }
+            public string Name { get; set; }
+            public string Description { get; set; } = string.Empty;
+            public DateTime CreatedAt { get; set; }
+        };
+    }
+  ```
+
+- Create Controllers/CategoryController.cs
+
+  ```csharp
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Threading.Tasks;
+  using asp_net_ecommerce_web_api.Models;
+  using Microsoft.AspNetCore.Mvc;
+
+  namespace asp_net_ecommerce_web_api.Controllers
+  {
+      [ApiController]
+      [Route("api/categories/")]
+      public class CategoryController : ControllerBase
+      {
+
+
+          private static List<Category> categories = new List<Category>();
+
+          // GET: /api/categories => Read categories
+          [HttpGet]
+          public IActionResult GetCategories([FromQuery] string searchValue = "")
+          {
+              if (!string.IsNullOrEmpty(searchValue))
+              {
+                  var searchedCategories = categories.Where(c => c.Name.Contains(searchValue, StringComparison.OrdinalIgnoreCase)).ToList();
+                  return Ok(searchedCategories);
+              }
+
+              return Ok(categories);
+          }
+
+          // POST: /api/categories => Create a category
+          [HttpPost]
+          public IActionResult CreateCategory([FromBody] Category categoryData)
+          {
+              // Console.WriteLine($"{categoryData}");
+
+              if (string.IsNullOrEmpty(categoryData.Name))
+              {
+                  return BadRequest("Category Name is required and can not be empty");
+              }
+              if (categoryData.Name.Length < 2)
+              {
+                  return BadRequest("Category name must be atleast 2 characters long");
+              }
+
+              var newCategory = new Category
+              {
+                  CategoryId = Guid.NewGuid(),
+                  Name = categoryData.Name,
+                  Description = categoryData.Description,
+                  CreatedAt = DateTime.UtcNow,
+              };
+              categories.Add(newCategory);
+              return Created($"/api/categories/{newCategory.CategoryId}", newCategory);
+          }
+
+          // PUT: /api/categories/{categoryId} => Update a category
+          [HttpPut("{categoryId:guid}")]
+          public IActionResult UpdateCategoryById(Guid categoryId, [FromBody] Category categoryData)
+          {
+              if (categoryData == null)
+              {
+                  return BadRequest("Category data is missing");
+              }
+
+              var foundCategory = categories.FirstOrDefault(category => category.CategoryId == categoryId);
+              if (foundCategory == null)
+              {
+                  return NotFound("Category with this id does not exist");
+              }
+
+              if (!string.IsNullOrEmpty(categoryData.Name))
+              {
+                  if (categoryData.Name.Length >= 2)
+                  {
+                      foundCategory.Name = categoryData.Name;
+                  }
+                  else
+                  {
+                      return BadRequest("Category name must be atleast 2 characters long");
+                  }
+              }
+
+              if (!string.IsNullOrWhiteSpace(categoryData.Description))
+              {
+                  foundCategory.Description = categoryData.Description;
+              }
+
+              return NoContent();
+          }
+
+          // DELETE: /api/categories/{categoryId} => Delete a category by Id
+          [HttpDelete("{categoryId:guid}")]
+          public IActionResult DeleteCategoryById(Guid categoryId)
+          {
+              var foundCategory = categories.FirstOrDefault(category => category.CategoryId == categoryId);
+              if (foundCategory == null)
+              {
+                  return NotFound("Category with this id does not exist");
+              }
+              categories.Remove(foundCategory);
+              return NoContent();
+          }
+      }
+  }
+  ```
+
+- Register and map the controller
+
+  ```csharp
+  using Microsoft.AspNetCore.Mvc;
+
+  var builder = WebApplication.CreateBuilder(args);
+
+
+  // Add services to the controller
+  builder.Services.AddControllers();
+  builder.Services.AddEndpointsApiExplorer();
+  builder.Services.AddSwaggerGen();
+
+  var app = builder.Build();
+
+  if (app.Environment.IsDevelopment())
+  {
+    app.UseSwagger();
+    app.UseSwaggerUI();
+  }
+
+  app.UseHttpsRedirection();
+
+
+  app.MapGet("/", () => "Api is working fine");
+
+  app.MapControllers(); // Map Controller
+  app.Run();
+  ```
+
+#### Concept => Models VS Data Transfer Objects (DTOs)
+
+In software development, particularly in the context of **ASP.NET Core** and **C#**, the terms **Model** and **DTO (Data Transfer Object)** are commonly used but can sometimes cause confusion. Both play crucial roles in application architecture but serve different purposes.
 
 ---
 
-### **5. Dependency Injection and Services**
+- **What is a Model?**
+
+A **Model** represents the data and behavior of the business domain in your application. It is a class that contains both data (properties) and methods (business logic) that operate on that data.
+
+**Characteristics of Models:**
+
+- **Domain Representation:** Models are designed to represent real-world entities and concepts within the application's domain (e.g., User, Product, Order).
+- **Business Logic:** They can contain validation, calculations, and other business logic relevant to the entity.
+- **Persistence:** Models are often closely tied to the database schema and are used by Object-Relational Mapping (ORM) tools like Entity Framework Core to map to database tables.
+- **Stateful Objects:** Models maintain the state of the application data.
+
+- **Example of a Model:**
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.Models
+{
+    public class Category
+    {
+        public Guid CategoryId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
+    };
+}
+```
+
+- **Properties:** Represent columns in the database.
+- **Data Annotations:** Used for validation and database schema definition.
+- **Navigation Properties:** Define relationships with other models.
+
+---
+
+- **What is a Data Transfer Object (DTO)?**
+
+A **Data Transfer Object (DTO)** is a simple object that is used to transfer data between different layers of an application or between applications (e.g., between server and client in a web API). DTOs are shaped specifically for the data exchange needs and often do not contain any business logic.
+
+- **Characteristics of DTOs:**
+
+- **Data Carrier:** DTOs are used to carry data with no behavior (methods).
+- **Decoupling:** They decouple the internal representation of data (Models) from the external representation (e.g., API contracts).
+- **Security and Performance:** By exposing only the necessary data, DTOs help improve security (prevent over-posting) and performance (reduce payload size).
+- **Flattened Structures:** DTOs can flatten complex object graphs, making data consumption easier on the client side.
+- **Validation:** DTOs can include validation attributes to ensure the integrity of incoming or outgoing data.
+
+- **Example of a DTO:**
+
+```csharp
+public class CategoryCreateDTO
+{
+    [Required] // Validation for incoming data
+    [MaxLength(100)]
+    public string Name { get; set; }
+
+    public string Description { get; set; }
+}
+
+```
+
+- **Selective Properties:** Includes only the properties needed for the operation.
+- **No Business Logic:** Contains no methods or behaviors.
+
+---
+
+##### **Key Differences Between Models and DTOs**
+
+| Aspect             | Model                                                                                       | DTO                                                                                           |
+| ------------------ | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Purpose**        | Represents domain entities with data and behavior (business logic).                         | Used for transferring data between layers or services without business logic.                 |
+| **Usage**          | Used by the application's internal logic and ORM for data persistence.                      | Used to send and receive data through APIs or between application layers.                     |
+| **Contains**       | Properties, methods, validation logic, and sometimes relationships (navigation properties). | Only properties necessary for data transfer, minimal or no methods, usually no relationships. |
+| **Relation to DB** | Often tightly coupled with the database schema (especially when using ORM like EF Core).    | Independent of the database schema; focuses on what needs to be exposed externally.           |
+| **Security**       | Exposing models directly can lead to over-posting and security vulnerabilities.             | DTOs help prevent over-posting by exposing only specific properties.                          |
+| **Performance**    | May include unnecessary data when sent over the network.                                    | Optimized for network transfer with only required data, reducing payload size.                |
+| **Validation**     | Can include complex validation and business rules.                                          | Typically includes validation for data integrity during transfer.                             |
+
+---
+
+###### **Why Use DTOs Instead of Models Directly?**
+
+- **1. Security**
+
+  - **Over-Posting Attacks:** Exposing your models directly can allow clients to set properties they shouldn't, potentially leading to security issues.
+  - **Example of Over-Posting:**
+
+    Suppose your `Product` model has an `IsAdminApproved` property that should only be set internally:
+
+    ```csharp
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public bool IsAdminApproved { get; set; }
+        // Other properties...
+    }
+    ```
+
+    If you accept `Product` directly in your API controller, a malicious user could set `IsAdminApproved` to `true` in their request.
+
+  - **Solution:** Using a `ProductDto` that doesn't include `IsAdminApproved` prevents the client from setting it.
+
+- **2. Separation of Concerns**
+
+  - **Decoupling Layers:** DTOs decouple your API contract from your data model, allowing you to change one without affecting the other.
+  - **Flexibility:** You can have different DTOs for different operations (e.g., `ProductCreateDto`, `ProductUpdateDto`, `ProductReadDto`).
+
+- **3. Performance Optimization**
+
+  - **Reduced Payload:** By including only necessary fields, you minimize the amount of data sent over the network.
+  - **Serialization Efficiency:** Smaller objects serialize and deserialize faster.
+
+- **4. Control Over Data Shape**
+
+  - **Flattening Complex Models:** DTOs can transform complex models into simpler structures suitable for clients.
+  - **Data Transformation:** You can compute and include additional properties relevant to the client.
+
+---
+
+###### **When to Use Models and DTOs**
+
+- **Use Models When:**
+
+  - Interacting with the database through your data access layer.
+  - Implementing business logic and validation rules that are internal to the application.
+  - Managing state and relationships within your domain.
+
+- **Use DTOs When:**
+
+  - Exposing data through APIs to clients (e.g., web, mobile applications).
+  - Receiving data from clients while ensuring only the necessary data is processed.
+  - Integrating with external services or systems where data contracts are defined separately.
+
+---
+
+###### **Common Practices**
+
+- **Separate Folders:**
+
+  Organize your project by placing Models and DTOs in separate folders.
+
+  ```
+  - Models/
+    - Product.cs
+    - Order.cs
+  - DTOs/
+    - ProductDto.cs
+    - ProductCreateDto.cs
+    - OrderDto.cs
+  ```
+
+- **Different DTOs for Different Operations:**
+
+  Create specific DTOs tailored for creating, updating, or reading data.
+
+  ```csharp
+  public class ProductCreateDto
+  {
+      [Required]
+      [MaxLength(100)]
+      public string Name { get; set; }
+
+      public decimal Price { get; set; }
+  }
+
+  public class ProductReadDto
+  {
+      public int Id { get; set; }
+      public string Name { get; set; }
+      public decimal Price { get; set; }
+  }
+  ```
+
+- **Versioning:**
+
+  DTOs help with API versioning. You can evolve your API without impacting the internal models.
+
+---
+
+###### **Summary of Model vs DTOs**
+
+- **Models** represent the internal state and business logic of your application and are often closely tied to your database schema.
+- **DTOs** are simplified objects used to transfer data between layers or over the network, exposing only what is necessary and protecting the internal structure of your models.
+- Using DTOs enhances security, performance, and maintainability by preventing over-posting attacks, reducing payload sizes, and decoupling your API contracts from internal implementations.
+- Separating your Models and DTOs is a best practice that leads to a more secure, maintainable, and scalable application architecture.
+
+##### Create Model and DTO's to Category API
+
+```csharp
+//Models/Category
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.Models
+{
+    public class Category
+    {
+        public Guid CategoryId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
+    };
+}
+
+// DTOs/CategoryCreateDto
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.DTOs
+{
+    public class CategoryCreateDto
+    {
+        public string Name { get; set; }
+        public string Description { get; set; } = string.Empty;
+    }
+}
+
+// DTOs/CategoryUpdateDto
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.DTOs
+{
+    public class CategoryUpdateDto
+    {
+        public string Name { get; set; }
+        public string Description { get; set; } = string.Empty;
+    }
+}
+
+// DTOs/CategoryReadDto
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.DTOs
+{
+    public class CategoryReadDto
+    {
+        public Guid CategoryId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
+    }
+}
+
+// Changes in CategoryController.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using asp_net_ecommerce_web_api.DTOs;
+using asp_net_ecommerce_web_api.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace asp_net_ecommerce_web_api.Controllers
+{
+    [ApiController]
+    [Route("api/categories/")]
+    public class CategoryController : ControllerBase
+    {
+
+
+        private static List<Category> categories = new List<Category>();
+
+        // GET: /api/categories => Read categories
+        [HttpGet]
+        public IActionResult GetCategories([FromQuery] string searchValue = "")
+        {
+            // if (!string.IsNullOrEmpty(searchValue))
+            // {
+            //     var searchedCategories = categories.Where(c => c.Name.Contains(searchValue, StringComparison.OrdinalIgnoreCase)).ToList();
+            //     return Ok(searchedCategories);
+            // }
+
+            var categoryList = categories.Select(c => new CategoryReadDto
+            {
+                CategoryId = c.CategoryId,
+                Name = c.Name,
+                Description = c.Description,
+                CreatedAt = c.CreatedAt
+            }).ToList();
+
+            return Ok(categoryList);
+        }
+
+        // POST: /api/categories => Create a category
+        [HttpPost]
+        public IActionResult CreateCategory([FromBody] CategoryCreateDto categoryData)
+        {
+
+            if (string.IsNullOrEmpty(categoryData.Name))
+            {
+                return BadRequest("Category Name is required and can not be empty");
+            }
+            if (categoryData.Name.Length < 2)
+            {
+                return BadRequest("Category name must be atleast 2 characters long");
+            }
+
+            var newCategory = new Category
+            {
+                CategoryId = Guid.NewGuid(),
+                Name = categoryData.Name,
+                Description = categoryData.Description,
+                CreatedAt = DateTime.UtcNow,
+            };
+            categories.Add(newCategory);
+
+            var categoryReadDto = new CategoryReadDto
+            {
+                CategoryId = newCategory.CategoryId,
+                Name = newCategory.Name,
+                Description = newCategory.Description,
+                CreatedAt = newCategory.CreatedAt,
+            };
+
+            return Created($"/api/categories/{newCategory.CategoryId}", categoryReadDto);
+        }
+
+        // PUT: /api/categories/{categoryId} => Update a category
+        [HttpPut("{categoryId:guid}")]
+        public IActionResult UpdateCategoryById(Guid categoryId, [FromBody] CategoryUpdateDto categoryData)
+        {
+            if (categoryData == null)
+            {
+                return BadRequest("Category data is missing");
+            }
+
+            var foundCategory = categories.FirstOrDefault(category => category.CategoryId == categoryId);
+            if (foundCategory == null)
+            {
+                return NotFound("Category with this id does not exist");
+            }
+
+            if (!string.IsNullOrEmpty(categoryData.Name))
+            {
+                if (categoryData.Name.Length >= 2)
+                {
+                    foundCategory.Name = categoryData.Name;
+                }
+                else
+                {
+                    return BadRequest("Category name must be atleast 2 characters long");
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(categoryData.Description))
+            {
+                foundCategory.Description = categoryData.Description;
+            }
+
+            return NoContent();
+        }
+
+        // DELETE: /api/categories/{categoryId} => Delete a category by Id
+        [HttpDelete("{categoryId:guid}")]
+        public IActionResult DeleteCategoryById(Guid categoryId)
+        {
+            var foundCategory = categories.FirstOrDefault(category => category.CategoryId == categoryId);
+            if (foundCategory == null)
+            {
+                return NotFound("Category with this id does not exist");
+            }
+            categories.Remove(foundCategory);
+            return NoContent();
+        }
+    }
+}
+```
+
+#### Concept => Data Annotations (build in or client side validation)
+
+[Later on we will add Fluent API (server side validation)]
+
+- 2 steps to follow
+
+  - Add data annotations rules in DTOs
+  - Validate the rules locally or globally
+
+    ```csharp
+      // In your controller actions:
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] UserInputDto dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Proceed with registration
+        }
+    ```
+
+  - disable the automatic model validation response in Program.cs file
+
+    ```csharp
+      builder.Services.AddControllers()
+
+      .ConfigureApiBehaviorOptions(options =>
+      {
+        options.SuppressModelStateInvalidFilter = true; // Disable automatic model validation response
+      });
+    ```
+
+1. **[Required]**: Ensures the field is not null or empty.
+
+   ```csharp
+   [Required(ErrorMessage = "Field is required")]
+   public string Name { get; set; }
+   ```
+
+2. **[StringLength]**: Defines the minimum and maximum length for a string property.
+
+   ```csharp
+   [StringLength(100, MinimumLength = 2, ErrorMessage = "Name must be between 2 and 100 characters long.")]
+   public string Name { get; set; }
+   ```
+
+3. **[Range]**: Restricts a numeric or date value to a specified range.
+
+   ```csharp
+   [Range(1, 100, ErrorMessage = "Value must be between 1 and 100.")]
+   public int Quantity { get; set; }
+   ```
+
+4. **[RegularExpression]**: Validates a property with a regular expression.
+
+   ```csharp
+   [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Invalid characters.")]
+   public string Name { get; set; }
+   ```
+
+5. **[EmailAddress]**: Ensures the property is a valid email address.
+
+   ```csharp
+   [EmailAddress(ErrorMessage = "Invalid Email Address")]
+   public string Email { get; set; }
+   ```
+
+6. **[Phone]**: Ensures the property is a valid phone number.
+
+   ```csharp
+   [Phone(ErrorMessage = "Invalid Phone Number")]
+   public string PhoneNumber { get; set; }
+   ```
+
+7. **[Url]**: Ensures the property is a valid URL.
+
+   ```csharp
+   [Url(ErrorMessage = "Invalid URL")]
+   public string Website { get; set; }
+   ```
+
+8. **[Compare]**: Compares two properties for equality. Useful for confirming passwords.
+
+   ```csharp
+   [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+   public string ConfirmPassword { get; set; }
+   ```
+
+9. **[CreditCard]**: Validates a credit card number.
+
+   ```csharp
+   [CreditCard(ErrorMessage = "Invalid credit card number.")]
+   public string CreditCardNumber { get; set; }
+   ```
+
+10. **[DataType]**: Specifies the type of data (e.g., `Date`, `Time`, `Currency`), which can affect rendering in views and how the data is validated.
+
+    ```csharp
+    [DataType(DataType.Date)]
+    public DateTime BirthDate { get; set; }
+    ```
+
+11. **[MaxLength]**: Specifies the maximum length of a string or array type.
+
+    ```csharp
+    [MaxLength(50, ErrorMessage = "Name cannot exceed 50 characters.")]
+    public string Name { get; set; }
+    ```
+
+12. **[MinLength]**: Specifies the minimum length of a string or array type.
+
+    ```csharp
+    [MinLength(3, ErrorMessage = "Name must be at least 3 characters long.")]
+    public string Name { get; set; }
+    ```
+
+13. **[Timestamp]**: Marks a property as representing a database timestamp, typically used for concurrency control.
+
+    ```csharp
+    [Timestamp]
+    public byte[] RowVersion { get; set; }
+    ```
+
+14. **[DisplayName]**: Provides a display name for a property, often used in UI scaffolding or forms.
+
+    ```csharp
+    [DisplayName("Full Name")]
+    public string Name { get; set; }
+    ```
+
+15. **[Key]**: Specifies the primary key of the entity (explicitly, if not following conventions).
+
+    ```csharp
+    [Key]
+    public Guid CategoryId { get; set; }
+    ```
+
+16. **[ScaffoldColumn(false)]**: Hides a property from being scaffolded (e.g., in forms or views).
+
+    ```csharp
+    [ScaffoldColumn(false)]
+    public DateTime CreatedAt { get; set; }
+    ```
+
+17. **[JsonIgnore]**: This isn't strictly a data annotation, but you might find it useful to prevent a property from being serialized when returning data through JSON.
+
+    ```csharp
+    [JsonIgnore]
+    public string InternalData { get; set; }
+    ```
+
+18. **[BindNever]**: Prevents a property from being bound by the model binding system, typically used to protect properties you don't want users to be able to modify via input.
+
+    ```csharp
+    [BindNever]
+    public Guid CategoryId { get; set; }
+    ```
+
+19. **[Display]**: Used to customize how properties are displayed, either in validation messages or in the UI.
+
+    ```csharp
+    [Display(Name = "Category Name")]
+    public string Name { get; set; }
+    ```
+
+20. **[ConcurrencyCheck]**: Specifies that the property should be used for concurrency checking in database operations.
+
+    ```csharp
+    [ConcurrencyCheck]
+    public DateTime UpdatedAt { get; set; }
+    ```
+
+- Example `Category` Model with Data Annotations
+
+Here's how you can apply various data annotations to the `Category` model:
+
+```csharp
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace asp_net_ecommerce_web_api.Models
+{
+    public class Category
+    {
+        [Key]  // Primary Key
+        public Guid CategoryId { get; set; }
+
+        [Required(ErrorMessage = "Category name is required.")]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "Category name must be between 2 and 100 characters.")]
+        public string Name { get; set; }
+
+        [StringLength(500, ErrorMessage = "Category description cannot exceed 500 characters.")]
+        public string Description { get; set; } = string.Empty;
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Creation Date")]
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        [ConcurrencyCheck]
+        public DateTime UpdatedAt { get; set; }
+
+        // Additional fields could have more specific validations, such as below.
+        [Url(ErrorMessage = "Invalid URL for the image link.")]
+        public string ImageUrl { get; set; }
+
+        [Range(1, 100, ErrorMessage = "Display order must be between 1 and 100.")]
+        public int DisplayOrder { get; set; }
+    }
+}
+```
+
+- Explanation of Applied Data Annotations
+
+1. **[Key]**: Marks `CategoryId` as the primary key.
+2. **[Required]**: Ensures `Name` is mandatory.
+3. **[StringLength]**: Limits the length of `Name` and `Description`. `Name` must be between 2 and 100 characters, and `Description` can be up to 500 characters long.
+4. **[DataType]**: Marks `CreatedAt` as a date to ensure it’s handled correctly (e.g., in forms or the UI).
+5. **[Display]**: Provides a more readable label for `CreatedAt` ("Creation Date").
+6. **[ConcurrencyCheck]**: Ensures `UpdatedAt` is checked for concurrency, helping to prevent overwriting issues if multiple users edit the same resource.
+7. **[Url]**: Ensures `ImageUrl` is a valid URL.
+8. **[Range]**: Validates that the `DisplayOrder` is between 1 and 100.
+
+##### Add data annotations to Category DTO's
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.DTOs
+{
+    public class CategoryCreateDto
+    {
+        [Required(ErrorMessage = "Category name is required")]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "Category name must be between 2 and 100 characters")]
+        public string Name { get; set; } = string.Empty; // even though we added required compiler is not sure: Explicitly non-nullable
+
+        [StringLength(500, MinimumLength = 2, ErrorMessage = "Category description must be between 2 and 500 characters")]
+        public string Description { get; set; } = string.Empty; // even though we added required compiler is not sure: Explicitly non-nullable
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.DTOs
+{
+    public class CategoryUpdateDto
+    {
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "Category name must be between 2 and 100 characters")]
+        public string Name { get; set; } = string.Empty; // even though we added required compiler is not sure: Explicitly non-nullable
+
+         [StringLength(500, MinimumLength = 2, ErrorMessage = "Category description must be between 2 and 500 characters")]
+        public string Description { get; set; } = string.Empty; // even though we added required compiler is not sure: Explicitly non-nullable
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.DTOs
+{
+    public class CategoryReadDto
+    {
+        public Guid CategoryId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
+    }
+}
+```
+
+##### Handle validation error 2 ways
+
+When handling **model validation** in ASP.NET Core, you have two main options for where to handle validation errors:
+
+1. **Globally** in the `Program.cs` or `Startup.cs` file (via `ApiBehaviorOptions`).
+2. **Locally** in each controller action (using `ModelState.IsValid` checks).
+
+Let’s discuss the pros and cons of each approach, and which scenarios might favor one over the other.
+
+1. **Global Model Validation Handling (via `ApiBehaviorOptions`)**
+
+Pros
+
+- **Centralized Validation Handling**: Validation logic is handled in one place, reducing boilerplate code in each controller.
+- **Consistency**: Ensures all validation errors across the application are handled in the same way, with uniform error structures.
+- **Cleaner Controllers**: Your controllers stay clean and focused on business logic since validation is already handled globally.
+- **Less Code Duplication**: You don't need to repeat the `ModelState.IsValid` check in every action, reducing repetitive code.
+
+Cons
+
+- **Less Flexibility**: If you need different validation behavior for specific actions or endpoints, it can be more difficult to customize at the global level.
+- **Generic Error Handling**: The global handler applies the same response structure to all endpoints. If certain endpoints need customized validation error messages or structures, you’ll need additional customization at the global level.
+
+When to Use
+
+- **Most Applications**: When you want consistent validation error handling across all your controllers and actions, handling validation globally is often the best choice.
+- **API-First Design**: For applications where the API is designed to be consumed by external clients, consistent error responses improve the client-side development experience.
+
+Example
+
+```csharp
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = context =>
+    {
+        var errors = context.ModelState
+            .Where(e => e.Value.Errors.Count > 0)
+            .Select(e => new
+            {
+                Field = e.Key,
+                Errors = e.Value.Errors.Select(x => x.ErrorMessage).ToArray()
+            });
+        // if you wish to resturn errors in string
+        // var errorString = string.Join("; ", errors.Select(e => $"{e.Field}: {string.Join(", ", e.Errors)}"));
+
+        return new BadRequestObjectResult(new
+        {
+            Message = "Validation Failed",
+            Errors = errors
+        });
+    };
+});
+```
+
+2. **Local Model Validation Handling (Controller-Level)**
+
+Pros
+
+- **Flexibility**: You can customize the validation handling per controller action. For example, you may want to provide different error messages or structure depending on the action (e.g., different validation error responses for creating vs. updating a resource).
+- **Fine-Grained Control**: You can control exactly what happens when validation fails. This is useful if you need to log validation errors, return specific error codes, or handle errors in more complex ways.
+- **Conditional Validation**: If certain validation rules only apply in specific scenarios (e.g., validation for a specific role or permission level), handling validation locally can give you more control.
+
+Cons
+
+- **Repetition**: You need to add `if (!ModelState.IsValid)` checks in every controller action that receives user input. This can lead to duplicated code across the application.
+- **Inconsistency**: If multiple developers work on the project, handling validation locally can result in inconsistent validation error responses unless well-documented practices are enforced.
+
+When to Use
+
+- **Specialized APIs**: When you have different validation requirements for different controllers or actions (e.g., different error structures or additional logging/processing), handling validation locally can give you the flexibility needed.
+- **Complex Business Logic**: If the validation logic is highly coupled to business rules that vary between actions, handling validation locally ensures that the logic is specific to the use case.
+
+Example
+
+```csharp
+[HttpPost]
+public IActionResult CreateCategory([FromBody] CategoryCreateDTO categoryCreateDto)
+{
+    if (!ModelState.IsValid)
+    {
+        var errors = ModelState
+            .Where(e => e.Value.Errors.Count > 0)
+            .Select(e => new
+            {
+                Field = e.Key,
+                Errors = e.Value.Errors.Select(x => x.ErrorMessage).ToArray()
+            });
+
+        return BadRequest(new
+        {
+            Message = "Validation Failed",
+            Errors = errors
+        });
+    }
+
+    // Continue with business logic if validation is successful
+    // ...
+}
+```
+
+3. **Hybrid Approach (Global by Default, Local When Necessary)**
+
+In many cases, it can make sense to use **both approaches**:
+
+- **Global Handling** for most standard validation errors to reduce boilerplate code.
+- **Local Handling** in specific scenarios where you need customized validation logic.
+
+Example Use Case
+
+- Global validation might be sufficient for most simple create or update operations.
+- For a specific `PUT` endpoint, you might want to log validation failures and return a different response, so you handle validation locally in that action.
+
+###### Recommendation
+
+**Use Global Validation Handling (via `ApiBehaviorOptions`) as the default approach**:
+
+- It’s more efficient and reduces repetitive code in controllers.
+- Most applications benefit from consistent error handling across all endpoints.
+
+**Use Local Validation Handling sparingly**, when you need:
+
+- Custom error handling for specific endpoints.
+- More control over the validation process (e.g., additional logging or business-specific error responses).
+
+---
+
+#### (Move it) Concept: Data Validation With Data Annotation vs Fluent API
+
+Data Annotations and Fluent API are both used in Entity Framework Core (EF Core) to configure entity classes and their properties, but they work differently in terms of how they handle validation, configuration, and exception handling.
+
+##### 1. **Data Annotations:**
+
+- **Purpose:** Data Annotations are declarative, attribute-based configurations applied directly to your model classes and properties. They provide a simple way to apply rules and validations.
+- **How it works:** Data Annotations are placed directly on the properties of the entity class. They handle validation before the database interaction, and if the data doesn't meet the criteria, an exception will be raised when saving the changes to the database.
+- **Example:**
+
+  ```csharp
+  public class User
+
+  {
+     [Required]
+     [EmailAddress]
+     [StringLength(100)]
+     [Column(TypeName = "varchar(100)")]
+     public string Email { get; set; }
+  }
+  ```
+
+- **Exception Handling in Data Annotations:**
+
+  - **Where:** Validation is done before changes are sent to the database (client-side). If an entity violates a rule, `ValidationException` will be raised before interacting with the database, and no database query will be executed.
+  - **Exception Example:**
+
+    ```csharp
+     var user = new User { Email = "not-an-email"};
+     _context.Users.Add(user);
+     try
+     {
+         _context.SaveChanges();
+     }
+     catch (ValidationException ex)
+     {
+         Console.WriteLine(ex.Message); // Handles Data Annotation validation failure
+     }
+    ```
+
+- **Advantages:**
+
+  - Easier to use, especially for simple validations like `Required`, `StringLength`, `Range`, etc.
+  - Validation occurs at the model level, simplifying form validations.
+
+- **Disadvantages:**
+  - Limited flexibility for more complex configurations.
+  - Harder to reuse across different contexts and databases.
+
+##### 2. **Fluent API:**
+
+- **Purpose:** Fluent API is a more flexible and comprehensive way to configure EF Core models. It's ideal for more complex configurations that cannot be handled by Data Annotations.
+- **How it works:** Fluent API is defined in the `OnModelCreating` method of the `DbContext` class, providing a more granular control over how entities are mapped to the database schema.
+- **Example:**
+
+  ```csharp
+     protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+     {
+         modelBuilder.Entity<User>(entity =>
+         {
+             // Configuring the Email property using Fluent API
+             entity.Property(e => e.Email)
+                 .IsRequired() // Equivalent to [Required]
+                 .HasMaxLength(100) // Equivalent to [StringLength(100)]
+                 .HasColumnType("varchar(100)") // Equivalent to [Column(TypeName = "varchar(100)")]
+                 .HasAnnotation("EmailAddress", true); // Email validation, this can be custom and part of validation logic.
+         });
+     }
+  ```
+
+- **Exception Handling in Fluent API:**
+
+  - **Where:** Fluent API configurations are enforced when EF Core interacts with the database (server-side). Unlike Data Annotations, these configurations apply at the database level, and exceptions such as `DbUpdateException` will be thrown during `SaveChanges()` when the rules are violated.
+  - **Exception Example:**
+
+    ```csharp
+    try
+    {
+        _context.SaveChanges();
+    }
+    catch (DbUpdateException ex)
+    {
+        Console.WriteLine(ex.Message); // Handles Fluent API rule violations (like duplicate key, etc.)
+    }
+    ```
+
+- **Advantages:**
+
+  - More flexible and powerful for handling complex relationships, unique constraints, table splitting, and other advanced configurations.
+  - Fluent API configurations are centralized in one place (inside `OnModelCreating`), making it easier to manage changes across the entire application.
+
+- **Disadvantages:**
+  - More verbose than Data Annotations for simple cases.
+  - May require more understanding of EF Core internals to handle complex scenarios.
+
+##### **Key Differences:**
+
+| **Aspect**                 | **Data Annotations**                                                   | **Fluent API**                                                    |
+| -------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| **Configuration Location** | Applied directly to the model properties using attributes.             | Configured centrally inside `OnModelCreating` in `DbContext`.     |
+| **Complexity**             | Simple to use for basic configurations and validations.                | Suitable for complex configurations and relationships.            |
+| **Scope of Application**   | Works at the **model** level and applies rules at **compile time**.    | Works at the **database** level and applies rules at **runtime**. |
+| **Exception Handling**     | Throws `ValidationException` before interacting with the database.     | Throws `DbUpdateException` when saving to the database.           |
+| **Flexibility**            | Limited in terms of complex configurations (e.g., unique constraints). | Full flexibility to define more advanced configurations.          |
+| **Validation Location**    | Mostly client-side, before interaction with the database.              | Mostly server-side, enforced during database operations.          |
+
+##### **Which One to Use?**
+
+- **Data Annotations** are better for simpler models where basic validation and configuration are enough.
+- **Fluent API** should be used for more complex scenarios, such as defining relationships, composite keys, or when dealing with custom database behaviors.
+
+**Best Practice:** In a large project, you can combine both methods. Use **Data Annotations** for simpler, model-specific rules and use **Fluent API** for advanced configurations that require more control or aren't possible with Data Annotations alone.
+
+#### Centralized API response
+
+- create the centralized api response for success and error
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.Controllers
+{
+    public class ApiResponse<T>
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public T? Data { get; set; }
+        public List<string>? Errors { get; set; }
+
+        public int StatusCode { get; set; }
+
+        public DateTime TimeStamp { get; set; }
+
+
+        private ApiResponse(bool success, string message, T? data, List<string>? errors, int statusCode)
+        {
+            Success = success;
+            Message = message;
+            Data = data;
+            Errors = errors;
+            StatusCode = statusCode;
+            TimeStamp = DateTime.UtcNow;
+        }
+
+        // static method for creating a successful response
+        public static ApiResponse<T> SuccessResponse(T? data, int statusCode, string message = "")
+        {
+            return new ApiResponse<T>(true, message, data, null, statusCode);
+        }
+
+        // static method for creating an error response
+        public static ApiResponse<T> ErrorResponse(List<string> errors, int statusCode, string message = "")
+        {
+            return new ApiResponse<T>(false, message, default(T), errors, statusCode);
+        }
+
+
+    }
+}
+```
+
+- Use the centralized api response in controller
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using asp_net_ecommerce_web_api.DTOs;
+using asp_net_ecommerce_web_api.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace asp_net_ecommerce_web_api.Controllers
+{
+    [ApiController]
+    [Route("api/categories/")]
+    public class CategoryController : ControllerBase
+    {
+
+
+        private static List<Category> categories = new List<Category>();
+
+        // GET: /api/categories => Read categories
+        [HttpGet]
+        public IActionResult GetCategories()
+        {
+            var categoryList = categories.Select(c => new CategoryReadDto
+            {
+                CategoryId = c.CategoryId,
+                Name = c.Name,
+                Description = c.Description,
+                CreatedAt = c.CreatedAt
+            }).ToList();
+
+            return Ok(ApiResponse<List<CategoryReadDto>>.SuccessResponse(categoryList, 200, "Catgeories returned successfully"));
+        }
+
+        // POST: /api/categories => Create a category
+        [HttpPost]
+        public IActionResult CreateCategory([FromBody] CategoryCreateDto categoryData)
+        {
+            var newCategory = new Category
+            {
+                CategoryId = Guid.NewGuid(),
+                Name = categoryData.Name,
+                Description = categoryData.Description,
+                CreatedAt = DateTime.UtcNow,
+            };
+
+            categories.Add(newCategory);
+
+            var categoryReadDto = new CategoryReadDto
+            {
+                CategoryId = newCategory.CategoryId,
+                Name = newCategory.Name,
+                Description = newCategory.Description,
+                CreatedAt = newCategory.CreatedAt,
+            };
+
+            return Created($"/api/categories/{newCategory.CategoryId}", ApiResponse<CategoryReadDto>.SuccessResponse(categoryReadDto, 201, "Catgeory created successfully"));
+        }
+
+        // PUT: /api/categories/{categoryId} => Update a category
+        [HttpPut("{categoryId:guid}")]
+        public IActionResult UpdateCategoryById(Guid categoryId, [FromBody] CategoryUpdateDto categoryData)
+        {
+            var foundCategory = categories.FirstOrDefault(category => category.CategoryId == categoryId);
+            if (foundCategory == null)
+            {
+                return NotFound(ApiResponse<object>.ErrorResponse(new List<string> { "Category with this ID does not exist" }, 404, "Validation failed"));
+            }
+
+            foundCategory.Name = categoryData.Name;
+            foundCategory.Description = categoryData.Description;
+
+            return Ok(ApiResponse<object>.SuccessResponse(null, 204, "Catgeory Updated successfully"));
+        }
+
+        // DELETE: /api/categories/{categoryId} => Delete a category by Id
+        [HttpDelete("{categoryId:guid}")]
+        public IActionResult DeleteCategoryById(Guid categoryId)
+        {
+            var foundCategory = categories.FirstOrDefault(category => category.CategoryId == categoryId);
+            if (foundCategory == null)
+            {
+                return NotFound(ApiResponse<object>.ErrorResponse(new List<string> { "Category with this ID does not exist" }, 404, "Validation failed"));
+            }
+            categories.Remove(foundCategory);
+            return Ok(ApiResponse<object>.SuccessResponse(null, 204, "Category deleted successfully"));
+        }
+    }
+}
+```
+
+- Use the centralized api error response in global client error / model state handler in Program.cs
+
+```csharp
+using asp_net_ecommerce_web_api.Controllers;
+using Microsoft.AspNetCore.Mvc;
+
+var builder = WebApplication.CreateBuilder(args);
+
+
+// Add services to the controller
+builder.Services.AddControllers();
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+  options.InvalidModelStateResponseFactory = context =>
+  {
+    var errors = context.ModelState
+                    .Where(e => e.Value != null && e.Value.Errors.Count > 0)
+                    .SelectMany(e => e.Value?.Errors != null ? e.Value.Errors.Select(x => x.ErrorMessage) : new List<string>()).ToList();
+    return new BadRequestObjectResult(ApiResponse<object>.ErrorResponse(errors, 400, "Validation failed"));
+  };
+});
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+  app.UseSwagger();
+  app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+
+app.MapGet("/", () => "Api is working fine");
+
+app.MapControllers();
+app.Run();
+```
+
+#### GET => api/categories/{categoryId} => Get a category by Id
+
+```csharp
+ // GET: /api/categories => Read categories
+  [HttpGet]
+  public IActionResult GetCategories()
+  {
+      var categoryList = categories.Select(c => new CategoryReadDto
+      {
+          CategoryId = c.CategoryId,
+          Name = c.Name,
+          Description = c.Description,
+          CreatedAt = c.CreatedAt
+      }).ToList();
+
+      return Ok(ApiResponse<List<CategoryReadDto>>.SuccessResponse(categoryList, 200, "Catgeories returned successfully"));
+  }
+```
+
+### **4. Dependency Injection,Services**
 
 Learn how to use dependency injection to structure your API in a maintainable and testable way.
 
 - **Key Topics**:
-  - What is dependency injection and why it's important.
-  - Services and repository patterns.
-  - Registering services in `Startup.cs` or `Program.cs`.
-  
-- **What to Do**:
-  - Create services (e.g., `ProductService`) and inject them into controllers.
-  - Register services in `Program.cs` using `AddScoped`, `AddSingleton`, etc.
+  - [x] What is dependency injection and why it's important.
+  - [x] Services and repository patterns.
+  - [x] Regism.cs`.
+  - [x] Repository Pattern
+  - [x] AutoMapper
 
 ---
 
-### **6. Working with Databases (Entity Framework Core)**
+#### Dependency Injection and why it's important
+
+**Dependency Injection (DI)** is a design pattern in software development that allows a class to receive its dependencies from an external source rather than creating them itself. In essence, it’s a way to achieve _Inversion of Control (IoC)_, where the control of managing dependencies is transferred from the class to an external mechanism, often referred to as a _DI container_.
+
+##### How Dependency Injection Works
+
+In Dependency Injection, dependencies (e.g., services, repositories, or other classes that a class needs) are provided to a class by a higher-level component. This is typically done through:
+
+1. **Constructor Injection**: Dependencies are passed via the class constructor.
+2. **Property Injection**: Dependencies are set through public properties.
+3. **Method Injection**: Dependencies are provided as parameters to a specific method that the class needs.
+
+##### Example of Dependency Injection
+
+Suppose you have a `ProductService` that needs a `ProductRepository` to function. Without DI, the `ProductService` would create an instance of `ProductRepository` within itself, like this:
+
+```csharp
+public class ProductService
+{
+    private readonly ProductRepository _productRepository;
+
+    public ProductService()
+    {
+        _productRepository = new ProductRepository(); // Direct dependency
+    }
+}
+```
+
+With DI, the `ProductRepository` would be injected into `ProductService` from outside, allowing flexibility:
+
+```csharp
+public class ProductService
+{
+    private readonly IProductRepository _productRepository;
+
+    // Constructor injection
+    public ProductService(IProductRepository productRepository)
+    {
+        _productRepository = productRepository;
+    }
+}
+```
+
+##### Why Dependency Injection is Important
+
+###### 1. **Decoupling**
+
+- **Benefit**: DI reduces the direct dependencies between classes. Since classes don’t need to know the concrete implementation of their dependencies, they depend only on abstractions (e.g., interfaces).
+- **Result**: This makes code more modular and easier to maintain and test, especially in large applications.
+
+###### 2. **Easier Testing and Mocking**
+
+- **Benefit**: DI allows for injecting mock or fake dependencies during testing, making unit testing simpler and isolated.
+- **Result**: Classes can be tested independently by providing mock implementations of dependencies, resulting in more reliable and maintainable tests.
+
+###### 3. **Increased Flexibility and Configurability**
+
+- **Benefit**: DI allows dependencies to be easily swapped out. For instance, in production, a class can use a real database, while in testing, it can use an in-memory database.
+- **Result**: This flexibility allows different configurations without changing the core business logic.
+
+###### 4. **Better Code Reusability**
+
+- **Benefit**: With DI, you can design reusable components that can work with any implementation that matches the required contract (interface).
+- **Result**: Code that is more versatile and easily adaptable to different scenarios.
+
+###### 5. **Improved Maintainability**
+
+- **Benefit**: Since dependencies are managed in a central place (often a DI container), you can easily change implementations or modify configurations without altering the dependent classes.
+- **Result**: This leads to code that is easier to maintain and extend.
+
+Dependency Injection is essential for building scalable, testable, and maintainable applications. It promotes clean code principles and is widely used in frameworks like ASP.NET Core, Spring (Java), and Angular (JavaScript/TypeScript), which provide built-in support for DI. By following DI, you can build applications that are modular, flexible, and aligned with best practices in software development.
+
+#### Category Service and controller now
+
+- create the CategoryService inside the Services/CategoryService.cs
+
+  ```csharp
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Threading.Tasks;
+  using asp_net_ecommerce_web_api.DTOs;
+  using asp_net_ecommerce_web_api.Models;
+
+  namespace asp_net_ecommerce_web_api.Services
+  {
+      public class CategoryService
+      {
+          private static readonly List<Category> _categories = new List<Category>();
+
+          public List<CategoryReadDto> GetAllCategories()
+          {
+              return _categories.Select(c => new CategoryReadDto
+              {
+                  CategoryId = c.CategoryId,
+                  Name = c.Name,
+                  Description = c.Description,
+                  CreatedAt = c.CreatedAt
+              }).ToList();
+          }
+
+          public CategoryReadDto? GetCategoryById(Guid categoryId)
+          {
+              var foundCategory = _categories.FirstOrDefault(c => c.CategoryId == categoryId);
+
+              if (foundCategory == null)
+              {
+                  return null;
+              }
+              return new CategoryReadDto
+              {
+                  CategoryId = foundCategory.CategoryId,
+                  Name = foundCategory.Name,
+                  Description = foundCategory.Description,
+                  CreatedAt = foundCategory.CreatedAt
+              };
+
+          }
+
+          public CategoryReadDto CreateCategory(CategoryCreateDto categoryData)
+          {
+              var newCategory = new Category
+              {
+                  CategoryId = Guid.NewGuid(),
+                  Name = categoryData.Name,
+                  Description = categoryData.Description,
+                  CreatedAt = DateTime.UtcNow,
+              };
+
+              _categories.Add(newCategory);
+
+              return new CategoryReadDto
+              {
+                  CategoryId = newCategory.CategoryId,
+                  Name = newCategory.Name,
+                  Description = newCategory.Description,
+                  CreatedAt = newCategory.CreatedAt,
+              };
+          }
+
+          public CategoryReadDto? UpdateCategoryById(Guid categoryId, CategoryUpdateDto categoryData)
+          {
+              var foundCategory = _categories.FirstOrDefault(category => category.CategoryId == categoryId);
+              if (foundCategory == null)
+              {
+                  return null;
+              }
+
+              foundCategory.Name = categoryData.Name;
+              foundCategory.Description = categoryData.Description;
+
+              return new CategoryReadDto
+              {
+                  CategoryId = foundCategory.CategoryId,
+                  Name = foundCategory.Name,
+                  Description = foundCategory.Description,
+                  CreatedAt = foundCategory.CreatedAt,
+              };
+          }
+
+          public bool DeleteCategoryById(Guid categoryId)
+          {
+              var foundCategory = _categories.FirstOrDefault(category => category.CategoryId == categoryId);
+              if (foundCategory == null)
+              {
+                  return false;
+              }
+
+              _categories.Remove(foundCategory);
+              return true;
+          }
+
+      }
+  }
+  ```
+
+- adjust the CategoryController.cs
+
+  ```csharp
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Threading.Tasks;
+  using Microsoft.AspNetCore.Mvc;
+
+  using asp_net_ecommerce_web_api.DTOs;
+  using asp_net_ecommerce_web_api.Models;
+  using asp_net_ecommerce_web_api.Services;
+
+  namespace asp_net_ecommerce_web_api.Controllers
+  {
+      [ApiController]
+      [Route("v1/api/categories/")]
+      public class CategoryController : ControllerBase
+      {
+          private CategoryService _categoryService;
+
+          public CategoryController(CategoryService categoryService)
+          {
+              _categoryService = categoryService;
+          }
+
+          // GET: /api/categories => Read categories
+          [HttpGet]
+          public IActionResult GetCategories()
+          {
+              var categoryList = _categoryService.GetAllCategories();
+              return Ok(ApiResponse<List<CategoryReadDto>>.SuccessResponse(categoryList, 200, "Catgeories returned successfully"));
+          }
+
+          // GET: /api/categories/{categoryId} => Read a category by Id
+          [HttpGet("{categoryId:guid}")]
+          public IActionResult GetCategoryById(Guid categoryId)
+          {
+              var category = _categoryService.GetCategoryById(categoryId);
+              if (category == null)
+              {
+                  return NotFound(ApiResponse<object>.ErrorResponse(new List<string> { "Category with this ID does not exist" }, 404, "Validation failed"));
+              }
+              return Ok(ApiResponse<CategoryReadDto>.SuccessResponse(category, 200, "Catgeory is returned successfully"));
+          }
+
+          // POST: /api/categories => Create a category
+          // [HttpPost]
+          public IActionResult CreateCategory([FromBody] CategoryCreateDto categoryData)
+          {
+
+              var categoryReadDto = _categoryService.CreateCategory(categoryData);
+              return Created(nameof(GetCategoryById), ApiResponse<CategoryReadDto>.SuccessResponse(categoryReadDto, 201, "Catgeory created successfully"));
+          }
+
+          // PUT: /api/categories/{categoryId} => Update a category
+          [HttpPut("{categoryId:guid}")]
+          public IActionResult UpdateCategoryById(Guid categoryId, [FromBody] CategoryUpdateDto categoryData)
+          {
+              var updateCategory = _categoryService.UpdateCategoryById(categoryId, categoryData);
+              if (updateCategory == null)
+              {
+                  return NotFound(ApiResponse<object>.ErrorResponse(new List<string> { "Category with this ID does not exist" }, 404, "Validation failed"));
+              }
+              return Ok(ApiResponse<CategoryReadDto>.SuccessResponse(updateCategory, 200, "Catgeory Updated successfully"));
+          }
+
+          // DELETE: /api/categories/{categoryId} => Delete a category by Id
+          [HttpDelete("{categoryId:guid}")]
+          public IActionResult DeleteCategoryById(Guid categoryId)
+          {
+              var foundCategory = _categoryService.DeleteCategoryById(categoryId);
+              if (!foundCategory)
+              {
+                  return NotFound(ApiResponse<object>.ErrorResponse(new List<string> { "Category with this ID does not exist" }, 404, "Validation failed"));
+              }
+              return Ok(ApiResponse<object>.SuccessResponse(null, 204, "Category deleted successfully"));
+          }
+
+      }
+  }
+
+  // 1. Descriptive name
+  // 2. plurals
+  // 3. plurals/{singlularNoun} => /categories/{categoryId}
+  // 4. use hypens for multiple words for improving the readability => /product-categories
+  // 5. versioning
+  // 6. avoid verbs in url path /createCategory => POST  /categories
+
+
+  //? GET /api/categories => Request => Controller => Services => Controller => Response
+  ```
+
+- add the service to Program.cs file `builder.Services.AddSingleton<CategoryService>();`
+
+#### Repository Pattern
+
+The Repository Pattern is a design pattern that acts as an intermediary between the data access layer and the business logic layer of an application. The repository pattern abstracts data storage and retrieval, enabling the business layer to access data through repository interfaces without needing to know the underlying data sources (e.g., database, API, or in-memory data).
+
+- create the Interface or Registry
+
+```csharp
+// Interfaces/ICategoryService
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using asp_net_ecommerce_web_api.DTOs;
+
+namespace asp_net_ecommerce_web_api.Interfaces
+{
+    public interface ICategoryService
+    {
+        List<CategoryReadDto> GetAllCategories();
+        CategoryReadDto? GetCategoryById(Guid categoryId);
+        CategoryReadDto CreateCategory(CategoryCreateDto categoryData);
+        CategoryReadDto? UpdateCategoryById(Guid categoryId, CategoryUpdateDto categoryData);
+        bool DeleteCategoryById(Guid categoryId);
+    }
+}
+
+// Changes in CategoryService
+  public class CategoryService : ICategoryService
+{
+}
+
+// Changes in CategoryController
+public class CategoryController : ControllerBase
+{
+    private ICategoryService _categoryService;
+
+    public CategoryController(ICategoryService categoryService)
+    {
+        _categoryService = categoryService;
+    }
+}
+```
+
+- finally register the interface service to Program.cs
+
+```csharp
+// Register the ICategoryService and CategoryService for dependency injection
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+```
+
+#### AutoMapper
+
+- AutoMapper is a popular library in .NET that helps simplify the process of transferring data between objects, particularly between data models and data transfer objects (DTOs) in applications. can utilize the IMapper interface to map data models to DTOs and vice versa, simplifying data transformation and reducing boilerplate code.
+
+- Without AutoMapper: You need to manually assign each property from the entity to the DTO. This can be error-prone and cumbersome, especially with complex objects.
+
+Benfits of AutoMapper
+
+1. Reduction of Boilerplate Code
+   AutoMapper reduces the amount of manual mapping code you need to write. Without AutoMapper, you would typically write code to map properties from one object to another explicitly. This can be tedious and error-prone, especially with complex objects. AutoMapper automates this by mapping properties based on convention, which can significantly clean up your codebase.
+
+2. Ease of Maintenance
+   When your data model changes, maintaining manual mappings can be cumbersome. AutoMapper helps centralize the mapping logic, making it easier to manage and update. Changes in the data model require changes in the mapping configuration rather than throughout the code where data transformations occur.
+
+3. Consistency
+   AutoMapper encourages consistency in how mappings are handled across an application. By defining mappings in one place, you ensure that the same mapping logic is applied everywhere in the application, reducing the risk of inconsistencies in data handling and manipulation.
+
+4. Customization and Flexibility
+   Although AutoMapper works well with convention-based mapping, it also provides extensive options for customization. You can define custom conversion rules, handle complex type conversions, and conditionally map properties. This flexibility makes it suitable for a wide range of scenarios from simple to complex.
+
+5. Improved Productivity
+   Developers can focus more on the business logic rather than the details of converting between object types. AutoMapper handles the mundane task of copying data from one object to another, which can speed up development time and reduce bugs related to data transformation.
+
+6. Integration with LINQ
+   AutoMapper integrates well with LINQ, allowing for projections directly from database queries to DTOs. This can optimize performance by avoiding the need to retrieve all columns from the database or load entire entity graphs when only a subset is needed.
+
+7. Support for Nested Objects
+   AutoMapper can automatically handle nested objects and collections, which can be complex to map manually. It knows how to traverse these structures and map corresponding elements from source to destination.
+
+```csharp
+// Step 1: Install AutoMapper
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
+
+
+// Step 2: Setup AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
+
+// Step 3: Define Mapping Profile
+// Create a class to define the mapping configurations.
+// Profiles/CategoryProfile.cs
+using asp_net_ecommerce_web_api.DTOs;
+using asp_net_ecommerce_web_api.Models;
+using AutoMapper;
+
+namespace asp_net_ecommerce_web_api.Profiles
+{
+    public class Categoryprofile : Profile
+    {
+        public Categoryprofile()
+        {
+            CreateMap<Category, CategoryReadDto>();
+            CreateMap<CategoryCreateDto, Category>();
+            CreateMap<CategoryUpdateDto, Category>();
+        }
+    }
+}
+
+
+// Step 4: Refactor API to Use AutoMapper:
+// Inside the service
+using asp_net_ecommerce_web_api.DTOs;
+using asp_net_ecommerce_web_api.Interfaces;
+using asp_net_ecommerce_web_api.Models;
+using AutoMapper;
+
+namespace asp_net_ecommerce_web_api.Services
+{
+    public class CategoryService : ICategoryService
+    {
+        private static readonly List<Category> _categories = new List<Category>();
+        private readonly IMapper _mapper;
+
+        public CategoryService(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
+        // Model <=> DTO
+
+        public List<CategoryReadDto> GetAllCategories()
+        {
+            return _mapper.Map<List<CategoryReadDto>>(_categories);
+        }
+
+        public CategoryReadDto? GetCategoryById(Guid categoryId)
+        {
+            var foundCategory = _categories.FirstOrDefault(c => c.CategoryId == categoryId);
+            return foundCategory == null ? null : _mapper.Map<CategoryReadDto>(foundCategory);
+        }
+
+        public CategoryReadDto CreateCategory(CategoryCreateDto categoryData)
+        {
+            var newCategory = _mapper.Map<Category>(categoryData);
+            newCategory.CategoryId = Guid.NewGuid();
+            newCategory.Description = categoryData.Description;
+            _categories.Add(newCategory);
+            return _mapper.Map<CategoryReadDto>(newCategory);
+        }
+
+        public CategoryReadDto? UpdateCategoryById(Guid categoryId, CategoryUpdateDto categoryData)
+        {
+            var foundCategory = _categories.FirstOrDefault(category => category.CategoryId == categoryId);
+            if (foundCategory == null)
+            {
+                return null;
+            }
+            // CategoryUpdateDto => Category
+            _mapper.Map(categoryData, foundCategory);
+            return _mapper.Map<CategoryReadDto>(foundCategory);
+        }
+
+        public bool DeleteCategoryById(Guid categoryId)
+        {
+            var foundCategory = _categories.FirstOrDefault(category => category.CategoryId == categoryId);
+            if (foundCategory == null)
+            {
+                return false;
+            }
+
+            _categories.Remove(foundCategory);
+            return true;
+        }
+
+    }
+}
+```
+
+### **5. Working with Databases (Entity Framework Core) and Asynchronous**
 
 Learn how to connect your API to a database using Entity Framework Core.
 
-- **Key Topics**:
-  - Introduction to Entity Framework Core.
-  - Setting up a database context.
-  - Performing CRUD operations with Entity Framework Core.
-  - Migrations: Creating and applying database migrations.
-  
+- [x] Introduction to Entity Framework Core.
+- [x] Dependencies/packages for Database Connectivity and EF Core
+- [x] Setting up a database context.
+- [x] Dependencies for Database Connectivity and EF Core
+- [x] Migrations: Creating and applying database migrations.
+- [x] Asynchronous Programming
+- [x] Performing CRUD operations with Entity Framework Core.
+- [x] Pagination, Searching, Sorting
 - **What to Do**:
   - Create a `DbContext` and connect your Web API to a local or cloud database.
   - Perform basic CRUD operations on the database using Entity Framework Core.
   - Implement database migrations to keep your schema in sync.
-
----
-
-### **7. Asynchronous Programming**
-
-Learn how to handle asynchronous operations in your Web API for better scalability and responsiveness.
-
-- **Key Topics**:
   - Introduction to async/await in C#.
   - Implementing asynchronous controllers and services.
-  
-- **What to Do**:
-  - Refactor your API endpoints to handle database calls asynchronously using `async` and `await`.
+
+#### Introduction to Entity Framework Core
+
+![alt text](image-20.png)
+
+##### EFCore
+
+- Entity Framework Core (EF Core) is a modern, open-source, object-relational mapping (ORM) framework for .NET applications, developed by Microsoft.
+- It allows developers to interact with databases using .NET objects and eliminates the need to write most of the raw SQL queries.
+- EF Core enables developers to work with databases using C# classes (referred to as entities), and it handles the conversion of the data between the database and the application automatically.
+- install the efcore package for .NET 7 `dotnet add package Microsoft.EntityFrameworkCore --version 7.0.0`
+- install the package `dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.0`
+
+##### What is an Entity?
+
+In the context of databases and Entity Framework Core (EF Core), an entity refers to a class that represents a table in a database. Each instance of the entity class corresponds to a row in the table, and the properties of the entity represent the columns of the table.
+
+##### Alternative of EFCore
+
+Apart from **Entity Framework Core (EF Core)**, there are several other ways to connect to a database in .NET applications. Some of these methods provide more control and flexibility over database operations. Below are some common alternatives to EF Core for database connectivity in .NET:
+
+###### 1. **ADO.NET (ActiveX Data Objects)**
+
+- **ADO.NET** is a low-level, foundational data access technology for .NET. It provides a set of classes for accessing databases, executing SQL queries, and retrieving results. ADO.NET offers full control over database operations and is often used when developers need high performance or more direct control over SQL execution.
+
+  **Example:**
+
+  ```csharp
+  using (SqlConnection connection = new SqlConnection("YourConnectionString"))
+  {
+      SqlCommand command = new SqlCommand("SELECT * FROM Products", connection);
+      connection.Open();
+      SqlDataReader reader = command.ExecuteReader();
+      while (reader.Read())
+      {
+          Console.WriteLine($"{reader["Name"]} - {reader["Price"]}");
+      }
+  }
+  ```
+
+  **Advantages:**
+
+- Full control over SQL and database operations.
+- Lightweight and high-performance for large-scale operations.
+
+  **Disadvantages:**
+
+- Requires manual handling of SQL queries, parameters, and result sets.
+- Higher risk of SQL injection if not handled properly.
+
+###### 2. **Dapper**
+
+- **Dapper** is a popular micro ORM (Object-Relational Mapper) that simplifies data access by mapping objects to database tables, similar to EF Core, but with less abstraction. Dapper is lightweight and faster than EF Core because it doesn't do as much under the hood.
+
+  **Example:**
+
+  ```csharp
+  using (var connection = new SqlConnection("YourConnectionString"))
+  {
+      var products = connection.Query<Product>("SELECT * FROM Products").ToList();
+      foreach (var product in products)
+      {
+          Console.WriteLine($"{product.Name} - {product.Price}");
+      }
+  }
+  ```
+
+  **Advantages:**
+
+- Lightweight and fast compared to full ORMs like EF Core.
+- Simple to use and integrate with existing SQL queries.
+- Less overhead, making it ideal for performance-sensitive applications.
+
+  **Disadvantages:**
+
+- Lacks some advanced features like change tracking and migrations found in EF Core.
+- Requires more manual SQL compared to EF Core.
+
+###### 3. **NHibernate**
+
+- **NHibernate** is a full-featured ORM for .NET, similar to EF Core. It provides rich functionality for mapping objects to database tables, but it tends to be more complex than EF Core.
+
+  **Example:**
+
+  ```csharp
+  using (ISession session = sessionFactory.OpenSession())
+  {
+      using (ITransaction transaction = session.BeginTransaction())
+      {
+          var products = session.Query<Product>().ToList();
+          foreach (var product in products)
+          {
+              Console.WriteLine($"{product.Name} - {product.Price}");
+          }
+          transaction.Commit();
+      }
+  }
+  ```
+
+  **Advantages:**
+
+- Highly customizable and powerful ORM.
+- Supports advanced mapping features, caching, and lazy loading.
+
+  **Disadvantages:**
+
+- Complex to set up and use compared to simpler tools like Dapper or ADO.NET.
+- Slower performance than micro ORMs like Dapper.
+
+###### 4. **LINQ to SQL**
+
+- **LINQ to SQL** is an ORM that was introduced in .NET 3.5. It provides a way to map classes to SQL Server tables using LINQ queries, but it's limited to SQL Server. LINQ to SQL is simpler than EF Core but also more limited in functionality.
+
+  **Example:**
+
+  ```csharp
+  using (var db = new DataContext("YourConnectionString"))
+  {
+      var products = db.GetTable<Product>().ToList();
+      foreach (var product in products)
+      {
+          Console.WriteLine($"{product.Name} - {product.Price}");
+      }
+  }
+  ```
+
+  **Advantages:**
+
+- Simple and easy-to-use ORM.
+- Integrates well with LINQ queries.
+
+  **Disadvantages:**
+
+- Limited to SQL Server.
+- Not as feature-rich as EF Core or NHibernate.
+
+###### 5. **Micro ORMs (e.g., PetaPoco, ServiceStack.OrmLite)**
+
+- Micro ORMs are lightweight data access libraries that provide object mapping without the overhead of full ORMs like EF Core or NHibernate. They are designed to provide basic functionality (CRUD operations) without compromising performance.
+
+  **PetaPoco Example:**
+
+  ```csharp
+  using (var db = new Database("YourConnectionString"))
+  {
+      var products = db.Query<Product>("SELECT * FROM Products").ToList();
+      foreach (var product in products)
+      {
+          Console.WriteLine($"{product.Name} - {product.Price}");
+      }
+  }
+  ```
+
+  **Advantages:**
+
+- Lightweight and fast.
+- Less complex than full ORMs.
+
+  **Disadvantages:**
+
+- Fewer features than full ORMs (no change tracking, migrations, etc.).
+
+###### 6. **Raw SQL Queries**
+
+- You can execute raw SQL queries directly in .NET without using any ORM. This gives full control over the database but requires manual query building, parameterization, and result mapping.
+
+  **Example:**
+
+  ```csharp
+  using (SqlConnection connection = new SqlConnection("YourConnectionString"))
+  {
+      SqlCommand command = new SqlCommand("SELECT * FROM Products WHERE Price > @price", connection);
+      command.Parameters.AddWithValue("@price", 100);
+      connection.Open();
+      SqlDataReader reader = command.ExecuteReader();
+      while (reader.Read())
+      {
+          Console.WriteLine($"{reader["Name"]} - {reader["Price"]}");
+      }
+  }
+  ```
+
+  **Advantages:**
+
+- Full control over SQL queries and database operations.
+- No abstraction, making it ideal for complex queries.
+
+  **Disadvantages:**
+
+- Higher risk of errors and security issues (e.g., SQL injection) if not handled correctly.
+- Manual mapping of results to objects.
+
+#### Dependencies for Database Connectivity and EF Core
+
+Here are all the installation commands you might need for the setup:
+
+```bash
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet tool install --global dotnet-ef
+
+dotnet add package Microsoft.AspNetCore.OData --version 8.0.0-preview3
+dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.0.0-preview.6.21355.2
+dotnet add package Swashbuckle.AspNetCore --version 6.2.3
+```
+
+1. **`Npgsql.EntityFrameworkCore.PostgreSQL`**:
+
+   - Provides PostgreSQL database provider for EF Core, enabling you to interact with PostgreSQL databases.
+   - Install Command:
+
+     ```bash
+     dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+     ```
+
+2. **`Microsoft.EntityFrameworkCore.Design`**:
+
+   - Required for design-time tools such as `dotnet ef` commands (migrations, scaffolding).
+   - Install Command:
+
+     ```bash
+     dotnet add package Microsoft.EntityFrameworkCore.Design
+     ```
+
+3. **`Microsoft.EntityFrameworkCore.Tools`**:
+
+   - Provides command-line tools for EF Core commands (e.g., migrations).
+   - Install Command:
+
+     ```bash
+     dotnet add package Microsoft.EntityFrameworkCore.Tools
+     ```
+
+4. **`Microsoft.Extensions.Configuration`** (already included in ASP.NET Core projects):
+
+   - This library is used for loading configurations from `appsettings.json`, environment variables, etc., which is needed for database connection strings.
+   - Usually, you don’t need to explicitly install it, but if needed:
+
+     ```bash
+     dotnet add package Microsoft.Extensions.Configuration
+     ```
+
+#### Dependencies for API and Swagger Support
+
+5. **`Swashbuckle.AspNetCore`**:
+
+   - Provides tools to generate Swagger documentation for your API.
+   - Install Command:
+
+     ```bash
+     dotnet add package Swashbuckle.AspNetCore --version 6.2.3
+     ```
+
+6. **`Microsoft.AspNetCore.OData`**:
+
+   - Adds support for OData in ASP.NET Core Web APIs.
+   - Install Command:
+
+     ```bash
+     dotnet add package Microsoft.AspNetCore.OData --version 8.0.0-preview3
+     ```
+
+7. **`Microsoft.AspNetCore.Mvc.NewtonsoftJson`**:
+
+   - Adds support for using Newtonsoft.Json in ASP.NET Core for JSON serialization and deserialization.
+   - Install Command:
+
+     ```bash
+     dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.0.0-preview.6.21355.2
+     ```
+
+#### Additional Dependencies (if required)
+
+8. **`dotnet-ef` (tool)**:
+
+   - Command-line tool used to create migrations, update the database schema, and scaffold models.
+   - Install Command:
+
+     ```bash
+     dotnet tool install --global dotnet-ef
+     ```
+
+#### Context, Migrations, Database connection
+
+##### Concept: What is DbContext?
+
+- What is Context? Why do we need Context?
+
+  In Entity Framework Core (EF Core), a DbContext is a crucial component because it acts as a bridge between your application and the database. It represents a session with the database and is used to query and save data. Creating a DbContext is necessary for several reasons:
+
+  1. Managing Database Connections:
+     The DbContext manages the connection to the database. It opens and closes the connection as needed when querying or saving data. You don't have to manually handle database connections in your code, as the DbContext does it for you, making the process simpler and less error-prone.
+
+  2. Mapping Entities to Database Tables (Object Relational Mapper = ORM):
+     The DbContext allows you to define how your C# classes (entities) map to database tables, columns, and relationships. This mapping is essential because Entity Framework Core is an Object-Relational Mapper (ORM), which means it converts C# objects into database records and vice versa.
+
+##### Create the DbContext
+
+```csharp
+// EFCore/AppDbContext.cs
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Threading.Tasks;
+  using Microsoft.EntityFrameworkCore;
+
+  public class AppDbContext : DbContext
+  {
+      public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+  }
+```
+
+##### Configure the Database
+
+```csharp
+// appsettings.json
+ "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Port=5432;Database=full-ecommerce-db;Username=postgres;Password=new_password;"
+  }
+
+// inside the Startup file / Program.cs
+builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+```
+
+##### Migration scripts
+
+- Install Entity Framework Core Tools: Ensure that you have installed the Entity Framework Core Tools globally. You can do this by running the following command: dotnet tool install --global dotnet-ef
+
+```shell
+# Generate the migration
+dotnet ef migrations add InitialCreate
+
+# Run the Migration and Update the Database:
+dotnet ef database update;
+
+# if you wish to undo this action use
+dotnet ef migrations remove
+```
+
+Here's a list of commonly used Entity Framework Core migration commands:
+
+1. **Adding a Migration**: Create a new migration based on the changes to your model.
+
+   ```
+   dotnet ef migrations add <NameOfMigration>
+   ```
+
+   Replace `<NameOfMigration>` with a descriptive name for your migration.
+
+2. **Applying Migrations**: Update the database to apply pending migrations.
+
+   ```
+   dotnet ef database update
+   ```
+
+3. **Reverting Migrations**: Rollback the last applied migration.
+
+   ```
+   dotnet ef migrations remove
+   ```
+
+4. **Applying Migrations to a Specific Version**: Update the database to a specific migration.
+
+   ```
+   dotnet ef database update <TargetMigration>
+   ```
+
+   Replace `<TargetMigration>` with the name of the migration you want to update to.
+
+5. **Generating a Script**: Generate a SQL script for a migration without applying it to the database.
+
+   ```
+   dotnet ef migrations script
+   ```
+
+6. **Applying Migrations for a Specific Environment**: Update the database for a specific environment (e.g., Development, Staging, Production).
+
+   ```
+   dotnet ef database update --environment <EnvironmentName>
+   ```
+
+7. **Applying Migrations for a Specific DbContext**: Update the database for a specific DbContext.
+
+   ```
+   dotnet ef database update --context <DbContextName>
+   ```
+
+8. **Applying Migrations for a Specific Project**: Update the database for a specific project within a solution.
+
+   ```
+   dotnet ef database update --project <ProjectName>
+   ```
+
+9. **Generating a Migration for a Specific DbContext**: Create a migration for a specific DbContext.
+
+   ```
+   dotnet ef migrations add <NameOfMigration> --context <DbContextName>
+   ```
+
+10. **Generating a Migration for a Specific Project**: Create a migration for a specific project within a solution.
+
+```
+dotnet ef migrations add <NameOfMigration> --project <ProjectName>
+```
+
+##### Add UUID
+
+- you can setup it in pgadmin or in the terminal `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`
+
+#### Asynchronous and CRUD of Categories
+
+- Few methods for CRUD
+
+```shell
+For Primary Key Lookup: Use FindAsync – it’s more efficient.
+For Other Conditions or Complex Queries: Use FirstOrDefaultAsync or other LINQ methods as appropriate.
+
+Find all data => context.TableName.ToListAsync()
+Find data => context.TableName.FindAsync(identidier);
+Save data => context.TableName.AddAsync(newData); context.TableName.SaveChangesAsync();
+Remove data => context.TableName.Remove(dataToBeDeleted); context.TableName.SaveChangesAsync();
+Update data => context.TableName.Update(data); context.TableName.SaveChangesAsync();
+```
+
+```csharp
+// change in interface
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using asp_net_ecommerce_web_api.DTOs;
+
+namespace asp_net_ecommerce_web_api.Interfaces
+{
+    public interface ICategoryService
+    {
+        Task<List<CategoryReadDto>> GetAllCategories();
+        Task<CategoryReadDto?> GetCategoryById(Guid categoryId);
+        Task<CategoryReadDto> CreateCategory(CategoryCreateDto categoryData);
+        Task<CategoryReadDto?> UpdateCategoryById(Guid categoryId, CategoryUpdateDto categoryData);
+        Task<bool> DeleteCategoryById(Guid categoryId);
+    }
+}
+
+// change in service
+using asp_net_ecommerce_web_api.data;
+using asp_net_ecommerce_web_api.DTOs;
+using asp_net_ecommerce_web_api.Interfaces;
+using asp_net_ecommerce_web_api.Models;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+
+namespace asp_net_ecommerce_web_api.Services
+{
+    public class CategoryService : ICategoryService
+    {
+        private readonly AppDbContext _appDbContext;
+        private readonly IMapper _mapper;
+
+        public CategoryService(AppDbContext appDbContext, IMapper mapper)
+        {
+            _appDbContext = appDbContext;
+            _mapper = mapper;
+        }
+
+        public async Task<List<CategoryReadDto>> GetAllCategories()
+        {
+            var categories = await _appDbContext.Categories.ToListAsync();
+            return _mapper.Map<List<CategoryReadDto>>(categories);
+        }
+
+        public async Task<CategoryReadDto?> GetCategoryById(Guid categoryId)
+        {
+            var foundCategory = await _appDbContext.Categories.FindAsync(categoryId);
+            return foundCategory == null ? null : _mapper.Map<CategoryReadDto>(foundCategory);
+        }
+
+        public async Task<CategoryReadDto> CreateCategory(CategoryCreateDto categoryData)
+        {
+            var newCategory = _mapper.Map<Category>(categoryData);
+            newCategory.CategoryId = Guid.NewGuid();
+            newCategory.Description = categoryData.Description;
+            await _appDbContext.Categories.AddAsync(newCategory);
+            await _appDbContext.SaveChangesAsync();
+            return _mapper.Map<CategoryReadDto>(newCategory);
+        }
+
+        public async Task<CategoryReadDto?> UpdateCategoryById(Guid categoryId, CategoryUpdateDto categoryData)
+        {
+            var foundCategory = await _appDbContext.Categories.FindAsync(categoryId);
+            if (foundCategory == null)
+            {
+                return null;
+            }
+            // CategoryUpdateDto => Category
+            _mapper.Map(categoryData, foundCategory);
+
+            _appDbContext.Categories.Update(foundCategory);
+            await _appDbContext.SaveChangesAsync();
+            return _mapper.Map<CategoryReadDto>(foundCategory);
+        }
+
+        public async Task<bool> DeleteCategoryById(Guid categoryId)
+        {
+            var foundCategory = await _appDbContext.Categories.FindAsync(categoryId);
+            if (foundCategory == null)
+            {
+                return false;
+            }
+
+            _appDbContext.Categories.Remove(foundCategory);
+            await _appDbContext.SaveChangesAsync();
+            return true;
+        }
+
+    }
+}
+
+// change in controller
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+
+using asp_net_ecommerce_web_api.DTOs;
+using asp_net_ecommerce_web_api.Models;
+using asp_net_ecommerce_web_api.Services;
+using asp_net_ecommerce_web_api.Interfaces;
+
+namespace asp_net_ecommerce_web_api.Controllers
+{
+    [ApiController]
+    [Route("v1/api/categories/")]
+    public class CategoryController : ControllerBase
+    {
+        private ICategoryService _categoryService;
+
+        public CategoryController(ICategoryService categoryService)
+        {
+            _categoryService = categoryService;
+        }
+
+        // GET: /api/categories => Read categories
+        [HttpGet]
+        public async Task<IActionResult> GetCategories()
+        {
+            var categoryList = await _categoryService.GetAllCategories();
+            return Ok(ApiResponse<List<CategoryReadDto>>.SuccessResponse(categoryList, 200, "Catgeories returned successfully"));
+        }
+
+        // GET: /api/categories/{categoryId} => Read a category by Id
+        [HttpGet("{categoryId:guid}")]
+        public async Task<IActionResult> GetCategoryById(Guid categoryId)
+        {
+            var category = await _categoryService.GetCategoryById(categoryId);
+            if (category == null)
+            {
+                return NotFound(ApiResponse<object>.ErrorResponse(new List<string> { "Category with this ID does not exist" }, 404, "Validation failed"));
+            }
+            return Ok(ApiResponse<CategoryReadDto>.SuccessResponse(category, 200, "Catgeory is returned successfully"));
+        }
+
+        // POST: /api/categories => Create a category
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory([FromBody] CategoryCreateDto categoryData)
+        {
+
+            var categoryReadDto = await _categoryService.CreateCategory(categoryData);
+            return Created(nameof(GetCategoryById), ApiResponse<CategoryReadDto>.SuccessResponse(categoryReadDto, 201, "Catgeory created successfully"));
+        }
+
+        // PUT: /api/categories/{categoryId} => Update a category
+        [HttpPut("{categoryId:guid}")]
+        public async Task<IActionResult> UpdateCategoryById(Guid categoryId, [FromBody] CategoryUpdateDto categoryData)
+        {
+            var updateCategory = await _categoryService.UpdateCategoryById(categoryId, categoryData);
+            if (updateCategory == null)
+            {
+                return NotFound(ApiResponse<object>.ErrorResponse(new List<string> { "Category with this ID does not exist" }, 404, "Validation failed"));
+            }
+            return Ok(ApiResponse<CategoryReadDto>.SuccessResponse(updateCategory, 200, "Catgeory Updated successfully"));
+        }
+
+        // DELETE: /api/categories/{categoryId} => Delete a category by Id
+        [HttpDelete("{categoryId:guid}")]
+        public async Task<IActionResult> DeleteCategoryById(Guid categoryId)
+        {
+            var foundCategory = await _categoryService.DeleteCategoryById(categoryId);
+            if (!foundCategory)
+            {
+                return NotFound(ApiResponse<object>.ErrorResponse(new List<string> { "Category with this ID does not exist" }, 404, "Validation failed"));
+            }
+            return Ok(ApiResponse<object>.SuccessResponse(null, 204, "Category deleted successfully"));
+        }
+
+    }
+}
+
+```
+
+- here is some example JSON data for creating categories:
+
+Example 1: Electronics Category
+
+```json
+{
+  "name": "Electronics",
+  "description": "Devices and gadgets including phones, laptops, and other electronic equipment"
+}
+```
+
+Example 2: Clothing Category
+
+```json
+{
+  "name": "Clothing",
+  "description": "Apparel including shirts, pants, dresses, and more"
+}
+```
+
+Example 3: Books Category
+
+```json
+{
+  "name": "Books",
+  "description": "Various genres of books including fiction, non-fiction, educational, and more"
+}
+```
+
+Example 4: Home & Kitchen Category
+
+```json
+{
+  "name": "Home & Kitchen",
+  "slug": "home-kitchen",
+  "description": "Items for home improvement, kitchen tools, and appliances"
+}
+```
+
+Example 5: Sports & Outdoors Category
+
+```json
+{
+  "name": "Sports & Outdoors",
+  "slug": "sports-outdoors",
+  "description": "Equipment and gear for sports and outdoor activities"
+}
+```
+
+##### Best practice: `FirstOrDefault` or `Find` ?
+
+Both `FirstOrDefault` and `Find` are commonly used methods in Entity Framework Core (EF Core) to retrieve an entity from the database, but they differ in their behavior and usage. Let's explore both, along with their pros and cons, to determine which is "better" based on your use case.
+
+###### 1. **`FirstOrDefault`**
+
+- **Definition**:
+  `FirstOrDefault` is an LINQ extension method that can be used on any `IQueryable` (including DbSets in EF Core) to return the **first element** of a collection that matches a specified condition or the **default value** (e.g., `null` for reference types) if no elements match.
+
+  ```csharp
+  var category = await _appDbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == categoryId);
+  ```
+
+- **Pros**:
+
+  - Flexible: You can specify **any condition** you want to filter by. It's suitable when you need more complex queries.
+  - **Asynchronous**: EF Core provides an asynchronous version (`FirstOrDefaultAsync`), which allows you to avoid blocking the thread while querying the database.
+  - **Queryable**: Since it's a LINQ extension, it works on `IQueryable`, meaning the query is executed on the database, and not in memory.
+
+- **Cons**:
+
+  - If no record matches the condition, it will return `null` (for reference types), so you need to handle the case of a missing record.
+  - Can be slightly slower than `Find` when you have a primary key lookup, because `FirstOrDefault` translates to a SQL `SELECT` with a `WHERE` condition.
+
+- **When to Use**:
+  - When you need to filter records based on conditions other than the primary key.
+  - When you need to query more than just a single field (e.g., `c.Name == "CategoryName"` or `c.CreatedAt >= someDate`).
+
+##### 2. **`Find`**
+
+- **Definition**:
+  `Find` is a method specifically designed to find an entity by its **primary key**. It works differently from `FirstOrDefault` in that it is optimized for **lookup by primary key** and can be **slightly faster** in that case.
+
+  ```csharp
+  var category = await _appDbContext.Categories.FindAsync(categoryId);
+  ```
+
+- **Pros**:
+
+  - **Optimized for primary key lookups**: `Find` uses the primary key (and any foreign keys) directly to perform a quick lookup, which is generally faster than a custom `FirstOrDefault` query, especially with indexes on primary key columns.
+  - It **returns the entity** directly (no need to check for `null` unless the entity doesn't exist).
+  - **Asynchronous**: EF Core provides an asynchronous version (`FindAsync`), which is beneficial for non-blocking database queries.
+
+- **Cons**:
+
+  - **Limited to primary key**: You can only use `Find` with the entity’s primary key. If you need to filter by other properties or conditions, `Find` won't work.
+  - **Not suitable for complex queries**: If you're looking for something based on a non-primary key field (like `CategoryName` or `Description`), you'll need to use `FirstOrDefault` or another LINQ method.
+
+- **When to Use**:
+  - **Always use `Find`** when you need to query by the **primary key** (e.g., `categoryId` is the primary key in the `Categories` table).
+  - It's faster and more efficient for primary key lookups compared to `FirstOrDefault`.
+
+###### **Comparison:**
+
+| Feature             | `FirstOrDefault`                                                 | `Find`                                   |
+| ------------------- | ---------------------------------------------------------------- | ---------------------------------------- |
+| **Use Case**        | Works with any condition/filter, can be used for complex queries | Optimized for primary key lookups        |
+| **Performance**     | Can be slower (due to more general query processing)             | Typically faster for primary key lookups |
+| **Conditions**      | Can be used with any field or condition                          | Only works with primary key              |
+| **Null Handling**   | Returns `null` if no record is found                             | Returns `null` if no record is found     |
+| **Async Support**   | `FirstOrDefaultAsync` available                                  | `FindAsync` available                    |
+| **Recommended For** | Complex queries, non-primary key lookups                         | Primary key lookups                      |
+
+###### **Which One Should You Use?**
+
+- **Use `Find`** when you know you're querying by the primary key (e.g., `CategoryId` in your case). It’s more efficient and optimized for this purpose.
+- **Use `FirstOrDefault`** when you need to perform more general queries, such as filtering by non-primary key fields, or when you have more complex conditions (like checking `CategoryName` or other fields).
+
+###### Final Recommendation:
+
+- **For Primary Key Lookup**: Use `FindAsync` – it’s more efficient.
+- **For Other Conditions or Complex Queries**: Use `FirstOrDefaultAsync` or other LINQ methods as appropriate.
+
+#### Pagination, Searching, Sorting
+
+##### Pagination
+
+```csharp
+// create the format for paginated result
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.Controllers
+{
+    public class PaginatedResult<T>
+    {
+        public IEnumerable<T> Items { get; set; } = new List<T>();
+        public int TotalCount { get; set; }
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; }
+        public int TotalPages => (int)Math.Ceiling((double)TotalCount / PageSize);
+    }
+}
+
+// Receive the queries and modify the controller
+[HttpGet]
+public async Task<IActionResult> GetCategories([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 6)
+{
+    var categoryList = await _categoryService.GetAllCategories(pageNumber, pageSize);
+    return Ok(ApiResponse<PaginatedResult<CategoryReadDto>>.SuccessResponse(categoryList, 200, "Catgeories returned successfully"));
+}
+
+// modify the Interface
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using asp_net_ecommerce_web_api.Controllers;
+using asp_net_ecommerce_web_api.DTOs;
+
+namespace asp_net_ecommerce_web_api.Interfaces
+{
+    public interface ICategoryService
+    {
+        Task<PaginatedResult<CategoryReadDto>> GetAllCategories(int pageNumber, int pageSize);
+        Task<CategoryReadDto?> GetCategoryById(Guid categoryId);
+        Task<CategoryReadDto> CreateCategory(CategoryCreateDto categoryData);
+        Task<CategoryReadDto?> UpdateCategoryById(Guid categoryId, CategoryUpdateDto categoryData);
+        Task<bool> DeleteCategoryById(Guid categoryId);
+    }
+}
+
+// modify the service
+ public async Task<PaginatedResult<CategoryReadDto>> GetAllCategories(int pageNumber, int pageSize)
+  {
+      IQueryable<Category> query = _appDbContext.Categories;
+
+      // get total count
+      var totalCount = await query.CountAsync();
+
+      // pagination , pageNumber = 3, pageSize = 5
+      // 20 categories
+      // Skip((pageNumber-1)*pageSize).Take(pageSize)
+      var items = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+
+      var results = _mapper.Map<List<CategoryReadDto>>(items);
+
+      return new PaginatedResult<CategoryReadDto>
+      {
+          Items = results,
+          TotalCount = totalCount,
+          PageNumber = pageNumber,
+          PageSize = pageSize
+      };
+  }
+```
+
+##### Searching
+
+```csharp
+// receive the query parameter, pass to service and update the intreface
+ // GET: /api/categories?pageNumber=2&&pageSize=5 => Read categories
+  [HttpGet]
+  public async Task<IActionResult> GetCategories([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 6, [FromQuery] string? search = null)
+  {
+      var categoryList = await _categoryService.GetAllCategories(pageNumber, pageSize, search);
+      return Ok(ApiResponse<PaginatedResult<CategoryReadDto>>.SuccessResponse(categoryList, 200, "Catgeories returned successfully"));
+  }
+
+// interface
+ Task<PaginatedResult<CategoryReadDto>> GetAllCategories(int pageNumber, int pageSize, string? search = null);
+
+ if (!string.IsNullOrWhiteSpace(search.ToLower()))
+  {
+      query = query.Where(c => c.Name.ToLower().Contains(search) || c.Description.ToLower().Contains(search));
+  }
+
+// more efficient, scaleable and faster process
+// search by name or description
+if (!string.IsNullOrWhiteSpace(search))
+{
+    var formattedSearch = $"%{search.Trim()}%";
+    query = query.Where(c =>
+    EF.Functions.ILike(c.Name, formattedSearch) || EF.Functions.ILike(c.Description, formattedSearch));
+}
+```
+
+##### Best Practice: Sorting with Enum
+
+```csharp
+// receive the query parameter, pass to service and update the intreface
+ // GET: /api/categories?pageNumber=2&&pageSize=5 => Read categories
+  [HttpGet]
+  public async Task<IActionResult> GetCategories([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 6, [FromQuery] string? search = null, [FromQuery] string? sortOrder = null)
+  {
+      var categoryList = await _categoryService.GetAllCategories(pageNumber, pageSize, search, sortOrder);
+      return Ok(ApiResponse<PaginatedResult<CategoryReadDto>>.SuccessResponse(categoryList, 200, "Catgeories returned successfully"));
+  }
+
+  // interface
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using asp_net_ecommerce_web_api.Controllers;
+using asp_net_ecommerce_web_api.DTOs;
+
+namespace asp_net_ecommerce_web_api.Interfaces
+{
+    public interface ICategoryService
+    {
+        Task<PaginatedResult<CategoryReadDto>> GetAllCategories(int pageNumber, int pageSize, string? search = null, string? sortOrder = null);
+        Task<CategoryReadDto?> GetCategoryById(Guid categoryId);
+        Task<CategoryReadDto> CreateCategory(CategoryCreateDto categoryData);
+        Task<CategoryReadDto?> UpdateCategoryById(Guid categoryId, CategoryUpdateDto categoryData);
+        Task<bool> DeleteCategoryById(Guid categoryId);
+    }
+}
+
+// Enums/SortOrder.cs
+namespace asp_net_ecommerce_web_api.Enums
+{
+    public enum SortOrder
+    {
+        NameAsc,
+        NameDesc,
+        CreatedAtAsc,
+        CreatedAtDesc
+    }
+}
+
+// service
+public async Task<PaginatedResult<CategoryReadDto>> GetAllCategories(int pageNumber, int pageSize, string? search = null, string? sortOrder = null)
+  {
+      IQueryable<Category> query = _appDbContext.Categories;
+
+      // search by name or description
+      if (!string.IsNullOrWhiteSpace(search))
+      {
+          var formattedSearch = $"%{search.Trim()}%";
+          query = query.Where(c =>
+          EF.Functions.ILike(c.Name, formattedSearch) || EF.Functions.ILike(c.Description, formattedSearch));
+      }
+
+      // Sorting
+      if (string.IsNullOrWhiteSpace(sortOrder))
+      {
+          query = query.OrderBy(c => c.Name);
+      }
+      else
+      {
+          var formattedSortOrder = sortOrder.Trim().ToLower();
+          if (Enum.TryParse<SortOrder>(formattedSortOrder, true, out var parsedSortOrder))
+          {
+              query = parsedSortOrder switch
+              {
+                  SortOrder.NameAsc => query.OrderBy(c => c.Name),
+                  SortOrder.NameDesc => query.OrderByDescending(c => c.Name),
+                  SortOrder.CreatedAtAsc => query.OrderBy(c => c.CreatedAt),
+                  SortOrder.CreatedAtDesc => query.OrderByDescending(c => c.CreatedAt),
+                  _ => query.OrderBy(c => c.Name), // Default sorting for invalid sortOrder
+              };
+          }
+      }
+
+      // get total count
+      var totalCount = await query.CountAsync();
+
+      // pagination , pageNumber = 3, pageSize = 5
+      // 20 categories
+      // Skip((pageNumber-1)*pageSize).Take(pageSize)
+      var items = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+
+      var results = _mapper.Map<List<CategoryReadDto>>(items);
+
+      return new PaginatedResult<CategoryReadDto>
+      {
+          Items = results,
+          TotalCount = totalCount,
+          PageNumber = pageNumber,
+          PageSize = pageSize
+      };
+  }
+```
+
+#### Best practice: Create a helper class for query parameters
+
+- create a Helpers/QueryParameters.cs
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace asp_net_ecommerce_web_api.Helpers
+{
+    public class QueryParameters
+    {
+        private const int MaxPageSize = 50;
+        // [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 6, [FromQuery] string? search = null, [FromQuery] string? sortOrder = null
+        public int PageNumber { get; set; } = 1;
+        public int PageSize { get; set; } = 6;
+        public string? Search { get; set; }
+        public string? SortOrder { get; set; }
+
+        public QueryParameters Validate()
+        {
+            if (PageNumber < 1)
+            {
+                PageNumber = 1;
+            }
+            if (PageSize < 1)
+            {
+                PageSize = 6;
+            }
+            if (PageSize > MaxPageSize)
+            {
+                PageSize = MaxPageSize;
+            }
+            return this;
+        }
+
+    }
+}
+```
+
+- modify the controller, interface and service
+
+```csharp
+ // GET: /api/categories?pageNumber=2&&pageSize=5 => Read categories
+  [HttpGet]
+  public async Task<IActionResult> GetCategories([FromQuery] QueryParameters queryParameters)
+  {
+      // validate the query parameters
+      queryParameters.Validate();
+
+      var categoryList = await _categoryService.GetAllCategories(queryParameters);
+      return Ok(ApiResponse<PaginatedResult<CategoryReadDto>>.SuccessResponse(categoryList, 200, "Catgeories returned successfully"));
+  }
+
+// interface
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using asp_net_ecommerce_web_api.Controllers;
+using asp_net_ecommerce_web_api.DTOs;
+using asp_net_ecommerce_web_api.Helpers;
+
+namespace asp_net_ecommerce_web_api.Interfaces
+{
+    public interface ICategoryService
+    {
+        Task<PaginatedResult<CategoryReadDto>> GetAllCategories(QueryParameters queryParameters);
+        Task<CategoryReadDto?> GetCategoryById(Guid categoryId);
+        Task<CategoryReadDto> CreateCategory(CategoryCreateDto categoryData);
+        Task<CategoryReadDto?> UpdateCategoryById(Guid categoryId, CategoryUpdateDto categoryData);
+        Task<bool> DeleteCategoryById(Guid categoryId);
+    }
+}
+
+// service
+  public async Task<PaginatedResult<CategoryReadDto>> GetAllCategories(QueryParameters queryParameters)
+{
+    // Decompose the queryParameters into local variables
+    var pageNumber = queryParameters.PageNumber;
+    var pageSize = queryParameters.PageSize;
+    var search = queryParameters.Search;
+    var sortOrder = queryParameters.SortOrder;
+
+    IQueryable<Category> query = _appDbContext.Categories;
+
+    // search by name or description
+    if (!string.IsNullOrWhiteSpace(search))
+    {
+        var formattedSearch = $"%{search.Trim()}%";
+        query = query.Where(c =>
+        EF.Functions.ILike(c.Name, formattedSearch) || EF.Functions.ILike(c.Description, formattedSearch));
+    }
+
+    // Sorting
+    if (string.IsNullOrWhiteSpace(sortOrder))
+    {
+        query = query.OrderBy(c => c.Name);
+    }
+    else
+    {
+        var formattedSortOrder = sortOrder.Trim().ToLower();
+        if (Enum.TryParse<SortOrder>(formattedSortOrder, true, out var parsedSortOrder))
+        {
+            query = parsedSortOrder switch
+            {
+                SortOrder.NameAsc => query.OrderBy(c => c.Name),
+                SortOrder.NameDesc => query.OrderByDescending(c => c.Name),
+                SortOrder.CreatedAtAsc => query.OrderBy(c => c.CreatedAt),
+                SortOrder.CreatedAtDesc => query.OrderByDescending(c => c.CreatedAt),
+                _ => query.OrderBy(c => c.Name), // Default sorting for invalid sortOrder
+            };
+        }
+    }
+
+    // get total count
+    var totalCount = await query.CountAsync();
+
+    // pagination
+    var items = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+
+    var results = _mapper.Map<List<CategoryReadDto>>(items);
+
+    return new PaginatedResult<CategoryReadDto>
+    {
+        Items = results,
+        TotalCount = totalCount,
+        PageNumber = pageNumber,
+        PageSize = pageSize
+    };
+}
+```
+
+#### Best practice: default values for Entity
+
+- keep the service layer clean
+
+- Entity Framework Core supports default values for properties using data annotations or fluent API. However, this won't work for Guid and DateTime because they require a runtime-generated value. Default values can be applied to properties like string or int but not to Guid or DateTime.
+
+```csharp
+
+// Do not use this method
+public class Category
+{
+    public Guid CategoryId { get; set; } = Guid.NewGuid();  // Can’t use this for GUID or DateTime directly
+    public string Name { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;  // Can’t use this for DateTime
+}
+// But this method doesn't work for Guid and DateTime, as EF won't assign new GUIDs or timestamps at runtime unless it's done in the service or DbContext.
+```
+
+```csharp
+// use this
+using System;
+
+namespace asp_net_ecommerce_web_api.Models
+{
+    public class Category
+    {
+        public Guid CategoryId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
+
+        // Constructor to automatically set CategoryId and CreatedAt
+        public Category()
+        {
+            CategoryId = Guid.NewGuid();      // Automatically generate a new GUID for the CategoryId
+            CreatedAt = DateTime.UtcNow;      // Automatically set the CreatedAt to the current UTC time
+        }
+    }
+}
+
+public async Task<CategoryReadDto> CreateCategory(CategoryCreateDto categoryData)
+{
+    var newCategory = _mapper.Map<Category>(categoryData);  // Automatically gets CategoryId and CreatedAt
+    await _appDbContext.Categories.AddAsync(newCategory);
+    await _appDbContext.SaveChangesAsync();
+    return _mapper.Map<CategoryReadDto>(newCategory);
+}
+
+```
+
+- Constructor Logic: The constructor of the Category entity now handles the generation of CategoryId and CreatedAt. This way, every time a new Category instance is created, these properties are automatically populated.
+
+- Removed Logic from Service: The CreateCategory method in your service no longer needs to manually set the CategoryId or CreatedAt values. The service simply creates the entity, and those values are automatically handled by the Category class itself.
+
+- Separation of Concerns: The Category class now takes care of its own internal logic (like ID generation and timestamps), which keeps the service layer focused on business logic (e.g., mapping DTOs and interacting with the database).
+
+- Consistency: Every time you create a Category, it will have the correct CategoryId and CreatedAt values without needing to duplicate logic in your services.
 
 ---
 
-### **8. Error Handling and Logging**
+### **6. Middleware, Error Handling and Logging**
 
 Handle exceptions and log important information for better troubleshooting and debugging.
 
 - **Key Topics**:
-  - Global exception handling in ASP.NET Core.
-  - Using `try-catch` blocks within controllers.
-  - Logging with ASP.NET Core's built-in logging mechanisms.
-  
+  - [] consoling in ASP.NET
+  - [] Using `try-catch` blocks within controllers.
+  - [] Middleware
+  - [] Types of Middleware: Logging Middleware, Exception, CORS middleware
+  - [] Global exception handling in ASP.NET Core.
+  - [] Logging with ASP.NET Core's built-in logging mechanisms.
 - **What to Do**:
   - Set up global exception handling middleware.
   - Use logging in your API (e.g., log errors, requests, and responses).
   - Customize error responses for your API.
 
+#### Console the data
+
+```csharp
+// https://www.nuget.org/packages/newtonsoft.json
+Console.WriteLine("Received categories: " + JsonConvert.SerializeObject(categoriesDto));
+```
+
+#### Exception Handling
+
+#### Middleware
+
+#### Types of Middleware
+
 ---
 
-### **9. Authentication and Authorization**
+### **7. Authentication and Authorization**
 
 Secure your Web API by implementing authentication and authorization.
 
@@ -14077,28 +17433,26 @@ Secure your Web API by implementing authentication and authorization.
   - Authentication vs. authorization.
   - Implementing JWT (JSON Web Token) authentication.
   - Role-based and claims-based authorization in ASP.NET Core.
-  
 - **What to Do**:
   - Secure your API endpoints using JWT authentication.
   - Protect routes using `[Authorize]` attributes and set up role-based permissions.
 
 ---
 
-### **10. Documentation with Swagger**
+### **8. Documentation with Swagger**
 
 Automatically generate API documentation to make it easier for developers to use your API.
 
 - **Key Topics**:
   - Introduction to Swagger/OpenAPI.
   - Setting up Swagger in an ASP.NET Core Web API.
-  
 - **What to Do**:
   - Install and configure Swagger for your API.
   - Generate API documentation and try out the endpoints via the Swagger UI.
 
 ---
 
-### **11. Testing Your API**
+### **9. Testing Your API**
 
 Learn how to test your Web API using unit tests and integration tests.
 
@@ -14106,7 +17460,6 @@ Learn how to test your Web API using unit tests and integration tests.
   - Unit testing with xUnit or NUnit.
   - Mocking dependencies (e.g., services) using Moq.
   - Writing integration tests for API endpoints.
-  
 - **What to Do**:
   - Write unit tests for controllers and services.
   - Use a testing tool like Postman or REST Client to manually test API endpoints.
@@ -14114,66 +17467,2849 @@ Learn how to test your Web API using unit tests and integration tests.
 
 ---
 
-### **12. Versioning Your API**
+### **10. Versioning Your API**
 
 As your API evolves, it’s important to learn how to version your API to maintain backward compatibility.
 
 - **Key Topics**:
   - API versioning strategies (URL versioning, query string versioning).
   - Using ASP.NET Core API versioning package.
-  
 - **What to Do**:
   - Implement API versioning using the `Microsoft.AspNetCore.Mvc.Versioning` package.
   - Create different versions of your API endpoints and maintain compatibility.
 
 ---
 
-### **13. Caching and Performance Optimization**
+### **11. Caching and Performance Optimization**
 
 Learn how to improve the performance of your API by implementing caching.
 
 - **Key Topics**:
   - Caching strategies (in-memory caching, distributed caching).
   - Response caching in ASP.NET Core.
-  
 - **What to Do**:
   - Implement in-memory caching to store frequently requested data.
   - Add response caching to reduce the load on your API.
 
 ---
 
-### **14. Deployment and Hosting**
+### **12. Adding Security to web api**
+
+When securing an ASP.NET Web API, there are several strategies and best practices to consider to ensure that your API is protected from common vulnerabilities. Below are some of the most important security techniques you can implement:
+
+#### 1. **Authentication**
+
+Authentication ensures that only authenticated users can access your API. There are several methods of implementing authentication:
+
+##### a. **JWT (JSON Web Tokens) Authentication**
+
+JWT is a popular method for API authentication. It involves generating a token on the server when the user logs in, and the client sends this token with every subsequent request.
+
+- **Install the required packages**:
+
+  ```bash
+  dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+  ```
+
+- **Configure JWT authentication in `Startup.cs` or `Program.cs`**:
+
+  ```csharp
+  public void ConfigureServices(IServiceCollection services)
+  {
+      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+              .AddJwtBearer(options =>
+              {
+                  options.Authority = "https://your-identity-provider";
+                  options.Audience = "api1";
+              });
+
+      services.AddAuthorization();
+  }
+  ```
+
+- **Apply authentication middleware**:
+  ```csharp
+  public void Configure(IApplicationBuilder app)
+  {
+      app.UseAuthentication();
+      app.UseAuthorization();
+  }
+  ```
+
+##### b. **OAuth 2.0 Authentication**
+
+OAuth 2.0 is a protocol used for authorization. It enables third-party applications to access a user's resources without sharing credentials.
+
+- **Implement OAuth2 with IdentityServer4 or external providers like Google, Facebook, etc.**
+
+#### 2. **Authorization**
+
+Authorization determines whether an authenticated user has permission to perform a specific action on a resource. You can implement it with roles or claims.
+
+##### a. **Role-Based Authorization**
+
+You can use role-based access control (RBAC) to restrict access to API endpoints based on the user's role.
+
+```csharp
+[Authorize(Roles = "Admin")]
+public IActionResult AdminAction()
+{
+    return Ok("Only admin users can access this.");
+}
+```
+
+##### b. **Claims-Based Authorization**
+
+Claims are key-value pairs that represent user-specific information (e.g., email, age, etc.). You can use them to fine-tune authorization.
+
+```csharp
+[Authorize(Policy = "RequireEmail")]
+public IActionResult GetSecretData()
+{
+    return Ok("You have access to this secret data.");
+}
+```
+
+Define the policy in `Startup.cs`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("RequireEmail", policy => policy.RequireClaim("email"));
+    });
+}
+```
+
+#### 3. **CORS (Cross-Origin Resource Sharing)**
+
+CORS is a security feature implemented by browsers to prevent malicious websites from making unauthorized API requests to a different domain.
+
+- **Enable CORS in `Startup.cs` or `Program.cs`**:
+
+  ```csharp
+  public void ConfigureServices(IServiceCollection services)
+  {
+      services.AddCors(options =>
+      {
+          options.AddPolicy("AllowSpecificOrigin",
+              builder => builder.WithOrigins("https://your-frontend-url.com")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader());
+      });
+  }
+
+  public void Configure(IApplicationBuilder app)
+  {
+      app.UseCors("AllowSpecificOrigin");
+  }
+  ```
+
+#### 4. **Input Validation and Data Protection**
+
+It’s essential to validate user input and protect sensitive data to prevent security vulnerabilities like SQL injection and cross-site scripting (XSS).
+
+##### a. **Model Validation**
+
+Ensure that all user inputs are validated before processing. Use Data Annotations to validate models.
+
+```csharp
+public class Product
+{
+    [Required]
+    public string Name { get; set; }
+
+    [Range(0, double.MaxValue)]
+    public decimal Price { get; set; }
+}
+```
+
+##### b. **SQL Injection Prevention**
+
+Always use parameterized queries or ORM frameworks (like Entity Framework) that handle SQL injection automatically.
+
+Example with Entity Framework:
+
+```csharp
+var product = dbContext.Products.FirstOrDefault(p => p.Name == name);
+```
+
+##### c. **XSS Prevention**
+
+Make sure any data rendered into views (e.g., HTML pages) is properly sanitized to prevent malicious scripts from running.
+
+In API responses, ensure that HTML/JS is not being injected.
+
+#### 5. **HTTPS (SSL/TLS)**
+
+Use HTTPS to ensure that data is transmitted securely over the network. This is critical to prevent attackers from eavesdropping on sensitive data, like passwords and tokens.
+
+- **Configure HTTPS in `Program.cs`**:
+
+  ```csharp
+  public static IHostBuilder CreateHostBuilder(string[] args) =>
+      Host.CreateDefaultBuilder(args)
+          .ConfigureWebHostDefaults(webBuilder =>
+          {
+              webBuilder.UseStartup<Startup>()
+                        .UseUrls("https://localhost:5001");
+          });
+  ```
+
+- **Redirect HTTP to HTTPS**:
+  ```csharp
+  public void Configure(IApplicationBuilder app)
+  {
+      app.UseHttpsRedirection();
+  }
+  ```
+
+#### 6. **Rate Limiting**
+
+To prevent abuse and DoS (Denial of Service) attacks, implement rate limiting for your API.
+
+- **Use a library like `AspNetCoreRateLimit`** to configure rate limiting.
+
+  Install the package:
+
+  ```bash
+  dotnet add package AspNetCoreRateLimit
+  ```
+
+- **Configure Rate Limiting** in `Startup.cs`:
+
+  ```csharp
+  public void ConfigureServices(IServiceCollection services)
+  {
+      services.AddInMemoryRateLimiting();
+      services.AddHttpContextAccessor();
+      services.Configure<IpRateLimitOptions>(options =>
+      {
+          options.EnableEndpointRateLimiting = true;
+          options.StackBlockedRequests = false;
+          options.Limiters.Add(new IpRateLimitPolicy
+          {
+              Endpoint = "*",
+              Period = "1h",
+              Limit = 100
+          });
+      });
+  }
+
+  public void Configure(IApplicationBuilder app)
+  {
+      app.UseIpRateLimiting();
+  }
+  ```
+
+#### 7. **Logging and Monitoring**
+
+Implement logging and monitoring to keep track of malicious activities and errors.
+
+- **Use Serilog, NLog, or built-in logging** in ASP.NET Core.
+
+  ```csharp
+  public void ConfigureServices(IServiceCollection services)
+  {
+      services.AddLogging(builder =>
+          builder.AddSerilog()
+                 .AddConsole());
+  }
+  ```
+
+- **Log sensitive data** securely, and ensure logging only contains necessary information.
+
+#### 8. **Error Handling**
+
+Avoid revealing stack traces or sensitive information in error responses. Use custom error handling middleware to catch errors and return safe messages.
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
+}
+```
+
+#### 9. **API Keys/Secrets Management**
+
+Never hard-code sensitive information like API keys or database credentials in your codebase. Use a secure secrets management system such as:
+
+- **Azure Key Vault**
+- **AWS Secrets Manager**
+- **Environment variables** for local development
+
+#### 10. **Session Management**
+
+If you are using session-based authentication (less common in APIs), ensure that sessions are handled securely.
+
+- Use **short-lived sessions** or tokens to limit the impact of session hijacking.
+- Implement session expiration and invalidation mechanisms.
+
+---
+
+#### Conclusion
+
+Securing your ASP.NET Web API involves multiple layers of protection. By implementing strong authentication, authorization, data protection, rate limiting, HTTPS, and proper error handling, you can significantly reduce the attack surface of your API. Always stay updated with the latest security practices and be vigilant about potential vulnerabilities.
+
+### **13. Deployment and Hosting**
 
 Learn how to deploy your Web API to a cloud service or server.
 
 - **Key Topics**:
   - Deploying ASP.NET Core Web API to Azure, AWS, or a local server.
   - Setting up CI/CD pipelines using GitHub Actions, Azure DevOps, etc.
-  
 - **What to Do**:
   - Deploy your API to a cloud provider like Azure or AWS.
   - Set up a continuous integration/continuous deployment (CI/CD) pipeline.
 
 ---
 
-### **15. Advanced Topics (Optional)**
+### **14. Advanced Topics (Optional)**
 
 Once you’re comfortable with the basics, explore advanced topics like:
 
 - Rate limiting for APIs.
 - Handling long-running tasks with background services (e.g., `IHostedService`).
 - GraphQL for APIs.
-  
+
 ---
 
-### **Conclusion for ASP.NET**
+## Front-end setup for ecommerce in 2024
 
-By following this structured learning path, you'll gradually build up the skills necessary to create a fully functional, secure, and efficient ASP.NET Web API. Start with the basics, get comfortable with CRUD operations and database integration, and then move on to more advanced topics like authentication, versioning, and caching. Happy coding!
+To create a React application that includes a router, a basic layout with a navbar and footer, and pages for displaying all products and product details using Material-UI (MUI), you can follow these steps:
 
+### Step 1: Set Up the React Application
+
+1. **Create a new React app**:
+
+   ```bash
+   npx create-react-app product-app
+   cd product-app
+   ```
+
+2. **Install Material-UI and React Router**:
+   ```bash
+   npm install @mui/material @emotion/react @emotion/styled react-router-dom
+   ```
+
+### Step 2: Create the Basic Layout
+
+1. **Create the folder structure**:
+
+   ```
+   src/components
+   src/layout
+   src/pages
+   src/routes
+   src/services
+   src/context
+   src/hooks
+   ```
+
+2. create 4 components: Navbar, Main, Footer, Layout
+
+3. **Navbar Component** (`src/components/Navbar.js`):
+
+   ```jsx
+   import React from 'react';
+   import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+   import { Link } from 'react-router-dom';
+
+   const Navbar = () => {
+     return (
+       <AppBar position="static">
+         <Toolbar>
+           <Typography variant="h6" style={{ flexGrow: 1 }}>
+             Product App
+           </Typography>
+           <Button color="inherit" component={Link} to="/">
+             Home
+           </Button>
+           <Button color="inherit" component={Link} to="/about">
+             About
+           </Button>
+         </Toolbar>
+       </AppBar>
+     );
+   };
+
+   export default Navbar;
+   ```
+
+4. **Footer Component** (`src/components/Footer.js`):
+
+   ```jsx
+   import React from 'react';
+   import { Box, Container, Link, Typography } from '@mui/material';
+   import Grid from '@mui/material/Grid2';
+
+   const Footer = () => {
+     return (
+       <Box sx={{ bgcolor: 'primary.main', color: 'white', py: 4, mt: 4 }}>
+         <Container maxWidth="lg">
+           <Grid container spacing={4}>
+             {/* About Us Section */}
+             <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+               <Typography variant="h6" gutterBottom>
+                 About Us
+               </Typography>
+               <Typography variant="body2">
+                 We are a leading e-commerce platform, dedicated to providing
+                 quality products and excellent customer service. Our mission is
+                 to make online shopping easy and enjoyable for everyone.
+               </Typography>
+             </Grid>
+
+             {/* Contact Section */}
+             <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+               <Typography variant="h6" gutterBottom>
+                 Contact Us
+               </Typography>
+               <Typography variant="body2">
+                 Email: support@yourcompany.com
+               </Typography>
+               <Typography variant="body2">Phone: +1 (123) 456-7890</Typography>
+               <Typography variant="body2">
+                 Address: 1234 E-commerce St, Shopsville, CA
+               </Typography>
+             </Grid>
+
+             {/* Social Media Links Section */}
+             <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+               <Typography variant="h6" gutterBottom>
+                 Follow Us
+               </Typography>
+               <Box>
+                 <Link
+                   href="https://facebook.com"
+                   color="inherit"
+                   underline="hover"
+                   target="_blank"
+                   rel="noopener"
+                   sx={{ pr: 2 }}
+                 >
+                   Facebook
+                 </Link>
+                 <Link
+                   href="https://twitter.com"
+                   color="inherit"
+                   underline="hover"
+                   target="_blank"
+                   rel="noopener"
+                   sx={{ pr: 2 }}
+                 >
+                   Twitter
+                 </Link>
+                 <Link
+                   href="https://instagram.com"
+                   color="inherit"
+                   underline="hover"
+                   target="_blank"
+                   rel="noopener"
+                 >
+                   Instagram
+                 </Link>
+               </Box>
+             </Grid>
+           </Grid>
+
+           {/* Copyright */}
+           <Box sx={{ textAlign: 'center', mt: 3 }}>
+             <Typography variant="body2" color="textSecondary">
+               {'© '}
+               Your Company {new Date().getFullYear()} | All rights reserved.
+             </Typography>
+           </Box>
+         </Container>
+       </Box>
+     );
+   };
+
+   export default Footer;
+   ```
+
+### Step 3: Create few Pages and setup routing
+
+- Home Page, About Page inside src/pages folder
+
+- create routes and load in App.jsx
+
+```jsx
+// routes/index.jsx
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import Home from '../pages/Home';
+import Layout from '../layout/Layout';
+import About from '../pages/About';
+
+const Routes = () => {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/about',
+          element: <About />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
+};
+
+export default Routes;
+```
+
+### Step 4: About Page
+
+```jsx
+import React from 'react';
+import { Container, Typography, Box, Avatar, Paper } from '@mui/material';
+import { List, ListItem, ListItemIcon } from '@mui/material';
+import { styled } from '@mui/system';
+import { CheckCircle } from '@mui/icons-material';
+import Grid from '@mui/material/Grid2';
+
+const About = () => {
+  return (
+    <Container maxWidth="lg" sx={{ mt: 5 }}>
+      <Typography variant="h3" gutterBottom align="center" color="primary">
+        About Us
+      </Typography>
+      <Typography variant="h5" paragraph align="center" color="textSecondary">
+        Welcome to our e-commerce platform, where we connect you with the best
+        products for all your needs. Our mission is to provide quality products
+        at affordable prices while delivering an exceptional shopping
+        experience.
+      </Typography>
+
+      {/* Team Section */}
+      <Typography variant="h4" gutterBottom align="center" color="primary">
+        Meet Our Team
+      </Typography>
+      <Grid container spacing={4} justifyContent="center">
+        <Grid size={{ xs: 12, md: 6, lg: 3 }}>
+          <Paper elevation={3} sx={{ padding: 3, textAlign: 'center' }}>
+            <Avatar
+              alt="Team Member"
+              src="https://randomuser.me/api/portraits/men/1.jpg"
+              sx={{ width: 100, height: 100, margin: '0 auto' }}
+            />
+            <Typography variant="h6" mt={2}>
+              John Doe
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+              Founder & CEO
+            </Typography>
+          </Paper>
+        </Grid>
+
+        <Grid size={{ xs: 12, md: 6, lg: 3 }}>
+          <Paper elevation={3} sx={{ padding: 3, textAlign: 'center' }}>
+            <Avatar
+              alt="Team Member"
+              src="https://randomuser.me/api/portraits/women/2.jpg"
+              sx={{ width: 100, height: 100, margin: '0 auto' }}
+            />
+            <Typography variant="h6" mt={2}>
+              Jane Smith
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+              Head of Marketing
+            </Typography>
+          </Paper>
+        </Grid>
+
+        <Grid size={{ xs: 12, md: 6, lg: 3 }}>
+          <Paper elevation={3} sx={{ padding: 3, textAlign: 'center' }}>
+            <Avatar
+              alt="Team Member"
+              src="https://randomuser.me/api/portraits/men/2.jpg"
+              sx={{ width: 100, height: 100, margin: '0 auto' }}
+            />
+            <Typography variant="h6" mt={2}>
+              Robert Lee
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+              Chief Technology Officer
+            </Typography>
+          </Paper>
+        </Grid>
+
+        {/* Mission & Values Section */}
+        <Box sx={{ mt: 5, textAlign: 'center' }}>
+          <Typography variant="h4" gutterBottom color="primary">
+            Our Mission & Values
+          </Typography>
+
+          <Typography variant="h6" paragraph color="textSecondary">
+            At [Company Name], we are dedicated to providing the best shopping
+            experience through our commitment to the following core values:
+          </Typography>
+
+          {/* Mission and Values List */}
+          <Grid container spacing={4} justifyContent="center">
+            <Grid size={{ xs: 12, md: 6, lg: 3 }}>
+              <Paper
+                elevation={3}
+                sx={{ p: 4, textAlign: 'center', borderRadius: 2 }}
+              >
+                <Typography variant="h6" color="primary" gutterBottom>
+                  Quality Products
+                </Typography>
+                <Typography variant="body2" color="textSecondary" paragraph>
+                  We ensure that every product we sell meets the highest
+                  standards of quality and craftsmanship.
+                </Typography>
+              </Paper>
+            </Grid>
+
+            <Grid size={{ xs: 12, md: 6, lg: 3 }}>
+              <Paper
+                elevation={3}
+                sx={{ p: 4, textAlign: 'center', borderRadius: 2 }}
+              >
+                <Typography variant="h6" color="primary" gutterBottom>
+                  Global Shipping
+                </Typography>
+                <Typography variant="body2" color="textSecondary" paragraph>
+                  Our efficient global shipping network allows us to deliver
+                  products quickly and reliably.
+                </Typography>
+              </Paper>
+            </Grid>
+
+            <Grid size={{ xs: 12, md: 6, lg: 3 }}>
+              <Paper
+                elevation={3}
+                sx={{ p: 4, textAlign: 'center', borderRadius: 2 }}
+              >
+                <Typography variant="h6" color="primary" gutterBottom>
+                  Customer-Centric
+                </Typography>
+                <Typography variant="body2" color="textSecondary" paragraph>
+                  We focus on delivering an exceptional customer experience,
+                  ensuring satisfaction with every purchase.
+                </Typography>
+              </Paper>
+            </Grid>
+
+            <Grid size={{ xs: 12, md: 6, lg: 3 }}>
+              <Paper
+                elevation={3}
+                sx={{ p: 4, textAlign: 'center', borderRadius: 2 }}
+              >
+                <Typography variant="h6" color="primary" gutterBottom>
+                  Innovation
+                </Typography>
+                <Typography variant="body2" color="textSecondary" paragraph>
+                  We constantly innovate to improve our products, services, and
+                  the overall shopping experience.
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+
+          {/* Core Values List with Icons */}
+          <Typography variant="h6" color="primary" sx={{ mt: 5 }} gutterBottom>
+            Our Core Values
+          </Typography>
+
+          <List sx={{ maxWidth: 600, margin: '0 auto' }}>
+            <ListItem>
+              <ListItemIcon sx={{ color: 'primary.main' }}>
+                <CheckCircle />
+              </ListItemIcon>
+              <Typography variant="body1" color="textSecondary">
+                Offering high-quality products at competitive prices.
+              </Typography>
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon sx={{ color: 'primary.main' }}>
+                <CheckCircle />
+              </ListItemIcon>
+              <Typography variant="body1" color="textSecondary">
+                Ensuring fast, reliable shipping to all locations.
+              </Typography>
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon sx={{ color: 'primary.main' }}>
+                <CheckCircle />
+              </ListItemIcon>
+              <Typography variant="body1" color="textSecondary">
+                Striving for innovation in every aspect of our business.
+              </Typography>
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon sx={{ color: 'primary.main' }}>
+                <CheckCircle />
+              </ListItemIcon>
+              <Typography variant="body1" color="textSecondary">
+                Building long-term relationships based on trust and
+                transparency.
+              </Typography>
+            </ListItem>
+          </List>
+        </Box>
+      </Grid>
+    </Container>
+  );
+};
+
+export default About;
+```
+
+### Step 5: get products from backend
+
+- test your api always first
+
+#### Step 1: Create the Product Context
+
+1. **Create the context file**: Create a new folder named `context` in your `src` directory and add a file named `ProductContext.js`.
+
+   ```
+   src/
+   ├── context/
+   │   ├── ProductContext.js
+       ├── ProductProvider.js
+   ```
+
+2. **Set up the context** (`src/context/ProductContext.js`):
+
+   ```jsx
+   // context/ProductContext.js
+   import { createContext } from 'react';
+
+   export const ProductContext = createContext();
+   ```
+
+   ```jsx
+   // context/ProductProvider.js
+   import React, {
+     createContext,
+     useContext,
+     useEffect,
+     useState,
+   } from 'react';
+   import axios from 'axios';
+
+   export const ProductProvider = ({ children }) => {
+     const [products, setProducts] = useState([]);
+     const [loading, setLoading] = useState(true);
+     const [error, setError] = useState(null);
+
+     useEffect(() => {
+       const fetchProducts = async () => {
+         setLoading(true);
+         setError(null);
+         try {
+           const response = await axios.get(`/api/products`,
+           <!-- {
+             params: { pageNumber, pageSize, search: searchValue },
+           } -->
+           );
+           setProducts(response.data.items); // Assuming the API returns an object with an `items` array
+         } catch (err) {
+           setError(err.message);
+         } finally {
+           setLoading(false);
+         }
+       };
+
+       fetchProducts();
+     }, [pageNumber, searchValue]);
+
+     return (
+       <ProductContext.Provider
+         value={{
+           products,
+           loading,
+           error
+         }}
+       >
+         {children}
+       </ProductContext.Provider>
+     );
+   };
+   ```
+
+#### Step 3: Wrap Your Application with the Provider
+
+1. **Modify `src/index.js`**:
+
+   ```jsx
+   import React from 'react';
+   import ReactDOM from 'react-dom';
+   import App from './App';
+   import { ProductProvider } from './context/ProductContext';
+
+   ReactDOM.render(
+     <React.StrictMode>
+       <ProductProvider>
+         <App />
+       </ProductProvider>
+     </React.StrictMode>,
+     document.getElementById('root')
+   );
+   ```
+
+#### Step 4: test the context: are you getting the data?
+
+### Step 5: Create services for api call and setup .env
+
+```js
+// services/productService.js
+import axios from 'axios';
+
+const baseURL = 'http://localhost:5021/api/products';
+
+// baseURL?pageNumber=1&pageSize=10&search=lala&sortOrder=name_asc
+
+export const getAllProducts = async (
+  pageNumber = 1,
+  pageSize = 5,
+  searchValue = '',
+  sortOrder = 'name_asc'
+) => {
+  const params = new URLSearchParams();
+  const response = await axios.get(`${baseURL}?${params.toString()}`);
+  return response.data;
+};
+
+export const getProductById = async (id) => {
+  console.log(`${baseURL}/${id}`);
+  const response = await axios.get(`${baseURL}/${id}`);
+  return response.data;
+};
+```
+
+### Step 6: Home Page: Load products
+
+```jsx
+import React from 'react';
+import { Container, Box } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+
+import Products from '../components/products/Products';
+
+const Home = () => {
+  return (
+    <Container>
+      {/* <Typography variant="h4" gutterBottom align="center">
+        Products
+      </Typography> */}
+
+      {/* Products List */}
+      <Products />
+
+    </Container>
+  );
+};
+
+export default Home;
+
+// Components/Products.jsx
+import React from 'react';
+import { Typography } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+
+import Product from './Product';
+import useProduct from '../../hooks/useProduct';
+
+const Products = () => {
+  const { products, isLoading, error } = useProduct(); // Use the custom hook
+
+  if (isLoading) {
+    return <Typography variant="h2">Loading Products...</Typography>;
+  }
+  if (error) {
+    return <Typography variant="h2">{error}</Typography>;
+  }
+
+  return (
+    <Grid container spacing={2}>
+      {products.map((product) => (
+        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.productId}>
+          <Product product={product} />
+        </Grid>
+      ))}
+    </Grid>
+  );
+};
+
+export default Products;
+
+// Components/Product.jsx
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@mui/material';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Product = ({ product }) => {
+  return (
+    <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      {/* Product Image */}
+      <CardMedia
+        component="img"
+        height="180"
+        image={product.image || 'https://via.placeholder.com/150'}
+        alt={product.name}
+        sx={{ objectFit: 'cover' }}
+      />
+
+      <CardContent
+        sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}
+      >
+        {/* Product Name */}
+        <Typography
+          variant="h6"
+          component="div"
+          gutterBottom
+          color="primary"
+          fontWeight="bold"
+        >
+          {product.name}
+        </Typography>
+
+        {/* Product Description */}
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+          {product.description?.length > 60
+            ? `${product.description.slice(0, 60)}...`
+            : product.description}
+        </Typography>
+
+        {/* Product Price */}
+        <Typography
+          variant="subtitle1"
+          color="text.primary"
+          fontWeight="medium"
+        >
+          Price: ${product.price.toFixed(2)}
+        </Typography>
+
+        {/* Product Quantity */}
+        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 2 }}>
+          Quantity: {product.quantity}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+};
+
+Product.propTypes = {
+  product: PropTypes.shape({
+    productId: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    price: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+    image: PropTypes.string,
+  }).isRequired,
+};
+
+export default Product;
+```
+
+### Step 7: Create a custom hook for the context
+
+```jsx
+// hooks/useProduct
+import { useContext } from 'react';
+import { ProductContext } from '../context/ProductContext';
+
+const useProduct = () => {
+  const context = useContext(ProductContext);
+
+  if (!context) {
+    throw new Error('useProduct must be used within a ProductProvider');
+  }
+
+  return context;
+};
+
+export default useProduct;
+```
+
+- now use it
+
+```jsx
+import React from 'react';
+import { Grid2, Typography } from '@mui/material';
+
+import Product from './Product';
+import useProduct from '../../hooks/useProduct';
+
+const Products = () => {
+  const { products, isLoading, error } = useProduct(); // Use the custom hook
+};
+
+export default Products;
+```
+
+### Step 8: Add Loader component and add to Home page when loading or error
+
+```jsx
+// src/components/Loader.js
+import React from 'react';
+import { Box, Typography } from '@mui/material';
+import ClipLoader from 'react-spinners/ClipLoader';
+import PropTypes from 'prop-types';
+
+const Loader = ({ message = 'Loading...', size = 50 }) => {
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      minHeight="50vh"
+    >
+      <ClipLoader
+        color="#1976d2"
+        size={size}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+      <Typography variant="body1" color="textSecondary" mt={2}>
+        {message}
+      </Typography>
+    </Box>
+  );
+};
+
+Loader.propTypes = {
+  message: PropTypes.string,
+  size: PropTypes.number,
+};
+
+export default Loader;
+
+// Products.js
+import React from 'react';
+import { Typography } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+
+import Product from './Product';
+import useProduct from '../../hooks/useProduct';
+import Loader from '../Loader';
+
+const Products = () => {
+  const { products, isLoading, error } = useProduct(); // Use the custom hook
+
+  if (isLoading) {
+    return <Loader message="Loading products, please wait..." />;
+  }
+
+  if (error) {
+    return (
+      <Loader message="Failed to load products. Please try again." size={70} />
+    );
+  }
+  return (
+    <Grid container spacing={2}>
+      {products.map((product) => (
+        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.productId}>
+          <Product product={product} />
+        </Grid>
+      ))}
+    </Grid>
+  );
+};
+
+export default Products;
+```
+
+### Step 9: dynamic routing
+
+1. create a product details page => pages/ProductDetails.jsx
+
+2. setup the dynamic routing
+
+   ```jsx
+   import React from 'react';
+   import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+   import Home from '../pages/Home';
+   import Layout from '../layout/Layout';
+   import About from '../pages/About';
+   import ProductDetails from '../pages/ProductDetails';
+
+   const Routes = () => {
+     const router = createBrowserRouter([
+       {
+         path: '/',
+         element: <Layout />,
+         children: [
+           {
+             path: '/',
+             element: <Home />,
+           },
+           {
+             path: '/about',
+             element: <About />,
+           },
+           {
+             path: '/products/:id',
+             element: <ProductDetails />,
+           },
+         ],
+       },
+     ]);
+
+     return <RouterProvider router={router} />;
+   };
+
+   export default Routes;
+   ```
+
+3. get the param id
+
+   ```jsx
+   import React from 'react';
+   import { Container, Typography } from '@mui/material';
+   import { useParams } from 'react-router-dom';
+
+   const ProductDetails = () => {
+     const { id } = useParams();
+
+     // In a real application, you would fetch the product details based on the ID
+     return (
+       <Container>
+         <Typography variant="h4" gutterBottom>
+           Product Details for Product ID: {id}
+         </Typography>
+         {/* Here you would render the actual product details */}
+       </Container>
+     );
+   };
+
+   export default ProductDetails;
+   ```
+
+### Step 10: create service and Product details page
+
+- test your api always first
+
+```js
+//services/productService.js
+import axios from 'axios';
+
+const baseURL = 'http://localhost:5021/api/products';
+
+export const getProductById = async (id) => {
+  console.log(`${baseURL}/${id}`);
+  const response = await axios.get(`${baseURL}/${id}`);
+  return response.data;
+};
+```
+
+```jsx
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import {
+  Container,
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
+  Grid,
+  Divider,
+} from '@mui/material';
+
+import Loader from '../components/Loader';
+import { getProductById } from '../services/productService';
+
+const ProductDetails = () => {
+  const { id } = useParams();
+
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchProduct = async (id) => {
+    try {
+      const response = await getProductById(id);
+      setProduct(response.data);
+    } catch (error) {
+      setError('Failed to fetch product details.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProduct(id);
+  }, [id]);
+
+  if (isLoading) {
+    return <Loader message="Loading products, please wait..." />;
+  }
+
+  if (error) {
+    return (
+      <Loader message="Failed to load products. Please try again." size={70} />
+    );
+  }
+
+  // Destructure product properties
+  const {
+    name,
+    description,
+    image,
+    price,
+    quantity,
+    shipping,
+    sold,
+    createdAt,
+  } = product || {};
+
+  return (
+    <Container maxWidth="md" style={{ marginTop: '20px' }}>
+      <Card>
+        {image && (
+          <CardMedia
+            component="img"
+            height="400"
+            image={image} // Assumes 'image' is a valid image URL
+            alt={name}
+          />
+        )}
+        <CardContent>
+          <Typography variant="h4" gutterBottom>
+            {name}
+          </Typography>
+          <Typography variant="body1" color="textSecondary" gutterBottom>
+            {description}
+          </Typography>
+
+          <Divider style={{ margin: '20px 0' }} />
+
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Typography variant="h6">Price:</Typography>
+              <Typography variant="body1">${price.toFixed(2)}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="h6">Quantity Available:</Typography>
+              <Typography variant="body1">{quantity}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="h6">Shipping Cost:</Typography>
+              <Typography variant="body1">${shipping.toFixed(2)}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="h6">Items Sold:</Typography>
+              <Typography variant="body1">{sold}</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h6">Created At:</Typography>
+              <Typography variant="body1">
+                {new Date(createdAt).toLocaleDateString()}{' '}
+                {new Date(createdAt).toLocaleTimeString()}
+              </Typography>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+    </Container>
+  );
+};
+
+export default ProductDetails;
+```
+
+### Step 11: Add Pagination
+
+- test your api always first
+
+```jsx
+// change in ProductProvider
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+
+import { getAllProducts } from '../services/productService';
+import { ProductContext } from './ProductContext';
+
+export const ProductProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+
+  const fetchData = async (pageNumber, pageSize) => {
+    setIsLoading(true);
+    try {
+      const response = await getAllProducts(
+        pageNumber,
+        pageSize,
+      );
+      setProducts(response.data.items);
+      setTotalPages(response.data.totalPages);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(pageNumber, pageSize);
+  }, [pageNumber, pageSize]);
+
+  return (
+    <ProductContext.Provider
+      value={{
+        products,
+        isLoading,
+        error,
+
+        pageNumber,
+        setPageNumber,
+        pageSize,
+        setPageSize,
+        totalPages,
+      }}
+    >
+      {children}
+    </ProductContext.Provider>
+  );
+};
+
+ProductProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+// change in service for api call
+import axios from 'axios';
+
+const baseURL = 'http://localhost:5021/api/products';
+
+// baseURL?pageNumber=1&pageSize=10&search=lala&sortOrder=name_asc
+
+export const getAllProducts = async (
+  pageNumber = 1,
+  pageSize = 5,
+  searchValue = '',
+  sortOrder = 'name_asc'
+) => {
+  const params = new URLSearchParams();
+
+  params.append('pageNumber', pageNumber);
+  params.append('pageSize', pageSize);
+
+//   if (searchValue) {
+//     params.append('search', searchValue);
+//   }
+
+//   if (sortOrder) {
+//     params.append('sortOrder', sortOrder);
+//   }
+  const response = await axios.get(`${baseURL}?${params.toString()}`);
+  return response.data;
+};
+
+
+// create a pagination component
+import React from 'react';
+import { Box, Pagination } from '@mui/material';
+
+import useProduct from '../hooks/useProduct';
+
+const PaginationComp = () => {
+  const { pageNumber, setPageNumber, totalPages } = useProduct();
+
+  const handlePageChange = (value) => {
+    setPageNumber(value);
+  };
+
+  return (
+    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 3 }}>
+      <Pagination
+        count={totalPages}
+        page={pageNumber}
+        onChange={handlePageChange}
+        variant="outlined"
+        shape="rounded"
+      />
+    </Box>
+  );
+};
+
+export default PaginationComp;
+
+// use this in the Home.jsx
+import React from 'react';
+import { Container, Box } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+
+import Products from '../components/products/Products';
+import PaginationComp from '../components/PaginationComp';
+
+const Home = () => {
+  return (
+    <Container>
+      {/* <Typography variant="h4" gutterBottom align="center">
+        Products
+      </Typography> */}
+
+      {/* Products List */}
+      <Products />
+
+      {/* Pagination */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+        <PaginationComp />
+      </Box>
+    </Container>
+  );
+};
+
+export default Home;
+```
+
+### Step 12: Add Searching
+
+- test your api always first
+
+1. Start your backend server and ensure that it can respond to the product requests appropriately.
+2. Start your React app with:
+   ```bash
+   npm start
+   ```
+3. You should now be able to search for products and paginate through them. The requests to the backend will be made when the `pageNumber` or `searchValue` changes.
+
+```jsx
+// change in provider
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+
+import { getAllProducts } from '../services/productService';
+import { ProductContext } from './ProductContext';
+
+export const ProductProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [searchValue, setSearchValue] = useState('');
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+  const [sortOrder, setSortOrder] = useState('name_asc');
+
+  const fetchData = async (searchValue, pageNumber, pageSize, sortOrder) => {
+    setIsLoading(true);
+    try {
+      const response = await getAllProducts(
+        pageNumber,
+        pageSize,
+        searchValue,
+        sortOrder
+      );
+      setProducts(response.data.items);
+      setTotalPages(response.data.totalPages);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(searchValue, pageNumber, pageSize, sortOrder);
+  }, [searchValue, pageNumber, pageSize, sortOrder]);
+
+  return (
+    <ProductContext.Provider
+      value={{
+        products,
+        isLoading,
+        error,
+        searchValue,
+        setSearchValue,
+        pageNumber,
+        setPageNumber,
+        pageSize,
+        setPageSize,
+        sortOrder,
+        setSortOrder,
+        totalPages,
+      }}
+    >
+      {children}
+    </ProductContext.Provider>
+  );
+};
+
+ProductProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+// change in service
+import axios from 'axios';
+
+const baseURL = 'http://localhost:5021/api/products';
+
+// baseURL?pageNumber=1&pageSize=10&search=lala&sortOrder=name_asc
+
+export const getAllProducts = async (
+  pageNumber = 1,
+  pageSize = 5,
+  searchValue = '',
+  sortOrder = 'name_asc'
+) => {
+  const params = new URLSearchParams();
+
+  params.append('pageNumber', pageNumber);
+  params.append('pageSize', pageSize);
+
+  if (searchValue) {
+    params.append('search', searchValue);
+  }
+
+  if (sortOrder) {
+    params.append('sortOrder', sortOrder);
+  }
+  const response = await axios.get(`${baseURL}?${params.toString()}`);
+  return response.data;
+};
+
+export const getProductById = async (id) => {
+  console.log(`${baseURL}/${id}`);
+  const response = await axios.get(`${baseURL}/${id}`);
+  return response.data;
+};
+
+// create a search component
+import React from 'react';
+import { TextField } from '@mui/material';
+
+import useProduct from '../hooks/useProduct';
+
+const SearchInput = () => {
+  const { setSearchValue } = useProduct();
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+  return (
+    <TextField
+      label="Search Products"
+      variant="outlined"
+      fullWidth
+      //  value={searchValue}
+      onChange={handleSearchChange}
+      margin="normal"
+    />
+  );
+};
+
+export default SearchInput;
+
+
+// add it to home component
+import React from 'react';
+import { Container, Box } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+
+import Products from '../components/products/Products';
+import SearchInput from '../components/SearchInput';
+import PaginationComp from '../components/PaginationComp';
+import SortProduct from '../components/SortProduct';
+
+const Home = () => {
+  return (
+    <Container>
+      {/* <Typography variant="h4" gutterBottom align="center">
+        Products
+      </Typography> */}
+
+      {/* Search and Sort Row */}
+      <Box sx={{ mb: 4 }}>
+        <Grid
+          container
+          spacing={2}
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Grid size={{ xs: 12, md: 6 }}>
+            <SearchInput />
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <SortProduct />
+          </Grid>
+        </Grid>
+      </Box>
+
+      {/* Products List */}
+      <Products />
+
+      {/* Pagination */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+        <PaginationComp />
+      </Box>
+    </Container>
+  );
+};
+
+export default Home;
+
+```
+
+### Step 13: add sort option
+
+- test your api always first
+- add to the context and provide
+
+```jsx
+// change in provider
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+
+import { getAllProducts } from '../services/productService';
+import { ProductContext } from './ProductContext';
+
+export const ProductProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [searchValue, setSearchValue] = useState('');
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+  const [sortOrder, setSortOrder] = useState('name_asc');
+
+  const fetchData = async (searchValue, pageNumber, pageSize, sortOrder) => {
+    setIsLoading(true);
+    try {
+      const response = await getAllProducts(
+        pageNumber,
+        pageSize,
+        searchValue,
+        sortOrder
+      );
+      setProducts(response.data.items);
+      setTotalPages(response.data.totalPages);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(searchValue, pageNumber, pageSize, sortOrder);
+  }, [searchValue, pageNumber, pageSize, sortOrder]);
+
+  return (
+    <ProductContext.Provider
+      value={{
+        products,
+        isLoading,
+        error,
+        searchValue,
+        setSearchValue,
+        pageNumber,
+        setPageNumber,
+        pageSize,
+        setPageSize,
+        sortOrder,
+        setSortOrder,
+        totalPages,
+      }}
+    >
+      {children}
+    </ProductContext.Provider>
+  );
+};
+
+ProductProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+// change in service
+import axios from 'axios';
+
+const baseURL = 'http://localhost:5021/api/products';
+
+// baseURL?pageNumber=1&pageSize=10&search=lala&sortOrder=name_asc
+
+export const getAllProducts = async (
+  pageNumber = 1,
+  pageSize = 5,
+  searchValue = '',
+  sortOrder = 'name_asc'
+) => {
+  const params = new URLSearchParams();
+
+  params.append('pageNumber', pageNumber);
+  params.append('pageSize', pageSize);
+
+  if (searchValue) {
+    params.append('search', searchValue);
+  }
+
+  if (sortOrder) {
+    params.append('sortOrder', sortOrder);
+  }
+  const response = await axios.get(`${baseURL}?${params.toString()}`);
+  return response.data;
+};
+
+export const getProductById = async (id) => {
+  console.log(`${baseURL}/${id}`);
+  const response = await axios.get(`${baseURL}/${id}`);
+  return response.data;
+};
+
+// create a sort component
+import React from 'react';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+
+import useProduct from '../hooks/useProduct';
+
+const SortProduct = () => {
+  const { sortOrder, setSortOrder } = useProduct();
+
+  const handleSortChange = (event) => {
+    setSortOrder(event.target.value);
+  };
+
+  return (
+    <div>
+      <FormControl fullWidth margin="normal">
+        <InputLabel id="sort-label">Sort By</InputLabel>
+        <Select
+          labelId="sort-label"
+          value={sortOrder}
+          label="Sort By"
+          onChange={handleSortChange}
+        >
+          <MenuItem value="name_asc">Name (A-Z)</MenuItem>
+          <MenuItem value="name_desc">Name (Z-A)</MenuItem>
+          <MenuItem value="price_asc">Price (Low to High)</MenuItem>
+          <MenuItem value="price_desc">Price (High to Low)</MenuItem>
+          <MenuItem value="date_asc">Date (Oldest First)</MenuItem>
+          <MenuItem value="date_desc">Date (Newest First)</MenuItem>
+        </Select>
+      </FormControl>
+    </div>
+  );
+};
+
+export default SortProduct;
+
+// add it to home component
+import React from 'react';
+import { Container, Box } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+
+import Products from '../components/products/Products';
+import SearchInput from '../components/SearchInput';
+import PaginationComp from '../components/PaginationComp';
+import SortProduct from '../components/SortProduct';
+
+const Home = () => {
+  return (
+    <Container>
+      {/* <Typography variant="h4" gutterBottom align="center">
+        Products
+      </Typography> */}
+
+      {/* Search and Sort Row */}
+      <Box sx={{ mb: 4 }}>
+        <Grid
+          container
+          spacing={2}
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Grid size={{ xs: 12, md: 6 }}>
+            <SearchInput />
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }}>
+            <SortProduct />
+          </Grid>
+        </Grid>
+      </Box>
+
+      {/* Products List */}
+      <Products />
+
+      {/* Pagination */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+        <PaginationComp />
+      </Box>
+    </Container>
+  );
+};
+
+export default Home;
+```
+
+### Step 12: Cart functionality
+
+- add, remove, update quantity and clear all items from cart
+- state and loaclstorage sync together
+
+To implement an Add to Cart functionality, you'll need to handle the following:
+
+1. create the Cart component and setup the route and navbar
+2. Cart Context: Create a context to manage the cart state.
+3. Add Item to Cart: Add a function that will allow items to be added to the cart from the product page.
+4. Cart Component: Display the cart items.
+5. Update UI: Update the button to reflect the "Add to Cart" action and show feedback.
+
+- step 1: create the Cart component and setup the route and navbar
+
+  ```jsx
+  // inside the route
+  {
+      path: '/cart',
+      element: <Cart />,
+  },
+
+  // inside the navbar
+  <Button color="inherit" component={Link} to="/cart">
+      Cart
+  </Button>
+  ```
+
+- step 2: Cart Context: Create a context to manage the cart state.
+
+  ```jsx
+  // context/CartContext.js
+  import { createContext } from 'react';
+
+  export const CartContext = createContext();
+  ```
+
+- create the provider
+
+  ```jsx
+  // context/cart/CartProvider
+  import React, { useEffect, useState } from 'react';
+  import PropTypes from 'prop-types';
+
+  import { CartContext } from './CartContext';
+
+  export const CartProvider = ({ children }) => {
+    // Load the cart from localStorage if available, otherwise initialize it as an empty array
+    const loadCartFromLocalStorage = () => {
+      const cartData = localStorage.getItem('cart');
+      return cartData ? JSON.parse(cartData) : [];
+    };
+
+    const [cart, setCart] = useState(loadCartFromLocalStorage);
+
+    // Function to save the cart to localStorage
+    const saveCartToLocalStorage = (cartItems) => {
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+    };
+
+    const addToCart = (product) => {
+      setCart((prevCart) => {
+        const existingProductIndex = prevCart.findIndex(
+          (item) => item.productId === product.productId
+        );
+        let updatedCart;
+
+        if (existingProductIndex >= 0) {
+          // If the product already exists, update quantity
+          updatedCart = [...prevCart];
+          updatedCart[existingProductIndex].quantity += 1;
+        } else {
+          // Add new product to cart
+          updatedCart = [...prevCart, { ...product, quantity: 1 }];
+        }
+
+        saveCartToLocalStorage(updatedCart); // Save the updated cart to localStorage
+        return updatedCart;
+      });
+    };
+
+    const removeFromCart = (productId) => {
+      setCart((prevCart) => {
+        const updatedCart = prevCart.filter(
+          (item) => item.productId !== productId
+        );
+        saveCartToLocalStorage(updatedCart); // Save the updated cart to localStorage
+        return updatedCart;
+      });
+    };
+
+    const clearCart = () => {
+      setCart([]);
+      localStorage.removeItem('cart'); // Remove the cart from localStorage
+    };
+
+    const updateQuantity = (productId, quantity) => {
+      setCart((prevCart) => {
+        const updatedCart = prevCart.map((item) => {
+          if (item.productId === productId) {
+            return { ...item, quantity: Math.max(1, quantity) }; // Ensure quantity is at least 1
+          }
+          return item;
+        });
+
+        saveCartToLocalStorage(updatedCart); // Save the updated cart to localStorage
+        return updatedCart;
+      });
+    };
+
+    // Synchronize cart with localStorage whenever it changes
+    useEffect(() => {
+      saveCartToLocalStorage(cart);
+    }, [cart]);
+
+    return (
+      <CartContext.Provider
+        value={{ cart, addToCart, removeFromCart, clearCart, updateQuantity }}
+      >
+        {children}
+      </CartContext.Provider>
+    );
+  };
+
+  CartProvider.propTypes = {
+    children: PropTypes.node,
+  };
+  ```
+
+- create a custom hook
+
+  ```jsx
+  // hooks/useCart.js
+  import { useContext } from 'react';
+
+  import { CartContext } from '../context/CartContext';
+
+  const useCart = () => {
+    const context = useContext(CartContext);
+
+    if (!context) {
+      throw new Error('useCart must be used within a CartProvider');
+    }
+
+    return context;
+  };
+
+  export default useCart;
+  ```
+
+- step 3: add addToCart button in Product.jsx
+
+  ```jsx
+  import {
+    Button,
+    Card,
+    CardContent,
+    CardMedia,
+    Typography,
+  } from '@mui/material';
+  import PropTypes from 'prop-types';
+  import React from 'react';
+  import { Link } from 'react-router-dom';
+  import useCart from '../../hooks/useCart';
+
+  const Product = ({ product }) => {
+    const { addToCart } = useCart();
+    return (
+      <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        {/* Product Image */}
+        <CardMedia
+          component="img"
+          height="180"
+          image={product.image || 'https://via.placeholder.com/150'}
+          alt={product.name}
+          sx={{ objectFit: 'cover' }}
+        />
+
+        <CardContent
+          sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}
+        >
+          {/* Product Name */}
+          <Typography
+            variant="h6"
+            component="div"
+            gutterBottom
+            color="primary"
+            fontWeight="bold"
+          >
+            {product.name}
+          </Typography>
+
+          {/* Product Description */}
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+            {product.description?.length > 60
+              ? `${product.description.slice(0, 60)}...`
+              : product.description}
+          </Typography>
+
+          {/* Product Price */}
+          <Typography
+            variant="subtitle1"
+            color="text.primary"
+            fontWeight="medium"
+          >
+            Price: ${product.price.toFixed(2)}
+          </Typography>
+
+          {/* Product Quantity */}
+          <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 2 }}>
+            Quantity: {product.quantity}
+          </Typography>
+
+          {/* Show Details Button */}
+          <Button
+            component={Link}
+            to={`/products/${product.productId}`}
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ marginTop: 'auto' }} // Push the button to the bottom
+          >
+            Show Details
+          </Button>
+
+          <Button
+            // component={Link}
+            // to={`/products/${product.productId}`}
+            variant="contained"
+            color="secondary"
+            fullWidth
+            sx={{ marginTop: '16px' }} // Push the button to the bottom
+            onClick={() => addToCart(product)}
+          >
+            Add To Cart
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  };
+
+  Product.propTypes = {
+    product: PropTypes.shape({
+      productId: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      price: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+      image: PropTypes.string,
+    }).isRequired,
+  };
+
+  export default Product;
+  ```
+
+- step 4: work on the cart page now
+
+  ```jsx
+  import React, { useState } from 'react';
+  import {
+    Button,
+    Card,
+    CardContent,
+    Typography,
+    CardMedia,
+    Box,
+    TextField,
+    IconButton,
+    Divider,
+  } from '@mui/material';
+  import { Add, Remove, Delete } from '@mui/icons-material';
+  import Grid from '@mui/material/Grid2';
+
+  import useCart from '../../hooks/useCart';
+
+  const Cart = () => {
+    const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
+
+    // Track address state
+    const [address, setAddress] = useState('');
+    const [addressEditing, setAddressEditing] = useState(false);
+
+    // Calculate total price
+    const totalPrice = cart.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+
+    const handleAddressChange = (e) => {
+      setAddress(e.target.value);
+    };
+
+    const handleAddressUpdate = () => {
+      setAddressEditing(false);
+    };
+
+    const increaseQuantity = (productId) => {
+      const item = cart.find((item) => item.productId === productId);
+      if (item) {
+        updateQuantity(productId, item.quantity + 1);
+      }
+    };
+
+    const decreaseQuantity = (productId) => {
+      const item = cart.find((item) => item.productId === productId);
+      if (item && item.quantity > 1) {
+        updateQuantity(productId, item.quantity - 1);
+      }
+    };
+
+    return (
+      <Box padding={3}>
+        <Typography variant="h4" gutterBottom>
+          Your Cart
+        </Typography>
+
+        <Grid container spacing={4}>
+          {/* Left Column: Cart Items */}
+          <Grid size={{ xs: 12, md: 8 }}>
+            {cart.length === 0 ? (
+              <Typography variant="h6">Your cart is empty</Typography>
+            ) : (
+              <>
+                {/* Clear Cart Button at the top */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={clearCart}
+                  sx={{ marginBottom: 2 }}
+                >
+                  Clear Cart
+                </Button>
+
+                {cart.map((item) => (
+                  <Card
+                    sx={{ display: 'flex', marginBottom: 2, padding: 2 }}
+                    key={item.productId}
+                  >
+                    <CardMedia
+                      component="img"
+                      sx={{
+                        width: 120,
+                        height: 120,
+                        objectFit: 'cover',
+                        borderRadius: 1,
+                      }}
+                      image={item.image} // assuming `item.image` contains the image URL
+                      alt={item.name}
+                    />
+                    <CardContent
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        paddingLeft: 2,
+                        flex: 1,
+                      }}
+                    >
+                      <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                        {item.name}
+                      </Typography>
+                      <Typography variant="body2">
+                        Price: ${item.price.toFixed(2)}
+                      </Typography>
+                      {/* Quantity Control */}
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          marginTop: 1,
+                        }}
+                      >
+                        <IconButton
+                          onClick={() => decreaseQuantity(item.productId)}
+                          color="primary"
+                          size="small"
+                        >
+                          <Remove />
+                        </IconButton>
+                        <Typography variant="body2" sx={{ margin: '0 8px' }}>
+                          Quantity: {item.quantity}
+                        </Typography>
+                        <IconButton
+                          onClick={() => increaseQuantity(item.productId)}
+                          color="primary"
+                          size="small"
+                        >
+                          <Add />
+                        </IconButton>
+                      </Box>
+                      {/* Remove Button with Icon */}
+                      <IconButton
+                        variant="contained"
+                        color="error"
+                        onClick={() => removeFromCart(item.productId)}
+                        sx={{ marginTop: 2, alignSelf: 'flex-start' }}
+                      >
+                        <Delete />
+                      </IconButton>
+                    </CardContent>
+                  </Card>
+                ))}
+              </>
+            )}
+          </Grid>
+
+          {/* Right Column: Summary and Address */}
+          <Grid size={{ xs: 12, md: 4 }}>
+            {cart.length > 0 && (
+              <Box
+                sx={{ padding: 2, border: '1px solid #ddd', borderRadius: 1 }}
+              >
+                <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
+                  Order Summary
+                </Typography>
+                <Divider sx={{ mb: 2 }} />
+                <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+                  Total Price: ${totalPrice.toFixed(2)}
+                </Typography>
+                <Button
+                  variant="contained"
+                  color="success"
+                  fullWidth
+                  sx={{ marginTop: 2 }}
+                >
+                  Proceed to Payment
+                </Button>
+
+                {/* Address Update Section */}
+                <Box sx={{ marginTop: 4 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                    Shipping Address
+                  </Typography>
+                  {addressEditing ? (
+                    <Box sx={{ marginTop: 2 }}>
+                      <TextField
+                        fullWidth
+                        label="Enter your address"
+                        value={address}
+                        onChange={handleAddressChange}
+                        variant="outlined"
+                        sx={{ marginBottom: 2 }}
+                      />
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleAddressUpdate}
+                      >
+                        Update Address
+                      </Button>
+                    </Box>
+                  ) : (
+                    <Box sx={{ marginTop: 2 }}>
+                      <Typography variant="body1">
+                        {address || 'No address provided yet'}
+                      </Typography>
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                        sx={{ marginTop: 1 }}
+                        onClick={() => setAddressEditing(true)}
+                      >
+                        Edit Address
+                      </Button>
+                    </Box>
+                  )}
+                </Box>
+              </Box>
+            )}
+          </Grid>
+        </Grid>
+      </Box>
+    );
+  };
+
+  export default Cart;
+  ```
+
+- step 5: create a CartIcon component
+
+```jsx
+import React from 'react';
+import { Badge, IconButton } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+import useCart from '../../hooks/useCart';
+
+const CartIcon = () => {
+  const { cart } = useCart();
+
+  // Get the total number of items in the cart
+  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+
+  return (
+    <IconButton aria-label="cart">
+      <Badge badgeContent={itemCount} color="error">
+        <ShoppingCartIcon />
+      </Badge>
+    </IconButton>
+  );
+};
+
+export default CartIcon;
+```
+
+### Step 13: AddToCart functionality in Product Details page
+
+```jsx
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import {
+  Container,
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
+  Divider,
+  Button,
+} from '@mui/material';
+import Grid from '@mui/material/Grid2';
+
+import Loader from '../components/Loader';
+import { getProductById } from '../services/productService';
+import useCart from '../hooks/useCart';
+
+const ProductDetails = () => {
+  const { id } = useParams();
+  const { addToCart } = useCart();
+
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchProduct = async (id) => {
+    try {
+      const response = await getProductById(id);
+      setProduct(response.data);
+    } catch (error) {
+      setError('Failed to fetch product details.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProduct(id);
+  }, [id]);
+
+  if (isLoading) {
+    return <Loader message="Loading products, please wait..." />;
+  }
+
+  if (error) {
+    return (
+      <Loader message="Failed to load products. Please try again." size={70} />
+    );
+  }
+
+  // Destructure product properties
+  const {
+    name,
+    description,
+    image,
+    price,
+    quantity,
+    shipping,
+    sold,
+    createdAt,
+  } = product || {};
+
+  return (
+    <Container maxWidth="md" style={{ marginTop: '20px' }}>
+      <Card>
+        {image && (
+          <CardMedia
+            component="img"
+            height="400"
+            image={image} // Assumes 'image' is a valid image URL
+            alt={name}
+          />
+        )}
+        <CardContent>
+          <Typography variant="h4" gutterBottom>
+            {name}
+          </Typography>
+          <Typography variant="body1" color="textSecondary" gutterBottom>
+            {description}
+          </Typography>
+
+          <Divider style={{ margin: '20px 0' }} />
+
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 6 }}>
+              <Typography variant="h6">Price:</Typography>
+              <Typography variant="body1">${price.toFixed(2)}</Typography>
+            </Grid>
+            <Grid size={{ xs: 6 }}>
+              <Typography variant="h6">Quantity Available:</Typography>
+              <Typography variant="body1">{quantity}</Typography>
+            </Grid>
+            <Grid size={{ xs: 6 }}>
+              <Typography variant="h6">Shipping Cost:</Typography>
+              <Typography variant="body1">${shipping.toFixed(2)}</Typography>
+            </Grid>
+            <Grid size={{ xs: 6 }}>
+              <Typography variant="h6">Items Sold:</Typography>
+              <Typography variant="body1">{sold}</Typography>
+            </Grid>
+            <Grid size={{ xs: 12 }}>
+              <Typography variant="h6">Created At:</Typography>
+              <Typography variant="body1">
+                {new Date(createdAt).toLocaleDateString()}{' '}
+                {new Date(createdAt).toLocaleTimeString()}
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <Button
+            // component={Link}
+            // to={`/products/${product.productId}`}
+            variant="contained"
+            color="secondary"
+            fullWidth
+            sx={{ marginTop: '16px' }} // Push the button to the bottom
+            onClick={() => addToCart(product)}
+          >
+            Add To Cart
+          </Button>
+        </CardContent>
+      </Card>
+    </Container>
+  );
+};
+
+export default ProductDetails;
+```
+
+### Step 14: Disable addToCart button inside ProductDetails.jsx and Product.jsx if the product is already inside the cart
+
+```jsx
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import {
+  Container,
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
+  Divider,
+  Button,
+} from '@mui/material';
+import Grid from '@mui/material/Grid2';
+
+import Loader from '../components/Loader';
+import { getProductById } from '../services/productService';
+import useCart from '../hooks/useCart';
+
+const ProductDetails = () => {
+  const { id } = useParams();
+  const { cart, addToCart } = useCart(); // Get cart data and addToCart function
+
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchProduct = async (id) => {
+    try {
+      const response = await getProductById(id);
+      setProduct(response.data);
+    } catch (error) {
+      setError('Failed to fetch product details.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProduct(id);
+  }, [id]);
+
+  if (isLoading) {
+    return <Loader message="Loading products, please wait..." />;
+  }
+
+  if (error) {
+    return (
+      <Loader message="Failed to load products. Please try again." size={70} />
+    );
+  }
+
+  // Check if the product is already in the cart
+  const isInCart = cart.some((item) => item.productId === product.productId);
+
+  // Destructure product properties
+  const {
+    name,
+    description,
+    image,
+    price,
+    quantity,
+    shipping,
+    sold,
+    createdAt,
+  } = product || {};
+
+  return (
+    <Container maxWidth="md" style={{ marginTop: '20px' }}>
+      <Card>
+        {image && (
+          <CardMedia
+            component="img"
+            height="400"
+            image={image} // Assumes 'image' is a valid image URL
+            alt={name}
+          />
+        )}
+        <CardContent>
+          <Typography variant="h4" gutterBottom>
+            {name}
+          </Typography>
+          <Typography variant="body1" color="textSecondary" gutterBottom>
+            {description}
+          </Typography>
+
+          <Divider style={{ margin: '20px 0' }} />
+
+          <Grid container spacing={2}>
+            <Grid size={{ xs: 6 }}>
+              <Typography variant="h6">Price:</Typography>
+              <Typography variant="body1">${price.toFixed(2)}</Typography>
+            </Grid>
+            <Grid size={{ xs: 6 }}>
+              <Typography variant="h6">Quantity Available:</Typography>
+              <Typography variant="body1">{quantity}</Typography>
+            </Grid>
+            <Grid size={{ xs: 6 }}>
+              <Typography variant="h6">Shipping Cost:</Typography>
+              <Typography variant="body1">${shipping.toFixed(2)}</Typography>
+            </Grid>
+            <Grid size={{ xs: 6 }}>
+              <Typography variant="h6">Items Sold:</Typography>
+              <Typography variant="body1">{sold}</Typography>
+            </Grid>
+            <Grid size={{ xs: 12 }}>
+              <Typography variant="h6">Created At:</Typography>
+              <Typography variant="body1">
+                {new Date(createdAt).toLocaleDateString()}{' '}
+                {new Date(createdAt).toLocaleTimeString()}
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <Button
+            variant="contained"
+            color="secondary"
+            fullWidth
+            sx={{ marginTop: '16px' }} // Push the button to the bottom
+            onClick={() => addToCart(product)}
+            disabled={isInCart} // Disable if product is in cart
+          >
+            {isInCart ? 'Already in Cart' : 'Add To Cart'}
+          </Button>
+        </CardContent>
+      </Card>
+    </Container>
+  );
+};
+
+export default ProductDetails;
+```
+
+```jsx
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@mui/material';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import useCart from '../../hooks/useCart';
+
+const Product = ({ product }) => {
+  const { cart, addToCart } = useCart();
+
+  // Check if the product is already in the cart
+  const isInCart = cart.some((item) => item.productId === product.productId);
+
+  return (
+    <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      {/* Product Image */}
+      <CardMedia
+        component="img"
+        height="180"
+        image={product.image || 'https://via.placeholder.com/150'}
+        alt={product.name}
+        sx={{ objectFit: 'cover' }}
+      />
+
+      <CardContent
+        sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}
+      >
+        {/* Product Name */}
+        <Typography
+          variant="h6"
+          component="div"
+          gutterBottom
+          color="primary"
+          fontWeight="bold"
+        >
+          {product.name}
+        </Typography>
+
+        {/* Product Description */}
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+          {product.description?.length > 60
+            ? `${product.description.slice(0, 60)}...`
+            : product.description}
+        </Typography>
+
+        {/* Product Price */}
+        <Typography
+          variant="subtitle1"
+          color="text.primary"
+          fontWeight="medium"
+        >
+          Price: ${product.price.toFixed(2)}
+        </Typography>
+
+        {/* Product Quantity */}
+        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 2 }}>
+          Quantity: {product.quantity}
+        </Typography>
+
+        {/* Show Details Button */}
+        <Button
+          component={Link}
+          to={`/products/${product.productId}`}
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{ marginTop: 'auto' }} // Push the button to the bottom
+        >
+          Show Details
+        </Button>
+
+        {/* Add To Cart Button */}
+        <Button
+          variant="contained"
+          color="secondary"
+          fullWidth
+          sx={{ marginTop: '16px' }}
+          onClick={() => addToCart(product)}
+          disabled={isInCart} // Disable button if product is in cart
+        >
+          {isInCart ? 'Already in Cart' : 'Add To Cart'}
+        </Button>
+      </CardContent>
+    </Card>
+  );
+};
+
+Product.propTypes = {
+  product: PropTypes.shape({
+    productId: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    price: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+    image: PropTypes.string,
+  }).isRequired,
+};
+
+export default Product;
+```
+
+### Step 15: show payment option modal using braintree
+
+```jsx
+import React, { useEffect, useRef } from 'react';
+import dropin from 'braintree-web-drop-in';
+import { Button, Box, Typography } from '@mui/material';
+
+const BraintreePayment = ({ clientToken, onPaymentSuccess, onClose }) => {
+  const dropinInstance = useRef(null);
+
+  useEffect(() => {
+    if (clientToken) {
+      dropin.create(
+        {
+          authorization: clientToken,
+          container: '#braintree-dropin-container',
+        },
+        (error, instance) => {
+          if (error) console.error(error);
+          else dropinInstance.current = instance;
+        }
+      );
+    }
+    return () => {
+      // Clean up Braintree instance on unmount
+      if (dropinInstance.current) dropinInstance.current.teardown();
+    };
+  }, [clientToken]);
+
+  const handlePayment = () => {
+    if (dropinInstance.current) {
+      dropinInstance.current.requestPaymentMethod((error, payload) => {
+        if (error) console.error(error);
+        else onPaymentSuccess(payload); // Pass the payload to parent handler
+      });
+    }
+  };
+
+  return (
+    <Box sx={{ p: 3 }}>
+      <Typography variant="h5">Payment</Typography>
+      <div id="braintree-dropin-container" style={{ marginBottom: '16px' }}></div>
+      <Button variant="contained" color="primary" onClick={handlePayment}>
+        Pay Now
+      </Button>
+      <Button variant="outlined" color="secondary" onClick={onClose} sx={{ mt: 2 }}>
+        Cancel
+      </Button>
+    </Box>
+  );
+};
+
+export default BraintreePayment;
+
+
+import React, { useState } from 'react';
+import {
+  Box,
+  Typography,
+  Button,
+  Modal,
+} from '@mui/material';
+import BraintreePayment from '../components/BraintreePayment';
+import useCart from '../../hooks/useCart';
+
+const Cart = () => {
+  const { cart, clearCart } = useCart();
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [clientToken, setClientToken] = useState(null); // You need to get this token from your server
+
+  const fetchClientToken = async () => {
+    try {
+      // Assuming you have an endpoint on your server that provides a client token
+      const response = await fetch('/api/braintree/client-token');
+      const data = await response.json();
+      setClientToken(data.clientToken);
+    } catch (error) {
+      console.error('Failed to fetch client token:', error);
+    }
+  };
+
+  const handleProceedToPayment = async () => {
+    await fetchClientToken(); // Fetch the client token before opening the modal
+    setIsPaymentOpen(true);
+  };
+
+  const handlePaymentSuccess = (payload) => {
+    console.log('Payment successful:', payload);
+    clearCart(); // Clear cart after successful payment
+    setIsPaymentOpen(false);
+  };
+
+  const handleClose = () => {
+    setIsPaymentOpen(false);
+  };
+
+  return (
+    <Box padding={3}>
+      <Typography variant="h4" gutterBottom>
+        Your Cart
+      </Typography>
+      {/* Cart items list here */}
+
+      {/* Proceed to Payment Button */}
+      {cart.length > 0 && (
+        <Button
+          variant="contained"
+          color="success"
+          sx={{ marginTop: 2 }}
+          onClick={handleProceedToPayment}
+        >
+          Proceed to Payment
+        </Button>
+      )}
+
+      {/* Payment Modal */}
+      <Modal open={isPaymentOpen} onClose={handleClose}>
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          bgcolor: 'background.paper',
+          p: 4,
+          borderRadius: 2,
+          boxShadow: 24,
+          maxWidth: 500,
+          width: '100%'
+        }}>
+          {clientToken ? (
+            <BraintreePayment
+              clientToken={clientToken}
+              onPaymentSuccess={handlePaymentSuccess}
+              onClose={handleClose}
+            />
+          ) : (
+            <Typography>Loading payment options...</Typography>
+          )}
+        </Box>
+      </Modal>
+    </Box>
+  );
+};
+
+export default Cart;
+```
+
+### Step 16: Sign up page
+
+### Step 17: Sign in page
+
+### Step 18: Dashboard setup and route protection
+
+### Step 19: User Dashboard Functionality
+
+- show profile
+- show orders
+
+### Step 20: Admin Dashboard Functionality
+
+- show profile
+- show products
+- show categories
+- show users
+- show orders
 
 ## A completed Ecommerece CRUD API
-
-Certainly! Below is a comprehensive step-by-step guide to building an **eCommerce CRUD API** using **ASP.NET Core** that includes:
 
 - **Entities**: `User`, `Profile`, `Category`, `Product`, `Order`
 - **Relationships**:
@@ -15529,19 +21665,19 @@ POST /api/users
 
 ```json
 {
-    "success": true,
-    "message": "User created successfully.",
-    "data": {
-        "userId": "GUID",
-        "userName": "janedoe",
-        "email": "jane@example.com",
-        "profile": {
-            "profileId": "GUID",
-            "firstName": "Jane",
-            "lastName": "Doe",
-            "address": "123 Main St"
-        }
+  "success": true,
+  "message": "User created successfully.",
+  "data": {
+    "userId": "GUID",
+    "userName": "janedoe",
+    "email": "jane@example.com",
+    "profile": {
+      "profileId": "GUID",
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "address": "123 Main St"
     }
+  }
 }
 ```
 
@@ -15736,6 +21872,7 @@ private string GenerateJwtToken(User user)
 ### **Summary of these packages**
 
 - **Microsoft.AspNetCore.Authentication.JwtBearer**:
+
   - Integrates JWT authentication into the ASP.NET Core middleware pipeline.
   - Handles the validation of JWT tokens in incoming HTTP requests.
   - Enables you to protect API endpoints using the `[Authorize]` attribute.
@@ -15744,12 +21881,13 @@ private string GenerateJwtToken(User user)
   - Provides the functionality to create and manage JWT tokens.
   - Used to generate tokens upon user authentication (e.g., login).
   - Allows you to define token claims and signing credentials.
----
 
+---
 
 ### **Why Both Packages Are Needed**
 
 - **Token Creation (System.IdentityModel.Tokens.Jwt)**:
+
   - You need to create and sign JWT tokens when users authenticate.
   - This package provides the tools to construct tokens with the necessary claims and signatures.
 
@@ -15764,7 +21902,7 @@ private string GenerateJwtToken(User user)
 1. **Create a new ASP.NET Core Web API project**: here -n means name
 
    ```bash
-   dotnet new webapi -n UserApiWithJwt 
+   dotnet new webapi -n UserApiWithJwt
    ```
 
 2. **Navigate to the project directory**:
@@ -15796,8 +21934,8 @@ dotnet add package BCrypt.Net-Next
 - Why Both Packages Are Needed?
 
 - Token Creation (System.IdentityModel.Tokens.Jwt):
-You need to create and sign JWT tokens when users authenticate.
-This package provides the tools to construct tokens with the necessary claims and signatures.
+  You need to create and sign JWT tokens when users authenticate.
+  This package provides the tools to construct tokens with the necessary claims and signatures.
 
 - Token Consumption (Microsoft.AspNetCore.Authentication.JwtBearer):
 
